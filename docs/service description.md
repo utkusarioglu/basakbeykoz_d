@@ -1,12 +1,9 @@
 #Service Description
 
-This project aims to create the scaffolding marketing and branding work,
-social media templates and first generation website for the professional
-coach, Basak Beykoz.
+This project aims to create the scaffolding marketing and branding work, social media templates and first generation website for the professional coach, Basak Beykoz.
 
 #The Client
-Basak Beykoz is a professional coach who has a less corporate tone than 
-her competitors. Her clientele ranges from [range]
+Basak Beykoz is a professional coach who has a less corporate tone than her competitors. Her clientele ranges from [range]
 
 #Service Goals
 - Establishing a consistent brand for Basak Beykoz that can be applied 
