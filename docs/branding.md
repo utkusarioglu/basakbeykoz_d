@@ -1,4 +1,4 @@
-Branding
+# Branding
 
 Basak Beykoz offers a distinguished service that is meant to connect people with their own true potential. It's all about them realizing their own capabilities and goals, via overcoming challenges. They not only leap towards their personal goals, but also enjoy discovering beyond their imagination.
 
