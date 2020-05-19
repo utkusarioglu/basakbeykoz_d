@@ -1,24 +1,42 @@
-# Branding
-## Basic description of the service performed by Basak Beykoz
+Branding
 
-Basak Beykoz offers a distiguished service that is meant to connect people with their own true potential. It's all about them realizing their own capabilities and goals, via overcoming challenges. They no only leap towards their personal goals, but also enjoy discovering beyond their imagination.
+Basak Beykoz offers a distinguished service that is meant to connect people with their own true potential. It's all about them realizing their own capabilities and goals, via overcoming challenges. They not only leap towards their personal goals, but also enjoy discovering beyond their imagination.
 
-The nature of professional coaching service puts people at the captain's wheelhouse while the professional coach Basak Beykoz joins their journey as the accompanier at the way along. Basak's distintive craft can be better described as mirroring people for a volunteered uplifting process during their unique journey. 
+The nature of professional coaching service puts people at the captain's wheelhouse while professional coach Basak Beykoz joins their journey as the accompanier at the way along. Basak's distinctive craft can be better described as mirroring people for a volunteered uplifting process during their unique journey. 
 
-## Unique Qualities of Basak Beykoz
+Basak Beykoz has worked in corporate environments throughout her adult life, with a profound experience in Project Management at diversified sectors such as news media publishing, high tech engineering, pharmaceutical industry and more. She is by nature an experience driven person who is no stranger to the finer things and places in life. 
 
-Basak Beykoz has worked in corporate environments throughout her adult
-life, entering various fields such as news media publishing, defense industry, pharmaceutical industry and others. She is by nature an experience driven person who is no stranger to the finer things and places in life. And having also faced substantial hardships, both in her professional and personal life, Basak has no issues relating to the emotional states, ambitions, and reservations of her clients.
+Embracing life with a variety of questions, she focusses on “how?” rather than “why?” Surpassing substantial difficulties, she always approached to both her professional and personal life with deep joy. Basak has formidably flourished with her refreshing energy free of ambitious engagements. Through her delicately tough journey she has been courageous to distill and purify emotional reservations. 
 
-She has received her coaching training from acclaimed institutions and will likely continue her streak of high level success in her life coaching career. She also has a very mature and charming way of  connecting with her clients. This helps her to gain trust and create traction swiftly, allowing their clients to focus on their journey rather than worrying about conveying themselves or assessing the trustworthiness of their coach.
+She has acclaimed her coaching trainings from esteemed institutions and continues to enhance her coaching career. She also has a very mature and charming way of connecting with people from different ways of life. She easily establishes trust and creates attraction swiftly, providing a wide playground for her coachees to focus on their journey. 
 
-Compared to the keywords that are routinely used in coaching sector, Basak's descriptions of her character aspirations, the concepts that she focuses on as a coach and the character aspirations she employs are much more humane, inner peace oriented rather than being focused on external goals or interpersonal relationships.
+“Crafted questions embody the most significant, precious and astonishing solutions for beholders.” Başak Beykoz
 
-The sector in general is more focused on professional life, building leadership skills or being able to handle the stress of the workplace or certain personal or professional investments that people are making or working towards. *Basak Beykoz is in such a position that, she understand these endeavors and has successfully executed these herself throughout her professional life. But on top of these, she developed a strong emphasis on human values and self care. This seems to be a tone that is lacking in the online content of the competitors and can be one area that can be used as a distinguishing factor.*
+Basak's description of her genuine craft is creative and constructive questions developed upon character aspirations, professional equipment and deepened vision. Working through powerful questions, she helps to polish solid goals with humane touch. She provides the zone to enhance interpersonal relations aligned with self inner peace. She enjoys to witness inspirational discoveries of her coachees on each and unique journeys of themselves.
 
-Her concept in her online media could subtly argue that: You are having problems in your life, maybe in your professional life, so you are looking for guidance to help you see through this period. And everyone you come across has this *professional* attitude that *already suffocated you* and is the reason you need the release and guidance in the first place. As a response, we offer a service that is more emotionally in touch with your feelings and who you feel like inside while having the entire repertoire of tricks and understanding of what you need to do to get through in your professional environment and/or modern life issues.
+Basak Beykoz is an accredited accompanier that, she comprehends the major endeavors such as building leadership skills, handling stress, investing in professional goals, enhancing competencies for career shift, work-life balance, time management. She successfully executed those herself throughout her journey. But above all, she developed a holistic vision towards life established upon on personal virtues and values authentically colored with talents and choices. Compassion is her main compass. This adds up distinguished fine tuning to manistream content available at the sector. 
 
-This requires her to diverge from her competitors that usually *talk at* their clients with their content. The messages are usually very sterile and aimed at communicating the training, skills and past experience of the coach or the institution. While these are definitely required in Basak Beykoz's case as well, her true qualities and her message has to start with an emotional hook and end with an emotional call to action that speaks to the audience at deeper than sterile level. But the messages still need to contain enough hints to communicate that she knows what she is doing and/or link to resources that show that she is on top of her game.
+Basak Beykoz's true qualities and her professional simplistic call start with an emotional hook, and end where an outstanding shift in points of view. This cannot be called the end of course; but a restart which peacefully provokes for action. The coachee continues the journey more resourceful, even and confident than ever. 
+
+## the Basak Beykoz brand
+
+Exploring your own colors and brightening them, 
+Connecting with your wisdom speaking as your inner voice
+Accessing your real potential and activating it
+
+
+### Key Brand Descriptors
+- Build Structure in you, in your life: high/low conscientiousness
+- Find your own colors, enhance the ones you already have: high openness
+- Real you, for you. Real you, for all to see: low extraversion, high neuroticism
+- Finding inner peace, looking at the world in peace: high neuroticism, high openness
+- The strength you always had: low openness, low extraversion
+
+The endpoint for every descriptor is to reach your life goals.
+- FIN -
+
+----
+bu kısımda geliştirdiğin yaklaşımı yaratıcı bulmakla beraber buradan bir sonraki başlığa (### Key Brand Descriptors'a) kadar olan açıklama kısmını sunmak uygun gelmedi işim açısından. dilersen knuşuruz burda tam anlayamamış da olabilirim.
 
 ## the Basak Beykoz brand
 
