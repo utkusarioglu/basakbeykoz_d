@@ -1,5 +1,7 @@
 # Branding
 
+## Basic description of the service performed by Basak Beykoz
+
 Basak Beykoz offers a distinguished service that is meant to connect people with their own true potential. It's all about them realizing their own capabilities and goals, via overcoming challenges. They not only leap towards their personal goals, but also enjoy discovering beyond their imagination.
 
 The nature of professional coaching service puts people at the captain's wheelhouse while professional coach Basak Beykoz joins their journey as the accompanier at the way along. Basak's distinctive craft can be better described as mirroring people for a volunteered uplifting process during their unique journey. 
