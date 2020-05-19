@@ -1,6 +1,6 @@
-#Raw Keywords
+# Raw Keywords
 
-##Professional coaching keywords:
+## Professional coaching keywords:
 Human oriented: insan odaklı, 
 Solution oriented: çözüm odaklı, 
 Potential: potansiyel, 
@@ -28,13 +28,13 @@ Proficiency: yetkinlik
 Competence: yetkinlik
 Talent: beceri
 Habits: davranış
-mindset:
+Mindset: Dusunce tarzi
 
-##Keywords Basak uses in her analogies:
+## Keywords Basak uses in her analogies:
 
 Atlas: Atlas
 Ocean: Okyanus
-virtue: Erdem
+Virtue: Erdem
 Boundless, expansive, broad: Engin
 Tree: Ağaç
 Happiness: Neşe
@@ -59,19 +59,19 @@ Boucle: Bukle
 Cotton: Pamuk 
 Conversing: Söyleşmek
 Scent: Koku
-canlı: alive
+Alive: Canli, hayat dolu
 
-#Keywords that Basak uses to describe her values:
-Essence... ? Meaning: anlam, 
+# Keywords that Basak uses to describe her values:
+Essence: anlam, 
 Compassion: şefkat, 
 Freedom: özgürlük, 
 Solidarity: dayanışma, 
 Fun: eğlence, 
 Joy: neşe
-Flexibilty ?: esneklik, 
-Discovery/exploration: keşif
+Flexibilty: esneklik, 
+Discovery, Exploration: keşif
 
-#Keywords that Basak uses to describe her character:
+# Keywords that Basak uses to describe her character:
 Tenacity: azim, 
 Self-discipline: özdisiplin, 
 Genuine: hakiki, özgün 
@@ -80,4 +80,4 @@ Delicate: zarif-nazik,
 Cheerful: güleç 
 Analytical: analitik, 
 Sharing: paylaşımcı, 
-Inquisitive: öğrenme hevesi 
+Inquisitive: öğrenme hevesli 
