@@ -23,9 +23,12 @@ Self-esteem: özgüven,
 Awareness: farkındalık, 
 Trust building: güven yaratan, 
 Sustainability: sürdürülebilirlik, 
-Novelty: yenilik, 
+Innovation: yenilik, 
 Proficiency: yetkinlik
-
+Competence: yetkinlik
+Talent: beceri
+Habits: davranış
+mindset:
 
 ##Keywords Basak uses in her analogies:
 
@@ -36,6 +39,7 @@ Boundless, expansive, broad: Engin
 Tree: Ağaç
 Happiness: Neşe
 Consistence (of fluids): Kıvam
+Accompanier: eşlikçi
 Close friend: Can yoldaşı
 Satisfaction, gratification: Doyum
 Heart: Gönül
@@ -55,23 +59,25 @@ Boucle: Bukle
 Cotton: Pamuk 
 Conversing: Söyleşmek
 Scent: Koku
+canlı: alive
 
 #Keywords that Basak uses to describe her values:
-Meaning: anlam, 
-Care: şefkat, 
+Essence... ? Meaning: anlam, 
+Compassion: şefkat, 
 Freedom: özgürlük, 
 Solidarity: dayanışma, 
 Fun: eğlence, 
-Elasticity: esneklik, 
-Discovery: keşif
+Joy: neşe
+Flexibilty ?: esneklik, 
+Discovery/exploration: keşif
 
 #Keywords that Basak uses to describe her character:
 Tenacity: azim, 
 Self-discipline: özdisiplin, 
-Genuine: hakiki, 
+Genuine: hakiki, özgün 
 Assuring: güven veren, 
-Kind: nazik, 
-Cheerful: güleç, 
+Delicate: zarif-nazik, 
+Cheerful: güleç 
 Analytical: analitik, 
 Sharing: paylaşımcı, 
 Inquisitive: öğrenme hevesi 
