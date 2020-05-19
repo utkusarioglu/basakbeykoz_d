@@ -1,7 +1,7 @@
 # Raw Keywords
 
 ## Professional coaching keywords:
-Human oriented: insan odaklı, 
+Human oriented: insan odaklı,
 Solution oriented: çözüm odaklı, 
 Potential: potansiyel, 
 Leadership: liderlik, 
