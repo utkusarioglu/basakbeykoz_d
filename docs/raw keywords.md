@@ -1,7 +1,7 @@
-#Raw Keywords
+# Raw Keywords
 
-##Professional coaching keywords:
-Human oriented: insan odaklı, 
+## Professional coaching keywords:
+Human oriented: insan odaklı,
 Solution oriented: çözüm odaklı, 
 Potential: potansiyel, 
 Leadership: liderlik, 
@@ -23,19 +23,23 @@ Self-esteem: özgüven,
 Awareness: farkındalık, 
 Trust building: güven yaratan, 
 Sustainability: sürdürülebilirlik, 
-Novelty: yenilik, 
+Innovation: yenilik, 
 Proficiency: yetkinlik
+Competence: yetkinlik
+Talent: beceri
+Habits: davranış
+Mindset: Dusunce tarzi
 
-
-##Keywords Basak uses in her analogies:
+## Keywords Basak uses in her analogies:
 
 Atlas: Atlas
 Ocean: Okyanus
-virtue: Erdem
+Virtue: Erdem
 Boundless, expansive, broad: Engin
 Tree: Ağaç
 Happiness: Neşe
 Consistence (of fluids): Kıvam
+Accompanier: eşlikçi
 Close friend: Can yoldaşı
 Satisfaction, gratification: Doyum
 Heart: Gönül
@@ -55,23 +59,25 @@ Boucle: Bukle
 Cotton: Pamuk 
 Conversing: Söyleşmek
 Scent: Koku
+Alive: Canli, hayat dolu
 
-#Keywords that Basak uses to describe her values:
-Meaning: anlam, 
-Care: şefkat, 
+# Keywords that Basak uses to describe her values:
+Essence: anlam, 
+Compassion: şefkat, 
 Freedom: özgürlük, 
 Solidarity: dayanışma, 
 Fun: eğlence, 
-Elasticity: esneklik, 
-Discovery: keşif
+Joy: neşe
+Flexibilty: esneklik, 
+Discovery, Exploration: keşif
 
-#Keywords that Basak uses to describe her character:
+# Keywords that Basak uses to describe her character:
 Tenacity: azim, 
 Self-discipline: özdisiplin, 
-Genuine: hakiki, 
+Genuine: hakiki, özgün 
 Assuring: güven veren, 
-Kind: nazik, 
-Cheerful: güleç, 
+Delicate: zarif-nazik, 
+Cheerful: güleç 
 Analytical: analitik, 
 Sharing: paylaşımcı, 
-Inquisitive: öğrenme hevesi 
+Inquisitive: öğrenme hevesli 

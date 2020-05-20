@@ -20,7 +20,7 @@ We recommend that there should be no animations of any kind in the design. nothi
 
 As with most websites, the main page content carries critical importance. The tone that shall be used in the entire website is outlined in branding document. 
 
-First page content shall be brief and touch on the most important points that the audience may be curious about. The content may have some hints about what a professional coach does. But the bulk of the content should focus on what Basak Beykoz does differently. As most audience that arrives at the website will most likely visit other life coaches. The main appeal of the website is designed to be its more emotional nature compared to its competitors.
+First page content shall be brief and touch on the most important points that the audience may be curious about. The content may have some hints about what a professional coach does. But the bulk of the content should focus on what Basak Beykoz does differently. As most audience that arrives at the website will most likely visit other coaches. The main appeal of the website is designed to be its more emotional nature compared to its competitors.
 
 The front page shall contain links to pages that are relevant to understanding the deeper concepts related to coaching. Principles of Basak Beykoz, past experience in different industries, techniques she uses, blog posts, social media and all other relevant content can be available as hyperlinks; with the most relevant of these that audience could want to reach also featured as buttons.
 
