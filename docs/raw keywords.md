@@ -39,7 +39,7 @@ Boundless, expansive, broad: Engin
 Tree: Ağaç
 Happiness: Neşe
 Consistence (of fluids): Kıvam
-Accompanier: eşlikçi
+Companion: eşlikçi
 Close friend: Can yoldaşı
 Satisfaction, gratification: Doyum
 Heart: Gönül
