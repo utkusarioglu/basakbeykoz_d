@@ -14,14 +14,13 @@ interface wpMenuItem {
 
 // !HACK any used as type for props
 function Header(props: any): React.FunctionComponentElement<ReduxProps> {
-    console.log("render")
     const fetchMenu = props.fetchMenu; 
     useEffect(() => {
-        console.log("useEffect")
         fetchMenu();
     }, [fetchMenu])
 
-    const menuOnClick = (event: SyntheticEvent) => {
+    const menuOnClick = (e: SyntheticEvent) => {
+        e.preventDefault();
         alert("click");
     }
 
@@ -36,7 +35,6 @@ function Header(props: any): React.FunctionComponentElement<ReduxProps> {
             )
         })
 
-    console.log("menu", props.menu)
     return (
         <header>
             <h1>BasakBeykoz</h1>
@@ -47,7 +45,7 @@ function Header(props: any): React.FunctionComponentElement<ReduxProps> {
 
 // !HACK any used as type
 const mapStateToProps = (state: any) => ({
-    menu: state.menus.items
+    menu: state.menu.items
 });
 
 export default connect(mapStateToProps, { fetchMenu })(Header);

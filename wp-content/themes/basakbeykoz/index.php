@@ -17,16 +17,16 @@
     <meta name="theme-color" content="#505050" />
     <meta
       name="description"
-      content="Web site created using create-react-wptheme"
+      content="Profesyonel koc Basak Beykoz'un internet sitesi"
     />
     <link rel="apple-touch-icon" href="<?php echo $TEMPLATE_PATH; ?>/logo192.png" />
     <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
-    <title>React WordPress Theme</title>
-<link href="/wp-content/themes/basakbeykoz/static/css/main.chunk.css?01a3659212d75bb6405f" rel="stylesheet"></head>
+    <title>Basak Beykoz</title>
+<link href="/wp-content/themes/basakbeykoz/static/css/main.chunk.css?0dac299da11316ea8e52" rel="stylesheet"></head>
     <body>
     <noscript>
-        You need to enable JavaScript to run this app.
+        JavaScript olmadan bu siteyi gormeniz mumkun degil:/
     </noscript>
     <div id="root"></div>
-    <script src="/wp-content/themes/basakbeykoz/static/js/bundle.js?01a3659212d75bb6405f"></script><script src="/wp-content/themes/basakbeykoz/static/js/0.chunk.js?01a3659212d75bb6405f"></script><script src="/wp-content/themes/basakbeykoz/static/js/main.chunk.js?01a3659212d75bb6405f"></script></body>
+    <script src="/wp-content/themes/basakbeykoz/static/js/bundle.js?0dac299da11316ea8e52"></script><script src="/wp-content/themes/basakbeykoz/static/js/0.chunk.js?0dac299da11316ea8e52"></script><script src="/wp-content/themes/basakbeykoz/static/js/main.chunk.js?0dac299da11316ea8e52"></script></body>
 </html>

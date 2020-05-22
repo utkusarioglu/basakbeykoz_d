@@ -74,6 +74,42 @@ function App() {
 
 /***/ }),
 
+/***/ "./src/actions/bodyActions.ts":
+/*!************************************!*\
+  !*** ./src/actions/bodyActions.ts ***!
+  \************************************/
+/*! exports provided: fetchPosts */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPosts", function() { return fetchPosts; });
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types */ "./src/actions/types.ts");
+/* harmony import */ var wpapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! wpapi */ "./node_modules/wpapi/wpapi.js");
+/* harmony import */ var wpapi__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(wpapi__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const wp = new wpapi__WEBPACK_IMPORTED_MODULE_1___default.a({
+  endpoint: "./wp-json"
+});
+const fetchPosts = () => dispatch => {
+  wp.posts().get((err, data) => {
+    if (err) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_POSTS"],
+        error: "something went wrong"
+      });
+    } else {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_POSTS"],
+        data: Object.values(data).slice(0, -1)
+      });
+    }
+  });
+};
+
+/***/ }),
+
 /***/ "./src/actions/menuActions.ts":
 /*!************************************!*\
   !*** ./src/actions/menuActions.ts ***!
@@ -115,15 +151,15 @@ const fetchMenu = () => dispatch => {
 /*!******************************!*\
   !*** ./src/actions/types.ts ***!
   \******************************/
-/*! exports provided: FETCH_MENU, FETCH_POST */
+/*! exports provided: FETCH_MENU, FETCH_POSTS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_MENU", function() { return FETCH_MENU; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST", function() { return FETCH_POST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POSTS", function() { return FETCH_POSTS; });
 const FETCH_MENU = "FETCH_MENU";
-const FETCH_POST = "FETCH_POST";
+const FETCH_POSTS = "FETCH_POSTS";
 
 /***/ }),
 
@@ -136,28 +172,51 @@ const FETCH_POST = "FETCH_POST";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Body; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_bodyActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/bodyActions */ "./src/actions/bodyActions.ts");
 var _jsxFileName = "/home/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz/wp-content/themes/basakbeykoz/react-src/src/components/Body.tsx";
 
-function Body() {
+
+
+
+// !HACK any used as type for props
+function Body(props) {
+  const fetchPosts = props.fetchPosts;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    fetchPosts();
+  }, [fetchPosts]);
+  const posts = props.post.map(post => {
+    console.log("post", post);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      key: post.id,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 16
+      }
+    }, post.title.rendered);
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 33,
       columnNumber: 9
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 13
-    }
-  }, "this is the body or will be"));
-}
+  }, posts);
+} // !HACK any as type
+
+
+const mapStateToProps = state => ({
+  post: state.post.items
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  fetchPosts: _actions_bodyActions__WEBPACK_IMPORTED_MODULE_2__["fetchPosts"]
+})(Body));
 
 /***/ }),
 
@@ -181,14 +240,13 @@ var _jsxFileName = "/home/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeyko
 
 // !HACK any used as type for props
 function Header(props) {
-  console.log("render");
   const fetchMenu = props.fetchMenu;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    console.log("useEffect");
     fetchMenu();
   }, [fetchMenu]);
 
-  const menuOnClick = event => {
+  const menuOnClick = e => {
+    e.preventDefault();
     alert("click");
   };
 
@@ -200,24 +258,23 @@ function Header(props) {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31,
+        lineNumber: 30,
         columnNumber: 17
       }
     }, item.title);
   });
-  console.log("menu", props.menu);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 39,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 40,
       columnNumber: 13
     }
   }, "BasakBeykoz"), menuItems);
@@ -225,7 +282,7 @@ function Header(props) {
 
 
 const mapStateToProps = state => ({
-  menu: state.menus.items
+  menu: state.menu.items
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
@@ -301,10 +358,13 @@ _serviceWorker__WEBPACK_IMPORTED_MODULE_4__["unregister"]();
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _menuReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menuReducer */ "./src/reducers/menuReducer.ts");
+/* harmony import */ var _postReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./postReducer */ "./src/reducers/postReducer.ts");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  menus: _menuReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  menu: _menuReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  post: _postReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
@@ -326,6 +386,34 @@ const initialState = {
 /* harmony default export */ __webpack_exports__["default"] = (function (state = initialState, action) {
   switch (action.type) {
     case _actions_types__WEBPACK_IMPORTED_MODULE_0__["FETCH_MENU"]:
+      return { ...state,
+        items: action.data || []
+      };
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/reducers/postReducer.ts":
+/*!*************************************!*\
+  !*** ./src/reducers/postReducer.ts ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types */ "./src/actions/types.ts");
+
+const initialState = {
+  items: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function (state = initialState, action) {
+  switch (action.type) {
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["FETCH_POSTS"]:
       return { ...state,
         items: action.data || []
       };
@@ -456,8 +544,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const initialState = {};
-const middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]];
-const store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], initialState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(...middleware));
+const middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]]; // @ts-ignore
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
+const store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], initialState, composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(...middleware)));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),

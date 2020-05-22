@@ -10,15 +10,15 @@
     <meta name="theme-color" content="#505050" />
     <meta
       name="description"
-      content="Web site created using create-react-wptheme"
+      content="Profesyonel koc Basak Beykoz'un internet sitesi"
     />
     <link rel="apple-touch-icon" href="<?php echo $TEMPLATE_PATH; ?>/logo192.png" />
     <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
-    <title>React WordPress Theme</title>
+    <title>Basak Beykoz</title>
 </head>
     <body>
     <noscript>
-        You need to enable JavaScript to run this app.
+        JavaScript olmadan bu siteyi gormeniz mumkun degil:/
     </noscript>
     <div id="root"></div>
     </body>

@@ -1,14 +1,8 @@
+import {DispatchMethod} from './@types';
+
 import {FETCH_MENU} from './types'
 
 import WPAPI, { WPRequest } from "wpapi";
-
-
-interface DispatchVars {
-    type: string,
-    data?: any,
-    error?: string,
-}
-type DispatchMethod = (vars:DispatchVars) => void
 
 const wp = new WPAPI({endpoint: "./wp-json"})
 wp.menus = wp.registerRoute("menus/v1", "/menus/(?P<term_id>)");
