@@ -24,71 +24,140 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Header */ "./src/components/Header.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./src/store.ts");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Header */ "./src/components/Header.tsx");
+/* harmony import */ var _components_Body__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Body */ "./src/components/Body.tsx");
 var _jsxFileName = "/home/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz/wp-content/themes/basakbeykoz/react-src/src/App.tsx";
 
 
 
 
+
+
+
 function App() {
-  // const [content, setContent] = useState("coming");
-  // const [menu, setMenu] = useState("");
-  // const wp = new WPAPI({endpoint: "./wp-json"})
-  // wp.menus = wp.registerRoute("menus/v1", "/menus/(?P<term_id>)");
-  // (wp.menus().termId(8) as WPRequest).get((err: Error, data: any) => {
-  //     if(err) {
-  //         setMenu("Something went wrong")
-  //     } else {
-  //         const menu_components = data.items.map((item: wpMenuItem) => {
-  //             return <a href="{item.slug}">{item.title}</a>
-  //         })
-  //         console.log(data.items)
-  //         setMenu(menu_components)
-  //     }
-  // })
-  // wp.posts().get((err, data) => {
-  //     if(err) {
-  //         setContent("Something went wrong")
-  //     } else {
-  //         // console.log(data)
-  //         setContent("Data gotten")
-  //     }
-  // })
-  // fetch("./wp-json/menus/v1/menus/some-menu")
-  //     .then((data) => data.json())
-  //     .then((json) => {
-  //         const links = json.items.map((item: wpMenuItem) => {
-  //             return "a"
-  //         })
-  //         setContent(links)
-  //     });
-  const menu = "this is where the menu will be";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
+    store: _store__WEBPACK_IMPORTED_MODULE_3__["default"],
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "App",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 9
+      lineNumber: 16,
+      columnNumber: 13
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 13
+      lineNumber: 17,
+      columnNumber: 17
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Body__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 13
+      lineNumber: 18,
+      columnNumber: 17
     }
-  }, menu));
+  })));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./src/actions/menuActions.ts":
+/*!************************************!*\
+  !*** ./src/actions/menuActions.ts ***!
+  \************************************/
+/*! exports provided: fetchMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchMenu", function() { return fetchMenu; });
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types */ "./src/actions/types.ts");
+/* harmony import */ var wpapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! wpapi */ "./node_modules/wpapi/wpapi.js");
+/* harmony import */ var wpapi__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(wpapi__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const wp = new wpapi__WEBPACK_IMPORTED_MODULE_1___default.a({
+  endpoint: "./wp-json"
+});
+wp.menus = wp.registerRoute("menus/v1", "/menus/(?P<term_id>)");
+const fetchMenu = () => dispatch => {
+  wp.menus().termId(8).get((err, data) => {
+    if (err) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_MENU"],
+        error: "something went wrong"
+      });
+    } else {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_MENU"],
+        data: data.items
+      });
+    }
+  });
+};
+
+/***/ }),
+
+/***/ "./src/actions/types.ts":
+/*!******************************!*\
+  !*** ./src/actions/types.ts ***!
+  \******************************/
+/*! exports provided: FETCH_MENU, FETCH_POST */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_MENU", function() { return FETCH_MENU; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POST", function() { return FETCH_POST; });
+const FETCH_MENU = "FETCH_MENU";
+const FETCH_POST = "FETCH_POST";
+
+/***/ }),
+
+/***/ "./src/components/Body.tsx":
+/*!*********************************!*\
+  !*** ./src/components/Body.tsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Body; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/home/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz/wp-content/themes/basakbeykoz/react-src/src/components/Body.tsx";
+
+function Body() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 13
+    }
+  }, "this is the body or will be"));
+}
 
 /***/ }),
 
@@ -101,28 +170,67 @@ function App() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Header; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_menuActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/menuActions */ "./src/actions/menuActions.ts");
 var _jsxFileName = "/home/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz/wp-content/themes/basakbeykoz/react-src/src/components/Header.tsx";
 
-function Header() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("header", {
+
+
+
+// !HACK any used as type for props
+function Header(props) {
+  console.log("render");
+  const fetchMenu = props.fetchMenu;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    console.log("useEffect");
+    fetchMenu();
+  }, [fetchMenu]);
+
+  const menuOnClick = event => {
+    alert("click");
+  };
+
+  const menuItems = props.menu.map(item => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      key: item.ID,
+      href: item.slug || 'home',
+      onClick: e => menuOnClick(e),
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31,
+        columnNumber: 17
+      }
+    }, item.title);
+  });
+  console.log("menu", props.menu);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 41,
       columnNumber: 9
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 42,
       columnNumber: 13
     }
-  }, "BasakBeykoz"));
-}
+  }, "BasakBeykoz"), menuItems);
+} // !HACK any used as type
+
+
+const mapStateToProps = state => ({
+  menu: state.menus.items
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  fetchMenu: _actions_menuActions__WEBPACK_IMPORTED_MODULE_2__["fetchMenu"]
+})(Header));
 
 /***/ }),
 
@@ -179,6 +287,53 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
 _serviceWorker__WEBPACK_IMPORTED_MODULE_4__["unregister"]();
+
+/***/ }),
+
+/***/ "./src/reducers/index.ts":
+/*!*******************************!*\
+  !*** ./src/reducers/index.ts ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _menuReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menuReducer */ "./src/reducers/menuReducer.ts");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  menus: _menuReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
+
+/***/ }),
+
+/***/ "./src/reducers/menuReducer.ts":
+/*!*************************************!*\
+  !*** ./src/reducers/menuReducer.ts ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types */ "./src/actions/types.ts");
+
+const initialState = {
+  items: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function (state = initialState, action) {
+  switch (action.type) {
+    case _actions_types__WEBPACK_IMPORTED_MODULE_0__["FETCH_MENU"]:
+      return { ...state,
+        items: action.data || []
+      };
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
@@ -282,6 +437,28 @@ function unregister() {
     });
   }
 }
+
+/***/ }),
+
+/***/ "./src/store.ts":
+/*!**********************!*\
+  !*** ./src/store.ts ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./src/reducers/index.ts");
+
+
+
+const initialState = {};
+const middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]];
+const store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], initialState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(...middleware));
+/* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
 
