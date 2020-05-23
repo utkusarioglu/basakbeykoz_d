@@ -4,6 +4,7 @@ services:
 
   wordpress:
     image: wordpress
+    container_name: basakbeykoz_wp
     restart: always
     ports:
       - 80:80
@@ -14,10 +15,12 @@ services:
       WORDPRESS_DB_NAME: exampledb
     volumes:
       # - wordpress:/var/www/html
-      - ./wp-content:/var/www/html/wp-content
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./themes:/var/www/html/wp-content/themes
 
   db:
     image: mysql:5.7
+    container_name: basakbeykoz_db
     restart: always
     environment:
       MYSQL_DATABASE: exampledb
