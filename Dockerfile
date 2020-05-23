@@ -3,7 +3,7 @@ WORKDIR /var/www/html
 
 COPY ./plugins ./wp-content/plugins
 
-RUN yarn build --cwd ./themes/basakbeykoz/react-src
-COPY ./themes/basakbeykoz/react-src/basakbeykoz ./wp-content/plugins/basakbeykoz
+# RUN yarn build --cwd ./themes/basakbeykoz/react-src
+COPY ./themes/basakbeykoz/basakbeykoz ./wp-content/themes/basakbeykoz
 
 EXPOSE 80
