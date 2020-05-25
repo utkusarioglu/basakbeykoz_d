@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ./themes/basakbeykoz/react-src
-yarn build --cwd 
+yarn build
 cd ../../..
 docker build -t utkusarioglu/basakbeykoz .
 # rm -rf ./themes/basakbeykoz/basakbeykoz

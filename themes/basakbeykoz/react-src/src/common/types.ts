@@ -1,0 +1,13 @@
+export const FETCH_MENU = "FETCH_MENU";
+
+export const FETCH_POSTS = "FETCH_POSTS";
+export const FETCH_POST = "FETCH_POST";
+
+export const FETCH_CATEGORY = "FETCH_CATEGORY";
+export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
+export const FETCH_CATEGORY_POSTS = "FETCH_CATEGORY_POSTS"; 
+
+export const FETCH_PAGE = "FETCH_PAGE";
+
+export const IS_FETCHING = "IS_FETCHING";
+export const IS_DISPLAYING = "IS_DISPLAYING"; 
