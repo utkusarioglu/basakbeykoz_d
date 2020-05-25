@@ -94,7 +94,7 @@ function Nav(
                 id: home_id,
             })    
 
-            props.fetchPage(home_id);
+            // props.fetchPage(home_id);
         }
     }
 

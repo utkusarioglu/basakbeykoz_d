@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from "react";
 import { connect } from "react-redux";
-import { fetchPage } from "../wp/pageActions";
+import { isDisplaying } from '../app/appActions'
 import CSS from 'csstype';
 
 import Nav from "./Nav";
@@ -11,7 +11,7 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = {
-    fetchPage,
+    isDisplaying,
 }
 
 interface OwnProps {}
@@ -44,8 +44,11 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
 
     const logoClick = (e: SyntheticEvent) => {
         e.preventDefault();
-        const home_id = process.env.REACT_APP_HOME_ID as string;
-        props.fetchPage(parseInt(home_id));
+        const id = parseInt(process.env.REACT_APP_HOME_ID as string);
+        props.isDisplaying({
+            type: "page",
+            id,
+        })    
     }
 
     return (

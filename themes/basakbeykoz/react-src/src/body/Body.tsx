@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-// import { fetchPosts } from "../wp/postActions";
 import CSS from 'csstype'
 import { RootState } from "../app/rootReducer";
-// import { fetchPost } from "../wp/postActions";
 import { fetchPage } from "../wp/pageActions";
+import { isFetching } from '../app/appActions'
 
 const mapState = (state: RootState) => ({
     posts: state.posts,
@@ -14,6 +13,7 @@ const mapState = (state: RootState) => ({
 
 const mapDispatch = { 
     fetchPage,
+    isFetching,
 }
 
 interface OwnProps {}
@@ -35,18 +35,26 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
     const type = props.isDisplaying.type;
     const id = props.isDisplaying.id;
     const types = props[type + "s" as "posts" | "pages"].single;
-    let content_input = "d";
+    let wpContent = "";
     if (types[id] !== undefined) {
         console.log("cached", type, id)
-        content_input = types[id].data.content.rendered;
+        wpContent = types[id].data.content.rendered;
+        props.isFetching(false);
     } else {
-        console.log("fetch", type, id)
-        props.fetchPage(id);
+        new Promise((resolve) => {
+            setTimeout(() => {
+                props.fetchPage(id);
+                resolve()
+            }, 1000)
+        }).then(() => {
+            console.log("fetch", type, id, wpContent)            
+            props.isFetching(false)
+        })
     }
     
     useEffect(() => {
-        setContent(content_input)
-    }, [props.isDisplaying, content_input]);
+        setContent(wpContent)
+    }, [props.isDisplaying, wpContent]);
 
 
 
