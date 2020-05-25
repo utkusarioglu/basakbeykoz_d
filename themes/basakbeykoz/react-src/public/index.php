@@ -18,7 +18,7 @@
 </head>
     <body>
     <noscript>
-        JavaScript olmadan bu siteyi gormeniz mumkun degil:/
+        You cannot run this app without javascript:/
     </noscript>
     <div id="root"></div>
     </body>

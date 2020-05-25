@@ -1,15 +1,12 @@
 import {DispatchMethod} from '../common/@types-actions';
-
 import {FETCH_POSTS, FETCH_POST} from '../common/types'
-
 import WPAPI, { WPRequest } from "wpapi";
 
 const wp = new WPAPI({endpoint: "?rest_route=/"})
 
 export const fetchPosts = () => 
     (dispatch: DispatchMethod) => {
-        wp.posts()
-            .get((err: Error, data: any) => {
+        wp.posts().get((err: Error, data: any) => {
                 if(err) {
                     dispatch({
                         type: FETCH_POSTS,

@@ -1,23 +1,21 @@
 import { DispatchMethod} from '../common/@types-actions';
 import { IS_FETCHING, IS_DISPLAYING } from '../common/types'
+import stateMap from './@types-state';
 
-export const isFetching = (state: boolean) => 
+type isDisplaying = stateMap["app"]["isDisplaying"];
+
+export const isFetching = (fetch_bool: boolean) => 
     (dispatch: DispatchMethod) => {
         dispatch({
             type: IS_FETCHING,
-            payload: state,
+            payload: fetch_bool,
         })
     }
 
-interface PageAttr {
-    type: string, 
-    id: number,
-}
-
-export const isDisplaying = (page_attr: PageAttr) =>
+export const isDisplaying = (display_data: isDisplaying) =>
     (dispatch: DispatchMethod) => {
         dispatch({
             type: IS_DISPLAYING,
-            payload: page_attr,
+            payload: display_data,
         })
     }

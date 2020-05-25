@@ -4,18 +4,22 @@ import { fetchPage } from "../wp/pageActions";
 import CSS from 'csstype';
 
 import Nav from "./Nav";
+import { RootState } from "../app/rootReducer";
 
-interface ReduxProps {
-    fetchPage: typeof fetchPage,
+const mapState = (state: RootState) => ({
+    menu: state.menu.items
+});
+
+const mapDispatch = {
+    fetchPage,
 }
 
-interface wpMenuItem {
-    ID: number,
-    title: string,
-    slug: string,
-    url: string,
-}
+interface OwnProps {}
+type DispatchProps = typeof mapDispatch;
+type StateProps = ReturnType<typeof mapState>;
+type Props = DispatchProps & StateProps & OwnProps;
 
+// TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
     header: {
         backgroundColor: "white",
@@ -36,12 +40,12 @@ const styles: { [className: string]: CSS.Properties} = {
     }
 }
 
-// !HACK any used as type for props
-function Header(props: ReduxProps & any): React.FunctionComponentElement<ReduxProps> {
+function Header(props: Props): React.FunctionComponentElement<Props> {
 
     const logoClick = (e: SyntheticEvent) => {
         e.preventDefault();
-        props.fetchPage(process.env.REACT_APP_HOME_ID)
+        const home_id = process.env.REACT_APP_HOME_ID as string;
+        props.fetchPage(parseInt(home_id));
     }
 
     return (
@@ -60,11 +64,6 @@ function Header(props: ReduxProps & any): React.FunctionComponentElement<ReduxPr
     )
 }
 
-// !HACK any used as type
-const mapStateToProps = (state: any) => ({
-    menu: state.menu.items
-});
-
-export default connect(mapStateToProps, { 
-    fetchPage,
-})(Header);
+export default connect<StateProps, DispatchProps, OwnProps>(
+    //@ts-ignore
+    mapState, mapDispatch, )(Header);

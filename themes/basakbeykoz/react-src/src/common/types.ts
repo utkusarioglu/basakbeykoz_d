@@ -11,3 +11,5 @@ export const FETCH_PAGE = "FETCH_PAGE";
 
 export const IS_FETCHING = "IS_FETCHING";
 export const IS_DISPLAYING = "IS_DISPLAYING"; 
+
+export const NAV_TO_CONTENT = "NAV_TO_CONTENT";

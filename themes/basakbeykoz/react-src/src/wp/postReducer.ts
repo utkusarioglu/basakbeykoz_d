@@ -4,31 +4,35 @@ import {
     FETCH_CATEGORY_POSTS
 } from '../common/types'
 import { FSA } from '../common/@types-actions'
+import stateMap  from '../app/@types-state'
 
-const initialState = {
-    items: [],
-    post: undefined,
+const initialState: stateMap["posts"] = {
+    list: [],
+    single: {},
 }
 
-export default function(state = initialState, action: FSA) {
+export default function(
+    state = initialState, 
+    action: FSA,
+): stateMap["posts"] {
     switch (action.type) {
 
         case FETCH_POSTS:
             return {
                 ...state,
-                items: action.payload,
+                list: action.payload,
             }
 
         case FETCH_CATEGORY_POSTS:
             return {
                 ...state,
-                items: action.payload,
+                list: action.payload,
             }
 
         case FETCH_POST:
             return {
                 ...state,
-                post: action.payload,
+                single: action.payload, //TODO
             }
 
         default:

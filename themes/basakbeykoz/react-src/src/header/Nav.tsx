@@ -2,19 +2,33 @@ import React, { useEffect, SyntheticEvent } from "react";
 import { connect } from "react-redux";
 import { fetchMenu } from "../wp/menuActions";
 import { fetchPost, fetchCategoryPosts } from '../wp/postActions';
+import { isDisplaying, isFetching } from '../app/appActions'
 import { fetchPage } from "../wp/pageActions";
 import CSS from 'csstype';
 import { wpMenuItem } from '../wp/@types-wp'
+import { RootState } from '../app/rootReducer'
 
-interface ReduxProps {
-    fetchMenu: typeof fetchMenu,
-    fetchPost: typeof fetchPost,
-    fetchCategoryPosts: typeof fetchCategoryPosts,
-    fetchPage: typeof fetchPage,
+const mapState = (state: RootState) => ({
+    menu: state.menu,
+    isDisplaying: state.app.isDisplaying,
+    pages: state.pages.single,
+});
+
+const mapDispatch = { 
+    isFetching,
+    isDisplaying,
+    fetchMenu, 
+    fetchPost, 
+    fetchPage,
+    fetchCategoryPosts,
 }
 
+interface OwnProps { }
+type DispatchProps = typeof mapDispatch;
+type StateProps = ReturnType<typeof mapState>;
+type Props = DispatchProps & StateProps & OwnProps;
 
-
+// TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
     nav: {
     },
@@ -25,8 +39,9 @@ const styles: { [className: string]: CSS.Properties} = {
     }
 }
 
-// !HACK any used as type for props
-function Nav(props: ReduxProps & any): React.FunctionComponentElement<ReduxProps> {
+function Nav(
+    props: Props
+): React.FunctionComponentElement<Props> {
     const fetchMenu = props.fetchMenu; 
     useEffect(() => {
         fetchMenu();
@@ -34,33 +49,56 @@ function Nav(props: ReduxProps & any): React.FunctionComponentElement<ReduxProps
 
     const menuOnClick = (e: SyntheticEvent, url: string) => {
         e.preventDefault();
+
+
+        // console.log("props", props)
         
         const params = url.split("?")[1];
         if (params) {
             const [type, id] = params.split("=");
-            switch (type) {
+            const id_int = parseInt(id);
 
+            props.isFetching(true);
+            
+            switch (type) {
+                
                 case "page_id":
-                    props.fetchPage(id)
+                    props.isDisplaying({
+                        type: "page",
+                        id: id_int,
+                    });
+
+                    // props.fetchPage(id_int)
                     break;
                 
                 case "p":
-                    props.fetchPost(id)
+                    props.isDisplaying({
+                        type: "post",
+                        id: id_int,
+                    });
+                    props.fetchPost(id_int)
                     break;
 
                 case "cat":
-                    props.fetchCategoryPosts(id)
+                    props.fetchCategoryPosts(id_int)
                     break
                 
                     default:
                     console.error("unrecognized param type:", type, id)
             }
         } else {
-            props.fetchPage(54)
+            const home_id = parseInt(process.env.REACT_APP_HOME_ID as string)
+
+            props.isDisplaying({
+                type: "page",
+                id: home_id,
+            })    
+
+            props.fetchPage(home_id);
         }
     }
 
-    const menuItems: JSX.Element[] = props.menu
+    const menuItems: JSX.Element[] = props.menu.items
         .map((item: wpMenuItem) => {
             return (
                 <a  key={item.ID} 
@@ -79,14 +117,6 @@ function Nav(props: ReduxProps & any): React.FunctionComponentElement<ReduxProps
     )
 }
 
-// !HACK any used as type
-const mapStateToProps = (state: any) => ({
-    menu: state.menu.items
-});
-
-export default connect(mapStateToProps, { 
-    fetchMenu, 
-    fetchPost, 
-    fetchPage,
-    fetchCategoryPosts,
-})(Nav);
+export default connect<StateProps, DispatchProps, OwnProps>(
+    //@ts-ignore
+    mapState, mapDispatch, )(Nav);
