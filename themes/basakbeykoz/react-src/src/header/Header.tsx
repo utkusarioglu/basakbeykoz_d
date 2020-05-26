@@ -66,7 +66,7 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
                     >
                     <img 
                         style={styles.headerLogo}
-                        src={ process.env.REACT_APP_UPLOADS_DIR + "/Logo-150.jpg"}
+                        src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-linear.png"}
                         alt="logo"/>
                 </a>
                 <Nav />
