@@ -24,7 +24,11 @@ type Props = DispatchProps & StateProps & OwnProps;
 // TODO better static typing for style elements
 const styles: {[className: string]: CSS.Properties} = {
     body: {
-        margin: 0,
+        // margin: "0px",
+        // overflowX: "hidden",
+        // overflowY: "auto",
+        // display: "block",
+        // height: "100vh",
     }
 }
 
@@ -45,7 +49,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
             setTimeout(() => {
                 props.fetchPage(id);
                 resolve()
-            }, 1000)
+            }, 0)
         }).then(() => {
             console.log("fetch", type, id, wpContent)            
             props.isFetching(false)
@@ -60,6 +64,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
 
     return (
         <div 
+            className="body"
             style={styles.body}
             dangerouslySetInnerHTML={{__html: content}} />
     )

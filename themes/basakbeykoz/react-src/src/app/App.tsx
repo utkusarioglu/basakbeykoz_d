@@ -1,4 +1,5 @@
 import React from "react";
+import CSS from "csstype";
 
 import { Provider } from 'react-redux';
 import store from "./store";
@@ -6,16 +7,32 @@ import store from "./store";
 import Header from "../header/Header";
 import Body from '../body/Body';
 import Spinner from "../app/Spinner";
+import Footer from '../footer/Footer';
 
-
+const styles: {[className: string]: CSS.Properties} = {
+    app: {
+        overflow: 'hidden',
+        height: "100vh",
+    },
+    scrollingElements: {
+        margin: "0px",
+        overflowX: "hidden",
+        overflowY: "auto",
+        display: "block",
+        height: "100vh",
+    }
+}
 
 function App() {
     return (
         <Provider store={store}>
-            <div className="App">
+            <div className="App" style={styles.app}>
                 <Spinner />
                 <Header />
-                <Body />
+                <div style={styles.scrollingElements}>
+                    <Body />
+                    <Footer />
+                </div>
             </div>
         </Provider>
     );

@@ -16,6 +16,13 @@ DEV STYLES
 
 */
 
+:root {
+    --wp-frame-width: 1200px;
+    --wp-frame-padding-x: 70px;
+    --wp-text-with: 800px;
+    --content-shadow: 0 5px 50px RGBA(0, 0, 0, 0.5);
+}
+
 body {
     background: gray;
 }
@@ -24,9 +31,41 @@ body {
     height: 100vh;
     width: 100vw;
     background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: -1;
 }
 
 .wp-block-cover__inner-container {
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
+    padding: 3em;
+}
+
+.body>div:not(:first-child) {
+    background-color: white;
+    max-width: calc(var(--wp-frame-width) - 2 * var(--wp-frame-padding-x));
+    margin: auto;
+    padding: 20px var(--wp-frame-padding-x);
+    /* border: 10px solid transparent; */
+    /* border-image: url(../public/border-decoration.svg) 30 round */
+    /* box-shadow: var(--content-shadow); */
+}
+
+.body>div:not(:first-child) h1,
+.body>div:not(:first-child) h2,
+.body>div:not(:first-child) h3 {
+    text-align: center;
+}
+
+.body>div:nth-child(2) {
+    margin-top: -50px;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    padding-top: 30px;
+}
+
+.body>div:last-child {
+    padding-bottom: 200px;
 }

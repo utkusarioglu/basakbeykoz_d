@@ -21,19 +21,25 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
-    header: {
-        backgroundColor: "white",
+    headerContainer: {
         position: "fixed",
         top: 0,
+        width: "100vw",
+    },
+    header: {
+        margin: "auto",
+        backgroundColor: "white",
         height: "130px",
-        width: "1200px",
-        left: "50%",
-        transform: "translate(-50%)",
+        maxWidth: "1200px",
         display: "grid",
         justifyItems: "center",
         borderBottomLeftRadius: "35px",
         borderBottomRightRadius: "35px",
-        boxShadow: "0 5px 50px RGBA(0,0,0,0.5)",
+        boxShadow: "var(--content-shadow)",
+        zIndex: 10,
+        // backgroundColor: "gray",
+        // border: "10px solid transparent",
+        // borderImage: "url(wp-content/themes/basakbeykoz/border-decoration.svg) 20 stretch"
     },
     headerLogo: {
         height: "90px"
@@ -52,18 +58,21 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
     }
 
     return (
-        <header style={styles.header}>
-            <a 
-                href="/"
-                onClick={logoClick}
-                >
-                <img 
-                    style={styles.headerLogo}
-                    src={ process.env.REACT_APP_UPLOADS_DIR + "/Logo-150.jpg"}
-                    alt="logo"/>
-            </a>
-            <Nav />
+        <div style={styles.headerContainer}>
+            <header style={styles.header}>
+                <a 
+                    href="/"
+                    onClick={logoClick}
+                    >
+                    <img 
+                        style={styles.headerLogo}
+                        src={ process.env.REACT_APP_UPLOADS_DIR + "/Logo-150.jpg"}
+                        alt="logo"/>
+                </a>
+                <Nav />
         </header>
+        </div>
+
     )
 }
 
