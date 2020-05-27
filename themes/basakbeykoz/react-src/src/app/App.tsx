@@ -12,14 +12,12 @@ import Footer from '../footer/Footer';
 const styles: {[className: string]: CSS.Properties} = {
     app: {
         overflow: 'hidden',
-        height: "100vh",
+        // height: "100vh",
     },
     scrollingElements: {
-        margin: "0px",
-        overflowX: "hidden",
-        overflowY: "auto",
-        display: "block",
-        height: "100vh",
+        display: "grid",
+        gridTemplateRows: "auto min-content",
+        minHeight: "100vh"
     }
 }
 

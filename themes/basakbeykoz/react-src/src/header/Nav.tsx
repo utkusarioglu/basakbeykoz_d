@@ -31,11 +31,13 @@ type Props = DispatchProps & StateProps & OwnProps;
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
     nav: {
+        padding: "5px",
     },
     navItem: {
         padding: "0 15px",
         textDecoration: "none",
         color: "black",
+        fontSize: "22px",
     }
 }
 

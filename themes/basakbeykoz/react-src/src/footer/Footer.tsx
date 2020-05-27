@@ -6,8 +6,13 @@ interface Props {}
 const styles: {[className: string]: CSS.Properties } = {
     footerContainer: {
         width: "100vw",
-        background: "Black",
+        background: "#113366",
         minHeight: "50px", 
+        display: "grid",
+        justifyContent: "center",
+        alignContent: "center",
+    },
+    footerYearName: {
         color: "white"
     }
 }
@@ -15,7 +20,9 @@ const styles: {[className: string]: CSS.Properties } = {
 function Footer(props: Props): React.FunctionComponentElement<Props> {
     return (
         <div style={styles.footerContainer}>
-            Basak Beykoz
+            <span style={styles.footerYearName}>
+                { new Date(Date.now()).getFullYear()} - Basak Beykoz
+            </span>
         </div>
     )
 }

@@ -24,19 +24,21 @@ const styles: { [className: string]: CSS.Properties} = {
     headerContainer: {
         position: "fixed",
         top: 0,
-        width: "100vw",
+        width: "100%",
+        zIndex: 10,
     },
     header: {
         margin: "auto",
         backgroundColor: "white",
-        height: "130px",
-        maxWidth: "1200px",
+        height: "150px",
+        maxWidth: "var(--wp-frame-width)",
         display: "grid",
         justifyItems: "center",
-        borderBottomLeftRadius: "35px",
-        borderBottomRightRadius: "35px",
+        alignItems: "center",
+        borderBottomLeftRadius: "var(--border-radius)",
+        borderBottomRightRadius: "var(--border-radius)",
         boxShadow: "var(--content-shadow)",
-        zIndex: 10,
+        gridTemplateRows: "auto min-content",
         // backgroundColor: "gray",
         // border: "10px solid transparent",
         // borderImage: "url(wp-content/themes/basakbeykoz/border-decoration.svg) 20 stretch"
@@ -63,9 +65,9 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
                 <a 
                     href="/"
                     onClick={logoClick}
+                        style={styles.headerLogo}
                     >
                     <img 
-                        style={styles.headerLogo}
                         src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
                         alt="logo"/>
                 </a>
