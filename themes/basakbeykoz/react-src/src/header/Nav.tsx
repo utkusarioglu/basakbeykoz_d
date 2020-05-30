@@ -30,14 +30,31 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
-    nav: {
+    navDecor: {
+        width: "var(--accent-thickness)",
+        height: "100%",
+        background: "var(--yellow)",
+        position: "absolute",
+        right: 0,
+    },
+    navWrap: {
         padding: "5px",
+        position: "fixed",
+        right: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
+    },
+    navList: {
+        display: "flex",
+        flexDirection: "column",
+        padding: "30px 30px 30px 0",
     },
     navItem: {
-        padding: "0 15px",
+        padding: "10px 15px",
         textDecoration: "none",
-        color: "black",
-        fontSize: "22px",
+        fontSize: "24px",
+        textAlign: "right",
+        color: "var(--blue)",
     }
 }
 
@@ -46,7 +63,7 @@ function Nav(
 ): React.FunctionComponentElement<Props> {
     const fetchMenu = props.fetchMenu; 
     useEffect(() => {
-        fetchMenu();
+        fetchMenu("nav");
     }, [fetchMenu])
 
     const menuOnClick = (e: SyntheticEvent, url: string) => {
@@ -113,9 +130,12 @@ function Nav(
         })
 
     return (
-        <nav style={styles.nav}>
-            {menuItems}
-        </nav>
+        <div style={styles.navWrap}>
+            <div style={styles.navDecor} />
+            <nav style={styles.navList}>
+                {menuItems}
+            </nav>
+        </div>
     )
 }
 

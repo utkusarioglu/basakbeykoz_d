@@ -8,6 +8,8 @@ import Header from "../header/Header";
 import Body from '../body/Body';
 import Spinner from "../app/Spinner";
 import Footer from '../footer/Footer';
+import Nav from "../header/Nav";
+import Social from '../header/Social';
 
 const styles: {[className: string]: CSS.Properties} = {
     app: {
@@ -27,6 +29,8 @@ function App() {
             <div className="App" style={styles.app}>
                 <Spinner />
                 <Header />
+                <Social />
+                <Nav />
                 <div style={styles.scrollingElements}>
                     <Body />
                     <Footer />

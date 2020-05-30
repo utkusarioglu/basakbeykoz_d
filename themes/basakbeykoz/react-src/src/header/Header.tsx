@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { isDisplaying } from '../app/appActions'
 import CSS from 'csstype';
 
-import Nav from "./Nav";
+// import Nav from "./Nav";
 import { RootState } from "../app/rootReducer";
 
 const mapState = (state: RootState) => ({
@@ -21,27 +21,17 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
-    headerContainer: {
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        zIndex: 10,
-    },
     header: {
+        position: "fixed",
+        top: "var(--accent-thickness)",
+        left: "50%",
+        transform: "translateX(-50%)",
         margin: "auto",
-        backgroundColor: "white",
-        height: "150px",
-        maxWidth: "var(--wp-frame-width)",
+        backgroundColor: "var(--white)",
+        height: "110px",
         display: "grid",
         justifyItems: "center",
         alignItems: "center",
-        borderBottomLeftRadius: "var(--border-radius)",
-        borderBottomRightRadius: "var(--border-radius)",
-        boxShadow: "var(--content-shadow)",
-        gridTemplateRows: "auto min-content",
-        // backgroundColor: "gray",
-        // border: "10px solid transparent",
-        // borderImage: "url(wp-content/themes/basakbeykoz/border-decoration.svg) 20 stretch"
     },
     headerLogo: {
         height: "90px"
@@ -60,7 +50,7 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
     }
 
     return (
-        <div style={styles.headerContainer}>
+        // <div style={styles.headerContainer}>
             <header style={styles.header}>
                 <a 
                     href="/"
@@ -71,9 +61,9 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
                         src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
                         alt="logo"/>
                 </a>
-                <Nav />
+                {/* <Nav /> */}
         </header>
-        </div>
+        // </div>
 
     )
 }

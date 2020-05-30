@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import React from "react";
 import { connect } from "react-redux";
 import CSS from 'csstype'
 import { RootState } from "../app/rootReducer";
@@ -47,7 +48,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
     } else {
         new Promise((resolve) => {
             setTimeout(() => {
-                props.fetchPage(id);
+                props.fetchPage("home");
                 resolve()
             }, 0)
         }).then(() => {
@@ -60,9 +61,8 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
         setContent(wpContent)
     }, [props.isDisplaying, wpContent]);
 
-
-
     return (
+        // <span>body</span>
         <div 
             className="body"
             style={styles.body}

@@ -106,11 +106,17 @@ select {
 */
 
 :root {
+    /* measurements */
     --wp-frame-width: 1200px;
     --wp-frame-padding-x: 7em;
     --wp-text-with: 800px;
-    --content-shadow: 0 5px 50px RGBA(0, 0, 0, 0.5);
-    --border-radius: 125px 50px;
+    --accent-thickness: 30px;
+    /* colors */
+    --white: #F4F4F9;
+    --black: #071013;
+    --blue: #124559;
+    --yellow: #E9B44C;
+    --green: #81AE9D;
 }
 
 body {
@@ -118,6 +124,7 @@ body {
     font-family: 'Assistant', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: var(--white);
     background: gray;
 }
 
