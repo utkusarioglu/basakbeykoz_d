@@ -3,10 +3,10 @@ import { FSA } from "../common/@types-actions";
 import stateMap from "./@types-state";
 
 const initialState: stateMap["app"] = {
-    isFetching: false,
+    isFetching: true,
     isDisplaying: {
         type: "page",
-        id: parseInt(process.env.REACT_APP_HOME_ID as string),
+        slug: process.env.REACT_APP_HOME_SLUG as string,
     }
 }
 

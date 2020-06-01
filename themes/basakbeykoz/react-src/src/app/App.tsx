@@ -8,18 +8,19 @@ import Header from "../header/Header";
 import Body from '../body/Body';
 import Spinner from "../app/Spinner";
 import Footer from '../footer/Footer';
+import Nav from "../header/Nav";
+import Social from '../header/Social';
 
 const styles: {[className: string]: CSS.Properties} = {
     app: {
         overflow: 'hidden',
-        height: "100vh",
+        // height: "100vh",
     },
     scrollingElements: {
-        margin: "0px",
-        overflowX: "hidden",
-        overflowY: "auto",
-        display: "block",
-        height: "100vh",
+        display: "grid",
+        gridTemplateRows: "auto min-content",
+        minHeight: "100vh",
+        position: "relative",
     }
 }
 
@@ -29,7 +30,10 @@ function App() {
             <div className="App" style={styles.app}>
                 <Spinner />
                 <Header />
-                <div style={styles.scrollingElements}>
+                <Social />
+                <Nav />
+                <div
+                    style={styles.scrollingElements}>
                     <Body />
                     <Footer />
                 </div>

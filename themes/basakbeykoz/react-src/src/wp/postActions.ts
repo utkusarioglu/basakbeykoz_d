@@ -40,9 +40,9 @@ export const fetchCategoryPosts = (cat_id: number) =>
             });
 }
 
-export const fetchPost = (post_id: number) => 
+export const fetchPost = (post_slug: string) => 
     (dispatch: DispatchMethod) => {
-        (wp.posts().id(post_id) as WPRequest)
+        (wp.posts().slug(post_slug) as WPRequest)
             .get((err: Error, data: any) => {
                 if(err) {
                     dispatch({

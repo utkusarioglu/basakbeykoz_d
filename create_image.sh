@@ -1,6 +1,9 @@
 #!/bin/bash
 cd ./themes/basakbeykoz/react-src
-yarn build
+sudo yarn build
 cd ../../..
+sudo mv ./themes/basakbeykoz ./basakbeykoz-dev
+sudo mv ./basakbeykoz-dev/basakbeykoz ./themes/basakbeykoz
 docker build -t utkusarioglu/basakbeykoz .
-# rm -rf ./themes/basakbeykoz/basakbeykoz
+sudo rm -rf ./themes/basakbeykoz
+sudo mv ./basakbeykoz-dev ./themes/basakbeykoz

@@ -5,17 +5,29 @@ interface Props {}
 
 const styles: {[className: string]: CSS.Properties } = {
     footerContainer: {
-        width: "100vw",
-        background: "Black",
-        minHeight: "50px", 
-        color: "white"
+        width: "160px",
+        height: "160px",
+        background: "var(--black)",
+        padding: "15px",
+        display: "grid",
+        justifyItems: "end",
+        alignItems: "end",
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+    },
+    footerYearName: {
+        color: "var(--white)",
+        textAlign: "right"
     }
 }
 
 function Footer(props: Props): React.FunctionComponentElement<Props> {
     return (
         <div style={styles.footerContainer}>
-            Basak Beykoz
+            <span style={styles.footerYearName}>
+            ♡<br />{ new Date(Date.now()).getFullYear()}<br />Basak Beykoz
+            </span>
         </div>
     )
 }

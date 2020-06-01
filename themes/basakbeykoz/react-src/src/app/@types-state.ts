@@ -9,7 +9,7 @@ export default interface stateMap {
         isFetching: boolean,
         isDisplaying: {
             type: string,
-            id: number,
+            slug: string,
         },
     },
     menu: {
@@ -18,7 +18,7 @@ export default interface stateMap {
     pages: {
         list: any[], // TODO decide whether you really need this
         single: {
-            [page_id: number]: {
+            [page_slug: string]: {
                 loadTime: number,
                 data: wpPageItem,
             }
@@ -27,7 +27,7 @@ export default interface stateMap {
     posts: {
         list: wpPostItem[], // TODO decide whether you really need this
         single: {
-            [post_id: number]: {
+            [post_slug: string]: {
                 loadTime: number,
                 data: wpPostItem
             }

@@ -1,9 +1,9 @@
 import React, { SyntheticEvent } from "react";
 import { connect } from "react-redux";
-import { isDisplaying } from '../app/appActions'
+import { setDisplaying } from '../app/appActions'
 import CSS from 'csstype';
 
-import Nav from "./Nav";
+// import Nav from "./Nav";
 import { RootState } from "../app/rootReducer";
 
 const mapState = (state: RootState) => ({
@@ -11,7 +11,7 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = {
-    isDisplaying,
+    setDisplaying: setDisplaying,
 }
 
 interface OwnProps {}
@@ -21,28 +21,33 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
-    headerContainer: {
+    logoDecor: {
+        width: "var(--accent-thickness)",
+        height: "100%",
+        background: "var(--blue)",
+        position: "absolute",
+        left: 0,
+    },
+    logoWrap: {
         position: "fixed",
-        top: 0,
-        width: "100vw",
+        top: "var(--accent-thickness)",
+        left: 0,
+        height: "110px",
+        zIndex: 1,
+        // display: "grid",
+        // justifyItems: "center",
+        // alignItems: "center",
     },
-    header: {
-        margin: "auto",
-        backgroundColor: "white",
-        height: "130px",
-        maxWidth: "1200px",
+    logoLink: {
+        height:"100%",
+        paddingLeft: "var(--accent-thickness)",
         display: "grid",
-        justifyItems: "center",
-        borderBottomLeftRadius: "35px",
-        borderBottomRightRadius: "35px",
-        boxShadow: "var(--content-shadow)",
-        zIndex: 10,
-        // backgroundColor: "gray",
-        // border: "10px solid transparent",
-        // borderImage: "url(wp-content/themes/basakbeykoz/border-decoration.svg) 20 stretch"
+        alignItems: "center",
+        justifyItems: "end"
+        // height: "11px"
     },
-    headerLogo: {
-        height: "90px"
+    logoImg: {
+        filter: "var(--logo-white-filter)",
     }
 }
 
@@ -50,29 +55,28 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
 
     const logoClick = (e: SyntheticEvent) => {
         e.preventDefault();
-        const id = parseInt(process.env.REACT_APP_HOME_ID as string);
-        props.isDisplaying({
+        const slug = process.env.REACT_APP_HOME_SLUG as string;
+        props.setDisplaying({
             type: "page",
-            id,
+            slug,
         })    
     }
 
     return (
-        <div style={styles.headerContainer}>
-            <header style={styles.header}>
-                <a 
-                    href="/"
-                    onClick={logoClick}
-                    >
-                    <img 
-                        style={styles.headerLogo}
-                        src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-linear.png"}
-                        alt="logo"/>
-                </a>
-                <Nav />
+        <header style={styles.logoWrap}>
+            <div style={styles.logoDecor} />
+            <a 
+                className="logo"
+                href="/"
+                onClick={logoClick}
+                    style={styles.logoLink}
+                >
+                <img 
+                    src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
+                    alt="logo"
+                    style={styles.logoImg}/>
+            </a>
         </header>
-        </div>
-
     )
 }
 
