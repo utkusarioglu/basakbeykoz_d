@@ -102,8 +102,26 @@ select {
 
 
 /*
-    OWN
+    GLOBAL
 */
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar-track {
+    /* background: linear-gradient(180deg, var(--white) var(--accent-thickness), var(--blue) var(--accent-thickness)); */
+    background: var(--blue);
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: var(white);
+    /* border-right: 2px solid var(--black); */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--black);
+    border-right: var(--black);
+}
 
 :root {
     /* measurements */
@@ -114,123 +132,349 @@ select {
     /* colors */
     --white: #F4F4F9;
     --black: #071013;
-    --blue: #124559;
+    --blue: #456266;
     --yellow: #E9B44C;
     --green: #81AE9D;
+    --beige: #F6D697;
+    /* This calculation has been made by the code at this address: https://codepen.io/sosuke/pen/Pjoqqp */
+    --blue-filter: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
+    --logo-white-filter: brightness(0) invert(100%) sepia(1%) saturate(4410%) hue-rotate(181deg) brightness(94%) contrast(107%);
 }
 
 body {
     margin: 0;
-    font-family: 'Assistant', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: var(--white);
-    background: gray;
+    color: var(--black);
 }
 
+h1,
+h2,
+h3,
+.wp-block-button__link,
+figcaption {
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+span,
+nav,
+p {
+    font-family: 'Tajawal', sans-serif;
+}
+
+nav,
 p {
     font-size: 22px;
 }
 
-h1 {
-    font-size: 2.4em;
-    font-weight: 300;
+
+/* logo */
+
+.logo:hover img {
+    filter: none !important;
 }
 
-h2 {
-    font-size: 2em;
-    font-weight: 300;
+::-webkit-scrollbar {
+    width: 5px;
 }
 
-h3 {
-    font-size: 1.5em;
-    font-weight: 300;
+
+/* colors for background */
+
+.bg-white {
+    background-color: var(--white);
 }
 
-.wp-block-cover {
-    height: 50vh;
-    min-height: 330px;
-    width: 100vw;
-    display: grid;
-    align-items: end;
-    justify-items: center;
-    background-size: cover;
-    background-position: center;
-    font-family: 'M PLUS 1p', sans-serif;
-    /* outline-bottom: 50px solid #d2d1e1; */
+.bg-blue {
+    background-color: var(--blue);
 }
 
-.full-height {
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-beige {
+    background-color: var(--beige);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.text-blue {
+    color: var(--blue);
+}
+
+.body.home .wp-block-buttons {
+    width: 100%;
+}
+
+
+/* 
+borders 
+*/
+
+
+/* green */
+
+.wp-block-cover.green-horizontal-border:before {
+    background: linear-gradient(90deg, var(--green) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--green) calc(100% - var(--accent-thickness)/2));
+}
+
+.wp-block-cover.green-vertical-border:after {
+    background: linear-gradient(0deg, var(--green) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--green) calc(100% - var(--accent-thickness)/2));
+}
+
+
+/* yellow */
+
+.wp-block-cover.yellow-horizontal-border:before {
+    background: linear-gradient(90deg, var(--yellow) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--yellow) calc(100% - var(--accent-thickness)/2));
+}
+
+.wp-block-cover.yellow-vertical-border:after {
+    background: linear-gradient(0deg, var(--yellow) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--yellow) calc(100% - var(--accent-thickness)/2));
+}
+
+
+/* white */
+
+.wp-block-cover.white-horizontal-border:before {
+    background: linear-gradient(90deg, var(--white) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--white) calc(100% - var(--accent-thickness)/2));
+}
+
+.wp-block-cover.white-vertical-border:after {
+    background: linear-gradient(0deg, var(--white) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--white) calc(100% - var(--accent-thickness)/2));
+}
+
+
+/* blue */
+
+.wp-block-cover.blue-horizontal-border:before {
+    background: linear-gradient(90deg, var(--blue) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--blue) calc(100% - var(--accent-thickness)/2));
+}
+
+.wp-block-cover.blue-vertical-border:after {
+    background: linear-gradient(0deg, var(--blue) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--blue) calc(100% - var(--accent-thickness)/2));
+}
+
+
+/* black */
+
+.wp-block-cover.black-horizontal-border:before {
+    background: linear-gradient(90deg, var(--black) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--black) calc(100% - var(--accent-thickness)/2));
+}
+
+.wp-block-cover.black-vertical-border:after {
+    background: linear-gradient(0deg, var(--black) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--black) calc(100% - var(--accent-thickness)/2));
+}
+
+
+/* beige */
+
+.wp-block-cover.beige-horizontal-border:before {
+    background: linear-gradient(90deg, var(--beige) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--beige) calc(100% - var(--accent-thickness)/2));
+}
+
+.wp-block-cover.beige-vertical-border:after {
+    background: linear-gradient(0deg, var(--beige) calc(var(--accent-thickness)/2), transparent calc(var(--accent-thickness)/2), transparent calc(100% - var(--accent-thickness)/2), var(--beige) calc(100% - var(--accent-thickness)/2));
+}
+
+
+/* 
+    HOME
+    EVERY SECTION 
+ */
+
+.body.home>.wp-block-group,
+.body.home>.wp-block-group>.wp-block-group__inner-container {
     height: 100vh;
-    align-items: center;
 }
 
-.full-height .wp-block-cover__inner-container {
-    width: var(--wp-frame-width);
-    padding: 0 var(--wp-frame-padding-x);
-    /* position: absolute; */
-    /* top: 50%; */
-    /* transform: translateY(-50%); */
-    /* padding: 3em; */
+.body.home>div>.wp-block-group__inner-container>h1,
+.body.home>div>.wp-block-group__inner-container>h2,
+.body.home>div>.wp-block-group__inner-container>h3 {
+    grid-area: heading;
+    align-self: end;
 }
 
-.body>div:not(:first-child) {
-    background-color: white;
-    max-width: var(--wp-frame-width);
-    margin: auto;
-    padding: 3em var(--wp-frame-padding-x);
+.body.home>div>.wp-block-group__inner-container>h1 {
+    font-size: 50px;
+}
+
+.body.home>div>.wp-block-group__inner-container>h2 {
+    font-size: 40px;
+}
+
+.body.home>div>.wp-block-group__inner-container>h2 {
+    font-size: 35px;
+}
+
+.body.home>div>.wp-block-group__inner-container>p {
+    grid-area: paragraph;
+    font-size: 30px;
+}
+
+.body.home .wp-block-button {
+    background-color: var(--yellow);
+    color: var(--black);
+    padding: 1em;
+}
+
+.body.home .wp-block-button:hover {
+    background-color: var(--blue);
+    padding: 1em;
+    cursor: pointer;
+}
+
+
+/* 
+    HOME
+    EVERY SECTION EXCEPT FIRST
+*/
+
+.body.home>div:not(:first-child)>.wp-block-group__inner-container {
+    display: grid;
+    padding: 200px 400px;
+    grid-template-areas: "heading image" "paragraph image";
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 5em;
+    grid-row-gap: 3em;
+}
+
+.body.home>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover {
+    grid-area: image;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.body.home>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:before {
+    content: "";
+    width: calc(100% + var(--accent-thickness));
+    height: calc(100% - var(--accent-thickness));
+    position: absolute;
+    top: calc(var(--accent-thickness) /2);
+    left: calc(var(--accent-thickness) /-2);
+}
+
+.body.home>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:after {
+    content: "";
+    width: calc(100% - var(--accent-thickness));
+    height: calc(100% + var(--accent-thickness));
+    position: absolute;
+    top: calc(var(--accent-thickness) /-2);
+    left: calc(var(--accent-thickness) /2);
+}
+
+
+/* 
+    HOME
+    FIRST SECTION
+ */
+
+.body.home>div:first-child p {
+    color: var(--blue);
+}
+
+.body.home>div:first-child>.wp-block-group__inner-container {
+    display: grid;
+    grid-column-gap: 8em;
+    grid-row-gap: 4em;
+    grid-template-areas: "cover logo" "cover heading" "cover paragraph" "cover cta";
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: 150px 150px max-content auto;
+    /* these two are for hiding the fixed logo from the first page */
+    position: absolute;
     z-index: 2;
 }
 
-.body>div h1,
-.body>div h2,
-.body>div h3 {
-    text-align: center;
-    margin-bottom: 1.5em;
-    /* margin-bottom: 110px; */
+.body.home>div:first-child .wp-block-cover {
+    grid-area: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
-.body>div:first-child h1,
-.body>div:first-child h2,
-.body>div:first-child h3 {
-    /* text-align: center; */
-    margin-bottom: 110px;
+.body.home>div:first-child figure {
+    grid-area: logo;
+    display: flex;
+    align-items: flex-end;
 }
 
-.body>div:nth-child(2) {
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
-    margin-top: -45px;
-    /* border-top-left-radius: 35px;
-    border-top-right-radius: 35px; */
-    padding-top: 4em;
+.body.home>div:first-child h1 {
+    color: var(--blue);
 }
 
-.full-height .wp-block-cover__inner-container h1,
-.full-height .wp-block-cover__inner-container h2,
-.full-height .wp-block-cover__inner-container h3 {
-    text-align: left;
-    margin-bottom: 0 !important;
+.body.home>div:first-child .wp-block-buttons {
+    grid-area: cta;
+    font-size: 30px;
+    color: var(--blue);
 }
 
-.body>div:last-child {
-    padding-bottom: 200px;
+
+/* 
+    HOME
+    SECOND SECTION 
+*/
+
+
+/* .body.home>div:nth-child(2) h2,
+.body.home>div:nth-child(2) p {
+    color: var(--white);
+} */
+
+.body.home>div:nth-child(2) h2:before {
+    content: "";
+    background: url('http://localhost/wp-content/uploads/parrot.svg') no-repeat;
+    height: 161px;
+    width: 172px;
+    position: absolute;
+    margin-top: -105px;
+    margin-left: -71px;
 }
 
-.wp-block-button {
-    padding: 1em 2em;
-    background-color: blueviolet;
-    border: 2px solid black;
-    color: white;
-    width: max-content;
-    border-radius: 10px 10px 2em 10px;
-    margin: 1em 0;
-    font-weight: 700;
+.basak-decoration {
+    margin-top: -266px;
+    margin-left: -71px;
 }
 
-.wp-block-button:hover {
-    background-color: yellowgreen;
-    border: 2px solid black;
-    color: black;
-    cursor: pointer;
+
+/* 
+    HOME
+    FOURTH SECTION 
+*/
+
+.body.home>div:nth-child(4) .wp-block-latest-posts {
+    grid-area: image
+}
+
+.body.home>div:nth-child(4) .wp-block-latest-posts>li {
+    background-color: var(--white);
+    margin: 1em;
+    padding: 1em;
+    display: grid;
+    grid-template-areas: "image title" "image time" "image excerpt";
+}
+
+.body.home>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__featured-image {
+    grid-area: image;
+}
+
+.body.home>div:nth-child(4) .wp-block-latest-posts>li time {
+    grid-area: time;
+}
+
+.body.home>div:nth-child(4) .wp-block-latest-posts>li a {
+    grid-area: title;
+}
+
+.body.home>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
+    grid-area: excerpt;
 }

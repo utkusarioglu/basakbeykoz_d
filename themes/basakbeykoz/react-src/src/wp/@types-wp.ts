@@ -3,6 +3,7 @@ export interface wpMenuItem {
     title: string,
     slug: string,
     url: string,
+    object: string, // type of the link object ex: page, post
 }
 
 export interface wpPostItem extends wpPagePostCommon {

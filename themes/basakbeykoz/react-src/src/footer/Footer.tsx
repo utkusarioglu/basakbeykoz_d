@@ -7,7 +7,7 @@ const styles: {[className: string]: CSS.Properties } = {
     footerContainer: {
         width: "160px",
         height: "160px",
-        background: "#113366",
+        background: "var(--black)",
         padding: "15px",
         display: "grid",
         justifyItems: "end",

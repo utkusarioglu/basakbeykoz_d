@@ -1,13 +1,15 @@
 import { DispatchMethod } from '../common/@types-actions';
 import { FETCH_PAGE } from '../common/types'
 import WPAPI, { WPRequest } from "wpapi";
+import { wpPageItem } from './@types-wp';
 
 const wp = new WPAPI({endpoint: process.env.REACT_APP_REST_ENDPOINT as string})
 
-export const fetchPage = (post_slug: string) => 
+export const fetchPage = (page_slug: string) => 
     (dispatch: DispatchMethod) => {
-        (wp.pages().slug(post_slug) as WPRequest)
-            .get((err: Error, data: any) => {
+        console.log("fetch page", page_slug);
+        (wp.pages().slug(page_slug) as WPRequest)
+            .get((err: Error, data: wpPageItem[]) => {
                 console.log("page", data)
                 if(err) {
                     dispatch({
@@ -17,9 +19,9 @@ export const fetchPage = (post_slug: string) =>
                 } else {
                     dispatch({
                         type: FETCH_PAGE,
-                        payload: {[data.id]: {
+                        payload: {[data[0].slug]: {
                             loadTime: Date.now(),
-                            data
+                            data: data[0],
                         }}
                     })
                 }

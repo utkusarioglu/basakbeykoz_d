@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from "react";
 import { connect } from "react-redux";
-import { isDisplaying } from '../app/appActions'
+import { setDisplaying } from '../app/appActions'
 import CSS from 'csstype';
 
 // import Nav from "./Nav";
@@ -11,7 +11,7 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = {
-    isDisplaying,
+    setDisplaying: setDisplaying,
 }
 
 interface OwnProps {}
@@ -21,20 +21,33 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
-    header: {
+    logoDecor: {
+        width: "var(--accent-thickness)",
+        height: "100%",
+        background: "var(--blue)",
+        position: "absolute",
+        left: 0,
+    },
+    logoWrap: {
         position: "fixed",
         top: "var(--accent-thickness)",
-        left: "50%",
-        transform: "translateX(-50%)",
-        margin: "auto",
-        backgroundColor: "var(--white)",
+        left: 0,
         height: "110px",
-        display: "grid",
-        justifyItems: "center",
-        alignItems: "center",
+        zIndex: 1,
+        // display: "grid",
+        // justifyItems: "center",
+        // alignItems: "center",
     },
-    headerLogo: {
-        height: "90px"
+    logoLink: {
+        height:"100%",
+        paddingLeft: "var(--accent-thickness)",
+        display: "grid",
+        alignItems: "center",
+        justifyItems: "end"
+        // height: "11px"
+    },
+    logoImg: {
+        filter: "var(--logo-white-filter)",
     }
 }
 
@@ -42,29 +55,28 @@ function Header(props: Props): React.FunctionComponentElement<Props> {
 
     const logoClick = (e: SyntheticEvent) => {
         e.preventDefault();
-        const id = parseInt(process.env.REACT_APP_HOME_ID as string);
-        props.isDisplaying({
+        const slug = process.env.REACT_APP_HOME_SLUG as string;
+        props.setDisplaying({
             type: "page",
-            id,
+            slug,
         })    
     }
 
     return (
-        // <div style={styles.headerContainer}>
-            <header style={styles.header}>
-                <a 
-                    href="/"
-                    onClick={logoClick}
-                        style={styles.headerLogo}
-                    >
-                    <img 
-                        src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
-                        alt="logo"/>
-                </a>
-                {/* <Nav /> */}
+        <header style={styles.logoWrap}>
+            <div style={styles.logoDecor} />
+            <a 
+                className="logo"
+                href="/"
+                onClick={logoClick}
+                    style={styles.logoLink}
+                >
+                <img 
+                    src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
+                    alt="logo"
+                    style={styles.logoImg}/>
+            </a>
         </header>
-        // </div>
-
     )
 }
 

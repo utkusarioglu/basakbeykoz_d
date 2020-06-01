@@ -2,7 +2,7 @@ import React, { useEffect, SyntheticEvent } from "react";
 import { connect } from "react-redux";
 import { fetchMenu } from "../wp/menuActions";
 import { fetchPost, fetchCategoryPosts } from '../wp/postActions';
-import { isDisplaying, isFetching } from '../app/appActions'
+import { setDisplaying, setFetching } from '../app/appActions'
 import { fetchPage } from "../wp/pageActions";
 import CSS from 'csstype';
 import { wpMenuItem } from '../wp/@types-wp'
@@ -15,8 +15,8 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = { 
-    isFetching,
-    isDisplaying,
+    isFetching: setFetching,
+    isDisplaying: setDisplaying,
     fetchMenu, 
     fetchPost, 
     fetchPage,
@@ -43,6 +43,7 @@ const styles: { [className: string]: CSS.Properties} = {
         right: 0,
         top: "50%",
         transform: "translateY(-50%)",
+        zIndex: 10,
     },
     navList: {
         display: "flex",
@@ -66,55 +67,51 @@ function Nav(
         fetchMenu("nav");
     }, [fetchMenu])
 
-    const menuOnClick = (e: SyntheticEvent, url: string) => {
+    const menuOnClick = (e: SyntheticEvent, item: wpMenuItem) => {
         e.preventDefault();
 
 
         // console.log("props", props)
         
-        const params = url.split("?")[1];
-        if (params) {
-            const [type, id] = params.split("=");
-            const id_int = parseInt(id);
+        // const params = item.split("?")[1];
+        // if (params) {
+            // const [type, slug] = params.split("=");
+            // const id_int = parseInt(id);
 
             props.isFetching(true);
             
-            switch (type) {
+            switch (item.object) {
                 
-                case "page_id":
+                case "page":
                     props.isDisplaying({
                         type: "page",
-                        id: id_int,
+                        slug: item.slug
                     });
 
                     // props.fetchPage(id_int)
                     break;
                 
-                case "p":
-                    props.isDisplaying({
-                        type: "post",
-                        id: id_int,
-                    });
-                    props.fetchPost(id_int)
-                    break;
+                // case "p":
+                //     props.isDisplaying({
+                //         type: "post",
+                //         slug,
+                //     });
+                //     props.fetchPost(slug)
+                //     break;
 
-                case "cat":
-                    props.fetchCategoryPosts(id_int)
-                    break
+                // case "cat":
+                //     props.fetchCategoryPosts(slug)
+                //     break
                 
                     default:
-                    console.error("unrecognized param type:", type, id)
+                    console.error("unrecognized item.object:", item)
             }
-        } else {
-            const home_id = parseInt(process.env.REACT_APP_HOME_ID as string)
-
-            props.isDisplaying({
-                type: "page",
-                id: home_id,
-            })    
-
-            // props.fetchPage(home_id);
-        }
+        // } else {
+        //     props.isDisplaying({
+        //         type: "page",
+        //         slug: process.env.REACT_APP_HOME_SLUG as string
+        //     })    
+        // }
     }
 
     const menuItems: JSX.Element[] = props.menu.items
@@ -123,7 +120,7 @@ function Nav(
                 <a  key={item.ID} 
                     href={item.url}
                     style={styles.navItem}
-                    onClick={(e) => menuOnClick(e, item.url)}>
+                    onClick={(e) => menuOnClick(e, item)}>
                         {item.title}
                     </a>
             )

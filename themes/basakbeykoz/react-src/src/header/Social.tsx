@@ -6,7 +6,7 @@ const styles: {[className: string]: CSS.Properties} = {
         height: "50px",
         width: "50px",
         padding: "10px 10px 10px 10px",
-        filter: "invert(20%) sepia(6%) saturate(6426%) hue-rotate(153deg) brightness(98%) contrast(89%)",
+        filter: "var(--blue-filter)",
     },
     socialList: {
         display: "flex",
@@ -21,6 +21,7 @@ const styles: {[className: string]: CSS.Properties} = {
         position: "fixed",
         top: "var(--accent-thickness)",
         right: 0,
+        zIndex: 10,
     },
     socialDecor: {
         width: "var(--accent-thickness)",
@@ -48,7 +49,10 @@ function Social() {
 
     const socialComponents = socialLinks.map((link) => {
         return (
-            <a href={link.link} target="blank">
+            <a 
+                key={link.title}
+                href={link.link} 
+                target="blank">
                 <img 
                     style={styles.socialItem} 
                     src={link.icon}

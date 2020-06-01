@@ -19,7 +19,8 @@ const styles: {[className: string]: CSS.Properties} = {
     scrollingElements: {
         display: "grid",
         gridTemplateRows: "auto min-content",
-        minHeight: "100vh"
+        minHeight: "100vh",
+        position: "relative",
     }
 }
 
@@ -31,7 +32,8 @@ function App() {
                 <Header />
                 <Social />
                 <Nav />
-                <div style={styles.scrollingElements}>
+                <div
+                    style={styles.scrollingElements}>
                     <Body />
                     <Footer />
                 </div>
