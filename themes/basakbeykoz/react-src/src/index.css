@@ -667,5 +667,5 @@ borders
     width: 100%;
     padding: 1em;
     border: none;
-    background-color: var(--yellow)
+    background-color: var(--yellow);
 }
