@@ -139,6 +139,8 @@ select {
     /* This calculation has been made by the code at this address: https://codepen.io/sosuke/pen/Pjoqqp */
     --blue-filter: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
     --logo-white-filter: brightness(0) invert(100%) sepia(1%) saturate(4410%) hue-rotate(181deg) brightness(94%) contrast(107%);
+    --home-vertical-padding: 200px;
+    --home-horizontal-padding: 400px;
 }
 
 body {
@@ -291,6 +293,7 @@ borders
 .body.home>.wp-block-group,
 .body.home>.wp-block-group>.wp-block-group__inner-container {
     height: 100vh;
+    position: relative;
 }
 
 .body.home>div>.wp-block-group__inner-container>h1,
@@ -337,7 +340,7 @@ borders
 
 .body.home>div:not(:first-child)>.wp-block-group__inner-container {
     display: grid;
-    padding: 200px 400px;
+    padding: var(--home-vertical-padding) var(--home-horizontal-padding);
     grid-template-areas: "heading image" "paragraph image";
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 5em;
@@ -376,6 +379,7 @@ borders
 /* 
     HOME
     FIRST SECTION
+    Introduction
  */
 
 .body.home>div:first-child p {
@@ -405,8 +409,23 @@ borders
 
 .body.home>div:first-child figure {
     grid-area: logo;
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 365px auto;
+    grid-template-rows: auto min-content;
+    grid-template-areas: "logo empty" "title empty";
+}
+
+.body.home>div:first-child figure>img {
+    grid-area: logo;
+    max-width: 100%;
+    display: block;
+    align-self: end;
+}
+
+.body.home>div:first-child figure>figcaption {
+    grid-area: title;
+    align-self: start;
+    justify-self: center;
 }
 
 .body.home>div:first-child h1 {
@@ -423,6 +442,7 @@ borders
 /* 
     HOME
     SECOND SECTION 
+    Merhaba, ben basak
 */
 
 
@@ -450,21 +470,38 @@ borders
 /*
     HOME
     THIRD SECTION
+    Ilkelerim ve deneyimim
 */
 
 .body.home>div:nth-child(3)>.wp-block-group__inner-container {
     grid-template-areas: "image heading" "image paragraph";
 }
 
+.body.home>div:nth-child(3)>.wp-block-group__inner-container:after {
+    content: url('http://localhost/wp-content/uploads/city.svg');
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 /* 
-HOME
-FOURTH SECTION 
+    HOME
+    FOURTH SECTION 
+    Birlikte gelisim
 */
 
 .body.home>div:nth-child(4)>.wp-block-group__inner-container {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "heading posts" "paragraph posts";
+}
+
+.body.home>div:nth-child(4)>.wp-block-group__inner-container:after {
+    content: url('http://localhost/wp-content/uploads/conversation.svg');
+    position: absolute;
+    bottom: -15px;
+    left: var(--home-horizontal-padding);
 }
 
 .body.home>div:nth-child(4) .wp-block-latest-posts {
@@ -509,14 +546,23 @@ FOURTH SECTION
 
 
 /* 
-HOME
-FIFTH SECTION 
+    HOME
+    FIFTH SECTION 
+    Basari hikayeleri
 */
 
 .body.home>div:nth-child(5)>.wp-block-group__inner-container {
     grid-template-rows: min-content auto;
     grid-template-columns: none;
     grid-template-areas: "heading" "posts";
+}
+
+.body.home>div:nth-child(5)>.wp-block-group__inner-container:after {
+    content: url('http://localhost/wp-content/uploads/success.svg');
+    position: absolute;
+    bottom: -21px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .body.home>div:nth-child(5)>.wp-block-group__inner-container>h2 {
@@ -562,16 +608,64 @@ FIFTH SECTION
 
 
 /* 
-HOME
-SIXTH SECTION 
+    HOME
+    SIXTH SECTION 
+    Konusalim mi?
 */
 
 .body.home>div:nth-child(6)>.wp-block-group__inner-container {
     grid-template-rows: min-content auto;
-    grid-template-columns: none;
-    grid-template-areas: "heading" "feature";
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "feature heading" "feature paragraph";
 }
 
-.body.home>div:nth-child(6)>.wp-block-group__inner-container>h2 {
+.body.home>div:nth-child(6)>.wp-block-group__inner-container:after {
+    content: url('http://localhost/wp-content/uploads/one-on-one.svg');
+    position: absolute;
+    bottom: -7px;
+    right: 160px;
+}
+
+
+/* .body.home>div:nth-child(6)>.wp-block-group__inner-container>h2 {
     justify-self: center;
+} */
+
+.body.home>div:nth-child(6) .wpcf7 {
+    grid-area: feature;
+}
+
+.body.home>div:nth-child(6) .wpcf7 p:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+.body.home>div:nth-child(6) .wpcf7 label {
+    font-family: "tajawal", "sans serif";
+    color: var(--white);
+}
+
+.body.home>div:nth-child(6) .wpcf7 .wpcf7-text,
+.body.home>div:nth-child(6) .wpcf7 .wpcf7-textarea {
+    border: none;
+    background-color: var(--white);
+    width: 100%;
+    padding: 0.5em;
+}
+
+.body.home>div:nth-child(6) .wpcf7 .wpcf7-text:focus,
+.body.home>div:nth-child(6) .wpcf7 .wpcf7-textarea:focus {
+    outline: none;
+    background-color: var(--beige);
+}
+
+.body.home>div:nth-child(6) .wpcf7 .wpcf7-textarea {
+    resize: none;
+    height: 4em;
+}
+
+.body.home>div:nth-child(6) .wpcf7 .wpcf7-submit {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    background-color: var(--yellow)
 }
