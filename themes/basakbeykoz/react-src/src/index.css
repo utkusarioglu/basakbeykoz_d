@@ -157,7 +157,7 @@ figcaption {
     font-family: 'M PLUS 1p', sans-serif;
 }
 
-.body.home>div:nth-child(4) .wp-block-latest-posts>li,
+.body.home>div .wp-block-latest-posts>li,
 span,
 nav,
 p {
@@ -516,11 +516,48 @@ FIFTH SECTION
 .body.home>div:nth-child(5)>.wp-block-group__inner-container {
     grid-template-rows: min-content auto;
     grid-template-columns: none;
-    grid-template-areas: "heading" "feature";
+    grid-template-areas: "heading" "posts";
 }
 
 .body.home>div:nth-child(5)>.wp-block-group__inner-container>h2 {
     justify-self: center;
+}
+
+.body.home>div:nth-child(5) .wp-block-latest-posts {
+    grid-area: posts;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.body.home>div:nth-child(5) .wp-block-latest-posts>li {
+    /* background-color: var(--white); */
+    margin: 1em;
+    padding: 1em;
+    display: grid;
+    grid-template-areas: "image" "title" "excerpt";
+    grid-template-rows: "max-content max-content auto";
+    grid-row-gap: 1em;
+}
+
+.body.home>div:nth-child(5) .wp-block-latest-posts>li .wp-block-latest-posts__featured-image {
+    grid-area: image;
+}
+
+.body.home>div:nth-child(5) .wp-block-latest-posts>li a,
+.body.home>div:nth-child(5) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
+    color: var(--blue);
+}
+
+.body.home>div:nth-child(5) .wp-block-latest-posts>li a {
+    grid-area: title;
+    text-decoration: none;
+}
+
+.body.home>div:nth-child(5) .wp-block-latest-posts>li p {
+    grid-area: excerpt;
+    font-size: 18px;
 }
 
 
