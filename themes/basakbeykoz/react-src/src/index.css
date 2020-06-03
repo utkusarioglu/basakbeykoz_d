@@ -363,7 +363,7 @@ borders
     height: calc(100% - var(--accent-thickness));
     position: absolute;
     top: calc(var(--accent-thickness) /2);
-    left: calc(var(--accent-thickness) /-2);
+    left: calc(var(--accent-thickness) / 2 * -1);
 }
 
 .body.home>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:after {
@@ -371,7 +371,7 @@ borders
     width: calc(100% - var(--accent-thickness));
     height: calc(100% + var(--accent-thickness));
     position: absolute;
-    top: calc(var(--accent-thickness) /-2);
+    top: calc(var(--accent-thickness) /2 * -1);
     left: calc(var(--accent-thickness) /2);
 }
 
