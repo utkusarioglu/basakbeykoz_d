@@ -453,7 +453,7 @@ borders
 
 .body.home>div:nth-child(2) h2:before {
     content: "";
-    background: url('http://localhost/wp-content/uploads/parrot.svg') no-repeat;
+    background: url('/wp-content/uploads/parrot.svg') no-repeat;
     height: 161px;
     width: 172px;
     position: absolute;
@@ -478,7 +478,7 @@ borders
 }
 
 .body.home>div:nth-child(3)>.wp-block-group__inner-container:after {
-    content: url('http://localhost/wp-content/uploads/city.svg');
+    content: url('/wp-content/uploads/city.svg');
     position: absolute;
     bottom: -15px;
     left: 50%;
@@ -498,7 +498,7 @@ borders
 }
 
 .body.home>div:nth-child(4)>.wp-block-group__inner-container:after {
-    content: url('http://localhost/wp-content/uploads/conversation.svg');
+    content: url('/wp-content/uploads/conversation.svg');
     position: absolute;
     bottom: -15px;
     left: var(--home-horizontal-padding);
@@ -558,7 +558,7 @@ borders
 }
 
 .body.home>div:nth-child(5)>.wp-block-group__inner-container:after {
-    content: url('http://localhost/wp-content/uploads/success.svg');
+    content: url('/wp-content/uploads/success.svg');
     position: absolute;
     bottom: -21px;
     left: 50%;
@@ -620,7 +620,7 @@ borders
 }
 
 .body.home>div:nth-child(6)>.wp-block-group__inner-container:after {
-    content: url('http://localhost/wp-content/uploads/one-on-one.svg');
+    content: url('/wp-content/uploads/one-on-one.svg');
     position: absolute;
     bottom: -7px;
     right: 160px;
