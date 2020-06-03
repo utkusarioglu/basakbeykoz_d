@@ -30,6 +30,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
+      - ./sql_backup:/sql_backup
 
 volumes:
   db:
