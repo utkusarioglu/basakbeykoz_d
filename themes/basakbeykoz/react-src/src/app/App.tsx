@@ -1,5 +1,6 @@
 import React from "react";
 import CSS from "csstype";
+import { useParams } from 'react-router-dom'
 
 import { Provider } from 'react-redux';
 import store from "./store";
@@ -25,6 +26,7 @@ const styles: {[className: string]: CSS.Properties} = {
 }
 
 function App() {
+    console.log("app params\n", useParams())
     return (
         <Provider store={store}>
             <div className="App" style={styles.app}>
