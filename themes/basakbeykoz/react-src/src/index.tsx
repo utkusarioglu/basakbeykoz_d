@@ -11,7 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/:slug?" component={App}/>
+        <Route exact path="/:slug?" component={App}/>
       </Switch>
     </Router>
   </React.StrictMode>,

@@ -35,7 +35,7 @@ const styles: {[className: string]: CSS.Properties} = {
 }
 
 function Body(props: Props): React.FunctionComponentElement<Props> {
-    
+
     const type = props.isDisplaying.type;
     const slug = props.isDisplaying.slug;
     const items = props[type + "s" as "posts" | "pages"].single;

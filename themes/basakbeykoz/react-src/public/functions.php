@@ -14,6 +14,91 @@ function tn_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );
 
 
+
+/**
+ * Grab latest post title by an author!
+ *
+ * @param array $data Options for the function.
+ * @return string|null Post title for the latest,  * or null if none.
+ */
+function my_awesome_func( $data ) {
+    // $args = array(
+    //     // 'name' => $data['slug'],
+    //     'pagename' => $data['slug'],
+    // );
+    $args = array(
+        'relation'=>'OR',
+        'meta_query'=> array(
+            'post'=> array(
+                'name' => $data['slug']
+            ),
+            'page'=> array(
+                'pagename' => $data['slug'],
+            )
+        )
+    );
+    // return $args;
+    // echo $data
+    // The Query
+    $the_query = new WP_Query( $args );
+
+    switch ($the_query->post_count) {
+        case 0:
+            return "nothing returned";
+
+        case 1:
+            $the_query->the_post();
+            global $post;
+            $item = array(
+                'title' => $post -> title,
+                'ID' => $post -> ID,
+                'content' => apply_filters('the_content', $post -> post_content),
+            );
+        
+            return $item;
+
+        default:
+            return "too many items: " . $the_query->post_count;
+    }
+
+
+    // if($the_query->is_post) {
+    //     $response = array(
+    //         'error'=>'query did not lead to a single item'
+    //     );
+
+    //     return $response;
+    // }
+    
+    // $items = array();
+    // // The Loop
+    // if ( $the_query->have_posts() ) {
+    //     while ( $the_query->have_posts() ) {
+    //         $the_query->the_post();
+    //         global $post;
+    //         $item = array(
+    //             'title' => $post -> title,
+    //             'ID' => $post -> ID,
+    //             'content' => apply_filters('the_content', $post -> post_content),
+    //         );
+    //         array_push($items, $item);
+    //     }
+    // }
+    // /* Restore original Post Data */
+    wp_reset_postdata();
+    // return $items;
+}
+
+add_action( 'rest_api_init', function () {
+    // TODO Regex here can be more elegant
+    register_rest_route( 'myplugin/v1', '/name/(?P<slug>[\w|\d|\-|_]+)', array(
+        'methods' => 'GET',
+        'callback' => 'my_awesome_func',
+    ) );
+} );
+
+
+
 // /* Custom Post Type Start */
 // function create_posttype() {
 //     register_post_type( 'testimonials',
@@ -121,3 +206,5 @@ add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );
 //     // Return extra settings at the end.    
 //     return $settings;
 // }
+
+

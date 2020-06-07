@@ -1,4 +1,5 @@
-import React, { useEffect, SyntheticEvent } from "react";
+import React, { useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchMenu } from "../wp/menuActions";
 import { fetchPost, fetchCategoryPosts } from '../wp/postActions';
@@ -15,8 +16,8 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = { 
-    isFetching: setFetching,
-    isDisplaying: setDisplaying,
+    setFetching,
+    setDisplaying,
     fetchMenu, 
     fetchPost, 
     fetchPage,
@@ -67,62 +68,68 @@ function Nav(
         fetchMenu("nav");
     }, [fetchMenu])
 
-    const menuOnClick = (e: SyntheticEvent, item: wpMenuItem) => {
-        e.preventDefault();
+    // const menuOnClick = (e: SyntheticEvent, item: wpMenuItem) => {
+    //     e.preventDefault();
 
 
-        // console.log("props", props)
+    //     // console.log("props", props)
         
-        // const params = item.split("?")[1];
-        // if (params) {
-            // const [type, slug] = params.split("=");
-            // const id_int = parseInt(id);
+    //     // const params = item.split("?")[1];
+    //     // if (params) {
+    //         // const [type, slug] = params.split("=");
+    //         // const id_int = parseInt(id);
 
-            props.isFetching(true);
+    //         props.setFetching(true);
             
-            switch (item.object) {
+    //         switch (item.object) {
                 
-                case "page":
-                    props.isDisplaying({
-                        type: "page",
-                        slug: item.slug
-                    });
+    //             case "page":
+    //                 props.setDisplaying({
+    //                     type: "page",
+    //                     slug: item.slug
+    //                 });
 
-                    // props.fetchPage(id_int)
-                    break;
+    //                 // props.fetchPage(id_int)
+    //                 break;
                 
-                // case "p":
-                //     props.isDisplaying({
-                //         type: "post",
-                //         slug,
-                //     });
-                //     props.fetchPost(slug)
-                //     break;
+    //             // case "p":
+    //             //     props.isDisplaying({
+    //             //         type: "post",
+    //             //         slug,
+    //             //     });
+    //             //     props.fetchPost(slug)
+    //             //     break;
 
-                // case "cat":
-                //     props.fetchCategoryPosts(slug)
-                //     break
+    //             // case "cat":
+    //             //     props.fetchCategoryPosts(slug)
+    //             //     break
                 
-                    default:
-                    console.error("unrecognized item.object:", item)
-            }
-        // } else {
-        //     props.isDisplaying({
-        //         type: "page",
-        //         slug: process.env.REACT_APP_HOME_SLUG as string
-        //     })    
-        // }
-    }
+    //                 default:
+    //                 console.error("unrecognized item.object:", item)
+    //         }
+    //     // } else {
+    //     //     props.isDisplaying({
+    //     //         type: "page",
+    //     //         slug: process.env.REACT_APP_HOME_SLUG as string
+    //     //     })    
+    //     // }
+    // }
 
     const menuItems: JSX.Element[] = props.menu.items
         .map((item: wpMenuItem) => {
             return (
-                <a  key={item.ID} 
-                    href={item.url}
-                    style={styles.navItem}
-                    onClick={(e) => menuOnClick(e, item)}>
-                        {item.title}
-                    </a>
+                <NavLink 
+                    key={item.ID}
+                    exact
+                    to={"/" + item.slug}
+                    activeStyle={styles.navItem}
+            >{item.title}</NavLink>
+                // <a  key={item.ID} 
+                //     href={item.url}
+                //     style={styles.navItem}
+                //     onClick={(e) => menuOnClick(e, item)}>
+                //         {item.title}
+                //     </a>
             )
         })
 

@@ -1,9 +1,14 @@
 import { IS_DISPLAYING, IS_FETCHING } from '../common/types'
+// import { useParams } from "react-router-dom";
 import { FSA } from "../common/@types-actions";
 import stateMap from "./@types-state";
 
 const initialState: stateMap["app"] = {
     isFetching: true,
+    // isDisplaying: {
+    //     type: "page",
+    //     slug: useParams<{slug: string}>().slug || process.env.REACT_APP_HOME_SLUG as string,
+    // },
     isDisplaying: {
         type: "page",
         slug: process.env.REACT_APP_HOME_SLUG as string,
