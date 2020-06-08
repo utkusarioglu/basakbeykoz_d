@@ -10,14 +10,14 @@ const initialState: stateMap["app"] = {
     //     slug: useParams<{slug: string}>().slug || process.env.REACT_APP_HOME_SLUG as string,
     // },
     isDisplaying: {
-        type: "page",
+        // type: "page",
         slug: process.env.REACT_APP_HOME_SLUG as string,
     }
 }
 
 export default function (
     state = initialState,
-    action: FSA,
+    action: FSA<any>, // !HACK ANY
 ): stateMap["app"] {
     switch (action.type) {
 

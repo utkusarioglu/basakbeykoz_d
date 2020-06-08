@@ -6,7 +6,7 @@ import { wpPageItem } from './@types-wp';
 const wp = new WPAPI({endpoint: process.env.REACT_APP_REST_ENDPOINT as string})
 
 export const fetchPage = (page_slug: string) => 
-    (dispatch: DispatchMethod) => {
+    (dispatch: DispatchMethod<any>) => { // !HACK any
         console.log("fetch page", page_slug);
         (wp.pages().slug(page_slug) as WPRequest)
             .get((err: Error, data: wpPageItem[]) => {

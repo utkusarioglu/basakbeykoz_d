@@ -5,7 +5,7 @@ const initialState = {
     items: []
 }
 
-export default function(state = initialState, action: FSA) {
+export default function(state = initialState, action: FSA<any>) { // !HACK any
     switch (action.type) {
 
         case FETCH_MENU:

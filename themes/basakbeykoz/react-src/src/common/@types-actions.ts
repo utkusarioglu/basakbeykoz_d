@@ -1,8 +1,8 @@
-export interface FSA {
+export interface FSA<T> {
     type: string,
-    payload?: any,
+    payload?: T,
     error?: boolean,
     meta?: any,
 }
 
-export type DispatchMethod = (vars:FSA) => void
+export type DispatchMethod<T> = (vars:FSA<T>) => void

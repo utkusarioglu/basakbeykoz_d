@@ -5,7 +5,7 @@ import stateMap from './@types-state';
 type isDisplaying = stateMap["app"]["isDisplaying"];
 
 export const setFetching = (fetch_bool: boolean) => 
-    (dispatch: DispatchMethod) => {
+    (dispatch: DispatchMethod<any>) => { //!HACK any
         dispatch({
             type: IS_FETCHING,
             payload: fetch_bool,
@@ -13,7 +13,7 @@ export const setFetching = (fetch_bool: boolean) =>
     }
 
 export const setDisplaying = (display_data: isDisplaying) =>
-    (dispatch: DispatchMethod) => {
+    (dispatch: DispatchMethod<any>) => { // !HACK any
         console.log(display_data)
         dispatch({
             type: IS_DISPLAYING,

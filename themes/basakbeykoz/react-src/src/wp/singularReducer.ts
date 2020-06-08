@@ -1,25 +1,27 @@
-import {FETCH_PAGE} from '../common/types'
+import { FETCH_SINGULAR } from '../common/types'
 import { FSA } from '../common/@types-actions'
 import stateMap from '../app/@types-state';
+// import { wpPageItem } from './@types-wp';
 
 const initialState: stateMap["singular"] = {
-    pageList: [],
     postList: [],
+    pageList: [],
     archive: {}
 }
 
 export default function(
     state = initialState, 
-    action: FSA<any> // !HACK any
+    action: FSA<any> // !HACK
 ): stateMap["singular"] {
     switch (action.type) {
 
-        case FETCH_PAGE:
+        case FETCH_SINGULAR:
+            console.log("action\n", action.payload)
             return {
                 ...state,
                 archive: {
                     ...state.archive,
-                    ...action.payload,
+                    [action.payload.data.slug]: action.payload,
                 }
             }
 

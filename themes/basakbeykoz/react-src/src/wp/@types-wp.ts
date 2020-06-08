@@ -6,22 +6,46 @@ export interface wpMenuItem {
     object: string, // type of the link object ex: page, post
 }
 
-export interface wpPostItem extends wpPagePostCommon {
+export interface wpPostItem extends wpSingularCommon {
     type: "post",
 }
 
-export interface wpPageItem extends wpPagePostCommon{
+export interface wpPageItem extends wpSingularCommon{
     type: "page",
 }
 
-interface wpPagePostCommon {
+interface wpSingularCommon {
     id: number,
-    title: {
-        rendered: string,
-    },
+    title: string,
     slug: string,
-    content: {
-        rendered: string,
-    },
+    content: string
     link: string,
 }
+
+export interface wpSingularItem {
+    title: string,
+    ID: number,
+    content: string,
+    type: "post" | "page",
+    author: number,
+    date: string,
+    excerpt: string,
+    status: singularStatus,
+    slug: string,
+    comment_count: number,
+    comment_status: commentStatus,
+}
+
+type singularStatus = "Publish" 
+    | "Future" 
+    | "Draft" 
+    | "Pending" 
+    | "Private" 
+    | "Trash"
+    | "Auto-Draft"
+    | "Inherit"
+
+type commentStatus = "trash" 
+    | "approved" 
+    | "unapproved" 
+    | "spam"

@@ -1,36 +1,27 @@
 import { 
     wpMenuItem, 
-    wpPostItem, 
-    wpPageItem,
+    wpSingularItem,
 } from '../wp/@types-wp'
 
 export default interface stateMap {
     app: {
         isFetching: boolean,
         isDisplaying: {
-            type: string,
+            // type: string,
             slug: string,
         },
     },
     menu: {
         items: wpMenuItem[]
     },
-    pages: {
-        list: any[], // TODO decide whether you really need this
-        single: {
-            [page_slug: string]: {
+    singular: {
+        postList: any[], // TODO decide whether you really need this
+        pageList: any[], // TODO decide whether you really need this
+        archive: {
+            [slug: string]: {
                 loadTime: number,
-                data: wpPageItem,
+                data: wpSingularItem,
             }
         }
     },
-    posts: {
-        list: wpPostItem[], // TODO decide whether you really need this
-        single: {
-            [post_slug: string]: {
-                loadTime: number,
-                data: wpPostItem
-            }
-        }
-    }
 }

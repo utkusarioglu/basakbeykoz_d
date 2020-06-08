@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchMenu } from "../wp/menuActions";
-import { fetchPost, fetchCategoryPosts } from '../wp/postActions';
+// import { fetchPost, fetchCategoryPosts } from '../wp/postActions';
 import { setDisplaying, setFetching } from '../app/appActions'
-import { fetchPage } from "../wp/pageActions";
+import { fetchSingular } from "../wp/singularActions";
 import CSS from 'csstype';
 import { wpMenuItem } from '../wp/@types-wp'
 import { RootState } from '../app/rootReducer'
@@ -12,16 +12,16 @@ import { RootState } from '../app/rootReducer'
 const mapState = (state: RootState) => ({
     menu: state.menu,
     isDisplaying: state.app.isDisplaying,
-    pages: state.pages.single,
+    singular: state.singular.archive,
 });
 
 const mapDispatch = { 
     setFetching,
     setDisplaying,
     fetchMenu, 
-    fetchPost, 
-    fetchPage,
-    fetchCategoryPosts,
+    // fetchPost, 
+    fetchSingular,
+    // fetchCategoryPosts,
 }
 
 interface OwnProps { }
@@ -57,6 +57,9 @@ const styles: { [className: string]: CSS.Properties} = {
         fontSize: "24px",
         textAlign: "right",
         color: "var(--blue)",
+    },
+    navItemActive: {
+        color: "red"
     }
 }
 
@@ -68,52 +71,11 @@ function Nav(
         fetchMenu("nav");
     }, [fetchMenu])
 
-    // const menuOnClick = (e: SyntheticEvent, item: wpMenuItem) => {
-    //     e.preventDefault();
-
-
-    //     // console.log("props", props)
-        
-    //     // const params = item.split("?")[1];
-    //     // if (params) {
-    //         // const [type, slug] = params.split("=");
-    //         // const id_int = parseInt(id);
-
-    //         props.setFetching(true);
-            
-    //         switch (item.object) {
-                
-    //             case "page":
-    //                 props.setDisplaying({
-    //                     type: "page",
-    //                     slug: item.slug
-    //                 });
-
-    //                 // props.fetchPage(id_int)
-    //                 break;
-                
-    //             // case "p":
-    //             //     props.isDisplaying({
-    //             //         type: "post",
-    //             //         slug,
-    //             //     });
-    //             //     props.fetchPost(slug)
-    //             //     break;
-
-    //             // case "cat":
-    //             //     props.fetchCategoryPosts(slug)
-    //             //     break
-                
-    //                 default:
-    //                 console.error("unrecognized item.object:", item)
-    //         }
-    //     // } else {
-    //     //     props.isDisplaying({
-    //     //         type: "page",
-    //     //         slug: process.env.REACT_APP_HOME_SLUG as string
-    //     //     })    
-    //     // }
-    // }
+    const setDisplaying = (slug: string) => {
+        props.setDisplaying({
+            slug: slug
+        });        
+    }
 
     const menuItems: JSX.Element[] = props.menu.items
         .map((item: wpMenuItem) => {
@@ -122,14 +84,11 @@ function Nav(
                     key={item.ID}
                     exact
                     to={"/" + item.slug}
-                    activeStyle={styles.navItem}
-            >{item.title}</NavLink>
-                // <a  key={item.ID} 
-                //     href={item.url}
-                //     style={styles.navItem}
-                //     onClick={(e) => menuOnClick(e, item)}>
-                //         {item.title}
-                //     </a>
+                    style={styles.navItem}
+                    activeStyle={styles.navItemActive}
+                    onClick={() => setDisplaying(item.slug)}
+                    >{item.title}
+                </NavLink>
             )
         })
 

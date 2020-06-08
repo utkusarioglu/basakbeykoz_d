@@ -5,7 +5,7 @@ import WPAPI, { WPRequest } from "wpapi";
 const wp = new WPAPI({endpoint: "?rest_route=/"})
 
 export const fetchPosts = () => 
-    (dispatch: DispatchMethod) => {
+    (dispatch: DispatchMethod<any>) => { //!HACK any
         wp.posts().get((err: Error, data: any) => {
                 if(err) {
                     dispatch({
@@ -22,7 +22,7 @@ export const fetchPosts = () =>
 }
 
 export const fetchCategoryPosts = (cat_id: number) => 
-    (dispatch: DispatchMethod) => {
+    (dispatch: DispatchMethod<any>) => { //!HACK any
         (wp.posts().categories(cat_id) as WPRequest)
             .get((err: Error, data: any) => {
                 console.log(data)
@@ -41,7 +41,7 @@ export const fetchCategoryPosts = (cat_id: number) =>
 }
 
 export const fetchPost = (post_slug: string) => 
-    (dispatch: DispatchMethod) => {
+    (dispatch: DispatchMethod<any>) => { //!HACK any
         (wp.posts().slug(post_slug) as WPRequest)
             .get((err: Error, data: any) => {
                 if(err) {

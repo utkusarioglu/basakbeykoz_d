@@ -6,34 +6,35 @@ import {
 import { FSA } from '../common/@types-actions'
 import stateMap  from '../app/@types-state'
 
-const initialState: stateMap["posts"] = {
-    list: [],
-    single: {},
+const initialState: stateMap["singular"] = {
+    pageList: [],
+    postList: [],
+    archive: {}
 }
 
 export default function(
     state = initialState, 
-    action: FSA,
-): stateMap["posts"] {
+    action: FSA<any>, //!HACK any
+): stateMap["singular"] {
     switch (action.type) {
 
-        case FETCH_POSTS:
-            return {
-                ...state,
-                list: action.payload,
-            }
+        // case FETCH_POSTS:
+        //     return {
+        //         ...state,
+        //         archive: action.payload,
+        //     }
 
-        case FETCH_CATEGORY_POSTS:
-            return {
-                ...state,
-                list: action.payload,
-            }
+        // case FETCH_CATEGORY_POSTS:
+        //     return {
+        //         ...state,
+        //         list: action.payload,
+        //     }
 
-        case FETCH_POST:
-            return {
-                ...state,
-                single: action.payload, //TODO
-            }
+        // case FETCH_POST:
+        //     return {
+        //         ...state,
+        //         single: action.payload, //TODO
+        //     }
 
         default:
             return state;

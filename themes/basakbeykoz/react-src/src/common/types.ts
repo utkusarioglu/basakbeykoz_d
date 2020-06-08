@@ -9,6 +9,8 @@ export const FETCH_CATEGORY_POSTS = "FETCH_CATEGORY_POSTS";
 
 export const FETCH_PAGE = "FETCH_PAGE";
 
+export const FETCH_SINGULAR = "FETCH_SINGULAR";
+
 export const IS_FETCHING = "IS_FETCHING";
 export const IS_DISPLAYING = "IS_DISPLAYING"; 
 
