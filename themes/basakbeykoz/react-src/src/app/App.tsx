@@ -3,6 +3,8 @@ import CSS from "csstype";
 
 import { Provider } from 'react-redux';
 import store from "./store";
+import { Route, BrowserRouter as Router, Switch, } from 'react-router-dom'
+
 
 import Header from "../header/Header";
 import Body from '../body/Body';
@@ -27,17 +29,23 @@ const styles: {[className: string]: CSS.Properties} = {
 function App() {
     return (
         <Provider store={store}>
-            <div className="App" style={styles.app}>
-                <Spinner />
-                <Header />
-                <Social />
-                <Nav />
-                <div
-                    style={styles.scrollingElements}>
-                    <Body />
-                    <Footer />
+            <Router>
+                <div className="App" style={styles.app}>
+                    <Spinner />
+                    <Header />
+                    <Social />
+                    <Nav />
+                    <div
+                        style={styles.scrollingElements}>
+                        <Switch>
+                            <Route exact path="/:slug?">
+                                <Body />
+                            </Route>
+                        </Switch>
+                        <Footer />
+                    </div>
                 </div>
-            </div>
+            </Router>
         </Provider>
     );
 }
