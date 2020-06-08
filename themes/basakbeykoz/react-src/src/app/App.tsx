@@ -12,6 +12,7 @@ import Spinner from "../app/Spinner";
 import Footer from '../footer/Footer';
 import Nav from "../header/Nav";
 import Social from '../header/Social';
+import Blog from "../blog/Blog";
 
 const styles: {[className: string]: CSS.Properties} = {
     app: {
@@ -30,14 +31,23 @@ function App() {
     return (
         <Provider store={store}>
             <Router>
-                <div className="App" style={styles.app}>
+                <div 
+                    className="App" 
+                    style={styles.app}
+                    >
                     <Spinner />
                     <Header />
                     <Social />
                     <Nav />
                     <div
-                        style={styles.scrollingElements}>
+                        style={styles.scrollingElements}
+                        >
                         <Switch>
+                            <Route 
+                                exact 
+                                path={"/" + process.env.REACT_APP_BLOG_SLUG}>
+                                <Blog />
+                            </Route>
                             <Route exact path="/:slug?">
                                 <Body />
                             </Route>
