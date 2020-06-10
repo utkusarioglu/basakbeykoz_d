@@ -26,7 +26,7 @@ export interface wpSingularItem {
     title: string,
     ID: number,
     content: string,
-    type: "post" | "page",
+    type: singularTypes,
     author: number,
     date: string,
     excerpt: string,
@@ -35,6 +35,26 @@ export interface wpSingularItem {
     comment_count: number,
     comment_status: commentStatus,
 }
+
+// this cannot be an interface. For some reason "type in" only works
+// when this is a type instead of an interface
+export type PartialSingularDispatch = Partial<SingularDispatch>
+
+export type SingularDispatch = {
+    [type in singularTypes]: SluggedTimestampedSingular
+}
+
+export interface TimestampedSingular {
+    loadTime: number, 
+    data: wpSingularItem,
+}
+
+export interface SluggedTimestampedSingular {
+    [slug: string]: TimestampedSingular,
+}
+
+export type singularTypes = 'post' | 'page'; 
+
 
 type singularStatus = "Publish" 
     | "Future" 

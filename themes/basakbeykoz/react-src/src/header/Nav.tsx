@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchMenu } from "../wp/menuActions";
 // import { fetchPost, fetchCategoryPosts } from '../wp/postActions';
-import { setDisplaying, setFetching } from '../app/appActions'
-import { fetchSingular } from "../wp/singularActions";
+import { setDisplaying } from '../app/appActions'
+// import { fetchSingular } from "../wp/singularActions";
 import CSS from 'csstype';
 import { wpMenuItem } from '../wp/@types-wp'
 import { RootState } from '../app/rootReducer'
@@ -12,15 +12,15 @@ import { RootState } from '../app/rootReducer'
 const mapState = (state: RootState) => ({
     menu: state.menu,
     isDisplaying: state.app.isDisplaying,
-    singular: state.singular.archive,
+    // singular: state.singular.archive,
 });
 
 const mapDispatch = { 
-    setFetching,
+    // setFetching,
     setDisplaying,
     fetchMenu, 
     // fetchPost, 
-    fetchSingular,
+    // fetchSingular,
     // fetchCategoryPosts,
 }
 
