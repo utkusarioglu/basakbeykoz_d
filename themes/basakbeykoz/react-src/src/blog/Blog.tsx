@@ -49,7 +49,7 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
         return (
             <div key={d.slug}>
                 <h2>{d.title}</h2>
-                <h6>{d.date}</h6>
+                <span>{d.date}</span>
                 <p dangerouslySetInnerHTML={{__html: d.content}}></p>
             </div>
         )
@@ -57,7 +57,7 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
 
     return (
         <div>
-            <h1></h1>Hello, Blog
+            <h1>Hello, Blog</h1>
             {post_list}
         </div>
     )
