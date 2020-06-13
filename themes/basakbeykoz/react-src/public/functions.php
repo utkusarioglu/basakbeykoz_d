@@ -50,6 +50,7 @@ function get_singular_from_slug( $data ) {
                 'slug' => $post -> post_name,
                 'comment_count' => $post -> comment_count,
                 'comment_status' => $post -> comment_status,
+                'thumbnail' => get_the_post_thumbnail(),
             );
             // $response = $post;
             break;
