@@ -2,6 +2,22 @@ import React from "react";
 import { CSSStyles } from "../app/@types-app";
 
 const styles: CSSStyles = {
+    social: {
+        position: "fixed",
+        top: "var(--accent-thickness)",
+        right: 0,
+        zIndex: 10,
+        display: "grid",
+        alignItems: "center",
+        gridColumnGap: "calc( var(--accent-thickness) / 2)",
+        gridAutoFlow: "column",
+    },
+    decor: {
+        width: "var(--accent-thickness)",
+        height: "var(--head-section-height)",
+        background: "var(--blue)",
+        right: 0,
+    },
     socialItem: {
         height: "50px",
         width: "50px",
@@ -12,23 +28,10 @@ const styles: CSSStyles = {
         display: "flex",
         flexDirection: "row",
         justifyItems: "right",
-        paddingTop: "var(--accent-thickness)",
-        paddingBottom: "var(--accent-thickness)",
-        paddingRight: "var(--accent-thickness)",
+        // paddingTop: "var(--accent-thickness)",
+        // paddingBottom: "var(--accent-thickness)",
+        // paddingRight: "var(--accent-thickness)",
         paddingLeft: 0,
-    },
-    socialWrap: {
-        position: "fixed",
-        top: "var(--accent-thickness)",
-        right: 0,
-        zIndex: 10,
-    },
-    socialDecor: {
-        width: "var(--accent-thickness)",
-        height: "100%",
-        background: "var(--blue)",
-        position: "absolute",
-        right: 0,
     },
 }
 
@@ -64,11 +67,11 @@ function Social() {
     })
 
     return (
-        <div style={styles.socialWrap}>
-            <div style={styles.socialDecor} />
+        <div style={styles.social}>
             <div style={styles.socialList}>
                 {socialComponents}
             </div>
+            <div style={styles.decor} />
         </div>
     )
 }

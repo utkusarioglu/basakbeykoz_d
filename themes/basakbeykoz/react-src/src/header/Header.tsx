@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setDisplaying } from '../app/appActions'
 import CSS from 'csstype';
-
-// import Nav from "./Nav";
 import { RootState } from "../app/rootReducer";
 
 const mapState = (state: RootState) => ({
@@ -22,64 +20,49 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
 const styles: { [className: string]: CSS.Properties} = {
-    logoDecor: {
-        width: "var(--accent-thickness)",
-        height: "100%",
-        background: "var(--blue)",
-        position: "absolute",
-        left: 0,
-    },
-    logoWrap: {
+    header: {
         position: "fixed",
         top: "var(--accent-thickness)",
         left: 0,
-        height: "110px",
         zIndex: 1,
-        // display: "grid",
-        // justifyItems: "center",
-        // alignItems: "center",
-    },
-    logoLink: {
-        height:"100%",
-        paddingLeft: "var(--accent-thickness)",
         display: "grid",
         alignItems: "center",
-        justifyItems: "end"
-        // height: "11px"
+        gridColumnGap: "calc( var(--accent-thickness) / 2)",
+        gridAutoFlow: "column",
+    },
+    decor: {
+        width: "var(--accent-thickness)",
+        height: "var(--head-section-height)",
+        background: "var(--blue)",
+        left: 0,
     },
     logoImg: {
+        width: "340px",
         filter: "var(--logo-white-filter)",
     }
 }
 
 function Header(props: Props): React.FunctionComponentElement<Props> {
 
-    // const logoClick = (e: SyntheticEvent) => {
-    //     e.preventDefault();
-    //     const slug = process.env.REACT_APP_HOME_SLUG as string;
-    //     props.setDisplaying({
-    //         // type: "page",
-    //         slug,
-    //     })    
-    // }
     const setDisplaying = () => {
         props.setDisplaying({
             slug: process.env.REACT_APP_HOME_SLUG as string
         })        
     }
 
+    const uploads = process.env.REACT_APP_UPLOADS_DIR;
+
     return (
-        <header style={styles.logoWrap}>
-            <div style={styles.logoDecor} />
+        <header style={styles.header}>
+            <div style={styles.decor} />
             <Link
                 onClick={setDisplaying}
                 to="/">
                 <div 
                     className="logo"
-                    style={styles.logoLink}
                     >
                     <img 
-                        src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
+                        src={ uploads + "/logo-inline-color.svg"}
                         alt="logo"
                         style={styles.logoImg}/>
                 </div>

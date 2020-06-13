@@ -142,7 +142,8 @@ select {
     --home-vertical-padding: 200px;
     --home-horizontal-padding: 400px;
 
-    --fixed-feature-image-width: 420px;
+    --fixed-feature-image-width: 470px;
+    --head-section-height: 110px;
 }
 
 body {
@@ -694,25 +695,27 @@ borders
 
 .blog {
     display: grid; 
-    grid-template-areas: "empty blog-title nav" 
-    "empty post-excerpt-cards nav";
+    grid-template-areas: 
+        "empty blog-title nav" 
+        "empty post-excerpt-cards nav";
     grid-template-columns: var(--fixed-feature-image-width) auto 200px;
     grid-template-rows: 110px auto;
     /* there is a similar gap pattern for home screen, these could be tidied*/
-    grid-column-gap: 8em;
+    grid-column-gap: 7em;
     grid-row-gap: 4em;
     padding-bottom: 400px;
     padding-top: var(--accent-thickness);
 }
 
 .blog>h2 {
-    font-size: 45px;
     grid-area: blog-title;
+    font-size: 45px;
     align-self: center;
 }
 
 .blog>.post-excerpt-cards {
     grid-area: post-excerpt-cards;  
+    margin-left: -2em;
 }
 
 .post-excerpt-card {
@@ -724,7 +727,7 @@ borders
     grid-row-gap: 1em;
     grid-column-gap: 4em;
     padding: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
 }
 
 .post-excerpt-card {

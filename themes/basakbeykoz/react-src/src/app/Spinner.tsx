@@ -23,7 +23,8 @@ const styles: CSSStyles = {
         bottom: 0,
         display: "none",
         justifyItems: "center",
-        gridRowGap: "1em"
+        gridRowGap: "1em",
+        gridTemplateRows: "45% 65%",
         // alignItems: "center",
         // backgroundColor: "rgba(255,255,255, 0.1)",
     },
@@ -62,7 +63,7 @@ function Spinner(props: Props): React.FunctionComponentElement<Props> {
     return (
         <div style={{...styles.spinnerContainer, display}}>
             <img 
-                src={process.env.REACT_APP_UPLOADS_DIR + "/logo-linear-black.svg"}
+                src={process.env.REACT_APP_UPLOADS_DIR + "/logo-inline-black.svg"}
                 alt="Basak Beykoz"
                 style={styles.logo}
                 ></img>
