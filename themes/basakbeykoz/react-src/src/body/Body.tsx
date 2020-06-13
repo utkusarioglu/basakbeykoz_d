@@ -38,7 +38,7 @@ const styles: CSSStyles = {
     }
 }
 
-function findSlug(singular: stateMap["singular"], slug: string): string {
+function findBySlug(singular: stateMap["singular"], slug: string): string {
     return Object.values(singular)
         .map((archive: stateMap["singular"][singularTypes]) => {
             return archive.items[slug]
@@ -60,7 +60,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
         props.setDisplaying({slug: url_slug})
     }
     const slug = display_slug;
-    const item_html = findSlug(props.singular, slug);
+    const item_html = findBySlug(props.singular, slug);
 
     const setFetching = props.setFetching;
     const fetchSingular = props.fetchSingular;
