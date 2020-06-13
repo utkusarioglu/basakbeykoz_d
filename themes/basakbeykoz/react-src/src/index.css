@@ -394,7 +394,7 @@ borders
     grid-row-gap: 4em;
     grid-template-areas: "cover logo" "cover heading" "cover paragraph" "cover cta";
     grid-template-columns: 2fr 2fr 1fr;
-    grid-template-rows: 150px 150px max-content auto;
+    grid-template-rows: 140px 150px max-content auto;
     /* these two are for hiding the fixed logo from the first page */
     position: absolute;
     z-index: 2;
@@ -414,7 +414,7 @@ borders
     display: grid;
     grid-template-columns: 365px auto;
     grid-template-rows: auto min-content;
-    grid-template-areas: "logo empty" "title empty";
+    grid-template-areas: "title empty" "logo empty";
 }
 
 .body.home>div:first-child figure>img {
@@ -426,7 +426,7 @@ borders
 
 .body.home>div:first-child figure>figcaption {
     grid-area: title;
-    align-self: start;
+    align-self: end;
     justify-self: center;
 }
 
@@ -697,15 +697,18 @@ borders
     grid-template-areas: "empty blog-title nav" 
     "empty post-excerpt-cards nav";
     grid-template-columns: var(--fixed-feature-image-width) auto 200px;
-    grid-template-rows: 100px auto;
+    grid-template-rows: 110px auto;
     /* there is a similar gap pattern for home screen, these could be tidied*/
     grid-column-gap: 8em;
     grid-row-gap: 4em;
     padding-bottom: 400px;
+    padding-top: var(--accent-thickness);
 }
 
-.blog>h1 {
+.blog>h2 {
+    font-size: 45px;
     grid-area: blog-title;
+    align-self: center;
 }
 
 .blog>.post-excerpt-cards {

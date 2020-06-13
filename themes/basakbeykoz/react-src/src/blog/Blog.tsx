@@ -67,7 +67,7 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
             className="blog fixed-feature-image"
             >
             <div className="feature-image" />
-            <h1 className="text-blue">Yazilar</h1>
+            <h2 className="text-blue">Yazilar</h2>
             <div className="post-excerpt-cards">
                 {post_list}
             </div>
