@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { RootState } from "../app/rootReducer";
 import { fetchCategoryPosts } from "../wp/singularActions";
 import { setFetching } from "../app/appActions";
-// import CSS from 'csstype'
+import { CSSStyles } from "../app/@types-app";
+
+import PostExcerptCard from "./PostExceprtCard";
 
 const mapState = (state: RootState) => ({
     post: state.singular.post.items,
@@ -26,16 +28,17 @@ type DispatchProps = typeof mapDispatch;
 type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
-// TODO better static typing for style elements
-// const styles: {[className: string]: CSS.Properties} = {
-//     body: {
-//         // margin: "0px",
-//         // overflowX: "hidden",
-//         // overflowY: "auto",
-//         // display: "block",
-//         // height: "100vh",
-//     }
-// }
+const styles: CSSStyles = {
+    img: {
+        width: "430px",
+        height: "100vh",
+        position: "fixed",
+        left: 0,
+        top: 0,
+        backgroundColor: "gray", 
+
+    }
+}
 
 function Blog(props: Props): React.FunctionComponentElement<Props> {
     // !HACK this is faulty logic
@@ -47,17 +50,23 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
     const post_list = Object.values(props.post).map((single) => {
         const d = single.data
         return (
-            <div key={d.slug}>
-                <h2>{d.title}</h2>
-                <span>{d.date}</span>
-                <p dangerouslySetInnerHTML={{__html: d.content}}></p>
-            </div>
+            <PostExcerptCard 
+                key={d.slug}
+                title={d.title}
+                date={d.date}
+                excerpt={d.content}
+                slug={d.slug}
+                thumbnail={d.thumbnail}
+            />
         )
     })
 
     return (
-        <div>
-            <h1>Hello, Blog</h1>
+        <div
+            className="blog"
+            >
+            <div style={styles.img} />
+            <h1>Yazilar</h1>
             {post_list}
         </div>
     )
