@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { RootState } from "../app/rootReducer";
 import { fetchCategoryPosts } from "../wp/singularActions";
 import { setFetching } from "../app/appActions";
-import { CSSStyles } from "../app/@types-app";
+// import { CSSStyles } from "../app/@types-app";
 
 import PostExcerptCard from "./PostExceprtCard";
 
@@ -28,17 +28,17 @@ type DispatchProps = typeof mapDispatch;
 type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
-const styles: CSSStyles = {
-    img: {
-        width: "430px",
-        height: "100vh",
-        position: "fixed",
-        left: 0,
-        top: 0,
-        backgroundColor: "gray", 
+// const styles: CSSStyles = {
+//     img: {
+//         width: "430px",
+//         height: "100vh",
+//         position: "fixed",
+//         left: 0,
+//         top: 0,
+//         backgroundColor: "gray", 
 
-    }
-}
+//     }
+// }
 
 function Blog(props: Props): React.FunctionComponentElement<Props> {
     // !HACK this is faulty logic
@@ -54,7 +54,8 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
                 key={d.slug}
                 title={d.title}
                 date={d.date}
-                excerpt={d.content}
+                content={d.content}
+                excerpt={d.excerpt}
                 slug={d.slug}
                 thumbnail={d.thumbnail}
             />
@@ -63,11 +64,13 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
 
     return (
         <div
-            className="blog"
+            className="blog fixed-feature-image"
             >
-            <div style={styles.img} />
-            <h1>Yazilar</h1>
-            {post_list}
+            <div className="feature-image" />
+            <h1 className="text-blue">Yazilar</h1>
+            <div className="post-excerpt-cards">
+                {post_list}
+            </div>
         </div>
     )
 }
