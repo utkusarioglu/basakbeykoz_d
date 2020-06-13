@@ -19,7 +19,7 @@ add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );
  * Grab latest post title by an author!
  *
  * @param array $data Options for the function.
- * @return string|null Post title for the latest,  * or null if none.
+ * @return string|null Post title for the latest, * or null if none.
  */
 function get_singular_from_slug( $data ) {
     $args = array(
@@ -67,7 +67,7 @@ function get_singular_from_slug( $data ) {
  * Grab latest post title by an author!
  *
  * @param array $data Options for the function.
- * @return string|null Post title for the latest,  * or null if none.
+ * @return string|null Post title for the latest, * or null if none.
  */
 function get_category_posts_from_slug( $data ) {
     $args = array(
