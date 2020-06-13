@@ -1,4 +1,5 @@
-import React, { SyntheticEvent } from "react";
+import React  from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setDisplaying } from '../app/appActions'
 import CSS from 'csstype';
@@ -53,29 +54,36 @@ const styles: { [className: string]: CSS.Properties} = {
 
 function Header(props: Props): React.FunctionComponentElement<Props> {
 
-    const logoClick = (e: SyntheticEvent) => {
-        e.preventDefault();
-        const slug = process.env.REACT_APP_HOME_SLUG as string;
+    // const logoClick = (e: SyntheticEvent) => {
+    //     e.preventDefault();
+    //     const slug = process.env.REACT_APP_HOME_SLUG as string;
+    //     props.setDisplaying({
+    //         // type: "page",
+    //         slug,
+    //     })    
+    // }
+    const setDisplaying = () => {
         props.setDisplaying({
-            type: "page",
-            slug,
-        })    
+            slug: process.env.REACT_APP_HOME_SLUG as string
+        })        
     }
 
     return (
         <header style={styles.logoWrap}>
             <div style={styles.logoDecor} />
-            <a 
-                className="logo"
-                href="/"
-                onClick={logoClick}
+            <Link
+                onClick={setDisplaying}
+                to="/">
+                <div 
+                    className="logo"
                     style={styles.logoLink}
-                >
-                <img 
-                    src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
-                    alt="logo"
-                    style={styles.logoImg}/>
-            </a>
+                    >
+                    <img 
+                        src={ process.env.REACT_APP_UPLOADS_DIR + "/logo-inline.png"}
+                        alt="logo"
+                        style={styles.logoImg}/>
+                </div>
+            </Link>
         </header>
     )
 }

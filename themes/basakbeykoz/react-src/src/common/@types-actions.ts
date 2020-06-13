@@ -1,8 +1,15 @@
-export interface FSA {
+export type FSA<T>  = FSASuccess<T> | FSAFailure
+
+interface FSASuccess<T> {
     type: string,
-    payload?: any,
-    error?: boolean,
-    meta?: any,
+    payload: T,
+    state: 'success',
 }
 
-export type DispatchMethod = (vars:FSA) => void
+interface FSAFailure {
+    type: string,
+    error: string,
+    state: "fail"
+}
+
+export type DispatchMethod<T> = (vars:FSA<T>) => void

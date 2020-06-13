@@ -9,16 +9,21 @@ const initialState = {
     post: undefined,
 }
 
-export default function(state = initialState, action: FSA) {
+export default function(
+    state = initialState, 
+    action: FSA<any>
+) { //!HACK any
     switch (action.type) {
 
         case FETCH_CATEGORIES:
+            if (action.state === "fail") return state;
             return {
                 ...state,
                 items: action.payload
             }
-
+            
         case FETCH_CATEGORY:
+            if (action.state === "fail") return state;
             return {
                 ...state,
                 single: action.payload

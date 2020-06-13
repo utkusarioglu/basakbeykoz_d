@@ -3,6 +3,8 @@ import CSS from "csstype";
 
 import { Provider } from 'react-redux';
 import store from "./store";
+import { Route, BrowserRouter as Router, Switch, } from 'react-router-dom'
+
 
 import Header from "../header/Header";
 import Body from '../body/Body';
@@ -10,6 +12,7 @@ import Spinner from "../app/Spinner";
 import Footer from '../footer/Footer';
 import Nav from "../header/Nav";
 import Social from '../header/Social';
+import Blog from "../blog/Blog";
 
 const styles: {[className: string]: CSS.Properties} = {
     app: {
@@ -27,17 +30,32 @@ const styles: {[className: string]: CSS.Properties} = {
 function App() {
     return (
         <Provider store={store}>
-            <div className="App" style={styles.app}>
-                <Spinner />
-                <Header />
-                <Social />
-                <Nav />
-                <div
-                    style={styles.scrollingElements}>
-                    <Body />
-                    <Footer />
+            <Router>
+                <div 
+                    className="App" 
+                    style={styles.app}
+                    >
+                    <Spinner />
+                    <Header />
+                    <Social />
+                    <Nav />
+                    <div
+                        style={styles.scrollingElements}
+                        >
+                        <Switch>
+                            <Route 
+                                exact 
+                                path={"/" + process.env.REACT_APP_BLOG_SLUG}>
+                                <Blog />
+                            </Route>
+                            <Route exact path="/:slug?">
+                                <Body />
+                            </Route>
+                        </Switch>
+                        <Footer />
+                    </div>
                 </div>
-            </div>
+            </Router>
         </Provider>
     );
 }

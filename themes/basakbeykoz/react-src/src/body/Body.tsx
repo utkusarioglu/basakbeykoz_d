@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import CSS from 'csstype'
 import { RootState } from "../app/rootReducer";
-import { fetchPage } from "../wp/pageActions";
-import { setFetching } from '../app/appActions'
+import { fetchSingular } from "../wp/singularActions";
+import { setFetching, setDisplaying } from '../app/appActions'
 import stateMap from "../app/@types-state";
+import { singularTypes } from "../wp/@types-wp";
+// import stateMap from "../app/@types-state";
 
 const mapState = (state: RootState) => ({
-    posts: state.posts,
-    pages: state.pages,
+    singular: state.singular,
+    // pages: state.pages,
     isDisplaying: state.app.isDisplaying,
     isFetching: state.app.isFetching,
 })
 
 const mapDispatch = { 
-    fetchPage,
+    fetchSingular,
     setFetching,
+    setDisplaying,
 }
 
 interface OwnProps {}
@@ -34,42 +38,55 @@ const styles: {[className: string]: CSS.Properties} = {
     }
 }
 
+function findSlug(singular: stateMap["singular"], slug: string): string {
+    return Object.values(singular)
+        .map((archive: stateMap["singular"][singularTypes]) => {
+            return archive.items[slug]
+                ? archive.items[slug].data.content
+                : "";
+        })
+        .filter((html: string) => {
+            return html !== ""
+        })[0] || "";
+
+}
+
 function Body(props: Props): React.FunctionComponentElement<Props> {
 
-    const type = props.isDisplaying.type;
-    const slug = props.isDisplaying.slug;
-    const items = props[type + "s" as "posts" | "pages"].single;
-    const item_html = items[slug]
-        ? items[slug].data.content.rendered
-        : "";
+    const url_slug = useParams<{slug: string}>().slug || "home";
+    const display_slug = props.isDisplaying.slug;
+    if(url_slug !== display_slug) {
+        console.warn("landing page")
+        props.setDisplaying({slug: url_slug})
+    }
+    const slug = display_slug;
+    const item_html = findSlug(props.singular, slug);
 
-    const [html, setHtml] = useState(item_html);
     const setFetching = props.setFetching;
-    const isDisplaying: stateMap["app"]["isDisplaying"] = props.isDisplaying
-    
-    const fetchPage = props.fetchPage;
+    const fetchSingular = props.fetchSingular;
 
 
     useEffect(() => {
-        if (items[slug] === undefined) {
-            console.log("body fetching")
+        if (item_html === "") {
+            setFetching(true);
             setTimeout(() => {
-                fetchPage(isDisplaying.slug)
-            }, 300)
+                fetchSingular(slug)
+            }, 1000)
         } else {
-            console.log("cached")
-            setHtml(items[slug].data.content.rendered)
+            // console.log("cached")
             setFetching(false);
         }
-    }, [isDisplaying, fetchPage, items, slug, setFetching])
+    }, [fetchSingular, item_html, slug, setFetching])
 
     return (
         <div 
             className={"body " + slug}
             style={styles.body}
-            dangerouslySetInnerHTML={{__html: html}} />
+            dangerouslySetInnerHTML={{__html: item_html}} />
     )
 }
+
+
 
 
 
