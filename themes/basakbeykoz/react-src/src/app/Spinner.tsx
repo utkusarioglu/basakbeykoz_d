@@ -23,13 +23,33 @@ const styles: CSSStyles = {
         bottom: 0,
         display: "none",
         justifyItems: "center",
-        alignItems: "center",
+        gridRowGap: "1em"
+        // alignItems: "center",
+        // backgroundColor: "rgba(255,255,255, 0.1)",
+    },
+    logo: {
+        alignSelf: "end",
+        height: "60px",
+        filter: "var(--blue-filter)"
+        // marginBottom: "100px"
+    },
+    loadingText: {
+        alignSelf: "top",
+        color: "var(--blue)",
+        fontSize: "25px"
     }
 }
 
 function Spinner(props: Props): React.FunctionComponentElement<Props> {
 
     const [display, setDisplay] = useState("none");
+    const loadingMessages = [
+        "Hemen geliyor",
+        "Tazeden gelsin",
+        "Ailecek yukluyoruz",
+        "Sayfa bizden, okumak sizden",
+        "Aaa negezel yukluyo",
+    ];
 
     useEffect(() => {
         if(props.isFetching) {
@@ -41,7 +61,14 @@ function Spinner(props: Props): React.FunctionComponentElement<Props> {
 
     return (
         <div style={{...styles.spinnerContainer, display}}>
-            <h1>Thinking...</h1>
+            <img 
+                src={process.env.REACT_APP_UPLOADS_DIR + "/logo-linear-black.svg"}
+                alt="Basak Beykoz"
+                style={styles.logo}
+                ></img>
+            <p 
+                style={styles.loadingText}
+                >{loadingMessages[Math.floor(Math.random()*(loadingMessages.length - 1))]}</p>
         </div>
     )
 }
