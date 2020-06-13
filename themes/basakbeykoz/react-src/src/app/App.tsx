@@ -1,5 +1,5 @@
 import React from "react";
-import CSS from "csstype";
+import { CSSStyles } from "./@types-app";
 
 import { Provider } from 'react-redux';
 import store from "./store";
@@ -14,7 +14,7 @@ import Nav from "../header/Nav";
 import Social from '../header/Social';
 import Blog from "../blog/Blog";
 
-const styles: {[className: string]: CSS.Properties} = {
+const styles: CSSStyles = {
     app: {
         overflow: 'hidden',
         // height: "100vh",

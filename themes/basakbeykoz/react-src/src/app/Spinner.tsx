@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import CSS from "csstype";
+import { CSSStyles } from "./@types-app";
 import { RootState } from "./rootReducer";
 
 const mapState = (state: RootState) => ({
@@ -14,7 +14,7 @@ type DispatchProps = typeof mapDispatch;
 type StateProps = ReturnType<typeof mapState>
 type Props = DispatchProps & StateProps & OwnProps;
 
-const styles: {[className: string]: CSS.Properties} = {
+const styles: CSSStyles = {
     spinnerContainer: {
         position: "fixed",
         top: 0,

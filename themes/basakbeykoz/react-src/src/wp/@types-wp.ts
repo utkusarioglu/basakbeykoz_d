@@ -34,6 +34,7 @@ export interface wpSingularItem {
     slug: string,
     comment_count: number,
     comment_status: commentStatus,
+    thumbnail: string,
 }
 
 // this cannot be an interface. For some reason "type in" only works

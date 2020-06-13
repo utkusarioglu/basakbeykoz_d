@@ -101,6 +101,7 @@ function build_post_item() {
         'slug' => $post -> post_name,
         'comment_count' => $post -> comment_count,
         'comment_status' => $post -> comment_status,
+        'thumbnail' => get_the_post_thumbnail()
     );
     return $item;
 }

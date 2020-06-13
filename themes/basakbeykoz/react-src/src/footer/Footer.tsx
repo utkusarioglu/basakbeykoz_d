@@ -1,9 +1,9 @@
 import React from 'react';
-import CSS from "csstype";
+import { CSSStyles } from "../app/@types-app";
 
 interface Props {}
 
-const styles: {[className: string]: CSS.Properties } = {
+const styles: CSSStyles = {
     footerContainer: {
         width: "160px",
         height: "160px",

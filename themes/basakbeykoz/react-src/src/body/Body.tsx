@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import CSS from 'csstype'
+import { CSSStyles } from "../app/@types-app";
 import { RootState } from "../app/rootReducer";
 import { fetchSingular } from "../wp/singularActions";
 import { setFetching, setDisplaying } from '../app/appActions'
@@ -28,7 +28,7 @@ type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
 // TODO better static typing for style elements
-const styles: {[className: string]: CSS.Properties} = {
+const styles: CSSStyles = {
     body: {
         // margin: "0px",
         // overflowX: "hidden",

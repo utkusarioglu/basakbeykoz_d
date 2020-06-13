@@ -1,7 +1,7 @@
 import React from "react";
-import CSS from "csstype";
+import { CSSStyles } from "../app/@types-app";
 
-const styles: {[className: string]: CSS.Properties} = {
+const styles: CSSStyles = {
     socialItem: {
         height: "50px",
         width: "50px",
