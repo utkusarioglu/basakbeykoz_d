@@ -62,11 +62,27 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
         )
     })
 
+
+
     return (
         <div
             className="blog"
             >
-            <div className="feature-image" />
+            <div className="feature-image" >
+                <img 
+                    width="2560" 
+                    height="1671" 
+                    src="http://localhost/wp-content/uploads/yazilar-feature-image-scaled.jpg" 
+                    alt="" 
+                    //@ts-ignore
+                    srcset="http://localhost/wp-content/uploads/yazilar-feature-image-scaled.jpg 2560w, 
+                        http://localhost/wp-content/uploads/yazilar-feature-image-300x196.jpg 300w, 
+                        http://localhost/wp-content/uploads/yazilar-feature-image-1024x669.jpg 1024w, 
+                        http://localhost/wp-content/uploads/yazilar-feature-image-768x501.jpg 768w, 
+                        http://localhost/wp-content/uploads/yazilar-feature-image-1536x1003.jpg 1536w, 
+                        http://localhost/wp-content/uploads/yazilar-feature-image-2048x1337.jpg 2048w" 
+                    sizes="(max-width: 2560px) 100vw, 2560px" />
+            </div>
             <div className="has-feature-image">
                 <h2 className="page-title text-blue">Yazilar</h2>
                 <div className="post-excerpt-cards">
