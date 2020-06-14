@@ -64,12 +64,14 @@ function Blog(props: Props): React.FunctionComponentElement<Props> {
 
     return (
         <div
-            className="blog fixed-feature-image"
+            className="blog"
             >
             <div className="feature-image" />
-            <h2 className="text-blue">Yazilar</h2>
-            <div className="post-excerpt-cards">
-                {post_list}
+            <div className="has-feature-image">
+                <h2 className="page-title text-blue">Yazilar</h2>
+                <div className="post-excerpt-cards">
+                    {post_list}
+                </div>
             </div>
         </div>
     )
