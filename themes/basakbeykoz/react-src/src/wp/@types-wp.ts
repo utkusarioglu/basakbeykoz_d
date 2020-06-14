@@ -22,10 +22,8 @@ interface wpSingularCommon {
     link: string,
 }
 
-export interface wpSingularItem {
-    title: string,
+export interface wpSingularItem extends wpSingularItemForDisplay {
     ID: number,
-    content: string,
     type: singularTypes,
     author: number,
     date: string,
@@ -34,7 +32,13 @@ export interface wpSingularItem {
     slug: string,
     comment_count: number,
     comment_status: commentStatus,
+}
+
+export interface wpSingularItemForDisplay {
+    slug: string,
+    title: string,
     thumbnail: string,
+    content: string,
 }
 
 // this cannot be an interface. For some reason "type in" only works

@@ -8,13 +8,15 @@ type isFetching = stateMap["app"]["isFetching"];
 
 const initialState: stateMap["app"] = {
     isFetching: true,
-    // isDisplaying: {
-    //     type: "page",
-    //     slug: useParams<{slug: string}>().slug || process.env.REACT_APP_HOME_SLUG as string,
-    // },
     isDisplaying: {
-        // type: "page",
         slug: process.env.REACT_APP_HOME_SLUG as string,
+        loadTime: 0,
+        active: {
+            slug: "",
+            title: "",
+            content: "",
+            thumbnail: "",
+        },
     }
 }
 
@@ -25,10 +27,14 @@ export default function (
     switch (action.type) {
 
         case IS_DISPLAYING:
+            console.log("IS_DISPLAYING", action)
             if(action.state === "fail") return state 
             return {
                 ...state,
-                isDisplaying: action.payload as isDisplaying
+                isDisplaying: {
+                    ...state.isDisplaying,
+                    ...action.payload as isDisplaying
+                }
             }
             
 

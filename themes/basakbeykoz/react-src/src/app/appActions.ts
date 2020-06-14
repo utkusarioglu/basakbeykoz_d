@@ -14,12 +14,12 @@ export const setFetching = (fetch_bool: boolean) =>
         })
     }
 
-export const setDisplaying = (display_data: isDisplaying) =>
-    (dispatch: DispatchMethod<isDisplaying>) => {
-        console.log(display_data)
+export const setDisplaying = (is_displaying: Partial<isDisplaying>) =>
+    (dispatch: DispatchMethod<Partial<isDisplaying>>) => {
+        console.log(is_displaying)
         dispatch({
             type: IS_DISPLAYING,
             state: "success",
-            payload: display_data,
+            payload: is_displaying,
         })
     }

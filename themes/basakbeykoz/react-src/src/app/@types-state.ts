@@ -1,6 +1,7 @@
 import { 
     wpMenuItem, 
     SluggedTimestampedSingular,
+    wpSingularItemForDisplay,
 } from '../wp/@types-wp'
 
 export default interface stateMap {
@@ -8,6 +9,8 @@ export default interface stateMap {
         isFetching: boolean,
         isDisplaying: {
             slug: string,
+            loadTime: number,
+            active: wpSingularItemForDisplay,
         },
     },
     menu: {
