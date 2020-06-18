@@ -13,6 +13,7 @@ const initialState: stateMap["app"] = {
         loadTime: 0,
         active: {
             slug: "",
+            type: "page",
             title: "",
             content: "",
             thumbnail: "",

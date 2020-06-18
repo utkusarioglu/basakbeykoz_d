@@ -68,6 +68,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
                 active: {
                     slug: item.slug,
                     title: item.title,
+                    type: item.type,
                     content: item.content,
                     thumbnail: item.thumbnail,
                 }
@@ -80,6 +81,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
         <BodyContent 
             slug={props.isDisplaying.active.slug}
             title={props.isDisplaying.active.title}
+            type={props.isDisplaying.active.type}
             content={props.isDisplaying.active.content}
             thumbnail={props.isDisplaying.active.thumbnail}
             />
