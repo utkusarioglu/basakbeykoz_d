@@ -28,6 +28,8 @@ const styles: CSSStyles = {
 }
 
 function App() {
+    const blog_slug = process.env.REACT_APP_BLOG_SLUG;
+
     return (
         <Provider store={store}>
             <Router>
@@ -40,12 +42,12 @@ function App() {
                     <Social />
                     <Nav />
                     <div
-                        style={styles.scrollingElements}
-                        >
+                        className="scrolling-elements" 
+                        style={styles.scrollingElements} >
                         <Switch>
                             <Route 
                                 exact 
-                                path={"/" + process.env.REACT_APP_BLOG_SLUG}>
+                                path={"/" + blog_slug}>
                                 <Blog />
                             </Route>
                             <Route exact path="/:slug?">
