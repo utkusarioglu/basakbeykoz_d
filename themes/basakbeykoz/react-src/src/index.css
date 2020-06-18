@@ -114,7 +114,7 @@ select {
 }
 
  ::-webkit-scrollbar-thumb {
-    background: var(white);
+    background: var(--white);
     /* border-right: 2px solid var(--black); */
 }
 
@@ -169,7 +169,7 @@ figcaption {
     font-family: 'M PLUS 1p', sans-serif;
 }
 
-.body.home>.content>div .wp-block-latest-posts>li,
+.body.page.home>article>div .wp-block-latest-posts>li,
 span,
 nav,
 p {
@@ -179,6 +179,14 @@ p {
 nav,
 p {
     font-size: 22px;
+}
+
+article {
+    grid-area: article
+}
+
+article p {
+    color: var(--blue)
 }
 
 
@@ -216,7 +224,7 @@ p {
     color: var(--blue);
 }
 
-.body.home>.content .wp-block-buttons {
+.body.page.home>article .wp-block-buttons {
     width: 100%;
 }
 
@@ -293,405 +301,86 @@ borders
 
 
 /* 
-    HOME
-    EVERY SECTION 
- */
-.body.home>.page-title {
-    display: none;
-}
-
-.body.home>.content>.wp-block-group,
-.body.home>.content>.wp-block-group>.wp-block-group__inner-container {
-    height: 100vh;
-    position: relative;
-}
-
-.body.home>.content>div>.wp-block-group__inner-container>h1,
-.body.home>.content>div>.wp-block-group__inner-container>h2,
-.body.home>.content>div>.wp-block-group__inner-container>h3 {
-    grid-area: heading;
-    align-self: end;
-}
-
-.body.home>.content>div>.wp-block-group__inner-container>h1 {
-    font-size: 50px;
-}
-
-.body.home>.content>div>.wp-block-group__inner-container>h2 {
-    font-size: 40px;
-}
-
-.body.home>.content>div>.wp-block-group__inner-container>h2 {
-    font-size: 35px;
-}
-
-.body.home>.content>div>.wp-block-group__inner-container>p {
-    grid-area: paragraph;
-    font-size: 30px;
-}
-
-.body.home>.content .wp-block-button {
-    background-color: var(--yellow);
-    color: var(--black);
-    padding: 1em;
-}
-
-.body.home>.content .wp-block-button:hover {
-    background-color: var(--blue);
-    padding: 1em;
-    cursor: pointer;
-}
-
-
-/* 
-    HOME
-    EVERY SECTION EXCEPT FIRST
+    EVERY PAGE
 */
+.body {
+    padding-bottom: 400px;
+    padding-left: calc(var(--fixed-feature-image-width) + 7em);
+    padding-right: 200px;
+    padding-top: var(--accent-thickness);
+}
 
-.body.home>.content>div:not(:first-child)>.wp-block-group__inner-container {
+.body.blog,
+.body.post, 
+.body.page {
     display: grid;
-    padding: var(--home-vertical-padding) var(--home-horizontal-padding);
-    grid-template-areas: "heading image" "paragraph image";
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 5em;
-    grid-row-gap: 3em;
-}
-
-.body.home>.content>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover {
-    grid-area: image;
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-.body.home>.content>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:before {
-    content: "";
-    width: calc(100% + var(--accent-thickness));
-    height: calc(100% - var(--accent-thickness));
-    position: absolute;
-    top: calc(var(--accent-thickness) /2);
-    left: calc(var(--accent-thickness) / 2 * -1);
-}
-
-.body.home>.content>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:after {
-    content: "";
-    width: calc(100% - var(--accent-thickness));
-    height: calc(100% + var(--accent-thickness));
-    position: absolute;
-    top: calc(var(--accent-thickness) /2 * -1);
-    left: calc(var(--accent-thickness) /2);
-}
-
-
-/* 
-    HOME
-    FIRST SECTION
-    Introduction
- */
-
-.body.home>.content>div:first-child p {
-    color: var(--blue);
-}
-
-.body.home>.content>div:first-child>.wp-block-group__inner-container {
-    display: grid;
-    grid-column-gap: 8em;
+    grid-template-rows: 110px auto;
     grid-row-gap: 4em;
-    grid-template-areas: "cover logo" "cover heading" "cover paragraph" "cover cta";
-    grid-template-columns: 2fr 2fr 1fr;
-    grid-template-rows: 140px 150px max-content auto;
-    /* these two are for hiding the fixed logo from the first page */
-    position: absolute;
-    z-index: 2;
 }
 
-.body.home>.content>div:first-child .wp-block-cover {
-    grid-area: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-}
-
-.body.home>.content>div:first-child figure {
-    grid-area: logo;
-    display: grid;
-    grid-template-columns: 365px auto;
-    grid-template-rows: auto min-content;
-    grid-template-areas: "title empty" "logo empty";
-}
-
-.body.home>.content>div:first-child figure>img {
-    grid-area: logo;
-    max-width: 100%;
-    display: block;
-    align-self: end;
-}
-
-.body.home>.content>div:first-child figure>figcaption {
-    grid-area: title;
-    align-self: end;
-    justify-self: center;
-}
-
-.body.home>.content>div:first-child h1 {
-    color: var(--blue);
-}
-
-.body.home>.content>div:first-child .wp-block-buttons {
-    grid-area: cta;
-    font-size: 30px;
-    color: var(--blue);
+.body.page.has-body-title {
+    grid-template-areas: 
+        "body-title" 
+        "article";
 }
 
 
-/* 
-    HOME
-    SECOND SECTION 
-    Merhaba, ben basak
-*/
 
+.body.blog.has-body-title.has-feature-image {
+    grid-template-areas: 
+        "body-title"
+        "post-excerpt-cards";
+}
 
-/* .body.home>.content>div:nth-child(2) h2,
-.body.home>.content>div:nth-child(2) p {
-    color: var(--white);
+/* .body.post.has-body-title.has-feature-image {
+    grid-template-areas: 
+        "body-title"
+        "article";
 } */
 
-.body.home>.content>div:nth-child(2) h2:before {
-    content: "";
-    background: url('/wp-content/uploads/parrot.svg') no-repeat;
-    height: 161px;
-    width: 172px;
-    position: absolute;
-    margin-top: -105px;
-    margin-left: -71px;
+.body.post.has-feature-image.has-body-title.has-post-excerpt-cards {
+    grid-template-areas: 
+        "body-title"
+        "article" 
+        "post-excerpt-cards";
 }
 
-.basak-decoration {
-    margin-top: -266px;
-    margin-left: -71px;
-}
 
+
+
+
+
+
+
+
+
+
+
+
+/* 
+    BODY TITLE
+*/
+.body-title {
+    grid-area: body-title;
+    font-size: 45px;
+    align-self: center;
+}
 
 /*
-    HOME
-    THIRD SECTION
-    Ilkelerim ve deneyimim
+    FEATURE IMAGE
 */
 
-.body.home>.content>div:nth-child(3)>.wp-block-group__inner-container {
-    grid-template-areas: "image heading" "image paragraph";
+.no-feature-image {
+    background-color: var(--green);
 }
 
-.body.home>.content>div:nth-child(3)>.wp-block-group__inner-container:after {
-    content: url('/wp-content/uploads/city.svg');
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
-/* 
-    HOME
-    FOURTH SECTION 
-    Birlikte gelisim
-*/
-
-.body.home>.content>div:nth-child(4)>.wp-block-group__inner-container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "heading posts" "paragraph posts";
-}
-
-.body.home>.content>div:nth-child(4)>.wp-block-group__inner-container:after {
-    content: url('/wp-content/uploads/conversation.svg');
-    position: absolute;
-    bottom: -15px;
-    left: var(--home-horizontal-padding);
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts {
-    grid-area: posts;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li {
-    background-color: var(--white);
-    margin: 1em;
-    padding: 1em;
-    display: grid;
-    grid-template-areas: "image title" "image time" "image excerpt";
-    grid-template-rows: "max-content min-content auto";
-    grid-column-gap: 1em;
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__featured-image {
-    grid-area: image;
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li time {
-    grid-area: time;
-    font-size: 0.8em;
-    color: var(--green)
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li a,
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
-    color: var(--blue);
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li a {
-    grid-area: title;
-    text-decoration: none;
-}
-
-.body.home>.content>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
-    grid-area: excerpt;
-}
-
-
-/* 
-    HOME
-    FIFTH SECTION 
-    Basari hikayeleri
-*/
-
-.body.home>.content>div:nth-child(5)>.wp-block-group__inner-container {
-    grid-template-rows: min-content auto;
-    grid-template-columns: none;
-    grid-template-areas: "heading" "posts";
-}
-
-.body.home>.content>div:nth-child(5)>.wp-block-group__inner-container:after {
-    content: url('/wp-content/uploads/success.svg');
-    position: absolute;
-    bottom: -21px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.body.home>.content>div:nth-child(5)>.wp-block-group__inner-container>h2 {
-    justify-self: center;
-}
-
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts {
-    grid-area: posts;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: row;
-}
-
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts>li {
-    /* background-color: var(--white); */
-    margin: 1em;
-    padding: 1em;
-    display: grid;
-    grid-template-areas: "image" "title" "excerpt";
-    grid-template-rows: "max-content max-content auto";
-    grid-row-gap: 1em;
-}
-
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts>li .wp-block-latest-posts__featured-image {
-    grid-area: image;
-}
-
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts>li a,
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
-    color: var(--blue);
-}
-
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts>li a {
-    grid-area: title;
-    text-decoration: none;
-}
-
-.body.home>.content>div:nth-child(5) .wp-block-latest-posts>li p {
-    grid-area: excerpt;
-    font-size: 18px;
-}
-
-
-/* 
-    HOME
-    SIXTH SECTION 
-    Konusalim mi?
-*/
-
-.body.home>.content>div:nth-child(6)>.wp-block-group__inner-container {
-    grid-template-rows: min-content auto;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "feature heading" "feature paragraph";
-}
-
-.body.home>.content>div:nth-child(6)>.wp-block-group__inner-container:after {
-    content: url('/wp-content/uploads/one-on-one.svg');
-    position: absolute;
-    bottom: -7px;
-    right: 160px;
-}
-
-
-/* .body.home>.content>div:nth-child(6)>.wp-block-group__inner-container>h2 {
-    justify-self: center;
-} */
-
-.body.home>.content>div:nth-child(6) .wpcf7 {
-    grid-area: feature;
-}
-
-.body.home>.content>div:nth-child(6) .wpcf7 p:not(:last-child) {
-    margin-bottom: 1em;
-}
-
-.body.home>.content>div:nth-child(6) .wpcf7 label {
-    font-family: "tajawal", "sans serif";
-    color: var(--white);
-}
-
-.body.home>.content>div:nth-child(6) .wpcf7 .wpcf7-text,
-.body.home>.content>div:nth-child(6) .wpcf7 .wpcf7-textarea {
-    border: none;
-    background-color: var(--white);
-    width: 100%;
-    padding: 0.5em;
-}
-
-.body.home>.content>div:nth-child(6) .wpcf7 .wpcf7-text:focus,
-.body.home>.content>div:nth-child(6) .wpcf7 .wpcf7-textarea:focus {
-    outline: none;
-    background-color: var(--beige);
-}
-
-.body.home>.content>div:nth-child(6) .wpcf7 .wpcf7-textarea {
-    resize: none;
-    height: 4em;
-}
-
-.body.home>.content>div:nth-child(6) .wpcf7 .wpcf7-submit {
-    width: 100%;
-    padding: 1em;
-    border: none;
-    background-color: var(--yellow);
-}
-
-
-/*
-    FIXED FEATURE IMAGE
-*/
-
+.no-feature-image,
 .feature-image {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     width: var(--fixed-feature-image-width);
-    background-color: var(--green);
 }
 
 .feature-image>img {
@@ -701,31 +390,9 @@ borders
     opacity: 0.5;
 }
 
-
 /* 
-    BLOG
-
+    POST EXCERPT CARDS
 */
-
-.has-feature-image {
-    display: grid; 
-    grid-template-areas: 
-        "page-title" 
-        "post-excerpt-cards";
-    grid-template-rows: 110px auto;
-    /* there is a similar gap pattern for home screen, these could be tidied*/
-    grid-row-gap: 4em;
-    padding-bottom: 400px;
-    padding-left: calc(var(--fixed-feature-image-width) + 7em);
-    padding-right: 200px;
-    padding-top: var(--accent-thickness);
-}
-
-.page-title {
-    grid-area: page-title;
-    font-size: 45px;
-    align-self: center;
-}
 
 .post-excerpt-cards {
     grid-area: post-excerpt-cards;  
@@ -775,3 +442,418 @@ borders
 .post-excerpt-card>.post-excerpt {
     grid-area: post-excerpt;
 }
+
+
+
+
+
+/* 
+    BLOG
+
+*/
+
+
+
+/* 
+    HOME
+    EVERY SECTION 
+ */
+
+.body.page.home {
+    padding: 0;
+    display: block;
+}
+.body.page.home>.body-title {
+    display: none;
+}
+
+.body.page.home>article>.wp-block-group,
+.body.page.home>article>.wp-block-group>.wp-block-group__inner-container {
+    height: 100vh;
+    position: relative;
+    margin: 0;
+}
+
+.body.page.home>article>div>.wp-block-group__inner-container>h1,
+.body.page.home>article>div>.wp-block-group__inner-container>h2,
+.body.page.home>article>div>.wp-block-group__inner-container>h3 {
+    grid-area: heading;
+    align-self: end;
+}
+
+.body.page.home>article>div>.wp-block-group__inner-container>h1 {
+    font-size: 50px;
+}
+
+.body.page.home>article>div>.wp-block-group__inner-container>h2 {
+    font-size: 40px;
+}
+
+.body.page.home>article>div>.wp-block-group__inner-container>h2 {
+    font-size: 35px;
+}
+
+.body.page.home>article>div>.wp-block-group__inner-container>p {
+    grid-area: paragraph;
+    font-size: 30px;
+}
+
+.body.page.home>article .wp-block-button {
+    background-color: var(--yellow);
+    color: var(--black);
+    padding: 1em;
+}
+
+.body.page.home>article .wp-block-button:hover {
+    background-color: var(--blue);
+    padding: 1em;
+    cursor: pointer;
+}
+
+
+/* 
+    HOME
+    EVERY SECTION EXCEPT FIRST
+*/
+
+.body.page.home>article>div:not(:first-child)>.wp-block-group__inner-container {
+    display: grid;
+    padding: var(--home-vertical-padding) var(--home-horizontal-padding);
+    grid-template-areas: "heading image" "paragraph image";
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 5em;
+    grid-row-gap: 3em;
+}
+
+.body.page.home>article>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover {
+    grid-area: image;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.body.page.home>article>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:before {
+    content: "";
+    width: calc(100% + var(--accent-thickness));
+    height: calc(100% - var(--accent-thickness));
+    position: absolute;
+    top: calc(var(--accent-thickness) /2);
+    left: calc(var(--accent-thickness) / 2 * -1);
+}
+
+.body.page.home>article>div:not(:first-child)>.wp-block-group__inner-container>.wp-block-cover:after {
+    content: "";
+    width: calc(100% - var(--accent-thickness));
+    height: calc(100% + var(--accent-thickness));
+    position: absolute;
+    top: calc(var(--accent-thickness) /2 * -1);
+    left: calc(var(--accent-thickness) /2);
+}
+
+
+/* 
+    HOME
+    FIRST SECTION
+    Introduction
+ */
+
+.body.page.home>article>div:first-child p {
+    color: var(--blue);
+}
+
+.body.page.home>article>div:first-child>.wp-block-group__inner-container {
+    display: grid;
+    grid-column-gap: 8em;
+    grid-row-gap: 4em;
+    grid-template-areas: "cover logo" "cover heading" "cover paragraph" "cover cta";
+    grid-template-columns: 2fr 2fr 1fr; /* this needs to comply with the feature image standard*/
+    grid-template-rows: 140px 150px max-content auto;
+    /* these two are for hiding the fixed logo from the first page */
+    position: absolute;
+    z-index: 2;
+}
+
+.body.page.home>article>div:first-child .wp-block-cover {
+    grid-area: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.body.page.home>article>div:first-child figure {
+    grid-area: logo;
+    display: grid;
+    grid-template-columns: 365px auto;
+    grid-template-rows: auto min-content;
+    grid-template-areas: 
+        "title empty" 
+        "logo empty";
+}
+
+.body.page.home>article>div:first-child figure>img {
+    grid-area: logo;
+    max-width: 100%;
+    display: block;
+    align-self: end;
+}
+
+.body.page.home>article>div:first-child figure>figcaption {
+    grid-area: title;
+    align-self: end;
+    justify-self: center;
+}
+
+.body.page.home>article>div:first-child h1 {
+    color: var(--blue);
+}
+
+.body.page.home>article>div:first-child .wp-block-buttons {
+    grid-area: cta;
+    font-size: 30px;
+    color: var(--blue);
+}
+
+
+/* 
+    HOME
+    SECOND SECTION 
+    Merhaba, ben basak
+*/
+
+
+/* .body.page.home>article>div:nth-child(2) h2,
+.body.page.home>article>div:nth-child(2) p {
+    color: var(--white);
+} */
+
+.body.page.home>article>div:nth-child(2) h2:before {
+    content: "";
+    background: url('/wp-content/uploads/parrot.svg') no-repeat;
+    height: 161px;
+    width: 172px;
+    position: absolute;
+    margin-top: -105px;
+    margin-left: -71px;
+}
+
+.basak-decoration {
+    margin-top: -266px;
+    margin-left: -71px;
+}
+
+
+/*
+    HOME
+    THIRD SECTION
+    Ilkelerim ve deneyimim
+*/
+
+.body.page.home>article>div:nth-child(3)>.wp-block-group__inner-container {
+    grid-template-areas: "image heading" "image paragraph";
+}
+
+.body.page.home>article>div:nth-child(3)>.wp-block-group__inner-container:after {
+    content: url('/wp-content/uploads/city.svg');
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* 
+    HOME
+    FOURTH SECTION 
+    Birlikte gelisim
+*/
+
+.body.page.home>article>div:nth-child(4)>.wp-block-group__inner-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "heading posts" "paragraph posts";
+}
+
+.body.page.home>article>div:nth-child(4)>.wp-block-group__inner-container:after {
+    content: url('/wp-content/uploads/conversation.svg');
+    position: absolute;
+    bottom: -15px;
+    left: var(--home-horizontal-padding);
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts {
+    grid-area: posts;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li {
+    background-color: var(--white);
+    margin: 1em;
+    padding: 1em;
+    display: grid;
+    grid-template-areas: "image title" "image time" "image excerpt";
+    grid-template-rows: "max-content min-content auto";
+    grid-column-gap: 1em;
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__featured-image {
+    grid-area: image;
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li time {
+    grid-area: time;
+    font-size: 0.8em;
+    color: var(--green)
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li a,
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
+    color: var(--blue);
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li a {
+    grid-area: title;
+    text-decoration: none;
+}
+
+.body.page.home>article>div:nth-child(4) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
+    grid-area: excerpt;
+}
+
+
+/* 
+    HOME
+    FIFTH SECTION 
+    Basari hikayeleri
+*/
+
+.body.page.home>article>div:nth-child(5)>.wp-block-group__inner-container {
+    grid-template-rows: min-content auto;
+    grid-template-columns: none;
+    grid-template-areas: "heading" "posts";
+}
+
+.body.page.home>article>div:nth-child(5)>.wp-block-group__inner-container:after {
+    content: url('/wp-content/uploads/success.svg');
+    position: absolute;
+    bottom: -21px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.body.page.home>article>div:nth-child(5)>.wp-block-group__inner-container>h2 {
+    justify-self: center;
+}
+
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts {
+    grid-area: posts;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts>li {
+    /* background-color: var(--white); */
+    margin: 1em;
+    padding: 1em;
+    display: grid;
+    grid-template-areas: "image" "title" "excerpt";
+    grid-template-rows: "max-content max-content auto";
+    grid-row-gap: 1em;
+}
+
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts>li .wp-block-latest-posts__featured-image {
+    grid-area: image;
+}
+
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts>li a,
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts>li .wp-block-latest-posts__post-excerpt {
+    color: var(--blue);
+}
+
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts>li a {
+    grid-area: title;
+    text-decoration: none;
+}
+
+.body.page.home>article>div:nth-child(5) .wp-block-latest-posts>li p {
+    grid-area: excerpt;
+    font-size: 18px;
+}
+
+
+/* 
+    HOME
+    SIXTH SECTION 
+    Konusalim mi?
+*/
+
+.body.page.home>article>div:nth-child(6)>.wp-block-group__inner-container {
+    grid-template-rows: min-content auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "feature heading" "feature paragraph";
+}
+
+.body.page.home>article>div:nth-child(6)>.wp-block-group__inner-container:after {
+    content: url('/wp-content/uploads/one-on-one.svg');
+    position: absolute;
+    bottom: -7px;
+    right: 160px;
+}
+
+
+/* .body.page.home>article>div:nth-child(6)>.wp-block-group__inner-container>h2 {
+    justify-self: center;
+} */
+
+.body.page.home>article>div:nth-child(6) .wpcf7 {
+    grid-area: feature;
+}
+
+.body.page.home>article>div:nth-child(6) .wpcf7 p:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+.body.page.home>article>div:nth-child(6) .wpcf7 label {
+    font-family: "tajawal", "sans serif";
+    color: var(--white);
+}
+
+.body.page.home>article>div:nth-child(6) .wpcf7 .wpcf7-text,
+.body.page.home>article>div:nth-child(6) .wpcf7 .wpcf7-textarea {
+    border: none;
+    background-color: var(--white);
+    width: 100%;
+    padding: 0.5em;
+}
+
+.body.page.home>article>div:nth-child(6) .wpcf7 .wpcf7-text:focus,
+.body.page.home>article>div:nth-child(6) .wpcf7 .wpcf7-textarea:focus {
+    outline: none;
+    background-color: var(--beige);
+}
+
+.body.page.home>article>div:nth-child(6) .wpcf7 .wpcf7-textarea {
+    resize: none;
+    height: 4em;
+}
+
+.body.page.home>article>div:nth-child(6) .wpcf7 .wpcf7-submit {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    background-color: var(--yellow);
+}
+
+
+
+
+/* 
+    YET UNSTRUCTURED
+*/
+
