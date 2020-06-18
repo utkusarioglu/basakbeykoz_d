@@ -114,7 +114,8 @@ select {
 }
 
  ::-webkit-scrollbar-thumb {
-    background: var(--white);
+    background: var(--yellow);
+    
     /* border-right: 2px solid var(--black); */
 }
 
