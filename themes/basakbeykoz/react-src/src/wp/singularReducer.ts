@@ -5,6 +5,7 @@ import { PartialSingularDispatch } from './@types-wp';
 
 const initialState: stateMap["singular"] = {
     post: {
+        fetchTime: 0,
         items: {}
     },
     page: {
@@ -22,6 +23,7 @@ export default function(
             if(action.state === "success") {
                 return {
                     post: {
+                        ...state.post,
                         items: {
                             ...state.post.items,
                             ...action.payload.post,
@@ -60,6 +62,7 @@ export default function(
                 return {
                     ...state,
                     post: {
+                        fetchTime: action.payload.fetchTime as number,
                         items: {
                             ...state.post.items,
                             ...action.payload.post,

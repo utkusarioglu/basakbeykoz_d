@@ -43,6 +43,7 @@ export const fetchCategoryPosts = (slug: string) =>
                 if(category_posts) { // !TODO you need a better success test here
                     const now = Date.now();
                     const payload = {
+                        fetchTime: Date.now(),
                         post: filterByType(category_posts, "post", now),
                         page: filterByType(category_posts, "page", now),
                     }

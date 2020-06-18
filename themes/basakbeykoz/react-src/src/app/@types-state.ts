@@ -18,6 +18,7 @@ export default interface stateMap {
     },
     singular: {
         post: {
+            fetchTime: number,
             items: SluggedTimestampedSingular,
         },
         page: {

@@ -24,7 +24,6 @@ interface wpSingularCommon {
 
 export interface wpSingularItem extends wpSingularItemForDisplay {
     ID: number,
-    type: singularTypes,
     author: number,
     date: string,
     excerpt: string,
@@ -35,6 +34,7 @@ export interface wpSingularItem extends wpSingularItemForDisplay {
 }
 
 export interface wpSingularItemForDisplay {
+    type: singularTypes,
     slug: string,
     title: string,
     thumbnail: string,
@@ -46,7 +46,9 @@ export interface wpSingularItemForDisplay {
 export type PartialSingularDispatch = Partial<SingularDispatch>
 
 export type SingularDispatch = {
-    [type in singularTypes]: SluggedTimestampedSingular
+    fetchTime: number,
+} & {
+    [type in singularTypes]: SluggedTimestampedSingular;
 }
 
 export interface TimestampedSingular {
