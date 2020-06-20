@@ -73,7 +73,7 @@ function Nav(
 
     const setDisplaying = (slug: string) => {
         props.setDisplaying({
-            slug: slug
+            slug,
         });        
     }
 
@@ -93,7 +93,8 @@ function Nav(
         })
 
     return (
-        <div style={styles.navWrap}>
+        <div
+            style={styles.navWrap}>
             <div style={styles.navDecor} />
             <nav style={styles.navList}>
                 {menuItems}

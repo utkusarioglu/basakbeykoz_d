@@ -67,7 +67,9 @@ function Social() {
     })
 
     return (
-        <div style={styles.social}>
+        <div
+            className="social-links" 
+            style={styles.social}>
             <div style={styles.socialList}>
                 {socialComponents}
             </div>
