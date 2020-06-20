@@ -7,7 +7,7 @@ import { setFetching, setDisplaying } from '../app/appActions'
 import stateMap from "../app/@types-state";
 import { singularTypes, wpSingularItem } from "../wp/@types-wp";
 
-import BodyContent from "./BodyContent";
+import Canvas from "./Canvas";
 
 const mapState = (state: RootState) => ({
     singular: state.singular,
@@ -78,7 +78,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
     }, [item, slug, fetchSingular, setFetching, setDisplaying])
 
     return (
-        <BodyContent 
+        <Canvas 
             slug={props.isDisplaying.active.slug}
             title={props.isDisplaying.active.title}
             type={props.isDisplaying.active.type}
