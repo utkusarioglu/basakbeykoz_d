@@ -1,0 +1,52 @@
+    /* 
+        POST EXCERPT CARDS
+    */
+
+    .post-excerpt-cards {
+        grid-area: post-excerpt-cards;  
+        margin-left: -2em;
+    }
+
+    .post-excerpt-card {
+        display: grid;
+        grid-template-areas: 
+            "post-thumbnail post-title" 
+            "post-thumbnail post-date"
+            "post-thumbnail post-excerpt";
+        grid-row-gap: 1em;
+        grid-column-gap: 4em;
+        padding: 2em;
+        margin-bottom: 3em;
+    }
+
+    .post-excerpt-card {
+        color: var(--blue);
+    }
+
+    .post-excerpt-card>.post-thumbnail {
+        grid-area: post-thumbnail;
+        width: 250px;
+        height: 250px;
+        /* object-fit: cover; */
+    }
+    .post-excerpt-card>.post-thumbnail>img {
+        /* width: auto;
+        height:auto; */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .post-excerpt-card>.post-title {
+        grid-area: post-title;
+    }
+
+
+    .post-excerpt-card>.post-date {
+        grid-area: post-date;
+    }
+
+
+    .post-excerpt-card>.post-excerpt {
+        grid-area: post-excerpt;
+    }

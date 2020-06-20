@@ -1,0 +1,417 @@
+.body {
+    &.page {
+        &.home {
+            padding: 0;
+            display: block;
+
+            & > .body-title {
+                display: none;
+            }
+
+            & > article {
+
+                & .wp-block-buttons {
+                    width: 100%;
+                }
+
+                & > .wp-block-group {
+                    &,
+                    & > .wp-block-group__inner-container {                        
+                        height: 100vh;
+                        position: relative;
+                        margin: 0;
+                    }
+
+                    & > .wp-block-group__inner-container {
+                        & > h1,
+                        & > h2,
+                        & > h3 {
+                            grid-area: heading;
+                            align-self: end;
+                        }
+
+                        & > h1 {
+                            font-size: 50px;
+                        }
+
+                        & > h2 {
+                            font-size: 35px;
+                        }
+
+                        & > p {
+                            grid-area: paragraph;
+                            font-size: 30px;
+                        }
+                    }
+                }
+    
+                & .wp-block-button {
+                    background-color: var(--yellow);
+                    color: var(--black);
+                    padding: 1em;
+
+                    &:hover {
+                        background-color: var(--blue);
+                        padding: 1em;
+                        cursor: pointer;
+                    }
+                }
+    
+                // Every section except first
+                & > div:not(:first-child) {
+                    & > .wp-block-group__inner-container {
+                        display: grid;
+                        padding: var(--home-vertical-padding) var(--home-horizontal-padding);
+                        grid-template-areas: 
+                            "heading image" 
+                            "paragraph image";
+                        grid-template-columns: 2fr 1fr;
+                        grid-column-gap: 5em;
+                        grid-row-gap: 3em;
+
+                        & > .wp-block-cover {
+                            grid-area: image;
+                            height: 100%;
+                            width: 100%;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            position: relative;
+
+                            @mixin frame-common {
+                                content: "";
+                                position: absolute;
+                            }
+                            $narrow-frame: calc(100% - var(--accent-thickness));
+                            $wide-frame: calc(100% + var(--accent-thickness));
+                            $extrude: calc(var(--accent-thickness) / 2 * -1);
+                            $bevel: calc(var(--accent-thickness) /2);
+
+                            &:before {
+                                @include frame-common;
+                                width: $wide-frame;
+                                height: $narrow-frame;
+                                top: $bevel;
+                                left: $extrude;
+                            }
+
+                            &:after {
+                                @include frame-common;
+                                width: $narrow-frame;
+                                height: $wide-frame;
+                                top: $extrude;
+                                left: $bevel;
+                            }
+                        }
+                    }
+                }
+
+                // HOME
+                // FIRST SECTION
+                // Introduction    
+                & > div:first-child {
+                    & p {
+                        color: var(--blue);
+                    }
+        
+                    & > .wp-block-group__inner-container {
+                        display: grid;
+                        grid-column-gap: 8em;
+                        grid-row-gap: 4em;
+                        grid-template-areas: 
+                            "cover logo" 
+                            "cover heading" 
+                            "cover paragraph" 
+                            "cover cta";
+                        grid-template-columns: 2fr 2fr 1fr; /* this needs to comply with the feature image standard*/
+                        grid-template-rows: 140px 150px max-content auto;
+                        /* these two are for hiding the fixed logo from the first page */
+                        position: absolute;
+                        z-index: 2;
+                    }
+        
+                    & .wp-block-cover {
+                        grid-area: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+        
+                    & figure {
+                        grid-area: logo;
+                        display: grid;
+                        grid-template-columns: 365px auto;
+                        grid-template-rows: auto min-content;
+                        grid-template-areas: 
+                            "title empty" 
+                            "logo empty";
+
+                        & > img {
+                            grid-area: logo;
+                            max-width: 100%;
+                            display: block;
+                            align-self: end;
+                        }
+
+                        & > figcaption {
+                            grid-area: title;
+                            align-self: end;
+                            justify-self: center;
+                        }
+                    }
+        
+                    & h1 {
+                        color: var(--blue);
+                    }
+        
+                    & .wp-block-buttons {
+                        grid-area: cta;
+                        font-size: 30px;
+                        color: var(--blue);
+                    }
+                }
+    
+    
+                /* 
+                    HOME
+                    SECOND SECTION 
+                    Merhaba, ben basak
+                */
+                
+                & > div:nth-child(2) {
+                    
+                    & h2:before {
+                        content: "";
+                        background: url('#{$uploads-path}/parrot.svg') no-repeat;
+                        height: 161px;
+                        width: 172px;
+                        position: absolute;
+                        margin-top: -105px;
+                        margin-left: -71px;
+                    }
+        
+                    & .basak-decoration {
+                        margin-top: -266px;
+                        margin-left: -71px;
+                    }
+                }
+    
+
+    
+    
+                /*
+                    HOME
+                    THIRD SECTION
+                    Ilkelerim ve deneyimim
+                */
+                & > div:nth-child(3) {
+                    & > .wp-block-group__inner-container {
+                        grid-template-areas: 
+                            "image heading" 
+                            "image paragraph";
+
+                        &:after {
+                            content: url('#{$uploads-path}/city.svg');
+                            position: absolute;
+                            bottom: -15px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                    }
+                }
+    
+    
+    
+                /* 
+                    HOME
+                    FOURTH SECTION 
+                    Birlikte gelisim
+                */
+                & > div:nth-child(4) {
+                    & >.wp-block-group__inner-container {
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-areas: 
+                            "heading posts" 
+                            "paragraph posts";
+
+                        &:after {
+                            content: url('#{$uploads-path}/conversation.svg');
+                            position: absolute;
+                            bottom: -15px;
+                            left: var(--home-horizontal-padding);
+                        }
+                    }
+        
+                    & .wp-block-latest-posts {
+                        grid-area: posts;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+
+                        & > li {
+                            background-color: var(--white);
+                            margin: 1em;
+                            padding: 1em;
+                            display: grid;
+                            grid-template-areas: 
+                                "image title" 
+                                "image time" 
+                                "image excerpt";
+                            grid-template-rows: "max-content min-content auto";
+                            grid-column-gap: 1em;
+
+                            & .wp-block-latest-posts__featured-image {
+                                grid-area: image;
+                            }
+
+                            & time {
+                                grid-area: time;
+                                font-size: 0.8em;
+                                color: var(--green)
+                            }
+
+                            & .wp-block-latest-posts__post-excerpt {
+                                grid-area: excerpt;
+                                color: var(--blue);
+                            }
+                            
+                            & a {
+                                color: var(--blue);
+                                grid-area: title;
+                                text-decoration: none;
+                            }
+                        }
+                    }              
+                }
+    
+
+    
+    
+                /* 
+                    HOME
+                    FIFTH SECTION 
+                    Basari hikayeleri
+                */
+                & > div:nth-child(5) {
+                    & > .wp-block-group__inner-container {
+                        grid-template-rows: min-content auto;
+                        grid-template-columns: none;
+                        grid-template-areas: "heading" "posts";
+
+                        &:after {
+                            content: url('#{$uploads-path}/success.svg');
+                            position: absolute;
+                            bottom: -21px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+
+                        & > h2 {
+                            justify-self: center;
+                        }
+                    }
+        
+                    & .wp-block-latest-posts {
+                        grid-area: posts;
+                        overflow-x: scroll;
+                        overflow-y: hidden;
+                        display: flex;
+                        flex-direction: row;
+
+                        & > li {
+                            margin: 1em;
+                            padding: 1em;
+                            display: grid;
+                            grid-template-areas: 
+                                "image" 
+                                "title" 
+                                "excerpt";
+                            grid-template-rows: "max-content max-content auto";
+                            grid-row-gap: 1em;
+
+                            & .wp-block-latest-posts__featured-image {
+                                grid-area: image;
+                            }
+
+                            & a {
+                                color: var(--blue);
+                                grid-area: title;
+                                text-decoration: none;
+                            }
+
+                            & .wp-block-latest-posts__post-excerpt {
+                                color: var(--blue);
+                                grid-area: excerpt;
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+    
+    
+                /* 
+                    HOME
+                    SIXTH SECTION 
+                    Konusalim mi?
+                */
+    
+                & > div:nth-child(6) {
+                    & > .wp-block-group__inner-container {
+                        grid-template-rows: min-content auto;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-areas: 
+                            "feature heading" 
+                            "feature paragraph";
+
+                        &:after {
+                            content: url('#{$uploads-path}/one-on-one.svg');
+                            position: absolute;
+                            bottom: -7px;
+                            right: 160px;
+                        }
+                    }
+        
+                    & .wpcf7 {
+                        grid-area: feature;
+
+                        & p:not(:last-child) {
+                            margin-bottom: 1em;
+                        }
+            
+                        & label {
+                            font-family: "tajawal", "sans serif";
+                            color: var(--white);
+                        }
+            
+                        & .wpcf7-text,
+                        & .wpcf7-textarea {
+                            border: none;
+                            background-color: var(--white);
+                            width: 100%;
+                            padding: 0.5em;
+
+                            &:focus {
+                                outline: none;
+                                background-color: var(--beige);
+
+                            }
+                        }
+            
+                        & .wpcf7-textarea {
+                            resize: none;
+                            height: 4em;
+                        }
+            
+                        & .wpcf7-submit {
+                            width: 100%;
+                            padding: 1em;
+                            border: none;
+                            background-color: var(--yellow);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
