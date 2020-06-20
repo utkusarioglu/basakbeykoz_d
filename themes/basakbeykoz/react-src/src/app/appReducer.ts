@@ -16,7 +16,7 @@ const initialState: stateMap["app"] = {
             type: "page",
             title: "",
             content: "",
-            thumbnail: "",
+            thumbnail: " ",
         },
     }
 }
