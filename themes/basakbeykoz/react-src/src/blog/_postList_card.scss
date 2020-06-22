@@ -1,0 +1,16 @@
+@import "../common/_global";
+
+.PostList {
+    &-card {
+        text-decoration: none;
+        color: var(--blue);
+
+        &-thumbnail {
+            overflow: hidden;
+            & > img {
+                width: calc(100vw - (2 * var(--accent-thickness)));
+                height: auto;
+            }
+        }
+    }
+}

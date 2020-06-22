@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { CSSStyles } from "../app/@types-app";
+import "./_postList_card.scss";
 
 interface Props {
     title: string,
@@ -11,16 +11,7 @@ interface Props {
     thumbnail: string,
 }
 
-const styles: CSSStyles = {
-    img: {
-        overflow: "hidden",
-    },
-    link: {
-        textDecoration: "none",
-    }
-}
-
-function PostExcerptCard(props: Props): React.FunctionComponentElement<Props> {
+function PostListCard(props: Props): React.FunctionComponentElement<Props> {
     const excerpt = props.excerpt !== "" 
         ? props.excerpt
         : createExcerpt(props.content);
@@ -31,22 +22,20 @@ function PostExcerptCard(props: Props): React.FunctionComponentElement<Props> {
     return (
         <Link 
             to={"/" + props.slug}
-            className="post-excerpt-card"
-            style={styles.link}
+            className="PostList-card"
             >
             <div
-                className="post-thumbnail"
-                style={styles.img} 
+                className="PostList-card-thumbnail"
                 dangerouslySetInnerHTML={{__html: props.thumbnail}}/>
-            <h2 
-                className="post-title">
+            <h3 
+                className="PostList-card-title">
                 {props.title}
-                </h2>
+                </h3>
             <span 
-                className="post-date">
+                className="PostList-card-date">
                 {date}</span>
             <p 
-                className="post-excerpt" 
+                className="PostList-card-excerpt" 
                 dangerouslySetInnerHTML={{__html: excerpt}}></p>
             
         </Link>
@@ -57,4 +46,4 @@ function createExcerpt(content: Props['content']): Props["excerpt"] {
     return content.split("</p>")[0] + "</p>";
 }
 
-export default PostExcerptCard;
+export default PostListCard;

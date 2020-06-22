@@ -1,49 +1,32 @@
 import React from "react";
-import { CSSStyles } from "./@types-app";
+import "./_app.scss";
 
 import { Provider } from 'react-redux';
 import store from "./store";
 import { Route, BrowserRouter as Router, Switch, } from 'react-router-dom'
 
-
 import Header from "../header/Header";
 import Body from '../body/Body';
-import Spinner from "../app/Spinner";
+import Spinner from "../spinner/Spinner";
 import Footer from '../footer/Footer';
 import Nav from "../header/Nav";
 import Social from '../header/Social';
 import Blog from "../blog/Blog";
 
-const styles: CSSStyles = {
-    app: {
-        overflow: 'hidden',
-        // height: "100vh",
-    },
-    scrollingElements: {
-        display: "grid",
-        gridTemplateRows: "auto min-content",
-        minHeight: "100vh",
-        position: "relative",
-    }
-}
-
 function App() {
-    const blog_slug = process.env.REACT_APP_BLOG_SLUG;
+    const blog_slug = process.env.REACT_APP_BLOG_SLUG as string;
 
     return (
         <Provider store={store}>
             <Router>
-                <div 
-                    className="App" 
-                    style={styles.app}
-                    >
+                <div className="App">
                     <Spinner />
                     <Header />
-                    <Social />
-                    <Nav />
-                    <div
-                        className="scrolling-elements" 
-                        style={styles.scrollingElements} >
+                    <div className="App-wideScreenControls">
+                        <Social />
+                        <Nav />
+                    </div>
+                    <div className="App-scrollingElements">
                         <Switch>
                             <Route 
                                 exact 

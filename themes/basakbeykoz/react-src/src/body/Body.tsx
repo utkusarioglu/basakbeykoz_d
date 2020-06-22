@@ -6,6 +6,7 @@ import { fetchSingular } from "../wp/singularActions";
 import { setFetching, setDisplaying } from '../app/appActions'
 import stateMap from "../app/@types-state";
 import { singularTypes, wpSingularItem } from "../wp/@types-wp";
+import "./_body.scss";
 
 import Canvas from "./Canvas";
 
@@ -45,7 +46,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
     const setDisplaying = props.setDisplaying;
     const fetchSingular = props.fetchSingular;
 
-    console.log(props.isDisplaying)
+    // console.log(props.isDisplaying)
 
     const url_slug = useParams<{slug: string}>().slug || "home";
     const slug = props.isDisplaying.slug;
@@ -62,7 +63,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
             setFetching(true);
             setTimeout(() => {
                 fetchSingular(slug)
-            }, 1000)
+            }, 100)
         } else {
             setDisplaying({
                 active: {
@@ -83,8 +84,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
             title={props.isDisplaying.active.title}
             type={props.isDisplaying.active.type}
             content={props.isDisplaying.active.content}
-            thumbnail={props.isDisplaying.active.thumbnail}
-            />
+            thumbnail={props.isDisplaying.active.thumbnail}/>
     )
 }
 

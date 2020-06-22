@@ -1,0 +1,14 @@
+@import "../common/_global";
+
+.PostList {
+    li {
+        list-style: none;
+        margin-bottom: 8rem;
+    }
+
+    ol {
+        margin: 0;
+        padding: 0;
+        // display: flex;
+    }
+}

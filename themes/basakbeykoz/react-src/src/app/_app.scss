@@ -1,0 +1,22 @@
+@import "../common/_global";
+
+.App {
+    overflow: hidden;
+
+    &-wideScreenControls {
+        display: none;
+    }
+
+    &-scrollingElements {
+        min-height: calc(100vh - #{$mobileNavigationHeight} + #{$footerSquareSize});
+        // min-height: calc(100vh - #{$mobileNavigationHeight});
+        position: relative;
+        margin-bottom: #{$mobileNavigationHeight};
+    }
+
+    @include wideScreen() {
+        &-wideScreenControls {
+            display: block;
+        }
+    }
+}

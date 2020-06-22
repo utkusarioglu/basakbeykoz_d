@@ -1,0 +1,17 @@
+@import "../common/_global";
+
+.Logo {
+    &-decor {
+        display: none;
+        width: var(--accent-thickness);
+        height: 100%;
+        background: var(--blue);
+        left: 0;
+    }
+    &-logo > img {
+        margin-left: #{$accentThickness /2};
+        margin-top: 5px;
+        width: 100px;
+        filter: var(--blue-filter);    
+    }
+}

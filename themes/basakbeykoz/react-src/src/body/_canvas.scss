@@ -1,0 +1,42 @@
+@import "../common/_global";
+
+.Canvas {
+    &-decor {
+        grid-area: Canvas-decor;
+        grid-template-areas: "Heading-h2";
+        overflow: auto;
+        display: grid;
+        position: relative;
+        min-height: $mobileFeatureImageHeight;
+        width: 100%;
+
+        & > h2 {
+
+            align-self: end;
+            display: block;
+            bottom: 0;
+            box-sizing: border-box;
+            width: 100%;
+            padding: var(--accent-thickness);
+            text-align: center;
+            
+        }
+
+        // Feature image has its own style file
+    }
+
+
+    article {
+        grid-area: Article;
+        padding: var(--accent-thickness);
+
+        p {
+
+            // font-family: $textFont;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}

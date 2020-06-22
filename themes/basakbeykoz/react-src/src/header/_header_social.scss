@@ -1,0 +1,37 @@
+@import "../common/_global";
+
+.Header {
+    .Social {
+        display: flex;
+        align-items: center;
+        grid-column-gap: calc( var(--accent-thickness) / 2);
+        height: 100%;
+
+        a {
+            // line-height: 20px;
+            height: #{$accentThickness + $socialIconSize};
+            // width: #{$accentThickness};
+        }
+
+        &-decor {
+            display: none;
+            width: #{$accentThickness};
+            height: 100%;
+            background: var(--blue);
+            right: 0;
+        }
+
+        &-list {
+            display: flex;
+            overflow: auto;
+            flex-direction: row;
+            justify-items: right;
+            padding-left: 0;
+        }
+
+        &-icon {
+            @include headerIcon();
+        }
+    }
+}
+

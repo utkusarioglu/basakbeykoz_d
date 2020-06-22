@@ -1,0 +1,49 @@
+@import "../common/_global";
+
+.Footer {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &-credits {
+        position: absolute;
+        box-sizing: border-box;
+        display: grid;
+        font-family: $textFont;
+        background: var(--black);
+        justify-items: end;
+        align-items: end;
+        bottom: 0;
+        right: 0;
+        padding: #{$accentThickness / 2};
+        font-size: 1rem;
+        width: #{$footerSquareSize};
+        height: #{$footerSquareSize};
+    }
+
+    &-art {
+        position: absolute;
+        display:block;
+        bottom: -7px;
+        right: 100px;
+        left: 0;
+        & > img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    
+    &-yearAndName {
+        color: var(--white);
+        text-align: right;
+    }
+
+    @include wideScreen() {
+        width: 8rem;
+        height: 8rem;
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
+}

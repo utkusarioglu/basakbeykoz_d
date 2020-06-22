@@ -1,39 +1,40 @@
 import React from "react";
-import { CSSStyles } from "../app/@types-app";
+// import { CSSStyles } from "../app/@types-app";
+import "./_header_social.scss";
 
-const styles: CSSStyles = {
-    social: {
-        position: "fixed",
-        top: "var(--accent-thickness)",
-        right: 0,
-        zIndex: 10,
-        display: "grid",
-        alignItems: "center",
-        gridColumnGap: "calc( var(--accent-thickness) / 2)",
-        gridAutoFlow: "column",
-    },
-    decor: {
-        width: "var(--accent-thickness)",
-        height: "var(--head-section-height)",
-        background: "var(--blue)",
-        right: 0,
-    },
-    socialItem: {
-        height: "50px",
-        width: "50px",
-        padding: "10px 10px 10px 10px",
-        filter: "var(--blue-filter)",
-    },
-    socialList: {
-        display: "flex",
-        flexDirection: "row",
-        justifyItems: "right",
-        // paddingTop: "var(--accent-thickness)",
-        // paddingBottom: "var(--accent-thickness)",
-        // paddingRight: "var(--accent-thickness)",
-        paddingLeft: 0,
-    },
-}
+// const styles: CSSStyles = {
+    // social: {
+    //     position: "fixed",
+    //     top: "var(--accent-thickness)",
+    //     right: 0,
+    //     zIndex: 10,
+    //     display: "grid",
+    //     alignItems: "center",
+    //     gridColumnGap: "calc( var(--accent-thickness) / 2)",
+    //     gridAutoFlow: "column",
+    // },
+    // decor: {
+    //     width: "var(--accent-thickness)",
+    //     height: "var(--head-section-height)",
+    //     background: "var(--blue)",
+    //     right: 0,
+    // },
+    // socialItem: {
+    //     height: "50px",
+    //     width: "50px",
+    //     padding: "10px 10px 10px 10px",
+    //     filter: "var(--blue-filter)",
+    // },
+    // socialList: {
+    //     display: "flex",
+    //     flexDirection: "row",
+    //     justifyItems: "right",
+    //     // paddingTop: "var(--accent-thickness)",
+    //     // paddingBottom: "var(--accent-thickness)",
+    //     // paddingRight: "var(--accent-thickness)",
+    //     paddingLeft: 0,
+    // },
+// }
 
 function Social() {
 
@@ -57,23 +58,20 @@ function Social() {
                 href={link.link} 
                 target="blank">
                 <img 
-                    style={styles.socialItem} 
+                    className="Social-icon"
                     src={link.icon}
                     title={link.title} 
                     alt={link.title}></img>
-            </a>
-                
+            </a>       
         )
     })
 
     return (
-        <div
-            className="social-links" 
-            style={styles.social}>
-            <div style={styles.socialList}>
+        <div className="Social">
+            <div className="Social-list">
                 {socialComponents}
             </div>
-            <div style={styles.decor} />
+            <div className="Social-decor" />
         </div>
     )
 }

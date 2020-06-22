@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import PostList from "../blog/PostList";
 import { wpSingularItemForDisplay } from "../wp/@types-wp";
+import "./_canvas.scss";
 
 interface Props extends wpSingularItemForDisplay {}
 
@@ -13,29 +14,29 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
     
     let featureImage;
     if( props.thumbnail !== "") {
-        bodyExtraClasses.push("has-feature-image");
+        bodyExtraClasses.push("has-FeatureImage");
         featureImage = (
             <div 
-                className="feature-image"
+                className="FeatureImage-on"
                 dangerouslySetInnerHTML={{__html: props.thumbnail}} />
         ); 
     } else {
         featureImage = (
-            <div className="no-feature-image" />
+            <div className="FeatureImage-off" />
         );
     }
     
     let bodyTitle; 
     if( props.title !== "") {
-        bodyExtraClasses.push("has-body-title");
-        bodyTitle = <h2 className="body-title text-blue">{props.title}</h2>
+        bodyExtraClasses.push("has-CanvasTitle");
+        bodyTitle = <h2 className="CanvasTitle text-blue">{props.title}</h2>
     }
 
     let postExcerptCards;
     let excludeSlug = [];
     if ( props.type === "post") {
         excludeSlug.push(props.slug);
-        bodyExtraClasses.push("has-post-excerpt-cards");
+        bodyExtraClasses.push("has-PostExcerptList");
         postExcerptCards = (
             <PostList excludeSlug={excludeSlug} />
         );
@@ -43,9 +44,11 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
     
     return (
         <Fragment>
-            {featureImage}
-            <div className={"body " + bodyExtraClasses.join(" ")}>
-                {bodyTitle}
+            <div className={"Canvas " + bodyExtraClasses.join(" ")}>
+                <div className="Canvas-decor">
+                    {featureImage}
+                    {bodyTitle}
+                </div>
                 <article 
                     dangerouslySetInnerHTML={{__html: props.content}} />
                 {postExcerptCards}

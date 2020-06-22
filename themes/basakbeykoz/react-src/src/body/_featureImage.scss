@@ -1,0 +1,39 @@
+@import "../common/_global";
+
+.FeatureImage {
+
+    @mixin common {
+        // grid-area: FeatureImage;
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        left: 0;
+        top: 0;
+        height: 100%;
+
+        
+        @include wideScreen() {
+            position: fixed;
+            right: auto;
+            height: auto;
+            bottom: 0;
+            width: var(--fixed-feature-image-width);
+        }
+    }
+
+    &-off {
+        @include common();
+        background-color: var(--green);
+    }
+
+    &-on {
+        @include common();
+
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+    }
+}

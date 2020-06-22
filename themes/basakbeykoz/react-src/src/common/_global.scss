@@ -1,0 +1,245 @@
+//Vars
+$uploadsPath: "/wp-content/uploads";
+$defaultFontSize: 20px;
+$textFont: "Work Sans", sans-serif;
+$titleFont: 'Montserrat', sans-serif;
+
+$wideScreenPx: 1200;
+
+$mobileNavigationHeight: 55px;
+$mobileFeatureImageHeight: 200px;
+$mobile_FeatureImageHeight_home: 300px;
+
+$accentThickness: 30px;
+
+$excerptFontSize: 15px;
+
+$footerSquareSize: 100px;
+
+$socialIconSize: 20px;
+
+// Externals
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+:root {
+    /* measurements */
+    --wp-frame-width: 1200px;
+    --wp-frame-padding-x: 7em;
+    --wp-text-with: 800px;
+    --accent-thickness: #{$accentThickness};
+
+    --home-vertical-padding: 200px;
+    --home-horizontal-padding: 400px;
+
+    --fixed-feature-image-width: 470px;
+    --head-section-height: 110px;
+}
+
+/* 
+    SCROLLBAR 
+*/
+::-webkit-scrollbar {
+    & {
+        width: var(--accent-thickness);
+    }
+    &-track {
+        background: var(--blue);
+    }
+    &-thumb {
+        background: var(--yellow);
+        
+        &:hover {
+            background: var(--black);
+            border-right: var(--black);
+        }
+    }
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--white);
+    color: var(--black);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: $defaultFontSize;
+}
+
+
+@mixin heading($name, $fontSize, $lineHeight) {
+    grid-area: Heading-#{$name};
+    color: var(--blue);
+    font-family: $titleFont;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    margin: 0;
+
+}
+
+$h1FontSize: 40px;
+$h1LineHeight: 46px;
+h1 {
+    @include heading(h1, $h1FontSize, $h1LineHeight);
+}
+
+$h2FontSize: 30px;
+$h2LineHeight: 34.5px;
+h2 {
+    @include heading(h2, $h2FontSize, $h2LineHeight);
+}
+
+$h3FontSize: 25px;
+$h3LineHeight: 30px;
+h3 {
+    @include heading(h3, $h3FontSize, $h3LineHeight);
+}
+
+$h4FontSize: 20px;
+$h4LineHeight: 30px;
+h4 {
+    @include heading(h4, $h4FontSize, $h4LineHeight);
+}
+
+$h5FontSize: 16px;
+$h5LineHeight: 20px;
+h5 {
+    @include heading(h5, $h5FontSize, $h5LineHeight);
+}
+
+$h6FontSize: 14px;
+$h6LineHeight: 18px;
+h6 {
+    @include heading(h6, $h6FontSize, $h6LineHeight);
+}
+
+.body.page.home>article>div .wp-block-latest-posts>li,
+span,
+nav {
+    color: var(--blue);
+    font-family: $textFont;
+}
+
+
+.wp-block-button__link,
+figcaption {
+        font-family: $titleFont;
+        margin: 0;
+}
+
+
+$pFontSize: 20px;
+$pLineHeight: 25px;
+p {
+    grid-area: "paragraph";
+    color: var(--blue);
+    font-family: $textFont;
+    font-size: $pFontSize;
+    line-height: $pLineHeight;
+    margin: 0;
+}
+
+
+// /* logo */
+
+// .logo:hover img {
+//     filter: none !important;
+// }
+
+/* 
+    IMAGE BORDERS 
+*/
+@function to-degree($direction) {
+    @if $direction == horizontal {
+        @return 90deg;
+    } @else if $direction == vertical {
+        @return 0deg;
+    }
+}
+
+@function frame($color, $direction) {
+    $degree: to-degree($direction);
+    $at: var(--accent-thickness);
+    @return linear-gradient(
+        $degree, 
+        $color calc(#{$at}/2), 
+        transparent calc(#{$at}/2), 
+        transparent calc(100% - #{$at}/2), 
+        $color calc(100% - #{$at}/2)
+    );
+}
+
+
+
+/*
+    COLORS
+*/
+:root {
+    --white: #F4F4F9;
+    --black: #071013;
+    --blue: #456266;
+    --yellow: #E9B44C;
+    --green: #81AE9D;
+    --beige: #F6D697;
+    /* This calculation has been made by the code at this address: https://codepen.io/sosuke/pen/Pjoqqp */
+    --blue-filter: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
+    --logo-white-filter: brightness(0) invert(100%) sepia(1%) saturate(4410%) hue-rotate(181deg) brightness(94%) contrast(107%);
+}
+
+$colors: green, yellow, white, blue, black, beige;
+@each $color in $colors {
+
+    .bg-#{$color} {
+        background-color: var(--#{$color});
+    }
+
+    .text-#{$color} {
+        color: var(--#{$color});
+    }
+
+    .#{$color} {
+        $var-color: var(--#{$color});
+        &-horizontal-border:before {
+            background: frame($var-color, horizontal);
+        }
+        &-vertical-border:after {
+            background: frame($var-color, vertical);
+        }
+    }
+}
+
+
+$scut-rem-base: 16 !default;
+
+@function scut-strip-unit ($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function scut-rem ($pixels) {
+  @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
+}
+
+// Let's name this "min-width" and take a single argument we can
+// use to define the viewport width in a media query.
+@mixin min-width($threshold) {
+    // We're calling another function (scut-rem) to convert pixels to rem units.
+    // We'll cover that in the next section.
+    @media screen and (min-width: scut-rem($threshold)) {
+      @content;
+    }
+  }
+
+@mixin wideScreen {
+    @include min-width($wideScreenPx) {
+        @content;
+    }
+}
+
+
+@mixin headerIcon() {
+    height: #{$socialIconSize};
+    width: #{$socialIconSize};
+    padding: #{$accentThickness / 2};
+    filter: var(--blue-filter);    
+}

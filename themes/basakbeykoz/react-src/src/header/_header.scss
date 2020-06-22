@@ -1,0 +1,50 @@
+@import "../common/_global";
+
+.Header {
+    display: grid;
+    align-items: center;
+    grid-auto-flow: column;
+    // grid-column-gap:calc(var(--accent-thickness) / 2);
+    grid-template-columns: #{$accentThickness} min-content auto #{$accentThickness};
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    background-color: var(--yellow);
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100vw;
+    height: $mobileNavigationHeight;
+    // height: 300px;
+
+    &-mobileControls {
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        height: 100%;
+        justify-self: end;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &-decor {
+        &-right,
+        &-left {
+            width: #{$accentThickness};
+            height: 100%;
+            background: var(--blue);
+        }
+    }
+
+    @include wideScreen() {
+        background-color: transparent;
+        width: 350px;        
+
+        &-mobileControls {
+            display: none;
+        }
+    }
+
+}

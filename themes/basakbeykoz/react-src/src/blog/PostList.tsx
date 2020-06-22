@@ -3,24 +3,18 @@ import { connect } from "react-redux";
 import { RootState } from "../app/rootReducer";
 import { fetchCategoryPosts } from "../wp/singularActions";
 import { setFetching } from "../app/appActions";
-// import { CSSStyles } from "../app/@types-app";
+import "./_postList.scss";
 
-import PostExcerptCard from "./PostExcerptCard";
+import PostListCard from "./PostListCard";
 
 const mapState = (state: RootState) => ({
     posts: state.singular.post,
-    // singular: state.singular,
-    // pages: state.pages,
-    // isDisplaying: state.app.isDisplaying,
-    // isFetching: state.app.isFetching,
+
 })
 
 const mapDispatch = { 
     fetchCategoryPosts,
     setFetching,
-    // fetchSingular,
-    // setFetching,
-    // setDisplaying,
 }   
 
 interface OwnProps {
@@ -59,23 +53,27 @@ function PostList(props: Props): React.FunctionComponentElement<Props> {
         .map((single) => {
         const d = single.data
         return (
-            <PostExcerptCard 
-                key={d.slug}
-                title={d.title}
-                date={d.date}
-                content={d.content}
-                excerpt={d.excerpt}
-                slug={d.slug}
-                thumbnail={d.thumbnail}
-            />
+            <li key={d.slug}>
+                <PostListCard 
+                    title={d.title}
+                    date={d.date}
+                    content={d.content}
+                    excerpt={d.excerpt}
+                    slug={d.slug}
+                    thumbnail={d.thumbnail}
+                />
+
+            </li>
         )
     })
 
 
 
     return (
-        <div className="post-excerpt-cards">
-            {post_list}
+        <div className="PostList">
+            <ol>
+                {post_list}
+            </ol>
         </div>
     )
 }

@@ -1,0 +1,35 @@
+@import "../common/_global";
+
+.Spinner {
+    position: fixed;
+    padding: 3rem;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    justify-items: center;
+    grid-row-gap: 1rem;
+    grid-template-rows: 45% 65%;
+    z-index: 90;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    &-logo {
+        align-self: end;
+        filter: var(--blue-filter);
+        
+        @include wideScreen() {
+            height: 60px;
+        }
+    }
+
+    &-loadMessage {
+        font-family: $textFont;
+        align-self: top;
+        color: var(--blue);
+
+        @include wideScreen() {
+            font-size: 25px;
+        }
+    }
+}
