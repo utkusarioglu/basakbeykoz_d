@@ -15,7 +15,7 @@
 
         &-list {
             position: fixed;
-            bottom: #{$mobileNavigationHeight};
+            bottom: #{$mobileNavigationHeight - 1px};
             left: 0;
             right: 0;
             flex-direction: column;
@@ -66,6 +66,25 @@
             text-decoration: none;
             color: var(--white);
             text-align: right;
+            position: relative;
+
+            &-active {
+                color: var(--blue);
+                // color: pink;
+                // padding-right: #{$accentThickness * 2}
+                &:after {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    // left: 0;
+                    width: #{$accentThickness / 2};
+                    // height: 100%;
+                    background-color: var(--blue);
+                }
+            }
+
         }
 
         &-wrap {
