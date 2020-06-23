@@ -1,0 +1,75 @@
+//Vars
+$uploadsPath: "/wp-content/uploads";
+$defaultFontSize: 20px;
+$textFont: "Work Sans", sans-serif;
+$titleFont: 'Montserrat', sans-serif;
+
+$wideScreenPx: 1200;
+
+$mobileNavigationHeight: 55px;
+$mobileFeatureImageHeight: 200px;
+$mobile_FeatureImageHeight_home: 300px;
+
+$accentThickness: 30px;
+
+$excerptFontSize: 15px;
+
+$footerSquareSize: 100px;
+
+$socialIconSize: 20px;
+
+$fonts: (
+    h1: (
+        font-size: 40px,
+        line-height: 46px,
+        font-family: $titleFont,
+    ),
+    h2: (
+        font-size: 30px,
+        line-height: 34.5px,
+        font-family: $titleFont,
+    ),
+    h3: (
+        font-size: 25px,
+        line-height: 30px,
+        font-family: $titleFont,
+    ),
+    h4: (
+        font-size: 20px,
+        line-height: 30px,
+        font-family: $titleFont,
+    ),
+    h5: (
+        font-size: 16px,
+        line-height: 20px,
+        font-family: $titleFont,
+    ),
+    h6: (
+        font-size: 14px,
+        line-height: 18px,
+        font-family: $titleFont,
+    ),
+);
+
+$h1FontSize: 40px;
+$h1LineHeight: 46px;
+
+$h2FontSize: 30px;
+$h2LineHeight: 34.5px;
+
+$h3FontSize: 25px;
+$h3LineHeight: 30px;
+
+$h4FontSize: 20px;
+$h4LineHeight: 30px;
+
+$h5FontSize: 16px;
+$h5LineHeight: 20px;
+
+$h6FontSize: 14px;
+$h6LineHeight: 18px;
+
+$pFontSize: 20px;
+$pLineHeight: 25px;
+
+$scut-rem-base: 16 !default;

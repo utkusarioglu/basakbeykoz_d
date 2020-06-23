@@ -1,4 +1,8 @@
-@import "../common/global";
+@import "../common/_vars";
+@import "../common/_mixins";
+
+// @use "../index.scss" as index;
+
 
 @mixin wpPosts($type) {
     .wp-block-latest-posts {
@@ -59,7 +63,7 @@
             }
 
             time {
-                @extend p;
+                @include p();
                 grid-area: time;
                 font-size: 0.8em;
                 color: var(--green)
@@ -67,7 +71,7 @@
 
             .wp-block-latest-posts__post-full-content,
             .wp-block-latest-posts__post-excerpt {
-                @extend p;
+                @include p();
                 font-size: $excerptFontSize;
                 grid-area: excerpt;
                 color: var(--blue);
@@ -90,7 +94,7 @@
             }
             
             a {
-                @extend h4;
+                @include h4;
                 // color: var(--blue);
                 grid-area: title;
                 text-decoration: none;

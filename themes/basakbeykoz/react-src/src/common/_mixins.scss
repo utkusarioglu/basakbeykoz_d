@@ -1,0 +1,99 @@
+@use "sass:map";
+@import "_vars";
+
+@function scut-strip-unit ($num) {
+    @return $num / ($num * 0 + 1);
+}
+  
+@function scut-rem ($pixels) {
+    @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
+}
+
+@mixin min-width($threshold) {
+      @media screen and (min-width: scut-rem($threshold)) {
+        @content;
+    }
+}
+  
+@mixin wideScreen {
+    @include min-width($wideScreenPx) {
+        @content;
+    }
+}
+  
+  
+@mixin headerIcon() {
+    height: #{$socialIconSize};
+    width: #{$socialIconSize};
+    padding: #{$accentThickness / 2};
+    filter: var(--blue-filter);    
+}
+
+
+/* 
+    IMAGE BORDERS 
+*/
+@function to-degree($direction) {
+    @if $direction == horizontal {
+        @return 90deg;
+    } @else if $direction == vertical {
+        @return 0deg;
+    }
+}
+
+@function frame($color, $direction) {
+    $degree: to-degree($direction);
+    $at: var(--accent-thickness);
+    @return linear-gradient(
+        $degree, 
+        $color calc(#{$at}/2), 
+        transparent calc(#{$at}/2), 
+        transparent calc(100% - #{$at}/2), 
+        $color calc(100% - #{$at}/2)
+    );
+}
+
+@mixin _heading($name, $fonts: $fonts) {
+    $font-vals: map-get($fonts, $name);
+
+    grid-area: Heading-#{$name};
+    color: var(--blue);
+    margin: 0;
+
+    @each $key, $value in $font-vals {
+        #{$key}: #{$value}
+    }
+}
+
+@mixin h1 {
+    @include _heading(h1);
+}
+
+@mixin h2 {
+    @include _heading(h2);
+}
+
+@mixin h3 {
+    @include _heading(h3);
+}
+
+@mixin h4 {
+    @include _heading(h4);
+}
+
+@mixin h5 {
+    @include _heading(h5);
+}
+
+@mixin h6 {
+    @include _heading(h6);
+}
+
+@mixin p {
+    grid-area: "paragraph";
+    color: var(--blue);
+    font-family: $textFont;
+    font-size: $pFontSize;
+    line-height: $pLineHeight;
+    margin: 0;
+}

@@ -1,4 +1,6 @@
-@import "../common/_global";
+@import "../common/_vars";
+@import "../common/_mixins";
+
 
 .PostList {
     li {
@@ -9,6 +11,5 @@
     ol {
         margin: 0;
         padding: 0;
-        // display: flex;
     }
 }
