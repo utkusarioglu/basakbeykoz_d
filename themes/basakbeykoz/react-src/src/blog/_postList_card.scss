@@ -2,6 +2,13 @@
 
 .PostList {
     &-card {
+        display: grid;
+        grid-template-areas: 
+            "image"
+            "Heading-h3"
+            "date"
+            "excerpt";
+        grid-row-gap: #{$accentThickness};
         text-decoration: none;
         color: var(--blue);
 
