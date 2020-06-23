@@ -1,6 +1,6 @@
 @import "../common/global";
 
-@mixin wpPosts() {
+@mixin wpPosts($type) {
     .wp-block-latest-posts {
         grid-area: posts;
         overflow-x: scroll;
@@ -16,21 +16,35 @@
         }
         
         & > li {
+            // box-sizing: border-box;
             background-color: var(--white);
             margin-left: #{$accentThickness};
             padding: 1.5em;
             display: grid;
-            grid-template-areas: 
-            "image"
-            "title" 
-            "time" 
-            "excerpt";
-            grid-template-rows: "max-content max-content min-content auto";
-            // grid-column-gap: 1em;
+
+            @if $type == posts {
+                grid-template-areas: 
+                    "image"
+                    "title" 
+                    "time" 
+                    "excerpt";
+                grid-template-rows: max-content max-content min-content auto;
+            } @else if $type == success {
+                grid-template-areas: 
+                    "image"
+                    "title"  
+                    "excerpt";
+                grid-template-rows: max-content max-content auto;
+            }
+
             grid-row-gap: #{$accentThickness / 2};
-            // max-height: height;
             width: 200px;
             overflow: hidden;
+            position: relative;
+
+
+
+
             
             &:last-child {
                 margin-right: #{$accentThickness};
@@ -51,11 +65,28 @@
                 color: var(--green)
             }
 
+            .wp-block-latest-posts__post-full-content,
             .wp-block-latest-posts__post-excerpt {
                 @extend p;
                 font-size: $excerptFontSize;
                 grid-area: excerpt;
                 color: var(--blue);
+                position: relative;
+                height: 100%;
+
+                p:first-child {
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        height: #{$accentThickness};
+                        // width: 100%;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background-color: gray;
+                    }
+                }
+
             }
             
             a {
@@ -243,14 +274,18 @@
                             grid-row-gap: #{2* $accentThickness};
                             padding-top: 20px;
 
-                            h2:before {
-                                $parrotSize: 60px;
-                                @include svgArt("parrot.svg", $parrotSize, $parrotSize);
-                                bottom: auto;
-                                left: auto;
-                                transform: none;
-                                margin-top: -38px;
-                                margin-left: 6px;
+
+                            h2 {
+                                &:before {
+                                    $parrotSize: 60px;
+                                    @include svgArt("parrot.svg", $parrotSize, $parrotSize);
+                                    bottom: auto;
+                                    left: auto;
+                                    transform: none;
+                                    margin-top: -38px;
+                                    margin-left: 6px;
+                                }
+
                             }
 
                         }
@@ -304,24 +339,13 @@
                         &:after {
                             $cityWidth: 100vw;
                             @include svgArt("city.svg", $cityWidth, $mobileNavigationHeight)
-                            // content: "";
-                            // position: absolute;
-                            // display:block;
-                            // width: #{$cityWidth};
-                            // height: #{$mobileNavigationHeight};
-                            // background-size: #{$cityWidth} #{$mobileNavigationHeight};
-                            // background-image: url('#{$uploadsPath}/city.svg');
-                            // background-repeat: no-repeat;
-                            // bottom: 0;
-                            // left: 50%;
-                            // transform: translateX(-50%);
                         }
                     }
 
 
                     &:nth-child(4) {
                         .wp-block-group__inner-container {
-                            @include wpPosts();
+                            @include wpPosts(posts);
 
                             grid-template-areas: 
                                 "Heading-h2"
@@ -334,23 +358,12 @@
 
                             $cityWidth: 100vw;
                             @include svgArt("conversation.svg", $cityWidth, $mobileNavigationHeight);
-                            // content: "";
-                            // position: absolute;
-                            // display:block;
-                            // width: #{$cityWidth};
-                            // height: #{$mobileNavigationHeight};
-                            // background-size: #{$cityWidth} #{$mobileNavigationHeight};
-                            // background-image: url('#{$uploadsPath}/conversation.svg');
-                            // background-repeat: no-repeat;
-                            // bottom: 0;
-                            // left: 50%;
-                            // transform: translateX(-50%);
                         }
                     }
 
                     &:nth-child(5) {
                         .wp-block-group__inner-container {
-                            @include wpPosts();
+                            @include wpPosts(success);
 
                             grid-template-areas: 
                                 "Heading-h2"
@@ -369,7 +382,6 @@
 
                         & > .wp-block-group__inner-container {
                             grid-template-rows: min-content min-content min-content;
-                            // grid-template-columns: 1fr;
                             grid-template-areas: 
                                 "Heading-h2"
                                 "feature" 
@@ -385,7 +397,6 @@
                             }
                 
                             & label {
-                                // font-family: "tajawal", "sans serif";
                                 color: var(--white);
                                 input,
                                 textarea {
@@ -416,6 +427,7 @@
                 
                             & .wpcf7-submit {
                                 font-family: #{$textFont};
+                                font-size: #{$defaultFontSize};
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 border: none;
