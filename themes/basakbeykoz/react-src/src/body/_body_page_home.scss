@@ -10,23 +10,24 @@
         // position: absolute;
         margin: #{$accentThickness} #{-$accentThickness};
         grid-auto-flow: column;
-
+        
         &::-webkit-scrollbar {
             display: none;
         }
-
+        
         & > li {
             background-color: var(--white);
             margin-left: #{$accentThickness};
             padding: 1.5em;
             display: grid;
             grid-template-areas: 
-                "image"
-                "title" 
-                "time" 
-                "excerpt";
+            "image"
+            "title" 
+            "time" 
+            "excerpt";
             grid-template-rows: "max-content max-content min-content auto";
-            grid-column-gap: 1em;
+            // grid-column-gap: 1em;
+            grid-row-gap: #{$accentThickness / 2};
             // max-height: height;
             width: 200px;
             overflow: hidden;
@@ -247,6 +248,24 @@
                                 grid-area: restart;
 
                                 & > .wp-block-group__inner-container {
+
+                                    figure {
+                                        margin: 0;
+
+                                        // & > img {
+                                            // height: 70px;
+                                            // width: 100px;
+                                        // }
+
+                                        figcaption {
+                                            display: none;
+                                        }
+                                    }
+
+                                    p {
+                                        color: var(--white);
+                                    }
+
                                     grid-template-areas: 
                                         "Heading-h3"
                                         "paragraph";
