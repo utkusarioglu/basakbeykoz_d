@@ -69,6 +69,22 @@
     }                      
 }
 
+@mixin svgArt($filename, $width, $height) {
+    $cityWidth: 100vw;
+
+    content: "";
+    position: absolute;
+    display:block;
+    width: #{$width};
+    height: #{$height};
+    background-size: #{$width} #{$height};
+    background-image: url('#{$uploadsPath}/#{$filename}');
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .Canvas {
     &.page {
         &.home {
@@ -86,9 +102,9 @@
                     padding: #{$accentThickness};
                     height: 100vh;
                     overflow: hidden;
+                    position: relative;
                     
                     & > .wp-block-group__inner-container {
-
                         height: 100%;
                         display: grid;
                         box-sizing: border-box;
@@ -99,9 +115,6 @@
 
                         $figureHeight: 450px;
                         $figureGridHeight: $figureHeight - 2* $h1LineHeight - 3*$accentThickness; 
-
-
-
                         background-color: transparent;
 
                         .wp-block-group__inner-container {
@@ -116,7 +129,6 @@
 
                         .wp-block-cover {
                             position: absolute;
-                            // width: 100%;
                             top: calc(var(--accent-thickness) * -1);
                             left: calc(var(--accent-thickness) * -1);
                             right: calc(var(--accent-thickness) * -1);
@@ -230,6 +242,17 @@
                             grid-template-rows: max-content auto min-content;
                             grid-row-gap: #{2* $accentThickness};
                             padding-top: 20px;
+
+                            h2:before {
+                                $parrotSize: 60px;
+                                @include svgArt("parrot.svg", $parrotSize, $parrotSize);
+                                bottom: auto;
+                                left: auto;
+                                transform: none;
+                                margin-top: -38px;
+                                margin-left: 6px;
+                            }
+
                         }
                     }
 
@@ -242,20 +265,23 @@
                                 "paragraph"
                                 "restart";
                             grid-template-rows: max-content auto min-content min-content;
-                            grid-row-gap: #{2* $accentThickness};
+                            grid-row-gap: #{1.5* $accentThickness};
 
                             & > .wp-block-group {
                                 grid-area: restart;
+                                padding: #{$accentThickness};
+                                background-color: var(--white);
+                                // margin-right: #{-$accentThickness};
 
                                 & > .wp-block-group__inner-container {
 
                                     figure {
                                         margin: 0;
 
-                                        // & > img {
-                                            // height: 70px;
-                                            // width: 100px;
-                                        // }
+                                        & > img {
+                                            height: 70px;
+                                            width: auto;
+                                        }
 
                                         figcaption {
                                             display: none;
@@ -263,7 +289,7 @@
                                     }
 
                                     p {
-                                        color: var(--white);
+                                        color: var(--black);
                                     }
 
                                     grid-template-areas: 
@@ -272,6 +298,23 @@
                                     grid-template-rows: min-content min-content;
                                 }
                             }
+                        }
+
+
+                        &:after {
+                            $cityWidth: 100vw;
+                            @include svgArt("city.svg", $cityWidth, $mobileNavigationHeight)
+                            // content: "";
+                            // position: absolute;
+                            // display:block;
+                            // width: #{$cityWidth};
+                            // height: #{$mobileNavigationHeight};
+                            // background-size: #{$cityWidth} #{$mobileNavigationHeight};
+                            // background-image: url('#{$uploadsPath}/city.svg');
+                            // background-repeat: no-repeat;
+                            // bottom: 0;
+                            // left: 50%;
+                            // transform: translateX(-50%);
                         }
                     }
 
@@ -286,6 +329,23 @@
                                 "paragraph";
                             grid-template-rows: max-content auto max-content;
                         }
+
+                        &:after {
+
+                            $cityWidth: 100vw;
+                            @include svgArt("conversation.svg", $cityWidth, $mobileNavigationHeight);
+                            // content: "";
+                            // position: absolute;
+                            // display:block;
+                            // width: #{$cityWidth};
+                            // height: #{$mobileNavigationHeight};
+                            // background-size: #{$cityWidth} #{$mobileNavigationHeight};
+                            // background-image: url('#{$uploadsPath}/conversation.svg');
+                            // background-repeat: no-repeat;
+                            // bottom: 0;
+                            // left: 50%;
+                            // transform: translateX(-50%);
+                        }
                     }
 
                     &:nth-child(5) {
@@ -296,6 +356,12 @@
                                 "Heading-h2"
                                 "posts"
                                 "paragraph";
+                        }
+
+                        &:after {
+
+                            $cityWidth: 100vw;
+                            @include svgArt("success.svg", $cityWidth, $mobileNavigationHeight);
                         }
                     }
 
