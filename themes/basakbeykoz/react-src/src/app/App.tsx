@@ -10,6 +10,7 @@ import Body from '../body/Body';
 import Spinner from "../spinner/Spinner";
 import Footer from '../footer/Footer';
 import Nav from "../header/Nav";
+import Logo from "../header/Logo";
 import Social from '../header/Social';
 import Blog from "../blog/Blog";
 
@@ -23,6 +24,7 @@ function App() {
                     <Spinner />
                     <Header />
                     <div className="App-wideScreenControls">
+                        <Logo />
                         <Social />
                         <Nav />
                     </div>
