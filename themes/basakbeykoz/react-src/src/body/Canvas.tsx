@@ -1,12 +1,22 @@
 import React, { Fragment } from "react";
 import PostList from "../blog/PostList";
 import { wpSingularItemForDisplay } from "../wp/@types-wp";
+import { Helmet } from "react-helmet";
 import "./_canvas.scss";
 
 interface Props extends wpSingularItemForDisplay {}
 
 function Canvas(props: Props): React.FunctionComponentElement<Props> {
     
+    const siteName = process.env.REACT_APP_NAME as string;
+    const separator = process.env.REACT_APP_SEPARATOR as string;
+    const homeSlug = process.env.REACT_APP_HOME_SLUG as string;
+    const siteTitle = siteName + ((props.slug === homeSlug || props.slug === "")
+        ? "" 
+        : separator + props.title);
+
+    console.log(props.slug);
+
     let bodyExtraClasses: string[] = [
         props.type, 
         props.slug,
@@ -46,6 +56,9 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
     
     return (
         <Fragment>
+            <Helmet>
+                <title>{siteTitle}</title>
+            </Helmet>
             <div className={"Canvas " + bodyExtraClasses.join(" ")}>
                 <div className="Canvas-decor">
                     {featureImage}

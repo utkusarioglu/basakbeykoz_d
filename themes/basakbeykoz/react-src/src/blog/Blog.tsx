@@ -1,8 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PostList from "./PostList";
+import { Helmet } from "react-helmet";
 import "./_blog.scss";
 
 function Blog() {
+    const siteName = process.env.REACT_APP_NAME as string;
+    const separator = process.env.REACT_APP_SEPARATOR as string;
+    const PAGE_NAME = "Yazilar";
+    const pageTitle = siteName + separator + PAGE_NAME;
+
     const uploads_dir = process.env.REACT_APP_UPLOADS_DIR as string;
     const featureImageName = "yazilar-feature-image";
     const featureImagePath = `${uploads_dir}/${featureImageName}-`;
@@ -18,26 +24,31 @@ function Blog() {
     .join(",");
 
     return (
-        <div
-            className="Canvas blog has-FeatureImage has-body-title"
-            >
-            <div className="Canvas-decor">
-                <div className="FeatureImage-on" >    
-                    <img 
-                        width="2560" 
-                        height="1671" 
-                        src={`${featureImageName}scaled.jpg`} 
-                        alt="Feature" 
-                        srcSet={srcSet} 
-                        sizes="(max-width: 2560px) 100vw, 2560px" />
+        <Fragment>
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
+            <div
+                className="Canvas blog has-FeatureImage has-body-title"
+                >
+                <div className="Canvas-decor">
+                    <div className="FeatureImage-on" >    
+                        <img 
+                            width="2560" 
+                            height="1671" 
+                            src={`${featureImageName}scaled.jpg`} 
+                            alt="Feature" 
+                            srcSet={srcSet} 
+                            sizes="(max-width: 2560px) 100vw, 2560px" />
+                    </div>
+                    <h2 className="Canvas-featureTitle text-blue">{PAGE_NAME}</h2>
                 </div>
-                <h2 className="Canvas-featureTitle text-blue">Yazilar</h2>
+                    <h2 className="Canvas-articleTitle text-blue">{PAGE_NAME}</h2>
+                    <article>
+                        <PostList excludeSlug={[]}/>
+                    </article>
             </div>
-                <h2 className="Canvas-articleTitle text-blue">Yazilar</h2>
-                <article>
-                    <PostList excludeSlug={[]}/>
-                </article>
-        </div>
+        </Fragment>
     )
 }
 
