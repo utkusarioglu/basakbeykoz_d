@@ -10,7 +10,7 @@
     &-decor {
         width: var(--accent-thickness);
         height: $logoNSocialY;
-        background: var(--blue);
+        background: var(--ui-blue);
         left: 0;
     }
     
@@ -30,7 +30,7 @@
             }  
 
             &-logo > img {
-                filter: var(--blue-filter);    
+                filter: var(--bg-blue-filter);    
             }
         }
     }

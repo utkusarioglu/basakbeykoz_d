@@ -1,5 +1,5 @@
 
-@mixin wpPosts($type, $gridFlow: row, $cardColor: var(--white)) {
+@mixin wpPosts($type, $gridFlow: row, $cardColor: var(--bg-white)) {
     .wp-block-latest-posts {
         $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
 
@@ -154,7 +154,7 @@
             
             a {
                 @include h4;
-                // color: var(--blue);
+                // color: var(--bg-blue);
                 grid-area: title;
                 text-decoration: none;
             }

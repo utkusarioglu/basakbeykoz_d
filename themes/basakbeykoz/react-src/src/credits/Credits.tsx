@@ -20,20 +20,20 @@ function Credits() {
 
     const COLOR_SETS: {[key: string]: string}[] = [
         {
-            "--white": "#F4F4F9",
-            "--black": "#071013",
-            "--blue": "#456266",
-            "--yellow": "#E9B44C",
-            "--green": "#81AE9D",
-            "--beige": "#F6D697",
+            "--bg-white": "#F4F4F9",
+            "--bg-black": "#071013",
+            "--bg-blue": "#456266",
+            "--bg-yellow": "#E9B44C",
+            "--bg-green": "#81AE9D",
+            "--bg-beige": "#F6D697",
         },
         {
-            "--white": "#FFFFFF",
-            "--black": "#000000",
-            "--blue": "#0000FF",
-            "--yellow": "#FFFF00",
-            "--green": "#00FF00",
-            "--beige": "#005500",
+            "--bg-white": "#FFFFFF",
+            "--bg-black": "#000000",
+            "--bg-blue": "#0000FF",
+            "--bg-yellow": "#FFFF00",
+            "--bg-green": "#00FF00",
+            "--bg-beige": "#005500",
         }
     ]
 

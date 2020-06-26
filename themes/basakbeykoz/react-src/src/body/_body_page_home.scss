@@ -159,12 +159,12 @@
                             display: none;
 
                             .wp-block-button {
-                                background-color: var(--yellow);
+                                background-color: var(--ui-beige);
                                 color: var(--text-dark);
                                 padding: 1em;
             
                                 &:hover {
-                                    background-color: var(--blue);
+                                    background-color: var(--bg-blue);
                                     padding: 1em;
                                     cursor: pointer;
                                 }
@@ -319,7 +319,7 @@
                             & > .wp-block-group {
                                 grid-area: restart;
                                 padding: #{$accentThickness/ 2};
-                                background-color: var(--white);
+                                background-color: var(--bg-white);
                                 // margin-right: #{-$accentThickness};
 
                                 & > .wp-block-group__inner-container {
@@ -412,7 +412,7 @@
 
                         &:after {
                             $width: 100vw;
-                            $height: calc(100vw/4);
+                            $height: calc(100vw/5);
                             @include svgArt(
                                 "conversation.svg", 
                                 $width,
@@ -427,7 +427,7 @@
                     // basari hikayeleri
                     &:nth-child(5) {
                         .wp-block-group__inner-container {
-                            @include wpPosts(success, column, var(--green));
+                            @include wpPosts(success, column, var(--bg-beige));
 
                             grid-template-areas: 
                                 "Heading-h2"
@@ -524,14 +524,14 @@
                             & .wpcf7-textarea {
                                 box-sizing:border-box;
                                 border: none;
-                                background-color: var(--white);
+                                background-color: var(--bg-white);
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 font-family: #{$textFont};
     
                                 &:focus {
                                     outline: none;
-                                    background-color: var(--beige);
+                                    background-color: var(--bg-beige);
     
                                 }
                             }
@@ -547,7 +547,7 @@
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 border: none;
-                                background-color: var(--yellow);
+                                background-color: var(--ui-beige);
                                 color: var(--text-dark);
                             }
                         }

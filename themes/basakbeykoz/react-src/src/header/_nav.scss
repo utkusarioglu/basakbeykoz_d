@@ -9,7 +9,7 @@
     &-decor {
         width: #{$accentThickness};
         // height: 100%;
-        background-color: var(--yellow);
+        background-color: var(--ui-yellow);
     }
 
     &-list {
@@ -24,7 +24,7 @@
     }
 
     &-burgerButton {
-        background-color: var(--yellow);
+        background-color: var(--ui-yellow);
         color: var(--text-mediumDark);
         border: none;
         padding: 0;
@@ -69,7 +69,7 @@
             left: 0;
             right: 0;
             flex-direction: column;
-            background-color: var(--yellow);
+            background-color: var(--ui-yellow);
             display: flex;
 
             @include narrowScreen() {
@@ -101,7 +101,7 @@
                         bottom: 0;
                         right: 0;
                         width: #{$accentThickness / 2};
-                        background-color: var(--blue);
+                        background-color: var(--ui-blue);
 
                         @include narrowScreen() {
                             width: auto;
@@ -169,7 +169,7 @@
             padding: #{$accentThickness} 0;
 
             .Nav-list-item {
-                color: var(--text-mediumDark);
+                color: var(--ui-blue);
                 padding: #{$accentThickness /4} #{$accentThickness /2};
             }
         }

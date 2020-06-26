@@ -12,7 +12,7 @@
             "excerpt";
         grid-row-gap: #{$accentThickness};
         text-decoration: none;
-        // color: var(--blue);
+        // color: var(--bg-blue);
         padding: #{$accentThickness};
 
         @include narrowScreen() {

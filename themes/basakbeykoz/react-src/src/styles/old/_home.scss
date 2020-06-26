@@ -46,12 +46,12 @@
                 }
     
                 & .wp-block-button {
-                    background-color: var(--yellow);
-                    color: var(--black);
+                    background-color: var(--bg-yellow);
+                    color: var(--bg-black);
                     padding: 1em;
 
                     &:hover {
-                        background-color: var(--blue);
+                        background-color: var(--bg-blue);
                         padding: 1em;
                         cursor: pointer;
                     }
@@ -111,7 +111,7 @@
                 // Introduction    
                 & > div:first-child {
                     & p {
-                        color: var(--blue);
+                        color: var(--bg-blue);
                     }
         
                     & > .wp-block-group__inner-container {
@@ -163,13 +163,13 @@
                     }
         
                     & h1 {
-                        color: var(--blue);
+                        color: var(--bg-blue);
                     }
         
                     & .wp-block-buttons {
                         grid-area: cta;
                         font-size: 30px;
-                        color: var(--blue);
+                        color: var(--bg-blue);
                     }
                 }
     
@@ -250,7 +250,7 @@
                         overflow-y: scroll;
 
                         & > li {
-                            background-color: var(--white);
+                            background-color: var(--bg-white);
                             margin: 1em;
                             padding: 1em;
                             display: grid;
@@ -268,16 +268,16 @@
                             & time {
                                 grid-area: time;
                                 font-size: 0.8em;
-                                color: var(--green)
+                                color: var(--bg-green)
                             }
 
                             & .wp-block-latest-posts__post-excerpt {
                                 grid-area: excerpt;
-                                color: var(--blue);
+                                color: var(--bg-blue);
                             }
                             
                             & a {
-                                color: var(--blue);
+                                color: var(--bg-blue);
                                 grid-area: title;
                                 text-decoration: none;
                             }
@@ -335,13 +335,13 @@
                             }
 
                             & a {
-                                color: var(--blue);
+                                color: var(--bg-blue);
                                 grid-area: title;
                                 text-decoration: none;
                             }
 
                             & .wp-block-latest-posts__post-excerpt {
-                                color: var(--blue);
+                                color: var(--bg-blue);
                                 grid-area: excerpt;
                                 font-size: 18px;
                             }
@@ -381,19 +381,19 @@
             
                         & label {
                             font-family: "tajawal", "sans serif";
-                            color: var(--white);
+                            color: var(--bg-white);
                         }
             
                         & .wpcf7-text,
                         & .wpcf7-textarea {
                             border: none;
-                            background-color: var(--white);
+                            background-color: var(--bg-white);
                             width: 100%;
                             padding: 0.5em;
 
                             &:focus {
                                 outline: none;
-                                background-color: var(--beige);
+                                background-color: var(--bg-beige);
 
                             }
                         }
@@ -407,7 +407,7 @@
                             width: 100%;
                             padding: 1em;
                             border: none;
-                            background-color: var(--yellow);
+                            background-color: var(--bg-yellow);
                         }
                     }
                 }
