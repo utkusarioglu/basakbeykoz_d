@@ -61,9 +61,9 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
     useEffect(() => {
         if (item === undefined) {
             setFetching(true);
-            setTimeout(() => {
+            // setTimeout(() => {
                 fetchSingular(slug)
-            }, 1000)
+            // }, 1000)
         } else {
             setDisplaying({
                 active: {
