@@ -3,15 +3,23 @@
 
 
 .Footer {
+    $creditsSize: 20vw;    
+    $creditsMaxSize: 150px;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
     position: absolute;
-    display: block;
     left: 0;
     right: 0;
     bottom: 0;
+    min-height: #{$footerSquareSize};
+    height: #{$creditsSize};
+    max-height: #{$creditsMaxSize};
 
     &-credits {
-        position: absolute;
+        // position: absolute;
         box-sizing: border-box;
+        
         display: grid;
         font-family: $textFont;
         background: var(--black);
@@ -21,31 +29,42 @@
         right: 0;
         padding: #{$accentThickness / 2};
         font-size: 1rem;
-        width: #{$footerSquareSize};
-        height: #{$footerSquareSize};
+        width: #{$creditsSize};
+        min-width: #{$footerSquareSize};
+        max-width: #{$creditsMaxSize};
+        height: 100%;
     }
 
     &-art {
-        position: absolute;
         display:block;
-        bottom: -7px;
-        right: 100px;
-        left: 0;
-        & > img {
-            height: 100%;
-            width: 100%;
+        // height:100%;
+        width: 100%;
+        
+        background: url("#{$uploadsPath}/footer-art-bg.svg") no-repeat bottom right;
+        // background-size: 100% auto;
+        // background-position: bottom;
+
+        &-fg {
+            // $narrow: map-get($screenSizes, narrow);
+            // $isNarrow: calc(#{narrow} - 100vw);
+            // $toMiddleSlide: min(#{$isNarrow}, 0);  
+
+            max-height: 200px;
+            min-height: 50px;
+            height: calc(100vw/4);
+            position: absolute;
+            width: 80vw;
+            max-width: calc(100vw - #{$footerSquareSize});
+            min-width: calc(100vw - #{$creditsMaxSize});
+            bottom: 20px;
         }
     }
     
     &-yearAndName {
-        color: var(--white);
+        color: var(--text-light);
         text-align: right;
     }
-
-    @include wideScreen() {
-        width: 8rem;
-        height: 8rem;
-        font-size: 1.2rem;
-        padding: 2rem;
+    a {
+        text-decoration: none;
     }
 }

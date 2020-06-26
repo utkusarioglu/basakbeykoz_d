@@ -6,6 +6,7 @@ import store from "./store";
 import { Route, BrowserRouter as Router, Switch, } from 'react-router-dom'
 
 import Header from "../header/Header";
+import Credits from "../credits/Credits";
 import Body from '../body/Body';
 import Spinner from "../spinner/Spinner";
 import Footer from '../footer/Footer';
@@ -30,6 +31,11 @@ function App() {
                     </div>
                     <div className="App-scrollingElements">
                         <Switch>
+                            <Route 
+                                exact 
+                                path={"/credits"}>
+                                <Credits />
+                            </Route>
                             <Route 
                                 exact 
                                 path={"/" + blog_slug}>

@@ -9,14 +9,49 @@
     @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
 }
 
-@mixin min-width($threshold) {
+@mixin _min-width($threshold) {
       @media screen and (min-width: scut-rem($threshold)) {
+        @content;
+    }
+}
+
+@mixin _min-height($threshold) {
+    @media screen and (min-height: scut-rem($threshold)) {
+      @content;
+  }
+}
+
+@mixin narrowScreen {
+    $screenPx: map-get($screenSizes, narrow);
+    @include _min-width($screenPx) {
         @content;
     }
 }
   
 @mixin wideScreen {
-    @include min-width($wideScreenPx) {
+    $screenPx: map-get($screenSizes, wide);
+    @include _min-width($screenPx) {
+        @content;
+    }
+}
+
+@mixin hugeScreen {
+    $screenPx: map-get($screenSizes, huge);
+    @include _min-width($screenPx) {
+        @content;
+    }
+}
+
+@mixin smallScreen {
+    $screenPx: map-get($screenSizes, small);
+    @include _min-height($screenPx) {
+        @content;
+    }
+}
+
+@mixin mediumTallScreen {
+    $screenPx: map-get($screenSizes, mediumTall);
+    @include _min-height($screenPx) {
         @content;
     }
 }
@@ -57,7 +92,7 @@
     $font-vals: map-get($fonts, $name);
 
     grid-area: Heading-#{$name};
-    color: var(--blue);
+    color: var(--text-mediumDark);
     margin: 0;
 
     @each $key, $value in $font-vals {
@@ -90,10 +125,37 @@
 }
 
 @mixin p {
-    grid-area: "paragraph";
-    color: var(--blue);
+    grid-area: paragraph;
+    color: var(--text-mediumDark);
     font-family: $textFont;
     font-size: $pFontSize;
     line-height: $pLineHeight;
     margin: 0;
+}
+
+
+
+
+@mixin svgArt(
+        $filename, 
+        $width, 
+        $height, 
+        $min-height: $height, 
+        $max-height: $height
+) {
+    $cityWidth: 100vw;
+    content: "";
+    position: absolute;
+    display:block;
+    height: #{$height};
+    max-height: $max-height;
+    min-height: $min-height;
+    background-size: contain;
+    background-image: url('#{$uploadsPath}/#{$filename}');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
 }

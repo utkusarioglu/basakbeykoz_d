@@ -10,10 +10,10 @@ function Header() {
         <header className="Header">
             <div className="Header-decor-left" />
             <Logo />
-            <div className="Header-mobileControls">
-                <Social />
-                <Nav />
-            </div>
+            <Social />
+            <Nav />
+            {/* <div className="Header-mobileControls">
+            </div> */}
             <div className="Header-decor-right" />
         </header>
     )

@@ -26,18 +26,20 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
         );
     }
     
-    let bodyTitle; 
+    let featureTitle; 
+    let articleTitle; 
     if( props.title !== "") {
         bodyExtraClasses.push("has-CanvasTitle");
-        bodyTitle = <h2 className="CanvasTitle text-blue">{props.title}</h2>
+        featureTitle = <h2 className="Canvas-featureTitle text-blue">{props.title}</h2>
+        articleTitle = <h2 className="Canvas-articleTitle text-blue">{props.title}</h2>
     }
 
-    let postExcerptCards;
+    let postList;
     let excludeSlug = [];
     if ( props.type === "post") {
         excludeSlug.push(props.slug);
         bodyExtraClasses.push("has-PostExcerptList");
-        postExcerptCards = (
+        postList = (
             <PostList excludeSlug={excludeSlug} />
         );
     }
@@ -47,11 +49,12 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
             <div className={"Canvas " + bodyExtraClasses.join(" ")}>
                 <div className="Canvas-decor">
                     {featureImage}
-                    {bodyTitle}
+                    {featureTitle}
                 </div>
+                {articleTitle}
                 <article 
                     dangerouslySetInnerHTML={{__html: props.content}} />
-                {postExcerptCards}
+                {postList}
             </div>
         </Fragment>
     )

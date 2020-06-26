@@ -13,24 +13,30 @@
     justify-items: center;
     grid-row-gap: 1rem;
     grid-template-rows: 45% 65%;
-    z-index: 90;
+    z-index: 110;
     background-color: rgba(255, 255, 255, 0.3);
+    grid-template-areas: 
+        "logo"
+        "LoadMessage";
 
     &-logo {
+        grid-area: logo;
         align-self: end;
         filter: var(--blue-filter);
+        max-height: 60px;
         
-        @include wideScreen() {
-            height: 60px;
-        }
+        // @include narrowScreen() {
+        //     height: 60px;
+        // }
     }
 
     &-loadMessage {
+        grid-area: LoadMessage;
         font-family: $textFont;
         align-self: top;
         color: var(--blue);
 
-        @include wideScreen() {
+        @include narrowScreen() {
             font-size: 25px;
         }
     }

@@ -1,0 +1,183 @@
+@import "../common/_vars";
+@import "../common/_mixins";
+
+
+.Nav {
+    grid-area: nav;
+    display: flex;
+
+    &-decor {
+        width: #{$accentThickness};
+        // height: 100%;
+        background-color: var(--yellow);
+    }
+
+    &-list {
+        .Nav-list-item {
+            font-family: $titleFont;
+            text-decoration: none;
+            color: var(--text-light);
+            text-align: right;
+            position: relative;
+            white-space: nowrap;
+        }
+    }
+
+    &-burgerButton {
+        background-color: var(--yellow);
+        color: var(--text-mediumDark);
+        border: none;
+        padding: 0;
+        margin: 0;
+        height: #{$accentThickness + $socialIconSize};
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        & > img {
+            @include headerIcon();
+        }
+
+        @include narrowScreen() {
+            display: none;
+        }
+    }
+
+    .Header & {
+        justify-self: start;
+
+        @include narrowScreen() {
+            margin-left: #{$accentThickness / 2};
+            margin-right: #{$accentThickness / 2};
+        }
+
+        &-decor {
+            display: none;
+        }
+
+        &-wrap {
+            display: grid;
+            align-items: center;
+            justify-items: end;
+        }
+
+        &-list {
+            position: fixed;
+            bottom: #{$mobileNavigationHeight - 1px};
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background-color: var(--yellow);
+            display: flex;
+
+            @include narrowScreen() {
+                flex-direction: row;
+                position: relative;
+                bottom: auto;
+            }
+
+            .Nav-list-item {
+                padding: #{$accentThickness / 2} #{$accentThickness};
+
+                @include narrowScreen() {
+                    $font-size: map-get($fontSizes, mobileNavigation); 
+                    $header-height: map-get($mobile, navigationY);
+                    $vertical-padding: ($header-height - $font-size) /2;
+
+                    padding: #{$vertical-padding} #{$accentThickness / 2};
+                    font-size: $font-size;
+                    line-height: $font-size;
+                }
+    
+                &-active {
+                    color: var(--text-mediumDark);
+    
+                    &:after {
+                        position: absolute;
+                        content: "";
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        width: #{$accentThickness / 2};
+                        background-color: var(--blue);
+
+                        @include narrowScreen() {
+                            width: auto;
+                            height: #{$accentThickness / 4};
+                            top: auto;
+                            right: #{$accentThickness};
+                            left: #{$accentThickness};
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        &-listContainer {
+            display: none;
+
+            @include narrowScreen() {
+                display: block;
+            }
+            
+            &.open {
+                display: block;
+            }
+            
+            & > .Nav-mask {                
+                position: fixed;
+                background: linear-gradient(rgba(255,255,255, 0.6), transparent calc(100vh - #{$mobileNavigationHeight}));
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+
+                @include narrowScreen() {
+                    display: none;
+                }
+            }
+        }
+
+
+    }
+
+    .App-wideScreenControls & {
+        display:none;
+        position: fixed;
+        right:0;
+        top: 50vh;
+        transform: translateY(-50%);
+        z-index: 100;
+
+        @include wideScreen() {
+            display: flex;
+        }
+
+        &-listContainer {
+            height: 100%;
+        }
+
+        &-list {
+            display: flex;
+            // height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding: #{$accentThickness} 0;
+
+            .Nav-list-item {
+                color: var(--text-mediumDark);
+                padding: #{$accentThickness /4} #{$accentThickness /2};
+            }
+        }
+
+
+
+        &-burgerButton {
+            display: none;
+        }
+    }
+}

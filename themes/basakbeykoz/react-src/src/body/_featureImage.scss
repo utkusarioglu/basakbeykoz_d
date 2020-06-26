@@ -14,13 +14,13 @@
         height: 100%;
 
         
-        @include wideScreen() {
-            position: fixed;
-            right: auto;
-            height: auto;
-            bottom: 0;
-            width: var(--fixed-feature-image-width);
-        }
+        // @include wideScreen() {
+        //     position: fixed;
+        //     right: auto;
+        //     height: auto;
+        //     bottom: 0;
+        //     width: var(--fixed-feature-image-width);
+        // }
     }
 
     &-off {

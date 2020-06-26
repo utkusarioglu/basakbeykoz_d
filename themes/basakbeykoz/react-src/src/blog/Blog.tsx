@@ -1,5 +1,6 @@
 import React from "react";
 import PostList from "./PostList";
+import "./_blog.scss";
 
 function Blog() {
     const uploads_dir = process.env.REACT_APP_UPLOADS_DIR as string;
@@ -30,8 +31,9 @@ function Blog() {
                         srcSet={srcSet} 
                         sizes="(max-width: 2560px) 100vw, 2560px" />
                 </div>
-                <h2 className="CanvasTitle text-blue">Yazilar</h2>
+                <h2 className="Canvas-featureTitle text-blue">Yazilar</h2>
             </div>
+                <h2 className="Canvas-articleTitle text-blue">Yazilar</h2>
                 <article>
                     <PostList excludeSlug={[]}/>
                 </article>

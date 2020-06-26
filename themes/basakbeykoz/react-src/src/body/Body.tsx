@@ -63,7 +63,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
             setFetching(true);
             setTimeout(() => {
                 fetchSingular(slug)
-            }, 100)
+            }, 1000)
         } else {
             setDisplaying({
                 active: {

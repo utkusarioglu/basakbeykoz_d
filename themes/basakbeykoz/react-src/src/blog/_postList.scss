@@ -3,13 +3,24 @@
 
 
 .PostList {
+    grid-area: PostList;
+    
     li {
         list-style: none;
-        margin-bottom: 8rem;
+        margin-bottom: #{2*$accentThickness};
+        // padding: #{$accentThickness};
+
+        article & { // correction for blog page
+            padding: 0;
+        }
     }
 
     ol {
         margin: 0;
         padding: 0;
+    }
+
+    @include narrowScreen() {
+        margin-left: #{-$accentThickness}
     }
 }

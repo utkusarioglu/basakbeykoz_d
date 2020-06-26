@@ -1,5 +1,6 @@
 import React from 'react';
 import "./_footer.scss";
+import { Link } from "react-router-dom";
 
 interface Props {}
 
@@ -9,15 +10,19 @@ function Footer(props: Props): React.FunctionComponentElement<Props> {
         <div className="Footer">
             <div className="Footer-art">
                 <img
+                    className="Footer-art-fg"
                     alt="Footer decoration" 
-                    src={up + "/one-on-one.svg"} 
+                    src={up + "/footer-art-fg.svg"} 
                     />
             </div>
-            <div className="Footer-credits">
-                <span className="Footer-yearAndName">
-                    ♡<br />{ new Date(Date.now()).getFullYear()}<br />Basak Beykoz
-                </span>
-            </div>
+            <Link
+                to="/credits">
+                <div className="Footer-credits">
+                    <span className="Footer-yearAndName">
+                        ♡<br />{ new Date(Date.now()).getFullYear()}<br />Basak Beykoz
+                    </span>
+                </div>
+            </Link>
         </div>
     )
 }

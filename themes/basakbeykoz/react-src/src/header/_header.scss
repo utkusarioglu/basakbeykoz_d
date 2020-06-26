@@ -6,37 +6,48 @@
     display: grid;
     align-items: center;
     grid-auto-flow: column;
-    // grid-column-gap:calc(var(--accent-thickness) / 2);
-    grid-template-columns: #{$accentThickness} min-content auto #{$accentThickness};
+    grid-template-areas: "decor-left logo social nav decor-right";
+    grid-template-columns: #{$accentThickness} 1fr min-content min-content #{$accentThickness};
     position: fixed;
     bottom: 0;
     z-index: 100;
     background-color: var(--yellow);
-
+    
     overflow-x: scroll;
     overflow-y: hidden;
     width: 100vw;
     height: $mobileNavigationHeight;
-    // height: 300px;
-
-    &-mobileControls {
-        display: grid;
-        grid-auto-flow: column;
-        align-items: center;
-        height: 100%;
-        justify-self: end;
+    
+    @include narrowScreen() {
+        grid-template-areas: "decor-left nav social decor-right";
+        grid-template-columns: #{$accentThickness} 1fr min-content #{$accentThickness};
+        
+        .Logo {
+            display: none;
+        }
     }
 
+    @include wideScreen() {
+        display: none;
+    }
+    
     &::-webkit-scrollbar {
         display: none;
     }
 
     &-decor {
-        &-right,
-        &-left {
+        @mixin decor-common {
             width: #{$accentThickness};
             height: 100%;
             background: var(--blue);
+        }
+        &-right {
+            @include decor-common();
+            grid-area: decor-right;
+        }
+        &-left {
+            @include decor-common();
+            grid-area: decor-left;
         }
     }
 

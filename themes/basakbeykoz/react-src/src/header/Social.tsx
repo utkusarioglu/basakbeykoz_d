@@ -1,40 +1,7 @@
 import React from "react";
-// import { CSSStyles } from "../app/@types-app";
-import "./_header_social.scss";
+import "./_social.scss";
 
-// const styles: CSSStyles = {
-    // social: {
-    //     position: "fixed",
-    //     top: "var(--accent-thickness)",
-    //     right: 0,
-    //     zIndex: 10,
-    //     display: "grid",
-    //     alignItems: "center",
-    //     gridColumnGap: "calc( var(--accent-thickness) / 2)",
-    //     gridAutoFlow: "column",
-    // },
-    // decor: {
-    //     width: "var(--accent-thickness)",
-    //     height: "var(--head-section-height)",
-    //     background: "var(--blue)",
-    //     right: 0,
-    // },
-    // socialItem: {
-    //     height: "50px",
-    //     width: "50px",
-    //     padding: "10px 10px 10px 10px",
-    //     filter: "var(--blue-filter)",
-    // },
-    // socialList: {
-    //     display: "flex",
-    //     flexDirection: "row",
-    //     justifyItems: "right",
-    //     // paddingTop: "var(--accent-thickness)",
-    //     // paddingBottom: "var(--accent-thickness)",
-    //     // paddingRight: "var(--accent-thickness)",
-    //     paddingLeft: 0,
-    // },
-// }
+
 
 function Social() {
 

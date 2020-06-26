@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { RootState } from "../app/rootReducer";
 import { setDisplaying } from '../app/appActions'
 import { connect } from "react-redux";
-import "./_header_logo.scss";
+import "./_logo.scss";
 
 const mapState = (state: RootState) => ({
     menu: state.menu.items

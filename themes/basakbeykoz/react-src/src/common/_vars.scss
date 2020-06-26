@@ -4,7 +4,41 @@ $defaultFontSize: 20px;
 $textFont: "Work Sans", sans-serif;
 $titleFont: 'Montserrat', sans-serif;
 
-$wideScreenPx: 1200;
+// $wideScreenPx: 1200;
+
+$screenSizes: (
+    huge: 1920,
+    wide: 1200,
+    narrow: 800,
+    small: 600,
+    mediumTall: 700,
+);
+
+$fontSizes: (
+    mobileNavigation: 18px,
+);
+
+$mobile: (
+    navigationY: 55px,
+    figureHeight: unquote("max(400px, 60vh)"),
+);
+
+$narrow: (
+    featureImageX: 25vw,
+    logoNSocialY: 100px,
+    homeWelcomeImageX: 45vw,
+    homePostsNarrowY: 15vw,
+);
+
+$wide: (
+    navSocialSpaceX: 150px,
+);
+
+$short: (
+    minBlockHeight: 650px,
+    // minHeight: 700px,
+    buttonDisappearBefore: 600px,
+);
 
 $mobileNavigationHeight: 55px;
 $mobileFeatureImageHeight: 200px;

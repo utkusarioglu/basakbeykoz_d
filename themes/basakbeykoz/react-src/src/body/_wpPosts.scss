@@ -1,0 +1,164 @@
+
+@mixin wpPosts($type, $gridFlow: row, $cardColor: var(--white)) {
+    .wp-block-latest-posts {
+        $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
+
+        grid-area: posts;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding: 0;
+        display: grid;
+        // position: absolute;
+        margin: 0 #{-$accentThickness};
+        grid-auto-flow: column;
+
+        @include narrowScreen() {
+            @if $gridFlow == row {
+                // margin: 0;
+                grid-auto-flow: row;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                
+                height: 60vh;
+                align-self: center;
+                margin: 0;
+            } @else if $gridFlow == column {
+                margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
+                // margin-left: #{$accentThickness};
+                // grid-auto-flow: row;
+                // this is not being implemented as it's not being used right now
+            }
+        }
+
+        @include wideScreen() {
+            @if $gridFlow == row {
+            } @else if $gridFlow == column {
+                margin: 0 0 0 #{-$accentThickness};
+            }
+        }
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        & > li {
+            box-sizing: border-box;
+            background-color: $cardColor;
+            margin-left: #{$accentThickness};
+            padding: 1.5em;
+            display: grid;
+
+            @if $type == posts {
+                grid-template-areas: 
+                    "image"
+                    "title" 
+                    "time" 
+                    "excerpt";
+                grid-template-rows: max-content max-content min-content auto;
+            } @else if $type == success {
+                grid-template-areas: 
+                    "image"
+                    "title"  
+                    "excerpt";
+                grid-template-rows: max-content max-content auto;
+            }
+
+            grid-row-gap: #{$accentThickness / 2};
+            overflow: hidden;
+            position: relative;
+            width: 50vw;
+            min-width: 250px;
+            max-width: 350px;
+
+            @include narrowScreen() {
+                @if $gridFlow == row {
+                    @if $type == posts {
+                        grid-template-areas: 
+                            "image title" 
+                            "image time" 
+                            "excerpt excerpt";
+                        grid-template-rows: min-content min-content auto;
+                        grid-template-columns: #{$homePostsNarrowY} auto;
+                        grid-column-gap: #{$accentThickness};
+
+                        width: 100%;
+                        max-width: none;
+                        height: calc(#{$homePostsNarrowY} + #{2* $accentThickness});
+                        // height: auto;
+                        margin-left: 0;
+                        margin-bottom: #{$accentThickness};
+                    } @else if $type == success {
+                    }
+                        
+                
+                } @else if $gridFlow == column {
+                    @if $type == posts {
+
+                    } @else if $type == success {
+
+                    }
+                }
+            }
+
+            
+            &:last-child {
+                margin-right: #{$accentThickness};
+            }
+            
+            .wp-block-latest-posts__featured-image {
+                grid-area: image;
+                & > img {
+                    width: 100%;
+                    height: auto;
+
+                    @include narrowScreen() {
+                        @if $gridFlow == horizontal {
+                            height: 15vw;
+                            width: auto;
+
+                        }
+                    }
+                }
+            }
+
+            time {
+                @include p();
+                grid-area: time;
+                font-size: 0.8em;
+                color: var(--text-mediumLight)
+            }
+
+            .wp-block-latest-posts__post-full-content,
+            .wp-block-latest-posts__post-excerpt {
+                @include p();
+                font-size: $excerptFontSize;
+                grid-area: excerpt;
+                color: var(--text-mediumDark);
+                position: relative;
+                height: 100%;
+
+                p:first-child {
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        height: #{$accentThickness};
+                        // width: 100%;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background-color: gray;
+                    }
+                }
+
+            }
+            
+            a {
+                @include h4;
+                // color: var(--blue);
+                grid-area: title;
+                text-decoration: none;
+            }
+        }
+
+    }                      
+}

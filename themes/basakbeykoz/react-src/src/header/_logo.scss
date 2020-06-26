@@ -1,0 +1,67 @@
+@import "../common/_vars";
+@import "../common/_mixins";
+
+
+.Logo {
+    $logoNSocialY: map-get($narrow, logoNSocialY);
+
+    grid-area: logo;
+    
+    &-decor {
+        width: var(--accent-thickness);
+        height: $logoNSocialY;
+        background: var(--blue);
+        left: 0;
+    }
+    
+    &-logo > img {
+        width: 100px;
+    }
+
+    header & {
+        .Logo {
+            &-logo > img {
+                margin-left: #{$accentThickness /2};
+                margin-top: 8px;
+            }
+    
+            &-decor {
+                display: none;
+            }  
+
+            &-logo > img {
+                filter: var(--blue-filter);    
+            }
+        }
+    }
+
+    .App-wideScreenControls & {
+        display:none;
+
+        z-index: 90;
+        position: fixed;
+        top: #{$accentThickness};
+        left: 0;
+        flex-direction: row;
+        align-items: center;
+
+        @include narrowScreen() {
+            display: flex;
+            img {
+
+                $featureImageX: #{map-get($narrow, featureImageX)};
+                $paddingLeft: #{$accentThickness / 2};
+                $statics: #{$paddingLeft} - #{ 2* $accentThickness};
+                $width: calc(#{$featureImageX} - #{$statics});
+                $marginTop: calc(#{$width} / 25);
+
+                max-width: 400px;
+                min-width: 170px;
+                width: $width;
+                margin-top: $marginTop;
+                padding-left: $paddingLeft;
+            }
+
+        }
+    }
+}
