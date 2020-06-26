@@ -263,19 +263,26 @@
                             }
 
                             h2 {
+                                position: relative;
+                                width: max-content;
+                                justify-self: center;
 
                                 @include narrowScreen() {
+                                    justify-self: start;
                                     text-align: left;
                                 }
 
                                 &:before {
+                                    $h2fontSize: map-get(map-get($fonts, h2), line-height);
                                     $parrotSize: 60px;
                                     @include svgArt("parrot.svg", $parrotSize, $parrotSize);
                                     bottom: auto;
-                                    left: auto;
+                                    left: -20px;
+                                    top: #{-$h2fontSize};
                                     transform: none;
-                                    margin-top: -38px;
-                                    margin-left: 6px;
+                                    // margin-top: -38px;
+                                    // margin-left: 6px;
+                                    width: #{$parrotSize};
                                 }
 
                             }
