@@ -15,8 +15,6 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
         ? "" 
         : separator + props.title);
 
-    console.log(props.slug);
-
     let bodyExtraClasses: string[] = [
         props.type, 
         props.slug,

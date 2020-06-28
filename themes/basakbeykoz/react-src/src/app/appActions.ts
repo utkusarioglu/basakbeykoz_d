@@ -16,7 +16,6 @@ export const setFetching = (fetch_bool: boolean) =>
 
 export const setDisplaying = (is_displaying: Partial<isDisplaying>) =>
     (dispatch: DispatchMethod<Partial<isDisplaying>>) => {
-        console.log(is_displaying)
         dispatch({
             type: IS_DISPLAYING,
             state: "success",

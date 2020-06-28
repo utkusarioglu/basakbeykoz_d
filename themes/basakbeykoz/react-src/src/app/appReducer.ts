@@ -28,7 +28,6 @@ export default function (
     switch (action.type) {
 
         case IS_DISPLAYING:
-            console.log("IS_DISPLAYING", action)
             if(action.state === "fail") return state 
             return {
                 ...state,
