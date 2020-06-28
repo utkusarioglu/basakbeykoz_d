@@ -12,8 +12,6 @@ function Header() {
             <Logo />
             <Social />
             <Nav />
-            {/* <div className="Header-mobileControls">
-            </div> */}
             <div className="Header-decor-right" />
         </header>
     )

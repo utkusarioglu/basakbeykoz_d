@@ -14,12 +14,8 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = { 
-    // setFetching,
     setDisplaying,
     fetchMenu, 
-    // fetchPost, 
-    // fetchSingular,
-    // fetchCategoryPosts,
 }
 
 interface OwnProps { }
@@ -84,7 +80,7 @@ function Nav(
                     className={"Nav-listContainer " + (menuIsOpen ? "open" : "") 
                 }>
                     <div className="Nav-mask" />
-                    <nav className={ "Nav-list"}>
+                    <nav className="Nav-list">
                         {menuItems}
                     </nav>
                 </div>
