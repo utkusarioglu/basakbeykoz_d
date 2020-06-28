@@ -30,6 +30,7 @@
         padding: 0;
         margin: 0;
         height: #{$accentThickness + $socialIconSize};
+        cursor: pointer;
 
         &:focus {
             border: none;
@@ -118,13 +119,19 @@
 
         &-listContainer {
             display: none;
-
+            
             @include narrowScreen() {
                 display: block;
+                
             }
             
             &.open {
                 display: block;
+                position: fixed;
+                top: 0;
+                left:0;
+                right:0;
+                bottom: 0;
             }
             
             & > .Nav-mask {                
