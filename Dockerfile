@@ -1,8 +1,18 @@
 FROM wordpress
-WORKDIR /var/www/html
+WORKDIR /var/www/html/wp-content
 
-COPY ./plugins ./wp-content/plugins
-COPY ./themes/basakbeykoz ./wp-content/themes/basakbeykoz
-COPY ./uploads ./wp-content/uploads
+# Remove the plugins and themes that come with vanilla wp
+RUN rm -rf ./themes/*
+RUN rm -rf ./plugins/*
+
+# copy content created for this product
+COPY ./plugins ./plugins
+COPY ./themes/basakbeykoz ./themes/basakbeykoz
+COPY ./uploads ./uploads
+
+# adjust owners, privileges
+RUN chown www-data:www-data ./plugins
+RUN chown www-data:www-data ./themes
+RUN chown www-data:www-data ./uploads
 
 EXPOSE 80
