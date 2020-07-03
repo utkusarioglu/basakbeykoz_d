@@ -6,5 +6,10 @@
     "rewrap.wrappingColumn": 72,
     "cSpell.ignoreWords": [
         "wpapi"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#1F3128",
+        "titleBar.activeBackground": "#2B4539",
+        "titleBar.activeForeground": "#F8FBFA"
+    }
 }
