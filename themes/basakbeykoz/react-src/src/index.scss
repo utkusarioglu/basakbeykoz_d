@@ -24,17 +24,17 @@
 */
 ::-webkit-scrollbar {
     & {
-        width: var(--accent-thickness);
+        width: #{$accentThickness};
     }
     &-track {
-        background: var(--bg-blue);
+        background: #{map-get($colorMap, ui-blue)};
     }
     &-thumb {
-        background: var(--bg-yellow);
+        background: #{map-get($colorMap, ui-yellow)};
         
         &:hover {
-            background: var(--bg-black);
-            border-right: var(--bg-black);
+            background: #{map-get($colorMap, ui-black)};
+            border-right: #{map-get($colorMap, ui-black)};
         }
     }
 }
@@ -43,8 +43,8 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--bg-white);
-    color: var(--text-mediumDark);
+    background: #{map-get($colorMap, bg-white)};
+    color: #{map-get($colorMap, text-mediumDark)};
     overflow-y: scroll;
     overflow-x: hidden;
     font-size: $defaultFontSize;
@@ -61,7 +61,7 @@ body {
 .body.page.home>article>div .wp-block-latest-posts>li,
 span,
 nav {
-    color: var(--bg-blue);
+    color: #{map-get($colorMap, bg-blue)};
     font-family: $textFont;
 }
 
@@ -80,66 +80,61 @@ p {
     COLORS
 */
 
-
 :root {
-    --text-light: #F4F4F9; 
-    --text-mediumLight: #81AE9D; 
-    --text-mediumDark: #456266;
-    --text-dark: #071013; 
+    --brush-white: #F4F4F9;
+    // --brush-lightGray:rgba(255,255,255, 0.45);
+    --brush-lightGray:#fafafa;
+    --brush-gray: #859FA4;
+    --brush-darkGray: #265151;
+    --brush-black: #1E3735;
+    // --brush-lightBlue: #AEC0C7;
+    --brush-lightBlue: #456266;
+    // --brush-darkBlue: #324358;
+    --brush-darkBlue: var(--brush-darkGray);
+    --brush-lightYellow: #F6DFB1;
+    --brush-darkYellow: #FBBB53;
+    --brush-lightGreen: #81AE9D;
 
-    // --text-light: yellow; 
-    // --text-mediumLight: pink; 
-    // --text-mediumDark: red;
-    // --text-dark: red;     
+    $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%) hue-rotate(202deg) brightness(102%) contrast(95%);
+    // https://codepen.io/sosuke/pen/Pjoqqp helped with these
+    --filter-white: #{$filter-white};
+    --filter-darkGray: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
+    --filter-logo-white: brightness(0) #{$filter-white};
 }
 
+
+
 .text-light {
-    color: var(--text-light);
+    color: #{map-get($colorMap, text-light)};
 }
 
 .text-mediumLight {
-    color: var(--text-mediumLight);
+    color: #{map-get($colorMap, text-mediumDark)};
 }
 
 .text-mediumDark {
-    color: var(--text-mediumDark);
+    color: #{map-get($colorMap, text-mediumDark)};;
 }
 
 .text-dark {
-    color: var(--text-dark);
+    color: #{map-get($colorMap, text-dark)};
 }
 
 
-:root {
-    --bg-white: #F4F4F9;
-    --bg-black: #071013;
-    --bg-blue: #456266;
-    --bg-yellow: #E9B44C;
-    --bg-green: #81AE9D;
-    --bg-beige: #F6D697;
-    // --bg-white: lightpink;
-    // --bg-black: gray;
-    // --bg-blue: purple;
-    // --bg-yellow: yellow;
-    // --bg-green: green;
-    // --bg-beige: #F6D697;
-    /* This calculation has been made by the code at this address: https://codepen.io/sosuke/pen/Pjoqqp */
-    --bg-blue-filter: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
-    --logo-white-filter: brightness(0) invert(100%) sepia(1%) saturate(4410%) hue-rotate(181deg) brightness(94%) contrast(107%);
-}
-$colors: green, yellow, white, blue, black, beige;
+
+
+$colors: green, yellow, white, blue, black;
 @each $color in $colors {
 
     .bg-#{$color} {
-        background-color: var(--bg-#{$color});
+        $bg-color: "bg-" + $color;
+
+        background-color: #{map-get($colorMap, $bg-color)};
     }
 
-    // .text-#{$color} {
-    //     color: var(--#{$color});
-    // }
-
     .#{$color} {
-        $var-color: var(--bg-#{$color});
+        $bg-color: "bg-" + $color;
+        $var-color: #{map-get($colorMap, $bg-color)};
         &-horizontal-border:before {
             background: frame($var-color, horizontal);
         }
@@ -150,10 +145,3 @@ $colors: green, yellow, white, blue, black, beige;
 }
 
 
-:root {
-    --ui-white: #F4F4F9;
-    --ui-yellow: #E9B44C;
-    --ui-blue: #456266;
-    --ui-beige: #E9B44C;
-    --ui-black: #071013;
-}

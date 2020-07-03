@@ -10,12 +10,12 @@
     &-decor {
         width: var(--accent-thickness);
         height: $logoNSocialY;
-        background: var(--ui-blue);
+        background:  #{map-get($colorMap, ui-blue)};
         left: 0;
     }
     
     &-logo > img {
-        width: 100px;
+        max-width: 140px;
     }
 
     header & {
@@ -23,15 +23,12 @@
             &-logo > img {
                 margin-left: #{$accentThickness /2};
                 margin-top: 8px;
+                filter: var(--filter-logo-white);    
             }
     
             &-decor {
                 display: none;
             }  
-
-            &-logo > img {
-                filter: var(--bg-blue-filter);    
-            }
         }
     }
 
@@ -55,7 +52,7 @@
                 $width: calc(#{$featureImageX} - #{$statics});
                 $marginTop: calc(#{$width} / 25);
 
-                max-width: 400px;
+                max-width: 350px;
                 min-width: 170px;
                 width: $width;
                 margin-top: $marginTop;

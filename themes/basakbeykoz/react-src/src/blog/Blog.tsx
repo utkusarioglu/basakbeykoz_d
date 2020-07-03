@@ -4,6 +4,9 @@ import { Helmet } from "react-helmet";
 import "./_blog.scss";
 
 function Blog() {
+
+    window.scrollTo(0,0);
+
     const siteName = process.env.REACT_APP_NAME as string;
     const separator = process.env.REACT_APP_SEPARATOR as string;
     const PAGE_NAME = "Yazilar";

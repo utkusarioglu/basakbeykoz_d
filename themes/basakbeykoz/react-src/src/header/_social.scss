@@ -17,7 +17,7 @@
         // display: none;
         width: #{$accentThickness};
         height: $logoNSocialY;
-        background: var(--ui-blue);
+        background:  #{map-get($colorMap, ui-blue)};
         right: 0;
     }
 
@@ -53,6 +53,10 @@
 
         @include wideScreen() {
             display: flex;
+        }
+
+        &-icon {
+            filter: var(--filter-darkGray);
         }
     }
 }

@@ -1,6 +1,23 @@
 import React, {useState} from "react";
+import { setFetching } from "../app/appActions";
+import { RootState } from "../app/rootReducer";
+import { connect } from "react-redux";
 
-function Credits() {
+const mapState = (state: RootState) => ({})
+
+const mapDispatch = { 
+    setFetching,
+}   
+
+interface OwnProps {}
+type DispatchProps = typeof mapDispatch;
+type StateProps = ReturnType<typeof mapState>;
+type Props = DispatchProps & StateProps & OwnProps;
+
+function Credits(props: Props): React.FunctionComponentElement<Props> {
+
+    props.setFetching(false);
+    window.scrollTo(0,0);
 
     const [colorSet, setColorSet] = useState(0);
 
@@ -20,33 +37,47 @@ function Credits() {
 
     const COLOR_SETS: {[key: string]: string}[] = [
         {
-            "--bg-white": "#F4F4F9",
-            "--bg-black": "#071013",
-            "--bg-blue": "#456266",
-            "--bg-yellow": "#E9B44C",
-            "--bg-green": "#81AE9D",
-            "--bg-beige": "#F6D697",
+            "--brush-white": "#F4F4F9",
+            "--brush-lightGray": "rgba(230,230,230,0.75)",
+            "--brush-gray": "#9C9C9D",
+            "--brush-darkGray": "#265151",
+            "--brush-black": "#1E3735",
+            "--brush-lightBlue": "#AEC0C7",
+            "--brush-darkBlue": "#1E3735",
+            "--brush-lightYellow": "#F6DFB1",
+            "--brush-darkYellow": "#FBBB53",
+            "--brush-lightGreen": "#81AE9D",
+        
+            "--bg-blue-filter": "invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%)",
+            "--logo-white-filter": "brightness(0) invert(100%) sepia(1%) saturate(4410%) hue-rotate(181deg) brightness(94%) contrast(107%)",
         },
         {
-            "--bg-white": "#FFFFFF",
-            "--bg-black": "#000000",
-            "--bg-blue": "#0000FF",
-            "--bg-yellow": "#FFFF00",
-            "--bg-green": "#00FF00",
-            "--bg-beige": "#005500",
+            "--brush-white": "#F4F4F9",
+            "--brush-lightGray": "rgba(230,230,230,0.75)",
+            "--brush-gray": "#9C9C9D",
+            "--brush-darkGray": "#265151",
+            "--brush-black": "#1E3735",
+            "--brush-lightBlue": "#AEC0C7",
+            "--brush-darkBlue": "#1E3735",
+            "--brush-lightYellow": "#F6DFB1",
+            "--brush-darkYellow": "#FBBB53",
+            "--brush-lightGreen": "#81AE9D",
+        
+            "--bg-blue-filter": "invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%)",
+            "--logo-white-filter": "brightness(0) invert(100%) sepia(1%) saturate(4410%) hue-rotate(181deg) brightness(94%) contrast(107%)",
         }
     ]
 
 
 
     const changeColors = () => {
+        
+        Object.entries(COLOR_SETS[colorSet]).forEach(([n, v]: any) => {
+            document.documentElement.style.setProperty(n, v);
+        })
         setColorSet((set) => ++set % COLOR_SETS.length);
     }
 
-    Object.entries(COLOR_SETS[colorSet]).forEach(([n, v]: any) => {
-        console.log(n,v )
-        document.documentElement.style.setProperty(n, v);
-    })
 
 
     return (
@@ -75,4 +106,6 @@ function Credits() {
     )
 }
 
-export default Credits;
+export default connect<StateProps, DispatchProps, OwnProps>(
+    // @ts-ignore
+    mapState, mapDispatch)(Credits);

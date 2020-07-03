@@ -7,17 +7,16 @@
         display: grid;
         grid-template-areas: 
             "image"
-            "Heading-h3"
+            "Heading-h4"
             "date"
             "excerpt";
-        grid-row-gap: #{$accentThickness};
+        grid-row-gap: #{$accentThickness/2};
         text-decoration: none;
-        // color: var(--bg-blue);
         padding: #{$accentThickness};
 
         @include narrowScreen() {
             grid-template-areas: 
-                "image Heading-h3"
+                "image Heading-h4"
                 "image date"
                 "image excerpt";
             grid-template-rows: min-content min-content auto;
@@ -27,11 +26,15 @@
 
         &-date {
             grid-area: date;
-            color: var(--text-mediumLight);
+            color: #{map-get($colorMap, text-mediumLight)};
         }
 
         &-excerpt {
             grid-area: excerpt;
+
+            & > p {
+                margin: 0;
+            }
         }
 
         &-thumbnail {

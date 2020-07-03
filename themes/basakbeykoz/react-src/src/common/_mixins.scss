@@ -57,11 +57,11 @@
 }
   
   
-@mixin headerIcon() {
+@mixin headerIcon($filter: var(--filter-white)) {
     height: #{$socialIconSize};
     width: #{$socialIconSize};
     padding: #{$accentThickness / 2};
-    filter: var(--bg-blue-filter);    
+    filter: $filter;    
 }
 
 
@@ -78,7 +78,7 @@
 
 @function frame($color, $direction) {
     $degree: to-degree($direction);
-    $at: var(--accent-thickness);
+    $at: #{$accentThickness};
     @return linear-gradient(
         $degree, 
         $color calc(#{$at}/2), 
@@ -92,7 +92,7 @@
     $font-vals: map-get($fonts, $name);
 
     grid-area: Heading-#{$name};
-    color: var(--text-mediumDark);
+    color: #{map-get($colorMap, text-mediumDark)};
     margin: 0;
 
     @each $key, $value in $font-vals {
@@ -126,11 +126,11 @@
 
 @mixin p {
     grid-area: paragraph;
-    color: var(--text-mediumDark);
+    color: #{map-get($colorMap, text-mediumDark)};
     font-family: $textFont;
     font-size: $pFontSize;
     line-height: $pLineHeight;
-    margin: 0;
+    margin: 0 0 #{$accentThickness} 0;
 }
 
 
@@ -158,4 +158,16 @@
     left: 0;
     right: 0;
     pointer-events: none;
+}
+
+@mixin limitParagraphLines($lineCount: 3) {
+    // $pLineHeight: $pLineHeight;
+    height: calc(#{$pLineHeight} * #{$lineCount});
+    overflow: hidden;
+}
+
+@mixin buttonText() {
+    @include p();
+    font-family: #{$titleFont};
+    margin: 0;
 }

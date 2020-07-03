@@ -30,6 +30,7 @@
 
                     box-sizing: border-box;
                     padding: #{$accentThickness};
+                    // padding-bottom: #{$accentThickness + map-get($mobile, navigationY)};
                     height: unquote("max(100vh, #{$minBlockHeight})");
                     overflow: hidden;
                     position: relative;
@@ -40,10 +41,12 @@
                         box-sizing: border-box;
                         padding-bottom: #{$mobileNavigationHeight};
 
-
-
                         @include wideScreen() {
                             padding-bottom: 0;
+                        }
+
+                        & > p {
+                            margin-bottom: 0;
                         }
                     }
 
@@ -88,10 +91,10 @@
 
                             @include narrowScreen() {
                                 grid-template-areas: 
-                                    "empty logo"
-                                    "empty Heading-h1"
-                                    "empty paragraph"
-                                    "empty buttons";
+                                    ". logo"
+                                    ". Heading-h1"
+                                    ". paragraph"
+                                    ". buttons";
                                 grid-template-columns: #{$homeWelcomeImageX} 1fr;
                                 grid-template-rows: #{$navSocialSpaceX} auto auto min-content;
                             }
@@ -99,6 +102,12 @@
                             @include wideScreen() {
                                 $navSocialSpaceX: map-get($wide, navSocialSpaceX);
                                 grid-template-columns: #{$homeWelcomeImageX} 1fr #{$navSocialSpaceX};
+                                // grid-template-columns: #{adjustSize($homeWelcomeImageX, )} 1fr #{$navSocialSpaceX};
+                                grid-column-gap: #{adjustSize(0, 70, map-get($screenSizes, wide), 1920)};
+                            }
+
+                            & > p {
+                                margin-bottom: 0;
                             }
                         }
 
@@ -143,10 +152,10 @@
                         h1 {
                             // padding-bottom: #{$accentThickness};
                             align-self: end;
-                            color: var(--text-light);
+                            color: #{map-get($colorMap, text-light)};
 
                             @include narrowScreen() {
-                                color: var(--text-mediumDark);
+                                color: #{map-get($colorMap, text-mediumDark)};
                             }
                         }
 
@@ -159,13 +168,14 @@
                             display: none;
 
                             .wp-block-button {
-                                background-color: var(--ui-beige);
-                                color: var(--text-dark);
-                                padding: 1em;
+                                @include buttonText();
+                                background-color:  #{map-get($colorMap, ui-yellow)};
+                                color: #{map-get($colorMap, text-dark)};
+                                padding: #{$accentThickness};
             
                                 &:hover {
-                                    background-color: var(--bg-blue);
-                                    padding: 1em;
+                                    background-color: #{map-get($colorMap, bg-blue)};
+                                    color: #{map-get($colorMap, text-light)};
                                     cursor: pointer;
                                 }
                             }
@@ -187,8 +197,12 @@
                             @include wideScreen() {
                                 // padding-right: #{$navSocialSpaceX};
                                 // padding-left: #{$navSocialSpaceX};
-                                padding-left: 12vw;
-                                padding-right: 12vw;
+                                $wideScreenSize: map-get($screenSizes, wide);
+                                $maxPadding: 350;
+                                $padding: adjustSize(144, $maxPadding, $wideScreenSize);
+                                grid-column-gap: #{adjustSize(2* ($accentThickness)/1px, 100, $wideScreenSize, 1920)};
+                                padding-left: #{$padding};
+                                padding-right: #{$padding};
                             }
                         }
                         
@@ -278,7 +292,7 @@
                                     @include svgArt("parrot.svg", $parrotSize, $parrotSize);
                                     bottom: auto;
                                     left: -20px;
-                                    top: #{-$h2fontSize};
+                                    top: calc(-1 * #{$h2fontSize});
                                     transform: none;
                                     // margin-top: -38px;
                                     // margin-left: 6px;
@@ -326,7 +340,7 @@
                             & > .wp-block-group {
                                 grid-area: restart;
                                 padding: #{$accentThickness/ 2};
-                                background-color: var(--bg-white);
+                                background-color: #{map-get($colorMap, bg-white)};
                                 // margin-right: #{-$accentThickness};
 
                                 & > .wp-block-group__inner-container {
@@ -352,7 +366,8 @@
                                     }
 
                                     p {
-                                        color: var(--text-dark);
+                                        color: #{map-get($colorMap, text-dark)};
+                                        margin:0;
                                     }
 
                                     grid-template-areas: 
@@ -388,7 +403,7 @@
                                 "Heading-h2"
                                 "posts"
                                 "paragraph";
-                            grid-template-rows: max-content auto max-content;
+                            grid-template-rows: #{$h2LineHeight} auto max-content;
                             grid-row-gap: #{$accentThickness/2};
 
                             @include mediumTallScreen() {
@@ -415,6 +430,10 @@
                                     text-align: left;
                                 }
                             }
+
+                            p {
+                                margin: 0;
+                            }
                         }
 
                         &:after {
@@ -434,13 +453,13 @@
                     // basari hikayeleri
                     &:nth-child(5) {
                         .wp-block-group__inner-container {
-                            @include wpPosts(success, column, var(--bg-beige));
+                            @include wpPosts(success, column, map-get($colorMap, bg-gray));
 
                             grid-template-areas: 
                                 "Heading-h2"
-                                "posts"
-                                "paragraph";
+                                "posts";
                             grid-row-gap: #{$accentThickness/2};
+                            grid-template-rows: #{$h2LineHeight} 1fr;
 
                             @include mediumTallScreen() {
                                 grid-row-gap: #{$accentThickness};
@@ -505,6 +524,7 @@
 
                             & > p {
                                 display: none;
+                                margin: 0;
 
                                 @include smallScreen() {
                                     display: block;
@@ -520,7 +540,7 @@
                             }
                 
                             & label {
-                                color: var(--text-light);
+                                color: #{map-get($colorMap, text-light)};;
                                 input,
                                 textarea {
                                     margin-top: #{$accentThickness / 4}
@@ -531,14 +551,14 @@
                             & .wpcf7-textarea {
                                 box-sizing:border-box;
                                 border: none;
-                                background-color: var(--bg-white);
+                                background-color: #{map-get($colorMap, bg-white)};
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 font-family: #{$textFont};
     
                                 &:focus {
                                     outline: none;
-                                    background-color: var(--bg-beige);
+                                    background-color: #{map-get($colorMap, bg-yellow)};
     
                                 }
                             }
@@ -554,8 +574,8 @@
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 border: none;
-                                background-color: var(--ui-beige);
-                                color: var(--text-dark);
+                                background-color:  #{map-get($colorMap, ui-yellow)};
+                                color: #{map-get($colorMap, text-dark)};
                             }
                         }
                     }

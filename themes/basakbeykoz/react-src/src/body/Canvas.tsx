@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment as div } from "react";
 import PostList from "../blog/PostList";
 import { wpSingularItemForDisplay } from "../wp/@types-wp";
 import { Helmet } from "react-helmet";
@@ -7,6 +7,8 @@ import "./_canvas.scss";
 interface Props extends wpSingularItemForDisplay {}
 
 function Canvas(props: Props): React.FunctionComponentElement<Props> {
+
+    window.scrollTo(0,0);
     
     const siteName = process.env.REACT_APP_NAME as string;
     const separator = process.env.REACT_APP_SEPARATOR as string;
@@ -48,12 +50,15 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
         excludeSlug.push(props.slug);
         bodyExtraClasses.push("has-PostExcerptList");
         postList = (
-            <PostList excludeSlug={excludeSlug} />
+            <div className="PostList-wrapper">
+                <h4>Similar Reads</h4>
+                <PostList excludeSlug={excludeSlug} />
+            </div>
         );
     }
     
     return (
-        <Fragment>
+        <div>
             <Helmet>
                 <title>{siteTitle}</title>
             </Helmet>
@@ -67,7 +72,7 @@ function Canvas(props: Props): React.FunctionComponentElement<Props> {
                     dangerouslySetInnerHTML={{__html: props.content}} />
                 {postList}
             </div>
-        </Fragment>
+        </div>
     )
 }
 

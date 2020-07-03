@@ -1,3 +1,9 @@
+// @import "./mixins";
+
+@function adjustSize($minValue, $maxValue, $minScreen: 320, $maxScreen: 1920) {
+    @return calc(#{$minValue}px + (#{$maxValue} - #{$minValue}) * ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen})));
+}
+
 //Vars
 $uploadsPath: "/wp-content/uploads";
 $defaultFontSize: 20px;
@@ -52,35 +58,49 @@ $footerSquareSize: 100px;
 
 $socialIconSize: 20px;
 
+
+
 $fonts: (
     h1: (
-        font-size: 35px,
-        line-height: 40px,
+        // font-size: 35px,
+        font-size: adjustSize(35, 45),
+        // line-height: 40px,
+        line-height: adjustSize(40, 55),
         font-family: $titleFont,
     ),
     h2: (
-        font-size: 30px,
-        line-height: 34.5px,
+        // font-size: 30px,
+        font-size: adjustSize(30, 40),
+        // line-height: 34.5px,
+        line-height: adjustSize(34.5, 40),
         font-family: $titleFont,
     ),
     h3: (
-        font-size: 25px,
-        line-height: 30px,
+        // font-size: 25px,
+        font-size: adjustSize(25, 35),
+        // line-height: 30px,
+        line-height: adjustSize(30, 40),
         font-family: $titleFont,
     ),
     h4: (
-        font-size: 20px,
-        line-height: 30px,
+        // font-size: 20px,
+        font-size: adjustSize(20, 30),
+        // line-height: 30px,
+        line-height: adjustSize(30, 40),
         font-family: $titleFont,
     ),
     h5: (
-        font-size: 16px,
-        line-height: 20px,
+        // font-size: 16px,
+        font-size: adjustSize(16, 26),
+        // line-height: 20px,
+        line-height: adjustSize(20, 34),
         font-family: $titleFont,
     ),
     h6: (
-        font-size: 14px,
-        line-height: 18px,
+        // font-size: 14px,
+        font-size: adjustSize(14, 20),
+        // line-height: 18px,
+        line-height: adjustSize(18, 24),
         font-family: $titleFont,
     ),
 );
@@ -103,7 +123,32 @@ $h5LineHeight: 20px;
 $h6FontSize: 14px;
 $h6LineHeight: 18px;
 
-$pFontSize: 20px;
-$pLineHeight: 25px;
+
+
+
+$pFontSize: adjustSize(20, 26);
+$pLineHeight: adjustSize(26, 38);
 
 $scut-rem-base: 16 !default;
+
+$colorMap: (
+    text-light: var(--brush-white),
+    text-mediumLight: var(--brush-gray),
+    text-mediumDark: var(--brush-darkBlue),
+    text-dark: var(--brush-black),
+
+    bg-white: var(--brush-white),
+    bg-gray: var(--brush-lightGray),
+    bg-yellow: var(--brush-lightYellow),
+    bg-blue: var(--brush-lightBlue),
+    bg-green: var(--brush-lightGreen),
+    bg-black: var(--brush-black),
+
+    ui-white: var(--brush-white),
+    ui-yellow: var(--brush-darkYellow),
+    ui-decoration: var(--brush-darkYellow),
+    ui-beige: var(--brush-lightYellow),
+    ui-black: var(--brush-black),
+    ui-blue: var(--brush-darkGray),
+);
+

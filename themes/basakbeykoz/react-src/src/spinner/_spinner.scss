@@ -34,7 +34,7 @@
         grid-area: LoadMessage;
         font-family: $textFont;
         align-self: top;
-        color: var(--text-mediumDark);
+        color: #{map-get($colorMap, text-mediumDark)};
 
         @include narrowScreen() {
             font-size: 25px;

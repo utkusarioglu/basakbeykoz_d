@@ -27,16 +27,16 @@ function PostListCard(props: Props): React.FunctionComponentElement<Props> {
             <div
                 className="PostList-card-thumbnail"
                 dangerouslySetInnerHTML={{__html: props.thumbnail}}/>
-            <h3 
+            <h4 
                 className="PostList-card-title">
                 {props.title}
-                </h3>
+                </h4>
             <span 
                 className="PostList-card-date">
                 {date}</span>
-            <p 
+            <div 
                 className="PostList-card-excerpt" 
-                dangerouslySetInnerHTML={{__html: excerpt}}></p>
+                dangerouslySetInnerHTML={{__html: excerpt}}></div>
             
         </Link>
     )

@@ -4,6 +4,10 @@
 
 .PostList {
     grid-area: PostList;
+
+    &-wrapper{
+        grid-area: PostList-wrapper;
+    }
     
     li {
         list-style: none;

@@ -9,14 +9,16 @@
     &-decor {
         width: #{$accentThickness};
         // height: 100%;
-        background-color: var(--ui-yellow);
+        background-color:  #{map-get($colorMap, ui-yellow)};
     }
 
     &-list {
         .Nav-list-item {
-            font-family: $titleFont;
+            // font-family: $titleFont;
+            font-family: $textFont;
+            // font-weight: 600;
             text-decoration: none;
-            color: var(--text-light);
+            color: #{map-get($colorMap, text-light)};
             text-align: right;
             position: relative;
             white-space: nowrap;
@@ -24,8 +26,8 @@
     }
 
     &-burgerButton {
-        background-color: var(--ui-yellow);
-        color: var(--text-mediumDark);
+        background-color:  #{map-get($colorMap, ui-blue)};
+        color: #{map-get($colorMap, text-mediumDark)};
         border: none;
         padding: 0;
         margin: 0;
@@ -70,7 +72,7 @@
             left: 0;
             right: 0;
             flex-direction: column;
-            background-color: var(--ui-yellow);
+            background-color:  #{map-get($colorMap, ui-blue)};
             display: flex;
 
             @include narrowScreen() {
@@ -93,7 +95,7 @@
                 }
     
                 &-active {
-                    color: var(--text-mediumDark);
+                    color: #{map-get($colorMap, ui-decoration)};
     
                     &:after {
                         position: absolute;
@@ -102,7 +104,7 @@
                         bottom: 0;
                         right: 0;
                         width: #{$accentThickness / 2};
-                        background-color: var(--ui-blue);
+                        background-color:  #{map-get($colorMap, ui-decoration)};
 
                         @include narrowScreen() {
                             width: auto;
@@ -132,6 +134,9 @@
                 left:0;
                 right:0;
                 bottom: 0;
+                @include narrowScreen() {
+                    position: relative;
+                }
             }
             
             & > .Nav-mask {                
@@ -176,8 +181,9 @@
             padding: #{$accentThickness} 0;
 
             .Nav-list-item {
-                color: var(--ui-blue);
+                color:  #{map-get($colorMap, ui-blue)};
                 padding: #{$accentThickness /4} #{$accentThickness /2};
+                font-size: adjustSize(20, 26);
             }
         }
 
