@@ -20,7 +20,6 @@
                 overflow-x: hidden;
                 overflow-y: scroll;
                 
-                height: 60vh;
                 align-self: center;
                 margin: 0;
             } @else if $gridFlow == column {
@@ -30,7 +29,9 @@
                 // this is not being implemented as it's not being used right now
             }
         }
-
+        
+        
+        
         @include wideScreen() {
             @if $gridFlow == row {
             } @else if $gridFlow == column {
@@ -38,6 +39,10 @@
             }
         }
         
+        @include mediumTallScreen() {
+            height: 60vh;
+        } 
+
         &::-webkit-scrollbar {
             display: none;
         }
@@ -151,7 +156,8 @@
 
             .wp-block-latest-posts__post-full-content,
             .wp-block-latest-posts__post-excerpt {
-                @include p();
+
+
                 @include limitParagraphLines(6);
 
                 @if $type == posts { 
@@ -172,10 +178,22 @@
                     width: 36px;
                     background-color: var(--brush-lightGray);
                 }
+
+                & > p {
+                    @include p();
+
+                    font-size: adjustSize($pFontSizeMin_px, 22);
+                    line-height: adjustSize($pLineHeightMin_px, 30);                    
+                }
+
             }
             
             a {
                 @include h4;
+
+                // font-size: adjustSize($pFontSizeMin_px, 22);
+                // line-height: adjustSize($pLineHeightMin_px, 30);    
+
                 grid-area: title;
                 text-decoration: none;
             }

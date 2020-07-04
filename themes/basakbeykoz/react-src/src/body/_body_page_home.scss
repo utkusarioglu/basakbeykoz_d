@@ -460,6 +460,7 @@
                                 "posts";
                             grid-row-gap: #{$accentThickness/2};
                             grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
+                            align-content: stretch;
 
                             @include mediumTallScreen() {
                                 grid-row-gap: #{$accentThickness};

@@ -72,9 +72,9 @@ $fonts: (
     ),
     h4: (
         // font-size: 20px,
-            font-size: adjustSize(20, 30),
+            font-size: adjustSize(20, 25),
         // line-height: 30px,
-            line-height: adjustSize(30, 40),
+            line-height: adjustSize(25, 30),
         font-family: $titleFont,
     ),
     h5: (
@@ -92,8 +92,10 @@ $fonts: (
         font-family: $titleFont,
     ),
 );
-$pFontSize: adjustSize(20, 26);
-$pLineHeight: adjustSize(26, 38);
+$pFontSizeMin_px: 20;
+$pFontSize: adjustSize($pFontSizeMin_px, 26);
+$pLineHeightMin_px: 26;
+$pLineHeight: adjustSize($pLineHeightMin_px, 38);
 $scut-rem-base: 16 !default;
 $colorMap: (
     text-light: var(--brush-white),
