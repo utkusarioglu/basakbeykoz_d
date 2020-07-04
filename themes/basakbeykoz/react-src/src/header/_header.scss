@@ -22,12 +22,21 @@
         width: 100vw;
         height: $mobileNavigationHeight;
         pointer-events: initial;
-    }
-    @include narrowScreen() {
-        grid-template-areas: "decor-left nav social decor-right";
-        grid-template-columns: #{$accentThickness} 1fr min-content #{$accentThickness};
-        .Logo {
-            display: none;
+
+        @include narrowScreen() {
+            grid-template-areas: "decor-left nav social decor-right";
+            grid-template-columns: #{$accentThickness} 1fr min-content #{$accentThickness};
+            .Logo {
+                display: none;
+            }
+        }
+
+        @include wideScreen() {
+            background-color: transparent;
+            width: 350px;
+            &-mobileControls {
+                display: none;
+            }
         }
     }
     @include wideScreen() {
@@ -51,11 +60,5 @@
             grid-area: decor-left;
         }
     }
-    @include wideScreen() {
-        background-color: transparent;
-        width: 350px;
-        &-mobileControls {
-            display: none;
-        }
-    }
+
 }
