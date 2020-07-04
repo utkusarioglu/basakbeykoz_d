@@ -1,40 +1,42 @@
 @import "./common/_vars";
 @import "./common/_mixins";
-
 // Externals
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
-
 :root {
     /* measurements */
     --wp-frame-width: 1200px;
     --wp-frame-padding-x: 7em;
     --wp-text-with: 800px;
     --accent-thickness: #{$accentThickness};
-
     --home-vertical-padding: 200px;
     --home-horizontal-padding: 400px;
-
     --fixed-feature-image-width: 470px;
     --head-section-height: 110px;
 }
 
+
 /* 
     SCROLLBAR 
 */
+
 ::-webkit-scrollbar {
     & {
-        width: #{$accentThickness};
+        width: 0;
     }
     &-track {
         background: #{map-get($colorMap, ui-blue)};
     }
     &-thumb {
         background: #{map-get($colorMap, ui-yellow)};
-        
         &:hover {
             background: #{map-get($colorMap, ui-black)};
             border-right: #{map-get($colorMap, ui-black)};
+        }
+    }
+    @include narrowScreen() {
+        & {
+            width: #{$accentThickness};
         }
     }
 }
@@ -65,16 +67,16 @@ nav {
     font-family: $textFont;
 }
 
-
 .wp-block-button__link,
 figcaption {
-        font-family: $titleFont;
-        margin: 0;
+    font-family: $titleFont;
+    margin: 0;
 }
 
 p {
     @include p();
 }
+
 
 /*
     COLORS
@@ -83,7 +85,7 @@ p {
 :root {
     --brush-white: #F4F4F9;
     // --brush-lightGray:rgba(255,255,255, 0.45);
-    --brush-lightGray:#fafafa;
+    --brush-lightGray: #fafafa;
     --brush-gray: #859FA4;
     --brush-darkGray: #265151;
     --brush-black: #1E3735;
@@ -94,15 +96,12 @@ p {
     --brush-lightYellow: #F6DFB1;
     --brush-darkYellow: #FBBB53;
     --brush-lightGreen: #81AE9D;
-
     $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%) hue-rotate(202deg) brightness(102%) contrast(95%);
     // https://codepen.io/sosuke/pen/Pjoqqp helped with these
     --filter-white: #{$filter-white};
     --filter-darkGray: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
     --filter-logo-white: brightness(0) #{$filter-white};
 }
-
-
 
 .text-light {
     color: #{map-get($colorMap, text-light)};
@@ -113,24 +112,24 @@ p {
 }
 
 .text-mediumDark {
-    color: #{map-get($colorMap, text-mediumDark)};;
+    color: #{map-get($colorMap, text-mediumDark)};
+    ;
 }
 
 .text-dark {
     color: #{map-get($colorMap, text-dark)};
 }
 
-
-
-
-$colors:("green", "yellow", "white", "blue", "black");
+$colors:("green",
+"yellow",
+"white",
+"blue",
+"black");
 @each $color in $colors {
-
     .bg-#{$color} {
         $bg-color: "bg-" + $color;
         background-color: #{map-get($colorMap, $bg-color)};
     }
-
     .#{$color} {
         $bg-color: "bg-" + $color;
         $var-color: #{map-get($colorMap, $bg-color)};
@@ -142,5 +141,3 @@ $colors:("green", "yellow", "white", "blue", "black");
         }
     }
 }
-
-
