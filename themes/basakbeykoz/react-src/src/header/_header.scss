@@ -1,45 +1,44 @@
 @import "../common/_vars";
 @import "../common/_mixins";
-
-
 .Header {
-    display: grid;
-    align-items: center;
-    grid-auto-flow: column;
-    grid-template-areas: "decor-left logo social nav decor-right";
-    grid-template-columns: #{$accentThickness} 1fr min-content min-content #{$accentThickness};
     position: fixed;
-    bottom: 0;
     z-index: 100;
-    background-color:  #{map-get($colorMap, ui-blue)};
-    
-    overflow-x: scroll;
-    overflow-y: hidden;
-    width: 100vw;
-    height: $mobileNavigationHeight;
-    
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    &-bottomWrap {
+        position: absolute;
+        display: grid;
+        align-items: center;
+        grid-auto-flow: column;
+        grid-template-areas: "decor-left logo social nav decor-right";
+        grid-template-columns: #{$accentThickness} 1fr min-content min-content #{$accentThickness};
+        background-color: #{map-get($colorMap, ui-blue)};
+        bottom: 0;
+        overflow-x: visible;
+        overflow-y: hidden;
+        width: 100vw;
+        height: $mobileNavigationHeight;
+    }
     @include narrowScreen() {
         grid-template-areas: "decor-left nav social decor-right";
         grid-template-columns: #{$accentThickness} 1fr min-content #{$accentThickness};
-        
         .Logo {
             display: none;
         }
     }
-
     @include wideScreen() {
         display: none;
     }
-    
     &::-webkit-scrollbar {
         display: none;
     }
-
     &-decor {
         @mixin decor-common {
             width: #{$accentThickness};
             height: 100%;
-            background:  #{map-get($colorMap, ui-decoration)};
+            background: #{map-get($colorMap, ui-decoration)};
         }
         &-right {
             @include decor-common();
@@ -50,14 +49,11 @@
             grid-area: decor-left;
         }
     }
-
     @include wideScreen() {
         background-color: transparent;
-        width: 350px;        
-
+        width: 350px;
         &-mobileControls {
             display: none;
         }
     }
-
 }

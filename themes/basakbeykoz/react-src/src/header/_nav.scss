@@ -83,6 +83,7 @@
 
             .Nav-list-item {
                 padding: #{$accentThickness / 2} #{$accentThickness};
+                position: relative;
 
                 @include narrowScreen() {
                     $font-size: map-get($fontSizes, mobileNavigation); 

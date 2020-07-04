@@ -123,12 +123,11 @@ p {
 
 
 
-$colors: green, yellow, white, blue, black;
+$colors:("green", "yellow", "white", "blue", "black");
 @each $color in $colors {
 
     .bg-#{$color} {
         $bg-color: "bg-" + $color;
-
         background-color: #{map-get($colorMap, $bg-color)};
     }
 
