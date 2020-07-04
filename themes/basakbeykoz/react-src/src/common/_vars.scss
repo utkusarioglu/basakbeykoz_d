@@ -46,7 +46,8 @@ $mobile_FeatureImageHeight_home: 300px;
 $accentThickness: 30px;
 $excerptFontSize: 15px;
 $footerSquareSize: 100px;
-$socialIconSize: 20px;
+$socialIconMinSize_px: 20;
+$socialIconActiveSize_px: adjustSize($socialIconMinSize_px, 30, map-get($screenSizes, wide));
 $fonts: (
     h1: (
         // font-size: 35px,

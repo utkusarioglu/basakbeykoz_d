@@ -58,8 +58,10 @@
   
   
 @mixin headerIcon($filter: var(--filter-white)) {
-    height: #{$socialIconSize};
-    width: #{$socialIconSize};
+    min-height: #{$socialIconMinSize_px}px;
+    min-width: #{$socialIconMinSize_px}px;
+    height: #{$socialIconActiveSize_px};
+    width: #{$socialIconActiveSize_px};
     padding: #{$accentThickness / 2};
     filter: $filter;    
 }
