@@ -96,7 +96,7 @@
                                     ". paragraph"
                                     ". buttons";
                                 grid-template-columns: #{$homeWelcomeImageX} 1fr;
-                                grid-template-rows: #{$navSocialSpaceX} auto auto min-content;
+                                grid-template-rows: #{$logoNSocialY} auto auto #{$logoNSocialY};
                             }
 
                             @include wideScreen() {
