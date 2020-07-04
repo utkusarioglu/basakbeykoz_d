@@ -16,7 +16,11 @@ function PostListCard(props: Props): React.FunctionComponentElement<Props> {
         ? props.excerpt
         : createExcerpt(props.content);
 
-    const d = (new Date(props.date)); // short for date object 
+    if(process.env.NODE_ENV === 'development') {
+        console.log(props.date.replace(/-/g, "/"));
+    }
+
+    const d = (new Date(props.date.replace(/-/g, "/"))); // short for date object 
     const date = d.toLocaleDateString("TR-TR");
     
     return (
