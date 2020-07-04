@@ -38,13 +38,14 @@
                 display: none;
             }
         }
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     @include wideScreen() {
         display: none;
     }
-    &::-webkit-scrollbar {
-        display: none;
-    }
+
     &-decor {
         @mixin decor-common {
             width: #{$accentThickness};
@@ -60,5 +61,4 @@
             grid-area: decor-left;
         }
     }
-
 }
