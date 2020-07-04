@@ -7,5 +7,10 @@ rm -rf akismet
 rm hello.php
 rm index.php
 
+cd ../..
+chown -R www-data:www-data wp-content
+
 cd /
-apache2 
+source /etc/apache2/envvars
+apache2 -S 
+# sleep 200
