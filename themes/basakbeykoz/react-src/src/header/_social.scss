@@ -11,7 +11,7 @@
         // display: none;
         width: #{$accentThickness};
         height: $logoNSocialY;
-        background : #{map-get($colorMap, ui-blue)};
+        background: #{map-get($colorMap, ui-blue)};
         right: 0;
     }
     &-list {
