@@ -1,17 +1,17 @@
 // @import "./mixins";
-
 @function adjustSize($minValue, $maxValue, $minScreen: 320, $maxScreen: 1920) {
-    @return calc(#{$minValue}px + (#{$maxValue} - #{$minValue}) * ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen})));
+    @return calc(
+        #{$minValue}px + (#{$maxValue} - #{$minValue}) *
+            ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen}))
+    );
 }
 
 //Vars
 $uploadsPath: "/wp-content/uploads";
 $defaultFontSize: 20px;
 $textFont: "Work Sans", sans-serif;
-$titleFont: 'Montserrat', sans-serif;
-
+$titleFont: "Montserrat", sans-serif;
 // $wideScreenPx: 1200;
-
 $screenSizes: (
     huge: 1920,
     wide: 1200,
@@ -19,131 +19,92 @@ $screenSizes: (
     small: 600,
     mediumTall: 700,
 );
-
 $fontSizes: (
     mobileNavigation: 18px,
 );
-
 $mobile: (
     navigationY: 55px,
     figureHeight: unquote("max(400px, 60vh)"),
 );
-
 $narrow: (
     featureImageX: 25vw,
     logoNSocialY: 100px,
     homeWelcomeImageX: 45vw,
     homePostsNarrowY: 15vw,
 );
-
 $wide: (
     navSocialSpaceX: 150px,
 );
-
 $short: (
     minBlockHeight: 650px,
     // minHeight: 700px,
-    buttonDisappearBefore: 600px,
+        buttonDisappearBefore: 600px,
 );
-
 $mobileNavigationHeight: 55px;
 $mobileFeatureImageHeight: 200px;
 $mobile_FeatureImageHeight_home: 300px;
-
 $accentThickness: 30px;
-
 $excerptFontSize: 15px;
-
 $footerSquareSize: 100px;
-
 $socialIconSize: 20px;
-
-
-
 $fonts: (
     h1: (
         // font-size: 35px,
-        font-size: adjustSize(35, 45),
+            font-size: adjustSize(35, 45),
         // line-height: 40px,
-        line-height: adjustSize(40, 55),
+            line-height: adjustSize(40, 55),
         font-family: $titleFont,
     ),
     h2: (
         // font-size: 30px,
-        font-size: adjustSize(30, 40),
+            font-size: adjustSize(26, 40),
         // line-height: 34.5px,
-        line-height: adjustSize(34.5, 40),
+            line-height: adjustSize(30, 45),
         font-family: $titleFont,
     ),
     h3: (
         // font-size: 25px,
-        font-size: adjustSize(25, 35),
+            font-size: adjustSize(23, 35),
         // line-height: 30px,
-        line-height: adjustSize(30, 40),
+            line-height: adjustSize(28, 40),
         font-family: $titleFont,
     ),
     h4: (
         // font-size: 20px,
-        font-size: adjustSize(20, 30),
+            font-size: adjustSize(20, 30),
         // line-height: 30px,
-        line-height: adjustSize(30, 40),
+            line-height: adjustSize(30, 40),
         font-family: $titleFont,
     ),
     h5: (
         // font-size: 16px,
-        font-size: adjustSize(16, 26),
+            font-size: adjustSize(16, 26),
         // line-height: 20px,
-        line-height: adjustSize(20, 34),
+            line-height: adjustSize(20, 34),
         font-family: $titleFont,
     ),
     h6: (
         // font-size: 14px,
-        font-size: adjustSize(14, 20),
+            font-size: adjustSize(14, 20),
         // line-height: 18px,
-        line-height: adjustSize(18, 24),
+            line-height: adjustSize(18, 24),
         font-family: $titleFont,
     ),
 );
-
-$h1FontSize: 40px;
-$h1LineHeight: 46px;
-
-$h2FontSize: 30px;
-$h2LineHeight: 34.5px;
-
-$h3FontSize: 25px;
-$h3LineHeight: 30px;
-
-$h4FontSize: 20px;
-$h4LineHeight: 30px;
-
-$h5FontSize: 16px;
-$h5LineHeight: 20px;
-
-$h6FontSize: 14px;
-$h6LineHeight: 18px;
-
-
-
-
 $pFontSize: adjustSize(20, 26);
 $pLineHeight: adjustSize(26, 38);
-
 $scut-rem-base: 16 !default;
-
 $colorMap: (
     text-light: var(--brush-white),
     text-mediumLight: var(--brush-gray),
     text-mediumDark: var(--brush-darkBlue),
     text-dark: var(--brush-black),
-
     bg-white: var(--brush-white),
     bg-gray: var(--brush-lightGray),
     bg-yellow: var(--brush-lightYellow),
     bg-blue: var(--brush-lightBlue),
     bg-green: var(--brush-lightGreen),
     bg-black: var(--brush-black),
-
     ui-white: var(--brush-white),
     ui-yellow: var(--brush-darkYellow),
     ui-decoration: var(--brush-darkYellow),
@@ -151,4 +112,3 @@ $colorMap: (
     ui-black: var(--brush-black),
     ui-blue: var(--brush-darkGray),
 );
-

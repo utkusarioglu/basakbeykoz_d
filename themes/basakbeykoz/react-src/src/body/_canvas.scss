@@ -1,44 +1,29 @@
 @import "../common/_vars";
 @import "../common/_mixins";
-
-
 .Canvas {
-
     $featureImageX: map-get($narrow, featureImageX);
     min-height: calc(100vh - #{$mobileNavigationHeight} + #{$footerSquareSize});
     padding-bottom: 200px;
-
     @include narrowScreen() {
         display: grid;
-        grid-template-areas: 
-            ". Heading-h2"
-            ". Article"
-            ". PostList-wrapper";
+        grid-template-areas: ". Heading-h2" ". Article" ". PostList-wrapper";
         grid-template-rows: 150px 1fr;
         grid-template-columns: $featureImageX 2fr;
         grid-column-gap: adjustSize(30, 100, map-get($screenSizes, narrow));
     }
-
     @include wideScreen() {
         $navSocialSpaceX: map-get($wide, navSocialSpaceX);
-
-        grid-template-areas: 
-            ". Heading-h2 ."
-            ". Article ."
-            ". PostList-wrapper .";
+        grid-template-areas: ". Heading-h2 ." ". Article ." ". PostList-wrapper .";
         grid-template-columns: $featureImageX 2fr $navSocialSpaceX;
-
     }
-
     &-decor {
         grid-area: Canvas-decor;
         grid-template-areas: "Heading-h2";
-        overflow: auto;
+        // overflow: auto;
         display: grid;
         position: relative;
         min-height: $mobileFeatureImageHeight;
         width: 100%;
-
         @include narrowScreen() {
             position: fixed;
             left: 0;
@@ -46,9 +31,7 @@
             top: 0;
             width: $featureImageX;
         }
-
-        & > .Canvas-featureTitle {
-
+        &>.Canvas-featureTitle {
             align-self: end;
             display: block;
             bottom: 0;
@@ -57,40 +40,31 @@
             padding: var(--accent-thickness);
             text-align: center;
             overflow: hidden;
-
             @include narrowScreen() {
                 display: none;
             }
-            
         }
-
         // Feature image has its own style file
     }
-
     .Canvas-articleTitle {
         display: none;
         align-self: center;
         // padding: #{$accentThickness};
-
         @include narrowScreen() {
             display: block;
             // padding: #{$accentThickness};
         }
     }
-
-
     article {
         grid-area: Article;
         padding-top: var(--accent-thickness);
         padding-right: var(--accent-thickness);
         padding-bottom: 200px;
         padding-left: var(--accent-thickness);
-        
         @include narrowScreen() {
             padding-top: 0;
             padding-left: 0;
         }
-
         p {
             &:first-child {
                 margin-top: 0;

@@ -403,7 +403,7 @@
                                 "Heading-h2"
                                 "posts"
                                 "paragraph";
-                            grid-template-rows: #{$h2LineHeight} auto max-content;
+                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} auto max-content;
                             grid-row-gap: #{$accentThickness/2};
 
                             @include mediumTallScreen() {
@@ -459,7 +459,7 @@
                                 "Heading-h2"
                                 "posts";
                             grid-row-gap: #{$accentThickness/2};
-                            grid-template-rows: #{$h2LineHeight} 1fr;
+                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
 
                             @include mediumTallScreen() {
                                 grid-row-gap: #{$accentThickness};
