@@ -5,6 +5,7 @@
     align-items: center;
     grid-column-gap: calc( var(--accent-thickness) / 2);
     a {
+        min-height: #{$accentThickness + $socialIconMinSize_px};
         height: calc(#{$accentThickness} + #{$socialIconActiveSize_px});
     }
     &-decor {

@@ -111,8 +111,8 @@
                             width: auto;
                             height: #{$accentThickness / 4};
                             top: auto;
-                            right: #{$accentThickness};
-                            left: #{$accentThickness};
+                            right: #{$accentThickness /2};
+                            left: #{$accentThickness /2};
                         }
                     }
                 }
