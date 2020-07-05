@@ -41,6 +41,7 @@
         
         @include mediumTallScreen() {
             height: 60vh;
+            padding: #{$accentThickness/2};
         } 
 
         &::-webkit-scrollbar {
