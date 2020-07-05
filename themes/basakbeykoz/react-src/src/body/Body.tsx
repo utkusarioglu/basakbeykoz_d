@@ -61,9 +61,13 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
     useEffect(() => {
         if (item === undefined) {
             setFetching(true);
-            // setTimeout(() => {
+            if(process.env.NODE_ENV === 'development') {
+                setTimeout(() => {
+                    fetchSingular(slug)
+                }, 5000)
+            } else {
                 fetchSingular(slug)
-            // }, 1000)
+            }
         } else {
             setDisplaying({
                 active: {
