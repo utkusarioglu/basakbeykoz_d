@@ -64,7 +64,7 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
             if(process.env.NODE_ENV === 'development') {
                 setTimeout(() => {
                     fetchSingular(slug)
-                }, 5000);
+                }, 300);
             } else {
                 fetchSingular(slug)
             }
