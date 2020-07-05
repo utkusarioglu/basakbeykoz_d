@@ -62,10 +62,11 @@
 
             height: min-content;
             border: #{$accentThickness/2} solid transparent;
-            border-image-source: url(#{$uploadsPath}/white-border.svg);
-            border-image-slice: 100; 
-            border-image-width: #{$accentThickness/2};
-            border-image-outset: #{$accentThickness/2};
+            
+            // border-image-source: url(#{$uploadsPath}/white-border.svg);
+            // border-image-slice: 100; 
+            // border-image-width: #{$accentThickness/2};
+            // border-image-outset: #{$accentThickness/2};
 
             @if $type == posts {
                 grid-template-areas: 
@@ -110,6 +111,16 @@
 
                     }
                 }
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: #{-$accentThickness};
+                right: #{-$accentThickness};
+                top: 0;
+                bottom: 0;
+                background: frame(var(--brush-lightGray), horizontal);
             }
 
             
