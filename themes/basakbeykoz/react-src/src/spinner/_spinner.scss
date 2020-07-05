@@ -3,6 +3,8 @@
 
 
 .Spinner {
+    $bg-white: map-get($colorMap, bg-yellow);
+
     position: fixed;
     padding: 3rem;
     top: 0;
@@ -14,7 +16,7 @@
     grid-row-gap: 1rem;
     grid-template-rows: 45% 65%;
     z-index: 110;
-    background-color: rgba(255, 255, 255, 0.3);
+    background: radial-gradient(closest-side, rgba(255, 255,255, 0.9), rgba(255,255,255, 0.4));
     grid-template-areas: 
         "logo"
         "LoadMessage";
@@ -22,7 +24,7 @@
     &-logo {
         grid-area: logo;
         align-self: end;
-        filter: var(--bg-blue-filter);
+        filter: var(--filter-darkGray);
         max-height: 60px;
         
         // @include narrowScreen() {
@@ -34,7 +36,7 @@
         grid-area: LoadMessage;
         font-family: $textFont;
         align-self: top;
-        color: #{map-get($colorMap, text-mediumDark)};
+        color: #{map-get($colorMap, ui-blue)};
 
         @include narrowScreen() {
             font-size: 25px;
