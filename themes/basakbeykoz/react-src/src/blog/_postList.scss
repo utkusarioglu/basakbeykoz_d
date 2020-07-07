@@ -9,7 +9,12 @@
         grid-area: PostList-wrapper;
 
         & > h4 {
+            // padding: #{$accentThickness};
             text-align: center;
+
+            @include narrowScreen() {
+                text-align: left;
+            }
         }
     }
     
