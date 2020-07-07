@@ -16,7 +16,7 @@
     grid-row-gap: 1rem;
     grid-template-rows: 45% 65%;
     z-index: 110;
-    background: radial-gradient(closest-side, rgba(255, 255,255, 0.9), rgba(255,255,255, 0.4));
+    background: radial-gradient(closest-side, rgba(255, 255,255, 0.8), rgba(255,255,255, 0.6));
     grid-template-areas: 
         "logo"
         "LoadMessage";
