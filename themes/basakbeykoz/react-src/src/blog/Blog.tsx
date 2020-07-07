@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import PostList from "./PostList";
 import { Helmet } from "react-helmet";
+import ReactGA from "react-ga";
 import "./_blog.scss";
 
 function Blog() {
@@ -25,6 +26,8 @@ function Blog() {
     ]
     .map((variation) => featureImagePath + variation)
     .join(",");
+
+    ReactGA.pageview(window.location.pathname + window.location.search);
 
     return (
         <Fragment>
