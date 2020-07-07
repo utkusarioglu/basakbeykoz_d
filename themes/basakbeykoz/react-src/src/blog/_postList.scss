@@ -7,6 +7,10 @@
 
     &-wrapper{
         grid-area: PostList-wrapper;
+
+        & > h4 {
+            text-align: center;
+        }
     }
     
     li {
