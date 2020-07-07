@@ -130,10 +130,10 @@
     
                             & > img {
                                 grid-area: logo;
-                                max-width: 100%;
+                                width: 100%;
                                 display: block;
                                 align-self: end;
-                                margin-top: -10px;
+                                margin-top: 4px;
                                 margin-left: 15vw;
                                 margin-right: 15vw;
 
@@ -541,7 +541,7 @@
                             }
                 
                             & label {
-                                color: #{map-get($colorMap, text-light)};;
+                                color: #{map-get($colorMap, text-dark)};
                                 input,
                                 textarea {
                                     margin-top: #{$accentThickness / 4}
@@ -556,6 +556,7 @@
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 font-family: #{$textFont};
+                                border-radius: 0;
     
                                 &:focus {
                                     outline: none;

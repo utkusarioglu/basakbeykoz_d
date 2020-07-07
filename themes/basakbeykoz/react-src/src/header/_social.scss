@@ -25,6 +25,7 @@
     }
     &-icon {
         @include headerIcon();
+        filter: var(--filter-darkGray);
     }
     .Header & {
         grid-area: social;
@@ -43,8 +44,7 @@
         @include wideScreen() {
             display: flex;
         }
-        &-icon {
-            filter: var(--filter-darkGray);
-        }
+        // &-icon {
+        // }
     }
 }

@@ -9,11 +9,10 @@ function Header() {
     return (
         <header className="Header">
             <div className="Header-bottomWrap">
-                <div className="Header-decor-left" />
                 <Logo />
                 <Social />
                 <Nav />
-                <div className="Header-decor-right" />
+
             </div>
         </header>
     )

@@ -83,23 +83,35 @@ p {
 */
 
 :root {
-    --brush-white: #F4F4F9;
-    // --brush-lightGray:rgba(255,255,255, 0.45);
-    --brush-lightGray: #fafafa;
-    --brush-gray: #859FA4;
-    --brush-darkGray: #265151;
-    --brush-black: #1E3735;
-    // --brush-lightBlue: #AEC0C7;
-    --brush-lightBlue: #456266;
-    // --brush-darkBlue: #324358;
-    --brush-darkBlue: var(--brush-darkGray);
-    --brush-lightYellow: #F6DFB1;
-    --brush-darkYellow: #FBBB53;
-    --brush-lightGreen: #81AE9D;
     $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%) hue-rotate(202deg) brightness(102%) contrast(95%);
+    
+    --brush-white: #FBFBFB;
+    --brush-lightGray: #F8F8F8;
+    --brush-gray: #859FA4;
+    --brush-darkGray: #34414B;
+    --brush-black: #34414B;
+    --brush-lightBlue: #ADCBDD;
+    --brush-darkBlue: #324358;
+    --brush-lightYellow: #FFEEC6;
+    --brush-darkYellow: #FFC05B;
+    --brush-lightGreen: #C6DFD7;
+
+
+    // --brush-white: #F4F4F9;
+    // --brush-lightGray: #fafafa;
+    // --brush-gray: #859FA4;
+    // --brush-darkGray: #265151;
+    // --brush-black: #1E3735;
+    // --brush-lightBlue: #456266;
+    // --brush-darkBlue: var(--brush-darkGray);
+    // --brush-lightYellow: #F6DFB1;
+    // --brush-darkYellow: #FBBB53;
+    // --brush-lightGreen: #81AE9D;
+
+
     // https://codepen.io/sosuke/pen/Pjoqqp helped with these
     --filter-white: #{$filter-white};
-    --filter-darkGray: invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%);
+    --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%) hue-rotate(164deg) brightness(98%) contrast(84%);;
     --filter-logo-white: brightness(0) #{$filter-white};
 }
 
