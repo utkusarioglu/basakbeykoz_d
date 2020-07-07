@@ -4,6 +4,9 @@ import '@csstools/normalize.css';
 import './index.scss';
 import App from './app/App';
 import * as serviceWorker from './serviceWorker';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID as string, { debug: true });
 
 
 ReactDOM.render(

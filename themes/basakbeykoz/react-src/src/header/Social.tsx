@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 import "./_social.scss";
 
 
@@ -8,28 +9,31 @@ function Social() {
     const socialLinks = [
         {
             title: "Instagram",
-            link: 'https://www.instagram.com/something',
+            link: 'https://www.instagram.com/basak_beykoz/',
             icon: process.env.REACT_APP_UPLOADS_DIR + "/instagram.svg",
         },
         {
             title: "LinkedIn",
-            link: 'https://www.linkedin.com/something',
+            link: 'https://www.linkedin.com/in/basakbeykoz/',
             icon: process.env.REACT_APP_UPLOADS_DIR + "/linkedin.svg",
         },
     ]
 
     const socialComponents = socialLinks.map((link) => {
         return (
-            <a 
-                key={link.title}
-                href={link.link} 
-                target="blank">
+            <ReactGA.OutboundLink
+                eventLabel={link.title}
+                to={link.link}
+                target="_blank"
+                // trackerNames={['tracker2']}
+            >
                 <img 
                     className="Social-icon"
                     src={link.icon}
                     title={link.title} 
                     alt={link.title}></img>
-            </a>       
+                
+            </ReactGA.OutboundLink>    
         )
     })
 
