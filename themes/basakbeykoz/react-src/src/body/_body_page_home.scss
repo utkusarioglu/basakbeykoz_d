@@ -115,6 +115,7 @@
                             margin: 0;
                             grid-area: logo;
                             width: 100%;
+                            max-width: 400px;
                             justify-items: center;
                             display: grid;
                             grid-template-rows: min-content min-content;
@@ -453,7 +454,7 @@
                     // basari hikayeleri
                     &:nth-child(5) {
                         .wp-block-group__inner-container {
-                            @include wpPosts(success, column, map-get($colorMap, bg-gray));
+                            @include wpPosts(success, column, map-get($colorMap, bg-blue));
 
                             grid-template-areas: 
                                 "Heading-h2"
