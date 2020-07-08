@@ -10,7 +10,7 @@
     }
     &-decor {
         // display: none;
-        width: #{$accentThickness};
+        width: #{$accentThickness/2};
         height: $logoNSocialY;
         background: #{map-get($colorMap, ui-blue)};
         right: 0;

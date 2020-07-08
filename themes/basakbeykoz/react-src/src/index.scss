@@ -25,19 +25,29 @@
         width: 0;
     }
     &-track {
-        background: #{map-get($colorMap, ui-blue)};
+        $logoNSocialY: map-get($narrow, logoNSocialY);
+        $bg: map-get($colorMap, ui-gray);
+        $blue: map-get($colorMap, ui-blue);
+        $yellow: map-get($colorMap, ui-yellow);
+        $height: 312px;
+        background: linear-gradient(180deg, 
+            #{$bg} #{$accentThickness},
+            #{$blue} #{$accentThickness},
+            #{$blue} #{$accentThickness + $logoNSocialY},
+            #{$bg} #{$accentThickness + $logoNSocialY},
+            #{$bg} calc(50vh - #{$height/2}), 
+            #{$yellow} calc(50vh - #{$height/2}), 
+            #{$yellow} calc(50vh + #{$height/2}), 
+            #{$bg} calc(50vh - #{$height/2}));
     }
     &-thumb {
-        background: #{map-get($colorMap, ui-yellow)};
-        &:hover {
-            background: #{map-get($colorMap, ui-black)};
-            border-right: #{map-get($colorMap, ui-black)};
-        }
+        background: #{map-get($colorMap, ui-black)};
     }
     @include narrowScreen() {
         & {
-            width: #{$accentThickness};
+            width: #{$accentThickness/2};
         }
+
     }
 }
 

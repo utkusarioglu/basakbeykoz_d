@@ -7,7 +7,7 @@
     display: flex;
 
     &-decor {
-        width: #{$accentThickness};
+        width: #{$accentThickness/2};
         // height: 100%;
         background-color:  #{map-get($colorMap, ui-yellow)};
     }
