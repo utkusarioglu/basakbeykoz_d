@@ -5,7 +5,7 @@ services:
     image: wordpress
     container_name: basakbeykoz_wp
     # user: "${UID}:${GID}" 
-    restart: always
+    restart: on-failure
     # privileged: true
     ports:
       - 80:80
@@ -32,7 +32,7 @@ services:
   db:
     image: mysql:5.7
     container_name: basakbeykoz_db
-    restart: always
+    restart: on-failure
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
