@@ -24,5 +24,9 @@ yarn-debug.log*
 yarn-error.log*
 
 
-/themes/basakbeykoz/*
+/themes/*
 !/themes/basakbeykoz/react-src
+
+/plugins/*
+!/plugins/contact-form-7
+!/plugins/wp-rest-api-v2-menus
