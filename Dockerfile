@@ -5,6 +5,8 @@ WORKDIR /var/www/html
 RUN rm -rf ./wp-content/themes/*
 RUN rm -rf ./wp-content/plugins/*
 
+# !TODO add uploads.ini here
+
 # copy content created for this product
 COPY ./plugins ./wp-content/plugins
 COPY ./themes/basakbeykoz ./wp-content/themes/basakbeykoz
