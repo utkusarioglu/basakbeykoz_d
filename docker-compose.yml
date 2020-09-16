@@ -14,20 +14,18 @@ services:
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_NAME: exampledb
       WORDPRESS_DB_PASSWORD: examplepass
-      # WORDPRESS_DB_PASSWORD: /run/secrets/db_password
     depends_on: 
       - db  
     volumes:
-      - ./etc/uploads/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
-      - ./etc/wp/wp_start.sh:/wp_start.sh
-      - ./plugins:/var/www/html/wp-content/plugins
-      - ./themes:/var/www/html/wp-content/themes
-      - ./uploads:/var/www/html/wp-content/uploads
+      # These shall be copied by the dockerfile
       - ./etc/apache/apache.conf:/etc/apache2/sites-enabled/000-default.conf
-    # entrypoint: "cat /run/secrets/db_password"
-    # secrets:
-    #   - db_password
-    # command: /wp_start.sh
+      - ./etc/uploads/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
+      - ./scripts/basakbeykoz_wp_d/:/scripts
+      - ./plugins:/var/www/html/wp-content/plugins
+      # The theme requires building and then copying by the dockerfile
+      - ./themes:/var/www/html/wp-content/themes
+      # These shall come from persistent storage in production
+      - ./uploads:/var/www/html/wp-content/uploads
 
   db:
     image: mysql:5.7
@@ -36,24 +34,12 @@ services:
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
-      # MYSQL_PASSWORD: /run/secrets/db_password
       MYSQL_PASSWORD: examplepass
-      # MYSQL_RANDOM_ROOT_PASSWORD: /run/secrets/mysql_root_password
       MYSQL_RANDOM_ROOT_PASSWORD: examplepass
     volumes:
       - db:/var/lib/mysql
-      - ./sql_backup:/sql_backup
-    # secrets:
-    #   - db_password
-    #   - mysql_root_password
-    # entrypoint: "cat /run/secrets/db_password"
-    
+      - ./backups/sql:/backups/sql
+      - ./scripts/basakbeykoz_db_d:/scripts
 
 volumes:
   db:
-
-# secrets:
-#   mysql_root_password:
-#     file: ./secrets/mysql_root_password.txt
-#   db_password:
-#     file: ./secrets/db_password.txt
