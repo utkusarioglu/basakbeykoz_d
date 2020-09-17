@@ -22,17 +22,24 @@ WHERE option_name = 'home';
 EOM
 DEV_URL=$(mysql -s -N --user="$DB_USER" --password="$DB_PASS" --database="$DB_NAME" --execute="$GET_HOME_QUERY")
 
-# Removes the trailing slash if there is one
-if [ "${DEV_URL: -1}" == "/" ]; then
-    DEV_URL=${DEV_URL:0:$(expr ${#DEV_URL} - 1)}
-    DEV_URL_SLASH="$DEV_URL/"
-fi
+function clean_url() {
+    DEV_URL=$1
+    # Removes the trailing slash if there is one
+    if [ "${DEV_URL: -1}" == "/" ]; then
+        DEV_URL=${DEV_URL: 0: $(expr ${#DEV_URL} - 1)}
+        # DEV_URL_SLASH="$DEV_URL/"
+    fi
+    if [ "${DEV_URL: 0: 7}" == "http://" ]; then
+        DEV_URL=${DEV_URL: 7: ${#DEV_URL}}
+    fi
+    if [ "${DEV_URL: 0: 8}" == "https://" ]; then
+        DEV_URL=${DEV_URL: 8: ${#DEV_URL}}
+    fi
+    echo $DEV_URL
+}
 
-# Removes the trailing slash if there is one in the replacement url
-if [ "${PROD_URL: -1}" == "/" ]; then
-    PROD_URL=${PROD_URL:0:$(expr ${#PROD_URL} - 1)}
-    PROD_URL_SLASH="$PROD_URL/"
-fi
+DEV_URL=$(clean_url $DEV_URL)
+PROD_URL=$(clean_url $PROD_URL)
 
 # Checks whether the urls are different
 if [ $DEV_URL == $PROD_URL ]; then
