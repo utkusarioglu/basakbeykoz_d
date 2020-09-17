@@ -19,7 +19,7 @@
 /* 
     SCROLLBAR 
 */
-
+// !TODO THE SCROLLBAR COLORS DONT WORK
 ::-webkit-scrollbar {
     & {
         width: 0;
@@ -106,19 +106,6 @@ p {
     --brush-darkYellow: #FFC05B;
     --brush-lightGreen: #C6DFD7;
 
-
-    // --brush-white: #F4F4F9;
-    // --brush-lightGray: #fafafa;
-    // --brush-gray: #859FA4;
-    // --brush-darkGray: #265151;
-    // --brush-black: #1E3735;
-    // --brush-lightBlue: #456266;
-    // --brush-darkBlue: var(--brush-darkGray);
-    // --brush-lightYellow: #F6DFB1;
-    // --brush-darkYellow: #FBBB53;
-    // --brush-lightGreen: #81AE9D;
-
-
     // https://codepen.io/sosuke/pen/Pjoqqp helped with these
     --filter-white: #{$filter-white};
     --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%) hue-rotate(164deg) brightness(98%) contrast(84%);;
@@ -142,11 +129,13 @@ p {
     color: #{map-get($colorMap, text-dark)};
 }
 
-$colors:( "green",
-"yellow",
-"white",
-"blue",
-"black");
+$colors:(
+    "green",
+    "yellow",
+    "white",
+    "blue",
+    "black"
+);
 @each $color in $colors {
     .bg-#{$color} {
         $bg-color: "bg-" + $color;
