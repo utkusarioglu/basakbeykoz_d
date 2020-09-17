@@ -27,14 +27,14 @@ function clean_url() {
     # Removes the trailing slash if there is one
     if [ "${DEV_URL: -1}" == "/" ]; then
         DEV_URL=${DEV_URL: 0: $(expr ${#DEV_URL} - 1)}
-        # DEV_URL_SLASH="$DEV_URL/"
     fi
-    if [ "${DEV_URL: 0: 7}" == "http://" ]; then
-        DEV_URL=${DEV_URL: 7: ${#DEV_URL}}
-    fi
-    if [ "${DEV_URL: 0: 8}" == "https://" ]; then
-        DEV_URL=${DEV_URL: 8: ${#DEV_URL}}
-    fi
+    # Removes prefixes if there are any
+    PREFIXES=("http://" "https://")
+    for prefix in ${PREFIXES[@]}; do
+        if [ "${DEV_URL:0:${#prefix}}" == $prefix ]; then
+            DEV_URL=${DEV_URL:${#prefix}:${#DEV_URL}}
+        fi
+    done
     echo $DEV_URL
 }
 
