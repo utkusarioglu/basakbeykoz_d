@@ -11,6 +11,8 @@ $uploadsPath: "/wp-content/uploads";
 $defaultFontSize: 20px;
 $textFont: "Work Sans", sans-serif;
 $titleFont: "Montserrat", sans-serif;
+$fancyFont: "KendiniYenidenKesfet", sans-serif;
+
 // $wideScreenPx: 1200;
 $screenSizes: (
     huge: 1920,
@@ -51,7 +53,7 @@ $socialIconActiveSize_px: adjustSize($socialIconMinSize_px, 30, map-get($screenS
 $fonts: (
     h1: (
         // font-size: 35px,
-            font-size: adjustSize(35, 45),
+            font-size: adjustSize(26, 60),
         // line-height: 40px,
             line-height: adjustSize(40, 55),
         font-family: $titleFont,

@@ -3,6 +3,17 @@
 // Externals
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+@font-face {
+    font-family: 'KendiniYenidenKesfet';
+    // src: url('webfont.eot'); /* IE9 Compat Modes */
+    src: // url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./common/KendiniYenidenKesfet.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./common/KendiniYenidenKesfet.woff') format('woff'), /* Pretty Modern Browsers */
+         url('./common/KendiniYenidenKesfet.ttf')  format('truetype'), /* Safari, Android, iOS */
+        //  url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+
 :root {
     /* measurements */
     --wp-frame-width: 1200px;
@@ -71,7 +82,7 @@ body {
 }
 
 .body.page.home>article>div .wp-block-latest-posts>li,
-span,
+span, :not(h1 > span)
 nav {
     color: #{map-get($colorMap, bg-blue)};
     font-family: $textFont;
@@ -122,7 +133,6 @@ p {
 
 .text-mediumDark {
     color: #{map-get($colorMap, text-mediumDark)};
-    ;
 }
 
 .text-dark {
