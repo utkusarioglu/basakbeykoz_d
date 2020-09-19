@@ -6,6 +6,7 @@ RUN rm -rf ./wp-content/themes/*
 RUN rm -rf ./wp-content/plugins/*
 
 # !TODO add uploads.ini here
+COPY ./etc/uploads/uploads.ini /usr/local/etc/php/conf.d/uploads.ini 
 
 # copy content created for this product
 COPY ./plugins ./wp-content/plugins
