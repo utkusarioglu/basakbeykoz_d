@@ -53,23 +53,24 @@ $socialIconActiveSize_px: adjustSize($socialIconMinSize_px, 30, map-get($screenS
 $fonts: (
     h1: (
         // font-size: 35px,
-            font-size: adjustSize(26, 60),
+        font-size: adjustSize(50, 110),
         // line-height: 40px,
-            line-height: adjustSize(40, 55),
-        font-family: $titleFont,
+        line-height: adjustSize(70, 140),
+        font-family: $fancyFont,
+        font-weight: 100,
     ),
     h2: (
         // font-size: 30px,
-            font-size: adjustSize(26, 40),
+        font-size: adjustSize(26, 40),
         // line-height: 34.5px,
-            line-height: adjustSize(30, 45),
+        line-height: adjustSize(30, 45),
         font-family: $titleFont,
     ),
     h3: (
         // font-size: 25px,
-            font-size: adjustSize(23, 35),
+        font-size: adjustSize(23, 35),
         // line-height: 30px,
-            line-height: adjustSize(28, 40),
+        line-height: adjustSize(28, 40),
         font-family: $titleFont,
     ),
     h4: (
@@ -81,16 +82,16 @@ $fonts: (
     ),
     h5: (
         // font-size: 16px,
-            font-size: adjustSize(16, 26),
+        font-size: adjustSize(16, 26),
         // line-height: 20px,
-            line-height: adjustSize(20, 34),
+        line-height: adjustSize(20, 34),
         font-family: $titleFont,
     ),
     h6: (
         // font-size: 14px,
-            font-size: adjustSize(14, 20),
+        font-size: adjustSize(14, 20),
         // line-height: 18px,
-            line-height: adjustSize(18, 24),
+        line-height: adjustSize(18, 24),
         font-family: $titleFont,
     ),
 );
