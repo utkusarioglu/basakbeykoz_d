@@ -36,7 +36,6 @@ services:
       MYSQL_USER: exampleuser
       MYSQL_PASSWORD: examplepass
       MYSQL_ROOT_PASSWORD: examplepass
-      # MYSQL_RANDOM_ROOT_PASSWORD: examplepass
     volumes:
       - db:/var/lib/mysql
       - ./backups/sql:/backups/sql
