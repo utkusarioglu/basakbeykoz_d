@@ -1,9 +1,9 @@
 import React from 'react';
-import { wpMenuItem } from '../wp/@types-wp';
+import { wpMenuItem } from '../features/wp/@types-wp';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { RootState } from '../app/rootReducer';
-import { setDisplaying } from '../app/appActions'
+import { RootState } from '../store/rootReducer';
+import { setDisplaying } from '../features/app/appActions'
 import './_navItem.scss';
 
 interface OwnProps {

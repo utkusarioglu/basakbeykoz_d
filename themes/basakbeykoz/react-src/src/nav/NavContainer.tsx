@@ -1,8 +1,8 @@
 import React from "react";
 import Nav from './Nav';
 import { connect } from "react-redux";
-import { setIsMenuOpen } from '../app/appActions'
-import { RootState } from '../app/rootReducer';
+import { setIsMenuOpen } from '../features/app/appActions'
+import { RootState } from '../store/rootReducer';
 import "./_navContainer.scss";
 
 const mapState = (state: RootState) => ({

@@ -1,4 +1,4 @@
-import stateMap from "../../app/@types-state";
+import stateMap from "../../store/@types-state";
 
 const initialState: stateMap['social'] = {
     items: [

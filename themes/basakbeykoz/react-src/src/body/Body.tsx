@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { RootState } from "../app/rootReducer";
-import { fetchSingular } from "../wp/singularActions";
-import { setFetching, setDisplaying } from '../app/appActions'
-import stateMap from "../app/@types-state";
-import { singularTypes, wpSingularItem } from "../wp/@types-wp";
+import { RootState } from "../store/rootReducer";
+import { fetchSingular } from "../features/wp/singularActions";
+import { setFetching, setDisplaying } from '../features/app/appActions'
+import stateMap from "../store/@types-state";
+import { singularTypes, wpSingularItem } from "../features/wp/@types-wp";
 import "./_body.scss";
 
 import Canvas from "./Canvas";

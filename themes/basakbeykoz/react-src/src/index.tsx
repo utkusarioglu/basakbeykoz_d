@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '@csstools/normalize.css';
 import './index.scss';
-import App from './app/App';
+import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 import ReactGA from 'react-ga';
 

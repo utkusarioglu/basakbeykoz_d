@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { RootState } from "../app/rootReducer";
-import { fetchCategoryPosts } from "../wp/singularActions";
-import { setFetching } from "../app/appActions";
+import { RootState } from "../store/rootReducer";
+import { fetchCategoryPosts } from "../features/wp/singularActions";
+import { setFetching } from "../features/app/appActions";
 import "./_postList.scss";
 
 import PostListCard from "./PostListCard";

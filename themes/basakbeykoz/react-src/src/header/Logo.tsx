@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { RootState } from "../app/rootReducer";
-import { setDisplaying, setIsMenuOpen } from '../app/appActions'
+import { RootState } from "../store/rootReducer";
+import { setDisplaying, setIsMenuOpen } from '../features/app/appActions'
 import { connect } from "react-redux";
 import "./_logo.scss";
 

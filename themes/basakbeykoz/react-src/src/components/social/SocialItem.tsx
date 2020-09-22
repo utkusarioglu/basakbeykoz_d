@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ISocialItem } from '../../features/social/@types-social';
-import {setIsMenuOpen} from '../../app/appActions';
+import {setIsMenuOpen} from '../../features/app/appActions';
 import ReactGA from "react-ga";
-import { RootState } from "../../app/rootReducer";
+import { RootState } from "../../store/rootReducer";
 import './_socialIcon.scss';
 
 interface OwnProps {

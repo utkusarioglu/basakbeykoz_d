@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 
 import "./_social.scss";
-import { RootState } from "../../app/rootReducer";
+import { RootState } from "../../store/rootReducer";
 import SocialItem from './SocialItem';
 
 const mapState = (state: RootState) => ({

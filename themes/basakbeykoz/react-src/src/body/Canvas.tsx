@@ -1,6 +1,6 @@
 import React, { Fragment as div } from "react";
 import PostList from "../blog/PostList";
-import { wpSingularItemForDisplay } from "../wp/@types-wp";
+import { wpSingularItemForDisplay } from "../features/wp/@types-wp";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 import "./_canvas.scss";
