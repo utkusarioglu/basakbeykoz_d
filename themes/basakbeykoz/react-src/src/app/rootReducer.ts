@@ -5,12 +5,12 @@ import menuReducer from '../wp/menuReducer';
 import categoryReducer from '../wp/categoryReducer'
 import appReducer from "./appReducer";
 import singularReducer from '../wp/singularReducer';
+import socialReducer from '../features/social/socialReducer';
 
 export const rootReducer = combineReducers({
     app: appReducer,
     menu: menuReducer,
-    // posts: postReducer,
-    // pages: pageReducer,
+    social: socialReducer,
     singular: singularReducer,
     categories: categoryReducer,
 })
