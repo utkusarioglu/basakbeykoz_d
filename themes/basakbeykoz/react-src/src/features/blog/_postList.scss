@@ -1,0 +1,39 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+
+.PostList {
+    grid-area: PostList;
+
+    &-wrapper{
+        grid-area: PostList-wrapper;
+
+        & > h4 {
+            // padding: #{$accentThickness};
+            text-align: center;
+
+            @include narrowScreen() {
+                text-align: left;
+            }
+        }
+    }
+    
+    li {
+        list-style: none;
+        margin-bottom: #{2*$accentThickness};
+        // padding: #{$accentThickness};
+
+        article & { // correction for blog page
+            padding: 0;
+        }
+    }
+
+    ol {
+        margin: 0;
+        padding: 0;
+    }
+
+    @include narrowScreen() {
+        margin-left: #{-$accentThickness}
+    }
+}

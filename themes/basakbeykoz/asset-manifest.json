@@ -1,0 +1,23 @@
+{
+  "files": {
+    "static/css/0.chunk.css": "/wp-content/themes/basakbeykoz/static/css/0.chunk.css",
+    "static/js/0.chunk.js": "/wp-content/themes/basakbeykoz/static/js/0.chunk.js",
+    "static/css/0.chunk.css.map": "/wp-content/themes/basakbeykoz/static/css/0.chunk.css.map",
+    "static/js/0.chunk.js.map": "/wp-content/themes/basakbeykoz/static/js/0.chunk.js.map",
+    "main.css": "/wp-content/themes/basakbeykoz/static/css/main.chunk.css",
+    "main.js": "/wp-content/themes/basakbeykoz/static/js/main.chunk.js",
+    "main.css.map": "/wp-content/themes/basakbeykoz/static/css/main.chunk.css.map",
+    "main.js.map": "/wp-content/themes/basakbeykoz/static/js/main.chunk.js.map",
+    "runtime-main.js": "/wp-content/themes/basakbeykoz/static/js/bundle.js",
+    "runtime-main.js.map": "/wp-content/themes/basakbeykoz/static/js/bundle.js.map",
+    "index.php": "/wp-content/themes/basakbeykoz/index.php",
+    "static/media/index.scss": "/wp-content/themes/basakbeykoz/static/media/KendiniYenidenKesfet.cf469d17.woff2"
+  },
+  "entrypoints": [
+    "static/js/bundle.js",
+    "static/css/0.chunk.css",
+    "static/js/0.chunk.js",
+    "static/css/main.chunk.css",
+    "static/js/main.chunk.js"
+  ]
+}
