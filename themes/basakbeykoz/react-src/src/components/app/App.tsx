@@ -11,7 +11,7 @@ import Footer from '../footer/Footer';
 
 import Logo from "../header/Logo";
 import Social from '../social/Social';
-import NavContainer from "../../nav/NavContainer";
+import NavFixedView from "../nav/NavFixedView";
 
 import BlogRoute from "../../routes/BlogRoute";
 import CreditsRoute from "../../routes/CreditsRoute";
@@ -25,7 +25,7 @@ function App() {
             <Router>
                 <div className="App">
                     <Spinner />
-                    <NavContainer />
+                    <NavFixedView />
                     <Header />
                     <div className="App-wideScreenControls">
                         <Logo />

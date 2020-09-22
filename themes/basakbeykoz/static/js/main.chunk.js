@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _footer_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../footer/Footer */ "./src/components/footer/Footer.tsx");
 /* harmony import */ var _header_Logo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../header/Logo */ "./src/components/header/Logo.tsx");
 /* harmony import */ var _social_Social__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../social/Social */ "./src/components/social/Social.tsx");
-/* harmony import */ var _nav_NavContainer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../nav/NavContainer */ "./src/nav/NavContainer.tsx");
+/* harmony import */ var _nav_NavFixedView__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../nav/NavFixedView */ "./src/components/nav/NavFixedView.tsx");
 /* harmony import */ var _routes_BlogRoute__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../routes/BlogRoute */ "./src/routes/BlogRoute.tsx");
 /* harmony import */ var _routes_CreditsRoute__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../routes/CreditsRoute */ "./src/routes/CreditsRoute.tsx");
 /* harmony import */ var _routes_BodyRoute__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../routes/BodyRoute */ "./src/routes/BodyRoute.tsx");
@@ -109,7 +109,7 @@ function App() {
       lineNumber: 27,
       columnNumber: 21
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_NavContainer__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_NavFixedView__WEBPACK_IMPORTED_MODULE_10__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -801,7 +801,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Logo */ "./src/components/header/Logo.tsx");
 /* harmony import */ var _BurgerMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BurgerMenu */ "./src/components/header/BurgerMenu.tsx");
 /* harmony import */ var _social_Social__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../social/Social */ "./src/components/social/Social.tsx");
+/* harmony import */ var _nav_NavHeaderView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../nav/NavHeaderView */ "./src/components/nav/NavHeaderView.tsx");
 var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/components/header/Header.tsx";
+
 
 
 
@@ -814,7 +816,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 12,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -822,28 +824,35 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 13,
       columnNumber: 13
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Logo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 14,
+      columnNumber: 17
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_NavHeaderView__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
       columnNumber: 17
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_Social__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 16,
       columnNumber: 17
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerMenu__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 17,
       columnNumber: 17
     }
   })));
@@ -976,6 +985,154 @@ mapState, mapDispatch)(Logo));
 /*!******************************************!*\
   !*** ./src/components/header/_logo.scss ***!
   \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/nav/NavFixedView.tsx":
+/*!*********************************************!*\
+  !*** ./src/components/nav/NavFixedView.tsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _features_nav_Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../features/nav/Nav */ "./src/features/nav/Nav.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../features/app/appActions */ "./src/features/app/appActions.ts");
+/* harmony import */ var _navFixedView_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_navFixedView.scss */ "./src/components/nav/_navFixedView.scss");
+/* harmony import */ var _navFixedView_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_navFixedView_scss__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/components/nav/NavFixedView.tsx";
+
+
+
+
+
+
+const mapState = state => ({
+  isMenuOpen: state.app.isMenuOpen
+});
+
+const mapDispatch = {
+  setIsMenuOpen: _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__["setIsMenuOpen"]
+};
+
+function NavFixedView(props) {
+  const menuToggle = () => {
+    props.setIsMenuOpen(!props.isMenuOpen);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: menuToggle,
+    className: "NavFixedView " + (props.isMenuOpen ? "open" : ""),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "NavFixedView-mask",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 13
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "NavFixedView-decor",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 13
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "NavFixedView-list",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 13
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_features_nav_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 17
+    }
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])( //@ts-ignore
+mapState, mapDispatch)(NavFixedView));
+
+/***/ }),
+
+/***/ "./src/components/nav/NavHeaderView.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/nav/NavHeaderView.tsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _features_nav_Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../features/nav/Nav */ "./src/features/nav/Nav.tsx");
+/* harmony import */ var _navHeaderView_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_navHeaderView.scss */ "./src/components/nav/_navHeaderView.scss");
+/* harmony import */ var _navHeaderView_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_navHeaderView_scss__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/components/nav/NavHeaderView.tsx";
+
+
+
+
+function NavView() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "NavHeaderView",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_features_nav_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 13
+    }
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (NavView);
+
+/***/ }),
+
+/***/ "./src/components/nav/_navFixedView.scss":
+/*!***********************************************!*\
+  !*** ./src/components/nav/_navFixedView.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/nav/_navHeaderView.scss":
+/*!************************************************!*\
+  !*** ./src/components/nav/_navHeaderView.scss ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1744,6 +1901,153 @@ mapState, mapDispatch)(Body));
 
 /***/ }),
 
+/***/ "./src/features/nav/Nav.tsx":
+/*!**********************************!*\
+  !*** ./src/features/nav/Nav.tsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _wp_menuActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../wp/menuActions */ "./src/features/wp/menuActions.ts");
+/* harmony import */ var _app_appActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../app/appActions */ "./src/features/app/appActions.ts");
+/* harmony import */ var _nav_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_nav.scss */ "./src/features/nav/_nav.scss");
+/* harmony import */ var _nav_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nav_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _NavItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NavItem */ "./src/features/nav/NavItem.tsx");
+var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/features/nav/Nav.tsx";
+
+
+
+
+
+
+
+const mapState = state => ({
+  menu: state.menu
+});
+
+const mapDispatch = {
+  fetchMenu: _wp_menuActions__WEBPACK_IMPORTED_MODULE_2__["fetchMenu"],
+  setIsMenuOpen: _app_appActions__WEBPACK_IMPORTED_MODULE_3__["setIsMenuOpen"]
+};
+
+function Nav(props) {
+  const fetchMenu = props.fetchMenu;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    fetchMenu("nav");
+  }, [fetchMenu]);
+  const menuItems = props.menu.items.map(item => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    item: item,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 36
+    }
+  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 12
+    }
+  }, menuItems);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])( //@ts-ignore
+mapState, mapDispatch)(Nav));
+
+/***/ }),
+
+/***/ "./src/features/nav/NavItem.tsx":
+/*!**************************************!*\
+  !*** ./src/features/nav/NavItem.tsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _app_appActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../app/appActions */ "./src/features/app/appActions.ts");
+/* harmony import */ var _navItem_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_navItem.scss */ "./src/features/nav/_navItem.scss");
+/* harmony import */ var _navItem_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_navItem_scss__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/features/nav/NavItem.tsx";
+
+
+
+
+
+
+const mapState = state => ({});
+
+const mapDispatch = {
+  setDisplaying: _app_appActions__WEBPACK_IMPORTED_MODULE_3__["setDisplaying"]
+};
+
+function NavItem(props) {
+  const {
+    item
+  } = props;
+  const cleanSlug = !!item.slug ? item.slug : "";
+
+  const setDisplaying = slug => {
+    props.setDisplaying({
+      slug
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+    key: item.ID,
+    exact: true,
+    to: "/" + cleanSlug,
+    className: "Nav-item",
+    activeClassName: "Nav-item-active",
+    onClick: () => setDisplaying(cleanSlug),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 9
+    }
+  }, item.title);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])( //@ts-ignore
+mapState, mapDispatch)(NavItem));
+
+/***/ }),
+
+/***/ "./src/features/nav/_nav.scss":
+/*!************************************!*\
+  !*** ./src/features/nav/_nav.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/features/nav/_navItem.scss":
+/*!****************************************!*\
+  !*** ./src/features/nav/_navItem.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/features/social/socialReducer.ts":
 /*!**********************************************!*\
   !*** ./src/features/social/socialReducer.ts ***!
@@ -2239,248 +2543,6 @@ _serviceWorker__WEBPACK_IMPORTED_MODULE_5__["unregister"]();
 
 /***/ }),
 
-/***/ "./src/nav/Nav.tsx":
-/*!*************************!*\
-  !*** ./src/nav/Nav.tsx ***!
-  \*************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _features_wp_menuActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/wp/menuActions */ "./src/features/wp/menuActions.ts");
-/* harmony import */ var _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../features/app/appActions */ "./src/features/app/appActions.ts");
-/* harmony import */ var _nav_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_nav.scss */ "./src/nav/_nav.scss");
-/* harmony import */ var _nav_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nav_scss__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _NavItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NavItem */ "./src/nav/NavItem.tsx");
-var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/nav/Nav.tsx";
-
-
-
-
-
-
-
-const mapState = state => ({
-  menu: state.menu
-});
-
-const mapDispatch = {
-  fetchMenu: _features_wp_menuActions__WEBPACK_IMPORTED_MODULE_2__["fetchMenu"],
-  setIsMenuOpen: _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__["setIsMenuOpen"]
-};
-
-function Nav(props) {
-  const fetchMenu = props.fetchMenu;
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    fetchMenu("nav");
-  }, [fetchMenu]);
-  const menuItems = props.menu.items.map(item => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    item: item,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 36
-    }
-  }));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 12
-    }
-  }, menuItems);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])( //@ts-ignore
-mapState, mapDispatch)(Nav));
-
-/***/ }),
-
-/***/ "./src/nav/NavContainer.tsx":
-/*!**********************************!*\
-  !*** ./src/nav/NavContainer.tsx ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Nav */ "./src/nav/Nav.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../features/app/appActions */ "./src/features/app/appActions.ts");
-/* harmony import */ var _navContainer_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_navContainer.scss */ "./src/nav/_navContainer.scss");
-/* harmony import */ var _navContainer_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_navContainer_scss__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/nav/NavContainer.tsx";
-
-
-
-
-
-
-const mapState = state => ({
-  isMenuOpen: state.app.isMenuOpen
-});
-
-const mapDispatch = {
-  setIsMenuOpen: _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__["setIsMenuOpen"]
-};
-
-function NavContainer(props) {
-  const menuToggle = () => {
-    props.setIsMenuOpen(!props.isMenuOpen);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    onClick: menuToggle,
-    className: "NavContainer " + (props.isMenuOpen ? "open" : ""),
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 9
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "NavContainer-mask",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 13
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "NavContainer-decor",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 13
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "NavContainer-list",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 13
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 17
-    }
-  })));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])( //@ts-ignore
-mapState, mapDispatch)(NavContainer));
-
-/***/ }),
-
-/***/ "./src/nav/NavItem.tsx":
-/*!*****************************!*\
-  !*** ./src/nav/NavItem.tsx ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../features/app/appActions */ "./src/features/app/appActions.ts");
-/* harmony import */ var _navItem_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_navItem.scss */ "./src/nav/_navItem.scss");
-/* harmony import */ var _navItem_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_navItem_scss__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/mnt/utkusarioglu/Documents/Projects/BasakBeykoz/basakbeykoz_d/themes/basakbeykoz/react-src/src/nav/NavItem.tsx";
-
-
-
-
-
-
-const mapState = state => ({});
-
-const mapDispatch = {
-  setDisplaying: _features_app_appActions__WEBPACK_IMPORTED_MODULE_3__["setDisplaying"]
-};
-
-function NavItem(props) {
-  const {
-    item
-  } = props;
-  const cleanSlug = !!item.slug ? item.slug : "";
-
-  const setDisplaying = slug => {
-    props.setDisplaying({
-      slug
-    });
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-    key: item.ID,
-    exact: true,
-    to: "/" + cleanSlug,
-    className: "Nav-item",
-    activeClassName: "Nav-item-active",
-    onClick: () => setDisplaying(cleanSlug),
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 9
-    }
-  }, item.title);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])( //@ts-ignore
-mapState, mapDispatch)(NavItem));
-
-/***/ }),
-
-/***/ "./src/nav/_nav.scss":
-/*!***************************!*\
-  !*** ./src/nav/_nav.scss ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/nav/_navContainer.scss":
-/*!************************************!*\
-  !*** ./src/nav/_navContainer.scss ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/nav/_navItem.scss":
-/*!*******************************!*\
-  !*** ./src/nav/_navItem.scss ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "./src/routes/BlogRoute.tsx":
 /*!**********************************!*\
   !*** ./src/routes/BlogRoute.tsx ***!
@@ -2747,5 +2809,5 @@ module.exports = __webpack_require__(/*! /mnt/utkusarioglu/Documents/Projects/Ba
 
 /***/ })
 
-},[[0,"runtime-main",0]]]);
+},[[0,"runtime-main",1]]]);
 //# sourceMappingURL=main.chunk.js.map

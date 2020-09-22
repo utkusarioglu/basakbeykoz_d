@@ -1,0 +1,60 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+.Nav-item {
+    display: block;
+//     padding: #{$accentThickness / 2} #{$accentThickness};
+//     position: relative;
+    font-family: $textFont;
+    text-decoration: none;
+//     color: #{map-get($colorMap, text-dark)};
+//     text-align: right;
+    white-space: nowrap;
+
+//     // @include narrowScreen() {
+//     //     $font-size: map-get($fontSizes, mobileNavigation); 
+//     //     $header-height: map-get($mobile, navigationY);
+//     //     $vertical-padding: ($header-height - $font-size) /2;
+
+//     //     padding: #{$vertical-padding} #{$accentThickness / 2};
+//     //     font-size: $font-size;
+//     //     line-height: $font-size;
+//     // }
+
+//     @include wideScreen() {
+//         color:  #{map-get($colorMap, ui-blue)};
+//         padding: #{$accentThickness /4} #{$accentThickness /2};
+//         font-size: adjustSize(20, 26);                    
+//     }
+
+//     &-active {
+//         color: #{map-get($colorMap, ui-decoration)};
+
+//         &:after {
+//             position: absolute;
+//             content: "";
+//             top: 0;
+//             bottom: 0;
+//             right: 0;
+//             width: #{$accentThickness / 2};
+//             background-color:  #{map-get($colorMap, ui-decoration)};
+
+//             @include narrowScreen() {
+//                 width: auto;
+//                 height: #{$accentThickness / 4};
+//                 top: auto;
+//                 right: #{$accentThickness /2};
+//                 left: #{$accentThickness /2};
+//             }
+
+//             @include wideScreen() {
+//                 left: auto;
+//                 bottom: 0;
+//                 top: 0;
+//                 right: 0;
+//                 width: #{$accentThickness /4};
+//                 height: auto;
+//             }
+//         }
+//     }
+}

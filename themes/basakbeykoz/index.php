@@ -23,11 +23,11 @@
   <link rel="apple-touch-icon" href="<?php echo $TEMPLATE_PATH; ?>/logo192.png" />
   <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
   <title>Basak Beykoz</title>
-  <link href="/wp-content/themes/basakbeykoz/static/css/0.chunk.css?852266cc05eca7f51841" rel="stylesheet"><link href="/wp-content/themes/basakbeykoz/static/css/main.chunk.css?852266cc05eca7f51841" rel="stylesheet"></head>
+  <link href="/wp-content/themes/basakbeykoz/static/css/1.chunk.css?2347e919fd82b058e154" rel="stylesheet"><link href="/wp-content/themes/basakbeykoz/static/css/main.chunk.css?2347e919fd82b058e154" rel="stylesheet"></head>
   <body>
     <noscript>
         You cannot run this app without javascript:/
     </noscript>
     <div id="root"></div>
-  <script src="/wp-content/themes/basakbeykoz/static/js/bundle.js?852266cc05eca7f51841"></script><script src="/wp-content/themes/basakbeykoz/static/js/0.chunk.js?852266cc05eca7f51841"></script><script src="/wp-content/themes/basakbeykoz/static/js/main.chunk.js?852266cc05eca7f51841"></script></body>
+  <script src="/wp-content/themes/basakbeykoz/static/js/bundle.js?2347e919fd82b058e154"></script><script src="/wp-content/themes/basakbeykoz/static/js/1.chunk.js?2347e919fd82b058e154"></script><script src="/wp-content/themes/basakbeykoz/static/js/main.chunk.js?2347e919fd82b058e154"></script></body>
 </html>

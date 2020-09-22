@@ -1,9 +1,9 @@
 {
   "files": {
-    "static/css/0.chunk.css": "/wp-content/themes/basakbeykoz/static/css/0.chunk.css",
-    "static/js/0.chunk.js": "/wp-content/themes/basakbeykoz/static/js/0.chunk.js",
-    "static/css/0.chunk.css.map": "/wp-content/themes/basakbeykoz/static/css/0.chunk.css.map",
-    "static/js/0.chunk.js.map": "/wp-content/themes/basakbeykoz/static/js/0.chunk.js.map",
+    "static/css/1.chunk.css": "/wp-content/themes/basakbeykoz/static/css/1.chunk.css",
+    "static/js/1.chunk.js": "/wp-content/themes/basakbeykoz/static/js/1.chunk.js",
+    "static/css/1.chunk.css.map": "/wp-content/themes/basakbeykoz/static/css/1.chunk.css.map",
+    "static/js/1.chunk.js.map": "/wp-content/themes/basakbeykoz/static/js/1.chunk.js.map",
     "main.css": "/wp-content/themes/basakbeykoz/static/css/main.chunk.css",
     "main.js": "/wp-content/themes/basakbeykoz/static/js/main.chunk.js",
     "main.css.map": "/wp-content/themes/basakbeykoz/static/css/main.chunk.css.map",
@@ -15,8 +15,8 @@
   },
   "entrypoints": [
     "static/js/bundle.js",
-    "static/css/0.chunk.css",
-    "static/js/0.chunk.js",
+    "static/css/1.chunk.css",
+    "static/js/1.chunk.js",
     "static/css/main.chunk.css",
     "static/js/main.chunk.js"
   ]

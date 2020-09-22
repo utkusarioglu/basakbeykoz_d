@@ -1,9 +1,9 @@
 import React from "react";
-import Nav from './Nav';
+import Nav from '../../features/nav/Nav';
 import { connect } from "react-redux";
-import { setIsMenuOpen } from '../features/app/appActions'
-import { RootState } from '../store/rootReducer';
-import "./_navContainer.scss";
+import { setIsMenuOpen } from '../../features/app/appActions'
+import { RootState } from '../../store/rootReducer';
+import "./_navFixedView.scss";
 
 const mapState = (state: RootState) => ({
     isMenuOpen: state.app.isMenuOpen,
@@ -18,7 +18,7 @@ type DispatchProps = typeof mapDispatch;
 type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
-function NavContainer(
+function NavFixedView(
     props: Props
 ): React.FunctionComponentElement<Props> {
 
@@ -29,11 +29,11 @@ function NavContainer(
     return (
         <div 
             onClick={menuToggle}
-            className={"NavContainer " + (props.isMenuOpen ? "open" : "") 
+            className={"NavFixedView " + (props.isMenuOpen ? "open" : "") 
         }>
-            <div className="NavContainer-mask" />
-            <div className="NavContainer-decor" />
-            <div className="NavContainer-list">
+            <div className="NavFixedView-mask" />
+            <div className="NavFixedView-decor" />
+            <div className="NavFixedView-list">
                 <Nav />
             </div>
         </div>
@@ -42,4 +42,4 @@ function NavContainer(
 
 export default connect<StateProps, DispatchProps, OwnProps>(
     //@ts-ignore
-    mapState, mapDispatch, )(NavContainer);
+    mapState, mapDispatch, )(NavFixedView);

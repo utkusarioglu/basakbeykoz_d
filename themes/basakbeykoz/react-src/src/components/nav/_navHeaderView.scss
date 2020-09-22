@@ -1,0 +1,19 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+.NavHeaderView {
+    display: none;
+    grid-area: nav;
+    // height: auto;
+
+    @include narrowScreen() {
+        display: block;
+    }
+
+    @include wideScreen() {
+        display: none;
+    }
+    // & > nav {
+    //     background-color: pink;
+    // }
+}
