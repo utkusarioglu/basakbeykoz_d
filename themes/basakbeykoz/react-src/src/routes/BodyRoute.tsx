@@ -1,5 +1,5 @@
 import React from 'react';
-import Body from '../body/Body';
+import Body from '../features/body/Body';
 
 function BodyRoute() {
     return <Body />
