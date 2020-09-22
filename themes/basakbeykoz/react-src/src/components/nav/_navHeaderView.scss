@@ -4,7 +4,7 @@
 .NavHeaderView {
     display: none;
     grid-area: nav;
-    // height: auto;
+    height: 100%;
 
     @include narrowScreen() {
         display: block;
@@ -13,7 +13,34 @@
     @include wideScreen() {
         display: none;
     }
-    // & > nav {
-    //     background-color: pink;
-    // }
+
+    & nav {
+        height: 100%;
+    }
+
+    & .Nav-item {
+        padding: {
+            left: #{$accentThickness /3};
+            right: #{$accentThickness /3};
+        };
+        height: 100%;
+        line-height: #{$mobileNavigationHeight};
+        position: relative;
+        color: #{map-get($colorMap, text-dark)};
+        text-align: right;
+
+        &-active {
+            color: #{map-get($colorMap, ui-decoration)};
+    
+            &:after {
+                position: absolute;
+                content: "";
+                bottom: 0;
+                height: #{$accentThickness / 4};
+                left: #{$accentThickness / 4};
+                right: #{$accentThickness / 4};
+                background-color:  #{map-get($colorMap, ui-decoration)};
+            }
+        }
+    }
 }
