@@ -15,3 +15,5 @@ export const IS_FETCHING = "IS_FETCHING";
 export const IS_DISPLAYING = "IS_DISPLAYING"; 
 
 export const NAV_TO_CONTENT = "NAV_TO_CONTENT";
+
+export const IS_MENU_OPEN = "IS_MENU_OPEN";

@@ -9,11 +9,12 @@ import Header from "../header/Header";
 import Credits from "../credits/Credits";
 import Body from '../body/Body';
 import Spinner from "../spinner/Spinner";
-import Footer from '../footer/Footer';
-import Nav from "../header/Nav";
+import Footer from '../components/footer/Footer';
+// import BurgerMenu from "../header/BurgerMenu";
 import Logo from "../header/Logo";
-import Social from '../header/Social';
+import Social from '../components/social/Social';
 import Blog from "../blog/Blog";
+import NavContainer from "../nav/NavContainer";
 
 function App() {
     const blog_slug = process.env.REACT_APP_BLOG_SLUG as string;
@@ -23,11 +24,11 @@ function App() {
             <Router>
                 <div className="App">
                     <Spinner />
+                    <NavContainer />
                     <Header />
                     <div className="App-wideScreenControls">
                         <Logo />
                         <Social />
-                        <Nav />
                     </div>
                     <div className="App-scrollingElements">
                         <Switch>

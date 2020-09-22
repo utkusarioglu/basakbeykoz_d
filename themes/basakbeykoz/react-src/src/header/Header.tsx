@@ -2,8 +2,8 @@ import React  from "react";
 import "./_header.scss";
 
 import Logo from "./Logo";
-import Nav from "./Nav";
-import Social from "./Social";
+import BurgerMenu from "./BurgerMenu";
+import Social from "../components/social/Social";
 
 function Header() {
     return (
@@ -11,8 +11,7 @@ function Header() {
             <div className="Header-bottomWrap">
                 <Logo />
                 <Social />
-                <Nav />
-
+                <BurgerMenu />
             </div>
         </header>
     )

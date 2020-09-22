@@ -1,7 +1,7 @@
-import React, { Fragment as div } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { RootState } from "../app/rootReducer";
-import { setDisplaying } from '../app/appActions'
+import { setDisplaying, setIsMenuOpen } from '../app/appActions'
 import { connect } from "react-redux";
 import "./_logo.scss";
 
@@ -11,6 +11,7 @@ const mapState = (state: RootState) => ({
 
 const mapDispatch = {
     setDisplaying,
+    setIsMenuOpen,
 }
 
 interface OwnProps {}
@@ -20,19 +21,22 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 function Logo(props: Props): React.FunctionComponentElement<Props> {
 
-    const setDisplaying = () => {
-        props.setDisplaying({
-            slug: process.env.REACT_APP_HOME_SLUG as string
+    const { setDisplaying, setIsMenuOpen } = props;
+    const uploads = process.env.REACT_APP_UPLOADS_DIR;
+    const home_slug = process.env.REACT_APP_HOME_SLUG as string
+
+    const linkClick = () => {
+        setIsMenuOpen(false)
+        setDisplaying({
+            slug: home_slug
         })        
     }
-
-    const uploads = process.env.REACT_APP_UPLOADS_DIR;
 
     return (
         <div className="Logo">
             <div className="Logo-decor" />
             <Link
-                onClick={setDisplaying}
+                onClick={linkClick}
                 to="/">
                 <div 
                     className="Logo-logo"
