@@ -1,0 +1,251 @@
+@mixin wpPostsP() {
+    @include p();
+    font-size: adjustSize($pFontSizeMin_px, 22) !important;
+    // font-size: adjustSize(14, 20) !important;
+    line-height: adjustSize($pLineHeightMin_px, 30) !important; 
+    // line-height: adjustSize(28, 25) !important; 
+    margin: 0;
+}
+
+@mixin wpPosts($type, $gridFlow: row, $cardColor: map-get($colorMap, bg-gray)) {
+    .wp-block-latest-posts {
+        $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
+        $liDistance: 2* $accentThickness;
+        $liMinWidth: 260px;
+        $liMaxWidth: 350px;
+        $limediumTallHeight: 60vh;
+
+        grid-area: posts;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding: 0;
+        display: grid;
+        // position: absolute;
+        margin: 0 #{-$liDistance};
+        grid-auto-flow: column;
+
+        @include narrowScreen() {
+            @if $gridFlow == row {
+                // margin: 0;
+                grid-auto-flow: row;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                
+                align-self: center;
+                margin: 0;
+            } @else if $gridFlow == column {
+                margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
+                // margin-left: #{$accentThickness};
+                // grid-auto-flow: row;
+                // this is not being implemented as it's not being used right now
+            }
+        }
+        
+        
+        
+        @include wideScreen() {
+            @if $gridFlow == row {
+            } @else if $gridFlow == column {
+                margin: 0 0 0 #{-$accentThickness};
+            }
+        }
+        
+        @include mediumTallScreen() {
+            height: #{$limediumTallHeight};
+            padding: #{$accentThickness/2};
+        } 
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        & > li {
+            box-sizing: border-box;
+            background-color: $cardColor;
+            margin-left: #{$liDistance};
+            margin-top: #{$accentThickness/2};
+            display: grid;
+            grid-row-gap: #{$accentThickness / 2};
+            position: relative;
+            width: 50vw;
+            min-width: #{$liMinWidth};
+            max-width: #{$liMaxWidth};
+
+            height: min-content;
+            border: #{$accentThickness/2} solid transparent;
+
+            @if $type == posts {
+                grid-template-areas: 
+                    "image"
+                    "title";
+                    // "time" 
+                    // "excerpt";
+                grid-template-rows: max-content max-content;
+            } @else if $type == success {
+                grid-template-areas: 
+                    "image"
+                    "title"  
+                    "excerpt";
+                grid-template-rows: max-content max-content 1fr;
+            }
+
+            @include narrowScreen() {
+                @if $gridFlow == row {
+                    @if $type == posts {
+                        grid-template-areas: 
+                            "image title" 
+                            "image time" 
+                            "image excerpt";
+                        grid-template-rows: min-content min-content auto;
+                        grid-template-columns: #{$homePostsNarrowY} auto;
+                        grid-column-gap: #{$accentThickness/2};
+                        grid-row-gap: 5px;
+
+                        width: 100%;
+                        max-width: none;
+                        // height: calc(#{$homePostsNarrowY} + #{2* $accentThickness});
+                        // height: auto;
+                        margin-left: 0;
+                        margin-bottom: #{$accentThickness};
+                    } @else if $type == success {
+                    }
+                        
+                
+                } @else if $gridFlow == column {
+                    @if $type == posts {
+
+                    } @else if $type == success {
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            @include mediumTallScreen() {
+                @if $gridFlow == column {
+                    height: #{$limediumTallHeight};
+                }
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: #{-$accentThickness};
+                right: #{-$accentThickness};
+                top: 0;
+                bottom: 0;
+                background: frame($cardColor, horizontal);
+                pointer-events: none;
+            }
+
+            
+            &:last-child::before {
+                content: "";
+                position: absolute;
+                right: #{-1.25* $liDistance};
+                width: 1px;
+                height: 1px;
+                // background-color: red;
+            }
+            
+            .wp-block-latest-posts__featured-image {
+                grid-area: image;
+                height: 150px;
+                // min-height: 150px;
+                // max-height: #{$liMaxWidth};
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+
+                @include narrowScreen() {
+                    height: 100%;
+                }
+
+                & > img {
+                    width: 100%;
+                    height: auto;
+
+                    @include narrowScreen() {
+                        @if $gridFlow == row {
+                            height: 100%;
+                            width: auto;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+
+            time {
+                @include wpPostsP();
+                display: none;
+
+                
+                margin:0;
+                grid-area: time !important;
+                font-size: 0.8em;
+                color: #{map-get($colorMap, text-mediumLight)};
+
+                @include narrowScreen() {
+                    @if $type == posts { 
+                        display: block;
+                    }                    
+                }
+
+            }
+
+            .wp-block-latest-posts__post-full-content,
+            .wp-block-latest-posts__post-excerpt {
+
+                // @include p();
+                @include limitParagraphLines(6);
+
+                @if $type == posts {
+                    display: none;
+                }
+
+                &,
+                & > p {
+                    @include wpPostsP();
+                }
+                // @if $type == posts { 
+                //     display: none;
+                // }
+                // font-size: $excerptFontSize;
+                grid-area: excerpt !important;
+                color: #{map-get($colorMap, text-mediumDark)};
+                position: relative;
+                margin: 0;
+
+                @include narrowScreen() {
+                    display: block;
+
+                    & > p {
+                        margin: 0;
+                    }
+                }   
+
+                &::after {
+                    content: " ...";
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    height: 25px;
+                    width: 36px;
+                    background-color: #{$cardColor};
+
+                    @include narrowScreen() {
+                        display: none;
+                    }
+                }
+            }
+            
+            a {
+                @include h4;
+                grid-area: title;
+                text-decoration: none;
+            }
+        }
+
+    }                      
+}

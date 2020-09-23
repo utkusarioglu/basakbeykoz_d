@@ -1,0 +1,13 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+.Social {
+    &-icon {
+        @include headerIcon();
+        filter: var(--filter-darkGray);
+    }
+    a {
+        min-height: #{$accentThickness + $socialIconMinSize_px};
+        height: calc(#{$accentThickness} + #{$socialIconActiveSize_px});
+    }
+}

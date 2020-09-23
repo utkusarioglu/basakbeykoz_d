@@ -1,0 +1,603 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+@import "./_wpPosts";
+
+.Canvas {
+    &.page {
+        &.home {
+            padding-bottom: 0;
+
+            // overrides the feature image being show and all that
+            @include narrowScreen() {
+                display: block; 
+
+                .Canvas-articleTitle {
+                    display: none;
+                }
+            }
+            
+            
+            & .Canvas-decor {
+                display: none;
+            }
+            
+            & > article {
+                padding: 0;
+
+                & > .wp-block-group {
+                    $navSocialSpaceX: map-get($wide, navSocialSpaceX);
+                    $minBlockHeight: map-get($short, minBlockHeight);
+
+                    box-sizing: border-box;
+                    padding: #{$accentThickness};
+                    // padding-bottom: #{$accentThickness + map-get($mobile, navigationY)};
+                    height: unquote("max(100vh, #{$minBlockHeight})");
+                    overflow: hidden;
+                    position: relative;
+                    
+                    & > .wp-block-group__inner-container {
+                        height: 100%;
+                        display: grid;
+                        box-sizing: border-box;
+                        padding-bottom: #{$mobileNavigationHeight};
+
+                        @include wideScreen() {
+                            padding-bottom: 0;
+                        }
+
+                        & > p {
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    &:first-child {
+                        $logoNSocialY: map-get($narrow, logoNSocialY);
+                        $homeWelcomeImageX: map-get($narrow, homeWelcomeImageX);
+
+                        $figureHeight: map-get($mobile, figureHeight);
+                        background-color: transparent;
+
+                        .wp-block-cover {
+                            position: absolute;
+                            top: #{-$accentThickness};
+                            left: #{-$accentThickness};
+                            right: #{-$accentThickness};
+                            z-index: -1;
+                            height: $figureHeight;
+                            background-size: cover;
+
+                            @include narrowScreen() {
+                                right: auto;
+                                bottom: #{-$accentThickness};
+                                width: $homeWelcomeImageX; 
+                                height: auto;
+                                z-index: 91;
+                            }
+                        }
+
+                        .wp-block-group__inner-container {
+
+                            $figureDent: $logoNSocialY + 4*$accentThickness;
+
+                            grid-template-areas: 
+                                "logo"
+                                "Heading-h1"
+                                "paragraph"
+                                "buttons";
+                            grid-template-rows: #{$logoNSocialY} calc(#{$figureHeight} - #{$figureDent}) 1fr max-content;
+                            grid-row-gap: #{$accentThickness};
+                            justify-items: start;
+                            height: 100%;
+
+                            @include narrowScreen() {
+                                grid-template-areas: 
+                                    ". logo"
+                                    ". Heading-h1"
+                                    ". paragraph"
+                                    ". buttons";
+                                grid-template-columns: #{$homeWelcomeImageX} 1fr;
+                                grid-template-rows: #{$logoNSocialY} auto auto #{$logoNSocialY};
+                            }
+
+                            @include wideScreen() {
+                                $navSocialSpaceX: map-get($wide, navSocialSpaceX);
+                                grid-template-columns: #{$homeWelcomeImageX} 1fr #{$navSocialSpaceX};
+                                // grid-template-columns: #{adjustSize($homeWelcomeImageX, )} 1fr #{$navSocialSpaceX};
+                                grid-column-gap: #{adjustSize(0, 70, map-get($screenSizes, wide), 1920)};
+                            }
+
+                            & > p {
+                                margin-bottom: 0;
+                            }
+
+                            // & > h1 {
+                            //     font-family: #{$fancyFont};
+                            //     // font-size: 2em;
+                            //     // font-weight: 100;
+                            // }
+                        }
+
+                        figure {
+                            margin: 0;
+                            grid-area: logo;
+                            width: 100%;
+                            max-width: 400px;
+                            justify-items: center;
+                            display: grid;
+                            grid-template-rows: min-content min-content;
+                            grid-template-areas: 
+                                "title" 
+                                "logo";
+                            justify-self: center;
+
+                            @include narrowScreen() {
+                                justify-self: start;
+                                width: fit-content;
+                            }
+    
+                            & > img {
+                                grid-area: logo;
+                                width: 100%;
+                                display: block;
+                                align-self: end;
+                                margin-top: 4px;
+                                margin-left: 15vw;
+                                margin-right: 15vw;
+
+                                @include narrowScreen() {
+                                    margin: 0;
+                                }
+                            }
+    
+                            & > figcaption {
+                                grid-area: title;
+                                align-self: end;
+                                justify-self: center;
+                            }
+                        }
+
+                        h1 {
+                            // padding-bottom: #{$accentThickness};
+                            align-self: end;
+                            color: #{map-get($colorMap, text-light)};
+
+                            @include narrowScreen() {
+                                color: #{map-get($colorMap, text-mediumDark)};
+                            }
+                        }
+
+                        p {
+                            margin-top: #{$accentThickness};
+                        }
+                        .wp-block-buttons {
+                            grid-area: buttons;
+                            width: 100%;
+                            display: none;
+
+                            .wp-block-button {
+                                @include buttonText();
+                                background-color:  #{map-get($colorMap, ui-yellow)};
+                                color: #{map-get($colorMap, text-dark)};
+                                padding: #{$accentThickness};
+            
+                                &:hover {
+                                    background-color: #{map-get($colorMap, bg-blue)};
+                                    color: #{map-get($colorMap, text-light)};
+                                    cursor: pointer;
+                                }
+                            }
+
+                            @include mediumTallScreen() {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    &:not(:first-child) {
+                        & > .wp-block-group__inner-container {
+                            @include narrowScreen() {
+                                align-content: center;
+                                grid-row-gap: #{$accentThickness};
+                                grid-column-gap: #{2* $accentThickness};
+                            }
+
+                            @include wideScreen() {
+                                // padding-right: #{$navSocialSpaceX};
+                                // padding-left: #{$navSocialSpaceX};
+                                $wideScreenSize: map-get($screenSizes, wide);
+                                $maxPadding: 350;
+                                $padding: adjustSize(144, $maxPadding, $wideScreenSize);
+                                grid-column-gap: #{adjustSize(2* ($accentThickness)/1px, 100, $wideScreenSize, 1920)};
+                                padding-left: #{$padding};
+                                padding-right: #{$padding};
+                            }
+                        }
+                        
+                        h2 {
+                            text-align: center;
+                        }
+
+                        .wp-block-cover {
+                            display: block;
+                            grid-area: image;
+                            height: 100%;
+                            width: 100%;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            position: relative;
+
+                            @mixin frame-common {
+                                content: "";
+                                position: absolute;
+                            }
+
+                            $narrow-frame: calc(100% - #{$accentThickness});
+                            $wide-frame: calc(100% + #{$accentThickness});
+                            $extrude: calc(#{$accentThickness} / 2 * -1);
+                            $bevel: calc(#{$accentThickness} /2);
+
+                            &:before {
+                                @include frame-common;
+                                width: $wide-frame;
+                                height: $narrow-frame;
+                                top: $bevel;
+                                left: $extrude;
+                            }
+
+                            &:after {
+                                @include frame-common;
+                                width: $narrow-frame;
+                                height: $wide-frame;
+                                top: $extrude;
+                                left: $bevel;
+                            }
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        .wp-block-group__inner-container {
+                            grid-template-areas: 
+                                "Heading-h2"
+                                "image"
+                                "paragraph";
+                            grid-template-rows: max-content auto min-content;
+                            grid-row-gap: #{$accentThickness};
+                            padding-top: 20px;
+
+                            @include mediumTallScreen() {
+                                grid-row-gap: #{2* $accentThickness};
+                            }
+
+                            @include narrowScreen() {
+                                grid-template-areas:
+                                    "Heading-h2 image"
+                                    "paragraph image";
+                                padding-top: 100px;
+                                padding-bottom: 100px;
+                                grid-template-columns: 2fr 1fr;
+                                grid-template-rows: max-content 200px;
+                            }
+
+                            @include wideScreen() {
+                                grid-row-gap: 5vw;
+                            }
+
+                            h2 {
+                                position: relative;
+                                width: max-content;
+                                justify-self: center;
+
+                                @include narrowScreen() {
+                                    justify-self: start;
+                                    text-align: left;
+                                }
+
+                                &:before {
+                                    $h2fontSize: map-get(map-get($fonts, h2), line-height);
+                                    $parrotSize: 60px;
+                                    @include svgArt("parrot.svg", $parrotSize, $parrotSize);
+                                    bottom: auto;
+                                    left: -20px;
+                                    top: calc(-1 * #{$h2fontSize});
+                                    transform: none;
+                                    // margin-top: -38px;
+                                    // margin-left: 6px;
+                                    width: #{$parrotSize};
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    // Ilkelerim ve deneyimim
+                    &:nth-child(3) {
+                        & > .wp-block-group__inner-container {
+                            grid-template-areas: 
+                                "Heading-h2"
+                                "image"
+                                "paragraph"
+                                "restart";
+                            grid-template-rows: max-content auto min-content min-content;
+                            grid-row-gap: #{$accentThickness};
+
+                            @include mediumTallScreen() {
+                                grid-row-gap: #{1.5* $accentThickness};
+                            }
+
+                            @include narrowScreen() {
+                                grid-template-areas:
+                                    "image Heading-h2"
+                                    "image paragraph"
+                                    "image restart";
+                                padding-top: 100px;
+                                padding-bottom: 100px;
+                                grid-template-columns: 1fr 2fr;
+                                grid-template-rows: max-content 200px;
+                            }
+
+                            & > h2 {
+                                @include narrowScreen() {
+                                    align-self: end;
+                                    text-align: left;
+                                }
+                            }
+
+                            & > .wp-block-group {
+                                grid-area: restart;
+                                padding: #{$accentThickness/ 2};
+                                background-color: #{map-get($colorMap, bg-white)};
+                                // margin-right: #{-$accentThickness};
+
+                                & > .wp-block-group__inner-container {
+
+                                    figure {
+                                        margin: 0;
+
+                                        & > img {
+                                            display: block;
+                                            margin: 0 auto;
+                                            height: 50px;
+                                            width: auto;
+
+
+                                            @include mediumTallScreen() {
+                                                height: 70px;
+                                            }
+                                        }
+
+                                        figcaption {
+                                            display: none;
+                                        }
+                                    }
+
+                                    p {
+                                        color: #{map-get($colorMap, text-dark)};
+                                        margin:0;
+                                    }
+
+                                    grid-template-areas: 
+                                        "Heading-h3"
+                                        "paragraph";
+                                    grid-template-rows: min-content min-content;
+                                }
+                            }
+                        }
+
+
+                        &:after {
+                            // $cityWidth: 100vw;
+                            // @include svgArt("city.svg", $cityWidth, $mobileNavigationHeight)
+                            $width: 100vw;
+                            $height: calc(100vw/4);
+                            @include svgArt(
+                                "city.svg", 
+                                $width,
+                                $height,
+                                $mobileNavigationHeight,
+                                100px,
+                            );
+                        }
+                    }
+
+                    // birlikte gelisim
+                    &:nth-child(4) {
+                        .wp-block-group__inner-container {
+                            @include wpPosts(posts, row);
+
+                            grid-template-areas: 
+                                "Heading-h2"
+                                "posts"
+                                "paragraph";
+                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} auto max-content;
+                            grid-row-gap: #{$accentThickness/2};
+
+                            @include mediumTallScreen() {
+                                grid-row-gap: #{$accentThickness};
+                            }
+
+                            @include narrowScreen() {
+                                grid-template-areas: 
+                                    "Heading-h2 posts"
+                                    "paragraph posts";
+                                grid-template-rows: 1fr 1fr;
+                                grid-template-columns: 1fr 1fr;
+                                justify-content: center;
+                            }
+
+                            // @include wideScreen() {
+                            //     padding: 100px 0 100px #{$accentThickness};
+                            //     grid-template-columns: 1fr 1fr #{$navSocialSpaceX};
+                            // }
+
+                            h2 {
+                                @include narrowScreen() {
+                                    align-self: end;
+                                    text-align: left;
+                                }
+                            }
+
+                            p {
+                                margin: 0;
+                            }
+                        }
+
+                        &:after {
+                            $width: 100vw;
+                            $height: calc(100vw/5);
+                            @include svgArt(
+                                "conversation.svg", 
+                                $width,
+                                $height,
+                                $mobileNavigationHeight,
+                                150px,
+                            );
+                        
+                        }
+                    }
+
+                    // basari hikayeleri
+                    &:nth-child(5) {
+                        .wp-block-group__inner-container {
+                            @include wpPosts(success, column, map-get($colorMap, bg-blue));
+
+                            grid-template-areas: 
+                                "Heading-h2"
+                                "posts";
+                            grid-row-gap: #{$accentThickness/2};
+                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
+                            align-content: stretch;
+
+                            @include mediumTallScreen() {
+                                grid-row-gap: #{$accentThickness};
+                            }
+
+                            @include narrowScreen() {
+                                $logoNSocialY: map-get($narrow, logoNSocialY);
+                                grid-template-rows: #{$logoNSocialY} auto;
+                            }
+
+                            // @include wideScreen() {
+                            //     grid-template-areas: 
+                            //     "Heading-h2 Heading-h2"
+                            //     "posts nav"
+                            //     "paragraph nav";
+                            //     grid-template-columns: auto #{$navSocialSpaceX};
+                            // }
+
+                            h2 {
+                                align-self: center;
+                            }
+                        }
+
+                        &:after {
+
+                            $cityWidth: 100vw;
+                            $height: calc(100vw/4);
+                            @include svgArt(
+                                "success.svg", 
+                                $cityWidth,
+                                $height,
+                                $mobileNavigationHeight,
+                                150px,
+                            );
+                        }
+                    }
+
+                    &:nth-child(6) {
+
+                        & > .wp-block-group__inner-container {
+                            grid-template-rows: min-content min-content min-content;
+                            grid-template-areas: 
+                                "Heading-h2"
+                                "feature" 
+                                "paragraph";
+                            grid-row-gap: #{$accentThickness};
+
+                            @include narrowScreen() {
+                                grid-template-areas: 
+                                    "feature Heading-h2"
+                                    "feature paragraph";
+                                grid-template-rows: auto auto;
+                                grid-template-columns: 1fr 1fr;
+                            }
+
+                            & > h2 {
+                                @include narrowScreen() {
+                                    align-self: end;
+                                    text-align: left;
+                                }
+                            }
+
+                            & > p {
+                                display: none;
+                                margin: 0;
+
+                                @include smallScreen() {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        & .wpcf7 {
+                            grid-area: feature;
+    
+                            & p {
+                                margin-bottom: #{$accentThickness / 2};
+                            }
+                
+                            & label {
+                                color: #{map-get($colorMap, text-dark)};
+                                input,
+                                textarea {
+                                    margin-top: #{$accentThickness / 4}
+                                }
+                            }
+                
+                            & .wpcf7-text,
+                            & .wpcf7-textarea {
+                                box-sizing:border-box;
+                                border: none;
+                                background-color: #{map-get($colorMap, bg-white)};
+                                width: 100%;
+                                padding: #{$accentThickness / 2};
+                                font-family: #{$textFont};
+                                border-radius: 0;
+    
+                                &:focus {
+                                    outline: none;
+                                    background-color: #{map-get($colorMap, bg-yellow)};
+    
+                                }
+                            }
+                
+                            & .wpcf7-textarea {
+                                resize: none;
+                                height: calc(30px + 7vh);
+                            }
+                
+                            & .wpcf7-submit {
+                                font-family: #{$textFont};
+                                font-size: #{$defaultFontSize};
+                                width: 100%;
+                                padding: #{$accentThickness / 2};
+                                border: none;
+                                background-color:  #{map-get($colorMap, ui-yellow)};
+                                color: #{map-get($colorMap, text-dark)};
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        &,
+                        & > .wp-block-group__inner-container {
+                            height: calc(100vh + 250px);
+                        }
+                    }
+                } 
+            }
+        }
+    }
+}
+

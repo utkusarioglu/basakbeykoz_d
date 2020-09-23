@@ -1,0 +1,15 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+.os-scrollbar-vertical {
+    z-index: 150;
+    width: #{$accentThickness/2} !important;
+    padding: 0 !important;
+    
+    & .os-scrollbar-handle {
+        background-color: #{map-get($colorMap, ui-gray)} !important;
+        border-radius: 0 !important;
+        // width: #{$accentThickness/2};
+    }
+
+}

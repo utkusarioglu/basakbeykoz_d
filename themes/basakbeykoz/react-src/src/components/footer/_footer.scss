@@ -1,0 +1,70 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+
+.Footer {
+    $creditsSize: 20vw;    
+    $creditsMaxSize: 150px;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: #{$footerSquareSize};
+    height: #{$creditsSize};
+    max-height: #{$creditsMaxSize};
+
+    &-credits {
+        // position: absolute;
+        box-sizing: border-box;
+        
+        display: grid;
+        font-family: $textFont;
+        background: #{map-get($colorMap, bg-black)};
+        justify-items: end;
+        align-items: end;
+        bottom: 0;
+        right: 0;
+        padding: #{$accentThickness / 2};
+        font-size: 1rem;
+        width: #{$creditsSize};
+        min-width: #{$footerSquareSize};
+        max-width: #{$creditsMaxSize};
+        height: 100%;
+    }
+
+    &-art {
+        display:block;
+        // height:100%;
+        width: 100%;
+        
+        background: url("#{$uploadsPath}/footer-art-bg.svg") no-repeat bottom right;
+        // background-size: 100% auto;
+        // background-position: bottom;
+
+        &-fg {
+            // $narrow: map-get($screenSizes, narrow);
+            // $isNarrow: calc(#{narrow} - 100vw);
+            // $toMiddleSlide: min(#{$isNarrow}, 0);  
+
+            max-height: 200px;
+            min-height: 50px;
+            height: calc(100vw/4);
+            position: absolute;
+            width: 80vw;
+            max-width: calc(100vw - #{$footerSquareSize});
+            min-width: calc(100vw - #{$creditsMaxSize});
+            bottom: 20px;
+        }
+    }
+    
+    &-yearAndName {
+        color: #{map-get($colorMap, text-light)};
+        text-align: right;
+    }
+    a {
+        text-decoration: none;
+    }
+}

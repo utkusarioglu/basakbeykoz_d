@@ -1,12 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-
-
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
-.vscode/*
 
 # testing
 /coverage
@@ -24,14 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/themes/*
-!/themes/basakbeykoz
-themes/basakbeykoz/*
-!themes/basakbeykoz/react-src
-
-# !/themes/basakbeykoz/react-src
-
-/plugins/*
-!/plugins/contact-form-7
-!/plugins/wp-rest-api-v2-menus
