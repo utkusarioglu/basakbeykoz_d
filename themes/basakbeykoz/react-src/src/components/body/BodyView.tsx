@@ -1,8 +1,9 @@
-import React, { Fragment as div } from "react";
+import React, { Fragment as div, useEffect } from "react";
 import PostList from "../../features/blog/PostList";
 import { wpSingularItemForDisplay } from "../../features/wp/@types-wp";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
+import OverlayScrollbars from 'overlayscrollbars';
 import "./_body.scss";
 import "./_bodyView.scss";
 
@@ -60,9 +61,17 @@ function BodyView(props: Props): React.FunctionComponentElement<Props> {
     }
 
     ReactGA.pageview(window.location.pathname + window.location.search);
+    useEffect(() => {
+        if(props.slug === homeSlug) {
+            const fiels = document.querySelectorAll('.wp-block-latest-posts');
+            OverlayScrollbars(fiels[0], { });
+            OverlayScrollbars(fiels[1], { });
+        }
+    }, [props.slug, homeSlug])
+
     
     return (
-        <div>
+        <>
             <Helmet>
                 <title>{siteTitle}</title>
             </Helmet>
@@ -76,7 +85,7 @@ function BodyView(props: Props): React.FunctionComponentElement<Props> {
                     dangerouslySetInnerHTML={{__html: props.content}} />
                 {postList}
             </div>
-        </div>
+        </>
     )
 }
 

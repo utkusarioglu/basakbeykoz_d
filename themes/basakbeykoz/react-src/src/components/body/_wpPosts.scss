@@ -23,6 +23,7 @@
         // position: absolute;
         margin: 0 #{-$liDistance};
         grid-auto-flow: column;
+        height: 100%;
 
         @include narrowScreen() {
             @if $gridFlow == row {
@@ -55,11 +56,11 @@
             padding: #{$accentThickness/2};
         } 
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+        // &::-webkit-scrollbar {
+        //     display: none;
+        // }
         
-        & > li {
+        & li {
             box-sizing: border-box;
             background-color: $cardColor;
             margin-left: #{$liDistance};
