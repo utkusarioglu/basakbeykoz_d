@@ -34,6 +34,7 @@ function NavItem(props: Props) {
     }
 
     return (
+        // <div className="Nav-item-wrapper">
         <NavLink 
             key={item.ID}
             exact
@@ -43,6 +44,7 @@ function NavItem(props: Props) {
             onClick={() => setDisplaying(cleanSlug)}
             >{item.title}
         </NavLink>
+        // </div>
     )
 }
 
