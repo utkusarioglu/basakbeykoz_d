@@ -21,7 +21,7 @@ function Social(props: Props) {
     const socialItems = props.socialItems;
 
     const socialComponents = socialItems.map((item) => {
-        return <SocialItem item={item} />
+        return <SocialItem key={item.title} item={item} />
     })
 
     return (

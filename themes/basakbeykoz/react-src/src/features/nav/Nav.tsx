@@ -29,7 +29,7 @@ function Nav(props: Props) {
     }, [fetchMenu])
 
     const menuItems: JSX.Element[] = props.menu.items
-        .map((item: wpMenuItem) => <NavItem item={item} /> )
+        .map((item: wpMenuItem) => <NavItem key={item.ID} item={item} /> )
 
     return <nav>{menuItems}</nav>
 }
