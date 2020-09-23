@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 /themes/*
-!/themes/basakbeykoz/react-src/
+!/themes/basakbeykoz/react-src
 
 /plugins/*
 !/plugins/contact-form-7
