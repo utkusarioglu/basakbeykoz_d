@@ -11,7 +11,7 @@ COPY ./etc/uploads/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 # copy content created for this product
 COPY ./plugins ./wp-content/plugins
 COPY ./themes/basakbeykoz ./wp-content/themes/basakbeykoz
-COPY ./uploads ./wp-content/uploads
+# COPY ./uploads ./wp-content/uploads
 
 # adjust owners, privileges
 RUN chown -R www-data:www-data ./wp-content
