@@ -1,7 +1,7 @@
 PROJECT="basakbeykoz"
 ZONE="europe-west3-c"
 VM="basakbeykoz-7"
-DATE="test"
+DATE=$(date +'%Y%m%d')
 VM_BACKUP_DIR=/mnt/disks/content_disk/backups/sql
 LOCAL_BACKUP_DIR=~/Do*/P*/Ba*/*d/backups/sql
 
