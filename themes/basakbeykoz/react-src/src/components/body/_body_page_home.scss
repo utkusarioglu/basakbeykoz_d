@@ -51,6 +51,7 @@
                     }
 
                     &:first-child {
+                        // display: none;
                         $logoNSocialY: map-get($narrow, logoNSocialY);
                         $homeWelcomeImageX: map-get($narrow, homeWelcomeImageX);
 
@@ -262,6 +263,7 @@
                     }
 
                     &:nth-child(2) {
+                        // display: none;
                         .wp-block-group__inner-container {
                             grid-template-areas: 
                                 "Heading-h2"
@@ -319,6 +321,7 @@
 
                     // Ilkelerim ve deneyimim
                     &:nth-child(3) {
+                        // display: none;
                         & > .wp-block-group__inner-container {
                             grid-template-areas: 
                                 "Heading-h2"
@@ -449,21 +452,20 @@
                             }
                         }
 
-                        &:after {
-                            $width: 100vw;
-                            $height: calc(100vw/5);
-                            @include svgArt(
-                                "conversation.svg", 
-                                $width,
-                                $height,
-                                $mobileNavigationHeight,
-                                150px,
-                            );
-                        
-                        }
+                        // &:after {
+                        //     $width: 100vw;
+                        //     $height: calc(100vw/5);
+                        //     @include svgArt(
+                        //         "conversation.svg", 
+                        //         $width,
+                        //         $height,
+                        //         $mobileNavigationHeight,
+                        //         150px,
+                        //     );
+                        // }
                     }
 
-                    // basari hikayeleri
+                    // Ne deneyimlediler
                     &:nth-child(5) {
                         .wp-block-group__inner-container {
                             @include wpPosts(success, column, map-get($colorMap, bg-blue));
@@ -497,18 +499,17 @@
                             }
                         }
 
-                        &:after {
-
-                            $cityWidth: 100vw;
-                            $height: calc(100vw/4);
-                            @include svgArt(
-                                "success.svg", 
-                                $cityWidth,
-                                $height,
-                                $mobileNavigationHeight,
-                                150px,
-                            );
-                        }
+                        // &:after {
+                        //     $cityWidth: 100vw;
+                        //     $height: calc(100vw/4);
+                        //     @include svgArt(
+                        //         "success.svg", 
+                        //         $cityWidth,
+                        //         $height,
+                        //         $mobileNavigationHeight,
+                        //         150px,
+                        //     );
+                        // }
                     }
 
                     &:nth-child(6) {

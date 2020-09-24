@@ -10,35 +10,37 @@
 @mixin wpPosts($type, $gridFlow: row, $cardColor: map-get($colorMap, bg-gray)) {
     .wp-block-latest-posts {
         $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
-        $liDistance: 2* $accentThickness;
+        $liDistance: $accentThickness;
         $liMinWidth: 260px;
         $liMaxWidth: 350px;
         $limediumTallHeight: 60vh;
 
         grid-area: posts;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        padding: 0;
-        display: grid;
+        // overflow-x: scroll;
+        // overflow-y: hidden;
         // position: absolute;
         margin: 0 #{-$liDistance};
-        grid-auto-flow: column;
         height: 100%;
-
-        @include narrowScreen() {
-            @if $gridFlow == row {
-                // margin: 0;
-                grid-auto-flow: row;
-                overflow-x: hidden;
-                overflow-y: scroll;
-                
-                align-self: center;
-                margin: 0;
-            } @else if $gridFlow == column {
-                margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
-                // margin-left: #{$accentThickness};
-                // grid-auto-flow: row;
-                // this is not being implemented as it's not being used right now
+        padding: 0;
+        .os-content {
+            display: grid;
+            grid-auto-flow: column;
+            
+            @include narrowScreen() {
+                @if $gridFlow == row {
+                    // margin: 0;
+                    grid-auto-flow: row;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    
+                    align-self: center;
+                    margin: 0;
+                } @else if $gridFlow == column {
+                    margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
+                    // margin-left: #{$accentThickness};
+                    // grid-auto-flow: row;
+                    // this is not being implemented as it's not being used right now
+                }
             }
         }
         
@@ -64,16 +66,17 @@
             box-sizing: border-box;
             background-color: $cardColor;
             margin-left: #{$liDistance};
-            margin-top: #{$accentThickness/2};
             display: grid;
             grid-row-gap: #{$accentThickness / 2};
             position: relative;
             width: 50vw;
             min-width: #{$liMinWidth};
             max-width: #{$liMaxWidth};
-
-            height: min-content;
+            border-radius: #{$accentThickness/2};
+            
+            // height: min-content;
             border: #{$accentThickness/2} solid transparent;
+            height: 100%;
 
             @if $type == posts {
                 grid-template-areas: 
@@ -129,16 +132,17 @@
                 }
             }
 
-            &::after {
-                content: "";
-                position: absolute;
-                left: #{-$accentThickness};
-                right: #{-$accentThickness};
-                top: 0;
-                bottom: 0;
-                background: frame($cardColor, horizontal);
-                pointer-events: none;
-            }
+            // &::after {
+            //     content: "";
+            //     position: absolute;
+            //     left: #{-$accentThickness};
+            //     right: #{-$accentThickness};
+            //     top: 0;
+            //     bottom: 0;
+            //     background: frame($cardColor, horizontal);
+            //     pointer-events: none;
+            //     border-radius: #{$accentThickness};
+            // }
 
             
             &:last-child::before {
@@ -158,6 +162,7 @@
                 overflow: hidden;
                 display: flex;
                 align-items: center;
+                border-radius: #{$accentThickness/3};
 
                 @include narrowScreen() {
                     height: 100%;
