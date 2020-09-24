@@ -575,7 +575,7 @@
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 font-family: #{$textFont};
-                                border-radius: 0;
+                                border-radius: #{$accentThickness/2};
     
                                 &:focus {
                                     outline: none;
@@ -597,6 +597,7 @@
                                 border: none;
                                 background-color:  #{map-get($colorMap, ui-yellow)};
                                 color: #{map-get($colorMap, text-dark)};
+                                border-radius: #{$accentThickness/2};
                             }
                         }
                     }
