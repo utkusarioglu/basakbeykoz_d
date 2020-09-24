@@ -12,6 +12,8 @@
         height: $logoNSocialY;
         background:  #{map-get($colorMap, ui-blue)};
         left: 0;
+        border-top-right-radius: #{$accentThickness};
+        border-bottom-right-radius: #{$accentThickness};
     }
     
     &-logo > img {

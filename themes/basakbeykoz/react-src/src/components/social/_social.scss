@@ -12,6 +12,8 @@
         height: $logoNSocialY;
         background: #{map-get($colorMap, ui-blue)};
         right: 0;
+        border-top-left-radius: #{$accentThickness};
+        border-bottom-left-radius: #{$accentThickness};
     }
     &-list {
         display: flex;

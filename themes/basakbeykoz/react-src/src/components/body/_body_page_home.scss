@@ -226,6 +226,7 @@
                             background-repeat: no-repeat;
                             background-size: cover;
                             position: relative;
+                            border-radius: #{$accentThickness/2};
 
                             @mixin frame-common {
                                 content: "";
@@ -243,6 +244,8 @@
                                 height: $narrow-frame;
                                 top: $bevel;
                                 left: $extrude;
+                                // border-top-left-radius: #{$accentThickness/2};
+                                border-radius: #{$accentThickness/2};
                             }
 
                             &:after {
@@ -251,6 +254,7 @@
                                 height: $wide-frame;
                                 top: $extrude;
                                 left: $bevel;
+                                border-radius: #{$accentThickness/2};
                             }
                         }
                     }

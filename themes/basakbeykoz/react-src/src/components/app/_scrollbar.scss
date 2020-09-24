@@ -9,6 +9,8 @@
     & .os-scrollbar-handle {
         background-color: #{map-get($colorMap, ui-gray)} !important;
         border-radius: 0 !important;
+        border-top-left-radius: #{$accentThickness/2} !important;
+        border-bottom-left-radius: #{$accentThickness/2} !important;
         // width: #{$accentThickness/2};
     }
 

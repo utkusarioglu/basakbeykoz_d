@@ -43,6 +43,7 @@
             & > img {
                 width: calc(100vw - (2 * var(--accent-thickness)));
                 height: auto;
+                border-radius: #{$accentThickness/2};
                 
                 @include narrowScreen() {
                     width: 250px;
