@@ -172,13 +172,15 @@
                         .wp-block-buttons {
                             grid-area: buttons;
                             width: 100%;
-                            display: none;
+                            margin-right: #{$accentThickness/2};
+                            margin-left: #{-$accentThickness/2};
 
                             .wp-block-button {
                                 @include buttonText();
                                 background-color:  #{map-get($colorMap, ui-yellow)};
                                 color: #{map-get($colorMap, text-dark)};
-                                padding: #{$accentThickness};
+                                padding: #{$accentThickness/2};
+                                border-radius: #{$accentThickness/2};
             
                                 &:hover {
                                     background-color: #{map-get($colorMap, bg-blue)};
