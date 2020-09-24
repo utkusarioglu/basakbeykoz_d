@@ -82,7 +82,7 @@ body {
 }
 
 .body.page.home>article>div .wp-block-latest-posts>li,
-span, :not(h1 > span)
+span,
 nav {
     color: #{map-get($colorMap, bg-blue)};
     font-family: $textFont;

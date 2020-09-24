@@ -119,12 +119,13 @@
                         }
 
                         figure {
+                            display: none;
                             margin: 0;
                             grid-area: logo;
                             width: 100%;
                             max-width: 400px;
                             justify-items: center;
-                            display: grid;
+                            // display: grid;
                             grid-template-rows: min-content min-content;
                             grid-template-areas: 
                                 "title" 
@@ -132,6 +133,7 @@
                             justify-self: center;
 
                             @include narrowScreen() {
+                                display: grid;
                                 justify-self: start;
                                 width: fit-content;
                             }
@@ -160,9 +162,11 @@
                         h1 {
                             // padding-bottom: #{$accentThickness};
                             align-self: end;
+                            justify-self: center;
                             color: #{map-get($colorMap, text-light)};
 
                             @include narrowScreen() {
+                                justify-self: start;
                                 color: #{map-get($colorMap, text-mediumDark)};
                             }
                         }
@@ -182,6 +186,7 @@
                                 color: #{map-get($colorMap, text-dark)};
                                 padding: #{$accentThickness/2};
                                 border-radius: #{$accentThickness/2};
+                                width: 100%;
             
                                 &:hover {
                                     background-color: #{map-get($colorMap, bg-blue)};
