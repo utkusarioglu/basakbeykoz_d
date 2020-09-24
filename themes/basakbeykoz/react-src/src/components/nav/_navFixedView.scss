@@ -115,6 +115,8 @@
                 right: 0;
                 width: #{$accentThickness / 2};
                 background-color:  #{map-get($colorMap, ui-decoration)};
+                border-top-left-radius: #{$accentThickness/2};
+                border-bottom-left-radius: #{$accentThickness/2};
     
                 @include narrowScreen() {
                     width: auto;

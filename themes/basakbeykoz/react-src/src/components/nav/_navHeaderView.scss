@@ -40,6 +40,8 @@
                 left: #{$accentThickness / 4};
                 right: #{$accentThickness / 4};
                 background-color:  #{map-get($colorMap, ui-decoration)};
+                border-top-left-radius: #{$accentThickness / 4};
+                border-top-right-radius: #{$accentThickness / 4};
             }
         }
     }
