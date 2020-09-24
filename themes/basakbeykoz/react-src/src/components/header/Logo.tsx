@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import "./_logo.scss";
 
 const mapState = (state: RootState) => ({
-    menu: state.menu.items
+    menu: state.menu.items,
+    refs: state.app.refs,
 });
 
 const mapDispatch = {
@@ -21,7 +22,7 @@ type Props = DispatchProps & StateProps & OwnProps;
 
 function Logo(props: Props): React.FunctionComponentElement<Props> {
 
-    const { setDisplaying, setIsMenuOpen } = props;
+    const { setDisplaying, setIsMenuOpen, refs } = props;
     const uploads = process.env.REACT_APP_UPLOADS_DIR;
     const home_slug = process.env.REACT_APP_HOME_SLUG as string
 
@@ -29,7 +30,8 @@ function Logo(props: Props): React.FunctionComponentElement<Props> {
         setIsMenuOpen(false)
         setDisplaying({
             slug: home_slug
-        })        
+        });
+        refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
     }
 
     return (

@@ -10,7 +10,9 @@ interface OwnProps {
     item: wpMenuItem;
 }
 
-const mapState = (state: RootState) => ({});
+const mapState = (state: RootState) => ({
+    refs: state.app.refs
+});
 
 const mapDispatch = { 
     setDisplaying,
@@ -22,15 +24,16 @@ type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
 function NavItem(props: Props) {
-    const { item } = props;
+    const { item, refs, setDisplaying } = props;
     const cleanSlug = !!item.slug
         ? item.slug
         : "";
 
-    const setDisplaying = (slug: string) => {
-        props.setDisplaying({
+    const setDisplayingAction = (slug: string) => {
+        setDisplaying({
             slug,
-        });        
+        });  
+        refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
     }
 
     return (
@@ -41,7 +44,7 @@ function NavItem(props: Props) {
             to={"/" + cleanSlug}
             className="Nav-item"
             activeClassName="Nav-item-active"
-            onClick={() => setDisplaying(cleanSlug)}
+            onClick={() => setDisplayingAction(cleanSlug)}
             >{item.title}
         </NavLink>
         // </div>
