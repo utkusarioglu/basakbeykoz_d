@@ -4,6 +4,6 @@ ZONE="europe-west3-c"
 VM="basakbeykoz-7"
 DATE=$(date +'%Y%m%d')
 VM_UPLOADS_BACKUP_DIR=/mnt/disks/content_disk/wp-content/uploads
-LOCAL_UPLOADS_BACKUP_DIR=~/Do*/P*/Ba*/*d/uploads
+LOCAL_UPLOADS_BACKUP_DIR=~/Documents/Projects/BasakBeykoz/basakbeykoz_d/backups/uploads
 
 gcloud compute scp --recurse --compress $USER@$VM:$VM_UPLOADS_BACKUP_DIR/* $LOCAL_UPLOADS_BACKUP_DIR
