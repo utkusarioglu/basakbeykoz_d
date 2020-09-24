@@ -4,6 +4,7 @@ import {
     wpSingularItemForDisplay,
 } from '../features/wp/@types-wp'
 import { ISocialItem } from '../features/social/@types-social';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 export default interface stateMap {
     app: {
@@ -14,6 +15,11 @@ export default interface stateMap {
             loadTime: number,
             active: wpSingularItemForDisplay,
         },
+        refs: {
+            body?: React.RefObject<OverlayScrollbarsComponent>,
+            latestPosts?: React.RefObject<OverlayScrollbarsComponent>,
+            testimonials?: React.RefObject<OverlayScrollbarsComponent>,
+        }
     },
     menu: {
         items: wpMenuItem[]

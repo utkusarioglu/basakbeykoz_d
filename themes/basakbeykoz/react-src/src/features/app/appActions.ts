@@ -1,10 +1,12 @@
 import { DispatchMethod} from '../../common/@types-actions';
-import { IS_FETCHING, IS_DISPLAYING, IS_MENU_OPEN } from '../../common/types'
+import { IS_FETCHING, IS_DISPLAYING, IS_MENU_OPEN, SET_REF } from '../../common/types'
 import stateMap from '../../store/@types-state';
+import { ISetRef } from '../../common/@types-actions';
 
 type isDisplaying = stateMap["app"]["isDisplaying"];
 type isFetching = stateMap["app"]["isFetching"];
 type isMenuOpen = stateMap['app']['isMenuOpen'];
+
 
 export const setFetching = (fetch_bool: boolean) => 
     (dispatch: DispatchMethod<isFetching>) => {
@@ -33,3 +35,12 @@ export const setIsMenuOpen = (is_menuOpen: isMenuOpen) =>
             payload: is_menuOpen,
         })
 }
+
+export const setRef = (refData: ISetRef) =>
+    (dispatch: DispatchMethod<ISetRef>) => {
+        dispatch({
+            type: SET_REF,
+            state: 'success',
+            payload: refData,
+        })
+    }

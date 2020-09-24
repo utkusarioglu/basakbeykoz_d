@@ -1,3 +1,4 @@
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 export type FSA<T>  = FSASuccess<T> | FSAFailure
 
 interface FSASuccess<T> {
@@ -13,3 +14,8 @@ interface FSAFailure {
 }
 
 export type DispatchMethod<T> = (vars:FSA<T>) => void
+
+export interface ISetRef {
+    type: 'body' | 'latestPosts' | 'testimonials';
+    ref: React.RefObject<OverlayScrollbarsComponent>;
+}
