@@ -25,7 +25,7 @@ services:
       # The theme requires building and then copying by the dockerfile
       - ./themes:/var/www/html/wp-content/themes
       # These shall come from persistent storage in production
-      - ./uploads:/var/www/html/wp-content/uploads
+      - ./backups/uploads:/var/www/html/wp-content/uploads
 
   db:
     image: mysql:5.7
