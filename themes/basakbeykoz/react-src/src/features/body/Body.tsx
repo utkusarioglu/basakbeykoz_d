@@ -6,13 +6,14 @@ import { fetchSingular } from "../wp/singularActions";
 import { setFetching, setDisplaying } from '../app/appActions'
 import stateMap from "../../store/@types-state";
 import { singularTypes, wpSingularItem } from "../wp/@types-wp";
-
+import OverlayScrollbars from 'overlayscrollbars';
 import BodyView from "../../components/body/BodyView";
 
 const mapState = (state: RootState) => ({
     singular: state.singular,
     isDisplaying: state.app.isDisplaying,
     isFetching: state.app.isFetching,
+    refs: state.app.refs,
 })
 
 const mapDispatch = { 
@@ -41,11 +42,10 @@ function findBySlug(singular: stateMap["singular"], slug: string): wpSingularIte
 
 function Body(props: Props): React.FunctionComponentElement<Props> {
 
+    const { refs } = props;
     const setFetching = props.setFetching;
     const setDisplaying = props.setDisplaying;
     const fetchSingular = props.fetchSingular;
-
-    // console.log(props.isDisplaying)
 
     const url_slug = useParams<{slug: string}>().slug || "home";
     const slug = props.isDisplaying.slug;
@@ -83,16 +83,99 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
 
     const { slug: activeSlug, title, content, thumbnail, type} = props.isDisplaying.active;
 
+    // const slugSpecificFunctions: {[slug: string]: () => void} = {
+    //     [homeSlug]: () => {
+    //         // setTimeout(() => {
+    //             const fields = document.querySelectorAll('.wp-block-latest-posts');
+    //             OverlayScrollbars(fields[0], { 
+    //                 scrollbars: {
+    //                     autoHide: 'leave',
+    //                 }
+    //             });
+    //             OverlayScrollbars(fields[1], {
+    //                 scrollbars: {
+    //                     autoHide: 'leave',
+    //                 }
+    //             });
+    //             refs.body?.current?.osInstance()?.scroll({y: '500px'});
+    //         // }, 2000)
+    //     }
+    // }
+
+    const slugSpecificFunction = getSlugSpecificAction(slug, refs);
+
     return (
         <BodyView 
             slug={activeSlug}
             title={title}
             type={type}
             content={content}
-            thumbnail={thumbnail}/>
+            thumbnail={thumbnail}
+            slugSpecificFunction={slugSpecificFunction}/>
     )
 }
 
+function getSlugSpecificAction(
+    slug: string, 
+    refs: RootState['app']['refs']
+): () => void {
+    const homeSlug = process.env.REACT_APP_HOME_SLUG as string;
+    switch(slug) {
+        case homeSlug:
+            return () => {
+                setTimeout(() => {
+                    const fields = document.querySelectorAll('.wp-block-latest-posts');
+                    // Scrollbar for latest posts
+                    attachLlistActions(fields[0] as HTMLElement);
+                    // Scrollbar for testimonials
+                    attachLlistActions(fields[1] as HTMLElement);
+                    // Attach listener to the CTA
+                    // !HACK this listener is attached every time the page is opened
+                    document.body.getElementsByClassName('wp-block-button')[0]?.addEventListener('mousedown',() => {
+                        refs.body?.current?.osInstance()?.scroll(
+                            document.getElementsByClassName('wp-block-group')[1] as HTMLElement, 
+                            1000,
+                            'easeOutExpo',
+                            );
+                    })
+
+                }, 2000);
+            }
+
+        default:
+            return () => null;
+    }
+}
+
+function attachLlistActions(elem: HTMLElement): void {
+    const SCROLL_DURATION = 500;
+    const LINGER_DURATION = 2000;
+    
+    const latestPostsRef = 
+    OverlayScrollbars(elem, { 
+        scrollbars: {
+            autoHide: 'leave',
+        }
+    });
+    const children = elem.querySelectorAll('.os-content')[0].children;
+    const childrenCount = children.length;
+    let currentChild = 1;
+    setInterval(() => {
+        latestPostsRef.scroll(
+            {
+                el: children[currentChild] as HTMLElement,
+                margin: true,
+            }, 
+            SCROLL_DURATION, 
+            'easeInOutSine'
+            );
+            currentChild = (currentChild % childrenCount) + 1
+    }, LINGER_DURATION);
+    // elem.addEventListener('blur', () => {
+    //     scrollAnimation
+    // })
+
+}
 
 
 

@@ -1,18 +1,20 @@
-import React, { Fragment as div, useEffect } from "react";
+import React, { useEffect } from "react";
 import PostList from "../../features/blog/PostList";
 import { wpSingularItemForDisplay } from "../../features/wp/@types-wp";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
-import OverlayScrollbars from 'overlayscrollbars';
+
 import "./_body.scss";
 import "./_bodyView.scss";
 
-interface Props extends wpSingularItemForDisplay {}
+interface Props extends wpSingularItemForDisplay {
+    slugSpecificFunction: () => void | undefined;
+}
 
 function BodyView(props: Props): React.FunctionComponentElement<Props> {
 
     window.scrollTo(0,0);
-    
+    const { slugSpecificFunction } = props;
     const siteName = process.env.REACT_APP_NAME as string;
     const separator = process.env.REACT_APP_SEPARATOR as string;
     const homeSlug = process.env.REACT_APP_HOME_SLUG as string;
@@ -62,20 +64,8 @@ function BodyView(props: Props): React.FunctionComponentElement<Props> {
 
     ReactGA.pageview(window.location.pathname + window.location.search);
     useEffect(() => {
-        if(props.slug === homeSlug) {
-            const fiels = document.querySelectorAll('.wp-block-latest-posts');
-            OverlayScrollbars(fiels[0], { 
-                scrollbars: {
-                    autoHide: 'leave',
-                }
-            });
-            OverlayScrollbars(fiels[1], {
-                scrollbars: {
-                    autoHide: 'leave',
-                }
-             });
-        }
-    }, [props.slug, homeSlug])
+        slugSpecificFunction();
+    }, [slugSpecificFunction, props.slug])
 
     
     return (
