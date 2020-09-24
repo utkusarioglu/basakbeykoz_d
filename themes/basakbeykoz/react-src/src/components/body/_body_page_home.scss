@@ -432,10 +432,13 @@
                             }
 
                             @include narrowScreen() {
-                                grid-template-areas: 
+                                $narrowScreenSpacing: 100px;
+                                grid-template-areas:
+                                    "Heading-h2 .    " 
                                     "Heading-h2 posts"
-                                    "paragraph posts";
-                                grid-template-rows: 1fr 1fr;
+                                    "paragraph  posts"
+                                    "paragraph  .    ";
+                                grid-template-rows: #{$narrowScreenSpacing} 1fr 1fr #{$narrowScreenSpacing};
                                 grid-template-columns: 1fr 1fr;
                                 justify-content: center;
                             }
@@ -455,19 +458,24 @@
                             p {
                                 margin: 0;
                             }
+
+                            & > .wp-block-latest-posts {
+                                margin-left: #{-$accentThickness} !important;
+                                width: 100vw;
+                            }
                         }
 
-                        // &:after {
-                        //     $width: 100vw;
-                        //     $height: calc(100vw/5);
-                        //     @include svgArt(
-                        //         "conversation.svg", 
-                        //         $width,
-                        //         $height,
-                        //         $mobileNavigationHeight,
-                        //         150px,
-                        //     );
-                        // }
+                        &:after {
+                            $width: 100vw;
+                            $height: calc(100vw/5);
+                            @include svgArt(
+                                "conversation.svg", 
+                                $width,
+                                $height,
+                                $mobileNavigationHeight,
+                                130px,
+                            );
+                        }
                     }
 
                     // Ne deneyimlediler
@@ -477,10 +485,13 @@
 
                             grid-template-areas: 
                                 "Heading-h2"
-                                "posts";
+                                "posts"
+                                ".";
                             grid-row-gap: #{$accentThickness/2};
-                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
+                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr 100px;
                             align-content: stretch;
+
+
 
                             @include mediumTallScreen() {
                                 grid-row-gap: #{$accentThickness};
@@ -502,21 +513,27 @@
                             h2 {
                                 align-self: center;
                             }
+
+                            & > .wp-block-latest-posts {
+                                margin-left: #{-$accentThickness} !important;
+                                width: 100vw;
+                            }
                         }
 
-                        // &:after {
-                        //     $cityWidth: 100vw;
-                        //     $height: calc(100vw/4);
-                        //     @include svgArt(
-                        //         "success.svg", 
-                        //         $cityWidth,
-                        //         $height,
-                        //         $mobileNavigationHeight,
-                        //         150px,
-                        //     );
-                        // }
+                        &:after {
+                            $cityWidth: 100vw;
+                            $height: calc(100vw/4);
+                            @include svgArt(
+                                "success.svg", 
+                                $cityWidth,
+                                $height,
+                                $mobileNavigationHeight,
+                                130px,
+                            );
+                        }
                     }
 
+                    // contact
                     &:nth-child(6) {
 
                         & > .wp-block-group__inner-container {

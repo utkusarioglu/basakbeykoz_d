@@ -8,6 +8,8 @@ import stateMap from "../../store/@types-state";
 import { singularTypes, wpSingularItem } from "../wp/@types-wp";
 import OverlayScrollbars from 'overlayscrollbars';
 import BodyView from "../../components/body/BodyView";
+//@ts-ignore
+import pauseable from 'pauseable';
 
 const mapState = (state: RootState) => ({
     singular: state.singular,
@@ -148,19 +150,19 @@ function getSlugSpecificAction(
 }
 
 function attachLlistActions(elem: HTMLElement): void {
-    const SCROLL_DURATION = 500;
+    const SCROLL_DURATION = 1500;
     const LINGER_DURATION = 2000;
     
     const latestPostsRef = 
-    OverlayScrollbars(elem, { 
-        scrollbars: {
-            autoHide: 'leave',
-        }
-    });
+        OverlayScrollbars(elem, { 
+            scrollbars: {
+                autoHide: 'leave',
+            }
+        });
     const children = elem.querySelectorAll('.os-content')[0].children;
     const childrenCount = children.length;
     let currentChild = 1;
-    setInterval(() => {
+    const animation = pauseable.setInterval(() => {
         latestPostsRef.scroll(
             {
                 el: children[currentChild] as HTMLElement,
@@ -171,9 +173,30 @@ function attachLlistActions(elem: HTMLElement): void {
             );
             currentChild = (currentChild % childrenCount) + 1
     }, LINGER_DURATION);
-    // elem.addEventListener('blur', () => {
-    //     scrollAnimation
+
+    // document.body.addEventListener('keydown', () => {
+    //     console.log('keydown');
+    //     animation.pause();
     // })
+
+    // document.body.addEventListener('keyup', () => {
+    //     console.log('keyup');
+    //     animation.resume();
+    // })
+
+    // console.log(elem)
+    const target = elem.querySelectorAll('.os-content')[0];
+    
+    target.addEventListener('mouseover', () => {
+        console.log('focusin');
+        latestPostsRef.scrollStop();
+        animation.pause()}
+    );
+    target.addEventListener('mouseleave', () => {
+        console.log('blur');
+        
+        animation.resume()
+    });
 
 }
 

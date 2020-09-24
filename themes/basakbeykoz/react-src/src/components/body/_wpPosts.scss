@@ -9,81 +9,92 @@
 
 @mixin wpPosts($type, $gridFlow: row, $cardColor: map-get($colorMap, bg-gray)) {
     .wp-block-latest-posts {
-        $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
+        grid-area: posts;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        // $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
         $liDistance: $accentThickness;
         $liMinWidth: 260px;
         $liMaxWidth: 350px;
-        $limediumTallHeight: 60vh;
 
-        grid-area: posts;
-        // overflow-x: scroll;
-        // overflow-y: hidden;
-        // position: absolute;
-        margin: 0 #{-$liDistance};
-        height: 100%;
-        padding: 0;
+        // $limediumTallHeight: 60vh;
+
+        // // overflow-x: scroll;
+        // // overflow-y: hidden;
+        // // position: absolute;
+        // margin: 0 #{-$liDistance};
+        // height: 100%;
+        // padding: 0;
+        &,
         .os-content {
             display: grid;
-            grid-auto-flow: column;
-            
+            grid-auto-flow: column;   
+        }
+        
+        .os-content {    
             @include narrowScreen() {
                 @if $gridFlow == row {
-                    // margin: 0;
-                    grid-auto-flow: row;
-                    overflow-x: hidden;
-                    overflow-y: scroll;
+        //             // margin: 0;
+        //             grid-auto-flow: row;
+        //             overflow-x: hidden;
+        //             overflow-y: scroll;
                     
-                    align-self: center;
-                    margin: 0;
+        //             align-self: center;
+        //             margin: 0;
                 } @else if $gridFlow == column {
-                    margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
-                    // margin-left: #{$accentThickness};
-                    // grid-auto-flow: row;
-                    // this is not being implemented as it's not being used right now
+        //             margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
+        //             // margin-left: #{$accentThickness};
+        //             // grid-auto-flow: row;
+        //             // this is not being implemented as it's not being used right now
                 }
             }
         }
         
         
         
-        @include wideScreen() {
-            @if $gridFlow == row {
-            } @else if $gridFlow == column {
-                margin: 0 0 0 #{-$accentThickness};
-            }
-        }
-        
-        @include mediumTallScreen() {
-            height: #{$limediumTallHeight};
-            padding: #{$accentThickness/2};
-        } 
-
-        // &::-webkit-scrollbar {
-        //     display: none;
+        // @include wideScreen() {
+        //     @if $gridFlow == row {
+        //     } @else if $gridFlow == column {
+        //         margin: 0 0 0 #{-$accentThickness};
+        //     }
         // }
         
+        // @include mediumTallScreen() {
+        //     height: #{$limediumTallHeight};
+        //     padding: #{$accentThickness/2};
+        // } 
+
+        // // &::-webkit-scrollbar {
+        // //     display: none;
+        // // }
+        
         & li {
-            box-sizing: border-box;
+        //     box-sizing: border-box;
             background-color: $cardColor;
             margin-left: #{$liDistance};
             display: grid;
             grid-row-gap: #{$accentThickness / 2};
             position: relative;
             width: 50vw;
-            min-width: #{$liMinWidth};
-            max-width: #{$liMaxWidth};
+            // min-width: #{$liMinWidth};
+            // max-width: #{$liMaxWidth};
             border-radius: #{$accentThickness/2};
+            padding: #{$accentThickness/2};
+            overflow: hidden;
             
-            // height: min-content;
-            border: #{$accentThickness/2} solid transparent;
-            height: 100%;
+        //     // height: min-content;
+        //     border: #{$accentThickness/2} solid transparent;
+            height: calc(100% - #{$accentThickness});
 
             @if $type == posts {
                 grid-template-areas: 
                     "image"
-                    "title";
+                    "title"
                     // "time" 
-                    // "excerpt";
+                    "excerpt";
                 grid-template-rows: max-content max-content;
             } @else if $type == success {
                 grid-template-areas: 
@@ -93,59 +104,70 @@
                 grid-template-rows: max-content max-content 1fr;
             }
 
-            @include narrowScreen() {
-                @if $gridFlow == row {
-                    @if $type == posts {
-                        grid-template-areas: 
-                            "image title" 
-                            "image time" 
-                            "image excerpt";
-                        grid-template-rows: min-content min-content auto;
-                        grid-template-columns: #{$homePostsNarrowY} auto;
-                        grid-column-gap: #{$accentThickness/2};
-                        grid-row-gap: 5px;
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: 10;
+                bottom: 0;
+                width: 100%;
+                height: #{$accentThickness /2*3};
+                // background: #{$cardColor};
+                background: linear-gradient(transparent 0,  #{$cardColor} #{$accentThickness});
+            }
 
-                        width: 100%;
-                        max-width: none;
-                        // height: calc(#{$homePostsNarrowY} + #{2* $accentThickness});
-                        // height: auto;
-                        margin-left: 0;
-                        margin-bottom: #{$accentThickness};
-                    } @else if $type == success {
-                    }
+        //     @include narrowScreen() {
+        //         @if $gridFlow == row {
+        //             @if $type == posts {
+        //                 grid-template-areas: 
+        //                     "image title" 
+        //                     "image time" 
+        //                     "image excerpt";
+        //                 grid-template-rows: min-content min-content auto;
+        //                 grid-template-columns: #{$homePostsNarrowY} auto;
+        //                 grid-column-gap: #{$accentThickness/2};
+        //                 grid-row-gap: 5px;
+
+        //                 width: 100%;
+        //                 max-width: none;
+        //                 // height: calc(#{$homePostsNarrowY} + #{2* $accentThickness});
+        //                 // height: auto;
+        //                 margin-left: 0;
+        //                 margin-bottom: #{$accentThickness};
+        //             } @else if $type == success {
+        //             }
                         
                 
-                } @else if $gridFlow == column {
-                    @if $type == posts {
+        //         } @else if $gridFlow == column {
+        //             @if $type == posts {
 
-                    } @else if $type == success {
-                        &:first-child {
-                            margin-left: 0;
-                        }
-                    }
-                }
-            }
+        //             } @else if $type == success {
+        //                 &:first-child {
+        //                     margin-left: 0;
+        //                 }
+        //             }
+        //         }
+        //     }
 
-            @include mediumTallScreen() {
-                @if $gridFlow == column {
-                    height: #{$limediumTallHeight};
-                }
-            }
+        //     @include mediumTallScreen() {
+        //         @if $gridFlow == column {
+        //             height: #{$limediumTallHeight};
+        //         }
+        //     }
 
-            // &::after {
-            //     content: "";
-            //     position: absolute;
-            //     left: #{-$accentThickness};
-            //     right: #{-$accentThickness};
-            //     top: 0;
-            //     bottom: 0;
-            //     background: frame($cardColor, horizontal);
-            //     pointer-events: none;
-            //     border-radius: #{$accentThickness};
-            // }
+        //     // &::after {
+        //     //     content: "";
+        //     //     position: absolute;
+        //     //     left: #{-$accentThickness};
+        //     //     right: #{-$accentThickness};
+        //     //     top: 0;
+        //     //     bottom: 0;
+        //     //     background: frame($cardColor, horizontal);
+        //     //     pointer-events: none;
+        //     //     border-radius: #{$accentThickness};
+        //     // }
 
             
-            &:last-child::before {
+            &:last-child::after {
                 content: "";
                 position: absolute;
                 right: #{-1.25* $liDistance};
@@ -164,9 +186,9 @@
                 align-items: center;
                 border-radius: #{$accentThickness/3};
 
-                @include narrowScreen() {
-                    height: 100%;
-                }
+        //         @include narrowScreen() {
+        //             height: 100%;
+        //         }
 
                 & > img {
                     width: 100%;
@@ -203,12 +225,8 @@
             .wp-block-latest-posts__post-full-content,
             .wp-block-latest-posts__post-excerpt {
 
-                // @include p();
+                @include p();
                 @include limitParagraphLines(6);
-
-                @if $type == posts {
-                    display: none;
-                }
 
                 &,
                 & > p {
@@ -217,33 +235,33 @@
                 // @if $type == posts { 
                 //     display: none;
                 // }
-                // font-size: $excerptFontSize;
+                font-size: $excerptFontSize;
                 grid-area: excerpt !important;
                 color: #{map-get($colorMap, text-mediumDark)};
                 position: relative;
                 margin: 0;
 
-                @include narrowScreen() {
-                    display: block;
+        //         @include narrowScreen() {
+        //             display: block;
 
-                    & > p {
-                        margin: 0;
-                    }
-                }   
+        //             & > p {
+        //                 margin: 0;
+        //             }
+        //         }   
 
-                &::after {
-                    content: " ...";
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                    height: 25px;
-                    width: 36px;
-                    background-color: #{$cardColor};
+        //         &::after {
+        //             content: " ...";
+        //             position: absolute;
+        //             bottom: 0;
+        //             right: 0;
+        //             height: 25px;
+        //             width: 36px;
+        //             background-color: #{$cardColor};
 
-                    @include narrowScreen() {
-                        display: none;
-                    }
-                }
+        //             @include narrowScreen() {
+        //                 display: none;
+        //             }
+        //         }
             }
             
             a {
@@ -252,6 +270,5 @@
                 text-decoration: none;
             }
         }
-
     }                      
 }
