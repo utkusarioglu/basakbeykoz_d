@@ -43,7 +43,7 @@ function App() {
                             // resize: 'vertical',
                             paddingAbsolute: true,
                             scrollbars: {
-                                autoHide: 's'
+                                autoHide: 'leave'
                             }
                         }}>
                         <div className="App-scrollingElements">

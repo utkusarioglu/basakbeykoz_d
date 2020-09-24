@@ -64,8 +64,16 @@ function BodyView(props: Props): React.FunctionComponentElement<Props> {
     useEffect(() => {
         if(props.slug === homeSlug) {
             const fiels = document.querySelectorAll('.wp-block-latest-posts');
-            OverlayScrollbars(fiels[0], { });
-            OverlayScrollbars(fiels[1], { });
+            OverlayScrollbars(fiels[0], { 
+                scrollbars: {
+                    autoHide: 'leave',
+                }
+            });
+            OverlayScrollbars(fiels[1], {
+                scrollbars: {
+                    autoHide: 'leave',
+                }
+             });
         }
     }, [props.slug, homeSlug])
 
