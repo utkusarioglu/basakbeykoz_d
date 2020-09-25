@@ -3,6 +3,7 @@
 
 
 .PostList {
+    $CARD_HEIGHT: 250px;
     &-card {
         display: grid;
         grid-template-areas: 
@@ -12,7 +13,7 @@
             "excerpt";
         grid-row-gap: #{$accentThickness/2};
         text-decoration: none;
-        padding: #{$accentThickness};
+        
 
         @include narrowScreen() {
             grid-template-areas: 
@@ -20,8 +21,11 @@
                 "image date"
                 "image excerpt";
             grid-template-rows: min-content min-content auto;
+            grid-template-columns: 10vw auto;
             grid-row-gap: #{$accentThickness / 2};
             grid-column-gap: #{$accentThickness};
+            height: #{$CARD_HEIGHT};
+            overflow: hidden;
         }
 
         &-date {
@@ -39,15 +43,22 @@
 
         &-thumbnail {
             grid-area: image;
+            border-radius: #{$accentThickness/2};
+            display: grid;
+            justify-content: center;
             overflow: hidden;
+            @include narrowScreen() {
+                height: #{$CARD_HEIGHT};
+                width: 10vw;
+            }
             & > img {
                 width: calc(100vw - (2 * var(--accent-thickness)));
                 height: auto;
-                border-radius: #{$accentThickness/2};
                 
                 @include narrowScreen() {
-                    width: 250px;
-                    height: auto;
+                    width: auto;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
         }

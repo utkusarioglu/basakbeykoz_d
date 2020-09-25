@@ -21,10 +21,15 @@
     li {
         list-style: none;
         margin-bottom: #{2*$accentThickness};
+        padding: #{$accentThickness};
+        border-radius: #{$accentThickness};
         // padding: #{$accentThickness};
-
-        article & { // correction for blog page
-            padding: 0;
+        
+        // article & { // correction for blog page
+            //     padding: 0;
+            // }
+        &:hover {
+            background-color: #{map-get($colorMap, bg-gray)};
         }
     }
 
