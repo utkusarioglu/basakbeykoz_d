@@ -140,8 +140,7 @@ function getSlugSpecificAction(
                             'easeOutExpo',
                             );
                     })
-
-                }, 2000);
+                }, 100);
             }
 
         default:
@@ -153,7 +152,7 @@ function attachLlistActions(elem: HTMLElement): void {
     const SCROLL_DURATION = 1500;
     const LINGER_DURATION = 2000;
     
-    const latestPostsRef = 
+    const scrollbarRef = 
         OverlayScrollbars(elem, { 
             scrollbars: {
                 autoHide: 'leave',
@@ -163,7 +162,8 @@ function attachLlistActions(elem: HTMLElement): void {
     const childrenCount = children.length;
     let currentChild = 1;
     const animation = pauseable.setInterval(() => {
-        latestPostsRef.scroll(
+        // if(false) 
+        scrollbarRef.scroll(
             {
                 el: children[currentChild] as HTMLElement,
                 margin: true,
@@ -189,7 +189,7 @@ function attachLlistActions(elem: HTMLElement): void {
     
     target.addEventListener('mouseover', () => {
         console.log('focusin');
-        latestPostsRef.scrollStop();
+        scrollbarRef.scrollStop();
         animation.pause()}
     );
     target.addEventListener('mouseleave', () => {
@@ -197,7 +197,7 @@ function attachLlistActions(elem: HTMLElement): void {
         
         animation.resume()
     });
-
+    // scrollbarRef.update();
 }
 
 

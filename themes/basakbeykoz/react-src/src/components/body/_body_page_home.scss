@@ -462,6 +462,12 @@
                             & > .wp-block-latest-posts {
                                 margin-left: #{-$accentThickness} !important;
                                 width: 100vw;
+                                @include narrowScreen() {
+                                    width: 100%;
+                                    max-width: 100%;
+                                    overflow: hidden;
+                                    margin: 0 !important;
+                                }
                             }
                         }
 
@@ -517,6 +523,12 @@
                             & > .wp-block-latest-posts {
                                 margin-left: #{-$accentThickness} !important;
                                 width: 100vw;
+                                @include narrowScreen() {
+                                    width: 100%;
+                                    max-width: 100%;
+                                    overflow: hidden;
+                                    margin: 0 !important;
+                                }
                             }
                         }
 

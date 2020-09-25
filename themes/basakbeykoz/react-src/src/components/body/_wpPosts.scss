@@ -1,8 +1,8 @@
 @mixin wpPostsP() {
     @include p();
-    font-size: adjustSize($pFontSizeMin_px, 22) !important;
+    font-size: adjustSize($pFontSizeMin_px, 16) !important;
     // font-size: adjustSize(14, 20) !important;
-    line-height: adjustSize($pLineHeightMin_px, 30) !important; 
+    line-height: adjustSize($pLineHeightMin_px, 20) !important; 
     // line-height: adjustSize(28, 25) !important; 
     margin: 0;
 }
@@ -15,11 +15,11 @@
         width: 100%;
         margin: 0;
         padding: 0;
-        // $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
+        $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
         $liDistance: $accentThickness;
         $liMinWidth: 260px;
         $liMaxWidth: 350px;
-
+        
         // $limediumTallHeight: 60vh;
 
         // // overflow-x: scroll;
@@ -32,13 +32,10 @@
         .os-content {
             display: grid;
             grid-auto-flow: column;   
-        }
-        
-        .os-content {    
             @include narrowScreen() {
                 @if $gridFlow == row {
-        //             // margin: 0;
-        //             grid-auto-flow: row;
+                    // margin: 0;
+                    grid-auto-flow: row;
         //             overflow-x: hidden;
         //             overflow-y: scroll;
                     
@@ -50,9 +47,14 @@
         //             // grid-auto-flow: row;
         //             // this is not being implemented as it's not being used right now
                 }
+            }            
+        }
+
+        .os-content {
+            @include narrowScreen() {
+                border-radius: #{$accentThickness/2};
             }
         }
-        
         
         
         // @include wideScreen() {
@@ -80,12 +82,12 @@
             position: relative;
             width: 50vw;
             // min-width: #{$liMinWidth};
-            // max-width: #{$liMaxWidth};
+            max-width: #{$liMaxWidth};
             border-radius: #{$accentThickness/2};
             padding: #{$accentThickness/2};
             overflow: hidden;
             
-        //     // height: min-content;
+            // height: 100px;
         //     border: #{$accentThickness/2} solid transparent;
             height: calc(100% - #{$accentThickness});
 
@@ -93,9 +95,9 @@
                 grid-template-areas: 
                     "image"
                     "title"
-                    // "time" 
+                    "time" 
                     "excerpt";
-                grid-template-rows: max-content max-content;
+                grid-template-rows: max-content max-content max-content max-content;
             } @else if $type == success {
                 grid-template-areas: 
                     "image"
@@ -115,38 +117,38 @@
                 background: linear-gradient(transparent 0,  #{$cardColor} #{$accentThickness});
             }
 
-        //     @include narrowScreen() {
-        //         @if $gridFlow == row {
-        //             @if $type == posts {
-        //                 grid-template-areas: 
-        //                     "image title" 
-        //                     "image time" 
-        //                     "image excerpt";
-        //                 grid-template-rows: min-content min-content auto;
-        //                 grid-template-columns: #{$homePostsNarrowY} auto;
-        //                 grid-column-gap: #{$accentThickness/2};
-        //                 grid-row-gap: 5px;
+            @include narrowScreen() {
+                @if $gridFlow == row {
+                    @if $type == posts {
+                        grid-template-areas: 
+                            "image title" 
+                            "image time" 
+                            "image excerpt";
+                        grid-template-rows: min-content min-content auto;
+                        grid-template-columns: #{$homePostsNarrowY} auto;
+                        grid-column-gap: #{$accentThickness/2};
+                        grid-row-gap: 5px;
 
-        //                 width: 100%;
-        //                 max-width: none;
-        //                 // height: calc(#{$homePostsNarrowY} + #{2* $accentThickness});
-        //                 // height: auto;
-        //                 margin-left: 0;
-        //                 margin-bottom: #{$accentThickness};
+                        width: 100%;
+                        max-width: calc(100% - #{$accentThickness});
+                        height: calc(#{$homePostsNarrowY} + #{$accentThickness});
+                        // height: auto;
+                        margin-left: 0;
+                        margin-bottom: #{$accentThickness};
         //             } @else if $type == success {
-        //             }
+                    }
                         
                 
-        //         } @else if $gridFlow == column {
-        //             @if $type == posts {
+                } @else if $gridFlow == column {
+                    @if $type == posts {
 
         //             } @else if $type == success {
-        //                 &:first-child {
-        //                     margin-left: 0;
-        //                 }
-        //             }
-        //         }
-        //     }
+                        }
+                    }
+                    &:first-child {
+                        margin-left: 0;
+                    }
+            }
 
         //     @include mediumTallScreen() {
         //         @if $gridFlow == column {
@@ -186,13 +188,17 @@
                 align-items: center;
                 border-radius: #{$accentThickness/3};
 
-        //         @include narrowScreen() {
-        //             height: 100%;
-        //         }
+                @include narrowScreen() {
+                    @if $gridFlow == row {
+                        height: calc(#{$homePostsNarrowY} + #{$accentThickness});
+                    }
+                }
 
                 & > img {
                     width: 100%;
                     height: auto;
+                    // position: absolute;
+                    z-index: 10;
 
                     @include narrowScreen() {
                         @if $gridFlow == row {
@@ -206,7 +212,7 @@
 
             time {
                 @include wpPostsP();
-                display: none;
+                // display: none;
 
                 
                 margin:0;
@@ -226,7 +232,7 @@
             .wp-block-latest-posts__post-excerpt {
 
                 @include p();
-                @include limitParagraphLines(6);
+                // @include limitParagraphLines(6);
 
                 &,
                 & > p {
