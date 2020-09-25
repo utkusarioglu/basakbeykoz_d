@@ -6,7 +6,7 @@ import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID as string, { debug: true });
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID as string, { debug: false });
 
 
 ReactDOM.render(
