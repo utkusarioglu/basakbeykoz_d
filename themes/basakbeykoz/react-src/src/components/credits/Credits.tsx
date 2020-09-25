@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { setFetching } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
 import { connect } from "react-redux";
+import './_credits.scss';
 
 const mapState = (state: RootState) => ({})
 
@@ -181,7 +182,7 @@ function Credits(props: Props): React.FunctionComponentElement<Props> {
 
     return (
         <div
-            className="Canvas page has-FeatureImage has-body-title"
+            className="Canvas page has-FeatureImage has-body-title Credits"
             >
             <div className="Canvas-decor">
                 <div className="FeatureImage-on" >    
@@ -199,14 +200,17 @@ function Credits(props: Props): React.FunctionComponentElement<Props> {
                 <article>
                     <div>
                         <button 
+                            className="font"
                             onClick={() => changeSet('titleFont')}
                             >
-                            Baslik: {choiceSet['titleFont'].name}
+                            <pre className="button-title">Baslik</pre>
+                            <pre className="button-value">{choiceSet['titleFont'].name}</pre>
                         </button>
                         <button 
                             onClick={() =>changeSet('textFont')}
                             >
-                            Metin: {choiceSet['textFont'].name}
+                            <pre className="button-title">Metin</pre>
+                            <pre className="button-value">{choiceSet['textFont'].name}</pre>
                         </button>
                     </div>
                     <br />
