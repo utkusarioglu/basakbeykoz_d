@@ -1,0 +1,30 @@
+@import "../../common/_vars";
+@import "../../common/_mixins";
+
+.Cta {
+    grid-area: logo;
+    height: 45px;
+    display: flex;    
+    align-items: center;
+    
+    // width: 100%;
+    &-button {
+        display:flex;
+        align-items: center;
+        margin-left: #{$accentThickness / 4};
+        border-radius: #{$accentThickness / 4};
+        padding: #{$accentThickness / 4} #{$accentThickness / 2};
+        background-color:  #{map-get($colorMap, ui-yellow)};
+        
+        max-width: 200px;
+    }
+    &-text {
+        @include buttonText();
+        font-size: smaller;
+        white-space: nowrap
+        // height: 100%;
+        // width: 200px;
+        // border: none;
+
+    }
+}
