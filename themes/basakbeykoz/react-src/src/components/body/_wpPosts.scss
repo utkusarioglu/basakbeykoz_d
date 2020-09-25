@@ -19,6 +19,10 @@
         $liDistance: $accentThickness;
         $liMinWidth: 260px;
         $liMaxWidth: 350px;
+
+        @include narrowScreen() {
+            border-radius: #{$accentThickness/2};
+        }
         
         // $limediumTallHeight: 60vh;
 
@@ -50,11 +54,9 @@
             }            
         }
 
-        .os-content {
-            @include narrowScreen() {
-                border-radius: #{$accentThickness/2};
-            }
-        }
+        // .os-content {
+
+        // }
         
         
         // @include wideScreen() {
@@ -140,11 +142,11 @@
                         
                 
                 } @else if $gridFlow == column {
-                    @if $type == posts {
-
+                    // @if $type == posts {
+                        max-width: 250px;
         //             } @else if $type == success {
                         }
-                    }
+                    // }
                     &:first-child {
                         margin-left: 0;
                     }

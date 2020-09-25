@@ -158,7 +158,8 @@ function attachLlistActions(elem: HTMLElement): void {
                 autoHide: 'leave',
             }
         });
-    const children = elem.querySelectorAll('.os-content')[0].children;
+    const osContent = elem.querySelectorAll('.os-content')[0] 
+    const children = osContent.children;
     const childrenCount = children.length;
     let currentChild = 1;
     const animation = pauseable.setInterval(() => {
@@ -190,8 +191,8 @@ function attachLlistActions(elem: HTMLElement): void {
     target.addEventListener('mouseover', () => {
         console.log('focusin');
         scrollbarRef.scrollStop();
-        animation.pause()}
-    );
+        animation.pause()
+    });
     target.addEventListener('mouseleave', () => {
         console.log('blur');
         
