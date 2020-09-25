@@ -33,6 +33,7 @@
         min-width: #{$footerSquareSize};
         max-width: #{$creditsMaxSize};
         height: 100%;
+        border-top-left-radius: #{$accentThickness};
     }
 
     &-art {
