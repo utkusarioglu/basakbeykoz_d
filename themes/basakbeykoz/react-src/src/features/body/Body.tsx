@@ -85,25 +85,6 @@ function Body(props: Props): React.FunctionComponentElement<Props> {
 
     const { slug: activeSlug, title, content, thumbnail, type} = props.isDisplaying.active;
 
-    // const slugSpecificFunctions: {[slug: string]: () => void} = {
-    //     [homeSlug]: () => {
-    //         // setTimeout(() => {
-    //             const fields = document.querySelectorAll('.wp-block-latest-posts');
-    //             OverlayScrollbars(fields[0], { 
-    //                 scrollbars: {
-    //                     autoHide: 'leave',
-    //                 }
-    //             });
-    //             OverlayScrollbars(fields[1], {
-    //                 scrollbars: {
-    //                     autoHide: 'leave',
-    //                 }
-    //             });
-    //             refs.body?.current?.osInstance()?.scroll({y: '500px'});
-    //         // }, 2000)
-    //     }
-    // }
-
     const slugSpecificFunction = getSlugSpecificAction(slug, refs);
 
     return (
@@ -150,7 +131,7 @@ function getSlugSpecificAction(
 
 function attachLlistActions(elem: HTMLElement): void {
     const SCROLL_DURATION = 1500;
-    const LINGER_DURATION = 2000;
+    const LINGER_DURATION = 3000;
     
     const scrollbarRef = 
         OverlayScrollbars(elem, { 
@@ -172,30 +153,17 @@ function attachLlistActions(elem: HTMLElement): void {
             SCROLL_DURATION, 
             'easeInOutSine'
             );
+            // !TODO there is error in this, off by one
             currentChild = (currentChild % childrenCount) + 1
     }, LINGER_DURATION);
 
-    // document.body.addEventListener('keydown', () => {
-    //     console.log('keydown');
-    //     animation.pause();
-    // })
-
-    // document.body.addEventListener('keyup', () => {
-    //     console.log('keyup');
-    //     animation.resume();
-    // })
-
-    // console.log(elem)
     const target = elem.querySelectorAll('.os-content')[0];
     
     target.addEventListener('mouseover', () => {
-        console.log('focusin');
         scrollbarRef.scrollStop();
         animation.pause()
     });
     target.addEventListener('mouseleave', () => {
-        console.log('blur');
-        
         animation.resume()
     });
     // scrollbarRef.update();
