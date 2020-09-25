@@ -67,7 +67,6 @@ function BodyView(props: Props): React.FunctionComponentElement<Props> {
         slugSpecificFunction();
     }, [slugSpecificFunction, props.slug])
 
-    
     return (
         <>
             <Helmet>
