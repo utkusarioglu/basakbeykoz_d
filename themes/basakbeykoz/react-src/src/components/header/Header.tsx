@@ -1,7 +1,7 @@
 import React  from "react";
 import "./_header.scss";
 
-import Logo from "./Logo";
+import HeaderLogo from "./HeaderLogo";
 import BurgerMenu from "./BurgerMenu";
 import Social from "../social/Social";
 import NavHeaderView from '../nav/NavHeaderView';
@@ -11,7 +11,7 @@ function Header() {
     return (
         <header className="Header">
             <div className="Header-bottomWrap">
-                <Logo />
+                <HeaderLogo />
                 <NavHeaderView />
                 <Social />
                 <BurgerMenu />
