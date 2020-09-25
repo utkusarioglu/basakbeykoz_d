@@ -4,6 +4,7 @@
 .Nav-item {
     display: block;
     font-family: $textFont;
+    font-weight: #{$textFontWeight};
     text-decoration: none;
     white-space: nowrap;
 }

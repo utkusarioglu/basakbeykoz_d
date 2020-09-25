@@ -4,6 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Baloo+Tammudu+2&family=Istok+Web&family=Kumbh+Sans:wght@300&family=Manrope&family=Nunito:wght@300&family=Quicksand&family=Ubuntu:wght@300&display=swap');
+
+
 @font-face {
     font-family: 'KendiniYenidenKesfet';
     // src: url('webfont.eot'); /* IE9 Compat Modes */
@@ -24,6 +27,10 @@
     --home-horizontal-padding: 400px;
     --fixed-feature-image-width: 470px;
     --head-section-height: 110px;
+    --text-font: "Work Sans", sans-serif;
+    --text-font-weight: 400;
+    --title-font: "Montserrat", sans-serif;
+    --title-font-weight: 600;
 }
 
 
@@ -86,11 +93,13 @@ span,
 nav {
     color: #{map-get($colorMap, bg-blue)};
     font-family: $textFont;
+    font-weight: $textFontWeight;
 }
 
 .wp-block-button__link,
 figcaption {
     font-family: $titleFont;
+    font-weight: $titleFontWeight;
     margin: 0;
 }
 

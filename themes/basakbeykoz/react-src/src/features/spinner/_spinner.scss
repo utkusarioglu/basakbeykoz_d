@@ -35,6 +35,7 @@
     &-loadMessage {
         grid-area: LoadMessage;
         font-family: $textFont;
+        font-weight: #{$textFontWeight};
         align-self: top;
         color: #{map-get($colorMap, ui-blue)};
 

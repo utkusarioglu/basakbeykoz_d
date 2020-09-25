@@ -606,6 +606,7 @@
                                 width: 100%;
                                 padding: #{$accentThickness / 2};
                                 font-family: #{$textFont};
+                                font-weight: #{$textFontWeight};
                                 border-radius: #{$accentThickness/2};
     
                                 &:focus {
@@ -622,6 +623,7 @@
                 
                             & .wpcf7-submit {
                                 font-family: #{$textFont};
+                                font-weight: #{$textFontWeight};
                                 font-size: #{$defaultFontSize};
                                 width: 100%;
                                 padding: #{$accentThickness / 2};

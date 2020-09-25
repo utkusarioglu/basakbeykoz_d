@@ -22,6 +22,7 @@
         
         display: grid;
         font-family: $textFont;
+        font-weight: #{$textFontWeight};
         background: #{map-get($colorMap, bg-black)};
         justify-items: end;
         align-items: end;

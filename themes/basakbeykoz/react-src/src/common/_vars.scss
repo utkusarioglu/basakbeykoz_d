@@ -9,9 +9,14 @@
 //Vars
 $uploadsPath: "/wp-content/uploads";
 $defaultFontSize: 20px;
-$textFont: "Work Sans", sans-serif;
-$titleFont: "Montserrat", sans-serif;
+// $textFont: "Work Sans", sans-serif;
+$textFont: var(--text-font);
+$textFontWeight: var(--text-font-weight);
+// $titleFont: "Montserrat", sans-serif;
+$titleFont: var(--title-font);
+$titleFontWeight: var(--title-font-weight);
 $fancyFont: "KendiniYenidenKesfet", sans-serif;
+
 
 // $wideScreenPx: 1200;
 $screenSizes: (
@@ -65,6 +70,7 @@ $fonts: (
         // line-height: 34.5px,
         line-height: adjustSize(30, 45),
         font-family: $titleFont,
+        font-weight: $titleFontWeight,
     ),
     h3: (
         // font-size: 25px,
@@ -72,6 +78,7 @@ $fonts: (
         // line-height: 30px,
         line-height: adjustSize(28, 40),
         font-family: $titleFont,
+        font-weight: $titleFontWeight,
     ),
     h4: (
         // font-size: 20px,
@@ -79,6 +86,7 @@ $fonts: (
         // line-height: 30px,
             line-height: adjustSize(25, 30),
         font-family: $titleFont,
+        font-weight: $titleFontWeight,
     ),
     h5: (
         // font-size: 16px,
@@ -86,6 +94,7 @@ $fonts: (
         // line-height: 20px,
         line-height: adjustSize(20, 34),
         font-family: $titleFont,
+        font-weight: $titleFontWeight,
     ),
     h6: (
         // font-size: 14px,
@@ -93,6 +102,7 @@ $fonts: (
         // line-height: 18px,
         line-height: adjustSize(18, 24),
         font-family: $titleFont,
+        font-weight: $titleFontWeight,
     ),
 );
 $pFontSizeMin_px: 20;

@@ -14,12 +14,32 @@ type DispatchProps = typeof mapDispatch;
 type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
+interface IChoices {
+    [type: string]: {
+        index: number;
+        name: string;
+    }
+}
+
+interface IChoiceSets {
+    [type: string]: {
+        [propertyName: string]: string | number}[]
+    }
+
 function Credits(props: Props): React.FunctionComponentElement<Props> {
 
     props.setFetching(false);
-    window.scrollTo(0,0);
 
-    const [colorSet, setColorSet] = useState(0);
+    const [choiceSet, setChoiceSet] = useState<IChoices>({
+        textFont: {
+            index: 0,
+            name: "'Assistant', sans-serif",
+        },
+        titleFont: {
+            index: 0,
+            name: '"Work Sans", sans-serif',
+        }
+    });
 
     const uploads_dir = process.env.REACT_APP_UPLOADS_DIR as string;
     const featureImageName = "yazilar-feature-image";
@@ -35,83 +55,129 @@ function Credits(props: Props): React.FunctionComponentElement<Props> {
     .map((variation) => featureImagePath + variation)
     .join(",");
 
-    const COLOR_SETS: {[key: string]: string}[] = [
-        {
-            "--brush-white": "#F4F4F9",
-            "--brush-lightGray": "#fafafa",
-            "--brush-gray": "#859FA4",
-            "--brush-darkGray": "#265151",
-            "--brush-black": "#1E3735",
-            "--brush-lightBlue": "#456266",
-            "--brush-darkBlue": "#265151",
-            "--brush-lightYellow": "#F6DFB1",
-            "--brush-darkYellow": "#FBBB53",
-            "--brush-lightGreen": "#81AE9D",
-        
-            "--filter-white:": "contrast(1) invert(96%) sepia(4%) saturate(282%) hue-rotate(202deg) brightness(102%) contrast(95%)",
-            "--filter-darkGray": "invert(34%) sepia(30%) saturate(388%) hue-rotate(139deg) brightness(92%) contrast(86%)",
-            "--filter-logo-white": "brightness(0) contrast(1) invert(96%) sepia(4%) saturate(282%) hue-rotate(202deg) brightness(102%) contrast(95%)",
-        },
-        {
-            "--brush-white": "#F4F4F9",
-            "--brush-lightGray": "#fafafa",
-            "--brush-gray": "#263f7b",
-            "--brush-darkGray": "#437777",
-            "--brush-black": "#5e7077",
-            "--brush-lightBlue": "#7da1a6",
-            "--brush-darkBlue": "var(--brush-darkGray)",
-            "--brush-lightYellow": "#eee2c8",
-            "--brush-darkYellow": "#fbcb5a",
-            "--brush-lightGreen": "#85a89f",
-        
-            "--filter-white:": "brightness(0)",
-            "--filter-darkGray": "brightness(0)", 
-            "--filter-logo-white": "brightness(0)",
-        },
-        {
-            "--brush-white":  "#F4F4F9",
-            "--brush-gray":  "#263f7b",
-            "--brush-darkGray":  "#373b44",
-            "--brush-black":  "#5e7077",
-            "--brush-lightBlue":  "#629874",
-            "--brush-darkBlue":  "var(--brush-darkGray)",
-            "--brush-lightYellow":  "#a6b9da",
-            "--brush-darkYellow":  "#93e0c1",
-            "--brush-lightGreen":  "#f2dd8b",
-        
-            "--filter-white:":  "brightness(0)",
-            "--filter-darkGray":  "brightness(0)", 
-            "--filter-logo-white":  "brightness(0)",
-        },
-        {
-            "--brush-white":  "#F4F4F9",
-            "--brush-lightGray":  "#fafafa",
-            "--brush-gray":  "#859FA4",
-            "--brush-darkGray":  "#a1bfb1",
-            "--brush-black":  "#1b2928",
-            "--brush-lightBlue":  "#29717b",
-            "--brush-darkBlue":  "#265151",
-            "--brush-lightYellow":  "#ffedc9",
-            "--brush-darkYellow":  "#f0c43e",
-            "--brush-lightGreen":  "#55987f",
-        
-            "--filter-white:": "brightness(0)",
-            "--filter-darkGray": "brightness(0)", 
-            "--filter-logo-white": "brightness(0)",
-        }
-    ]
-
-
-
-    const changeColors = () => {
-        
-        Object.entries(COLOR_SETS[colorSet]).forEach(([n, v]: any) => {
-            document.documentElement.style.setProperty(n, v);
-        })
-        setColorSet((set) => ++set % COLOR_SETS.length);
+    const sets: IChoiceSets  = {
+        titleFont: [
+            {
+                "--title-font": '"Work Sans"',
+                "--title-font-weight": 600,
+            },
+            {
+                "--title-font": "'Istok Web', sans-serif",
+                "--title-font-weight": 400,
+            },
+            {
+                "--title-font": "'Assistant', sans-serif",
+                "--title-font-weight": 300,
+            },
+            {
+                "--title-font": "'Baloo Tammudu 2', cursive",
+                "--title-font-weight": 400,
+            },
+            {
+                "--title-font": "'Kumbh Sans', sans-serif",
+                "--title-font-weight": 300,
+            },
+            {
+                "--title-font": "'Quicksand', sans-serif",
+                "--title-font-weight": 400,
+            },
+            {
+                "--title-font": "'Ubuntu', sans-serif",
+                "--title-font-weight": 300,
+            },
+            
+            {
+                "--title-font": "'Nunito', sans-serif",
+                "--title-font-weight": 300,
+                
+            },
+            {
+                "--title-font": "'Manrope', sans-serif",
+                "--title-font-weight": 400,
+            },
+        ],
+        textFont: [
+            {
+                "--text-font": "'Assistant', sans-serif",
+                "--text-font-weight": 300,
+            },
+            {
+                "--text-font": '"Work Sans"',
+                "--text-font-weight": 600,
+            },
+            {
+                "--text-font": "'Istok Web', sans-serif",
+                "--text-font-weight": 400,
+            },
+            {
+                "--text-font": "'Baloo Tammudu 2', cursive",
+                "--text-font-weight": 400,
+            },
+            {
+                "--text-font": "'Kumbh Sans', sans-serif",
+                "--text-font-weight": 300,
+            },
+            {
+                "--text-font": "'Quicksand', sans-serif",
+                "--text-font-weight": 400,
+            },
+            {
+                "--text-font": "'Ubuntu', sans-serif",
+                "--text-font-weight": 300,
+            },
+            
+            {
+                "--text-font": "'Nunito', sans-serif",
+                "--text-font-weight": 300,
+                
+            },
+            {
+                "--text-font": "'Manrope', sans-serif",
+                "--text-font-weight": 400,
+            },
+            // {
+            //     "--text-font": "'Dosis', sans-serif",
+            // },
+            // {
+            //     "--text-font": "'Dosis', sans-serif",
+            // },
+            // {
+            //     "--text-font": "'Dosis', sans-serif",
+            // },
+            // {
+            //     "--text-font": "'Dosis', sans-serif",
+            // },
+            // {
+            //     "--text-font": "'Dosis', sans-serif",
+            // },
+            // {
+            //     "--text-font": "'Dosis', sans-serif",
+            // },
+            
+        ],
     }
 
+    const changeSet = (type: string) => {
+  
+        
+        setChoiceSet((choices) => {
+            const newChoiceNo = (choices[type].index + 1) % sets[type].length
+            const name = Object.values(sets[type][newChoiceNo]).join(", ")
+            Object.entries(sets[type][newChoiceNo]).forEach(([n, v]: any) => {
+                document.documentElement.style.setProperty(n, v);
+            });   
+            return {
+                ...choices,
+                [type]: {
+                    index: newChoiceNo,
+                    name,
+                }
+            }
+        });
+ 
+    }
 
+    // const choiceSet1Desc = sets['titleFOnt'][choiceSet]["--titleFont-font"];
 
     return (
         <div
@@ -131,9 +197,34 @@ function Credits(props: Props): React.FunctionComponentElement<Props> {
             </div>
                 <h2 className="Canvas-articleTitle text-blue">Credits</h2>
                 <article>
-                    <h3>Current Color Set: {colorSet.toString()}</h3>
-                    <button 
-                        onClick={changeColors}>Change white</button>
+                    <div>
+                        <button 
+                            onClick={() => changeSet('titleFont')}
+                            >
+                            Baslik: {choiceSet['titleFont'].name}
+                        </button>
+                        <button 
+                            onClick={() =>changeSet('textFont')}
+                            >
+                            Metin: {choiceSet['textFont'].name}
+                        </button>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <h2>Başak hakkında</h2>
+                    <br />
+                    <p>“Yaşam, yüzlerce irili ufaklı kısa hikayeden oluşan bir kolaj” başak beykoz</p>
+                    <p>İzmir doğumlu Başak, daha çocukluğunda babasının kitaplığını kurcalayarak sorularını ve merakını büyütmeye başladı.</p>
+                    <h3>Ara Baslik</h3>
+                    <br />
+                    <p>Bornova Anadolu Lisesi’ne başladığı sene, Genel Kültür yarışmasında 72 ilkokul arasından kendi okulunu, İzmir İl birinciliğine iki ekip arkadaşıyla taşıdı.</p>
+                    <p>Boğaziçi Üniversitesi’nde İşletme Bölümü’nü bitirdikten sonra, yakın geçmişe olan kişisel merakı nedeniyle Boğaziçi’nde Modern Türkiye’nin Tarihi Yüksek Lisansı’na yöneldi. AB-Türkiye ilişkilerini, ekonomik perspektiften Akdeniz ülkeleriyle karşılaştırmalı ele aldığı tezini, Prof. Dr. Şevket Pamuk danışmanlığında tamamladı.</p>
+                    <h4>Ara Baslik 2</h4>
+                    <br />
+                    <p>Bornova Anadolu Lisesi’ne başladığı sene, Genel Kültür yarışmasında 72 ilkokul arasından kendi okulunu, İzmir İl birinciliğine iki ekip arkadaşıyla taşıdı.</p>
+                    <p>Boğaziçi Üniversitesi’nde İşletme Bölümü’nü bitirdikten sonra, yakın geçmişe olan kişisel merakı nedeniyle Boğaziçi’nde Modern Türkiye’nin Tarihi Yüksek Lisansı’na yöneldi. AB-Türkiye ilişkilerini, ekonomik perspektiften Akdeniz ülkeleriyle karşılaştırmalı ele aldığı tezini, Prof. Dr. Şevket Pamuk danışmanlığında tamamladı.</p>
                 </article>
         </div>
     )

@@ -130,6 +130,7 @@
     grid-area: paragraph;
     color: #{map-get($colorMap, text-mediumDark)};
     font-family: $textFont;
+    font-weight: $textFontWeight;
     font-size: $pFontSize;
     line-height: $pLineHeight;
     margin: 0 0 #{$accentThickness} 0;
@@ -171,5 +172,6 @@
 @mixin buttonText() {
     @include p();
     font-family: #{$titleFont};
+    font-weight: #{$titleFontWeight};
     margin: 0;
 }
