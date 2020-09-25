@@ -119,13 +119,13 @@
                         }
 
                         figure {
-                            display: none;
+                            // display: none;
                             margin: 0;
                             grid-area: logo;
                             width: 100%;
                             max-width: 400px;
                             justify-items: center;
-                            // display: grid;
+                            display: grid;
                             grid-template-rows: min-content min-content;
                             grid-template-areas: 
                                 "title" 
@@ -175,6 +175,7 @@
                             margin-top: #{$accentThickness};
                         }
                         .wp-block-buttons {
+                            display: none;
                             grid-area: buttons;
                             width: 100%;
                             margin-right: #{$accentThickness/2};
@@ -195,9 +196,10 @@
                                 }
                             }
 
-                            @include mediumTallScreen() {
+                            @include narrowScreen() {
                                 display: block;
                             }
+                            
                         }
                     }
 
