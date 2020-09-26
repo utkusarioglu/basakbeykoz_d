@@ -1,4 +1,5 @@
 import React from 'react';
+import "./_spinner.scss";
 
 interface OwnProps {
     display: string;

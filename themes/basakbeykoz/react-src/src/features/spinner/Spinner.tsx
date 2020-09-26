@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./_spinner.scss";
 import { connect } from "react-redux";
 // import { CSSStyles } from "./@types-app";
 import { RootState } from "../../store/rootReducer";
