@@ -2,20 +2,24 @@ import React from 'react';
 import "./_footer.scss";
 import { Link } from "react-router-dom";
 
-interface Props {}
+interface Props {
+    navClickActions: () => void;
+}
 
-function Footer(props: Props): React.FunctionComponentElement<Props> {
-    const up = process.env.REACT_APP_UPLOADS_DIR as string;
+function FooterView(props: Props): React.FunctionComponentElement<Props> {
+    const { REACT_APP_UPLOADS_DIR } = process.env;
+    const {navClickActions} = props;
     return (
         <div className="Footer">
             <div className="Footer-art">
                 <img
                     className="Footer-art-fg"
                     alt="Footer decoration" 
-                    src={up + "/footer-art-fg.svg"} 
+                    src={REACT_APP_UPLOADS_DIR + "/footer-art-fg.svg"} 
                     />
             </div>
             <Link
+                onClick={navClickActions}
                 to="/credits">
                 <div className="Footer-credits">
                     <span className="Footer-yearAndName">
@@ -27,4 +31,4 @@ function Footer(props: Props): React.FunctionComponentElement<Props> {
     )
 }
 
-export default Footer
+export default FooterView

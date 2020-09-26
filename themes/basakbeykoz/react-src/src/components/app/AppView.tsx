@@ -4,12 +4,13 @@ import { RootState } from '../../store/rootReducer';
 
 import Spinner from "../../features/spinner/Spinner";
 import AppRoutes from '../../features/app/AppRoutes';
+import Footer from '../../features/footer/Footer';
 
 import Header from "../header/Header";
 import Logo from "../header/Logo";
 import Social from '../social/Social';
 import NavFixedView from "../nav/NavFixedView";
-import Footer from '../footer/Footer';
+
 
 import "./_app.scss";
 
