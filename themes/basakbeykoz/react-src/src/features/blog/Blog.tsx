@@ -1,21 +1,20 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PostList from "./PostList";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 import "./_blog.scss";
 
 function Blog() {
+    const {
+        REACT_APP_NAME,
+        REACT_APP_SEPARATOR,
+        REACT_APP_UPLOADS_DIR,
+    } = process.env as { [key: string]: string};
 
-    window.scrollTo(0,0);
-
-    const siteName = process.env.REACT_APP_NAME as string;
-    const separator = process.env.REACT_APP_SEPARATOR as string;
-    const PAGE_NAME = "Yazilar";
-    const pageTitle = siteName + separator + PAGE_NAME;
-
-    const uploads_dir = process.env.REACT_APP_UPLOADS_DIR as string;
-    const featureImageName = "yazilar-feature-image";
-    const featureImagePath = `${uploads_dir}/${featureImageName}-`;
+    const PAGE_NAME = "Paylaşımlar";
+    const pageTitle = REACT_APP_NAME + REACT_APP_SEPARATOR + PAGE_NAME;
+    const FEATURE_IMG_NAME = "yazilar-feature-image";
+    const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${FEATURE_IMG_NAME}-`;
     const srcSet = [
         "scaled.jpg 2560w", 
         "300x196.jpg 300w", 
@@ -30,7 +29,7 @@ function Blog() {
     ReactGA.pageview(window.location.pathname + window.location.search);
 
     return (
-        <Fragment>
+        <>
             <Helmet>
                 <title>{pageTitle}</title>
             </Helmet>
@@ -42,7 +41,7 @@ function Blog() {
                         <img 
                             width="2560" 
                             height="1671" 
-                            src={`${featureImageName}scaled.jpg`} 
+                            src={`${FEATURE_IMG_NAME}scaled.jpg`} 
                             alt="Feature" 
                             srcSet={srcSet} 
                             sizes="(max-width: 2560px) 100vw, 2560px" />
@@ -54,7 +53,7 @@ function Blog() {
                         <PostList excludeSlug={[]}/>
                     </article>
             </div>
-        </Fragment>
+        </>
     )
 }
 
