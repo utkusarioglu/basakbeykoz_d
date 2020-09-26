@@ -1,5 +1,7 @@
 #! /bin/bash
 
+bash ./scripts/dev/sync_with_production.sh
+wait
 docker-compose up -d
 sudo rm -rf ./themes/twenty* ./themes/index* 
 sudo rm -rf ./plugins/akis* ./plugins/index* ./plugins/hello*
