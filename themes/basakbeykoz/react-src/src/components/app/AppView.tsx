@@ -11,13 +11,11 @@ import Header from "../header/Header";
 import Spinner from "../../features/spinner/Spinner";
 import AppBody from './AppBody';
 
-
 import Logo from "../header/Logo";
 import Social from '../social/Social';
 import NavFixedView from "../nav/NavFixedView";
 
-function App() {
-
+function AppView() {
 
     return (
         <Provider store={store}>
@@ -37,4 +35,4 @@ function App() {
     );
 }
 
-export default App;
+export default AppView;

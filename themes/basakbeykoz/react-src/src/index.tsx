@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '@csstools/normalize.css';
 import './index.scss';
-import App from './components/app/App';
+import AppView from './components/app/AppView';
 import * as serviceWorker from './serviceWorker';
 import ReactGA from 'react-ga';
 
@@ -11,7 +11,7 @@ ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID as string, { debug: fals
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppView />
   </React.StrictMode>,
   document.getElementById('root')
 );
