@@ -1,37 +1,51 @@
-import React from "react";
-import 'overlayscrollbars/css/OverlayScrollbars.css';
-import "./_app.scss";
-import './_scrollbar.scss';
+import React from 'react'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { RootState } from '../../store/rootReducer';
 
-import { Provider } from 'react-redux';
-import store from "../../store/store";
-import { BrowserRouter as Router } from 'react-router-dom'
+import Spinner from "../../features/spinner/Spinner";
+import AppRoutes from '../../features/app/AppRoutes';
 
 import Header from "../header/Header";
-import Spinner from "../../features/spinner/Spinner";
-import AppBody from './AppBody';
-
 import Logo from "../header/Logo";
 import Social from '../social/Social';
 import NavFixedView from "../nav/NavFixedView";
+import Footer from '../footer/Footer';
 
-function AppView() {
+import "./_app.scss";
 
+interface OwnProps {
+    refs: RootState['app']['refs'],
+}
+
+type Props = OwnProps;
+
+function AppView(props: Props) {
+
+    const {refs} = props;
     return (
-        <Provider store={store}>
-            <Router>
-                <div className="App">
-                    <Spinner />
-                    <NavFixedView />
-                    <Header />
-                    <div className="App-wideScreenControls">
-                        <Logo />
-                        <Social />
-                    </div>
-                    <AppBody />
+        <div className="App">
+            <Spinner />
+            <NavFixedView />
+            <Header />
+            <div className="App-wideScreenControls">
+                <Logo />
+                <Social />
+            </div>
+            <OverlayScrollbarsComponent 
+                ref={refs.body}
+                className="App-scrollWindow"
+                options={{
+                    paddingAbsolute: true,
+                    scrollbars: {
+                        autoHide: 'leave'
+                    }
+                }}>
+                <div className="App-scrollingElements">
+                    <AppRoutes />
+                    <Footer />
                 </div>
-            </Router>
-        </Provider>
+            </OverlayScrollbarsComponent>
+        </div>
     );
 }
 

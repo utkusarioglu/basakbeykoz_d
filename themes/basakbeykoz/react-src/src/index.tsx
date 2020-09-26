@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from "./store/store";
 import '@csstools/normalize.css';
 import './index.scss';
-import AppView from './components/app/AppView';
-import * as serviceWorker from './serviceWorker';
+import 'overlayscrollbars/css/OverlayScrollbars.css';
+import './components/app/_scrollbar.scss';
 import ReactGA from 'react-ga';
+import * as serviceWorker from './serviceWorker';
+import App from './features/app/App';
 
-ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID as string, { debug: false });
-
+const {REACT_APP_GA_TRACKING_ID} = process.env;
+ReactGA.initialize(REACT_APP_GA_TRACKING_ID as string, { debug: false });
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppView />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
