@@ -43,19 +43,6 @@ function Spinner(props: Props): React.FunctionComponentElement<Props> {
     ] + "...";
 
     return <SpinnerView display={display} loadingMessage={loadingMessage} />
-    // return (
-    //     <div 
-    //         className="Spinner"
-    //         style={{display}}>
-    //         <img 
-    //             src={ uploadsDir + "/logo-inline-black.svg"}
-    //             alt="Basak Beykoz"
-    //             className="Spinner-logo"/>
-    //         <p 
-    //             className="Spinner-loadMessage"
-    //             >{ loadingMessage }</p>
-    //     </div>
-    // )
 }
 
 export default connect<StateProps, DispatchProps, OwnProps>(
