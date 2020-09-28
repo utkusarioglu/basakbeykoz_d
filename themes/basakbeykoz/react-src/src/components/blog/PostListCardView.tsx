@@ -9,38 +9,42 @@ interface Props {
     date: string,
     slug: string,
     thumbnail: string,
+    locale: string,
 }
 
-function PostListCard(props: Props): React.FunctionComponentElement<Props> {
-    const excerpt = props.excerpt !== "" 
-        ? props.excerpt
-        : createExcerpt(props.content);
-
-    if(process.env.NODE_ENV === 'development') {
-        console.log(props.date.replace(/-/g, "/"));
-    }
-
-    const d = (new Date(props.date.replace(/-/g, "/"))); // short for date object 
-    const date = d.toLocaleDateString("TR-TR");
+function PostListCardView(props: Props) {
+    const {
+        title,
+        content,
+        excerpt,
+        date,
+        slug,
+        thumbnail,
+        locale,
+    } = props;
+    
+    const fixedExcerpt = !!excerpt ? excerpt : createExcerpt(content);
+    const dateObj = (new Date(date.replace(/-/g, "/")));
+    const fixedDate = dateObj.toLocaleDateString(locale);
     
     return (
         <Link 
-            to={"/" + props.slug}
+            to={"/" + slug}
             className="PostList-card"
             >
             <div
                 className="PostList-card-thumbnail"
-                dangerouslySetInnerHTML={{__html: props.thumbnail}}/>
+                dangerouslySetInnerHTML={{__html: thumbnail}}/>
             <h4 
                 className="PostList-card-title">
-                {props.title}
+                {title}
                 </h4>
             <span 
                 className="PostList-card-date">
-                {date}</span>
+                {fixedDate}</span>
             <div 
                 className="PostList-card-excerpt" 
-                dangerouslySetInnerHTML={{__html: excerpt}}></div>
+                dangerouslySetInnerHTML={{__html: fixedExcerpt}}></div>
             
         </Link>
     )
@@ -50,4 +54,4 @@ function createExcerpt(content: Props['content']): Props["excerpt"] {
     return content.split("</p>")[0] + "</p>";
 }
 
-export default PostListCard;
+export default PostListCardView;
