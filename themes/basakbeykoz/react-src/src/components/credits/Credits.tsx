@@ -56,106 +56,51 @@ function Credits(props: Props): React.FunctionComponentElement<Props> {
     .map((variation) => featureImagePath + variation)
     .join(",");
 
+    const fontList: [string, number][] = [
+        ["'Work Sans'", 600],
+        ["'Istok Web', sans-serif", 400],
+        ["'Assistant', sans-serif", 300],
+        ["'Baloo Tammudu 2', cursive", 400],
+        ["'Kumbh Sans', sans-serif", 300],
+        ["'Quicksand', sans-serif", 400],
+        ["'Ubuntu', sans-serif", 300],
+        ["'Nunito', sans-serif", 300],
+        ["'Manrope', sans-serif", 400],
+
+        ["'DreamerySansDemo'", 400],
+        ["'BabyGirl'", 400],
+        ["'LeahleeSans'", 400],
+        ["'OrionSans'", 400],
+        ["'AlwaysForeverBold'", 400],
+        ["'AlwaysForever'", 400],
+        ["'CaviarDreams_Bold'", 400],
+        ["'CaviarDreams_BoldItalic'", 400],
+        ["'CaviarDreams_Italic'", 400],
+        ["'CaviarDreams'", 400],
+        ["'MoonbrightDemo'", 400],
+        ["'MoonbrightInlineDemo'", 400],
+        ["'whateverittakesbold'", 400],
+        ["'whateverittakes'", 400],
+    ];
+
+    const titleFont = fontList.map((c) => {
+        return {
+            "--title-font": c[0],
+            "--title-font-weight": c[1],
+        }
+    });
+
+    const textFont = fontList.map((c) => {
+        return {
+            "--text-font": c[0],
+            "--text-font-weight": c[1],
+        }
+    })
+
+
     const sets: IChoiceSets  = {
-        titleFont: [
-            {
-                "--title-font": '"Work Sans"',
-                "--title-font-weight": 600,
-            },
-            {
-                "--title-font": "'Istok Web', sans-serif",
-                "--title-font-weight": 400,
-            },
-            {
-                "--title-font": "'Assistant', sans-serif",
-                "--title-font-weight": 300,
-            },
-            {
-                "--title-font": "'Baloo Tammudu 2', cursive",
-                "--title-font-weight": 400,
-            },
-            {
-                "--title-font": "'Kumbh Sans', sans-serif",
-                "--title-font-weight": 300,
-            },
-            {
-                "--title-font": "'Quicksand', sans-serif",
-                "--title-font-weight": 400,
-            },
-            {
-                "--title-font": "'Ubuntu', sans-serif",
-                "--title-font-weight": 300,
-            },
-            
-            {
-                "--title-font": "'Nunito', sans-serif",
-                "--title-font-weight": 300,
-                
-            },
-            {
-                "--title-font": "'Manrope', sans-serif",
-                "--title-font-weight": 400,
-            },
-        ],
-        textFont: [
-            {
-                "--text-font": "'Assistant', sans-serif",
-                "--text-font-weight": 300,
-            },
-            {
-                "--text-font": '"Work Sans"',
-                "--text-font-weight": 600,
-            },
-            {
-                "--text-font": "'Istok Web', sans-serif",
-                "--text-font-weight": 400,
-            },
-            {
-                "--text-font": "'Baloo Tammudu 2', cursive",
-                "--text-font-weight": 400,
-            },
-            {
-                "--text-font": "'Kumbh Sans', sans-serif",
-                "--text-font-weight": 300,
-            },
-            {
-                "--text-font": "'Quicksand', sans-serif",
-                "--text-font-weight": 400,
-            },
-            {
-                "--text-font": "'Ubuntu', sans-serif",
-                "--text-font-weight": 300,
-            },
-            
-            {
-                "--text-font": "'Nunito', sans-serif",
-                "--text-font-weight": 300,
-                
-            },
-            {
-                "--text-font": "'Manrope', sans-serif",
-                "--text-font-weight": 400,
-            },
-            // {
-            //     "--text-font": "'Dosis', sans-serif",
-            // },
-            // {
-            //     "--text-font": "'Dosis', sans-serif",
-            // },
-            // {
-            //     "--text-font": "'Dosis', sans-serif",
-            // },
-            // {
-            //     "--text-font": "'Dosis', sans-serif",
-            // },
-            // {
-            //     "--text-font": "'Dosis', sans-serif",
-            // },
-            // {
-            //     "--text-font": "'Dosis', sans-serif",
-            // },
-            
-        ],
+        titleFont,
+        textFont,
     }
 
     const changeSet = (type: string) => {
