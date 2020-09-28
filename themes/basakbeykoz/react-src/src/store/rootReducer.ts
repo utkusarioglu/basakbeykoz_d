@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import menuReducer from '../features/wp/menuReducer';
+import menuReducer from '../features/wordpress/menuReducer';
 // import postReducer from '../wp/postReducer'
 // import pageReducer from '../wp/singularReducer';
-import categoryReducer from '../features/wp/categoryReducer'
+import categoryReducer from '../features/wordpress/categoryReducer'
 import appReducer from "../features/app/appReducer";
-import singularReducer from '../features/wp/singularReducer';
+import singularReducer from '../features/wordpress/singularReducer';
 import socialReducer from '../features/social/socialReducer';
 
 export const rootReducer = combineReducers({

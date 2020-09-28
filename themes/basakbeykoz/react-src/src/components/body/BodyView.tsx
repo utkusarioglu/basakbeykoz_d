@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PostList from "../../features/blog/PostList";
-import { wpSingularItemForDisplay } from "../../features/wp/@types-wp";
+import { wpSingularItemForDisplay } from "../../features/wordpress/@types-wp";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 

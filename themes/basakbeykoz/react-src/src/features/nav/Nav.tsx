@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import { wpMenuItem } from '../wp/@types-wp';
+import { wpMenuItem } from '../wordpress/@types-wp';
 import { RootState } from '../../store/rootReducer';
-import { fetchMenu } from "../wp/menuActions";
+import { fetchMenu } from "../wordpress/menuActions";
 import { setIsMenuOpen } from '../app/appActions'
 import './_nav.scss';
 import NavItem from './NavItem';

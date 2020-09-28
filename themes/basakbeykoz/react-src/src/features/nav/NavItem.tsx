@@ -1,5 +1,5 @@
 import React from 'react';
-import { wpMenuItem } from '../wp/@types-wp';
+import { wpMenuItem } from '../wordpress/@types-wp';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { RootState } from '../../store/rootReducer';

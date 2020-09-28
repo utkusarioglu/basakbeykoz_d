@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchMenu } from "../../features/wp/menuActions";
+import { fetchMenu } from "../../features/wordpress/menuActions";
 import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions'
 import { RootState } from '../../store/rootReducer';
 import "./_burgerMenu.scss";

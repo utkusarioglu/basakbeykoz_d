@@ -2,7 +2,7 @@ import {
     wpMenuItem, 
     SluggedTimestampedSingular,
     wpSingularItemForDisplay,
-} from '../features/wp/@types-wp'
+} from '../features/wordpress/@types-wp'
 import { ISocialItem } from '../features/social/@types-social';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 

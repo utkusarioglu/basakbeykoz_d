@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import { fetchCategoryPosts } from "../wp/singularActions";
+import { fetchCategoryPosts } from "../wordpress/singularActions";
 import { setFetching } from "../app/appActions";
 
 

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import { fetchSingular } from "../wp/singularActions";
+import { fetchSingular } from "../wordpress/singularActions";
 import { setFetching, setDisplaying } from '../app/appActions'
 import stateMap from "../../store/@types-state";
-import { singularTypes, wpSingularItem } from "../wp/@types-wp";
+import { singularTypes, wpSingularItem } from "../wordpress/@types-wp";
 import OverlayScrollbars from 'overlayscrollbars';
 import BodyView from "../../components/body/BodyView";
 //@ts-ignore
