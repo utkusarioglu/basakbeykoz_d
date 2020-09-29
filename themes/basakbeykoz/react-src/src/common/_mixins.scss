@@ -157,6 +157,7 @@
     background-image: url('#{$uploadsPath}/#{$filename}');
     background-repeat: no-repeat;
     background-position: bottom center;
+    z-index: 1;
     bottom: 0;
     left: 0;
     right: 0;
