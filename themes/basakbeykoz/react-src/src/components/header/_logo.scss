@@ -12,8 +12,8 @@
         height: $logoNSocialY;
         background:  #{map-get($colorMap, ui-blue)};
         left: 0;
-        border-top-right-radius: #{$accentThickness};
-        border-bottom-right-radius: #{$accentThickness};
+        border-top-right-radius: #{$gap};
+        border-bottom-right-radius: #{$gap};
     }
     
     &-logo > img {
@@ -24,7 +24,7 @@
     header & {
         .Logo {
             &-logo > img {
-                margin-left: #{$accentThickness /2};
+                margin-left: #{$gap /2};
                 margin-top: 8px;
                 // filter: var(--filter-darkGray);    
             }
@@ -40,7 +40,7 @@
 
         z-index: 90;
         position: fixed;
-        top: #{$accentThickness};
+        top: #{$gap};
         left: 0;
         flex-direction: row;
         align-items: center;
@@ -50,8 +50,8 @@
             img {
 
                 $featureImageX: #{map-get($narrow, featureImageX)};
-                $paddingLeft: #{$accentThickness / 2};
-                $statics: #{$paddingLeft} - #{ 2* $accentThickness};
+                $paddingLeft: #{$gap / 2};
+                $statics: #{$paddingLeft} - #{ 2* $gap};
                 $width: calc(#{$featureImageX} - #{$statics});
                 $marginTop: calc(#{$width} / 25);
 

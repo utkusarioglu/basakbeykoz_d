@@ -37,13 +37,13 @@
             align-items: end;
             bottom: 0;
             right: 0;
-            padding: #{$accentThickness / 2};
+            padding: #{$gap / 2};
             font-size: 1rem;
             width: #{$creditsSize};
             min-width: #{$footerSquareSize};
             max-width: #{$creditsMaxSize};
             height: 100%;
-            border-top-left-radius: #{$accentThickness};
+            border-top-left-radius: #{$gap};
             &-yearAndName {
                 color: #{map-get($colorMap, text-light)};
                 text-align: right;

@@ -9,7 +9,7 @@
         grid-area: PostList-wrapper;
 
         & > h4 {
-            // padding: #{$accentThickness};
+            // padding: #{$gap};
             text-align: center;
 
             @include narrowScreen() {
@@ -20,10 +20,10 @@
     
     li {
         list-style: none;
-        margin-bottom: #{2*$accentThickness};
-        padding: #{$accentThickness};
-        border-radius: #{$accentThickness};
-        // padding: #{$accentThickness};
+        margin-bottom: #{2*$gap};
+        padding: #{$gap};
+        border-radius: #{$gap};
+        // padding: #{$gap};
         
         // article & { // correction for blog page
             //     padding: 0;
@@ -39,6 +39,6 @@
     }
 
     @include narrowScreen() {
-        margin-left: #{-$accentThickness}
+        margin-left: #{-$gap}
     }
 }

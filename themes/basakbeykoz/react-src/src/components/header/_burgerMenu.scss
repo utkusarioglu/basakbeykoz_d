@@ -12,7 +12,7 @@
         border: none;
         padding: 0;
         margin: 0;
-        height: #{$accentThickness + $socialIconMinSize_px};
+        height: #{$gap + $socialIconMinSize_px};
         cursor: pointer;
         
         &:focus {

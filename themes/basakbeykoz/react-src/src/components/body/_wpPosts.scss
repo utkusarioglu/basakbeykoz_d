@@ -16,12 +16,12 @@
         margin: 0;
         padding: 0;
         $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
-        $liDistance: $accentThickness;
+        $liDistance: $gap;
         $liMinWidth: 260px;
         $liMaxWidth: 350px;
 
         @include narrowScreen() {
-            border-radius: #{$accentThickness/2};
+            border-radius: #{$gap/2};
         }
         
         // $limediumTallHeight: 60vh;
@@ -46,8 +46,8 @@
         //             align-self: center;
         //             margin: 0;
                 } @else if $gridFlow == column {
-        //             margin: 0 #{-$accentThickness} 0 #{-$accentThickness};
-        //             // margin-left: #{$accentThickness};
+        //             margin: 0 #{-$gap} 0 #{-$gap};
+        //             // margin-left: #{$gap};
         //             // grid-auto-flow: row;
         //             // this is not being implemented as it's not being used right now
                 }
@@ -62,13 +62,13 @@
         // @include wideScreen() {
         //     @if $gridFlow == row {
         //     } @else if $gridFlow == column {
-        //         margin: 0 0 0 #{-$accentThickness};
+        //         margin: 0 0 0 #{-$gap};
         //     }
         // }
         
         // @include mediumTallScreen() {
         //     height: #{$limediumTallHeight};
-        //     padding: #{$accentThickness/2};
+        //     padding: #{$gap/2};
         // } 
 
         // // &::-webkit-scrollbar {
@@ -80,18 +80,18 @@
             background-color: $cardColor;
             margin-left: #{$liDistance};
             display: grid;
-            grid-row-gap: #{$accentThickness / 2};
+            grid-row-gap: #{$gap / 2};
             position: relative;
             width: 50vw;
             // min-width: #{$liMinWidth};
             max-width: #{$liMaxWidth};
-            border-radius: #{$accentThickness/2};
-            padding: #{$accentThickness/2};
+            border-radius: #{$gap/2};
+            padding: #{$gap/2};
             overflow: hidden;
             
             // height: 100px;
-        //     border: #{$accentThickness/2} solid transparent;
-            height: calc(100% - #{$accentThickness});
+        //     border: #{$gap/2} solid transparent;
+            height: calc(100% - #{$gap});
 
             @if $type == posts {
                 grid-template-areas: 
@@ -114,9 +114,9 @@
                 z-index: 10;
                 bottom: 0;
                 width: 100%;
-                height: #{$accentThickness /2*3};
+                height: #{$gap /2*3};
                 // background: #{$cardColor};
-                background: linear-gradient(transparent 0,  #{$cardColor} #{$accentThickness});
+                background: linear-gradient(transparent 0,  #{$cardColor} #{$gap});
             }
 
             @include narrowScreen() {
@@ -128,15 +128,15 @@
                             "image excerpt";
                         grid-template-rows: min-content min-content auto;
                         grid-template-columns: #{$homePostsNarrowY} auto;
-                        grid-column-gap: #{$accentThickness/2};
+                        grid-column-gap: #{$gap/2};
                         grid-row-gap: 5px;
 
                         width: 100%;
-                        max-width: calc(100% - #{$accentThickness});
-                        height: calc(#{$homePostsNarrowY} + #{$accentThickness});
+                        max-width: calc(100% - #{$gap});
+                        height: calc(#{$homePostsNarrowY} + #{$gap});
                         // height: auto;
                         margin-left: 0;
-                        margin-bottom: #{$accentThickness};
+                        margin-bottom: #{$gap};
         //             } @else if $type == success {
                     }
                         
@@ -161,13 +161,13 @@
         //     // &::after {
         //     //     content: "";
         //     //     position: absolute;
-        //     //     left: #{-$accentThickness};
-        //     //     right: #{-$accentThickness};
+        //     //     left: #{-$gap};
+        //     //     right: #{-$gap};
         //     //     top: 0;
         //     //     bottom: 0;
         //     //     background: frame($cardColor, horizontal);
         //     //     pointer-events: none;
-        //     //     border-radius: #{$accentThickness};
+        //     //     border-radius: #{$gap};
         //     // }
 
             
@@ -188,11 +188,11 @@
                 overflow: hidden;
                 display: flex;
                 align-items: center;
-                border-radius: #{$accentThickness/3};
+                border-radius: #{$gap/3};
 
                 @include narrowScreen() {
                     @if $gridFlow == row {
-                        height: calc(#{$homePostsNarrowY} + #{$accentThickness});
+                        height: calc(#{$homePostsNarrowY} + #{$gap});
                     }
                 }
 

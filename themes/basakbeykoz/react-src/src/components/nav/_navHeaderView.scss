@@ -20,8 +20,8 @@
 
     & .Nav-item {
         padding: {
-            left: #{$accentThickness /3};
-            right: #{$accentThickness /3};
+            left: #{$gap /3};
+            right: #{$gap /3};
         };
         height: 100%;
         line-height: #{$mobileNavigationHeight};
@@ -36,12 +36,12 @@
                 position: absolute;
                 content: "";
                 bottom: 0;
-                height: #{$accentThickness / 4};
-                left: #{$accentThickness / 4};
-                right: #{$accentThickness / 4};
+                height: #{$gap / 4};
+                left: #{$gap / 4};
+                right: #{$gap / 4};
                 background-color:  #{map-get($colorMap, ui-decoration)};
-                border-top-left-radius: #{$accentThickness / 4};
-                border-top-right-radius: #{$accentThickness / 4};
+                border-top-left-radius: #{$gap / 4};
+                border-top-right-radius: #{$gap / 4};
             }
         }
     }

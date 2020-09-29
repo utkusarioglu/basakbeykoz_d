@@ -11,9 +11,9 @@
     &-button {
         display:flex;
         align-items: center;
-        margin-left: #{$accentThickness / 4};
-        border-radius: #{$accentThickness / 4};
-        padding: #{$accentThickness / 4} #{$accentThickness / 2};
+        margin-left: #{$gap / 4};
+        border-radius: #{$gap / 4};
+        padding: #{$gap / 4} #{$gap / 2};
         background-color:  #{map-get($colorMap, ui-yellow)};
         
         max-width: 200px;

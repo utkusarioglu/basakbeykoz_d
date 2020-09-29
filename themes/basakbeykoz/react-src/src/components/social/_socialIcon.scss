@@ -7,7 +7,7 @@
         filter: var(--filter-darkGray);
     }
     a {
-        min-height: #{$accentThickness + $socialIconMinSize_px};
-        height: calc(#{$accentThickness} + #{$socialIconActiveSize_px});
+        min-height: #{$gap + $socialIconMinSize_px};
+        height: calc(#{$gap} + #{$socialIconActiveSize_px});
     }
 }

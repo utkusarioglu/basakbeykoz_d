@@ -99,7 +99,7 @@
     --wp-frame-width: 1200px;
     --wp-frame-padding-x: 7em;
     --wp-text-with: 800px;
-    --accent-thickness: #{$accentThickness};
+    --accent-thickness: #{$gap};
     --home-vertical-padding: 200px;
     --home-horizontal-padding: 400px;
     --fixed-feature-image-width: 470px;
@@ -126,10 +126,10 @@
 //         $yellow: map-get($colorMap, ui-yellow);
 //         $height: 312px;
 //         background: linear-gradient(180deg, 
-//             #{$bg} #{$accentThickness},
-//             #{$blue} #{$accentThickness},
-//             #{$blue} #{$accentThickness + $logoNSocialY},
-//             #{$bg} #{$accentThickness + $logoNSocialY},
+//             #{$bg} #{$gap},
+//             #{$blue} #{$gap},
+//             #{$blue} #{$gap + $logoNSocialY},
+//             #{$bg} #{$gap + $logoNSocialY},
 //             #{$bg} calc(50vh - #{$height/2}), 
 //             #{$yellow} calc(50vh - #{$height/2}), 
 //             #{$yellow} calc(50vh + #{$height/2}), 
@@ -140,7 +140,7 @@
 //     }
 //     @include narrowScreen() {
 //         & {
-//             width: #{$accentThickness/2};
+//             width: #{$gap/2};
 //         }
 
 //     }

@@ -48,7 +48,7 @@
 
         @include wideScreen() {
             position: relative;
-            margin-right: #{$accentThickness};
+            margin-right: #{$gap};
             background-color: transparent;
         }
     }
@@ -62,10 +62,10 @@
             right: 0;
             top: 0;
             bottom: 0;
-            width: #{$accentThickness};
+            width: #{$gap};
             background-color:  #{map-get($colorMap, ui-yellow)};
-            border-top-left-radius: #{$accentThickness};
-            border-bottom-left-radius: #{$accentThickness};
+            border-top-left-radius: #{$gap};
+            border-bottom-left-radius: #{$gap};
         }
     }
 
@@ -88,20 +88,20 @@
         margin-bottom: #{$mobileNavigationHeight};
         @include wideScreen() {
             justify-content: center;
-            padding: #{$accentThickness} 0;
+            padding: #{$gap} 0;
         }
     }
 
     & .Nav-item {
         display: block;
-        padding: #{$accentThickness / 2} #{$accentThickness};
+        padding: #{$gap / 2} #{$gap};
         position: relative;
         color: #{map-get($colorMap, text-dark)};
         text-align: right;
     
         @include wideScreen() {
             color:  #{map-get($colorMap, ui-blue)};
-            padding: #{$accentThickness /4} #{$accentThickness /2};
+            padding: #{$gap /4} #{$gap /2};
             font-size: adjustSize(20, 26);                    
         }
     
@@ -114,17 +114,17 @@
                 top: 0;
                 bottom: 0;
                 right: 0;
-                width: #{$accentThickness / 2};
+                width: #{$gap / 2};
                 background-color:  #{map-get($colorMap, ui-decoration)};
-                border-top-left-radius: #{$accentThickness/2};
-                border-bottom-left-radius: #{$accentThickness/2};
+                border-top-left-radius: #{$gap/2};
+                border-bottom-left-radius: #{$gap/2};
     
                 @include narrowScreen() {
                     width: auto;
-                    height: #{$accentThickness / 4};
+                    height: #{$gap / 4};
                     top: auto;
-                    right: #{$accentThickness /2};
-                    left: #{$accentThickness /2};
+                    right: #{$gap /2};
+                    left: #{$gap /2};
                 }
     
                 @include wideScreen() {
@@ -132,9 +132,9 @@
                     bottom: 0;
                     top: 0;
                     right: 0;
-                    width: #{$accentThickness /4};
-                    border-top-left-radius: #{$accentThickness/4};
-                    border-bottom-left-radius: #{$accentThickness/4};
+                    width: #{$gap /4};
+                    border-top-left-radius: #{$gap/4};
+                    border-bottom-left-radius: #{$gap/4};
                     height: auto;
                 }
             }

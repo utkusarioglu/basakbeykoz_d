@@ -8,12 +8,12 @@
 
     &-decor {
         // display: none;
-        width: #{$accentThickness };
+        width: #{$gap };
         height: $logoNSocialY;
         background: #{map-get($colorMap, ui-blue)};
         right: 0;
-        border-top-left-radius: #{$accentThickness};
-        border-bottom-left-radius: #{$accentThickness};
+        border-top-left-radius: #{$gap};
+        border-bottom-left-radius: #{$gap};
     }
     &-list {
         display: flex;
@@ -36,7 +36,7 @@
         display: none;
         position: fixed;
         right: 0;
-        top: #{$accentThickness};
+        top: #{$gap};
         z-index: 100;
         @include wideScreen() {
             display: flex;

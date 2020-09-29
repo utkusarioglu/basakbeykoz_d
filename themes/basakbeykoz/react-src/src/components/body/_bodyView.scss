@@ -49,10 +49,10 @@
     .Canvas-articleTitle {
         display: none;
         align-self: center;
-        // padding: #{$accentThickness};
+        // padding: #{$gap};
         @include narrowScreen() {
             display: block;
-            // padding: #{$accentThickness};
+            // padding: #{$gap};
         }
     }
     article {

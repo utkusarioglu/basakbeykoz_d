@@ -36,6 +36,7 @@ $mobile: (
 $narrow: (
     featureImageX: 25vw,
     logoNSocialY: 100px,
+    // logoNSocialY: 80px,
     homeWelcomeImageX: 45vw,
     homePostsNarrowY: 150px,
 );
@@ -50,7 +51,7 @@ $short: (
 $mobileNavigationHeight: 54px;
 $mobileFeatureImageHeight: 200px;
 $mobile_FeatureImageHeight_home: 300px;
-$accentThickness: 30px;
+$gap: 30px;
 $excerptFontSize: 15px;
 $footerSquareSize: 105px;
 $socialIconMinSize_px: 20;

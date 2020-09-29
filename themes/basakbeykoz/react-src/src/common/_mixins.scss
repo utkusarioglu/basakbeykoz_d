@@ -62,7 +62,7 @@
     min-width: #{$socialIconMinSize_px}px;
     height: #{$socialIconActiveSize_px};
     width: #{$socialIconActiveSize_px};
-    padding: #{$accentThickness / 2};
+    padding: #{$gap / 2};
     filter: $filter;    
 }
 
@@ -80,7 +80,7 @@
 
 @function frame($color, $direction) {
     $degree: to-degree($direction);
-    $at: #{$accentThickness};
+    $at: #{$gap};
     @return linear-gradient(
         $degree, 
         $color calc(#{$at}/2), 
@@ -133,7 +133,7 @@
     font-weight: $textFontWeight;
     font-size: $pFontSize;
     line-height: $pLineHeight;
-    margin: 0 0 #{$accentThickness} 0;
+    margin: 0 0 #{$gap} 0;
 }
 
 
