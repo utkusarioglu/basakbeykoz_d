@@ -154,7 +154,7 @@ body {
     color: #{map-get($colorMap, text-mediumDark)};
     overflow-y: hidden;
     overflow-x: hidden;
-    font-size: $defaultFontSize;
+    font-size: $defaultFontSize;    
 }
 
 // creates headings
