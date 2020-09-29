@@ -1,7 +1,10 @@
 @import "../../common/_vars";
 @import "../../common/_mixins";
 @import "./_wpPosts";
-
+$navSocialSpaceX: map-get($wide, navSocialSpaceX);
+$minBlockHeight: map-get($short, minBlockHeight);
+$minBlockGroupHeight: #{unquote("max(calc(100vh - #{$accentThickness*2}), #{$minBlockHeight})")};
+$standardGroupInnerblockPadding: 100px;
 .Canvas {
     &.page {
         &.home {
@@ -25,17 +28,17 @@
                 padding: 0;
 
                 & > .wp-block-group {
-                    $navSocialSpaceX: map-get($wide, navSocialSpaceX);
-                    $minBlockHeight: map-get($short, minBlockHeight);
+
 
                     box-sizing: border-box;
                     padding: #{$accentThickness};
                     // padding-bottom: #{$accentThickness + map-get($mobile, navigationY)};
-                    height: unquote("max(100vh, #{$minBlockHeight})");
+                    min-height: #{$minBlockGroupHeight};
                     overflow: hidden;
                     position: relative;
                     
                     & > .wp-block-group__inner-container {
+                        min-height: #{$minBlockGroupHeight};
                         height: 100%;
                         display: grid;
                         box-sizing: border-box;
@@ -288,8 +291,8 @@
                                 grid-template-areas:
                                     "Heading-h2 image"
                                     "paragraph image";
-                                padding-top: 100px;
-                                padding-bottom: 100px;
+                                padding-top: #{$standardGroupInnerblockPadding};
+                                padding-bottom: #{$standardGroupInnerblockPadding};
                                 grid-template-columns: 2fr 1fr;
                                 grid-template-rows: max-content 200px;
                             }
@@ -347,8 +350,8 @@
                                     "image Heading-h2"
                                     "image paragraph"
                                     "image restart";
-                                padding-top: 100px;
-                                padding-bottom: 100px;
+                                padding-top: #{$standardGroupInnerblockPadding};
+                                padding-bottom: #{$standardGroupInnerblockPadding};
                                 grid-template-columns: 1fr 2fr;
                                 grid-template-rows: max-content 200px;
                             }
@@ -412,7 +415,7 @@
                                 $width,
                                 $height,
                                 $mobileNavigationHeight,
-                                100px,
+                                #{$standardGroupInnerblockPadding},
                             );
                         }
                     }
@@ -508,7 +511,7 @@
 
                             @include narrowScreen() {
                                 $logoNSocialY: map-get($narrow, logoNSocialY);
-                                grid-template-rows: #{$logoNSocialY} 1fr 100px;
+                                grid-template-rows: #{$logoNSocialY} 1fr #{$standardGroupInnerblockPadding};
                             }
 
                             // @include wideScreen() {
@@ -548,7 +551,7 @@
                             );
                         }
                     }
-                    &:not(:nth-child(6)) { display: none; }
+                    // &:not(:nth-child(6)) { display: none; }
                     // contact
                     &:nth-child(6) {
                         & > .wp-block-group__inner-container {
@@ -565,7 +568,7 @@
 
                             @include narrowScreen() {
                                 $logoNSocialY: map-get($narrow, logoNSocialY);
-                                grid-template-rows: #{$logoNSocialY} 1fr 100px;
+                                grid-template-rows: #{$logoNSocialY} 1fr;
                             }
 
                             & > h2 {
@@ -576,9 +579,9 @@
                                 display: none;
                                 margin: 0;
 
-                                @include smallScreen() {
-                                    display: block;
-                                }
+                                // @include smallScreen() {
+                                //     display: block;
+                                // }
                             }
                         }
 
@@ -684,12 +687,14 @@
                         }
                     }
 
-                    // &:last-child {
-                    //     &,
-                    //     & > .wp-block-group__inner-container {
-                    //         height: calc(100vh + 250px);
-                    //     }
-                    // }
+                    &:last-child {
+                        & > .wp-block-group__inner-container {
+                            padding-bottom: calc(#{$standardGroupInnerblockPadding} + 15vh);
+                            @include narrowScreen() {
+                                padding-bottom: #{$standardGroupInnerblockPadding};
+                            }
+                        }
+                    }
                 } 
             }
         }

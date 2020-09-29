@@ -3,7 +3,7 @@
 .Canvas {
     $featureImageX: map-get($narrow, featureImageX);
     min-height: calc(100vh - #{$mobileNavigationHeight} + #{$footerSquareSize});
-    padding-bottom: 200px;
+    // padding-bottom: 200px;
     @include narrowScreen() {
         display: grid;
         grid-template-areas: ". Heading-h2" ". Article" ". PostList-wrapper";
@@ -59,7 +59,7 @@
         grid-area: Article;
         padding-top: var(--accent-thickness);
         padding-right: var(--accent-thickness);
-        padding-bottom: 200px;
+        padding-bottom: 300px;
         padding-left: var(--accent-thickness);
         @include narrowScreen() {
             padding-top: 0;
