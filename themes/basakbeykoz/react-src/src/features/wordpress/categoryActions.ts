@@ -1,6 +1,6 @@
-import { DispatchMethod } from '../../common/@types-actions';
+import { DispatchMethod } from "../../common/@types-actions";
 
-import { FETCH_CATEGORY, FETCH_CATEGORIES } from '../../common/types'
+import { FETCH_CATEGORY, FETCH_CATEGORIES } from "../../common/types";
 
 // import WPAPI, { WPRequest } from "wpapi";
 
@@ -12,7 +12,7 @@ import { FETCH_CATEGORY, FETCH_CATEGORIES } from '../../common/types'
 //             if(err) {
 //                 dispatch({
 //                     type: FETCH_CATEGORIES,
-//                     state: "fail", 
+//                     state: "fail",
 //                     error: "somehting went wrong", //TODO
 //                 });
 //             } else {

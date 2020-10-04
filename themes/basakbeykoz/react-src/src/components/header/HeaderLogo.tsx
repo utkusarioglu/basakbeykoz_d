@@ -1,21 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { RootState } from "../../store/rootReducer";
-import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions'
 import { connect } from "react-redux";
-// import Cta from './Cta';
+import Logo from "./Logo";
+import Cta from "./Cta";
 import "./_logo.scss";
 
 const mapState = (state: RootState) => ({
-    menu: state.menu.items,
-    isDisplayingSlug: state.app.isDisplaying.slug,
-    refs: state.app.refs,
+  isDisplayingSlug: state.app.isDisplaying.slug,
+  refs: state.app.refs,
 });
 
-const mapDispatch = {
-    setDisplaying,
-    setIsMenuOpen,
-}
+const mapDispatch = {};
 
 interface OwnProps {}
 type DispatchProps = typeof mapDispatch;
@@ -23,64 +18,56 @@ type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
 function HeaderLogo(props: Props): React.FunctionComponentElement<Props> {
+  // const { isDisplayingSlug, refs } = props;
+  // const { REACT_APP_HOME_SLUG } = process.env;
+  // const isAtHome = isDisplayingSlug === REACT_APP_HOME_SLUG;
+  // const [useCta, setUseCta] = useState(false);
+  // const [engagementHappened, setEngagementHappened] = useState(false);
 
-    const { 
-        // isDisplayingSlug, 
-        setDisplaying, 
-        setIsMenuOpen, 
-        refs 
-    } = props;
-    const {
-        REACT_APP_UPLOADS_DIR: uploads,
-        REACT_APP_HOME_SLUG: home_slug,
-    } = process.env
-    // const [ useCta, setUseCta ] = useState(false);
+  // useEffect(() => {
+  //   if (isAtHome) {
+  //     if (engagementHappened) {
+  //       setUseCta(false);
+  //     } else {
+  //       setUseCta(true);
+  //       setEngagementHappened(true);
+  //     }
+  //   } else {
+  //     setUseCta(false);
+  //     setEngagementHappened(true);
+  //   }
+  // }, [isAtHome, engagementHappened]);
 
-    const linkClick = () => {
-        setIsMenuOpen(false)
-        setDisplaying({
-            slug: home_slug
-        });
-        refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
-    }
+  // refs.body?.current
+  //   ?.osInstance()
+  //   ?.options("callbacks.onScroll", (e: Event) => {
+  //     if (isAtHome && window.innerWidth < 800) {
+  //       const scroll = refs.body?.current?.osInstance()?.scroll();
+  //       if (scroll && scroll.position.y < window.innerHeight) {
+  //         setUseCta(true);
+  //         // setEngagementHappened(true);
+  //       } else {
+  //         setUseCta(false);
+  //         setEngagementHappened(true);
+  //       }
+  //     }
+  //   });
 
-    return (
-        <div className="Logo">
-            <div className="Logo-decor" />
-            <Link
-                onClick={linkClick}
-                to="/">
-                <div 
-                    className="Logo-logo"
-                    >
-                    <img 
-                        src={ uploads + "/logo-inline-color.svg"}
-                        alt="logo"/>
-                </div>
-            </Link>
-        </div>
-    );
-    // const scrollWait = 
-    // const isAtHome = isDisplayingSlug === home_slug;
-    // useEffect(() => {
-    //     // let useCta = false;
-    //     if (isAtHome) {
-    //         // const scrollCounter =
-    //          setInterval(() => {
-    //             const pageY = refs.body?.current?.osInstance()?.scroll().position.y as number;
-    //             // console.log('isatpagetop', isAtPageTop);
-    //             setUseCta(pageY < 200);
-    //         }, 1000)
-    
-    //     }
-    // }, [isAtHome, refs.body])
+  // console.log(
+  //   "isAtHome:",
+  //   isAtHome,
+  //   "\nuseCta:",
+  //   useCta,
+  //   "\nengagementHappened",
+  //   engagementHappened
+  // );
+  const useCta = false;
 
-
-    // return useCta 
-    //     ? (<Cta />) 
-    //     : Logo;
+  return useCta ? <Cta /> : <Logo />;
 }
 
 export default connect<StateProps, DispatchProps, OwnProps>(
-    //@ts-ignore
-    mapState, mapDispatch, )(HeaderLogo);
+  //@ts-ignore
+  mapState,
+  mapDispatch
+)(HeaderLogo);
