@@ -1,8 +1,4 @@
-import {
-  FETCH_SINGULAR,
-  FETCH_CATEGORY_POSTS,
-  FETCH_PAGE,
-} from "../../common/actionTypes";
+import ACTION_TYPES from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
 import { PartialSingularDispatch } from "./@types-wp";
@@ -22,7 +18,7 @@ export default function (
   action: FSA<PartialSingularDispatch>
 ): stateMap["singular"] {
   switch (action.type) {
-    case FETCH_SINGULAR:
+    case ACTION_TYPES.FETCH_SINGULAR:
       if (action.state === "success") {
         return {
           post: {
@@ -43,7 +39,7 @@ export default function (
         return state;
       }
 
-    case FETCH_PAGE:
+    case ACTION_TYPES.FETCH_PAGE:
       if (action.state === "success") {
         return {
           ...state,
@@ -59,7 +55,7 @@ export default function (
         return state;
       }
 
-    case FETCH_CATEGORY_POSTS:
+    case ACTION_TYPES.FETCH_CATEGORY_POSTS:
       if (action.state === "success") {
         return {
           ...state,

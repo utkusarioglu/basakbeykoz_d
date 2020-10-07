@@ -1,6 +1,6 @@
-import { FETCH_MENU } from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import { wpMenuItem } from "./@types-wp";
+import ACTION_TYPES from "../../common/actionTypes";
 import stateMap from "../../store/@types-state";
 
 const initialState = {
@@ -12,7 +12,7 @@ export default function (
   action: FSA<wpMenuItem[]>
 ): stateMap["menu"] {
   switch (action.type) {
-    case FETCH_MENU:
+    case ACTION_TYPES.FETCH_MENU:
       if (action.state === "fail") return state;
       return {
         ...state,

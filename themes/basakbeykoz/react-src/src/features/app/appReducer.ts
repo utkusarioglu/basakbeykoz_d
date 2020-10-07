@@ -1,9 +1,4 @@
-import {
-  IS_DISPLAYING,
-  IS_FETCHING,
-  IS_MENU_OPEN,
-  SET_REF,
-} from "../../common/actionTypes";
+import ACTION_TYPES from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
 import { ISetRef } from "../../common/@types-actions";
@@ -39,7 +34,7 @@ export default function (
   action: FSA<isDisplaying | isFetching | ISetRef>
 ): stateMap["app"] {
   switch (action.type) {
-    case IS_DISPLAYING:
+    case ACTION_TYPES.IS_DISPLAYING:
       if (action.state === "fail") return state;
       return {
         ...state,
@@ -49,21 +44,21 @@ export default function (
         },
       };
 
-    case IS_FETCHING:
+    case ACTION_TYPES.IS_FETCHING:
       if (action.state === "fail") return state;
       return {
         ...state,
         isFetching: action.payload as isFetching,
       };
 
-    case IS_MENU_OPEN:
+    case ACTION_TYPES.IS_MENU_OPEN:
       if (action.state === "fail") return state;
       return {
         ...state,
         isMenuOpen: action.payload as isMenuOpen,
       };
 
-    case SET_REF:
+    case ACTION_TYPES.SET_REF:
       if (action.state === "fail") return state;
       const payload = action.payload as ISetRef;
       return {
