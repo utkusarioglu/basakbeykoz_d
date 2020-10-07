@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Posts from "./Posts";
-import BodyView from "../../components/body/Body.component";
+import Canvas from "../../components/canvas/Canvas.component";
 import { Env } from "../../common/@types-common";
 import { setFetching } from "../app/appActions";
 import "./_blog.scss";
@@ -47,7 +47,7 @@ function Blog(props: Props) {
   setFetching(true);
 
   return (
-    <BodyView
+    <Canvas
       {...{
         type: "native",
         slug: REACT_APP_BLOG_SLUG,

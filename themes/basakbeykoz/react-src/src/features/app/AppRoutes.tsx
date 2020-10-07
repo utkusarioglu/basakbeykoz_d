@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import BlogRoute from "../../routes/BlogRoute";
 import CreditsRoute from "../../routes/CreditsRoute";
-import BodyRoute from "../../routes/BodyRoute";
+import SluggedRoute from "../../routes/SluggedRoute";
 import FourOFourRoute from "../../routes/404Route";
 
 export const AppRoutes = () => {
@@ -20,7 +20,7 @@ export const AppRoutes = () => {
         <FourOFourRoute />
       </Route>
       <Route exact path="/:slug?">
-        <BodyRoute />
+        <SluggedRoute />
       </Route>
     </Switch>
   );

@@ -4,7 +4,7 @@ import { GeneralSingularItemforView } from "../../features/wordpress/@types-wp";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 import { Env } from "../../common/@types-common";
-import "./_body.component.scss";
+import "./_canvas.component.scss";
 
 type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;
@@ -12,7 +12,7 @@ type Props = GeneralSingularItemforView & {
   thumbnailComponent?: JSX.Element;
 };
 
-function BodyView(props: Props) {
+function Canvas(props: Props) {
   const {
     REACT_APP_NAME,
     REACT_APP_SEPARATOR,
@@ -35,7 +35,7 @@ function BodyView(props: Props) {
       : REACT_APP_SEPARATOR + title;
   const siteTitle = REACT_APP_NAME + navSuffix;
 
-  let bodyExtraClasses: string[] = [type, slug];
+  const bodyExtraClasses: string[] = [type, slug];
 
   let featureImage;
   if (thumbnailComponent) {
@@ -106,4 +106,4 @@ function BodyView(props: Props) {
   );
 }
 
-export default BodyView;
+export default Canvas;

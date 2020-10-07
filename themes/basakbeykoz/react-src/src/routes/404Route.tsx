@@ -1,9 +1,9 @@
 import React from "react";
-import BodyView from "../components/body/Body.component";
+import Canvas from "../components/canvas/Canvas.component";
 
 function FourOFourRoute() {
   return (
-    <BodyView
+    <Canvas
       {...{
         type: "native",
         slug: "404",

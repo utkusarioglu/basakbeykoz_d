@@ -1,6 +1,6 @@
 import React from "react";
 import { Env } from "../common/@types-common";
-import BodyView from "../components/body/Body.component";
+import Canvas from "../components/canvas/Canvas.component";
 import Credits from "../components/credits/Credits.component";
 
 function CreditsRoute() {
@@ -30,7 +30,7 @@ function CreditsRoute() {
   );
 
   return (
-    <BodyView
+    <Canvas
       {...{
         type: "native",
         slug: "404",

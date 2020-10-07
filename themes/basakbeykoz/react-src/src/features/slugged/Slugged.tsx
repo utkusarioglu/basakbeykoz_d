@@ -7,7 +7,7 @@ import { setFetching, setDisplaying } from "../app/appActions";
 import stateMap from "../../store/@types-state";
 import { WpSingularTypes, TimestampedSingular } from "../wordpress/@types-wp";
 import OverlayScrollbars from "overlayscrollbars";
-import BodyView from "../../components/body/Body.component";
+import Canvas from "../../components/canvas/Canvas.component";
 import { Env } from "../../common/@types-common";
 //@ts-ignore
 import pauseable from "pauseable";
@@ -30,7 +30,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Body(props: Props) {
+function Slugged(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
   const paramSlug = useParams<{ slug: string }>().slug || REACT_APP_HOME_SLUG;
   const {
@@ -107,7 +107,7 @@ function Body(props: Props) {
   }
 
   return (
-    <BodyView
+    <Canvas
       {...isDisplayingActive}
       onLoad={getSlugOnload(isDisplayingSlug, refs)}
     />
@@ -200,4 +200,4 @@ function attachLlistActions(elem: HTMLElement): void {
   });
 }
 
-export default connector(Body);
+export default connector(Slugged);
