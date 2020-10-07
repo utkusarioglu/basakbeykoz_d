@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./_postsCard.component.scss";
+import "./_postsItem.component.scss";
 
 interface Props {
   title: string;
