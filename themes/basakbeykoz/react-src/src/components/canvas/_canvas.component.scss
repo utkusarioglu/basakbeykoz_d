@@ -1,7 +1,7 @@
 @import "../../common/styles/_vars";
 @import "../../common/styles/_mixins";
 @import "_featureImage";
-@import "./body_page_home";
+@import "./canvas_page_home";
 
 .Canvas {
   $featureImageX: map-get($narrow, featureImageX);
