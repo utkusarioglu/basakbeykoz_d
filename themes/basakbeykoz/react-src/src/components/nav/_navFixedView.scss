@@ -1,16 +1,14 @@
 @import "../../common/_vars";
 @import "../../common/_mixins";
 
-
 .NavFixedView {
     display: none;
     z-index: 100;
     position: fixed;
     top: 0;
-    left:0;
-    right:0;
-    bottom: 0; 
-    
+    left: 0;
+    right: 0;
+    bottom: 0;
 
     @include narrowScreen() {
         display: none;
@@ -18,8 +16,8 @@
 
     @include wideScreen() {
         display: block;
-        right:0;
-        width:auto;
+        right: 0;
+        width: auto;
         left: auto;
         top: 50vh;
         height: min-content;
@@ -28,7 +26,7 @@
     }
 
     &.open {
-        display: block;      
+        display: block;
 
         @include narrowScreen() {
             display: none;
@@ -63,19 +61,22 @@
             top: 0;
             bottom: 0;
             width: #{$gap};
-            background-color:  #{map-get($colorMap, ui-yellow)};
+            background-color: #{map-get($colorMap, ui-yellow)};
             border-top-left-radius: #{$gap};
             border-bottom-left-radius: #{$gap};
         }
     }
 
-    &-mask {                
+    &-mask {
         position: fixed;
-        background: linear-gradient(rgba(255,255,255, 0.6), transparent calc(100vh - #{$mobileNavigationHeight}));
-        top:0;
-        left:0;
-        right:0;
-        bottom:0;
+        background: linear-gradient(
+            rgba(255, 255, 255, 0.6),
+            transparent calc(100vh - #{$mobileNavigationHeight})
+        );
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
 
         @include narrowScreen() {
             display: none;
@@ -89,6 +90,7 @@
         @include wideScreen() {
             justify-content: center;
             padding: #{$gap} 0;
+            margin-bottom: 0;
         }
     }
 
@@ -98,16 +100,16 @@
         position: relative;
         color: #{map-get($colorMap, text-dark)};
         text-align: right;
-    
+
         @include wideScreen() {
-            color:  #{map-get($colorMap, ui-blue)};
-            padding: #{$gap /4} #{$gap /2};
-            font-size: adjustSize(20, 26);                    
+            color: #{map-get($colorMap, ui-blue)};
+            padding: #{$gap / 4} #{$gap / 2};
+            font-size: adjustSize(20, 26);
         }
-    
+
         &-active {
             color: #{map-get($colorMap, ui-decoration)};
-    
+
             &:after {
                 position: absolute;
                 content: "";
@@ -115,24 +117,24 @@
                 bottom: 0;
                 right: 0;
                 width: #{$gap / 2};
-                background-color:  #{map-get($colorMap, ui-decoration)};
+                background-color: #{map-get($colorMap, ui-decoration)};
                 border-top-left-radius: #{$gap/2};
                 border-bottom-left-radius: #{$gap/2};
-    
+
                 @include narrowScreen() {
                     width: auto;
                     height: #{$gap / 4};
                     top: auto;
-                    right: #{$gap /2};
-                    left: #{$gap /2};
+                    right: #{$gap / 2};
+                    left: #{$gap / 2};
                 }
-    
+
                 @include wideScreen() {
                     left: auto;
                     bottom: 0;
                     top: 0;
                     right: 0;
-                    width: #{$gap /4};
+                    width: #{$gap / 4};
                     border-top-left-radius: #{$gap/4};
                     border-bottom-left-radius: #{$gap/4};
                     height: auto;
@@ -140,5 +142,4 @@
             }
         }
     }
-
 }
