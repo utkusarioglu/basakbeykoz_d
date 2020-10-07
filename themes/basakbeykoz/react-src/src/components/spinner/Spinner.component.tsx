@@ -1,4 +1,5 @@
 import React from "react";
+import { Env } from "../../common/@types-common";
 import "./_spinner.component.scss";
 
 interface OwnProps {
@@ -9,13 +10,13 @@ interface OwnProps {
 type Props = OwnProps;
 
 function SpinnerView(props: Props) {
-  const uploadsDir = process.env.REACT_APP_UPLOADS_DIR;
+  const { REACT_APP_UPLOADS_DIR } = process.env as Env;
   const { display, loadingMessage } = props;
 
   return (
     <div className="Spinner" style={{ display }}>
       <img
-        src={uploadsDir + "/logo-inline-black.svg"}
+        src={REACT_APP_UPLOADS_DIR + "/logo-inline-black.svg"}
         alt="Basak Beykoz"
         className="Spinner-logo"
       />

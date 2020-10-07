@@ -1,5 +1,5 @@
 import React from "react";
-import { TimestampedSingular } from "../../features/wordpress/@types-wp";
+import { TimestampedSingular } from "../../features/wordpress/@types-wordpress";
 import PostListCardView from "./PostsItem.component";
 import "./_posts.component.scss";
 

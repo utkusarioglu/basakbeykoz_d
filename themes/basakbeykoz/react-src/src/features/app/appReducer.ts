@@ -2,6 +2,7 @@ import ACTION_TYPES from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
 import { ISetRef } from "../../common/@types-actions";
+import { Env } from "../../common/@types-common";
 
 type isDisplaying = stateMap["app"]["isDisplaying"];
 type isFetching = stateMap["app"]["isFetching"];
@@ -12,7 +13,7 @@ const initialState: stateMap["app"] = {
   isMenuOpen: false,
   isDisplaying: {
     status: 200,
-    slug: process.env.REACT_APP_HOME_SLUG as string,
+    slug: (process.env as Env).REACT_APP_HOME_SLUG,
     loadTime: 0,
     active: {
       slug: "",

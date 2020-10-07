@@ -1,7 +1,7 @@
 import ACTION_TYPES from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
-import { PartialSingularDispatch } from "./@types-wp";
+import { PartialSingularDispatch } from "./@types-wordpress";
 
 const initialState: stateMap["singular"] = {
   post: {

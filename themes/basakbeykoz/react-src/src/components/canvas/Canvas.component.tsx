@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Posts from "../../features/blog/Posts";
-import { GeneralSingularItemforView } from "../../features/wordpress/@types-wp";
+import { GeneralSingularItemforView } from "../../features/wordpress/@types-wordpress";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 import { Env } from "../../common/@types-common";

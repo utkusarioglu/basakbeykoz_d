@@ -2,7 +2,7 @@ import {
   SluggedTimestampedSingular,
   wpSingularArchiveItem,
   WpSingularTypes,
-} from "./@types-wp";
+} from "./@types-wordpress";
 
 export function filterByType<T extends string[]>(
   items: wpSingularArchiveItem[],

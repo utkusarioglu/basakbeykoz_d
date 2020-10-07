@@ -1,5 +1,5 @@
 import { FSA } from "../../common/@types-actions";
-import { wpMenuItem } from "./@types-wp";
+import { wpMenuItem } from "./@types-wordpress";
 import ACTION_TYPES from "../../common/actionTypes";
 import stateMap from "../../store/@types-state";
 

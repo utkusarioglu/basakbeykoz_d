@@ -5,7 +5,10 @@ import { RootState } from "../../store/rootReducer";
 import { fetchSingular } from "../wordpress/singularActions";
 import { setFetching, setDisplaying } from "../app/appActions";
 import stateMap from "../../store/@types-state";
-import { WpSingularTypes, TimestampedSingular } from "../wordpress/@types-wp";
+import {
+  WpSingularTypes,
+  TimestampedSingular,
+} from "../wordpress/@types-wordpress";
 import OverlayScrollbars from "overlayscrollbars";
 import Canvas from "../../components/canvas/Canvas.component";
 import { Env } from "../../common/@types-common";

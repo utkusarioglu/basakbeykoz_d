@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { wpMenuItem } from "../wordpress/@types-wp";
+import { wpMenuItem } from "../wordpress/@types-wordpress";
 import { RootState } from "../../store/rootReducer";
 import { fetchMenu } from "../wordpress/menuActions";
 import { setIsMenuOpen } from "../app/appActions";

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Env } from "../../common/@types-common";
 import "./_footer.component.scss";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 }
 
 function FooterView(props: Props) {
-  const { REACT_APP_UPLOADS_DIR } = process.env;
+  const { REACT_APP_UPLOADS_DIR } = process.env as Env;
   const { navClickActions } = props;
   return (
     <div className="Footer">

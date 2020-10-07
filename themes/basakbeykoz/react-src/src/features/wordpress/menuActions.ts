@@ -1,7 +1,7 @@
 import { DispatchMethod } from "../../common/@types-actions";
 import ACTION_TYPES from "../../common/actionTypes";
 import { ERROR_CODES } from "./constants";
-import { wpMenuItem } from "./@types-wp";
+import { wpMenuItem } from "./@types-wordpress";
 import rest from "../../services/rest";
 export const fetchMenu = (slug: string) => (
   dispatch: DispatchMethod<wpMenuItem>

@@ -1,6 +1,9 @@
 import { DispatchMethod } from "../../common/@types-actions";
 import ACTION_TYPES from "../../common/actionTypes";
-import { PartialSingularDispatch, wpSingularArchiveItem } from "./@types-wp";
+import {
+  PartialSingularDispatch,
+  wpSingularArchiveItem,
+} from "./@types-wordpress";
 import { filterByType } from "./mergers";
 import rest from "../../services/rest";
 import { ERROR_CODES } from "./constants";

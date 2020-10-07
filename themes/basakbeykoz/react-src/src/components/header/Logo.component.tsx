@@ -22,8 +22,7 @@ type Props = OwnProps & PropsFromRedux;
 
 function Logo(props: Props) {
   const { setDisplaying, setIsMenuOpen, refs, withTitle } = props;
-  const uploads = process.env.REACT_APP_UPLOADS_DIR;
-  const { REACT_APP_HOME_SLUG } = process.env as Env;
+  const { REACT_APP_HOME_SLUG, REACT_APP_UPLOADS_DIR } = process.env as Env;
 
   const linkClick = () => {
     setIsMenuOpen(false);
@@ -42,7 +41,7 @@ function Logo(props: Props) {
       <div className="Logo-decor" />
       <Link onClick={linkClick} to="/">
         <div className="Logo-logo">
-          <img src={uploads + "/" + logoName} alt="logo" />
+          <img src={REACT_APP_UPLOADS_DIR + "/" + logoName} alt="logo" />
         </div>
       </Link>
     </div>
