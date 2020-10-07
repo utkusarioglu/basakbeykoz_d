@@ -1,21 +1,22 @@
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-export type FSA<T>  = FSASuccess<T> | FSAFailure
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import { ERROR_CODES } from "../features/wordpress/constants";
+export type FSA<T> = FSASuccess<T> | FSAFailure;
 
 interface FSASuccess<T> {
-    type: string,
-    payload: T,
-    state: 'success',
+  type: string;
+  payload: T;
+  state: "success";
 }
 
 interface FSAFailure {
-    type: string,
-    error: string,
-    state: "fail"
+  type: string;
+  error: ERROR_CODES;
+  state: "fail";
 }
 
-export type DispatchMethod<T> = (vars:FSA<T>) => void
+export type DispatchMethod<T> = (vars: FSA<T>) => void;
 
 export interface ISetRef {
-    type: 'body' | 'latestPosts' | 'testimonials';
-    ref: React.RefObject<OverlayScrollbarsComponent>;
+  type: "body" | "latestPosts" | "testimonials";
+  ref: React.RefObject<OverlayScrollbarsComponent>;
 }

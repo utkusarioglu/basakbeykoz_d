@@ -7,6 +7,7 @@ import {
 } from "./@types-wp";
 import { filterByType } from "./mergers";
 import rest from "../../services/rest";
+import { ERROR_CODES } from "./constants";
 
 const { REACT_APP_REST_ENDPOINT } = process.env;
 
@@ -52,11 +53,11 @@ export const fetchSingular = (slug: string) => (
         });
       }
     })
-    .catch((data) => {
+    .catch(() => {
       dispatch({
         type: FETCH_SINGULAR,
         state: "fail",
-        error: "REST_REQUEST_FAIL",
+        error: ERROR_CODES.SINGULAR_FETCH_FAIL,
       });
     });
 };
@@ -84,7 +85,7 @@ export const fetchCategoryPosts = (slug: string) => (
         dispatch({
           type: FETCH_CATEGORY_POSTS,
           state: "fail",
-          error: "json is booboo",
+          error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
         });
       }
     });
