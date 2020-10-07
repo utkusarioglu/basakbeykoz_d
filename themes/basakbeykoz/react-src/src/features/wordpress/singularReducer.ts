@@ -2,7 +2,7 @@ import {
   FETCH_SINGULAR,
   FETCH_CATEGORY_POSTS,
   FETCH_PAGE,
-} from "../../common/types";
+} from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
 import { PartialSingularDispatch } from "./@types-wp";

@@ -1,4 +1,4 @@
-import { FETCH_CATEGORIES, FETCH_CATEGORY } from "../../common/types";
+import { FETCH_CATEGORIES, FETCH_CATEGORY } from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 
 const initialState = {

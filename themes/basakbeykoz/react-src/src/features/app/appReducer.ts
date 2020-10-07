@@ -3,7 +3,7 @@ import {
   IS_FETCHING,
   IS_MENU_OPEN,
   SET_REF,
-} from "../../common/types";
+} from "../../common/actionTypes";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
 import { ISetRef } from "../../common/@types-actions";

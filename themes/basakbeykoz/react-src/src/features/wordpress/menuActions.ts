@@ -1,5 +1,5 @@
 import { DispatchMethod } from "../../common/@types-actions";
-import { FETCH_MENU } from "../../common/types";
+import { FETCH_MENU } from "../../common/actionTypes";
 import { ERROR_CODES } from "./constants";
 import { wpMenuItem } from "./@types-wp";
 import rest from "../../services/rest";

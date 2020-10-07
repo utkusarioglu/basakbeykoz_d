@@ -1,6 +1,6 @@
 import { DispatchMethod } from "../../common/@types-actions";
 
-import { FETCH_CATEGORY, FETCH_CATEGORIES } from "../../common/types";
+import { FETCH_CATEGORY, FETCH_CATEGORIES } from "../../common/actionTypes";
 
 // import WPAPI, { WPRequest } from "wpapi";
 

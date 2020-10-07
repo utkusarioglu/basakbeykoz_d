@@ -1,5 +1,5 @@
 import { DispatchMethod } from "../../common/@types-actions";
-import { FETCH_SINGULAR, FETCH_CATEGORY_POSTS } from "../../common/types";
+import { FETCH_SINGULAR, FETCH_CATEGORY_POSTS } from "../../common/actionTypes";
 import {
   wpSingularItemSuccess,
   PartialSingularDispatch,

@@ -4,7 +4,7 @@ import {
   IS_DISPLAYING,
   IS_MENU_OPEN,
   SET_REF,
-} from "../../common/types";
+} from "../../common/actionTypes";
 import stateMap from "../../store/@types-state";
 import { ISetRef } from "../../common/@types-actions";
 
