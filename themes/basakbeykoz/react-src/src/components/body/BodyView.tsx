@@ -10,6 +10,7 @@ import "./_bodyView.scss";
 type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;
   articleComponent?: JSX.Element;
+  thumbnailComponent?: JSX.Element;
 };
 
 function BodyView(props: Props) {
@@ -26,27 +27,33 @@ function BodyView(props: Props) {
     thumbnail,
     content,
     articleComponent,
+    thumbnailComponent,
   } = props;
 
   const navSuffix =
     slug === REACT_APP_HOME_SLUG || slug === ""
       ? ""
-      : REACT_APP_SEPARATOR + props.title;
+      : REACT_APP_SEPARATOR + title;
   const siteTitle = REACT_APP_NAME + navSuffix;
 
   let bodyExtraClasses: string[] = [type, slug];
 
   let featureImage;
-  if (thumbnail !== "") {
+  if (thumbnailComponent) {
     bodyExtraClasses.push("has-FeatureImage");
-    featureImage = (
-      <div
-        className="FeatureImage-on"
-        dangerouslySetInnerHTML={{ __html: thumbnail }}
-      />
-    );
+    featureImage = <div className="FeatureImage-on">{thumbnailComponent}</div>;
   } else {
-    featureImage = <div className="FeatureImage-off" />;
+    if (thumbnail !== "") {
+      bodyExtraClasses.push("has-FeatureImage");
+      featureImage = (
+        <div
+          className="FeatureImage-on"
+          dangerouslySetInnerHTML={{ __html: thumbnail }}
+        />
+      );
+    } else {
+      featureImage = <div className="FeatureImage-off" />;
+    }
   }
 
   let featureTitle;
@@ -70,6 +77,13 @@ function BodyView(props: Props) {
     );
   }
 
+  let article;
+  if (articleComponent) {
+    article = <article>{articleComponent}</article>;
+  } else {
+    article = <article dangerouslySetInnerHTML={{ __html: content }} />;
+  }
+
   ReactGA.pageview(window.location.pathname + window.location.search);
   useEffect(() => {
     onLoad();
@@ -86,12 +100,7 @@ function BodyView(props: Props) {
           {featureTitle}
         </div>
         {articleTitle}
-        {articleComponent ? (
-          articleComponent
-        ) : (
-          <article dangerouslySetInnerHTML={{ __html: content }} />
-        )}
-
+        {article}
         {postList}
       </div>
     </>
