@@ -2,13 +2,10 @@ import React from "react";
 import PostList from "./PostList";
 import BodyView from "../../components/body/BodyView";
 import "./_blog.scss";
+import { Env } from "../../common/@types-common";
 
 function Blog() {
-  const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env as {
-    [key: string]: string;
-  };
-
-  const PAGE_NAME = "Paylaşımlar";
+  const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env as Env;
   const featureImageName = "yazilar-feature-image";
   const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [
@@ -38,7 +35,7 @@ function Blog() {
       {...{
         type: "native",
         slug: REACT_APP_BLOG_SLUG,
-        title: PAGE_NAME,
+        title: "Paylaşımlar",
         thumbnail: "",
         thumbnailComponent,
         content: "",

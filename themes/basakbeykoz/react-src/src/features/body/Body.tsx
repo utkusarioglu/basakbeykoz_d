@@ -8,6 +8,7 @@ import stateMap from "../../store/@types-state";
 import { WpSingularTypes, TimestampedSingular } from "../wordpress/@types-wp";
 import OverlayScrollbars from "overlayscrollbars";
 import BodyView from "../../components/body/BodyView";
+import { Env } from "../../common/@types-common";
 //@ts-ignore
 import pauseable from "pauseable";
 
@@ -30,7 +31,7 @@ interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
 function Body(props: Props) {
-  const { REACT_APP_HOME_SLUG } = process.env;
+  const { REACT_APP_HOME_SLUG } = process.env as Env;
   const paramSlug = useParams<{ slug: string }>().slug || REACT_APP_HOME_SLUG;
   const {
     refs,
@@ -108,7 +109,7 @@ function Body(props: Props) {
   return (
     <BodyView
       {...isDisplayingActive}
-      onLoad={getSlugSpecificAction(isDisplayingSlug, refs)}
+      onLoad={getSlugOnload(isDisplayingSlug, refs)}
     />
   );
 }
@@ -126,7 +127,7 @@ function findBySlug(
     })[0];
 }
 
-function getSlugSpecificAction(
+function getSlugOnload(
   slug: string,
   refs: RootState["app"]["refs"]
 ): () => void {

@@ -4,6 +4,7 @@ import { fetchMenu } from "../../features/wordpress/menuActions";
 import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
 import "./_burgerMenu.scss";
+import { Env } from "../../common/@types-common";
 
 const mapState = (state: RootState) => ({
   menu: state.menu,
@@ -21,7 +22,7 @@ interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
 function BurgerMenu(props: Props) {
-  const uploadsDir = process.env.REACT_APP_UPLOADS_DIR as string;
+  const { REACT_APP_UPLOADS_DIR } = process.env as Env;
   const { isMenuOpen, setIsMenuOpen } = props;
 
   return (
@@ -30,7 +31,7 @@ function BurgerMenu(props: Props) {
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="BurgerMenu-burgerButton"
       >
-        <img alt="Menu" src={uploadsDir + "/burger-menu.svg"} />
+        <img alt="Menu" src={REACT_APP_UPLOADS_DIR + "/burger-menu.svg"} />
       </button>
     </div>
   );

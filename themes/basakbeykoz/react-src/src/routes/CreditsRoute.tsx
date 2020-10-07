@@ -1,9 +1,10 @@
 import React from "react";
+import { Env } from "../common/@types-common";
 import BodyView from "../components/body/BodyView";
 import Credits from "../components/credits/Credits";
 
 function CreditsRoute() {
-  const { REACT_APP_UPLOADS_DIR } = process.env as { [k: string]: string };
+  const { REACT_APP_UPLOADS_DIR } = process.env as Env;
   const featureImageName = "yazilar-feature-image";
   const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [

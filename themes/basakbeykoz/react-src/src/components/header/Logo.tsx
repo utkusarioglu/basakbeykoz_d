@@ -4,6 +4,7 @@ import { RootState } from "../../store/rootReducer";
 import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
 import { connect, ConnectedProps } from "react-redux";
 import "./_logo.scss";
+import { Env } from "../../common/@types-common";
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
@@ -22,12 +23,12 @@ type Props = OwnProps & PropsFromRedux;
 function Logo(props: Props) {
   const { setDisplaying, setIsMenuOpen, refs, withTitle } = props;
   const uploads = process.env.REACT_APP_UPLOADS_DIR;
-  const home_slug = process.env.REACT_APP_HOME_SLUG as string;
+  const { REACT_APP_HOME_SLUG } = process.env as Env;
 
   const linkClick = () => {
     setIsMenuOpen(false);
     setDisplaying({
-      slug: home_slug,
+      slug: REACT_APP_HOME_SLUG,
     });
     refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
   };

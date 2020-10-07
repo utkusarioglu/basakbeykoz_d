@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { RootState } from "../../store/rootReducer";
 import { setDisplaying } from "../app/appActions";
 import "./_navItem.scss";
+import { Env } from "../../common/@types-common";
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
@@ -20,7 +21,7 @@ interface OwnProps {
 type Props = OwnProps & PropsFromRedux;
 
 function NavItem(props: Props) {
-  const { REACT_APP_HOME_SLUG } = process.env;
+  const { REACT_APP_HOME_SLUG } = process.env as Env;
   const { item, refs, setDisplaying } = props;
   const cleanSlug = !!item.slug ? item.slug : "";
   const clickSlug = cleanSlug || (REACT_APP_HOME_SLUG as string);

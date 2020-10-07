@@ -15,7 +15,6 @@ type Props = OwnProps & PropsFromRedux;
 
 function Social(props: Props) {
   const { socialItems } = props;
-
   const socialComponents = socialItems.map((item) => {
     return <SocialItem key={item.title} item={item} />;
   });

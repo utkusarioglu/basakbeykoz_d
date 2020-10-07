@@ -4,6 +4,7 @@ import { RootState } from "../../store/rootReducer";
 import { fetchCategoryPosts } from "../wordpress/singularActions";
 import { setFetching } from "../app/appActions";
 import PostListView from "../../components/blog/PostListView";
+import { Env } from "../../common/@types-common";
 
 const mapState = (state: RootState) => ({
   posts: state.singular.post,
@@ -22,7 +23,7 @@ interface OwnProps {
 type Props = OwnProps & PropsFromRedux;
 
 function PostList(props: Props) {
-  const { REACT_APP_BLOG_SLUG } = process.env as { [key: string]: string };
+  const { REACT_APP_BLOG_SLUG } = process.env as Env;
   const { fetchCategoryPosts, setFetching, excludeSlug, posts } = props;
 
   // !HACK this is faulty logic
