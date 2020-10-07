@@ -65,16 +65,18 @@ export const fetchSingular = (slug: string) => (
 export const fetchCategoryPosts = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
 ) => {
-  fetch(REACT_APP_REST_ENDPOINT + "/customrest/v1/category_posts_slug/" + slug)
-    .then((data) => data.json())
-    .then((category_posts: wpSingularItemSuccess[]) => {
-      if (category_posts) {
-        // !TODO you need a better success test here
+  rest
+    .request<wpSingularArchiveItem[]>({
+      method: "get",
+      url: "/customrest/v1/category_posts_slug/" + slug,
+    })
+    .then(({ data }) => {
+      if (data) {
         const now = Date.now();
         const payload = {
           fetchTime: Date.now(),
-          post: filterByType(category_posts, "post", now),
-          page: filterByType(category_posts, "page", now),
+          post: filterByType(data, "post", now),
+          page: filterByType(data, "page", now),
         };
         dispatch({
           type: FETCH_CATEGORY_POSTS,
@@ -88,6 +90,13 @@ export const fetchCategoryPosts = (slug: string) => (
           error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
         });
       }
+    })
+    .catch(() => {
+      dispatch({
+        type: FETCH_CATEGORY_POSTS,
+        state: "fail",
+        error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
+      });
     });
 };
 
