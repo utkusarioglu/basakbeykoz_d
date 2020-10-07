@@ -24,8 +24,10 @@ type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
 function NavItem(props: Props) {
+  const { REACT_APP_HOME_SLUG } = process.env;
   const { item, refs, setDisplaying } = props;
   const cleanSlug = !!item.slug ? item.slug : "";
+  const clickSlug = cleanSlug || (REACT_APP_HOME_SLUG as string);
 
   const setDisplayingAction = (slug: string) => {
     setDisplaying({
@@ -41,7 +43,7 @@ function NavItem(props: Props) {
       to={"/" + cleanSlug}
       className="Nav-item"
       activeClassName="Nav-item-active"
-      onClick={() => setDisplayingAction(cleanSlug)}
+      onClick={() => setDisplayingAction(clickSlug)}
     >
       {item.title}
     </NavLink>
