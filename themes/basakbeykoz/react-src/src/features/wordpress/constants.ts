@@ -1,0 +1,4 @@
+export const enum ERROR_CODES {
+  NO_MATCH_SINGULAR,
+  MULTIPLE_MATCHES_SINGULAR,
+}

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { RootState } from "../../store/rootReducer";
 import { fetchSingular } from "../wordpress/singularActions";
 import { setFetching, setDisplaying } from "../app/appActions";
 import stateMap from "../../store/@types-state";
-import { singularTypes, wpSingularItem } from "../wordpress/@types-wp";
+import { WpSingularTypes, TimestampedSingular } from "../wordpress/@types-wp";
 import OverlayScrollbars from "overlayscrollbars";
 import BodyView from "../../components/body/BodyView";
 //@ts-ignore
@@ -13,7 +13,9 @@ import pauseable from "pauseable";
 
 const mapState = (state: RootState) => ({
   singular: state.singular,
-  isDisplaying: state.app.isDisplaying,
+  isDisplayingStatus: state.app.isDisplaying.status,
+  isDisplayingSlug: state.app.isDisplaying.slug,
+  isDisplayingActive: state.app.isDisplaying.active,
   isFetching: state.app.isFetching,
   refs: state.app.refs,
 });
@@ -29,92 +31,109 @@ type DispatchProps = typeof mapDispatch;
 type StateProps = ReturnType<typeof mapState>;
 type Props = DispatchProps & StateProps & OwnProps;
 
-function findBySlug(
-  singular: stateMap["singular"],
-  slug: string
-): wpSingularItem | undefined {
-  return Object.values(singular)
-    .map((archive: stateMap["singular"][singularTypes]) => {
-      return archive.items[slug] ? archive.items[slug].data : undefined;
-    })
-    .filter((data: wpSingularItem | undefined) => {
-      return data !== undefined;
-    })[0];
-}
-
-function Body(props: Props): React.FunctionComponentElement<Props> {
-  const url_slug = useParams<{ slug: string }>().slug || "home";
+function Body(props: Props) {
+  const { REACT_APP_HOME_SLUG } = process.env;
+  const paramSlug = useParams<{ slug: string }>().slug || REACT_APP_HOME_SLUG;
   const {
     refs,
     setFetching,
     setDisplaying,
     fetchSingular,
-    isDisplaying,
+    isDisplayingSlug,
+    isDisplayingActive,
+    isDisplayingStatus,
     singular,
   } = props;
 
-  const slug = isDisplaying.slug;
-  if (url_slug !== slug) {
+  if (paramSlug !== isDisplayingSlug) {
     setDisplaying({
-      slug: url_slug,
+      slug: paramSlug,
     });
   }
-
-  const {
-    slug: activeSlug,
-    title,
-    content,
-    thumbnail,
-    type,
-  } = isDisplaying.active;
-
-  const item = findBySlug(singular, slug);
+  const timestampedSingular = findBySlug(singular, isDisplayingSlug);
 
   useEffect(() => {
-    if (item === undefined) {
+    const anHourAgo = Date.now() - 1000 * 60;
+    if (
+      timestampedSingular === undefined ||
+      (timestampedSingular.data.state === "success" &&
+        timestampedSingular.loadTime < anHourAgo)
+    ) {
       setFetching(true);
       if (process.env.NODE_ENV === "development") {
         setTimeout(() => {
-          fetchSingular(slug);
-        }, 300);
+          fetchSingular(isDisplayingSlug);
+        }, 1000);
       } else {
-        fetchSingular(slug);
+        fetchSingular(isDisplayingSlug);
       }
     } else {
-      setDisplaying({
-        active: {
-          slug: item.slug,
-          title: item.title,
-          type: item.type,
-          content: item.content,
-          thumbnail: item.thumbnail,
-        },
-      });
+      if (timestampedSingular.data.state === "success") {
+        const {
+          slug,
+          title,
+          type,
+          content,
+          thumbnail,
+        } = timestampedSingular.data;
+        setDisplaying({
+          status: 200,
+          active: {
+            slug,
+            title,
+            type,
+            content,
+            thumbnail,
+          },
+        });
+      } else {
+        setDisplaying({
+          status: 404,
+          slug: timestampedSingular.data.slug,
+        });
+      }
       setFetching(false);
     }
-  }, [item, slug, fetchSingular, setFetching, setDisplaying]);
+  }, [
+    timestampedSingular,
+    isDisplayingSlug,
+    fetchSingular,
+    setFetching,
+    setDisplaying,
+  ]);
 
-  const slugSpecificFunction = getSlugSpecificAction(slug, refs);
+  if (isDisplayingStatus === 404) {
+    setFetching(false);
+    return <Redirect to="/404" />;
+  }
 
   return (
     <BodyView
-      slug={activeSlug}
-      title={title}
-      type={type}
-      content={content}
-      thumbnail={thumbnail}
-      slugSpecificFunction={slugSpecificFunction}
+      {...isDisplayingActive}
+      onLoad={getSlugSpecificAction(isDisplayingSlug, refs)}
     />
   );
+}
+
+function findBySlug(
+  singular: stateMap["singular"],
+  slug: string
+): TimestampedSingular | undefined {
+  return Object.values(singular)
+    .map((archive: stateMap["singular"][WpSingularTypes]) => {
+      return archive.items[slug];
+    })
+    .filter((singular: TimestampedSingular | undefined) => {
+      return singular !== undefined;
+    })[0];
 }
 
 function getSlugSpecificAction(
   slug: string,
   refs: RootState["app"]["refs"]
 ): () => void {
-  const homeSlug = process.env.REACT_APP_HOME_SLUG as string;
   switch (slug) {
-    case homeSlug:
+    case process.env.REACT_APP_HOME_SLUG as string:
       return () => {
         setTimeout(() => {
           const fields = document.querySelectorAll(".wp-block-latest-posts");
@@ -137,7 +156,7 @@ function getSlugSpecificAction(
                   "easeOutExpo"
                 );
             });
-        }, 100);
+        }, 2000);
       };
 
     default:
@@ -159,7 +178,6 @@ function attachLlistActions(elem: HTMLElement): void {
   const childrenCount = children.length;
   let currentChild = 1;
   const animation = pauseable.setInterval(() => {
-    // if(false)
     scrollbarRef.scroll(
       {
         el: children[currentChild] as HTMLElement,
@@ -181,7 +199,6 @@ function attachLlistActions(elem: HTMLElement): void {
   target.addEventListener("mouseleave", () => {
     animation.resume();
   });
-  // scrollbarRef.update();
 }
 
 export default connect<StateProps, DispatchProps, OwnProps>(

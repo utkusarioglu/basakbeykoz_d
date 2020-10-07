@@ -1,41 +1,63 @@
 import { DispatchMethod } from "../../common/@types-actions";
+import { FETCH_SINGULAR, FETCH_CATEGORY_POSTS } from "../../common/types";
 import {
-  FETCH_SINGULAR,
-  FETCH_CATEGORY_POSTS,
-  FETCH_PAGE,
-} from "../../common/types";
-import { wpSingularItem, PartialSingularDispatch } from "./@types-wp";
+  wpSingularItemSuccess,
+  PartialSingularDispatch,
+  wpSingularArchiveItem,
+} from "./@types-wp";
 import { filterByType } from "./mergers";
+import rest from "../../services/rest";
 
 const { REACT_APP_REST_ENDPOINT } = process.env;
 
 export const fetchSingular = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
 ) => {
-  fetch(REACT_APP_REST_ENDPOINT + "/customrest/v1/singular_slug/" + slug)
-    .then((data) => data.json())
-    .then((singular_item: wpSingularItem) => {
-      if (singular_item) {
-        // !TODO you need a better success test here
+  if (slug === "") {
+    console.warn("empty slug");
+  }
+  return rest
+    .request<wpSingularArchiveItem>({
+      method: "get",
+      url: "/customrest/v1/singular_slug/" + slug,
+    })
+    .then(({ data }) => {
+      if (data.state === "success") {
         dispatch({
           type: FETCH_SINGULAR,
           state: "success",
           payload: {
-            [singular_item.type]: {
-              [singular_item.slug]: {
+            [data.type]: {
+              [data.slug]: {
                 loadTime: Date.now(),
-                data: singular_item,
+                data: data,
               },
             },
           },
         });
       } else {
-        dispatch({
-          type: FETCH_SINGULAR,
-          state: "fail",
-          error: "json is booboo",
+        data.types.forEach((type) => {
+          dispatch({
+            type: FETCH_SINGULAR,
+            state: "success",
+            payload: {
+              [type]: {
+                [data.slug]: {
+                  loadTime: Date.now(),
+                  data: data,
+                },
+              },
+            },
+          });
         });
       }
+    })
+    .catch((data) => {
+      dispatch({
+        type: FETCH_SINGULAR,
+        state: "fail",
+        error: "REST_REQUEST_FAIL",
+      });
     });
 };
 
@@ -44,7 +66,7 @@ export const fetchCategoryPosts = (slug: string) => (
 ) => {
   fetch(REACT_APP_REST_ENDPOINT + "/customrest/v1/category_posts_slug/" + slug)
     .then((data) => data.json())
-    .then((category_posts: wpSingularItem[]) => {
+    .then((category_posts: wpSingularItemSuccess[]) => {
       if (category_posts) {
         // !TODO you need a better success test here
         const now = Date.now();
@@ -68,33 +90,68 @@ export const fetchCategoryPosts = (slug: string) => (
     });
 };
 
-export const fetchPage = (slug: string) => (
-  dispatch: DispatchMethod<PartialSingularDispatch>
-) => {
-  fetch(REACT_APP_REST_ENDPOINT + "/wp/v2/pages/?slug=" + slug)
-    .then((data) => data.json())
-    .then((items: wpSingularItem[]) => {
-      if (items) {
-        // !TODO you need a better success test here
-        const singular_item = items[0];
-        dispatch({
-          type: FETCH_PAGE,
-          state: "success",
-          payload: {
-            [singular_item.type]: {
-              [singular_item.slug]: {
-                loadTime: Date.now(),
-                data: singular_item,
-              },
-            },
-          },
-        });
-      } else {
-        dispatch({
-          type: FETCH_PAGE,
-          state: "fail",
-          error: "json is booboo",
-        });
-      }
-    });
-};
+// export const fetchPage = (slug: string) => (
+//   dispatch: DispatchMethod<PartialSingularDispatch>
+// ) => {
+//   console.log("run page");
+//   return rest
+//     .request({
+//       method: "get",
+//       url: "/wp/v2/pages",
+//       params: {
+//         slug,
+//       },
+//     })
+//     .then(({ data }) => {
+//       dispatch({
+//         type: FETCH_PAGE,
+//         state: "success",
+//         payload: {
+//           [data.type]: {
+//             [data.slug]: {
+//               loadTime: Date.now(),
+//               data: data,
+//             },
+//           },
+//         },
+//       });
+//     })
+//     .catch(() => {
+//       console.log("error");
+//       dispatch({
+//         type: FETCH_PAGE,
+//         state: "fail",
+//         error: "json is booboo",
+//       });
+//     });
+// };
+// export const fetchPage = (slug: string) => (
+//   dispatch: DispatchMethod<PartialSingularDispatch>
+// ) => {
+//   fetch(REACT_APP_REST_ENDPOINT + "/wp/v2/pages/?slug=" + slug)
+//     .then((data) => data.json())
+//     .then((items: wpSingularItem[]) => {
+//       if (items) {
+//         // !TODO you need a better success test here
+//         const singular_item = items[0];
+//         dispatch({
+//           type: FETCH_PAGE,
+//           state: "success",
+//           payload: {
+//             [singular_item.type]: {
+//               [singular_item.slug]: {
+//                 loadTime: Date.now(),
+//                 data: singular_item,
+//               },
+//             },
+//           },
+//         });
+//       } else {
+//         dispatch({
+//           type: FETCH_PAGE,
+//           state: "fail",
+//           error: "json is booboo",
+//         });
+//       }
+//     });
+// };
