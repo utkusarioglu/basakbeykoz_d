@@ -1,0 +1,31 @@
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
+
+.BurgerMenu {
+  grid-area: nav;
+  display: flex;
+
+  &-burgerButton {
+    background-color: #{map-get($colorMap, ui-white)};
+    color: #{map-get($colorMap, text-dark)};
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: #{$gap + $socialIconMinSize_px};
+    cursor: pointer;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    & > img {
+      @include headerIcon();
+      filter: var(--filter-darkGray);
+    }
+  }
+
+  @include narrowScreen() {
+    display: none;
+  }
+}

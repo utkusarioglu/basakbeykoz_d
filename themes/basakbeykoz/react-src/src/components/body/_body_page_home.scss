@@ -1,564 +1,578 @@
-@import "../../common/_vars";
-@import "../../common/_mixins";
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
 @import "./_wpPosts";
 $navSocialSpaceX: map-get($wide, navSocialSpaceX);
 $minBlockHeight: map-get($short, minBlockHeight);
-$minMobileBlockGroupHeight: #{unquote("max(calc(100vh - #{$gap*2} - #{$mobileNavigationHeight}), #{$minBlockHeight})")};
-$minNarrowBlockGroupHeight: #{unquote("max(calc(100vh - #{$gap*2}), #{$minBlockHeight})")};
+$minMobileBlockGroupHeight: #{unquote(
+    "max(calc(100vh - #{$gap*2} - #{$mobileNavigationHeight}), #{$minBlockHeight})"
+  )};
+$minNarrowBlockGroupHeight: #{unquote(
+    "max(calc(100vh - #{$gap*2}), #{$minBlockHeight})"
+  )};
 $standardGroupInnerblockPadding: 100px;
 .Canvas {
-    &.page {
-        &.home {
-            padding-bottom: 0;
-            @include narrowScreen() {
-                display: block; 
-                .Canvas-articleTitle {
-                    display: none;
-                }
-            }
-            & .Canvas-decor {
-                display: none;
-            }
-            & > article {
-                padding: 0;
-                & > .wp-block-group {
-                    box-sizing: border-box;
-                    padding: #{$gap};
-                    min-height: #{$minMobileBlockGroupHeight};
-                    overflow: hidden;
-                    position: relative;
-                    @include wideScreen() {
-                        height: 100vh;
-                    }
-                    & > .wp-block-group__inner-container {
-                        min-height: #{$minMobileBlockGroupHeight};
-                        height: 100%;
-                        display: grid;
-                        box-sizing: border-box;
-                        padding-bottom: #{$mobileNavigationHeight};
-                        @include wideScreen() {
-                            padding-bottom: 0;
-                        }
-                        & > p {
-                            margin-bottom: 0;
-                        }
-                    }
-                    &:first-child {
-                        $logoNSocialY: map-get($narrow, logoNSocialY);
-                        $homeWelcomeImageX: map-get($narrow, homeWelcomeImageX);
-                        $figureHeight: map-get($mobile, figureHeight);
-                        
-                        background-color: transparent;
-                        padding-top: #{$gap/2};
-                        @include smallScreen() {
-                            padding-top: #{$gap};
-                        }
-                        .wp-block-group__inner-container {
-                            $figureDent: $logoNSocialY + 4*$gap;
-                            grid-template-areas: 
-                                "logo"
-                                "cover"
-                                "Heading-h1"
-                                "paragraph";
-                            grid-template-rows: #{$logoNSocialY} 1fr min-content min-content;
-                            grid-row-gap: #{$gap/2};
-                            @include mediumTallScreen() {
-                                grid-row-gap: #{$gap};
-                            }
-                            @include narrowScreen() {
-                                grid-template-areas: 
-                                    ". logo         ."
-                                    ". Heading-h1   ."
-                                    ". paragraph    ."
-                                    ". buttons      .";
-                                grid-template-columns: #{$homeWelcomeImageX} 1fr;
-                                grid-template-rows: #{$logoNSocialY} 1fr 1fr #{$logoNSocialY};
-                                grid-row-gap: #{$gap};
-                                height: 100%;
-                            }
-                            @include wideScreen() {
-                                $navSocialSpaceX: map-get($wide, navSocialSpaceX);
-                                grid-template-columns: #{$homeWelcomeImageX} 1fr #{$navSocialSpaceX};
-                                grid-column-gap: #{adjustSize(0, 70, map-get($screenSizes, wide), 1920)};
-                            }
-                            .wp-block-cover {
-                                margin-left: #{-$gap};
-                                margin-right: #{-$gap};
-                                background-size: cover;
-                                @include narrowScreen() {
-                                    position: absolute;
-                                    margin-left: 0;
-                                    margin-right: 0;
-                                    top: #{-$gap};
-                                    left: #{-$gap};
-                                    right: #{-$gap};
-                                    z-index: -1;
-                                    right: auto;
-                                    bottom: #{-$gap};
-                                    width: $homeWelcomeImageX; 
-                                    height: auto;
-                                    z-index: 91;
-                                }
-                            }
-                        }
-                        figure {
-                            margin: 0;
-                            grid-area: logo;
-                            width: 100%;
-                            height: 100%;
-                            justify-items: center;
-                            display: grid;
-                            @include narrowScreen() {
-                                justify-self: start;
-                                width: fit-content;
-                            }
-                            & > img {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-                        h1 {
-                            margin-left: #{-$gap/2};
-                            margin-right: #{-$gap/2};
-                            align-self: end;
-                            justify-self: center;
-                            color: #{map-get($colorMap, text-mediumDark)};
-                            @include narrowScreen() {
-                                justify-self: start;
-                                margin-left: 0;
-                                margin-right: 0;
-                            }
-                        }
-                        .wp-block-buttons {
-                            display: none;
-                            grid-area: buttons;
-                            width: 100%;
-                            margin-right: #{$gap/2};
-                            margin-left: #{-$gap/2};
-                            .wp-block-button {
-                                @include buttonText();
-                                background-color:  #{map-get($colorMap, ui-yellow)};
-                                color: #{map-get($colorMap, text-dark)};
-                                padding: #{$gap/2};
-                                border-radius: #{$gap/2};
-                                width: 100%;
-                                &:hover {
-                                    background-color: #{map-get($colorMap, ui-darkBlue)};
-                                    color: #{map-get($colorMap, text-light)};
-                                    cursor: pointer;
-                                }
-                            }
-                            @include narrowScreen() {
-                                display: block;
-                            }
-                        }
-                    }
-                    &:not(:first-child) {
-                        & > .wp-block-group__inner-container {
-                            @include narrowScreen() {
-                                align-content: center;
-                                grid-row-gap: #{$gap};
-                                grid-column-gap: #{2* $gap};
-                            }
-                            @include wideScreen() {
-                                $wideScreenSize: map-get($screenSizes, wide);
-                                $maxPadding: 350;
-                                $padding: adjustSize(144, $maxPadding, $wideScreenSize);
-                                grid-column-gap: #{adjustSize(2* ($gap)/1px, 100, $wideScreenSize, 1920)};
-                                padding-left: #{$padding};
-                                padding-right: #{$padding};
-                            }
-                        }
-                        
-                        h2 {
-                            text-align: center;
-                        }
-                        .wp-block-cover {
-                            display: block;
-                            grid-area: image;
-                            height: 100%;
-                            width: 100%;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            position: relative;
-                            border-radius: #{$gap/2};
-                            @mixin frame-common {
-                                content: "";
-                                position: absolute;
-                            }
-                            $narrow-frame: calc(100% - #{$gap});
-                            $wide-frame: calc(100% + #{$gap});
-                            $extrude: calc(#{$gap} / 2 * -1);
-                            $bevel: calc(#{$gap} /2);
-                            &:before {
-                                @include frame-common;
-                                width: $wide-frame;
-                                height: $narrow-frame;
-                                top: $bevel;
-                                left: $extrude;
-                                border-radius: #{$gap/2};
-                            }
-                            &:after {
-                                @include frame-common;
-                                width: $narrow-frame;
-                                height: $wide-frame;
-                                top: $extrude;
-                                left: $bevel;
-                                border-radius: #{$gap/2};
-                            }
-                        }
-                    }
-                    &:nth-child(2) {
-                        .wp-block-group__inner-container {
-                            grid-template-areas: 
-                                "Heading-h2"
-                                "image"
-                                "paragraph";
-                            grid-template-rows: max-content auto min-content;
-                            grid-row-gap: #{$gap};
-                            padding-top: 20px;
-                            @include mediumTallScreen() {
-                                grid-row-gap: #{2* $gap};
-                            }
-                            @include narrowScreen() {
-                                grid-template-areas:
-                                    "Heading-h2 image"
-                                    "paragraph image";
-                                padding-top: #{$standardGroupInnerblockPadding};
-                                padding-bottom: #{$standardGroupInnerblockPadding};
-                                grid-template-columns: 2fr 1fr;
-                                grid-template-rows: max-content 200px;
-                            }
-                            @include wideScreen() {
-                                grid-row-gap: 5vw;
-                            }
-                            h2 {
-                                position: relative;
-                                width: max-content;
-                                justify-self: center;
-                                @include narrowScreen() {
-                                    justify-self: start;
-                                    text-align: left;
-                                }
-                                &:before {
-                                    $h2fontSize: map-get(map-get($fonts, h2), line-height);
-                                    $parrotSize: 60px;
-                                    @include svgArt("parrot.svg", $parrotSize, $parrotSize);
-                                    bottom: auto;
-                                    left: -20px;
-                                    top: calc(-1 * #{$h2fontSize});
-                                    transform: none;
-                                    width: #{$parrotSize};
-                                }
-                            }
-                        }
-                    }
-                    &:nth-child(3) {
-                        & > .wp-block-group__inner-container {
-                            grid-template-areas: 
-                                "Heading-h2"
-                                "image"
-                                "paragraph"
-                                "restart";
-                            grid-template-rows: max-content auto min-content min-content;
-                            grid-row-gap: #{$gap};
-                            @include mediumTallScreen() {
-                                grid-row-gap: #{1.5* $gap};
-                            }
-                            @include narrowScreen() {
-                                grid-template-areas:
-                                    "image Heading-h2"
-                                    "image paragraph"
-                                    "image restart";
-                                padding-top: #{$standardGroupInnerblockPadding};
-                                padding-bottom: #{$standardGroupInnerblockPadding};
-                                grid-template-columns: 1fr 2fr;
-                                grid-template-rows: max-content 200px;
-                            }
-                            & > h2 {
-                                @include narrowScreen() {
-                                    align-self: end;
-                                    text-align: left;
-                                }
-                            }
-                            & > .wp-block-group {
-                                grid-area: restart;
-                                padding: #{$gap/ 2};
-                                background-color: #{map-get($colorMap, bg-white)};
-                                & > .wp-block-group__inner-container {
-                                    figure {
-                                        margin: 0;
-                                        & > img {
-                                            display: block;
-                                            margin: 0 auto;
-                                            height: 50px;
-                                            width: auto;
-                                            @include mediumTallScreen() {
-                                                height: 70px;
-                                            }
-                                        }
-                                        figcaption {
-                                            display: none;
-                                        }
-                                    }
-                                    p {
-                                        color: #{map-get($colorMap, text-dark)};
-                                        margin:0;
-                                    }
-                                    grid-template-areas: 
-                                        "Heading-h3"
-                                        "paragraph";
-                                    grid-template-rows: min-content min-content;
-                                }
-                            }
-                        }
-                        &:after {
-                            $width: 100vw;
-                            $height: calc(100vw/4);
-                            @include svgArt(
-                                "city.svg", 
-                                $width,
-                                $height,
-                                $mobileNavigationHeight,
-                                #{$standardGroupInnerblockPadding},
-                            );
-                        }
-                    }
-                    &:nth-child(4) {
-                        .wp-block-group__inner-container {
-                            @include wpPosts(posts, row);
-                            grid-template-areas: 
-                                "Heading-h2"
-                                "posts"
-                                "paragraph";
-                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} auto max-content;
-                            grid-row-gap: #{$gap/2};
-                            @include mediumTallScreen() {
-                                grid-row-gap: #{$gap};
-                            }
-                            @include narrowScreen() {
-                                $narrowScreenSpacing: 100px;
-                                grid-template-areas:
-                                    "Heading-h2 .    " 
-                                    "Heading-h2 posts"
-                                    "paragraph  posts"
-                                    "paragraph  .    ";
-                                grid-template-rows: #{$narrowScreenSpacing} 1fr 1fr #{$narrowScreenSpacing};
-                                grid-template-columns: 1fr 1fr;
-                                justify-content: center;
-                            }
-                            h2 {
-                                @include narrowScreen() {
-                                    align-self: end;
-                                    text-align: left;
-                                }
-                            }
-                            p {
-                                margin: 0;
-                            }
-                            & > .wp-block-latest-posts {
-                                margin-left: #{-$gap} !important;
-                                width: 100vw;
-                                @include narrowScreen() {
-                                    width: 100%;
-                                    max-width: 100%;
-                                    min-width: 100%;
-                                    overflow: hidden;
-                                    margin: 0 !important;
-                                }
-                            }
-                        }
-                        &:after {
-                            $width: 100vw;
-                            $height: calc(100vw/5);
-                            @include svgArt(
-                                "conversation.svg", 
-                                $width,
-                                $height,
-                                $mobileNavigationHeight,
-                                130px,
-                            );
-                        }
-                    }
-                    &:nth-child(5) {
-                        .wp-block-group__inner-container {
-                            @include wpPosts(success, column, map-get($colorMap, bg-blue));
-                            grid-template-areas: 
-                                "Heading-h2"
-                                "posts";
-                            grid-row-gap: #{$gap/2};
-                            grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
-                            align-content: stretch;
-                            @include mediumTallScreen() {
-                                grid-row-gap: #{$gap};
-                            }
-                            @include narrowScreen() {
-                                $logoNSocialY: map-get($narrow, logoNSocialY);
-                                grid-template-rows: #{$logoNSocialY} 1fr #{$standardGroupInnerblockPadding};
-                            }
-                            h2 {
-                                align-self: center;
-                            }
-                            & > .wp-block-latest-posts {
-                                margin-left: #{-$gap} !important;
-                                width: 100vw;
-                                @include narrowScreen() {
-                                    width: 100%;
-                                    max-width: 100%;
-                                    min-width: 100%;
-                                    overflow: hidden;
-                                    margin: 0 !important;
-                                }
-                            }
-                        }
-                        &:after {
-                            $cityWidth: 100vw;
-                            $height: calc(100vw/4);
-                            @include svgArt(
-                                "success.svg", 
-                                $cityWidth,
-                                $height,
-                                $mobileNavigationHeight,
-                                130px,
-                            );
-                        }
-                    }
-                    &:nth-child(6) {
-                        & > .wp-block-group__inner-container {
-                            grid-template-rows: min-content min-content min-content;
-                            grid-template-areas: 
-                                "Heading-h2"
-                                "feature" 
-                                "paragraph";
-                            grid-row-gap: #{$gap};
-                            
-                            @include mediumTallScreen() {
-                                grid-row-gap: #{$gap};
-                            }
-                            @include narrowScreen() {
-                                $logoNSocialY: map-get($narrow, logoNSocialY);
-                                grid-template-rows: #{$logoNSocialY} 1fr;
-                            }
-                            & > h2 {
-                                align-self: center;
-                            }
-                            & > p {
-                                display: none;
-                                margin: 0;
-                            }
-                        }
-                        & .wpcf7 {
-                            grid-area: feature;
-                            display: grid;
-                            grid-template-areas: 
-                                "."
-                                "wpcf7-form"
-                                "screen-reader-response";
-                            grid-template-rows: 1fr min-content 1fr;
-                            & .screen-reader-response {
-                                grid-area: screen-reader-response;
-                            }
-                            & .wpcf7-form {
-                                grid-area: wpcf7-form;
-                                & .ContactForm {
-                                    &-userInput {
-                                        display: grid;
-                                        grid-template-areas: 
-                                            "contactform_left"
-                                            "contactform_right"
-                                            "contactform_submit";
-                                        @include narrowScreen() {
-                                            grid-template-areas: 
-                                                "contactform_left contactform_right"
-                                                "contactform_submit contactform_submit";
-                                            grid-template-columns: 1fr 1fr;
-                                            grid-column-gap: #{2* $gap};
-                                            grid-row-gap: #{$gap};
-                                        }
-                                        & br {
-                                            display: none;
-                                        }
-                                        &-submit {
-                                            grid-area: contactform_submit;
-                                            & .wpcf7-submit {
-                                                @include buttonText();  
-                                                width: 100%;
-                                                padding: #{$gap / 2};
-                                                border: none;
-                                                background-color:  #{map-get($colorMap, ui-yellow)};
-                                                color: #{map-get($colorMap, text-dark)};
-                                                border-radius: #{$gap/2};
-                                                &:hover {
-                                                    background-color: #{map-get($colorMap, ui-darkBlue)};
-                                                    color: #{map-get($colorMap, text-light)};
-                                                    cursor: pointer;
-                                                }
-                                            }
-                                        }
-                                        &-left {
-                                            grid-area: contactform_left;
-                                        }
-                                        &-right {
-                                            grid-area: contactform_right;
-                                            & > p:nth-child(2) {
-                                                margin-bottom: 0;
-                                            }
-                                            & > p:nth-child(3) {
-                                                height: 100%;
-                                                margin-bottom: 0;
-                                                label {
-                                                    height:100%;
-                                                }
-                                            }
-                                        }
-                                        &-left,
-                                        &-right {
-                                            & label {
-                                                @include p();
-                                                color: #{map-get($colorMap, text-dark)};
-                                                display: block;
-                                                margin-bottom: #{$gap /2};
-                                                input,
-                                                textarea {
-                                                    margin-top: #{$gap / 4}
-                                                }
-                                            }
-                                            & .wpcf7-text,
-                                            & .wpcf7-textarea {
-                                                box-sizing:border-box;
-                                                border: none;
-                                                background-color: #{map-get($colorMap, bg-white)};
-                                                width: 100%;
-                                                padding: #{$gap / 2};
-                                                font-family: #{$textFont};
-                                                font-weight: #{$textFontWeight};
-                                                border-radius: #{$gap/2};
-                                                &:focus {
-                                                    outline: none;
-                                                    background-color: #{map-get($colorMap, bg-yellow)};
-                                                }
-                                            }
-                                            & .wpcf7-textarea {
-                                                resize: none;
-                                                height: 150px;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    &:last-child {
-                        & > .wp-block-group__inner-container {
-                            padding-bottom: calc(#{$standardGroupInnerblockPadding} + 15vh);
-                            @include narrowScreen() {
-                                padding-bottom: #{$standardGroupInnerblockPadding};
-                            }
-                        }
-                    }
-                } 
-            }
+  &.page {
+    &.home {
+      padding-bottom: 0;
+      @include narrowScreen() {
+        display: block;
+        .Canvas-articleTitle {
+          display: none;
         }
+      }
+      & .Canvas-decor {
+        display: none;
+      }
+      & > article {
+        padding: 0;
+        & > .wp-block-group {
+          box-sizing: border-box;
+          padding: #{$gap};
+          min-height: #{$minMobileBlockGroupHeight};
+          overflow: hidden;
+          position: relative;
+          @include wideScreen() {
+            height: 100vh;
+          }
+          & > .wp-block-group__inner-container {
+            min-height: #{$minMobileBlockGroupHeight};
+            height: 100%;
+            display: grid;
+            box-sizing: border-box;
+            padding-bottom: #{$mobileNavigationHeight};
+            @include wideScreen() {
+              padding-bottom: 0;
+            }
+            & > p {
+              margin-bottom: 0;
+            }
+          }
+          &:first-child {
+            $logoNSocialY: map-get($narrow, logoNSocialY);
+            $homeWelcomeImageX: map-get($narrow, homeWelcomeImageX);
+            $figureHeight: map-get($mobile, figureHeight);
+
+            background-color: transparent;
+            padding-top: #{$gap/2};
+            @include smallScreen() {
+              padding-top: #{$gap};
+            }
+            .wp-block-group__inner-container {
+              $figureDent: $logoNSocialY + 4 * $gap;
+              grid-template-areas:
+                "logo"
+                "cover"
+                "Heading-h1"
+                "paragraph";
+              grid-template-rows: #{$logoNSocialY} 1fr min-content min-content;
+              grid-row-gap: #{$gap/2};
+              @include mediumTallScreen() {
+                grid-row-gap: #{$gap};
+              }
+              @include narrowScreen() {
+                grid-template-areas:
+                  ". logo         ."
+                  ". Heading-h1   ."
+                  ". paragraph    ."
+                  ". buttons      .";
+                grid-template-columns: #{$homeWelcomeImageX} 1fr;
+                grid-template-rows: #{$logoNSocialY} 1fr 1fr #{$logoNSocialY};
+                grid-row-gap: #{$gap};
+                height: 100%;
+              }
+              @include wideScreen() {
+                $navSocialSpaceX: map-get($wide, navSocialSpaceX);
+                grid-template-columns: #{$homeWelcomeImageX} 1fr #{$navSocialSpaceX};
+                grid-column-gap: #{adjustSize(
+                    0,
+                    70,
+                    map-get($screenSizes, wide),
+                    1920
+                  )};
+              }
+              .wp-block-cover {
+                margin-left: #{-$gap};
+                margin-right: #{-$gap};
+                background-size: cover;
+                @include narrowScreen() {
+                  position: absolute;
+                  margin-left: 0;
+                  margin-right: 0;
+                  top: #{-$gap};
+                  left: #{-$gap};
+                  right: #{-$gap};
+                  z-index: -1;
+                  right: auto;
+                  bottom: #{-$gap};
+                  width: $homeWelcomeImageX;
+                  height: auto;
+                  z-index: 91;
+                }
+              }
+            }
+            figure {
+              margin: 0;
+              grid-area: logo;
+              width: 100%;
+              height: 100%;
+              justify-items: center;
+              display: grid;
+              @include narrowScreen() {
+                justify-self: start;
+                width: fit-content;
+              }
+              & > img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            h1 {
+              margin-left: #{-$gap/2};
+              margin-right: #{-$gap/2};
+              align-self: end;
+              justify-self: center;
+              color: #{map-get($colorMap, text-mediumDark)};
+              @include narrowScreen() {
+                justify-self: start;
+                margin-left: 0;
+                margin-right: 0;
+              }
+            }
+            .wp-block-buttons {
+              display: none;
+              grid-area: buttons;
+              width: 100%;
+              margin-right: #{$gap/2};
+              margin-left: #{-$gap/2};
+              .wp-block-button {
+                @include buttonText();
+                background-color: #{map-get($colorMap, ui-yellow)};
+                color: #{map-get($colorMap, text-dark)};
+                padding: #{$gap/2};
+                border-radius: #{$gap/2};
+                width: 100%;
+                &:hover {
+                  background-color: #{map-get($colorMap, ui-darkBlue)};
+                  color: #{map-get($colorMap, text-light)};
+                  cursor: pointer;
+                }
+              }
+              @include narrowScreen() {
+                display: block;
+              }
+            }
+          }
+          &:not(:first-child) {
+            & > .wp-block-group__inner-container {
+              @include narrowScreen() {
+                align-content: center;
+                grid-row-gap: #{$gap};
+                grid-column-gap: #{2 * $gap};
+              }
+              @include wideScreen() {
+                $wideScreenSize: map-get($screenSizes, wide);
+                $maxPadding: 350;
+                $padding: adjustSize(144, $maxPadding, $wideScreenSize);
+                grid-column-gap: #{adjustSize(
+                    2 * ($gap)/1px,
+                    100,
+                    $wideScreenSize,
+                    1920
+                  )};
+                padding-left: #{$padding};
+                padding-right: #{$padding};
+              }
+            }
+
+            h2 {
+              text-align: center;
+            }
+            .wp-block-cover {
+              display: block;
+              grid-area: image;
+              height: 100%;
+              width: 100%;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              position: relative;
+              border-radius: #{$gap/2};
+              @mixin frame-common {
+                content: "";
+                position: absolute;
+              }
+              $narrow-frame: calc(100% - #{$gap});
+              $wide-frame: calc(100% + #{$gap});
+              $extrude: calc(#{$gap} / 2 * -1);
+              $bevel: calc(#{$gap} / 2);
+              &:before {
+                @include frame-common;
+                width: $wide-frame;
+                height: $narrow-frame;
+                top: $bevel;
+                left: $extrude;
+                border-radius: #{$gap/2};
+              }
+              &:after {
+                @include frame-common;
+                width: $narrow-frame;
+                height: $wide-frame;
+                top: $extrude;
+                left: $bevel;
+                border-radius: #{$gap/2};
+              }
+            }
+          }
+          &:nth-child(2) {
+            .wp-block-group__inner-container {
+              grid-template-areas:
+                "Heading-h2"
+                "image"
+                "paragraph";
+              grid-template-rows: max-content auto min-content;
+              grid-row-gap: #{$gap};
+              padding-top: 20px;
+              @include mediumTallScreen() {
+                grid-row-gap: #{2 * $gap};
+              }
+              @include narrowScreen() {
+                grid-template-areas:
+                  "Heading-h2 image"
+                  "paragraph image";
+                padding-top: #{$standardGroupInnerblockPadding};
+                padding-bottom: #{$standardGroupInnerblockPadding};
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: max-content 200px;
+              }
+              @include wideScreen() {
+                grid-row-gap: 5vw;
+              }
+              h2 {
+                position: relative;
+                width: max-content;
+                justify-self: center;
+                @include narrowScreen() {
+                  justify-self: start;
+                  text-align: left;
+                }
+                &:before {
+                  $h2fontSize: map-get(map-get($fonts, h2), line-height);
+                  $parrotSize: 60px;
+                  @include svgArt("parrot.svg", $parrotSize, $parrotSize);
+                  bottom: auto;
+                  left: -20px;
+                  top: calc(-1 * #{$h2fontSize});
+                  transform: none;
+                  width: #{$parrotSize};
+                }
+              }
+            }
+          }
+          &:nth-child(3) {
+            & > .wp-block-group__inner-container {
+              grid-template-areas:
+                "Heading-h2"
+                "image"
+                "paragraph"
+                "restart";
+              grid-template-rows: max-content auto min-content min-content;
+              grid-row-gap: #{$gap};
+              @include mediumTallScreen() {
+                grid-row-gap: #{1.5 * $gap};
+              }
+              @include narrowScreen() {
+                grid-template-areas:
+                  "image Heading-h2"
+                  "image paragraph"
+                  "image restart";
+                padding-top: #{$standardGroupInnerblockPadding};
+                padding-bottom: #{$standardGroupInnerblockPadding};
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: max-content 200px;
+              }
+              & > h2 {
+                @include narrowScreen() {
+                  align-self: end;
+                  text-align: left;
+                }
+              }
+              & > .wp-block-group {
+                grid-area: restart;
+                padding: #{$gap/ 2};
+                background-color: #{map-get($colorMap, bg-white)};
+                & > .wp-block-group__inner-container {
+                  figure {
+                    margin: 0;
+                    & > img {
+                      display: block;
+                      margin: 0 auto;
+                      height: 50px;
+                      width: auto;
+                      @include mediumTallScreen() {
+                        height: 70px;
+                      }
+                    }
+                    figcaption {
+                      display: none;
+                    }
+                  }
+                  p {
+                    color: #{map-get($colorMap, text-dark)};
+                    margin: 0;
+                  }
+                  grid-template-areas:
+                    "Heading-h3"
+                    "paragraph";
+                  grid-template-rows: min-content min-content;
+                }
+              }
+            }
+            &:after {
+              $width: 100vw;
+              $height: calc(100vw / 4);
+              @include svgArt(
+                "city.svg",
+                $width,
+                $height,
+                $mobileNavigationHeight,
+                #{$standardGroupInnerblockPadding}
+              );
+            }
+          }
+          &:nth-child(4) {
+            .wp-block-group__inner-container {
+              @include wpPosts(posts, row);
+              grid-template-areas:
+                "Heading-h2"
+                "posts"
+                "paragraph";
+              grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} auto max-content;
+              grid-row-gap: #{$gap/2};
+              @include mediumTallScreen() {
+                grid-row-gap: #{$gap};
+              }
+              @include narrowScreen() {
+                $narrowScreenSpacing: 100px;
+                grid-template-areas:
+                  "Heading-h2 .    "
+                  "Heading-h2 posts"
+                  "paragraph  posts"
+                  "paragraph  .    ";
+                grid-template-rows: #{$narrowScreenSpacing} 1fr 1fr #{$narrowScreenSpacing};
+                grid-template-columns: 1fr 1fr;
+                justify-content: center;
+              }
+              h2 {
+                @include narrowScreen() {
+                  align-self: end;
+                  text-align: left;
+                }
+              }
+              p {
+                margin: 0;
+              }
+              & > .wp-block-latest-posts {
+                margin-left: #{-$gap} !important;
+                width: 100vw;
+                @include narrowScreen() {
+                  width: 100%;
+                  max-width: 100%;
+                  min-width: 100%;
+                  overflow: hidden;
+                  margin: 0 !important;
+                }
+              }
+            }
+            &:after {
+              $width: 100vw;
+              $height: calc(100vw / 5);
+              @include svgArt(
+                "conversation.svg",
+                $width,
+                $height,
+                $mobileNavigationHeight,
+                130px
+              );
+            }
+          }
+          &:nth-child(5) {
+            .wp-block-group__inner-container {
+              @include wpPosts(success, column, map-get($colorMap, bg-blue));
+              grid-template-areas:
+                "Heading-h2"
+                "posts";
+              grid-row-gap: #{$gap/2};
+              grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
+              align-content: stretch;
+              @include mediumTallScreen() {
+                grid-row-gap: #{$gap};
+              }
+              @include narrowScreen() {
+                $logoNSocialY: map-get($narrow, logoNSocialY);
+                grid-template-rows: #{$logoNSocialY} 1fr #{$standardGroupInnerblockPadding};
+              }
+              h2 {
+                align-self: center;
+              }
+              & > .wp-block-latest-posts {
+                margin-left: #{-$gap} !important;
+                width: 100vw;
+                @include narrowScreen() {
+                  width: 100%;
+                  max-width: 100%;
+                  min-width: 100%;
+                  overflow: hidden;
+                  margin: 0 !important;
+                }
+              }
+            }
+            &:after {
+              $cityWidth: 100vw;
+              $height: calc(100vw / 4);
+              @include svgArt(
+                "success.svg",
+                $cityWidth,
+                $height,
+                $mobileNavigationHeight,
+                130px
+              );
+            }
+          }
+          &:nth-child(6) {
+            & > .wp-block-group__inner-container {
+              grid-template-rows: min-content min-content min-content;
+              grid-template-areas:
+                "Heading-h2"
+                "feature"
+                "paragraph";
+              grid-row-gap: #{$gap};
+
+              @include mediumTallScreen() {
+                grid-row-gap: #{$gap};
+              }
+              @include narrowScreen() {
+                $logoNSocialY: map-get($narrow, logoNSocialY);
+                grid-template-rows: #{$logoNSocialY} 1fr;
+              }
+              & > h2 {
+                align-self: center;
+              }
+              & > p {
+                display: none;
+                margin: 0;
+              }
+            }
+            & .wpcf7 {
+              grid-area: feature;
+              display: grid;
+              grid-template-areas:
+                "."
+                "wpcf7-form"
+                "screen-reader-response";
+              grid-template-rows: 1fr min-content 1fr;
+              & .screen-reader-response {
+                grid-area: screen-reader-response;
+              }
+              & .wpcf7-form {
+                grid-area: wpcf7-form;
+                & .ContactForm {
+                  &-userInput {
+                    display: grid;
+                    grid-template-areas:
+                      "contactform_left"
+                      "contactform_right"
+                      "contactform_submit";
+                    @include narrowScreen() {
+                      grid-template-areas:
+                        "contactform_left contactform_right"
+                        "contactform_submit contactform_submit";
+                      grid-template-columns: 1fr 1fr;
+                      grid-column-gap: #{2 * $gap};
+                      grid-row-gap: #{$gap};
+                    }
+                    & br {
+                      display: none;
+                    }
+                    &-submit {
+                      grid-area: contactform_submit;
+                      & .wpcf7-submit {
+                        @include buttonText();
+                        width: 100%;
+                        padding: #{$gap / 2};
+                        border: none;
+                        background-color: #{map-get($colorMap, ui-yellow)};
+                        color: #{map-get($colorMap, text-dark)};
+                        border-radius: #{$gap/2};
+                        &:hover {
+                          background-color: #{map-get($colorMap, ui-darkBlue)};
+                          color: #{map-get($colorMap, text-light)};
+                          cursor: pointer;
+                        }
+                      }
+                    }
+                    &-left {
+                      grid-area: contactform_left;
+                    }
+                    &-right {
+                      grid-area: contactform_right;
+                      & > p:nth-child(2) {
+                        margin-bottom: 0;
+                      }
+                      & > p:nth-child(3) {
+                        height: 100%;
+                        margin-bottom: 0;
+                        label {
+                          height: 100%;
+                        }
+                      }
+                    }
+                    &-left,
+                    &-right {
+                      & label {
+                        @include p();
+                        color: #{map-get($colorMap, text-dark)};
+                        display: block;
+                        margin-bottom: #{$gap / 2};
+                        input,
+                        textarea {
+                          margin-top: #{$gap / 4};
+                        }
+                      }
+                      & .wpcf7-text,
+                      & .wpcf7-textarea {
+                        box-sizing: border-box;
+                        border: none;
+                        background-color: #{map-get($colorMap, bg-white)};
+                        width: 100%;
+                        padding: #{$gap / 2};
+                        font-family: #{$textFont};
+                        font-weight: #{$textFontWeight};
+                        border-radius: #{$gap/2};
+                        &:focus {
+                          outline: none;
+                          background-color: #{map-get($colorMap, bg-yellow)};
+                        }
+                      }
+                      & .wpcf7-textarea {
+                        resize: none;
+                        height: 150px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &:last-child {
+            & > .wp-block-group__inner-container {
+              padding-bottom: calc(#{$standardGroupInnerblockPadding} + 15vh);
+              @include narrowScreen() {
+                padding-bottom: #{$standardGroupInnerblockPadding};
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }

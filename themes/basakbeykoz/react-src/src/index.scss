@@ -1,5 +1,5 @@
-@import "./common/_vars";
-@import "./common/_mixins";
+@import "./common/styles/_vars";
+@import "./common/styles/_mixins";
 // Externals
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
@@ -7,140 +7,139 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Baloo+Tammudu+2&family=Istok+Web&family=Kumbh+Sans:wght@300&family=Manrope&family=Nunito:wght@300&family=Quicksand&family=Ubuntu:wght@300&display=swap");
 
 @font-face {
-    font-family: "KendiniYenidenKesfet";
-    // src: url('webfont.eot'); /* IE9 Compat Modes */
-    src: // url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url("./common/fonts/KendiniYenidenKesfet.woff2") format("woff2"),
-        /* Super Modern Browsers */
-            url("./common/fonts/KendiniYenidenKesfet.woff") format("woff"),
-        /* Pretty Modern Browsers */
-            url("./common/fonts/KendiniYenidenKesfet.ttf") format("truetype"); /* Safari, Android, iOS */
-    //  url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-family: "KendiniYenidenKesfet";
+  // src: url('webfont.eot'); /* IE9 Compat Modes */
+  src: // url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url("./common/fonts/KendiniYenidenKesfet.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./common/fonts/KendiniYenidenKesfet.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */ url("./common/fonts/KendiniYenidenKesfet.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+  //  url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
-    font-family: "DreamerySansDemo";
-    src: url("./common/fonts/212 Dreamery Sans Demo.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "DreamerySansDemo";
+  src: url("./common/fonts/212 Dreamery Sans Demo.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "BabyGirl";
-    src: url("./common/fonts/212 Baby Girl.otf") format("otf"); /* Super Modern Browsers */
+  font-family: "BabyGirl";
+  src: url("./common/fonts/212 Baby Girl.otf") format("otf"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "LeahleeSans";
-    src: url("./common/fonts/212 Leahlee Sans.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "LeahleeSans";
+  src: url("./common/fonts/212 Leahlee Sans.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "OrionSans";
-    src: url("./common/fonts/212 Orion Sans PERSONAL USE.ttf")
-        format("truetype"); /* Super Modern Browsers */
+  font-family: "OrionSans";
+  src: url("./common/fonts/212 Orion Sans PERSONAL USE.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "AlwaysForeverBold";
-    src: url("./common/fonts/Always Forever Bold.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "AlwaysForeverBold";
+  src: url("./common/fonts/Always Forever Bold.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "AlwaysForever";
-    src: url("./common/fonts/Always Forever.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "AlwaysForever";
+  src: url("./common/fonts/Always Forever.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "CaviarDreams_Bold";
-    src: url("./common/fonts/CaviarDreams_Bold.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "CaviarDreams_Bold";
+  src: url("./common/fonts/CaviarDreams_Bold.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "CaviarDreams_BoldItalic";
-    src: url("./common/fonts/CaviarDreams_BoldItalic.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "CaviarDreams_BoldItalic";
+  src: url("./common/fonts/CaviarDreams_BoldItalic.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "CaviarDreams_Italic";
-    src: url("./common/fonts/CaviarDreams_Italic.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "CaviarDreams_Italic";
+  src: url("./common/fonts/CaviarDreams_Italic.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "CaviarDreams";
-    src: url("./common/fonts/CaviarDreams.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "CaviarDreams";
+  src: url("./common/fonts/CaviarDreams.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "MoonbrightDemo";
-    src: url("./common/fonts/Moonbright Demo.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "MoonbrightDemo";
+  src: url("./common/fonts/Moonbright Demo.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "MoonbrightInlineDemo";
-    src: url("./common/fonts/Moonbright Inline Demo.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "MoonbrightInlineDemo";
+  src: url("./common/fonts/Moonbright Inline Demo.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "whateverittakesbold";
-    src: url("./common/fonts/whatever it takes bold.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "whateverittakesbold";
+  src: url("./common/fonts/whatever it takes bold.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: "whateverittakes";
-    src: url("./common/fonts/whatever it takes.ttf") format("truetype"); /* Super Modern Browsers */
+  font-family: "whateverittakes";
+  src: url("./common/fonts/whatever it takes.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 :root {
-    /* measurements */
-    --wp-frame-width: 1200px;
-    --wp-frame-padding-x: 7em;
-    --wp-text-with: 800px;
-    --accent-thickness: #{$gap};
-    --home-vertical-padding: 200px;
-    --home-horizontal-padding: 400px;
-    --fixed-feature-image-width: 470px;
-    --head-section-height: 110px;
-    --text-font: "Work Sans", sans-serif;
-    --text-font-weight: 400;
-    --title-font: "Montserrat", sans-serif;
-    --title-font-weight: 600;
+  /* measurements */
+  --wp-frame-width: 1200px;
+  --wp-frame-padding-x: 7em;
+  --wp-text-with: 800px;
+  --accent-thickness: #{$gap};
+  --home-vertical-padding: 200px;
+  --home-horizontal-padding: 400px;
+  --fixed-feature-image-width: 470px;
+  --head-section-height: 110px;
+  --text-font: "Work Sans", sans-serif;
+  --text-font-weight: 400;
+  --title-font: "Montserrat", sans-serif;
+  --title-font-weight: 600;
 }
 
 body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: #{map-get($colorMap, bg-white)};
-    color: #{map-get($colorMap, text-mediumDark)};
-    overflow-y: hidden;
-    overflow-x: hidden;
-    font-size: $defaultFontSize;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #{map-get($colorMap, bg-white)};
+  color: #{map-get($colorMap, text-mediumDark)};
+  overflow-y: hidden;
+  overflow-x: hidden;
+  font-size: $defaultFontSize;
 }
 
 // creates headings
 @for $i from 1 through 6 {
-    $name: "h" + $i;
-    #{$name} {
-        @include _heading($name);
-    }
+  $name: "h" + $i;
+  #{$name} {
+    @include _heading($name);
+  }
 }
 
 .body.page.home > article > div .wp-block-latest-posts > li,
 span,
 nav {
-    color: #{map-get($colorMap, bg-blue)};
-    font-family: $textFont;
-    font-weight: $textFontWeight;
+  color: #{map-get($colorMap, bg-blue)};
+  font-family: $textFont;
+  font-weight: $textFontWeight;
 }
 
 .wp-block-button__link,
 figcaption {
-    font-family: $titleFont;
-    font-weight: $titleFontWeight;
-    margin: 0;
+  font-family: $titleFont;
+  font-weight: $titleFontWeight;
+  margin: 0;
 }
 
 p {
-    @include p();
+  @include p();
 }
 
 /*
@@ -148,56 +147,56 @@ p {
 */
 
 :root {
-    --brush-white: #fbfbfb;
-    --brush-lightGray: #f8f8f8;
-    --brush-gray: #859fa4;
-    --brush-darkGray: #34414b;
-    --brush-black: #34414b;
-    --brush-lightBlue: #adcbdd;
-    --brush-darkBlue: #324358;
-    --brush-lightYellow: #ffeec6;
-    --brush-darkYellow: #ffc05b;
-    --brush-lightGreen: #c6dfd7;
+  --brush-white: #fbfbfb;
+  --brush-lightGray: #f8f8f8;
+  --brush-gray: #859fa4;
+  --brush-darkGray: #34414b;
+  --brush-black: #34414b;
+  --brush-lightBlue: #adcbdd;
+  --brush-darkBlue: #324358;
+  --brush-lightYellow: #ffeec6;
+  --brush-darkYellow: #ffc05b;
+  --brush-lightGreen: #c6dfd7;
 
-    // https://codepen.io/sosuke/pen/Pjoqqp helped with these
-    $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%)
-        hue-rotate(202deg) brightness(102%) contrast(95%);
-    --filter-white: #{$filter-white};
-    --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%)
-        hue-rotate(164deg) brightness(98%) contrast(84%);
-    --filter-logo-white: brightness(0) #{$filter-white};
+  // https://codepen.io/sosuke/pen/Pjoqqp helped with these
+  $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%)
+    hue-rotate(202deg) brightness(102%) contrast(95%);
+  --filter-white: #{$filter-white};
+  --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%)
+    hue-rotate(164deg) brightness(98%) contrast(84%);
+  --filter-logo-white: brightness(0) #{$filter-white};
 }
 
 .text-light {
-    color: #{map-get($colorMap, text-light)};
+  color: #{map-get($colorMap, text-light)};
 }
 
 .text-mediumLight {
-    color: #{map-get($colorMap, text-mediumDark)};
+  color: #{map-get($colorMap, text-mediumDark)};
 }
 
 .text-mediumDark {
-    color: #{map-get($colorMap, text-mediumDark)};
+  color: #{map-get($colorMap, text-mediumDark)};
 }
 
 .text-dark {
-    color: #{map-get($colorMap, text-dark)};
+  color: #{map-get($colorMap, text-dark)};
 }
 
 $colors: ("green", "yellow", "white", "blue", "black");
 @each $color in $colors {
-    .bg-#{$color} {
-        $bg-color: "bg-" + $color;
-        background-color: #{map-get($colorMap, $bg-color)};
+  .bg-#{$color} {
+    $bg-color: "bg-" + $color;
+    background-color: #{map-get($colorMap, $bg-color)};
+  }
+  .#{$color} {
+    $bg-color: "bg-" + $color;
+    $var-color: #{map-get($colorMap, $bg-color)};
+    &-horizontal-border:before {
+      background: frame($var-color, horizontal);
     }
-    .#{$color} {
-        $bg-color: "bg-" + $color;
-        $var-color: #{map-get($colorMap, $bg-color)};
-        &-horizontal-border:before {
-            background: frame($var-color, horizontal);
-        }
-        &-vertical-border:after {
-            background: frame($var-color, vertical);
-        }
+    &-vertical-border:after {
+      background: frame($var-color, vertical);
     }
+  }
 }

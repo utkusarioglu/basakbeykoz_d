@@ -1,0 +1,48 @@
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
+.Header {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: #{$mobileNavigationHeight};
+  pointer-events: none;
+  &-bottomWrap {
+    position: absolute;
+    display: grid;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-template-areas: "logo social nav";
+    grid-template-columns: 1fr min-content min-content;
+    background-color: #{map-get($colorMap, ui-white)};
+    bottom: 0;
+    overflow-x: visible;
+    overflow-y: hidden;
+    width: 100vw;
+    height: $mobileNavigationHeight;
+    pointer-events: initial;
+
+    @include narrowScreen() {
+      grid-template-areas: "nav social";
+      grid-template-columns: 1fr min-content;
+      .Logo {
+        display: none;
+      }
+    }
+
+    @include wideScreen() {
+      background-color: transparent;
+      width: 350px;
+      &-mobileControls {
+        display: none;
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  @include wideScreen() {
+    display: none;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import SpinnerView from "../../components/spinner/SpinnerView";
+import SpinnerView from "../../components/spinner/Spinner.component";
 
 const mapState = (state: RootState) => ({
   isFetching: state.app.isFetching,

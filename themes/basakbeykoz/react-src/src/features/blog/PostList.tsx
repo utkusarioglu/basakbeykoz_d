@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
 import { fetchCategoryPosts } from "../wordpress/singularActions";
 import { setFetching } from "../app/appActions";
-import PostListView from "../../components/blog/PostListView";
+import PostListView from "../../components/blog/Posts.component";
 import { Env } from "../../common/@types-common";
 
 const mapState = (state: RootState) => ({

@@ -1,10 +1,10 @@
-@import "../../common/_vars";
-@import "../../common/_mixins";
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
 
 .Nav-item {
-    display: block;
-    font-family: $textFont;
-    font-weight: #{$textFontWeight};
-    text-decoration: none;
-    white-space: nowrap;
+  display: block;
+  font-family: $textFont;
+  font-weight: #{$textFontWeight};
+  text-decoration: none;
+  white-space: nowrap;
 }

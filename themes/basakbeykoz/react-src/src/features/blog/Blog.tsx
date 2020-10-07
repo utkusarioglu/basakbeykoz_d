@@ -1,6 +1,6 @@
 import React from "react";
 import PostList from "./PostList";
-import BodyView from "../../components/body/BodyView";
+import BodyView from "../../components/body/Body.component";
 import "./_blog.scss";
 import { Env } from "../../common/@types-common";
 

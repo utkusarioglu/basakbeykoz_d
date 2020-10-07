@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import FooterView from "../../components/footer/FooterView";
+import FooterView from "../../components/footer/Footer.component";
 import { RootState } from "../../store/rootReducer";
 import { setIsMenuOpen } from "../app/appActions";
 

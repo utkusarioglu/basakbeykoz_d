@@ -1,0 +1,25 @@
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
+
+.Cta {
+  grid-area: logo;
+  height: 45px;
+  display: flex;
+  align-items: center;
+
+  &-button {
+    display: flex;
+    align-items: center;
+    margin-left: #{$gap / 4};
+    border-radius: #{$gap / 4};
+    padding: #{$gap / 4} #{$gap / 2};
+    background-color: #{map-get($colorMap, ui-yellow)};
+
+    max-width: 200px;
+  }
+  &-text {
+    @include buttonText();
+    font-size: smaller;
+    white-space: nowrap;
+  }
+}

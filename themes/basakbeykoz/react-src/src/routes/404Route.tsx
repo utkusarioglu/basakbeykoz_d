@@ -1,5 +1,5 @@
 import React from "react";
-import BodyView from "../components/body/BodyView";
+import BodyView from "../components/body/Body.component";
 
 function FourOFourRoute() {
   return (

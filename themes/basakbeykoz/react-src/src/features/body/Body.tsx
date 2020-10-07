@@ -7,7 +7,7 @@ import { setFetching, setDisplaying } from "../app/appActions";
 import stateMap from "../../store/@types-state";
 import { WpSingularTypes, TimestampedSingular } from "../wordpress/@types-wp";
 import OverlayScrollbars from "overlayscrollbars";
-import BodyView from "../../components/body/BodyView";
+import BodyView from "../../components/body/Body.component";
 import { Env } from "../../common/@types-common";
 //@ts-ignore
 import pauseable from "pauseable";

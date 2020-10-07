@@ -1,7 +1,7 @@
 import React from "react";
 import { Env } from "../common/@types-common";
-import BodyView from "../components/body/BodyView";
-import Credits from "../components/credits/Credits";
+import BodyView from "../components/body/Body.component";
+import Credits from "../components/credits/Credits.component";
 
 function CreditsRoute() {
   const { REACT_APP_UPLOADS_DIR } = process.env as Env;

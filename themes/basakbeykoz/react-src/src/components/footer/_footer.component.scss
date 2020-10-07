@@ -1,0 +1,67 @@
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
+
+.Footer {
+  $creditsSize: 20vw;
+  $creditsMaxSize: 150px;
+  a {
+    text-decoration: none;
+  }
+  &-backdrop {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-height: #{$footerSquareSize};
+    height: #{$creditsSize};
+    max-height: #{$creditsMaxSize};
+    background: url("#{$uploadsPath}/footer-art-bg.svg") no-repeat bottom right;
+  }
+  &-elements {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: #{$footerSquareSize};
+    height: #{$creditsSize};
+    max-height: #{$creditsMaxSize};
+    &-credits {
+      box-sizing: border-box;
+      display: grid;
+      font-family: $textFont;
+      font-weight: #{$textFontWeight};
+      background: #{map-get($colorMap, bg-black)};
+      justify-items: end;
+      align-items: end;
+      bottom: 0;
+      right: 0;
+      padding: #{$gap / 2};
+      font-size: 1rem;
+      width: #{$creditsSize};
+      min-width: #{$footerSquareSize};
+      max-width: #{$creditsMaxSize};
+      height: 100%;
+      border-top-left-radius: #{$gap};
+      &-yearAndName {
+        color: #{map-get($colorMap, text-light)};
+        text-align: right;
+      }
+    }
+    &-art {
+      display: block;
+      width: 100%;
+      &-fg {
+        max-height: 200px;
+        min-height: 50px;
+        height: calc(100vw / 4);
+        position: absolute;
+        width: 80vw;
+        max-width: calc(100vw - #{$footerSquareSize});
+        min-width: calc(100vw - #{$creditsMaxSize});
+        bottom: 20px;
+      }
+    }
+  }
+}

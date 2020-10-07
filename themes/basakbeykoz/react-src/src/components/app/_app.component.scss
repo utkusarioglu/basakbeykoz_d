@@ -1,0 +1,20 @@
+@import "../../common/styles/_vars";
+@import "../../common/styles/_mixins";
+
+.App {
+  &-scrollWindow {
+    height: calc(100vh - #{$mobileNavigationHeight});
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: #{$mobileNavigationHeight};
+
+    @include wideScreen() {
+      height: 100vh;
+      margin-bottom: 0;
+    }
+  }
+
+  &-scrollingElements {
+    position: relative;
+  }
+}
