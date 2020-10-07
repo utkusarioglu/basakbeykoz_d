@@ -3,7 +3,6 @@ import { RootState } from "../../store/rootReducer";
 import { connect, ConnectedProps } from "react-redux";
 import Logo from "./Logo.component";
 import Cta from "./Cta.component";
-import "./_logo.scss";
 
 const mapState = (state: RootState) => ({
   isDisplayingSlug: state.app.isDisplaying.slug,

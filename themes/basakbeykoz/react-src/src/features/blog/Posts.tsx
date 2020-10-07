@@ -22,7 +22,7 @@ interface OwnProps {
 
 type Props = OwnProps & PropsFromRedux;
 
-function PostList(props: Props) {
+function Posts(props: Props) {
   const { REACT_APP_BLOG_SLUG } = process.env as Env;
   const { fetchCategoryPosts, setFetching, excludeSlug, posts } = props;
 
@@ -30,6 +30,8 @@ function PostList(props: Props) {
   setTimeout(() => {
     if (posts.fetchTime < Date.now() - 5000) {
       fetchCategoryPosts(REACT_APP_BLOG_SLUG);
+      setFetching(false);
+    } else {
       setFetching(false);
     }
   }, 1000);
@@ -41,4 +43,4 @@ function PostList(props: Props) {
   return <PostListView postListItems={postList} locale="TR-TR" />;
 }
 
-export default connector(PostList);
+export default connector(Posts);

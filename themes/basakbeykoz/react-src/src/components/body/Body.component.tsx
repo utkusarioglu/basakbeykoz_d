@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PostList from "../../features/blog/PostList";
+import Posts from "../../features/blog/Posts";
 import { GeneralSingularItemforView } from "../../features/wordpress/@types-wp";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
@@ -71,7 +71,7 @@ function BodyView(props: Props) {
     postList = (
       <div className="PostList-wrapper">
         <h4>Similar Reads</h4>
-        <PostList excludeSlug={excludeSlug} />
+        <Posts excludeSlug={excludeSlug} />
       </div>
     );
   }

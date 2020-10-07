@@ -1,11 +1,25 @@
 import React from "react";
-import PostList from "./PostList";
+import { connect } from "react-redux";
+import Posts from "./Posts";
 import BodyView from "../../components/body/Body.component";
-import "./_blog.scss";
 import { Env } from "../../common/@types-common";
+import { setFetching } from "../app/appActions";
+import "./_blog.scss";
+import { RootState } from "../../store/rootReducer";
+import { ConnectedProps } from "react-redux";
 
-function Blog() {
+const mapState = (state: RootState) => ({});
+const mapDispatch = {
+  setFetching,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
+
+function Blog(props: Props) {
   const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env as Env;
+  const { setFetching } = props;
   const featureImageName = "yazilar-feature-image";
   const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [
@@ -30,6 +44,8 @@ function Blog() {
     />
   );
 
+  setFetching(true);
+
   return (
     <BodyView
       {...{
@@ -39,11 +55,11 @@ function Blog() {
         thumbnail: "",
         thumbnailComponent,
         content: "",
-        articleComponent: <PostList excludeSlug={[]} />,
+        articleComponent: <Posts excludeSlug={[]} />,
         onLoad: () => {},
       }}
     />
   );
 }
 
-export default Blog;
+export default connector(Blog);
