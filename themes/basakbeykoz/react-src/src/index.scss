@@ -1,98 +1,93 @@
 @import "./common/_vars";
 @import "./common/_mixins";
 // Externals
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Baloo+Tammudu+2&family=Istok+Web&family=Kumbh+Sans:wght@300&family=Manrope&family=Nunito:wght@300&family=Quicksand&family=Ubuntu:wght@300&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Baloo+Tammudu+2&family=Istok+Web&family=Kumbh+Sans:wght@300&family=Manrope&family=Nunito:wght@300&family=Quicksand&family=Ubuntu:wght@300&display=swap");
 
 @font-face {
-    font-family: 'KendiniYenidenKesfet';
+    font-family: "KendiniYenidenKesfet";
     // src: url('webfont.eot'); /* IE9 Compat Modes */
     src: // url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('./common/fonts/KendiniYenidenKesfet.woff2') format('woff2'), /* Super Modern Browsers */
-        url('./common/fonts/KendiniYenidenKesfet.woff') format('woff'), /* Pretty Modern Browsers */
-        url('./common/fonts/KendiniYenidenKesfet.ttf')  format('truetype'), /* Safari, Android, iOS */
-        //  url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+        url("./common/fonts/KendiniYenidenKesfet.woff2") format("woff2"),
+        /* Super Modern Browsers */
+            url("./common/fonts/KendiniYenidenKesfet.woff") format("woff"),
+        /* Pretty Modern Browsers */
+            url("./common/fonts/KendiniYenidenKesfet.ttf") format("truetype"); /* Safari, Android, iOS */
+    //  url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
-    font-family: 'DreamerySansDemo';
-    src: url('./common/fonts/212 Dreamery Sans Demo.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "DreamerySansDemo";
+    src: url("./common/fonts/212 Dreamery Sans Demo.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'BabyGirl';
-    src: url('./common/fonts/212 Baby Girl.otf') format('otf'), /* Super Modern Browsers */
+    font-family: "BabyGirl";
+    src: url("./common/fonts/212 Baby Girl.otf") format("otf"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'LeahleeSans';
-    src: url('./common/fonts/212 Leahlee Sans.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "LeahleeSans";
+    src: url("./common/fonts/212 Leahlee Sans.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'OrionSans';
-    src: url('./common/fonts/212 Orion Sans PERSONAL USE.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "OrionSans";
+    src: url("./common/fonts/212 Orion Sans PERSONAL USE.ttf")
+        format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'AlwaysForeverBold';
-    src: url('./common/fonts/Always Forever Bold.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "AlwaysForeverBold";
+    src: url("./common/fonts/Always Forever Bold.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'AlwaysForever';
-    src: url('./common/fonts/Always Forever.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "AlwaysForever";
+    src: url("./common/fonts/Always Forever.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'CaviarDreams_Bold';
-    src: url('./common/fonts/CaviarDreams_Bold.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "CaviarDreams_Bold";
+    src: url("./common/fonts/CaviarDreams_Bold.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'CaviarDreams_BoldItalic';
-    src: url('./common/fonts/CaviarDreams_BoldItalic.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "CaviarDreams_BoldItalic";
+    src: url("./common/fonts/CaviarDreams_BoldItalic.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'CaviarDreams_Italic';
-    src: url('./common/fonts/CaviarDreams_Italic.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "CaviarDreams_Italic";
+    src: url("./common/fonts/CaviarDreams_Italic.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'CaviarDreams';
-    src: url('./common/fonts/CaviarDreams.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "CaviarDreams";
+    src: url("./common/fonts/CaviarDreams.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'MoonbrightDemo';
-    src: url('./common/fonts/Moonbright Demo.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "MoonbrightDemo";
+    src: url("./common/fonts/Moonbright Demo.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'MoonbrightInlineDemo';
-    src: url('./common/fonts/Moonbright Inline Demo.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "MoonbrightInlineDemo";
+    src: url("./common/fonts/Moonbright Inline Demo.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'whateverittakesbold';
-    src: url('./common/fonts/whatever it takes bold.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "whateverittakesbold";
+    src: url("./common/fonts/whatever it takes bold.ttf") format("truetype"); /* Super Modern Browsers */
 }
 
 @font-face {
-    font-family: 'whateverittakes';
-    src: url('./common/fonts/whatever it takes.ttf') format('truetype'), /* Super Modern Browsers */
+    font-family: "whateverittakes";
+    src: url("./common/fonts/whatever it takes.ttf") format("truetype"); /* Super Modern Browsers */
 }
-
-
-
-
-
-
-
 
 :root {
     /* measurements */
@@ -110,42 +105,6 @@
     --title-font-weight: 600;
 }
 
-
-/* 
-    SCROLLBAR 
-*/
-// !TODO THE SCROLLBAR COLORS DONT WORK
-// ::-webkit-scrollbar {
-//     & {
-//         width: 0;
-//     }
-//     &-track {
-//         $logoNSocialY: map-get($narrow, logoNSocialY);
-//         $bg: map-get($colorMap, ui-gray);
-//         $blue: map-get($colorMap, ui-blue);
-//         $yellow: map-get($colorMap, ui-yellow);
-//         $height: 312px;
-//         background: linear-gradient(180deg, 
-//             #{$bg} #{$gap},
-//             #{$blue} #{$gap},
-//             #{$blue} #{$gap + $logoNSocialY},
-//             #{$bg} #{$gap + $logoNSocialY},
-//             #{$bg} calc(50vh - #{$height/2}), 
-//             #{$yellow} calc(50vh - #{$height/2}), 
-//             #{$yellow} calc(50vh + #{$height/2}), 
-//             #{$bg} calc(50vh - #{$height/2}));
-//     }
-//     &-thumb {
-//         background: #{map-get($colorMap, ui-black)};
-//     }
-//     @include narrowScreen() {
-//         & {
-//             width: #{$gap/2};
-//         }
-
-//     }
-// }
-
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -154,7 +113,7 @@ body {
     color: #{map-get($colorMap, text-mediumDark)};
     overflow-y: hidden;
     overflow-x: hidden;
-    font-size: $defaultFontSize;    
+    font-size: $defaultFontSize;
 }
 
 // creates headings
@@ -165,7 +124,7 @@ body {
     }
 }
 
-.body.page.home>article>div .wp-block-latest-posts>li,
+.body.page.home > article > div .wp-block-latest-posts > li,
 span,
 nav {
     color: #{map-get($colorMap, bg-blue)};
@@ -184,28 +143,28 @@ p {
     @include p();
 }
 
-
 /*
     COLORS
 */
 
 :root {
-    $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%) hue-rotate(202deg) brightness(102%) contrast(95%);
-    
-    --brush-white: #FBFBFB;
-    --brush-lightGray: #F8F8F8;
-    --brush-gray: #859FA4;
-    --brush-darkGray: #34414B;
-    --brush-black: #34414B;
-    --brush-lightBlue: #ADCBDD;
+    --brush-white: #fbfbfb;
+    --brush-lightGray: #f8f8f8;
+    --brush-gray: #859fa4;
+    --brush-darkGray: #34414b;
+    --brush-black: #34414b;
+    --brush-lightBlue: #adcbdd;
     --brush-darkBlue: #324358;
-    --brush-lightYellow: #FFEEC6;
-    --brush-darkYellow: #FFC05B;
-    --brush-lightGreen: #C6DFD7;
+    --brush-lightYellow: #ffeec6;
+    --brush-darkYellow: #ffc05b;
+    --brush-lightGreen: #c6dfd7;
 
     // https://codepen.io/sosuke/pen/Pjoqqp helped with these
+    $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%)
+        hue-rotate(202deg) brightness(102%) contrast(95%);
     --filter-white: #{$filter-white};
-    --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%) hue-rotate(164deg) brightness(98%) contrast(84%);;
+    --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%)
+        hue-rotate(164deg) brightness(98%) contrast(84%);
     --filter-logo-white: brightness(0) #{$filter-white};
 }
 
@@ -225,13 +184,7 @@ p {
     color: #{map-get($colorMap, text-dark)};
 }
 
-$colors:(
-    "green",
-    "yellow",
-    "white",
-    "blue",
-    "black"
-);
+$colors: ("green", "yellow", "white", "blue", "black");
 @each $color in $colors {
     .bg-#{$color} {
         $bg-color: "bg-" + $color;
