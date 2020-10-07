@@ -1,36 +1,35 @@
-import React from 'react';
-import { TimestampedSingular } from '../../features/wordpress/@types-wp';
-import PostListCardView from './PostListCardView';
+import React from "react";
+import { TimestampedSingular } from "../../features/wordpress/@types-wp";
+import PostListCardView from "./PostListCardView";
 import "./_postList.scss";
 
 interface OwnProps {
-    postListItems: TimestampedSingular[],
-    locale: string,
+  postListItems: TimestampedSingular[];
+  locale: string;
 }
 
-type Props = OwnProps
+type Props = OwnProps;
 
 function PostListView(props: Props) {
-    const { postListItems, locale, } = props;
+  const { postListItems, locale } = props;
 
-    const postList = postListItems.map((single) => {
-        return (
-            <li key={single.data.slug}>
-                <PostListCardView 
-                    {...single.data}
-                    locale={locale}
-                />
-            </li>
-        )
-    });
+  const postList = postListItems.map((single) => {
+    if (single.data.state === "success") {
+      return (
+        <li key={single.data.slug}>
+          <PostListCardView {...single.data} locale={locale} />
+        </li>
+      );
+    } else {
+      return [];
+    }
+  });
 
-    return (
-        <div className="PostList">
-            <ol>
-                {postList}
-            </ol>
-        </div>
-    );
+  return (
+    <div className="PostList">
+      <ol>{postList}</ol>
+    </div>
+  );
 }
 
 export default PostListView;

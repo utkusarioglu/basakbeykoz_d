@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import "./_logo.scss";
 
 const mapState = (state: RootState) => ({
-  menu: state.menu.items,
   refs: state.app.refs,
 });
 
