@@ -6,6 +6,7 @@ import ReactGA from "react-ga";
 
 import "./_body.scss";
 import "./_bodyView.scss";
+import { Env } from "../../common/@types-common";
 
 type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;
@@ -18,7 +19,7 @@ function BodyView(props: Props) {
     REACT_APP_NAME,
     REACT_APP_SEPARATOR,
     REACT_APP_HOME_SLUG,
-  } = process.env as { [key: string]: string };
+  } = process.env as Env;
   const {
     onLoad,
     type,

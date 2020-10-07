@@ -1,8 +1,7 @@
 import React, { createRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { setRef } from "./appActions";
-
 import AppView from "../../components/app/AppView";
 import { RootState } from "../../store/rootReducer";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
@@ -10,15 +9,13 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
-
 const mapDispatch = {
   setRef,
 };
-
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
 function App(props: Props) {
   const { refs, setRef } = props;
@@ -37,8 +34,4 @@ function App(props: Props) {
   );
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  // @ts-ignore
-  mapState,
-  mapDispatch
-)(App);
+export default connector(App);

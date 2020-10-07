@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { setFetching } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import "./_credits.scss";
 
 const mapState = (state: RootState) => ({});
-
 const mapDispatch = {
   setFetching,
 };
-
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
 interface IChoices {
   [type: string]: {
@@ -28,7 +26,7 @@ interface IChoiceSets {
   }[];
 }
 
-function Credits(props: Props): React.FunctionComponentElement<Props> {
+function Credits(props: Props) {
   props.setFetching(false);
 
   const [choiceSet, setChoiceSet] = useState<IChoices>({
@@ -163,8 +161,4 @@ function Credits(props: Props): React.FunctionComponentElement<Props> {
   );
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  // @ts-ignore
-  mapState,
-  mapDispatch
-)(Credits);
+export default connector(Credits);

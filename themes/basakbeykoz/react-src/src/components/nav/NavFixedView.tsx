@@ -1,45 +1,39 @@
 import React from "react";
-import Nav from '../../features/nav/Nav';
-import { connect } from "react-redux";
-import { setIsMenuOpen } from '../../features/app/appActions'
-import { RootState } from '../../store/rootReducer';
+import Nav from "../../features/nav/Nav";
+import { connect, ConnectedProps } from "react-redux";
+import { setIsMenuOpen } from "../../features/app/appActions";
+import { RootState } from "../../store/rootReducer";
 import "./_navFixedView.scss";
 
 const mapState = (state: RootState) => ({
-    isMenuOpen: state.app.isMenuOpen,
+  isMenuOpen: state.app.isMenuOpen,
 });
+const mapDispatch = {
+  setIsMenuOpen,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 
-const mapDispatch = { 
-    setIsMenuOpen,
+function NavFixedView(props: Props) {
+  const { setIsMenuOpen, isMenuOpen } = props;
+  const menuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <div
+      onClick={menuToggle}
+      className={"NavFixedView " + (isMenuOpen ? "open" : "")}
+    >
+      <div className="NavFixedView-mask" />
+      <div className="NavFixedView-decor" />
+      <div className="NavFixedView-list">
+        <Nav />
+      </div>
+    </div>
+  );
 }
 
-interface OwnProps { }
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
-
-function NavFixedView(
-    props: Props
-): React.FunctionComponentElement<Props> {
-
-    const menuToggle = () => {
-        props.setIsMenuOpen(!props.isMenuOpen)
-    }
-
-    return (
-        <div 
-            onClick={menuToggle}
-            className={"NavFixedView " + (props.isMenuOpen ? "open" : "") 
-        }>
-            <div className="NavFixedView-mask" />
-            <div className="NavFixedView-decor" />
-            <div className="NavFixedView-list">
-                <Nav />
-            </div>
-        </div>
-    )
-}
-
-export default connect<StateProps, DispatchProps, OwnProps>(
-    //@ts-ignore
-    mapState, mapDispatch, )(NavFixedView);
+export default connector(NavFixedView);

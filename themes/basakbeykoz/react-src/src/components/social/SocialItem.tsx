@@ -1,49 +1,41 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { ISocialItem } from '../../features/social/@types-social';
-import {setIsMenuOpen} from '../../features/app/appActions';
+import React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { ISocialItem } from "../../features/social/@types-social";
+import { setIsMenuOpen } from "../../features/app/appActions";
 import ReactGA from "react-ga";
 import { RootState } from "../../store/rootReducer";
-import './_socialIcon.scss';
+import "./_socialIcon.scss";
 
-interface OwnProps {
-    item: ISocialItem;
-}
-
-const mapState = (state: RootState) => ({
-});
-
+const mapState = (state: RootState) => ({});
 const mapDispatch = {
-    setIsMenuOpen,
+  setIsMenuOpen,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {
+  item: ISocialItem;
 }
 
-interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
 function SocialItem(props: Props) {
+  const { item, setIsMenuOpen } = props;
 
-    const { item, setIsMenuOpen } = props;
-
-    return (
-        <ReactGA.OutboundLink
-            eventLabel={item.title}
-            onClick={() => setIsMenuOpen(false) }
-            to={item.link}
-            target="_blank"
-        >
-            <img 
-                className="Social-icon"
-                src={item.icon}
-                title={item.title} 
-                alt={item.title}></img>
-            
-        </ReactGA.OutboundLink>    
-    )
+  return (
+    <ReactGA.OutboundLink
+      eventLabel={item.title}
+      onClick={() => setIsMenuOpen(false)}
+      to={item.link}
+      target="_blank"
+    >
+      <img
+        className="Social-icon"
+        src={item.icon}
+        title={item.title}
+        alt={item.title}
+      ></img>
+    </ReactGA.OutboundLink>
+  );
 }
 
-
-export default connect<StateProps, DispatchProps, OwnProps>(
-    //@ts-ignore
-    mapState, mapDispatch, )(SocialItem);
+export default connector(SocialItem);

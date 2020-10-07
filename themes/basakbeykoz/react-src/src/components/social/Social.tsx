@@ -1,40 +1,31 @@
 import React from "react";
-import { connect } from 'react-redux';
-
-import "./_social.scss";
+import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import SocialItem from './SocialItem';
+import SocialItem from "./SocialItem";
+import "./_social.scss";
 
 const mapState = (state: RootState) => ({
-    socialItems: state.social.items,
+  socialItems: state.social.items,
 });
-
-const mapDispatch = {}
-
-interface OwnProps { }
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+const mapDispatch = {};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 
 function Social(props: Props) {
+  const { socialItems } = props;
 
-    const socialItems = props.socialItems;
+  const socialComponents = socialItems.map((item) => {
+    return <SocialItem key={item.title} item={item} />;
+  });
 
-    const socialComponents = socialItems.map((item) => {
-        return <SocialItem key={item.title} item={item} />
-    })
-
-    return (
-        <div className="Social">
-            <div className="Social-list">
-                {socialComponents}
-            </div>
-            <div className="Social-decor" />
-        </div>
-    )
+  return (
+    <div className="Social">
+      <div className="Social-list">{socialComponents}</div>
+      <div className="Social-decor" />
+    </div>
+  );
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-    //@ts-ignore
-    mapState, mapDispatch, )(Social);
-
+export default connector(Social);

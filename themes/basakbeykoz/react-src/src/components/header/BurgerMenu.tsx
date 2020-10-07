@@ -1,47 +1,39 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { fetchMenu } from "../../features/wordpress/menuActions";
-import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions'
-import { RootState } from '../../store/rootReducer';
+import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
+import { RootState } from "../../store/rootReducer";
 import "./_burgerMenu.scss";
 
 const mapState = (state: RootState) => ({
-    menu: state.menu,
-    isDisplaying: state.app.isDisplaying,
-    isMenuOpen: state.app.isMenuOpen,
+  menu: state.menu,
+  isDisplaying: state.app.isDisplaying,
+  isMenuOpen: state.app.isMenuOpen,
 });
+const mapDispatch = {
+  setDisplaying,
+  fetchMenu,
+  setIsMenuOpen,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 
-const mapDispatch = { 
-    setDisplaying,
-    fetchMenu, 
-    setIsMenuOpen,
+function BurgerMenu(props: Props) {
+  const uploadsDir = process.env.REACT_APP_UPLOADS_DIR as string;
+  const { isMenuOpen, setIsMenuOpen } = props;
+
+  return (
+    <div className="BurgerMenu">
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="BurgerMenu-burgerButton"
+      >
+        <img alt="Menu" src={uploadsDir + "/burger-menu.svg"} />
+      </button>
+    </div>
+  );
 }
 
-interface OwnProps { }
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
-
-function BurgerMenu(
-    props: Props
-): React.FunctionComponentElement<Props> {
-
-    const uploadsDir = process.env.REACT_APP_UPLOADS_DIR as string;
-    const { isMenuOpen, setIsMenuOpen } = props;
-
-    return (
-        <div className="BurgerMenu">
-            <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="BurgerMenu-burgerButton">
-                <img 
-                    alt="Menu"
-                    src={uploadsDir + "/burger-menu.svg"} />
-            </button>
-        </div>
-    )
-}
-
-export default connect<StateProps, DispatchProps, OwnProps>(
-    //@ts-ignore
-    mapState, mapDispatch, )(BurgerMenu);
+export default connector(BurgerMenu);

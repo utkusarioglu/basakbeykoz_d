@@ -1,41 +1,28 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import FooterView from '../../components/footer/FooterView';
-import { RootState } from '../../store/rootReducer';
-import { setIsMenuOpen } from '../app/appActions';
+import React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import FooterView from "../../components/footer/FooterView";
+import { RootState } from "../../store/rootReducer";
+import { setIsMenuOpen } from "../app/appActions";
 
 const mapState = (state: RootState) => ({
-    refs: state.app.refs,
-})
-
-const mapDispatch = { 
-    setIsMenuOpen,
-}
-
+  refs: state.app.refs,
+});
+const mapDispatch = {
+  setIsMenuOpen,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
 function Footer(props: Props) {
+  const { setIsMenuOpen, refs } = props;
+  const navClickActions = () => {
+    setIsMenuOpen(false);
+    refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
+  };
 
-    const { 
-        setIsMenuOpen, 
-        refs 
-    } = props;
-
-    const navClickActions = () => {
-        setIsMenuOpen(false)
-        refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
-    }
-
-    return (
-        <FooterView 
-            navClickActions={navClickActions}
-        />
-    )
+  return <FooterView navClickActions={navClickActions} />;
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-    // @ts-ignore
-    mapState, mapDispatch)(Footer);
+export default connector(Footer);

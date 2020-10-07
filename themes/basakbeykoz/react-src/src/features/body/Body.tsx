@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
 import { fetchSingular } from "../wordpress/singularActions";
 import { setFetching, setDisplaying } from "../app/appActions";
@@ -19,17 +19,15 @@ const mapState = (state: RootState) => ({
   isFetching: state.app.isFetching,
   refs: state.app.refs,
 });
-
 const mapDispatch = {
   fetchSingular,
   setFetching,
   setDisplaying,
 };
-
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
 function Body(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env;
@@ -201,8 +199,4 @@ function attachLlistActions(elem: HTMLElement): void {
   });
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  // @ts-ignore
-  mapState,
-  mapDispatch
-)(Body);
+export default connector(Body);

@@ -1,27 +1,23 @@
 import React from "react";
 import { wpMenuItem } from "../wordpress/@types-wp";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { RootState } from "../../store/rootReducer";
 import { setDisplaying } from "../app/appActions";
 import "./_navItem.scss";
 
-interface OwnProps {
-  item: wpMenuItem;
-}
-
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
-
 const mapDispatch = {
   setDisplaying,
 };
-
-interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {
+  item: wpMenuItem;
+}
+type Props = OwnProps & PropsFromRedux;
 
 function NavItem(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env;
@@ -50,8 +46,4 @@ function NavItem(props: Props) {
   );
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  //@ts-ignore
-  mapState,
-  mapDispatch
-)(NavItem);
+export default connector(NavItem);

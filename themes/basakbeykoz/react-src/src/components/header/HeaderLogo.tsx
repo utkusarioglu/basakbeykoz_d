@@ -1,6 +1,6 @@
 import React from "react";
 import { RootState } from "../../store/rootReducer";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import Logo from "./Logo";
 import Cta from "./Cta";
 import "./_logo.scss";
@@ -9,15 +9,13 @@ const mapState = (state: RootState) => ({
   isDisplayingSlug: state.app.isDisplaying.slug,
   refs: state.app.refs,
 });
-
 const mapDispatch = {};
-
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
-function HeaderLogo(props: Props): React.FunctionComponentElement<Props> {
+function HeaderLogo(props: Props) {
   // const { isDisplayingSlug, refs } = props;
   // const { REACT_APP_HOME_SLUG } = process.env;
   // const isAtHome = isDisplayingSlug === REACT_APP_HOME_SLUG;
@@ -63,11 +61,7 @@ function HeaderLogo(props: Props): React.FunctionComponentElement<Props> {
   // );
   const useCta = false;
 
-  return useCta ? <Cta /> : <Logo />;
+  return useCta ? <Cta /> : <Logo withTitle={false} />;
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  //@ts-ignore
-  mapState,
-  mapDispatch
-)(HeaderLogo);
+export default connector(HeaderLogo);

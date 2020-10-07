@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { wpMenuItem } from "../wordpress/@types-wp";
 import { RootState } from "../../store/rootReducer";
 import { fetchMenu } from "../wordpress/menuActions";
@@ -10,16 +10,14 @@ import NavItem from "./NavItem";
 const mapState = (state: RootState) => ({
   menu: state.menu,
 });
-
 const mapDispatch = {
   fetchMenu,
   setIsMenuOpen,
 };
-
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
 function Nav(props: Props) {
   const { menu, fetchMenu } = props;
@@ -34,8 +32,4 @@ function Nav(props: Props) {
   return <nav>{menuItems}</nav>;
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  //@ts-ignore
-  mapState,
-  mapDispatch
-)(Nav);
+export default connector(Nav);

@@ -2,26 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { RootState } from "../../store/rootReducer";
 import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import "./_logo.scss";
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
-
 const mapDispatch = {
   setDisplaying,
   setIsMenuOpen,
 };
-
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {
   withTitle: boolean;
 }
-type DispatchProps = typeof mapDispatch;
-type StateProps = ReturnType<typeof mapState>;
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & PropsFromRedux;
 
-function Logo(props: Props): React.FunctionComponentElement<Props> {
+function Logo(props: Props) {
   const { setDisplaying, setIsMenuOpen, refs, withTitle } = props;
   const uploads = process.env.REACT_APP_UPLOADS_DIR;
   const home_slug = process.env.REACT_APP_HOME_SLUG as string;
@@ -50,8 +48,4 @@ function Logo(props: Props): React.FunctionComponentElement<Props> {
   );
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  //@ts-ignore
-  mapState,
-  mapDispatch
-)(Logo);
+export default connector(Logo);
