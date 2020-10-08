@@ -19,7 +19,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-function App(props: Props) {
+function AppView(props: Props) {
   const { refs } = props;
   return (
     <div className="App">
@@ -54,4 +54,4 @@ function App(props: Props) {
   );
 }
 
-export default App;
+export default AppView;

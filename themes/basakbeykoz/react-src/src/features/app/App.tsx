@@ -2,7 +2,7 @@ import React, { createRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect, ConnectedProps } from "react-redux";
 import { setRef } from "./appActions";
-import App from "../../components/app/App.component";
+import AppView from "../../components/app/App.component";
 import { RootState } from "../../store/rootReducer";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
@@ -29,7 +29,7 @@ function App(props: Props) {
 
   return (
     <Router>
-      <App refs={refs} />
+      <AppView refs={refs} />
     </Router>
   );
 }
