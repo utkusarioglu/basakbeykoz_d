@@ -52,10 +52,11 @@ function Blog(props: Props) {
         type: "native",
         slug: REACT_APP_BLOG_SLUG,
         title: "Paylaşımlar",
+        extraClasses: ["blog"],
         thumbnail: "",
         thumbnailComponent,
         content: "",
-        articleComponent: <Posts excludeSlug={[]} />,
+        articleComponent: <Posts excludeSlugs={[]} />,
         onLoad: () => {},
       }}
     />

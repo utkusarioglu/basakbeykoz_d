@@ -17,14 +17,19 @@ const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {
   //slugs to exclude, helps to exclude the current post when the Posts is displayed in a post
-  excludeSlug: string[];
+  excludeSlugs: string[];
 }
 
 type Props = OwnProps & PropsFromRedux;
 
 function Posts(props: Props) {
   const { REACT_APP_BLOG_SLUG } = process.env as Env;
-  const { fetchCategoryPosts, setFetching, excludeSlug, posts } = props;
+  const {
+    fetchCategoryPosts,
+    setFetching,
+    excludeSlugs: excludeSlug,
+    posts,
+  } = props;
 
   // !HACK this is faulty logic
   setTimeout(() => {

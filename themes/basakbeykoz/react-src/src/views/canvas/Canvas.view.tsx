@@ -10,6 +10,7 @@ type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;
   articleComponent?: JSX.Element;
   thumbnailComponent?: JSX.Element;
+  extraClasses?: string[];
 };
 
 function Canvas(props: Props) {
@@ -27,6 +28,7 @@ function Canvas(props: Props) {
     content,
     articleComponent,
     thumbnailComponent,
+    extraClasses,
   } = props;
 
   const navSuffix =
@@ -36,6 +38,7 @@ function Canvas(props: Props) {
   const siteTitle = REACT_APP_NAME + navSuffix;
 
   const bodyExtraClasses: string[] = [type, slug];
+  if (extraClasses) bodyExtraClasses.push(...extraClasses);
 
   let featureImage;
   if (thumbnailComponent) {
@@ -71,7 +74,7 @@ function Canvas(props: Props) {
     posts = (
       <div className="Posts-wrapper">
         <h4>Similar Reads</h4>
-        <Posts excludeSlug={excludeSlug} />
+        <Posts excludeSlugs={excludeSlug} />
       </div>
     );
   }
