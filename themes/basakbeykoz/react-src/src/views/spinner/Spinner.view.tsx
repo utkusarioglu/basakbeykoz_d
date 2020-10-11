@@ -1,6 +1,6 @@
 import React from "react";
 import { Env } from "../../common/@types-common";
-import "./_spinner.component.scss";
+import "./_spinner.view.scss";
 
 interface OwnProps {
   display: string;

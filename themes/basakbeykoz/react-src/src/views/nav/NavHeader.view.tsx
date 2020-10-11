@@ -1,6 +1,6 @@
 import React from "react";
-import Nav from "../../features/nav/Nav";
-import "./_navHeader.component.scss";
+import Nav from "../../features/nav/Nav.feature";
+import "./_navHeader.view.scss";
 
 function NavView() {
   return (

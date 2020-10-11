@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import "./_cta.component.scss";
+import "./_cta.view.scss";
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,

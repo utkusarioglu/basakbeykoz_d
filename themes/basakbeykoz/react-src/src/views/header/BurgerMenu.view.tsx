@@ -4,7 +4,7 @@ import { fetchMenu } from "../../features/wordpress/menuActions";
 import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
 import { Env } from "../../common/@types-common";
-import "./_burgerMenu.component.scss";
+import "./_burgerMenu.view.scss";
 
 const mapState = (state: RootState) => ({
   menu: state.menu,

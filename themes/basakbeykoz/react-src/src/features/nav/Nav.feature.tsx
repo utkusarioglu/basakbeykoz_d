@@ -5,7 +5,7 @@ import { RootState } from "../../store/rootReducer";
 import { fetchMenu } from "../wordpress/menuActions";
 import { setIsMenuOpen } from "../app/appActions";
 import "./_nav.scss";
-import NavItem from "./NavItem";
+import NavItem from "./NavItem.feature";
 
 const mapState = (state: RootState) => ({
   menu: state.menu,

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Env } from "../../common/@types-common";
-import "./_footer.component.scss";
+import "./_footer.view.scss";
 
 interface Props {
   navClickActions: () => void;

@@ -2,7 +2,7 @@ import React, { createRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect, ConnectedProps } from "react-redux";
 import { setRef } from "./appActions";
-import AppView from "../../views/app/App.component";
+import AppView from "../../views/app/App.view";
 import { RootState } from "../../store/rootReducer";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 

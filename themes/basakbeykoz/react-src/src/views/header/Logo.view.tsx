@@ -4,7 +4,7 @@ import { RootState } from "../../store/rootReducer";
 import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
 import { connect, ConnectedProps } from "react-redux";
 import { Env } from "../../common/@types-common";
-import "./_logo.component.scss";
+import "./_logo.view.scss";
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,

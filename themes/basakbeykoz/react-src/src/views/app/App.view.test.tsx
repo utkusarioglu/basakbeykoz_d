@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AppView from "./App.component";
+import AppView from "./App.view";
 // import { RootState } from "../../store/rootReducer";
 
 describe("Components", () => {

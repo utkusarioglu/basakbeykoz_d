@@ -1,9 +1,9 @@
 import React from "react";
-import Nav from "../../features/nav/Nav";
+import Nav from "../../features/nav/Nav.feature";
 import { connect, ConnectedProps } from "react-redux";
 import { setIsMenuOpen } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
-import "./_navFixed.component.scss";
+import "./_navFixed.view.scss";
 
 const mapState = (state: RootState) => ({
   isMenuOpen: state.app.isMenuOpen,

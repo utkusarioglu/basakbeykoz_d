@@ -1,10 +1,10 @@
 import React from "react";
-import "./_header.component.scss";
+import "./_header.view.scss";
 
-import HeaderLogo from "./HeaderLogo.component";
-import BurgerMenu from "./BurgerMenu.component";
-import Social from "../social/Social.component";
-import NavHeaderView from "../nav/NavHeader.component";
+import HeaderLogo from "./HeaderLogo.view";
+import BurgerMenu from "./BurgerMenu.view";
+import Social from "../social/Social.view";
+import NavHeaderView from "../nav/NavHeader.view";
 
 function Header() {
   return (

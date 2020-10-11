@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import Posts from "./Posts";
-import Canvas from "../../views/canvas/Canvas.component";
+import Posts from "./Posts.feature";
+import Canvas from "../../views/canvas/Canvas.view";
 import { Env } from "../../common/@types-common";
 import { setFetching } from "../app/appActions";
 import "./_blog.scss";

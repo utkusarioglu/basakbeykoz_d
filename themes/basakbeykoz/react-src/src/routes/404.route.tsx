@@ -1,5 +1,5 @@
 import React from "react";
-import Canvas from "../views/canvas/Canvas.component";
+import Canvas from "../views/canvas/Canvas.view";
 
 function FourOFourRoute() {
   return (

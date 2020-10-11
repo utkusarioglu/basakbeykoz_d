@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Posts from "../../features/blog/Posts";
+import Posts from "../../features/blog/Posts.feature";
 import { GeneralSingularItemforView } from "../../features/wordpress/@types-wordpress";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 import { Env } from "../../common/@types-common";
-import "./_canvas.component.scss";
+import "./_canvas.view.scss";
 
 type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;

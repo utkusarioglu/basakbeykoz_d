@@ -39,22 +39,6 @@ export default function (
         return state;
       }
 
-    case ACTION_TYPES.FETCH_PAGE:
-      if (action.state === "success") {
-        return {
-          ...state,
-          page: {
-            ...state.page,
-            items: {
-              ...state.page.items,
-              ...action.payload.page,
-            },
-          },
-        };
-      } else {
-        return state;
-      }
-
     case ACTION_TYPES.FETCH_CATEGORY_POSTS:
       if (action.state === "success") {
         return {

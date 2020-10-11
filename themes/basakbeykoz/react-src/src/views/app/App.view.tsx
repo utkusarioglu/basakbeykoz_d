@@ -2,16 +2,16 @@ import React from "react";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { RootState } from "../../store/rootReducer";
 
-import Spinner from "../../features/spinner/Spinner";
-import AppRoutes from "../../features/app/AppRoutes";
-import Footer from "../../features/footer/Footer";
+import Spinner from "../../features/spinner/Spinner.feature";
+import AppRoutes from "../../features/app/AppRoutes.feature";
+import Footer from "../../features/footer/Footer.feature";
 
-import Header from "../header/Header.component";
-import Logo from "../header/Logo.component";
-import Social from "../social/Social.component";
-import NavFixedView from "../nav/NavFixed.component";
+import Header from "../header/Header.view";
+import Logo from "../header/Logo.view";
+import Social from "../social/Social.view";
+import NavFixedView from "../nav/NavFixed.view";
 
-import "./_app.component.scss";
+import "./_app.view.scss";
 
 interface OwnProps {
   refs: RootState["app"]["refs"];

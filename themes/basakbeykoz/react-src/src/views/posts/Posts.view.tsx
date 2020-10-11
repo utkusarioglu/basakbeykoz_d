@@ -1,7 +1,7 @@
 import React from "react";
 import { TimestampedSingular } from "../../features/wordpress/@types-wordpress";
-import PostListCardView from "./PostsItem.component";
-import "./_posts.component.scss";
+import PostListCardView from "./PostsItem.view";
+import "./_posts.view.scss";
 
 interface OwnProps {
   postListItems: TimestampedSingular[];

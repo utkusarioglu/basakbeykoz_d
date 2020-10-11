@@ -10,7 +10,7 @@ import {
   TimestampedSingular,
 } from "../wordpress/@types-wordpress";
 import OverlayScrollbars from "overlayscrollbars";
-import Canvas from "../../views/canvas/Canvas.component";
+import Canvas from "../../views/canvas/Canvas.view";
 import { Env } from "../../common/@types-common";
 //@ts-ignore
 import pauseable from "pauseable";
