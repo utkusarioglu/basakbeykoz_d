@@ -1,11 +1,11 @@
 @import "../../common/styles/_vars";
 @import "../../common/styles/_mixins";
 
-.PostList {
-  grid-area: PostList;
+.Posts {
+  grid-area: Posts;
 
   &-wrapper {
-    grid-area: PostList-wrapper;
+    grid-area: Posts-wrapper;
 
     & > h4 {
       // padding: #{$gap};

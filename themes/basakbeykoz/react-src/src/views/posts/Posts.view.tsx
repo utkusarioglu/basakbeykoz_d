@@ -1,23 +1,23 @@
 import React from "react";
 import { TimestampedSingular } from "../../features/wordpress/@types-wordpress";
-import PostListCardView from "./PostsItem.view";
+import PostsItemView from "./PostsItem.view";
 import "./_posts.view.scss";
 
 interface OwnProps {
-  postListItems: TimestampedSingular[];
+  PostsItems: TimestampedSingular[];
   locale: string;
 }
 
 type Props = OwnProps;
 
-function PostListView(props: Props) {
-  const { postListItems, locale } = props;
+function PostsView(props: Props) {
+  const { PostsItems, locale } = props;
 
-  const postList = postListItems.map((single) => {
+  const posts = PostsItems.map((single) => {
     if (single.data.state === "success") {
       return (
         <li key={single.data.slug}>
-          <PostListCardView {...single.data} locale={locale} />
+          <PostsItemView {...single.data} locale={locale} />
         </li>
       );
     } else {
@@ -26,10 +26,10 @@ function PostListView(props: Props) {
   });
 
   return (
-    <div className="PostList">
-      <ol>{postList}</ol>
+    <div className="Posts">
+      <ol>{posts}</ol>
     </div>
   );
 }
 
-export default PostListView;
+export default PostsView;

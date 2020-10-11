@@ -9,14 +9,14 @@
   // padding-bottom: 200px;
   @include narrowScreen() {
     display: grid;
-    grid-template-areas: ". Heading-h2" ". Article" ". PostList-wrapper";
+    grid-template-areas: ". Heading-h2" ". Article" ". Posts-wrapper";
     grid-template-rows: 150px 1fr;
     grid-template-columns: $featureImageX 2fr;
     grid-column-gap: adjustSize(30, 100, map-get($screenSizes, narrow));
   }
   @include wideScreen() {
     $navSocialSpaceX: map-get($wide, navSocialSpaceX);
-    grid-template-areas: ". Heading-h2 ." ". Article ." ". PostList-wrapper .";
+    grid-template-areas: ". Heading-h2 ." ". Article ." ". Posts-wrapper .";
     grid-template-columns: $featureImageX 2fr $navSocialSpaceX;
   }
   &-decor {

@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
 import { fetchCategoryPosts } from "../wordpress/singularActions";
 import { setFetching } from "../app/appActions";
-import PostListView from "../../views/posts/Posts.view";
+import PostsView from "../../views/posts/Posts.view";
 import { Env } from "../../common/@types-common";
 
 const mapState = (state: RootState) => ({
@@ -16,7 +16,7 @@ const mapDispatch = {
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {
-  //slugs to exclude, helps to exclude the current post when the postList is displayed in a post
+  //slugs to exclude, helps to exclude the current post when the Posts is displayed in a post
   excludeSlug: string[];
 }
 
@@ -36,11 +36,11 @@ function Posts(props: Props) {
     }
   }, 1000);
 
-  const postList = Object.values(posts.items).filter(
+  const filteredPosts = Object.values(posts.items).filter(
     (single) => single.data.slug !== excludeSlug[0] || false
   );
 
-  return <PostListView postListItems={postList} locale="TR-TR" />;
+  return <PostsView PostsItems={filteredPosts} locale="TR-TR" />;
 }
 
 export default connector(Posts);

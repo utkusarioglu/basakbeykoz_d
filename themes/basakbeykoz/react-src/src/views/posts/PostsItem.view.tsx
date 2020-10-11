@@ -12,7 +12,7 @@ interface Props {
   locale: string;
 }
 
-function PostListCardView(props: Props) {
+function PostsItemView(props: Props) {
   const { title, content, excerpt, date, slug, thumbnail, locale } = props;
 
   const fixedExcerpt = !!excerpt ? excerpt : createExcerpt(content);
@@ -20,15 +20,15 @@ function PostListCardView(props: Props) {
   const fixedDate = dateObj.toLocaleDateString(locale);
 
   return (
-    <Link to={"/" + slug} className="PostList-card">
+    <Link to={"/" + slug} className="Posts-card">
       <div
-        className="PostList-card-thumbnail"
+        className="Posts-card-thumbnail"
         dangerouslySetInnerHTML={{ __html: thumbnail }}
       />
-      <h4 className="PostList-card-title">{title}</h4>
-      <span className="PostList-card-date">{fixedDate}</span>
+      <h4 className="Posts-card-title">{title}</h4>
+      <span className="Posts-card-date">{fixedDate}</span>
       <div
-        className="PostList-card-excerpt"
+        className="Posts-card-excerpt"
         dangerouslySetInnerHTML={{ __html: fixedExcerpt }}
       ></div>
     </Link>
@@ -39,4 +39,4 @@ function createExcerpt(content: Props["content"]): Props["excerpt"] {
   return content.split("</p>")[0] + "</p>";
 }
 
-export default PostListCardView;
+export default PostsItemView;

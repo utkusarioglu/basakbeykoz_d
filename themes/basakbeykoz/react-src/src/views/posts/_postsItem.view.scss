@@ -1,7 +1,7 @@
 @import "../../common/styles/_vars";
 @import "../../common/styles/_mixins";
 
-.PostList {
+.Posts {
   $CARD_HEIGHT: 250px;
   &-card {
     display: grid;

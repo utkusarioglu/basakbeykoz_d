@@ -63,13 +63,13 @@ function Canvas(props: Props) {
     articleTitle = <h2 className="Canvas-articleTitle text-blue">{title}</h2>;
   }
 
-  let postList;
+  let posts;
   let excludeSlug = [];
   if (type === "post") {
     excludeSlug.push(slug);
     bodyExtraClasses.push("has-PostExcerptList");
-    postList = (
-      <div className="PostList-wrapper">
+    posts = (
+      <div className="Posts-wrapper">
         <h4>Similar Reads</h4>
         <Posts excludeSlug={excludeSlug} />
       </div>
@@ -100,7 +100,7 @@ function Canvas(props: Props) {
         </div>
         {articleTitle}
         {article}
-        {postList}
+        {posts}
       </div>
     </>
   );
