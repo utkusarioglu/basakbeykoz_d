@@ -1,8 +1,8 @@
 import React from "react";
-import Slugged from "../features/slugged/Slugged.feature";
+import SluggedFeature from "../features/slugged/Slugged.feature";
 
 function SluggedRoute() {
-  return <Slugged />;
+  return <SluggedFeature />;
 }
 
 export default SluggedRoute;

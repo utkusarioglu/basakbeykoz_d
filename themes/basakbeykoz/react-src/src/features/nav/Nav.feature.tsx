@@ -5,7 +5,7 @@ import { RootState } from "../../store/rootReducer";
 import { fetchMenu } from "../wordpress/menuActions";
 import { setIsMenuOpen } from "../app/appActions";
 import "./_nav.scss";
-import NavItem from "./NavItem.feature";
+import NavItemFeature from "./NavItem.feature";
 
 const mapState = (state: RootState) => ({
   menu: state.menu,
@@ -19,17 +19,17 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Nav(props: Props) {
+function NavFeature(props: Props) {
   const { menu, fetchMenu } = props;
   useEffect(() => {
     fetchMenu("nav");
   }, [fetchMenu]);
 
   const menuItems: JSX.Element[] = menu.items.map((item: wpMenuItem) => (
-    <NavItem key={item.ID} item={item} />
+    <NavItemFeature key={item.ID} item={item} />
   ));
 
   return <nav>{menuItems}</nav>;
 }
 
-export default connector(Nav);
+export default connector(NavFeature);

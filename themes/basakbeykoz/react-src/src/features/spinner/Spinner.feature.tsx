@@ -12,7 +12,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Spinner(props: Props) {
+function SpinnerFeature(props: Props) {
   const { isFetching } = props;
   const loadingMessages = [
     "Hemen geliyor",
@@ -35,4 +35,4 @@ function Spinner(props: Props) {
   );
 }
 
-export default connector(Spinner);
+export default connector(SpinnerFeature);

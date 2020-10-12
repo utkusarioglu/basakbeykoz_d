@@ -22,7 +22,7 @@ interface OwnProps {
 
 type Props = OwnProps & PropsFromRedux;
 
-function Posts(props: Props) {
+function PostsFeature(props: Props) {
   const { REACT_APP_BLOG_SLUG } = process.env as Env;
   const {
     fetchCategoryPosts,
@@ -48,4 +48,4 @@ function Posts(props: Props) {
   return <PostsView PostsItems={filteredPosts} locale="TR-TR" />;
 }
 
-export default connector(Posts);
+export default connector(PostsFeature);

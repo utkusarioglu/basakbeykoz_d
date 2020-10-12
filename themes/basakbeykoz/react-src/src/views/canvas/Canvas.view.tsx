@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Posts from "../../features/blog/Posts.feature";
+import PostsFeature from "../../features/blog/Posts.feature";
 import { GeneralSingularItemforView } from "../../features/wordpress/@types-wordpress";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
@@ -74,7 +74,7 @@ function Canvas(props: Props) {
     posts = (
       <div className="Posts-wrapper">
         <h4>Similar Reads</h4>
-        <Posts excludeSlugs={excludeSlug} />
+        <PostsFeature excludeSlugs={excludeSlug} />
       </div>
     );
   }

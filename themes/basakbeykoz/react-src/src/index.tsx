@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import ReactGA from "react-ga";
 import * as serviceWorker from "./serviceWorker";
-import App from "./features/app/App.feature";
+import AppFeature from "./features/app/App.feature";
 import "@csstools/normalize.css";
 import "./index.scss";
 import "overlayscrollbars/css/OverlayScrollbars.css";
@@ -17,7 +17,7 @@ ReactGA.initialize(REACT_APP_GA_TRACKING_ID as string, { debug: false });
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <AppFeature />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -2,9 +2,9 @@ import React from "react";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { RootState } from "../../store/rootReducer";
 
-import Spinner from "../../features/spinner/Spinner.feature";
+import SpinnerFeature from "../../features/spinner/Spinner.feature";
 import AppRoutes from "../../features/app/AppRoutes.feature";
-import Footer from "../../features/footer/Footer.feature";
+import FooterFeature from "../../features/footer/Footer.feature";
 
 import Header from "../header/Header.view";
 import Logo from "../header/Logo.view";
@@ -23,7 +23,7 @@ function AppView(props: Props) {
   const { refs } = props;
   return (
     <div className="App">
-      <Spinner />
+      <SpinnerFeature />
       <NavFixedView />
       <Header />
       <div className="App-wideScreenControls">
@@ -47,7 +47,7 @@ function AppView(props: Props) {
       >
         <div className="App-scrollingElements">
           <AppRoutes />
-          <Footer />
+          <FooterFeature />
         </div>
       </OverlayScrollbarsComponent>
     </div>

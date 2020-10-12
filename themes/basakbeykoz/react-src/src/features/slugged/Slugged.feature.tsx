@@ -33,7 +33,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Slugged(props: Props) {
+function SluggedFeature(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
   const paramSlug = useParams<{ slug: string }>().slug || REACT_APP_HOME_SLUG;
   const {
@@ -140,9 +140,9 @@ function getSlugOnload(
         setTimeout(() => {
           const fields = document.querySelectorAll(".wp-block-latest-posts");
           // Scrollbar for latest posts
-          attachLlistActions(fields[0] as HTMLElement);
+          attachListActions(fields[0] as HTMLElement);
           // Scrollbar for testimonials
-          attachLlistActions(fields[1] as HTMLElement);
+          attachListActions(fields[1] as HTMLElement);
           // Attach listener to the CTA
           // !HACK this listener is attached every time the page is opened
           document.body
@@ -166,7 +166,7 @@ function getSlugOnload(
   }
 }
 
-function attachLlistActions(elem: HTMLElement): void {
+function attachListActions(elem: HTMLElement): void {
   const SCROLL_DURATION = 1500;
   const LINGER_DURATION = 3000;
 
@@ -203,4 +203,4 @@ function attachLlistActions(elem: HTMLElement): void {
   });
 }
 
-export default connector(Slugged);
+export default connector(SluggedFeature);

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Posts from "./Posts.feature";
+import PostsFeature from "./Posts.feature";
 import Canvas from "../../views/canvas/Canvas.view";
 import { Env } from "../../common/@types-common";
 import { setFetching } from "../app/appActions";
@@ -17,7 +17,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Blog(props: Props) {
+function BlogFeature(props: Props) {
   const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env as Env;
   const { setFetching } = props;
   const featureImageName = "yazilar-feature-image";
@@ -56,11 +56,11 @@ function Blog(props: Props) {
         thumbnail: "",
         thumbnailComponent,
         content: "",
-        articleComponent: <Posts excludeSlugs={[]} />,
+        articleComponent: <PostsFeature excludeSlugs={[]} />,
         onLoad: () => {},
       }}
     />
   );
 }
 
-export default connector(Blog);
+export default connector(BlogFeature);

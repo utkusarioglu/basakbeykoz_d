@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../features/nav/Nav.feature";
+import NavFeature from "../../features/nav/Nav.feature";
 import { connect, ConnectedProps } from "react-redux";
 import { setIsMenuOpen } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
@@ -30,7 +30,7 @@ function NavFixedView(props: Props) {
       <div className="NavFixedView-mask" />
       <div className="NavFixedView-decor" />
       <div className="NavFixedView-list">
-        <Nav />
+        <NavFeature />
       </div>
     </div>
   );

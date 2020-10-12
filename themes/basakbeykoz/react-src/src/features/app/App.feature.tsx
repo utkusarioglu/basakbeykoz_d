@@ -17,7 +17,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function App(props: Props) {
+function AppFeature(props: Props) {
   const { refs, setRef } = props;
 
   if (!refs.body) {
@@ -34,4 +34,4 @@ function App(props: Props) {
   );
 }
 
-export default connector(App);
+export default connector(AppFeature);

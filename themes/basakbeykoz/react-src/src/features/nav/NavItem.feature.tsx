@@ -20,7 +20,7 @@ interface OwnProps {
 }
 type Props = OwnProps & PropsFromRedux;
 
-function NavItem(props: Props) {
+function NavItemFeature(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
   const { item, refs, setDisplaying } = props;
   const cleanSlug = !!item.slug ? item.slug : "";
@@ -47,4 +47,4 @@ function NavItem(props: Props) {
   );
 }
 
-export default connector(NavItem);
+export default connector(NavItemFeature);

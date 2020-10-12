@@ -15,7 +15,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Footer(props: Props) {
+function FooterFeature(props: Props) {
   const { setIsMenuOpen, refs } = props;
   const navClickActions = () => {
     setIsMenuOpen(false);
@@ -25,4 +25,4 @@ function Footer(props: Props) {
   return <FooterView navClickActions={navClickActions} />;
 }
 
-export default connector(Footer);
+export default connector(FooterFeature);
