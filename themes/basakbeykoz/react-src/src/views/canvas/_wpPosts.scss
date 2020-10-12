@@ -102,7 +102,7 @@
         height: 150px;
         overflow: hidden;
         display: flex;
-        align-items: center;
+        justify-content: center;
         border-radius: #{$gap/3};
         @include narrowScreen() {
           @if $gridFlow == row {
@@ -110,8 +110,9 @@
           }
         }
         & > img {
-          width: 100%;
-          height: auto;
+          min-height: 100%;
+          min-width: 100%;
+          object-fit: cover;
           z-index: 10;
           @include narrowScreen() {
             @if $gridFlow == row {
