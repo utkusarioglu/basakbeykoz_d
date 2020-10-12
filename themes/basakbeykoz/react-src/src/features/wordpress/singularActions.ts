@@ -4,7 +4,7 @@ import {
   PartialSingularDispatch,
   wpSingularArchiveItem,
 } from "./@types-wordpress";
-import { filterByType } from "./mergers";
+import { filterByType } from "./filters";
 import rest from "../../services/rest";
 import { ERROR_CODES } from "./constants";
 
