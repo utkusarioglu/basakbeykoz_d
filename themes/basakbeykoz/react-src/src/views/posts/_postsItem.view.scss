@@ -33,7 +33,23 @@
 
     &-excerpt {
       grid-area: excerpt;
-
+      overflow: hidden;
+      position: relative;
+      @include narrowScreen() {
+        &::after {
+          content: "";
+          position: absolute;
+          background: linear-gradient(
+            180deg,
+            transparent 0,
+            #{map-get($colorMap, bg-white)} #{$gap}
+          );
+          right: 0;
+          bottom: 0;
+          left: 0;
+          height: #{$gap};
+        }
+      }
       & > p {
         margin: 0;
       }
