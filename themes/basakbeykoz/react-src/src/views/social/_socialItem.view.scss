@@ -7,7 +7,11 @@
     filter: var(--filter-darkGray);
   }
   a {
-    min-height: #{$gap + $socialIconMinSize_px};
-    height: calc(#{$gap} + #{$socialIconActiveSize_px});
+    height: #{$gap + $socialIconDefaultSize_px};
+    @include wideScreen() {
+      min-height: #{$gap + $socialIconWideScreenMinSize_px};
+      height: calc(#{$gap} + #{$socialIconWideScreenActiveSize_px});
+      max-height: #{$gap + $socialIconWideScreenMaxSize_px};
+    }
   }
 }

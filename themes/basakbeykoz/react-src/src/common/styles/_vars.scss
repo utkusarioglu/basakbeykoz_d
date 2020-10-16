@@ -40,11 +40,12 @@ $mobile_FeatureImageHeight_home: 300px;
 $gap: 30px;
 $excerptFontSize: 15px;
 $footerSquareSize: 105px;
-$socialIconMinSize_px: 20;
-$socialIconMaxSize_px: 40;
-$socialIconActiveSize_px: adjustSize(
-  $socialIconMinSize_px,
-  $socialIconMaxSize_px,
+$socialIconDefaultSize_px: 20;
+$socialIconWideScreenMinSize_px: 25;
+$socialIconWideScreenMaxSize_px: 35;
+$socialIconWideScreenActiveSize_px: adjustSize(
+  $socialIconDefaultSize_px,
+  $socialIconWideScreenMaxSize_px,
   map-get($screenSizes, wide),
   1920
 );

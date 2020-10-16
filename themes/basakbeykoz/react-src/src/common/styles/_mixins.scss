@@ -64,14 +64,18 @@
 }
 
 @mixin headerIcon($filter: var(--filter-white)) {
-  min-height: #{$socialIconMinSize_px}px;
-  min-width: #{$socialIconMinSize_px}px;
-  height: #{$socialIconActiveSize_px};
-  width: #{$socialIconActiveSize_px};
-  max-height: #{$socialIconMaxSize_px}px;
-  max-width: #{$socialIconMaxSize_px}px;
+  height: #{$socialIconDefaultSize_px}px;
+  width: #{$socialIconDefaultSize_px}px;
   padding: #{$gap / 2};
-  filter: $filter;
+  // filter: $filter;
+  @include wideScreen() {
+    min-height: #{$socialIconWideScreenMinSize_px}px;
+    min-width: #{$socialIconWideScreenMinSize_px}px;
+    height: #{$socialIconWideScreenActiveSize_px};
+    width: #{$socialIconWideScreenActiveSize_px};
+    max-height: #{$socialIconWideScreenMaxSize_px}px;
+    max-width: #{$socialIconWideScreenMaxSize_px}px;
+  }
 }
 
 /* 

@@ -11,7 +11,7 @@
     border: none;
     padding: 0;
     margin: 0;
-    height: #{$gap + $socialIconMinSize_px};
+    height: #{$gap + $socialIconDefaultSize_px};
     cursor: pointer;
 
     &:focus {
