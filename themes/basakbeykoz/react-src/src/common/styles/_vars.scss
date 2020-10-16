@@ -1,23 +1,12 @@
-// @import "./mixins";
-@function adjustSize($minValue, $maxValue, $minScreen: 320, $maxScreen: 1920) {
-  @return calc(
-    #{$minValue}px + (#{$maxValue} - #{$minValue}) *
-      ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen}))
-  );
-}
-
-//Vars
+@import "./_mixins.scss";
 $uploadsPath: "/wp-content/uploads";
 $defaultFontSize: 20px;
-// $textFont: "Work Sans", sans-serif;
 $textFont: var(--text-font);
 $textFontWeight: var(--text-font-weight);
-// $titleFont: "Montserrat", sans-serif;
 $titleFont: var(--title-font);
 $titleFontWeight: var(--title-font-weight);
 $fancyFont: "KendiniYenidenKesfet", sans-serif;
 
-// $wideScreenPx: 1200;
 $screenSizes: (
   huge: 1920,
   wide: 1200,
@@ -34,7 +23,6 @@ $mobile: (
 );
 $narrow: (
   featureImageX: 25vw,
-  // logoNSocialY: 100px,
   logoNSocialY: 80px,
   homeWelcomeImageX: 45vw,
   homePostsNarrowY: 150px,
@@ -44,7 +32,6 @@ $wide: (
 );
 $short: (
   minBlockHeight: 600px,
-  // minHeight: 700px,
   buttonDisappearBefore: 600px,
 );
 $mobileNavigationHeight: 54px;
@@ -54,56 +41,46 @@ $gap: 30px;
 $excerptFontSize: 15px;
 $footerSquareSize: 105px;
 $socialIconMinSize_px: 20;
+$socialIconMaxSize_px: 40;
 $socialIconActiveSize_px: adjustSize(
   $socialIconMinSize_px,
-  30,
-  map-get($screenSizes, wide)
+  $socialIconMaxSize_px,
+  map-get($screenSizes, wide),
+  1920
 );
 $fonts: (
   h1: (
-    // font-size: 35px,
     font-size: adjustSize(50, 110),
-    // line-height: 40px,
     line-height: adjustSize(70, 140),
     font-family: $fancyFont,
     font-weight: 100,
   ),
   h2: (
-    // font-size: 30px,
     font-size: adjustSize(26, 40),
-    // line-height: 34.5px,
     line-height: adjustSize(30, 45),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),
   h3: (
-    // font-size: 25px,
     font-size: adjustSize(23, 35),
-    // line-height: 30px,
     line-height: adjustSize(28, 40),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),
   h4: (
-    // font-size: 20px,
     font-size: adjustSize(20, 25),
-    // line-height: 30px,
     line-height: adjustSize(25, 30),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),
   h5: (
-    // font-size: 16px,
     font-size: adjustSize(16, 26),
-    // line-height: 20px,
     line-height: adjustSize(20, 34),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),
   h6: (
-    // font-size: 14px,
     font-size: adjustSize(14, 20),
-    // line-height: 18px,
     line-height: adjustSize(18, 24),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
@@ -126,7 +103,6 @@ $colorMap: (
   bg-green: var(--brush-lightGreen),
   bg-black: var(--brush-black),
   ui-white: var(--brush-white),
-  // ui-lightGray: var(--brush-lightGray),
   ui-gray: var(--brush-gray),
   ui-yellow: var(--brush-darkYellow),
   ui-decoration: var(--brush-darkYellow),

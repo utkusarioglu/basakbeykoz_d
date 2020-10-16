@@ -1,5 +1,5 @@
 @use "sass:map";
-@import "_vars";
+// @import "_vars";
 
 @function scut-strip-unit($num) {
   @return $num / ($num * 0 + 1);
@@ -7,6 +7,13 @@
 
 @function scut-rem($pixels) {
   @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
+}
+
+@function adjustSize($minValue, $maxValue, $minScreen: 320, $maxScreen: 1920) {
+  @return calc(
+    #{$minValue}px + (#{$maxValue} - #{$minValue}) *
+      ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen}))
+  );
 }
 
 @mixin _min-width($threshold) {
@@ -61,6 +68,8 @@
   min-width: #{$socialIconMinSize_px}px;
   height: #{$socialIconActiveSize_px};
   width: #{$socialIconActiveSize_px};
+  max-height: #{$socialIconMaxSize_px}px;
+  max-width: #{$socialIconMaxSize_px}px;
   padding: #{$gap / 2};
   filter: $filter;
 }
