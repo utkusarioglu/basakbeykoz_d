@@ -20,6 +20,21 @@
     position: relative;
     &:hover {
       background-color: #{map-get($colorMap, bg-gray)};
+      & .Posts {
+        &-card {
+          &-excerpt {
+            @include narrowScreen() {
+              &::after {
+                background: linear-gradient(
+                  180deg,
+                  transparent 0,
+                  #{map-get($colorMap, bg-gray)} #{$gap}
+                );
+              }
+            }
+          }
+        }
+      }
     }
   }
   ol {
