@@ -2,7 +2,7 @@
 @import "../../common/styles/_mixins";
 
 .Social {
-  &-icon {
+  &-item {
     @include headerIcon();
     filter: var(--filter-darkGray);
   }
