@@ -53,7 +53,7 @@ function SluggedFeature(props: Props) {
       (timestampedSingular.data.state === "success" &&
         timestampedSingular.loadTime < anHourAgo)
     ) {
-      setFetching(true);
+      dispatch(setFetching(true));
       if (process.env.NODE_ENV === "development") {
         setTimeout(() => {
           fetchSingular(isDisplayingSlug).then(dispatch);
