@@ -1,4 +1,4 @@
-enum ACTION_TYPES {
+export enum ACTION_TYPES {
   FETCH_MENU,
   FETCH_CATEGORY_POSTS,
   FETCH_SINGULAR,
@@ -8,4 +8,7 @@ enum ACTION_TYPES {
   SET_REF,
 }
 
-export default ACTION_TYPES;
+export enum ACTION_STATES {
+  SUCCESS,
+  FAIL,
+}

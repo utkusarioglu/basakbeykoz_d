@@ -1,4 +1,4 @@
-import ACTION_TYPES from "../../common/actionTypes";
+import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
 import { FSA } from "../../common/@types-actions";
 import stateMap from "../../store/@types-state";
 import { PartialSingularDispatch } from "./@types-wordpress";
@@ -19,7 +19,7 @@ export default function (
 ): stateMap["singular"] {
   switch (action.type) {
     case ACTION_TYPES.FETCH_SINGULAR:
-      if (action.state === "success") {
+      if (action.state === ACTION_STATES.SUCCESS) {
         return {
           post: {
             ...state.post,
@@ -40,7 +40,7 @@ export default function (
       }
 
     case ACTION_TYPES.FETCH_CATEGORY_POSTS:
-      if (action.state === "success") {
+      if (action.state === ACTION_STATES.SUCCESS) {
         return {
           ...state,
           post: {

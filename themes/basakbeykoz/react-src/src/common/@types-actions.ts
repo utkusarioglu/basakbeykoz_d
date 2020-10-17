@@ -1,18 +1,18 @@
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { ERROR_CODES } from "../features/wordpress/constants";
-import ACTION_TYPES from "./actionTypes";
+import { ACTION_TYPES, ACTION_STATES } from "./actionConstants";
 export type FSA<T> = FSASuccess<T> | FSAFailure;
 
 interface FSASuccess<T> {
   type: ACTION_TYPES;
+  state: ACTION_STATES.SUCCESS;
   payload: T;
-  state: "success";
 }
 
 interface FSAFailure {
   type: ACTION_TYPES;
+  state: ACTION_STATES.FAIL;
   error: ERROR_CODES;
-  state: "fail";
 }
 
 export type DispatchMethod<T> = (vars: FSA<T>) => void;

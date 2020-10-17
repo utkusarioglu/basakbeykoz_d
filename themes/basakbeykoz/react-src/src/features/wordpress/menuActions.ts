@@ -1,5 +1,5 @@
 import { DispatchMethod } from "../../common/@types-actions";
-import ACTION_TYPES from "../../common/actionTypes";
+import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
 import { ERROR_CODES } from "./constants";
 import { wpMenuItem } from "./@types-wordpress";
 import rest from "../../services/rest";
@@ -16,13 +16,13 @@ export const boundFetchMenu = (slug: string) => (
         // TODO you need a better error test here
         dispatch({
           type: ACTION_TYPES.FETCH_MENU,
-          state: "success",
+          state: ACTION_STATES.SUCCESS,
           payload: data.items,
         });
       } else {
         dispatch({
           type: ACTION_TYPES.FETCH_MENU,
-          state: "fail",
+          state: ACTION_STATES.FAIL,
           error: ERROR_CODES.MENU_FETCH_FAIL,
         });
       }

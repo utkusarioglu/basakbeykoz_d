@@ -1,5 +1,5 @@
-import { DispatchMethod } from "../../common/@types-actions";
-import ACTION_TYPES from "../../common/actionTypes";
+import { DispatchMethod, FSA } from "../../common/@types-actions";
+import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
 import {
   PartialSingularDispatch,
   wpSingularArchiveItem,
@@ -7,6 +7,7 @@ import {
 import { filterByType } from "./filters";
 import rest from "../../services/rest";
 import { ERROR_CODES } from "./constants";
+import { RootState } from "../../store/rootReducer";
 
 export const boundFetchSingular = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
@@ -23,7 +24,7 @@ export const boundFetchSingular = (slug: string) => (
       if (data.state === "success") {
         dispatch({
           type: ACTION_TYPES.FETCH_SINGULAR,
-          state: "success",
+          state: ACTION_STATES.SUCCESS,
           payload: {
             [data.type]: {
               [data.slug]: {
@@ -37,7 +38,7 @@ export const boundFetchSingular = (slug: string) => (
         data.types.forEach((type) => {
           dispatch({
             type: ACTION_TYPES.FETCH_SINGULAR,
-            state: "success",
+            state: ACTION_STATES.SUCCESS,
             payload: {
               [type]: {
                 [data.slug]: {
@@ -53,16 +54,16 @@ export const boundFetchSingular = (slug: string) => (
     .catch(() => {
       dispatch({
         type: ACTION_TYPES.FETCH_SINGULAR,
-        state: "fail",
+        state: ACTION_STATES.FAIL,
         error: ERROR_CODES.SINGULAR_FETCH_FAIL,
       });
     });
 };
 
-export const boundFetchCategoryPosts = (slug: string) => (
-  dispatch: DispatchMethod<PartialSingularDispatch>
-) => {
-  rest
+export function fetchCategoryPosts(
+  slug: string
+): Promise<FSA<PartialSingularDispatch>> {
+  return rest
     .request<wpSingularArchiveItem[]>({
       method: "get",
       url: "/customrest/v1/category_posts_slug/" + slug,
@@ -70,29 +71,31 @@ export const boundFetchCategoryPosts = (slug: string) => (
     .then(({ data }) => {
       if (data) {
         const now = Date.now();
-        const payload = {
-          fetchTime: Date.now(),
-          post: filterByType(data, "post", now),
-          page: filterByType(data, "page", now),
+        return {
+          type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
+          state: ACTION_STATES.SUCCESS,
+          payload: {
+            fetchTime: Date.now(),
+            post: filterByType(data, "post", now),
+            page: filterByType(data, "page", now),
+          },
         };
-        dispatch({
-          type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
-          state: "success",
-          payload,
-        });
       } else {
-        dispatch({
+        return {
           type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
-          state: "fail",
+          state: ACTION_STATES.FAIL,
           error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
-        });
+        };
       }
-    })
-    .catch(() => {
-      dispatch({
-        type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
-        state: "fail",
-        error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
-      });
     });
-};
+  // !HACK
+  // .catch(() => {
+  //   return {
+  //     type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
+  //     state: ACTION_STATES.FAIL,
+  //     error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
+  //   };
+  // });
+}
+
+export const selectPosts = (state: RootState) => state.singular.post;
