@@ -12,7 +12,7 @@ import "./common/styles/_scrollbar.scss";
 import { Env } from "./common/@types-common";
 
 const { REACT_APP_GA_TRACKING_ID } = process.env as Env;
-ReactGA.initialize(REACT_APP_GA_TRACKING_ID as string, { debug: false });
+ReactGA.initialize(REACT_APP_GA_TRACKING_ID, { debug: false });
 
 ReactDOM.render(
   <React.StrictMode>
