@@ -1,20 +1,13 @@
 import React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../store/rootReducer";
+import { useSelector } from "react-redux";
+import { selectSocialItems } from "../../features/social/socialActions";
 import SocialItem from "./SocialItem.component";
 import "./_social.view.scss";
 
-const mapState = (state: RootState) => ({
-  socialItems: state.social.items,
-});
-const mapDispatch = {};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {}
-type Props = OwnProps & PropsFromRedux;
+interface Props {}
 
 function Social(props: Props) {
-  const { socialItems } = props;
+  const socialItems = useSelector(selectSocialItems);
   const socialComponents = socialItems.map((item) => {
     return (
       <SocialItem
@@ -34,4 +27,4 @@ function Social(props: Props) {
   );
 }
 
-export default connector(Social);
+export default Social;

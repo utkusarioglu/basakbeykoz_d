@@ -1,25 +1,16 @@
 import React from "react";
 import NavFeature from "../../features/nav/Nav.feature";
-import { connect, ConnectedProps } from "react-redux";
-import { boundSetIsMenuOpen } from "../../features/app/appActions";
-import { RootState } from "../../store/rootReducer";
+import { useSelector, useDispatch } from "react-redux";
+import { selectIsMenuOpen, setIsMenuOpen } from "../../features/app/appActions";
 import "./_navFixed.view.scss";
 
-const mapState = (state: RootState) => ({
-  isMenuOpen: state.app.isMenuOpen,
-});
-const mapDispatch = {
-  setIsMenuOpen: boundSetIsMenuOpen,
-};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {}
-type Props = OwnProps & PropsFromRedux;
+interface Props {}
 
 function NavFixedView(props: Props) {
-  const { setIsMenuOpen, isMenuOpen } = props;
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector(selectIsMenuOpen);
   const menuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+    dispatch(setIsMenuOpen(!isMenuOpen));
   };
 
   return (
@@ -38,4 +29,4 @@ function NavFixedView(props: Props) {
   );
 }
 
-export default connector(NavFixedView);
+export default NavFixedView;

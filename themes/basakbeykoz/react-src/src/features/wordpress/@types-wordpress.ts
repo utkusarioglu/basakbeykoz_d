@@ -24,10 +24,15 @@ interface wpSingularCommon {
   link: string;
 }
 
+export enum FETCH_STATES {
+  SUCCESS = "success",
+  FAIL = "fail",
+}
+
 export type wpSingularArchiveItem = wpSingularItemSuccess | wpSingularItemFail;
 
 export interface wpSingularItemSuccess extends wpSingularItemForView {
-  state: "success";
+  state: FETCH_STATES.SUCCESS;
   ID: number;
   author: number;
   date: string;
@@ -39,7 +44,7 @@ export interface wpSingularItemSuccess extends wpSingularItemForView {
 }
 
 export interface wpSingularItemFail {
-  state: "fail";
+  state: FETCH_STATES.FAIL;
   code: ERROR_CODES;
   types: WpSingularTypes[];
   slug: string;

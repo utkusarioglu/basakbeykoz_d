@@ -1,29 +1,18 @@
 import React, { useEffect } from "react";
-import { connect, ConnectedProps } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { wpMenuItem } from "../wordpress/@types-wordpress";
-import { RootState } from "../../store/rootReducer";
-import { boundFetchMenu } from "../wordpress/menuActions";
-import { boundSetIsMenuOpen } from "../app/appActions";
+import { fetchMenu, selectMenu } from "../wordpress/menuActions";
 import "./_nav.scss";
 import NavItemFeature from "./NavItem.feature";
 
-const mapState = (state: RootState) => ({
-  menu: state.menu,
-});
-const mapDispatch = {
-  fetchMenu: boundFetchMenu,
-  setIsMenuOpen: boundSetIsMenuOpen,
-};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {}
-type Props = OwnProps & PropsFromRedux;
+interface Props {}
 
 function NavFeature(props: Props) {
-  const { menu, fetchMenu } = props;
+  const dispatch = useDispatch();
+  const menu = useSelector(selectMenu);
   useEffect(() => {
-    fetchMenu("nav");
-  }, [fetchMenu]);
+    fetchMenu("nav").then(dispatch);
+  }, [dispatch]);
 
   const menuItems: JSX.Element[] = menu.items.map((item: wpMenuItem) => (
     <NavItemFeature {...{ key: item.ID, item }} />
@@ -32,4 +21,4 @@ function NavFeature(props: Props) {
   return <nav>{menuItems}</nav>;
 }
 
-export default connector(NavFeature);
+export default NavFeature;

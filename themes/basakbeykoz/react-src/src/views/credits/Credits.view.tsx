@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import { boundSetFetching } from "../../features/app/appActions";
-import { RootState } from "../../store/rootReducer";
-import { connect, ConnectedProps } from "react-redux";
+import { setFetching } from "../../features/app/appActions";
+import { useDispatch } from "react-redux";
 import "./_credits.view.scss";
 
-const mapState = (state: RootState) => ({});
-const mapDispatch = {
-  setFetching: boundSetFetching,
-};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {}
-type Props = OwnProps & PropsFromRedux;
+interface Props {}
 
 interface IChoices {
   [type: string]: {
@@ -27,7 +19,8 @@ interface IChoiceSets {
 }
 
 function Credits(props: Props) {
-  props.setFetching(false);
+  const dispatch = useDispatch();
+  dispatch(setFetching(false));
 
   const [choiceSet, setChoiceSet] = useState<IChoices>({
     textFont: {
@@ -167,4 +160,4 @@ function Credits(props: Props) {
   );
 }
 
-export default connector(Credits);
+export default Credits;

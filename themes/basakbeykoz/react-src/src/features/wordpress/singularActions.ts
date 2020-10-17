@@ -1,4 +1,4 @@
-import { DispatchMethod, FSA } from "../../common/@types-actions";
+import { FSA } from "../../common/@types-actions";
 import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
 import {
   PartialSingularDispatch,
@@ -9,9 +9,9 @@ import rest from "../../services/rest";
 import { ERROR_CODES } from "./constants";
 import { RootState } from "../../store/rootReducer";
 
-export const boundFetchSingular = (slug: string) => (
-  dispatch: DispatchMethod<PartialSingularDispatch>
-) => {
+export function fetchSingular(
+  slug: string
+): Promise<FSA<PartialSingularDispatch>> {
   if (slug === "") {
     console.warn("empty slug");
   }
@@ -22,7 +22,7 @@ export const boundFetchSingular = (slug: string) => (
     })
     .then(({ data }) => {
       if (data.state === "success") {
-        dispatch({
+        return {
           type: ACTION_TYPES.FETCH_SINGULAR,
           state: ACTION_STATES.SUCCESS,
           payload: {
@@ -33,32 +33,29 @@ export const boundFetchSingular = (slug: string) => (
               },
             },
           },
-        });
+        };
       } else {
-        data.types.forEach((type) => {
-          dispatch({
-            type: ACTION_TYPES.FETCH_SINGULAR,
-            state: ACTION_STATES.SUCCESS,
-            payload: {
-              [type]: {
-                [data.slug]: {
-                  loadTime: Date.now(),
-                  data: data,
-                },
-              },
-            },
-          });
-        });
+        return {
+          type: ACTION_TYPES.FETCH_SINGULAR,
+          state: ACTION_STATES.FAIL,
+          error: data.code,
+          meta: {
+            types: data.types,
+            slug: data.slug,
+            loadTime: Date.now(),
+          },
+        };
       }
-    })
-    .catch(() => {
-      dispatch({
-        type: ACTION_TYPES.FETCH_SINGULAR,
-        state: ACTION_STATES.FAIL,
-        error: ERROR_CODES.SINGULAR_FETCH_FAIL,
-      });
     });
-};
+  // !hack
+  // .catch(() => {
+  //   return {
+  //     type: ACTION_TYPES.FETCH_SINGULAR,
+  //     state: ACTION_STATES.FAIL,
+  //     error: ERROR_CODES.SINGULAR_FETCH_FAIL,
+  //   };
+  // });
+}
 
 export function fetchCategoryPosts(
   slug: string
@@ -99,3 +96,4 @@ export function fetchCategoryPosts(
 }
 
 export const selectPosts = (state: RootState) => state.singular.post;
+export const selectSingular = (state: RootState) => state.singular;

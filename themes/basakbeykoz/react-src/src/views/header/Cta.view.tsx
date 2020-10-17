@@ -1,19 +1,12 @@
 import React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../store/rootReducer";
+import { useSelector } from "react-redux";
+import { selectRefs } from "../../features/app/appActions";
 import "./_cta.view.scss";
 
-const mapState = (state: RootState) => ({
-  refs: state.app.refs,
-});
-const mapDispatch = {};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {}
-type Props = OwnProps & PropsFromRedux;
+interface Props {}
 
 function Cta(props: Props) {
-  const { refs } = props;
+  const refs = useSelector(selectRefs);
   const ctaAction = () =>
     refs.body?.current
       ?.osInstance()
@@ -32,4 +25,4 @@ function Cta(props: Props) {
   );
 }
 
-export default connector(Cta);
+export default Cta;

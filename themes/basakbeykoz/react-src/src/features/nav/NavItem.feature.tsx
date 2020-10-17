@@ -1,35 +1,29 @@
 import React from "react";
 import { wpMenuItem } from "../wordpress/@types-wordpress";
-import { connect, ConnectedProps } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { RootState } from "../../store/rootReducer";
-import { boundSetDisplaying } from "../app/appActions";
+import { selectRefs, setDisplaying } from "../app/appActions";
 import "./_navItem.scss";
 import { Env } from "../../common/@types-common";
 
-const mapState = (state: RootState) => ({
-  refs: state.app.refs,
-});
-const mapDispatch = {
-  setDisplaying: boundSetDisplaying,
-};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {
+type Props = {
   item: wpMenuItem;
-}
-type Props = OwnProps & PropsFromRedux;
+};
 
 function NavItemFeature(props: Props) {
+  const dispatch = useDispatch();
   const { REACT_APP_HOME_SLUG } = process.env as Env;
-  const { item, refs, setDisplaying } = props;
+  const { item } = props;
+  const refs = useSelector(selectRefs);
   const cleanSlug = !!item.slug ? item.slug : "";
   const clickSlug = cleanSlug || (REACT_APP_HOME_SLUG as string);
 
   const setDisplayingAction = (slug: string) => {
-    setDisplaying({
-      slug,
-    });
+    dispatch(
+      setDisplaying({
+        slug,
+      })
+    );
     refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
   };
 
@@ -49,4 +43,4 @@ function NavItemFeature(props: Props) {
   );
 }
 
-export default connector(NavItemFeature);
+export default NavItemFeature;

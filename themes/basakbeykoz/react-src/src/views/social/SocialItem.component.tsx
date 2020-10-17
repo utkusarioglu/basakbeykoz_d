@@ -1,28 +1,21 @@
 import React from "react";
-import { connect, ConnectedProps } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ISocialItem } from "../../features/social/@types-social";
-import { boundSetIsMenuOpen } from "../../features/app/appActions";
+import { setIsMenuOpen } from "../../features/app/appActions";
 import ReactGA from "react-ga";
-import { RootState } from "../../store/rootReducer";
 import "./_socialItem.view.scss";
 
-const mapState = (state: RootState) => ({});
-const mapDispatch = {
-  setIsMenuOpen: boundSetIsMenuOpen,
-};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-type OwnProps = ISocialItem;
-type Props = OwnProps & PropsFromRedux;
+type Props = ISocialItem;
 
 function SocialItem(props: Props) {
-  const { title, link, icon, setIsMenuOpen } = props;
+  const dispatch = useDispatch();
+  const { title, link, icon } = props;
 
   return (
     <ReactGA.OutboundLink
       {...{
         eventLabel: title,
-        onClick: () => setIsMenuOpen(false),
+        onClick: () => dispatch(setIsMenuOpen(false)),
         to: link,
         target: "_blank",
       }}
@@ -39,5 +32,5 @@ function SocialItem(props: Props) {
   );
 }
 
-export default connector(SocialItem);
-export type SocialItemOwnProps = OwnProps;
+export default SocialItem;
+export type SocialItemOwnProps = Props;

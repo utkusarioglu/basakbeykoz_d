@@ -1,37 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { RootState } from "../../store/rootReducer";
 import {
-  boundSetDisplaying,
-  boundSetIsMenuOpen,
+  selectRefs,
+  setDisplaying,
+  setIsMenuOpen,
 } from "../../features/app/appActions";
-import { connect, ConnectedProps } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Env } from "../../common/@types-common";
 import "./_logo.view.scss";
 
-const mapState = (state: RootState) => ({
-  refs: state.app.refs,
-});
-const mapDispatch = {
-  setDisplaying: boundSetDisplaying,
-  setIsMenuOpen: boundSetIsMenuOpen,
-};
-const connector = connect(mapState, mapDispatch);
-type PropsFromRedux = ConnectedProps<typeof connector>;
-interface OwnProps {
+interface Props {
   withTitle: boolean;
 }
-type Props = OwnProps & PropsFromRedux;
 
 function Logo(props: Props) {
-  const { setDisplaying, setIsMenuOpen, refs, withTitle } = props;
+  const dispatch = useDispatch();
   const { REACT_APP_HOME_SLUG, REACT_APP_UPLOADS_DIR } = process.env as Env;
+  const { withTitle } = props;
+  const refs = useSelector(selectRefs);
 
   const linkClick = () => {
-    setIsMenuOpen(false);
-    setDisplaying({
-      slug: REACT_APP_HOME_SLUG,
-    });
+    dispatch(setIsMenuOpen(false));
+    dispatch(
+      setDisplaying({
+        slug: REACT_APP_HOME_SLUG,
+      })
+    );
     refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
   };
 
@@ -53,4 +47,4 @@ function Logo(props: Props) {
   );
 }
 
-export default connector(Logo);
+export default Logo;
