@@ -24,12 +24,14 @@ function NavFixedView(props: Props) {
 
   return (
     <div
-      onClick={menuToggle}
-      className={"NavFixedView " + (isMenuOpen ? "open" : "")}
+      {...{
+        onClick: menuToggle,
+        className: "NavFixedView " + (isMenuOpen ? "open" : ""),
+      }}
     >
-      <div className="NavFixedView-mask" />
-      <div className="NavFixedView-decor" />
-      <div className="NavFixedView-list">
+      <div {...{ className: "NavFixedView-mask" }} />
+      <div {...{ className: "NavFixedView-decor" }} />
+      <div {...{ className: "NavFixedView-list" }}>
         <NavFeature />
       </div>
     </div>

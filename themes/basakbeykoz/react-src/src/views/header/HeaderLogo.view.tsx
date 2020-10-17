@@ -60,7 +60,7 @@ function HeaderLogo(props: Props) {
   // );
   const useCta = false;
 
-  return useCta ? <Cta /> : <Logo withTitle={false} />;
+  return useCta ? <Cta /> : <Logo {...{ withTitle: false }} />;
 }
 
 export default connector(HeaderLogo);

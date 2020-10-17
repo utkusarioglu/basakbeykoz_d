@@ -45,7 +45,7 @@ function PostsFeature(props: Props) {
     (single) => single.data.slug !== excludeSlug[0] || false
   );
 
-  return <PostsView PostsItems={filteredPosts} locale="TR-TR" />;
+  return <PostsView {...{ PostsItems: filteredPosts, locale: "TR-TR" }} />;
 }
 
 export default connector(PostsFeature);

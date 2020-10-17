@@ -14,13 +14,15 @@ function SpinnerView(props: Props) {
   const { display, loadingMessage } = props;
 
   return (
-    <div className="Spinner" style={{ display }}>
+    <div {...{ className: "Spinner", style: { display } }}>
       <img
-        src={REACT_APP_UPLOADS_DIR + "/logo-inline-black.svg"}
-        alt="Basak Beykoz"
-        className="Spinner-logo"
+        {...{
+          src: REACT_APP_UPLOADS_DIR + "/logo-inline-black.svg",
+          alt: "Basak Beykoz",
+          className: "Spinner-logo",
+        }}
       />
-      <p className="Spinner-loadMessage">{loadingMessage}</p>
+      <p {...{ className: "Spinner-loadMessage" }}>{loadingMessage}</p>
     </div>
   );
 }

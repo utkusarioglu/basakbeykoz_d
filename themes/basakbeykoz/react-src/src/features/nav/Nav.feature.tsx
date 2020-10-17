@@ -26,7 +26,7 @@ function NavFeature(props: Props) {
   }, [fetchMenu]);
 
   const menuItems: JSX.Element[] = menu.items.map((item: wpMenuItem) => (
-    <NavItemFeature key={item.ID} item={item} />
+    <NavItemFeature {...{ key: item.ID, item }} />
   ));
 
   return <nav>{menuItems}</nav>;

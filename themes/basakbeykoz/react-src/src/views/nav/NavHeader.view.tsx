@@ -4,7 +4,7 @@ import "./_navHeader.view.scss";
 
 function NavView() {
   return (
-    <div className="NavHeaderView">
+    <div {...{ className: "NavHeaderView" }}>
       <NavFeature />
     </div>
   );

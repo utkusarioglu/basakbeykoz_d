@@ -7,20 +7,20 @@ import CreditsRoute from "../../routes/Credits.route";
 import SluggedRoute from "../../routes/Slugged.route";
 import FourOFourRoute from "../../routes/404.route";
 
-export const AppRoutes = () => {
+const AppRoutes = () => {
   const { REACT_APP_BLOG_SLUG } = process.env as Env;
   return (
     <Switch>
-      <Route exact path={"/credits"}>
+      <Route {...{ exact: true, path: "/credits" }}>
         <CreditsRoute />
       </Route>
-      <Route exact path={"/" + REACT_APP_BLOG_SLUG}>
+      <Route {...{ exact: true, path: "/" + REACT_APP_BLOG_SLUG }}>
         <BlogRoute />
       </Route>
-      <Route exact path="/404">
+      <Route {...{ exact: true, path: "/404" }}>
         <FourOFourRoute />
       </Route>
-      <Route exact path="/:slug?">
+      <Route {...{ exact: true, path: "/:slug?" }}>
         <SluggedRoute />
       </Route>
     </Switch>

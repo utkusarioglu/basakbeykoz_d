@@ -29,12 +29,16 @@ function BurgerMenu(props: Props) {
   const { isMenuOpen, setIsMenuOpen } = props;
 
   return (
-    <div className="BurgerMenu">
+    <div {...{ className: "BurgerMenu" }}>
       <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="BurgerMenu-burgerButton"
+        {...{
+          onClick: () => setIsMenuOpen(!isMenuOpen),
+          className: "BurgerMenu-burgerButton",
+        }}
       >
-        <img alt="Menu" src={REACT_APP_UPLOADS_DIR + "/burger-menu.svg"} />
+        <img
+          {...{ alt: "Menu", src: REACT_APP_UPLOADS_DIR + "/burger-menu.svg" }}
+        />
       </button>
     </div>
   );

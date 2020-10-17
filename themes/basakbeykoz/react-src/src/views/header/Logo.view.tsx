@@ -40,11 +40,13 @@ function Logo(props: Props) {
     : "logo-inline-color.svg";
 
   return (
-    <div className="Logo">
-      <div className="Logo-decor" />
-      <Link onClick={linkClick} to="/">
-        <div className="Logo-logo">
-          <img src={REACT_APP_UPLOADS_DIR + "/" + logoName} alt="logo" />
+    <div {...{ className: "Logo" }}>
+      <div {...{ className: "Logo-decor" }} />
+      <Link {...{ onClick: linkClick, to: "/" }}>
+        <div {...{ className: "Logo-logo" }}>
+          <img
+            {...{ src: REACT_APP_UPLOADS_DIR + "/" + logoName, alt: "logo" }}
+          />
         </div>
       </Link>
     </div>

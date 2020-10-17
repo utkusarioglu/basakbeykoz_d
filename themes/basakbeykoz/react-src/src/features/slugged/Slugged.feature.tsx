@@ -32,10 +32,13 @@ const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
+interface Params {
+  slug: string;
+}
 
 function SluggedFeature(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
-  const paramSlug = useParams<{ slug: string }>().slug || REACT_APP_HOME_SLUG;
+  const paramSlug = useParams<Params>().slug || REACT_APP_HOME_SLUG;
   const {
     refs,
     setFetching,
@@ -106,13 +109,15 @@ function SluggedFeature(props: Props) {
 
   if (isDisplayingStatus === 404) {
     setFetching(false);
-    return <Redirect to="/404" />;
+    return <Redirect {...{ to: "/404" }} />;
   }
 
   return (
     <Canvas
-      {...isDisplayingActive}
-      onLoad={getSlugOnload(isDisplayingSlug, refs)}
+      {...{
+        ...isDisplayingActive,
+        onLoad: getSlugOnload(isDisplayingSlug, refs),
+      }}
     />
   );
 }

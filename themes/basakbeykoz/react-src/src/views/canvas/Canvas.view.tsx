@@ -43,18 +43,22 @@ function Canvas(props: Props) {
   let featureImage;
   if (thumbnailComponent) {
     bodyExtraClasses.push("has-FeatureImage");
-    featureImage = <div className="FeatureImage-on">{thumbnailComponent}</div>;
+    featureImage = (
+      <div {...{ className: "FeatureImage-on" }}>{thumbnailComponent}</div>
+    );
   } else {
     if (thumbnail !== "") {
       bodyExtraClasses.push("has-FeatureImage");
       featureImage = (
         <div
-          className="FeatureImage-on"
-          dangerouslySetInnerHTML={{ __html: thumbnail }}
+          {...{
+            className: "FeatureImage-on",
+            dangerouslySetInnerHTML: { __html: thumbnail },
+          }}
         />
       );
     } else {
-      featureImage = <div className="FeatureImage-off" />;
+      featureImage = <div {...{ className: "FeatureImage-off" }} />;
     }
   }
 
@@ -62,19 +66,23 @@ function Canvas(props: Props) {
   let articleTitle;
   if (title !== "") {
     bodyExtraClasses.push("has-CanvasTitle");
-    featureTitle = <h2 className="Canvas-featureTitle text-blue">{title}</h2>;
-    articleTitle = <h2 className="Canvas-articleTitle text-blue">{title}</h2>;
+    featureTitle = (
+      <h2 {...{ className: "Canvas-featureTitle text-blue" }}>{title}</h2>
+    );
+    articleTitle = (
+      <h2 {...{ className: "Canvas-articleTitle text-blue" }}>{title}</h2>
+    );
   }
 
   let posts;
-  let excludeSlug = [];
+  let excludeSlugs = [];
   if (type === "post") {
-    excludeSlug.push(slug);
+    excludeSlugs.push(slug);
     bodyExtraClasses.push("has-PostExcerptList");
     posts = (
-      <div className="Posts-wrapper">
+      <div {...{ className: "Posts-wrapper" }}>
         <h4>Similar Reads</h4>
-        <PostsFeature excludeSlugs={excludeSlug} />
+        <PostsFeature {...{ excludeSlugs }} />
       </div>
     );
   }
@@ -83,7 +91,7 @@ function Canvas(props: Props) {
   if (articleComponent) {
     article = <article>{articleComponent}</article>;
   } else {
-    article = <article dangerouslySetInnerHTML={{ __html: content }} />;
+    article = <article {...{ dangerouslySetInnerHTML: { __html: content } }} />;
   }
 
   ReactGA.pageview(window.location.pathname + window.location.search);
@@ -96,8 +104,8 @@ function Canvas(props: Props) {
       <Helmet>
         <title>{siteTitle}</title>
       </Helmet>
-      <div className={"Canvas " + bodyExtraClasses.join(" ")}>
-        <div className="Canvas-decor">
+      <div {...{ className: "Canvas " + bodyExtraClasses.join(" ") }}>
+        <div {...{ className: "Canvas-decor" }}>
           {featureImage}
           {featureTitle}
         </div>

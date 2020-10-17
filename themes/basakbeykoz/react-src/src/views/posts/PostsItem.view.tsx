@@ -20,16 +20,25 @@ function PostsItemView(props: Props) {
   const fixedDate = dateObj.toLocaleDateString(locale);
 
   return (
-    <Link to={"/" + slug} className="Posts-card">
+    <Link
+      {...{
+        className: "Posts-card",
+        to: "/" + slug,
+      }}
+    >
       <div
-        className="Posts-card-thumbnail"
-        dangerouslySetInnerHTML={{ __html: thumbnail }}
+        {...{
+          className: "Posts-card-thumbnail",
+          dangerouslySetInnerHTML: { __html: thumbnail },
+        }}
       />
-      <h4 className="Posts-card-title">{title}</h4>
-      <span className="Posts-card-date">{fixedDate}</span>
+      <h4 {...{ className: "Posts-card-title" }}>{title}</h4>
+      <span {...{ className: "Posts-card-date" }}>{fixedDate}</span>
       <div
-        className="Posts-card-excerpt"
-        dangerouslySetInnerHTML={{ __html: fixedExcerpt }}
+        {...{
+          className: "Posts-card-excerpt",
+          dangerouslySetInnerHTML: { __html: fixedExcerpt },
+        }}
       ></div>
     </Link>
   );

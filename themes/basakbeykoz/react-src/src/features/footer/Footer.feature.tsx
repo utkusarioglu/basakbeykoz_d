@@ -22,7 +22,7 @@ function FooterFeature(props: Props) {
     refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
   };
 
-  return <FooterView navClickActions={navClickActions} />;
+  return <FooterView {...{ navClickActions }} />;
 }
 
 export default connector(FooterFeature);

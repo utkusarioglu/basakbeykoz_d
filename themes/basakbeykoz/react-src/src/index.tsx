@@ -16,7 +16,7 @@ ReactGA.initialize(REACT_APP_GA_TRACKING_ID as string, { debug: false });
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider {...{ store }}>
       <AppFeature />
     </Provider>
   </React.StrictMode>,

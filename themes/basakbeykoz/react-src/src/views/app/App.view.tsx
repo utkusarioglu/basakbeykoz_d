@@ -22,30 +22,31 @@ type Props = OwnProps;
 function AppView(props: Props) {
   const { refs } = props;
   return (
-    <div className="App">
+    <div {...{ className: "App" }}>
       <SpinnerFeature />
       <NavFixedView />
       <Header />
-      <div className="App-wideScreenControls">
-        <Logo withTitle={false} />
+      <div {...{ className: "App-wideScreenControls" }}>
+        <Logo {...{ withTitle: false }} />
         <Social />
       </div>
       <OverlayScrollbarsComponent
-        ref={refs.body}
-        className="App-scrollWindow"
-        options={{
-          paddingAbsolute: true,
-          scrollbars: {
-            autoHide: "leave",
+        {...{
+          ref: refs.body,
+          className: "App-scrollWindow",
+          options: {
+            paddingAbsolute: true,
+            scrollbars: {
+              autoHide: "leave",
+            },
           },
-          //   callbacks: {
-          //       onScroll: (e) => {
-          //           e?.target.scrollTop()
-          //     },
-          //   },
         }}
       >
-        <div className="App-scrollingElements">
+        <div
+          {...{
+            className: "App-scrollingElements",
+          }}
+        >
           <AppRoutes />
           <FooterFeature />
         </div>

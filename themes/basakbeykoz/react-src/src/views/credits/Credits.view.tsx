@@ -106,13 +106,19 @@ function Credits(props: Props) {
   return (
     <article>
       <div>
-        <button className="font" onClick={() => changeSet("titleFont")}>
-          <pre className="button-title">Baslik</pre>
-          <pre className="button-value">{choiceSet["titleFont"].name}</pre>
+        <button
+          {...{ className: "font", onClick: () => changeSet("titleFont") }}
+        >
+          <pre {...{ className: "button-title" }}>Baslik</pre>
+          <pre {...{ className: "button-value" }}>
+            {choiceSet["titleFont"].name}
+          </pre>
         </button>
-        <button onClick={() => changeSet("textFont")}>
-          <pre className="button-title">Metin</pre>
-          <pre className="button-value">{choiceSet["textFont"].name}</pre>
+        <button {...{ onClick: () => changeSet("textFont") }}>
+          <pre {...{ className: "button-title" }}>Metin</pre>
+          <pre {...{ className: "button-value" }}>
+            {choiceSet["textFont"].name}
+          </pre>
         </button>
       </div>
       <br />

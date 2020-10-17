@@ -29,8 +29,10 @@ function SpinnerFeature(props: Props) {
 
   return (
     <SpinnerView
-      display={isFetching ? "grid" : "none"}
-      loadingMessage={loadingMessage}
+      {...{
+        display: isFetching ? "grid" : "none",
+        loadingMessage,
+      }}
     />
   );
 }

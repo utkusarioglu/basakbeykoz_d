@@ -24,9 +24,9 @@ function Cta(props: Props) {
       );
 
   return (
-    <div className="Cta">
-      <div className="Cta-button" onClick={ctaAction}>
-        <div className="Cta-text">Bir adım atın</div>
+    <div {...{ className: "Cta" }}>
+      <div {...{ className: "Cta-button", onClick: ctaAction }}>
+        <div {...{ className: "Cta-text" }}>Bir adım atın</div>
       </div>
     </div>
   );

@@ -8,8 +8,8 @@ import NavHeaderView from "../nav/NavHeader.view";
 
 function Header() {
   return (
-    <header className="Header">
-      <div className="Header-bottomWrap">
+    <header {...{ className: "Header" }}>
+      <div {...{ className: "Header-bottomWrap" }}>
         <HeaderLogo />
         <NavHeaderView />
         <Social />

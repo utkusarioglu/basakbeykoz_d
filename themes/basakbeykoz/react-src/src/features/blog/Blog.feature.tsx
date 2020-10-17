@@ -35,12 +35,14 @@ function BlogFeature(props: Props) {
 
   const thumbnailComponent = (
     <img
-      width="2560"
-      height="1671"
-      src={`${featureImageName}scaled.jpg`}
-      alt="Feature"
-      srcSet={srcSet}
-      sizes="(max-width: 2560px) 100vw, 2560px"
+      {...{
+        width: "2560",
+        height: "1671",
+        src: `${featureImageName}scaled.jpg`,
+        alt: "Feature",
+        srcSet,
+        sizes: "(max-width: 2560px) 100vw, 2560px",
+      }}
     />
   );
 
@@ -56,7 +58,7 @@ function BlogFeature(props: Props) {
         thumbnail: "",
         thumbnailComponent,
         content: "",
-        articleComponent: <PostsFeature excludeSlugs={[]} />,
+        articleComponent: <PostsFeature {...{ excludeSlugs: [] }} />,
         onLoad: () => {},
       }}
     />

@@ -16,8 +16,8 @@ function PostsView(props: Props) {
   const posts = PostsItems.map((single) => {
     if (single.data.state === "success") {
       return (
-        <li key={single.data.slug}>
-          <PostsItemView {...single.data} locale={locale} />
+        <li {...{ key: single.data.slug }}>
+          <PostsItemView {...{ ...single.data, locale }} />
         </li>
       );
     } else {
@@ -26,7 +26,7 @@ function PostsView(props: Props) {
   });
 
   return (
-    <div className="Posts">
+    <div {...{ className: "Posts" }}>
       <ol>{posts}</ol>
     </div>
   );

@@ -35,12 +35,14 @@ function NavItemFeature(props: Props) {
 
   return (
     <NavLink
-      key={item.ID}
-      exact
-      to={"/" + cleanSlug}
-      className="Nav-item"
-      activeClassName="Nav-item-active"
-      onClick={() => setDisplayingAction(clickSlug)}
+      {...{
+        key: item.ID,
+        exact: true,
+        to: "/" + cleanSlug,
+        className: "Nav-item",
+        activeClassName: "Nav-item-active",
+        onClick: () => setDisplayingAction(clickSlug),
+      }}
     >
       {item.title}
     </NavLink>

@@ -29,7 +29,7 @@ function AppFeature(props: Props) {
 
   return (
     <Router>
-      <AppView refs={refs} />
+      <AppView {...{ refs }} />
     </Router>
   );
 }
