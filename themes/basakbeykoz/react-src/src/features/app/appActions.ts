@@ -7,7 +7,7 @@ type isDisplaying = stateMap["app"]["isDisplaying"];
 type isFetching = stateMap["app"]["isFetching"];
 type isMenuOpen = stateMap["app"]["isMenuOpen"];
 
-export const setFetching = (fetch_bool: boolean) => (
+export const boundSetFetching = (fetch_bool: boolean) => (
   dispatch: DispatchMethod<isFetching>
 ) => {
   dispatch({
@@ -17,7 +17,7 @@ export const setFetching = (fetch_bool: boolean) => (
   });
 };
 
-export const setDisplaying = (is_displaying: Partial<isDisplaying>) => (
+export const boundSetDisplaying = (is_displaying: Partial<isDisplaying>) => (
   dispatch: DispatchMethod<Partial<isDisplaying>>
 ) => {
   dispatch({
@@ -27,7 +27,7 @@ export const setDisplaying = (is_displaying: Partial<isDisplaying>) => (
   });
 };
 
-export const setIsMenuOpen = (is_menuOpen: isMenuOpen) => (
+export const boundSetIsMenuOpen = (is_menuOpen: isMenuOpen) => (
   dispatch: DispatchMethod<isMenuOpen>
 ) => {
   dispatch({
@@ -37,7 +37,7 @@ export const setIsMenuOpen = (is_menuOpen: isMenuOpen) => (
   });
 };
 
-export const setRef = (refData: ISetRef) => (
+export const boundSetRef = (refData: ISetRef) => (
   dispatch: DispatchMethod<ISetRef>
 ) => {
   dispatch({

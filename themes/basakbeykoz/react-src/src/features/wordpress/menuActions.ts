@@ -3,7 +3,7 @@ import ACTION_TYPES from "../../common/actionTypes";
 import { ERROR_CODES } from "./constants";
 import { wpMenuItem } from "./@types-wordpress";
 import rest from "../../services/rest";
-export const fetchMenu = (slug: string) => (
+export const boundFetchMenu = (slug: string) => (
   dispatch: DispatchMethod<wpMenuItem>
 ) => {
   rest

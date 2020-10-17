@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { wpMenuItem } from "../wordpress/@types-wordpress";
 import { RootState } from "../../store/rootReducer";
-import { fetchMenu } from "../wordpress/menuActions";
-import { setIsMenuOpen } from "../app/appActions";
+import { boundFetchMenu } from "../wordpress/menuActions";
+import { boundSetIsMenuOpen } from "../app/appActions";
 import "./_nav.scss";
 import NavItemFeature from "./NavItem.feature";
 
@@ -11,8 +11,8 @@ const mapState = (state: RootState) => ({
   menu: state.menu,
 });
 const mapDispatch = {
-  fetchMenu,
-  setIsMenuOpen,
+  fetchMenu: boundFetchMenu,
+  setIsMenuOpen: boundSetIsMenuOpen,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

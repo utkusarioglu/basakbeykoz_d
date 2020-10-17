@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { setFetching } from "../../features/app/appActions";
+import { boundSetFetching } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
 import { connect, ConnectedProps } from "react-redux";
 import "./_credits.view.scss";
 
 const mapState = (state: RootState) => ({});
 const mapDispatch = {
-  setFetching,
+  setFetching: boundSetFetching,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

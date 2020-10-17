@@ -8,7 +8,7 @@ import { filterByType } from "./filters";
 import rest from "../../services/rest";
 import { ERROR_CODES } from "./constants";
 
-export const fetchSingular = (slug: string) => (
+export const boundFetchSingular = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
 ) => {
   if (slug === "") {
@@ -59,7 +59,7 @@ export const fetchSingular = (slug: string) => (
     });
 };
 
-export const fetchCategoryPosts = (slug: string) => (
+export const boundFetchCategoryPosts = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
 ) => {
   rest

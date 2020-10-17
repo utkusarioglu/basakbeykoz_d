@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import PostsFeature from "./Posts.feature";
 import Canvas from "../../views/canvas/Canvas.view";
 import { Env } from "../../common/@types-common";
-import { setFetching } from "../app/appActions";
+import { boundSetFetching } from "../app/appActions";
 import "./_blog.scss";
 import { RootState } from "../../store/rootReducer";
 import { ConnectedProps } from "react-redux";
 
 const mapState = (state: RootState) => ({});
 const mapDispatch = {
-  setFetching,
+  setFetching: boundSetFetching,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

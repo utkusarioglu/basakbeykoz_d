@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import { fetchSingular } from "../wordpress/singularActions";
-import { setFetching, setDisplaying } from "../app/appActions";
+import { boundFetchSingular } from "../wordpress/singularActions";
+import { boundSetFetching, boundSetDisplaying } from "../app/appActions";
 import stateMap from "../../store/@types-state";
 import {
   WpSingularTypes,
@@ -24,9 +24,9 @@ const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
 const mapDispatch = {
-  fetchSingular,
-  setFetching,
-  setDisplaying,
+  fetchSingular: boundFetchSingular,
+  setFetching: boundSetFetching,
+  setDisplaying: boundSetDisplaying,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

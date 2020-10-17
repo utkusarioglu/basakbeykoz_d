@@ -1,7 +1,7 @@
 import React from "react";
 import NavFeature from "../../features/nav/Nav.feature";
 import { connect, ConnectedProps } from "react-redux";
-import { setIsMenuOpen } from "../../features/app/appActions";
+import { boundSetIsMenuOpen } from "../../features/app/appActions";
 import { RootState } from "../../store/rootReducer";
 import "./_navFixed.view.scss";
 
@@ -9,7 +9,7 @@ const mapState = (state: RootState) => ({
   isMenuOpen: state.app.isMenuOpen,
 });
 const mapDispatch = {
-  setIsMenuOpen,
+  setIsMenuOpen: boundSetIsMenuOpen,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

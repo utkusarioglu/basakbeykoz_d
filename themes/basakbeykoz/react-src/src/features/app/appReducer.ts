@@ -4,6 +4,7 @@ import stateMap from "../../store/@types-state";
 import { ISetRef } from "../../common/@types-actions";
 import { Env } from "../../common/@types-common";
 
+const { REACT_APP_HOME_SLUG } = process.env as Env;
 type isDisplaying = stateMap["app"]["isDisplaying"];
 type isFetching = stateMap["app"]["isFetching"];
 type isMenuOpen = stateMap["app"]["isMenuOpen"];
@@ -13,7 +14,7 @@ const initialState: stateMap["app"] = {
   isMenuOpen: false,
   isDisplaying: {
     status: 200,
-    slug: (process.env as Env).REACT_APP_HOME_SLUG,
+    slug: REACT_APP_HOME_SLUG,
     loadTime: 0,
     active: {
       slug: "",
@@ -54,6 +55,7 @@ export default function (
 
     case ACTION_TYPES.IS_MENU_OPEN:
       if (action.state === "fail") return state;
+      console.log("ismenuopen", action);
       return {
         ...state,
         isMenuOpen: action.payload as isMenuOpen,
@@ -74,3 +76,5 @@ export default function (
       return state;
   }
 }
+
+export const appInitialState = initialState;

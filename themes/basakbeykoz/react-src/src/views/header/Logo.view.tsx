@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { RootState } from "../../store/rootReducer";
-import { setDisplaying, setIsMenuOpen } from "../../features/app/appActions";
+import {
+  boundSetDisplaying,
+  boundSetIsMenuOpen,
+} from "../../features/app/appActions";
 import { connect, ConnectedProps } from "react-redux";
 import { Env } from "../../common/@types-common";
 import "./_logo.view.scss";
@@ -10,8 +13,8 @@ const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
 const mapDispatch = {
-  setDisplaying,
-  setIsMenuOpen,
+  setDisplaying: boundSetDisplaying,
+  setIsMenuOpen: boundSetIsMenuOpen,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

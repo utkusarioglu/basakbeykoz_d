@@ -3,7 +3,7 @@ import { wpMenuItem } from "../wordpress/@types-wordpress";
 import { connect, ConnectedProps } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { RootState } from "../../store/rootReducer";
-import { setDisplaying } from "../app/appActions";
+import { boundSetDisplaying } from "../app/appActions";
 import "./_navItem.scss";
 import { Env } from "../../common/@types-common";
 
@@ -11,7 +11,7 @@ const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
 const mapDispatch = {
-  setDisplaying,
+  setDisplaying: boundSetDisplaying,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;

@@ -1,8 +1,8 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import { fetchCategoryPosts } from "../wordpress/singularActions";
-import { setFetching } from "../app/appActions";
+import { boundFetchCategoryPosts } from "../wordpress/singularActions";
+import { boundSetFetching } from "../app/appActions";
 import PostsView from "../../views/posts/Posts.view";
 import { Env } from "../../common/@types-common";
 
@@ -10,8 +10,8 @@ const mapState = (state: RootState) => ({
   posts: state.singular.post,
 });
 const mapDispatch = {
-  fetchCategoryPosts,
-  setFetching,
+  fetchCategoryPosts: boundFetchCategoryPosts,
+  setFetching: boundSetFetching,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
