@@ -45,7 +45,7 @@ export interface wpSingularItemSuccess extends wpSingularItemForView {
 
 export interface wpSingularItemFail {
   state: FETCH_STATES.FAIL;
-  code: ERROR_CODES;
+  error: ERROR_CODES;
   types: WpSingularTypes[];
   slug: string;
 }

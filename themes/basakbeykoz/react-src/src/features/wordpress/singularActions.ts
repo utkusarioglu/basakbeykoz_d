@@ -1,6 +1,7 @@
 import { FSA } from "../../common/@types-actions";
 import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
 import {
+  FETCH_STATES,
   PartialSingularDispatch,
   wpSingularArchiveItem,
 } from "./@types-wordpress";
@@ -21,7 +22,7 @@ export function fetchSingular(
       url: "/customrest/v1/singular_slug/" + slug,
     })
     .then(({ data }) => {
-      if (data.state === "success") {
+      if (data.state === FETCH_STATES.SUCCESS) {
         return {
           type: ACTION_TYPES.FETCH_SINGULAR,
           state: ACTION_STATES.SUCCESS,
@@ -38,7 +39,7 @@ export function fetchSingular(
         return {
           type: ACTION_TYPES.FETCH_SINGULAR,
           state: ACTION_STATES.FAIL,
-          error: data.code,
+          error: data.error,
           meta: {
             types: data.types,
             slug: data.slug,
