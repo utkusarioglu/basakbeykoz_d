@@ -1,25 +1,25 @@
-import { FSA } from "../../common/@types-actions";
-import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
+import { DispatchMethod, FSA } from '../../common/@types-actions';
+import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import {
   FETCH_STATES,
   PartialSingularDispatch,
   wpSingularArchiveItem,
-} from "./@types-wordpress";
-import { filterByType } from "./filters";
-import rest from "../../services/rest";
-import { ERROR_CODES } from "./constants";
-import { RootState } from "../../store/rootReducer";
+} from './@types-wordpress';
+import { filterByType } from './filters';
+import rest from '../../services/rest';
+import { ERROR_CODES } from './constants';
+import { RootState } from '../../store/rootReducer';
 
-export function fetchSingular(
-  slug: string
-): Promise<FSA<PartialSingularDispatch>> {
-  if (slug === "") {
-    console.warn("empty slug");
+export const boundFetchSingular = (slug: string) => (
+  dispatch: DispatchMethod<PartialSingularDispatch>
+) => {
+  if (slug === '') {
+    console.warn('empty slug');
   }
   return rest
     .request<wpSingularArchiveItem>({
-      method: "get",
-      url: "/customrest/v1/singular_slug/" + slug,
+      method: 'get',
+      url: '/customrest/v1/singular_slug/' + slug,
     })
     .then(({ data }) => {
       if (data.state === FETCH_STATES.SUCCESS) {
@@ -47,24 +47,23 @@ export function fetchSingular(
           },
         };
       }
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.FETCH_SINGULAR,
+        state: ACTION_STATES.FAIL,
+        error: ERROR_CODES.SINGULAR_FETCH_FAIL,
+      });
     });
-  // !hack
-  // .catch(() => {
-  //   return {
-  //     type: ACTION_TYPES.FETCH_SINGULAR,
-  //     state: ACTION_STATES.FAIL,
-  //     error: ERROR_CODES.SINGULAR_FETCH_FAIL,
-  //   };
-  // });
-}
+};
 
 export function fetchCategoryPosts(
   slug: string
 ): Promise<FSA<PartialSingularDispatch>> {
   return rest
     .request<wpSingularArchiveItem[]>({
-      method: "get",
-      url: "/customrest/v1/category_posts_slug/" + slug,
+      method: 'get',
+      url: '/customrest/v1/category_posts_slug/' + slug,
     })
     .then(({ data }) => {
       if (data) {
@@ -74,8 +73,8 @@ export function fetchCategoryPosts(
           state: ACTION_STATES.SUCCESS,
           payload: {
             fetchTime: Date.now(),
-            post: filterByType(data, "post", now),
-            page: filterByType(data, "page", now),
+            post: filterByType(data, 'post', now),
+            page: filterByType(data, 'page', now),
           },
         };
       } else {
@@ -97,4 +96,3 @@ export function fetchCategoryPosts(
 }
 
 export const selectPosts = (state: RootState) => state.singular.post;
-export const selectSingular = (state: RootState) => state.singular;

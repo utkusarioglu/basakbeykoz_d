@@ -1,17 +1,25 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import PostsFeature from "./Posts.feature";
 import Canvas from "../../views/canvas/Canvas.view";
 import { Env } from "../../common/@types-common";
-import { setFetching } from "../app/appActions";
+import { boundSetFetching } from "../app/appActions";
 import "./_blog.scss";
+import { RootState } from "../../store/rootReducer";
+import { ConnectedProps } from "react-redux";
 
-type Props = {};
+const mapState = (state: RootState) => ({});
+const mapDispatch = {
+  setFetching: boundSetFetching,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 
 function BlogFeature(props: Props) {
-  const dispatch = useDispatch();
   const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env as Env;
-  // const { setFetching } = props;
+  const { setFetching } = props;
   const featureImageName = "yazilar-feature-image";
   const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [
@@ -38,7 +46,7 @@ function BlogFeature(props: Props) {
     />
   );
 
-  dispatch(setFetching(true));
+  setFetching(true);
 
   return (
     <Canvas
@@ -57,4 +65,4 @@ function BlogFeature(props: Props) {
   );
 }
 
-export default BlogFeature;
+export default connector(BlogFeature);

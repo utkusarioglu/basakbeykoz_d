@@ -1,4 +1,4 @@
-import { ERROR_CODES } from "./constants";
+import { ERROR_CODES } from './constants';
 
 export interface wpMenuItem {
   ID: number;
@@ -9,11 +9,11 @@ export interface wpMenuItem {
 }
 
 export interface wpPostItem extends wpSingularCommon {
-  type: "post";
+  type: 'post';
 }
 
 export interface wpPageItem extends wpSingularCommon {
-  type: "page";
+  type: 'page';
 }
 
 interface wpSingularCommon {
@@ -24,15 +24,15 @@ interface wpSingularCommon {
   link: string;
 }
 
-export enum FETCH_STATES {
-  SUCCESS = "success",
-  FAIL = "fail",
-}
-
 export type wpSingularArchiveItem = wpSingularItemSuccess | wpSingularItemFail;
 
+export enum FETCH_STATES {
+  SUCCESS = 'success',
+  FAIL = 'fail',
+}
+
 export interface wpSingularItemSuccess extends wpSingularItemForView {
-  state: FETCH_STATES.SUCCESS;
+  state: 'success';
   ID: number;
   author: number;
   date: string;
@@ -62,7 +62,7 @@ export interface wpSingularItemForView extends SingularItemForView {
 }
 
 export interface NativeSingularItemForView extends SingularItemForView {
-  type: "native";
+  type: 'native';
 }
 
 export type GeneralSingularItemforView =
@@ -89,16 +89,16 @@ export interface SluggedTimestampedSingular {
   [slug: string]: TimestampedSingular;
 }
 
-export type WpSingularTypes = "post" | "page";
+export type WpSingularTypes = 'post' | 'page';
 
 type singularStatus =
-  | "Publish"
-  | "Future"
-  | "Draft"
-  | "Pending"
-  | "Private"
-  | "Trash"
-  | "Auto-Draft"
-  | "Inherit";
+  | 'Publish'
+  | 'Future'
+  | 'Draft'
+  | 'Pending'
+  | 'Private'
+  | 'Trash'
+  | 'Auto-Draft'
+  | 'Inherit';
 
-type commentStatus = "trash" | "approved" | "unapproved" | "spam";
+type commentStatus = 'trash' | 'approved' | 'unapproved' | 'spam';

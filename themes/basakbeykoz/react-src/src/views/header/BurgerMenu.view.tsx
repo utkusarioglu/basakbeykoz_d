@@ -1,22 +1,38 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setIsMenuOpen, selectIsMenuOpen } from "../../features/app/appActions";
+import { connect, ConnectedProps } from "react-redux";
+import { boundFetchMenu } from "../../features/wordpress/menuActions";
+import {
+  boundSetDisplaying,
+  boundSetIsMenuOpen,
+} from "../../features/app/appActions";
+import { RootState } from "../../store/rootReducer";
 import { Env } from "../../common/@types-common";
 import "./_burgerMenu.view.scss";
 
-interface Props {}
+const mapState = (state: RootState) => ({
+  menu: state.menu,
+  isDisplaying: state.app.isDisplaying,
+  isMenuOpen: state.app.isMenuOpen,
+});
+const mapDispatch = {
+  setDisplaying: boundSetDisplaying,
+  fetchMenu: boundFetchMenu,
+  setIsMenuOpen: boundSetIsMenuOpen,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 
 function BurgerMenu(props: Props) {
-  const dispatch = useDispatch();
   const { REACT_APP_UPLOADS_DIR } = process.env as Env;
-
-  const isMenuOpen = useSelector(selectIsMenuOpen);
+  const { isMenuOpen, setIsMenuOpen } = props;
 
   return (
     <div {...{ className: "BurgerMenu" }}>
       <button
         {...{
-          onClick: () => dispatch(setIsMenuOpen(!isMenuOpen)),
+          onClick: () => setIsMenuOpen(!isMenuOpen),
           className: "BurgerMenu-burgerButton",
         }}
       >
@@ -28,4 +44,4 @@ function BurgerMenu(props: Props) {
   );
 }
 
-export default BurgerMenu;
+export default connector(BurgerMenu);

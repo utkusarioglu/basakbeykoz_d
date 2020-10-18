@@ -35,10 +35,6 @@ export default function (
             },
           },
         };
-      } else if (action.meta) {
-        console.log(action);
-        console.error("this part hasn't been written yet");
-        return state;
       } else {
         return state;
       }

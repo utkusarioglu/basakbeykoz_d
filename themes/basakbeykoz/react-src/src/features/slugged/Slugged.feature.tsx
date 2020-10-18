@@ -1,16 +1,9 @@
 import React, { useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import { fetchSingular, selectSingular } from "../wordpress/singularActions";
-import {
-  setFetching,
-  setDisplaying,
-  selectIsDisplayingSlug,
-  selectIsDisplayingActive,
-  selectIsDisplayingStatus,
-  selectRefs,
-} from "../app/appActions";
+import { boundFetchSingular } from "../wordpress/singularActions";
+import { boundSetFetching, boundSetDisplaying } from "../app/appActions";
 import stateMap from "../../store/@types-state";
 import {
   WpSingularTypes,
@@ -22,27 +15,45 @@ import { Env } from "../../common/@types-common";
 //@ts-ignore
 import pauseable from "pauseable";
 
-interface Props {}
+const mapState = (state: RootState) => ({
+  singular: state.singular,
+  isDisplayingStatus: state.app.isDisplaying.status,
+  isDisplayingSlug: state.app.isDisplaying.slug,
+  isDisplayingActive: state.app.isDisplaying.active,
+  isFetching: state.app.isFetching,
+  refs: state.app.refs,
+});
+const mapDispatch = {
+  fetchSingular: boundFetchSingular,
+  setFetching: boundSetFetching,
+  setDisplaying: boundSetDisplaying,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 interface Params {
   slug: string;
 }
 
 function SluggedFeature(props: Props) {
-  const dispatch = useDispatch();
   const { REACT_APP_HOME_SLUG } = process.env as Env;
   const paramSlug = useParams<Params>().slug || REACT_APP_HOME_SLUG;
-  const singular = useSelector(selectSingular);
-  const isDisplayingSlug = useSelector(selectIsDisplayingSlug);
-  const isDisplayingActive = useSelector(selectIsDisplayingActive);
-  const isDisplayingStatus = useSelector(selectIsDisplayingStatus);
-  const refs = useSelector(selectRefs);
+  const {
+    refs,
+    setFetching,
+    setDisplaying,
+    fetchSingular,
+    isDisplayingSlug,
+    isDisplayingActive,
+    isDisplayingStatus,
+    singular,
+  } = props;
 
   if (paramSlug !== isDisplayingSlug) {
-    dispatch(
-      setDisplaying({
-        slug: paramSlug,
-      })
-    );
+    setDisplaying({
+      slug: paramSlug,
+    });
   }
   const timestampedSingular = findBySlug(singular, isDisplayingSlug);
 
@@ -56,10 +67,10 @@ function SluggedFeature(props: Props) {
       dispatch(setFetching(true));
       if (process.env.NODE_ENV === "development") {
         setTimeout(() => {
-          fetchSingular(isDisplayingSlug).then(dispatch);
+          fetchSingular(isDisplayingSlug);
         }, 1000);
       } else {
-        fetchSingular(isDisplayingSlug).then(dispatch);
+        fetchSingular(isDisplayingSlug);
       }
     } else {
       if (timestampedSingular.data.state === "success") {
@@ -70,35 +81,30 @@ function SluggedFeature(props: Props) {
           content,
           thumbnail,
         } = timestampedSingular.data;
-        dispatch(
-          setDisplaying({
-            status: 200,
-            active: {
-              slug,
-              title,
-              type,
-              content,
-              thumbnail,
-            },
-          })
-        );
+        setDisplaying({
+          status: 200,
+          active: {
+            slug,
+            title,
+            type,
+            content,
+            thumbnail,
+          },
+        });
       } else {
-        dispatch(
-          setDisplaying({
-            status: 404,
-            slug: timestampedSingular.data.slug,
-          })
-        );
+        setDisplaying({
+          status: 404,
+          slug: timestampedSingular.data.slug,
+        });
       }
-      dispatch(setFetching(false));
+      setFetching(false);
     }
   }, [
-    dispatch,
     timestampedSingular,
     isDisplayingSlug,
-    // fetchSingular,
-    // setFetching,
-    // setDisplaying,
+    fetchSingular,
+    setFetching,
+    setDisplaying,
   ]);
 
   if (isDisplayingStatus === 404) {
@@ -202,4 +208,4 @@ function attachListActions(elem: HTMLElement): void {
   });
 }
 
-export default SluggedFeature;
+export default connector(SluggedFeature);

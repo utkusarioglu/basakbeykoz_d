@@ -1,10 +1,9 @@
-import { FSA } from "../../common/@types-actions";
+import { DispatchMethod, FSA } from "../../common/@types-actions";
 import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
 import stateMap from "../../store/@types-state";
 import { ISetRef } from "../../common/@types-actions";
-import { IsDisplaying } from "./@types-app";
-import { RootState } from "../../store/rootReducer";
 
+type isDisplaying = stateMap["app"]["isDisplaying"];
 type isFetching = stateMap["app"]["isFetching"];
 type isMenuOpen = stateMap["app"]["isMenuOpen"];
 
@@ -16,38 +15,38 @@ export function setFetching(fetch_bool: isFetching): FSA<isFetching> {
   };
 }
 
-export function setDisplaying(
-  is_displaying: Partial<IsDisplaying>
-): FSA<Partial<IsDisplaying>> {
-  return {
+export const boundSetFetching = (fetch_bool: boolean) => (
+  dispatch: DispatchMethod<isFetching>
+) => {
+  dispatch(setFetching(fetch_bool));
+};
+
+export const boundSetDisplaying = (is_displaying: Partial<isDisplaying>) => (
+  dispatch: DispatchMethod<Partial<isDisplaying>>
+) => {
+  dispatch({
     type: ACTION_TYPES.IS_DISPLAYING,
     state: ACTION_STATES.SUCCESS,
     payload: is_displaying,
-  };
-}
+  });
+};
 
-export function setIsMenuOpen(is_menuOpen: isMenuOpen): FSA<isMenuOpen> {
-  return {
+export const boundSetIsMenuOpen = (is_menuOpen: isMenuOpen) => (
+  dispatch: DispatchMethod<isMenuOpen>
+) => {
+  dispatch({
     type: ACTION_TYPES.IS_MENU_OPEN,
     state: ACTION_STATES.SUCCESS,
     payload: is_menuOpen,
-  };
-}
+  });
+};
 
-export function setRef(refData: ISetRef): FSA<ISetRef> {
-  return {
+export const boundSetRef = (refData: ISetRef) => (
+  dispatch: DispatchMethod<ISetRef>
+) => {
+  dispatch({
     type: ACTION_TYPES.SET_REF,
     state: ACTION_STATES.SUCCESS,
     payload: refData,
-  };
-}
-
-export const selectIsDisplayingSlug = (state: RootState) =>
-  state.app.isDisplaying.slug;
-export const selectIsDisplayingActive = (state: RootState) =>
-  state.app.isDisplaying.active;
-export const selectIsDisplayingStatus = (state: RootState) =>
-  state.app.isDisplaying.status;
-export const selectRefs = (state: RootState) => state.app.refs;
-export const selectIsFetching = (state: RootState) => state.app.isFetching;
-export const selectIsMenuOpen = (state: RootState) => state.app.isMenuOpen;
+  });
+};

@@ -7,14 +7,12 @@ interface FSASuccess<T> {
   type: ACTION_TYPES;
   state: ACTION_STATES.SUCCESS;
   payload: T;
-  meta?: any;
 }
 
 interface FSAFailure {
   type: ACTION_TYPES;
   state: ACTION_STATES.FAIL;
   error: ERROR_CODES;
-  meta?: any;
 }
 
 export type DispatchMethod<T> = (vars: FSA<T>) => void;

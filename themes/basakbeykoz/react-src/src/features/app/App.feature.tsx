@@ -1,23 +1,30 @@
 import React, { createRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setRef, selectRefs } from "./appActions";
+import { connect, ConnectedProps } from "react-redux";
+import { boundSetRef } from "./appActions";
 import AppView from "../../views/app/App.view";
+import { RootState } from "../../store/rootReducer";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
-interface Props {}
+const mapState = (state: RootState) => ({
+  refs: state.app.refs,
+});
+const mapDispatch = {
+  setRef: boundSetRef,
+};
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface OwnProps {}
+type Props = OwnProps & PropsFromRedux;
 
 function AppFeature(props: Props) {
-  const dispatch = useDispatch();
-  const refs = useSelector(selectRefs);
+  const { refs, setRef } = props;
 
   if (!refs.body) {
-    dispatch(
-      setRef({
-        type: "body",
-        ref: createRef<OverlayScrollbarsComponent>(),
-      })
-    );
+    setRef({
+      type: "body",
+      ref: createRef<OverlayScrollbarsComponent>(),
+    });
   }
 
   return (
@@ -27,4 +34,4 @@ function AppFeature(props: Props) {
   );
 }
 
-export default AppFeature;
+export default connector(AppFeature);
