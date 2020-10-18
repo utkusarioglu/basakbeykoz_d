@@ -1,24 +1,32 @@
 @import "_vars";
 @import "_mixins";
 
+$PASSIVE_GAP: $gap/4;
+$ACTIVE_GAP: $gap/1.5;
+
 .os-scrollbar {
   z-index: 150;
   padding: 0 !important;
-  width: #{$gap/4} !important;
+  width: #{$ACTIVE_GAP} !important;
 
-  @include narrowScreen() {
-    width: #{$gap/2} !important;
+  &:active,
+  &:hover {
+    width: #{$ACTIVE_GAP} !important;
+    & .os-scrollbar-handle {
+      @include narrowScreen() {
+        width: #{$ACTIVE_GAP};
+        border-top-left-radius: #{$ACTIVE_GAP} !important;
+        border-bottom-left-radius: #{$ACTIVE_GAP} !important;
+      }
+    }
   }
 
   & .os-scrollbar-handle {
+    width: #{$PASSIVE_GAP};
+    right: 0;
     background-color: #{map-get($colorMap, ui-gray)} !important;
     border-radius: 0 !important;
-    border-top-left-radius: #{$gap/4} !important;
-    border-bottom-left-radius: #{$gap/4} !important;
-
-    @include narrowScreen() {
-      border-top-left-radius: #{$gap/2} !important;
-      border-bottom-left-radius: #{$gap/2} !important;
-    }
+    border-top-left-radius: #{$PASSIVE_GAP} !important;
+    border-bottom-left-radius: #{$PASSIVE_GAP} !important;
   }
 }
