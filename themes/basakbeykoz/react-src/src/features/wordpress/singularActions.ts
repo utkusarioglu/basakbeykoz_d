@@ -10,9 +10,9 @@ import rest from '../../services/rest';
 import { ERROR_CODES } from './constants';
 import { RootState } from '../../store/rootReducer';
 
-export const boundFetchSingular = (slug: string) => (
-  dispatch: DispatchMethod<PartialSingularDispatch>
-) => {
+export const fetchSingular = (
+  slug: string
+): Promise<FSA<PartialSingularDispatch>> => {
   if (slug === '') {
     console.warn('empty slug');
   }
@@ -47,15 +47,20 @@ export const boundFetchSingular = (slug: string) => (
           },
         };
       }
-    })
-    .catch(() => {
-      dispatch({
-        type: ACTION_TYPES.FETCH_SINGULAR,
-        state: ACTION_STATES.FAIL,
-        error: ERROR_CODES.SINGULAR_FETCH_FAIL,
-      });
     });
+  // !HACK
+  // .catch(() => {
+  //   return {
+  //     type: ACTION_TYPES.FETCH_SINGULAR,
+  //     state: ACTION_STATES.FAIL,
+  //     error: ERROR_CODES.SINGULAR_FETCH_FAIL,
+  //   };
+  // });
 };
+
+export const boundFetchSingular = (slug: string) => (
+  dispatch: DispatchMethod<PartialSingularDispatch>
+) => fetchSingular(slug).then(dispatch);
 
 export function fetchCategoryPosts(
   slug: string
@@ -67,14 +72,14 @@ export function fetchCategoryPosts(
     })
     .then(({ data }) => {
       if (data) {
-        const now = Date.now();
+        const fetchTime = Date.now();
         return {
           type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
           state: ACTION_STATES.SUCCESS,
           payload: {
-            fetchTime: Date.now(),
-            post: filterByType(data, 'post', now),
-            page: filterByType(data, 'page', now),
+            fetchTime,
+            post: filterByType(data, 'post', fetchTime),
+            page: filterByType(data, 'page', fetchTime),
           },
         };
       } else {
@@ -94,5 +99,9 @@ export function fetchCategoryPosts(
   //   };
   // });
 }
+
+export const boundFetchCategoryPosts = (slug: string) => (
+  dispatch: DispatchMethod<PartialSingularDispatch>
+) => fetchCategoryPosts(slug).then(dispatch);
 
 export const selectPosts = (state: RootState) => state.singular.post;

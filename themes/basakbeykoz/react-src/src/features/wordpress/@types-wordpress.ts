@@ -32,7 +32,7 @@ export enum FETCH_STATES {
 }
 
 export interface wpSingularItemSuccess extends wpSingularItemForView {
-  state: 'success';
+  state: FETCH_STATES.SUCCESS;
   ID: number;
   author: number;
   date: string;
