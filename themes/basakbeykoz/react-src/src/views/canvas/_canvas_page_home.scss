@@ -119,7 +119,7 @@ $standardGroupInnerblockPadding: 100px;
               display: grid;
               @include narrowScreen() {
                 justify-self: start;
-                width: fit-content;
+                justify-content: start;
               }
               & > img {
                 width: 100%;
