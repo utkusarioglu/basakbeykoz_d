@@ -1,9 +1,9 @@
 import { Env } from '../../common/@types-common';
-import stateMap from '../../store/@types-state';
+import { ISocial } from './@types-social';
 
 const { REACT_APP_UPLOADS_DIR } = process.env as Env;
 
-const initialState: stateMap['social'] = {
+const initialState: ISocial = {
   items: [
     {
       title: 'Instagram',
@@ -18,6 +18,6 @@ const initialState: stateMap['social'] = {
   ],
 };
 
-export default function (state = initialState): stateMap['social'] {
+export default function (state = initialState): ISocial {
   return state;
 }

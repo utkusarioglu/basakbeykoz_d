@@ -1,16 +1,16 @@
 import { FSA } from '../../common/@types-actions';
 import { wpMenuItem } from './@types-wordpress';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
-import stateMap from '../../store/@types-state';
+import { IMenu } from '../nav/@types-nav';
 
 const initialState = {
   items: [],
 };
 
 export default function (
-  state: stateMap['menu'] = initialState,
+  state: IMenu = initialState,
   action: FSA<wpMenuItem[]>
-): stateMap['menu'] {
+): IMenu {
   switch (action.type) {
     case ACTION_TYPES.FETCH_MENU:
       if (action.state === ACTION_STATES.FAIL) return state;

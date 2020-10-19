@@ -1,15 +1,12 @@
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import { FSA } from '../../common/@types-actions';
-import stateMap from '../../store/@types-state';
 import { ISetRef } from '../../common/@types-actions';
 import { Env } from '../../common/@types-common';
+import { IsFetching, IsMenuOpen, IsDisplaying, IApp } from './@types-app';
 
 const { REACT_APP_HOME_SLUG } = process.env as Env;
-type isDisplaying = stateMap['app']['isDisplaying'];
-type isFetching = stateMap['app']['isFetching'];
-type isMenuOpen = stateMap['app']['isMenuOpen'];
 
-const initialState: stateMap['app'] = {
+const initialState: IApp = {
   isFetching: true,
   isMenuOpen: false,
   isDisplaying: {
@@ -33,8 +30,8 @@ const initialState: stateMap['app'] = {
 
 export default function (
   state = initialState,
-  action: FSA<isDisplaying | isFetching | ISetRef>
-): stateMap['app'] {
+  action: FSA<IsDisplaying | IsFetching | ISetRef>
+): IApp {
   switch (action.type) {
     case ACTION_TYPES.IS_DISPLAYING:
       if (action.state === ACTION_STATES.FAIL) return state;
@@ -42,7 +39,7 @@ export default function (
         ...state,
         isDisplaying: {
           ...state.isDisplaying,
-          ...(action.payload as isDisplaying),
+          ...(action.payload as IsDisplaying),
         },
       };
 
@@ -50,7 +47,7 @@ export default function (
       if (action.state === ACTION_STATES.FAIL) return state;
       return {
         ...state,
-        isFetching: action.payload as isFetching,
+        isFetching: action.payload as IsFetching,
       };
 
     case ACTION_TYPES.IS_MENU_OPEN:
@@ -58,7 +55,7 @@ export default function (
       console.log('ismenuopen', action);
       return {
         ...state,
-        isMenuOpen: action.payload as isMenuOpen,
+        isMenuOpen: action.payload as IsMenuOpen,
       };
 
     case ACTION_TYPES.SET_REF:

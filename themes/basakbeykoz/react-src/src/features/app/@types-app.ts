@@ -1,4 +1,16 @@
 import { GeneralSingularItemforView } from '../wordpress/@types-wordpress';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
+export interface IApp {
+  isFetching: IsFetching;
+  isMenuOpen: IsMenuOpen;
+  isDisplaying: IsDisplaying;
+  refs: {
+    body?: React.RefObject<OverlayScrollbarsComponent>;
+    latestPosts?: React.RefObject<OverlayScrollbarsComponent>;
+    testimonials?: React.RefObject<OverlayScrollbarsComponent>;
+  };
+}
 
 export interface IsDisplaying {
   status: 200 | 404;
@@ -6,3 +18,7 @@ export interface IsDisplaying {
   loadTime: number;
   active: GeneralSingularItemforView;
 }
+
+export type IsFetching = boolean;
+
+export type IsMenuOpen = boolean;

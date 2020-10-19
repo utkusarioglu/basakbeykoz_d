@@ -4,7 +4,6 @@ import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../store/rootReducer';
 import { fetchSingular } from '../wordpress/singularActions';
 import { setFetching, setDisplaying } from '../app/appActions';
-import stateMap from '../../store/@types-state';
 import {
   WpSingularTypes,
   TimestampedSingular,
@@ -122,11 +121,11 @@ function SluggedFeature({
 }
 
 function findBySlug(
-  singular: stateMap['singular'],
+  singular: RootState['singular'],
   slug: string
 ): TimestampedSingular | undefined {
   return Object.values(singular)
-    .map((archive: stateMap['singular'][WpSingularTypes]) => {
+    .map((archive: RootState['singular'][WpSingularTypes]) => {
       return archive.items[slug];
     })
     .filter((singular: TimestampedSingular | undefined) => {

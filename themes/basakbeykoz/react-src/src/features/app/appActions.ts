@@ -1,14 +1,10 @@
 import { DispatchMethod } from '../../common/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
-import stateMap from '../../store/@types-state';
 import { ISetRef } from '../../common/@types-actions';
-
-type isDisplaying = stateMap['app']['isDisplaying'];
-type isFetching = stateMap['app']['isFetching'];
-type isMenuOpen = stateMap['app']['isMenuOpen'];
+import { IsFetching, IsMenuOpen, IsDisplaying } from './@types-app';
 
 export const setFetching = (isFetching: boolean) => (
-  dispatch: DispatchMethod<isFetching>
+  dispatch: DispatchMethod<IsFetching>
 ) => {
   dispatch({
     type: ACTION_TYPES.IS_FETCHING,
@@ -17,8 +13,8 @@ export const setFetching = (isFetching: boolean) => (
   });
 };
 
-export const setDisplaying = (isDisplaying: Partial<isDisplaying>) => (
-  dispatch: DispatchMethod<Partial<isDisplaying>>
+export const setDisplaying = (isDisplaying: Partial<IsDisplaying>) => (
+  dispatch: DispatchMethod<Partial<IsDisplaying>>
 ) => {
   dispatch({
     type: ACTION_TYPES.IS_DISPLAYING,
@@ -27,8 +23,8 @@ export const setDisplaying = (isDisplaying: Partial<isDisplaying>) => (
   });
 };
 
-export const setIsMenuOpen = (isMenuOpen: isMenuOpen) => (
-  dispatch: DispatchMethod<isMenuOpen>
+export const setIsMenuOpen = (isMenuOpen: IsMenuOpen) => (
+  dispatch: DispatchMethod<IsMenuOpen>
 ) => {
   dispatch({
     type: ACTION_TYPES.IS_MENU_OPEN,

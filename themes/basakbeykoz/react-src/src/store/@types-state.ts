@@ -1,35 +1,11 @@
-import {
-  wpMenuItem,
-  SluggedTimestampedSingular,
-} from '../features/wordpress/@types-wordpress';
-import { ISocialItem } from '../features/social/@types-social';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { IsDisplaying } from '../features/app/@types-app';
+import { IApp } from '../features/app/@types-app';
+import { IMenu } from '../features/nav/@types-nav';
+import { ISocial } from '../features/social/@types-social';
+import { ISlugged } from '../features/slugged/@types-slugged';
 
-export default interface stateMap {
-  app: {
-    isFetching: boolean;
-    isMenuOpen: boolean;
-    isDisplaying: IsDisplaying;
-    refs: {
-      body?: React.RefObject<OverlayScrollbarsComponent>;
-      latestPosts?: React.RefObject<OverlayScrollbarsComponent>;
-      testimonials?: React.RefObject<OverlayScrollbarsComponent>;
-    };
-  };
-  menu: {
-    items: wpMenuItem[];
-  };
-  social: {
-    items: ISocialItem[];
-  };
-  singular: {
-    post: {
-      fetchTime: number;
-      items: SluggedTimestampedSingular;
-    };
-    page: {
-      items: SluggedTimestampedSingular;
-    };
-  };
+export default interface IRootReducer {
+  app: IApp;
+  menu: IMenu;
+  social: ISocial;
+  singular: ISlugged;
 }
