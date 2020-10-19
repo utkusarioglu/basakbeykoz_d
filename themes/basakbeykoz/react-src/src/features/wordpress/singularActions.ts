@@ -1,4 +1,4 @@
-import { DispatchMethod, FSA } from '../../common/@types-actions';
+import { DispatchMethod } from '../../common/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import {
   FETCH_STATES,
@@ -8,22 +8,21 @@ import {
 import { filterByType } from './filters';
 import rest from '../../services/rest';
 import { ERROR_CODES } from './constants';
-import { RootState } from '../../store/rootReducer';
 
-export const fetchSingular = (
-  slug: string
-): Promise<FSA<PartialSingularDispatch>> => {
+export const fetchSingular = (slug: string) => (
+  dispatch: DispatchMethod<PartialSingularDispatch>
+) => {
   if (slug === '') {
     console.warn('empty slug');
   }
-  return rest
+  rest
     .request<wpSingularArchiveItem>({
       method: 'get',
       url: '/customrest/v1/singular_slug/' + slug,
     })
     .then(({ data }) => {
       if (data.state === FETCH_STATES.SUCCESS) {
-        return {
+        dispatch({
           type: ACTION_TYPES.FETCH_SINGULAR,
           state: ACTION_STATES.SUCCESS,
           payload: {
@@ -34,9 +33,9 @@ export const fetchSingular = (
               },
             },
           },
-        };
+        });
       } else {
-        return {
+        dispatch({
           type: ACTION_TYPES.FETCH_SINGULAR,
           state: ACTION_STATES.FAIL,
           error: data.error,
@@ -45,27 +44,22 @@ export const fetchSingular = (
             slug: data.slug,
             loadTime: Date.now(),
           },
-        };
+        });
       }
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.FETCH_SINGULAR,
+        state: ACTION_STATES.FAIL,
+        error: ERROR_CODES.SINGULAR_FETCH_FAIL,
+      });
     });
-  // !HACK
-  // .catch(() => {
-  //   return {
-  //     type: ACTION_TYPES.FETCH_SINGULAR,
-  //     state: ACTION_STATES.FAIL,
-  //     error: ERROR_CODES.SINGULAR_FETCH_FAIL,
-  //   };
-  // });
 };
 
-export const boundFetchSingular = (slug: string) => (
+export const fetchCategoryPosts = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
-) => fetchSingular(slug).then(dispatch);
-
-export function fetchCategoryPosts(
-  slug: string
-): Promise<FSA<PartialSingularDispatch>> {
-  return rest
+) => {
+  rest
     .request<wpSingularArchiveItem[]>({
       method: 'get',
       url: '/customrest/v1/category_posts_slug/' + slug,
@@ -73,7 +67,7 @@ export function fetchCategoryPosts(
     .then(({ data }) => {
       if (data) {
         const fetchTime = Date.now();
-        return {
+        dispatch({
           type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
           state: ACTION_STATES.SUCCESS,
           payload: {
@@ -81,27 +75,20 @@ export function fetchCategoryPosts(
             post: filterByType(data, 'post', fetchTime),
             page: filterByType(data, 'page', fetchTime),
           },
-        };
+        });
       } else {
-        return {
+        dispatch({
           type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
           state: ACTION_STATES.FAIL,
           error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
-        };
+        });
       }
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
+        state: ACTION_STATES.FAIL,
+        error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
+      });
     });
-  // !HACK
-  // .catch(() => {
-  //   return {
-  //     type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
-  //     state: ACTION_STATES.FAIL,
-  //     error: ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
-  //   };
-  // });
-}
-
-export const boundFetchCategoryPosts = (slug: string) => (
-  dispatch: DispatchMethod<PartialSingularDispatch>
-) => fetchCategoryPosts(slug).then(dispatch);
-
-export const selectPosts = (state: RootState) => state.singular.post;
+};

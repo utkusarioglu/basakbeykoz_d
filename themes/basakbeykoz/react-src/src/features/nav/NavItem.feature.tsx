@@ -1,17 +1,17 @@
-import React from "react";
-import { wpMenuItem } from "../wordpress/@types-wordpress";
-import { connect, ConnectedProps } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { RootState } from "../../store/rootReducer";
-import { boundSetDisplaying } from "../app/appActions";
-import "./_navItem.scss";
-import { Env } from "../../common/@types-common";
+import React from 'react';
+import { wpMenuItem } from '../wordpress/@types-wordpress';
+import { connect, ConnectedProps } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { RootState } from '../../store/rootReducer';
+import { setDisplaying } from '../app/appActions';
+import './_navItem.scss';
+import { Env } from '../../common/@types-common';
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
 const mapDispatch = {
-  setDisplaying: boundSetDisplaying,
+  setDisplaying,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -23,14 +23,14 @@ type Props = OwnProps & PropsFromRedux;
 function NavItemFeature(props: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
   const { item, refs, setDisplaying } = props;
-  const cleanSlug = !!item.slug ? item.slug : "";
+  const cleanSlug = !!item.slug ? item.slug : '';
   const clickSlug = cleanSlug || (REACT_APP_HOME_SLUG as string);
 
   const setDisplayingAction = (slug: string) => {
     setDisplaying({
       slug,
     });
-    refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
+    refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
   };
 
   return (
@@ -38,9 +38,9 @@ function NavItemFeature(props: Props) {
       {...{
         key: item.ID,
         exact: true,
-        to: "/" + cleanSlug,
-        className: "Nav-item",
-        activeClassName: "Nav-item-active",
+        to: '/' + cleanSlug,
+        className: 'Nav-item',
+        activeClassName: 'Nav-item-active',
         onClick: () => setDisplayingAction(clickSlug),
       }}
     >

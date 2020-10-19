@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { boundSetFetching } from "../../features/app/appActions";
-import { RootState } from "../../store/rootReducer";
-import { connect, ConnectedProps } from "react-redux";
-import "./_credits.view.scss";
+import React, { useState } from 'react';
+import { setFetching } from '../../features/app/appActions';
+import { RootState } from '../../store/rootReducer';
+import { connect, ConnectedProps } from 'react-redux';
+import './_credits.view.scss';
 
 const mapState = (state: RootState) => ({});
 const mapDispatch = {
-  setFetching: boundSetFetching,
+  setFetching,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -69,15 +69,15 @@ function Credits(props: Props) {
 
   const titleFont = fontList.map((c) => {
     return {
-      "--title-font": c[0],
-      "--title-font-weight": c[1],
+      '--title-font': c[0],
+      '--title-font-weight': c[1],
     };
   });
 
   const textFont = fontList.map((c) => {
     return {
-      "--text-font": c[0],
-      "--text-font-weight": c[1],
+      '--text-font': c[0],
+      '--text-font-weight': c[1],
     };
   });
 
@@ -89,7 +89,7 @@ function Credits(props: Props) {
   const changeSet = (type: string) => {
     setChoiceSet((choices) => {
       const newChoiceNo = (choices[type].index + 1) % sets[type].length;
-      const name = Object.values(sets[type][newChoiceNo]).join(", ");
+      const name = Object.values(sets[type][newChoiceNo]).join(', ');
       Object.entries(sets[type][newChoiceNo]).forEach(([n, v]: any) => {
         document.documentElement.style.setProperty(n, v);
       });
@@ -107,17 +107,17 @@ function Credits(props: Props) {
     <article>
       <div>
         <button
-          {...{ className: "font", onClick: () => changeSet("titleFont") }}
+          {...{ className: 'font', onClick: () => changeSet('titleFont') }}
         >
-          <pre {...{ className: "button-title" }}>Baslik</pre>
-          <pre {...{ className: "button-value" }}>
-            {choiceSet["titleFont"].name}
+          <pre {...{ className: 'button-title' }}>Baslik</pre>
+          <pre {...{ className: 'button-value' }}>
+            {choiceSet['titleFont'].name}
           </pre>
         </button>
-        <button {...{ onClick: () => changeSet("textFont") }}>
-          <pre {...{ className: "button-title" }}>Metin</pre>
-          <pre {...{ className: "button-value" }}>
-            {choiceSet["textFont"].name}
+        <button {...{ onClick: () => changeSet('textFont') }}>
+          <pre {...{ className: 'button-title' }}>Metin</pre>
+          <pre {...{ className: 'button-value' }}>
+            {choiceSet['textFont'].name}
           </pre>
         </button>
       </div>

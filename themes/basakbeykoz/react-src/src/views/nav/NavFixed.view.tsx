@@ -1,15 +1,15 @@
-import React from "react";
-import NavFeature from "../../features/nav/Nav.feature";
-import { connect, ConnectedProps } from "react-redux";
-import { boundSetIsMenuOpen } from "../../features/app/appActions";
-import { RootState } from "../../store/rootReducer";
-import "./_navFixed.view.scss";
+import React from 'react';
+import NavFeature from '../../features/nav/Nav.feature';
+import { connect, ConnectedProps } from 'react-redux';
+import { setIsMenuOpen } from '../../features/app/appActions';
+import { RootState } from '../../store/rootReducer';
+import './_navFixed.view.scss';
 
 const mapState = (state: RootState) => ({
   isMenuOpen: state.app.isMenuOpen,
 });
 const mapDispatch = {
-  setIsMenuOpen: boundSetIsMenuOpen,
+  setIsMenuOpen,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -26,12 +26,12 @@ function NavFixedView(props: Props) {
     <div
       {...{
         onClick: menuToggle,
-        className: "NavFixedView " + (isMenuOpen ? "open" : ""),
+        className: 'NavFixedView ' + (isMenuOpen ? 'open' : ''),
       }}
     >
-      <div {...{ className: "NavFixedView-mask" }} />
-      <div {...{ className: "NavFixedView-decor" }} />
-      <div {...{ className: "NavFixedView-list" }}>
+      <div {...{ className: 'NavFixedView-mask' }} />
+      <div {...{ className: 'NavFixedView-decor' }} />
+      <div {...{ className: 'NavFixedView-list' }}>
         <NavFeature />
       </div>
     </div>

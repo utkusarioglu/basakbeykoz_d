@@ -1,14 +1,14 @@
-import React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import { ISocialItem } from "../../features/social/@types-social";
-import { boundSetIsMenuOpen } from "../../features/app/appActions";
-import ReactGA from "react-ga";
-import { RootState } from "../../store/rootReducer";
-import "./_socialItem.view.scss";
+import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import { ISocialItem } from '../../features/social/@types-social';
+import { setIsMenuOpen } from '../../features/app/appActions';
+import ReactGA from 'react-ga';
+import { RootState } from '../../store/rootReducer';
+import './_socialItem.view.scss';
 
 const mapState = (state: RootState) => ({});
 const mapDispatch = {
-  setIsMenuOpen: boundSetIsMenuOpen,
+  setIsMenuOpen,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -24,12 +24,12 @@ function SocialItem(props: Props) {
         eventLabel: title,
         onClick: () => setIsMenuOpen(false),
         to: link,
-        target: "_blank",
+        target: '_blank',
       }}
     >
       <img
         {...{
-          className: "Social-item",
+          className: 'Social-item',
           src: icon,
           title,
           alt: title,

@@ -1,14 +1,14 @@
-import React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import FooterView from "../../views/footer/Footer.view";
-import { RootState } from "../../store/rootReducer";
-import { boundSetIsMenuOpen } from "../app/appActions";
+import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import FooterView from '../../views/footer/Footer.view';
+import { RootState } from '../../store/rootReducer';
+import { setIsMenuOpen } from '../app/appActions';
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
 const mapDispatch = {
-  setIsMenuOpen: boundSetIsMenuOpen,
+  setIsMenuOpen,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -19,7 +19,7 @@ function FooterFeature(props: Props) {
   const { setIsMenuOpen, refs } = props;
   const navClickActions = () => {
     setIsMenuOpen(false);
-    refs.body?.current?.osInstance()?.scroll(0, 500, "easeInOutSine");
+    refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
   };
 
   return <FooterView {...{ navClickActions }} />;
