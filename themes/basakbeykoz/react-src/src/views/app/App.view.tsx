@@ -19,8 +19,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-function AppView(props: Props) {
-  const { refs } = props;
+function AppView({ refs }: Props) {
   return (
     <div {...{ className: 'App' }}>
       <SpinnerFeature />

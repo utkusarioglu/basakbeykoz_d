@@ -16,8 +16,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function NavFixedView(props: Props) {
-  const { setIsMenuOpen, isMenuOpen } = props;
+function NavFixedView({ setIsMenuOpen, isMenuOpen }: Props) {
   const menuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };

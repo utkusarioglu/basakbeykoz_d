@@ -20,8 +20,7 @@ interface OwnProps {
 }
 type Props = OwnProps & PropsFromRedux;
 
-function Logo(props: Props) {
-  const { setDisplaying, setIsMenuOpen, refs, withTitle } = props;
+function Logo({ setDisplaying, setIsMenuOpen, refs, withTitle }: Props) {
   const { REACT_APP_HOME_SLUG, REACT_APP_UPLOADS_DIR } = process.env as Env;
 
   const linkClick = () => {

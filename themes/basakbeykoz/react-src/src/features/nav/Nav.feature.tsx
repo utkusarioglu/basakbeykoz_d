@@ -19,8 +19,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function NavFeature(props: Props) {
-  const { menu, fetchMenu } = props;
+function NavFeature({ menu, fetchMenu }: Props) {
   useEffect(() => {
     fetchMenu('nav');
   }, [fetchMenu]);

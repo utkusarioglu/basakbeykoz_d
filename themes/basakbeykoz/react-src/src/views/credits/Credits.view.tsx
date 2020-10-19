@@ -26,8 +26,8 @@ interface IChoiceSets {
   }[];
 }
 
-function Credits(props: Props) {
-  props.setFetching(false);
+function Credits({ setFetching }: Props) {
+  setFetching(false);
 
   const [choiceSet, setChoiceSet] = useState<IChoices>({
     textFont: {

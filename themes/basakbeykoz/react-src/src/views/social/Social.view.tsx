@@ -13,8 +13,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Social(props: Props) {
-  const { socialItems } = props;
+function Social({ socialItems }: Props) {
   const socialComponents = socialItems.map((item) => {
     return (
       <SocialItem

@@ -12,9 +12,15 @@ interface Props {
   locale: string;
 }
 
-function PostsItemView(props: Props) {
-  const { title, content, excerpt, date, slug, thumbnail, locale } = props;
-
+function PostsItemView({
+  title,
+  content,
+  excerpt,
+  date,
+  slug,
+  thumbnail,
+  locale,
+}: Props) {
   const fixedExcerpt = !!excerpt ? excerpt : createExcerpt(content);
   const dateObj = new Date(date.replace(/-/g, '/'));
   const fixedDate = dateObj.toLocaleDateString(locale);

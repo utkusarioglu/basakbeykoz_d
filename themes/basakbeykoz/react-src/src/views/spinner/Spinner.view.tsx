@@ -9,10 +9,8 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-function SpinnerView(props: Props) {
+function SpinnerView({ display, loadingMessage }: Props) {
   const { REACT_APP_UPLOADS_DIR } = process.env as Env;
-  const { display, loadingMessage } = props;
-
   return (
     <div {...{ className: 'Spinner', style: { display } }}>
       <img

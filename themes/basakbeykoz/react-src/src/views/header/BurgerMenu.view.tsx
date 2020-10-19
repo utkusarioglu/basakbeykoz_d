@@ -21,9 +21,8 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function BurgerMenu(props: Props) {
+function BurgerMenu({ isMenuOpen, setIsMenuOpen }: Props) {
   const { REACT_APP_UPLOADS_DIR } = process.env as Env;
-  const { isMenuOpen, setIsMenuOpen } = props;
 
   return (
     <div {...{ className: 'BurgerMenu' }}>

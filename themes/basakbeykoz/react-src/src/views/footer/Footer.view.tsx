@@ -7,9 +7,8 @@ interface Props {
   navClickActions: () => void;
 }
 
-function FooterView(props: Props) {
+function FooterView({ navClickActions }: Props) {
   const { REACT_APP_UPLOADS_DIR } = process.env as Env;
-  const { navClickActions } = props;
   return (
     <div {...{ className: 'Footer' }}>
       <div {...{ className: 'Footer-backdrop' }} />

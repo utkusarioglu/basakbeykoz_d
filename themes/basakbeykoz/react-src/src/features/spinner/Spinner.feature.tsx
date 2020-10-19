@@ -12,8 +12,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function SpinnerFeature(props: Props) {
-  const { isFetching } = props;
+function SpinnerFeature({ isFetching }: Props) {
   const loadingMessages = [
     'Hemen geliyor',
     'Tazeden gelsin',

@@ -15,8 +15,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function FooterFeature(props: Props) {
-  const { setIsMenuOpen, refs } = props;
+function FooterFeature({ setIsMenuOpen, refs }: Props) {
   const navClickActions = () => {
     setIsMenuOpen(false);
     refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');

@@ -15,9 +15,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type OwnProps = ISocialItem;
 type Props = OwnProps & PropsFromRedux;
 
-function SocialItem(props: Props) {
-  const { title, link, icon, setIsMenuOpen } = props;
-
+function SocialItem({ title, link, icon, setIsMenuOpen }: Props) {
   return (
     <ReactGA.OutboundLink
       {...{

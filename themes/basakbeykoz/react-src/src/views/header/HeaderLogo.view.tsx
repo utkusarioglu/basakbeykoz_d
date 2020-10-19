@@ -14,8 +14,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function HeaderLogo(props: Props) {
-  // const { isDisplayingSlug, refs } = props;
+function HeaderLogo({ isDisplayingSlug, refs }: Props) {
   // const { REACT_APP_HOME_SLUG } = process.env;
   // const isAtHome = isDisplayingSlug === REACT_APP_HOME_SLUG;
   // const [useCta, setUseCta] = useState(false);

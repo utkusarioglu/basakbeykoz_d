@@ -13,23 +13,22 @@ type Props = GeneralSingularItemforView & {
   extraClasses?: string[];
 };
 
-function Canvas(props: Props) {
+function Canvas({
+  onLoad,
+  type,
+  slug,
+  title,
+  thumbnail,
+  content,
+  articleComponent,
+  thumbnailComponent,
+  extraClasses,
+}: Props) {
   const {
     REACT_APP_NAME,
     REACT_APP_SEPARATOR,
     REACT_APP_HOME_SLUG,
   } = process.env as Env;
-  const {
-    onLoad,
-    type,
-    slug,
-    title,
-    thumbnail,
-    content,
-    articleComponent,
-    thumbnailComponent,
-    extraClasses,
-  } = props;
 
   const navSuffix =
     slug === REACT_APP_HOME_SLUG || slug === ''

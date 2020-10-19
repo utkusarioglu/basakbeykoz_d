@@ -12,8 +12,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function Cta(props: Props) {
-  const { refs } = props;
+function Cta({ refs }: Props) {
   const ctaAction = () =>
     refs.body?.current
       ?.osInstance()

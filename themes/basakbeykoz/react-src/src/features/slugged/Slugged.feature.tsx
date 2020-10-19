@@ -36,19 +36,18 @@ interface Params {
   slug: string;
 }
 
-function SluggedFeature(props: Props) {
+function SluggedFeature({
+  refs,
+  setFetching,
+  setDisplaying,
+  fetchSingular,
+  isDisplayingSlug,
+  isDisplayingActive,
+  isDisplayingStatus,
+  singular,
+}: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
   const paramSlug = useParams<Params>().slug || REACT_APP_HOME_SLUG;
-  const {
-    refs,
-    setFetching,
-    setDisplaying,
-    fetchSingular,
-    isDisplayingSlug,
-    isDisplayingActive,
-    isDisplayingStatus,
-    singular,
-  } = props;
 
   if (paramSlug !== isDisplayingSlug) {
     setDisplaying({

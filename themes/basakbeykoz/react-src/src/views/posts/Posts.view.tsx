@@ -10,9 +10,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-function PostsView(props: Props) {
-  const { PostsItems, locale } = props;
-
+function PostsView({ PostsItems, locale }: Props) {
   const posts = PostsItems.map((single) => {
     if (single.data.state === 'success') {
       return (

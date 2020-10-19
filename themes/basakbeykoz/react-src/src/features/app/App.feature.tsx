@@ -17,9 +17,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function AppFeature(props: Props) {
-  const { refs, setRef } = props;
-
+function AppFeature({ refs, setRef }: Props) {
   if (!refs.body) {
     setRef({
       type: 'body',

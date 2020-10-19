@@ -20,9 +20,8 @@ interface OwnProps {
 }
 type Props = OwnProps & PropsFromRedux;
 
-function NavItemFeature(props: Props) {
+function NavItemFeature({ item, refs, setDisplaying }: Props) {
   const { REACT_APP_HOME_SLUG } = process.env as Env;
-  const { item, refs, setDisplaying } = props;
   const cleanSlug = !!item.slug ? item.slug : '';
   const clickSlug = cleanSlug || (REACT_APP_HOME_SLUG as string);
 
