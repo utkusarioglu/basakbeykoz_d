@@ -22,3 +22,7 @@ export interface IsDisplaying {
 export type IsFetching = boolean;
 
 export type IsMenuOpen = boolean;
+
+export enum APP_ERROR_CODES {
+  FAIL_ACTION_IS_FETCHING = 'FAIL_ACTION_IS_FETCHING',
+}

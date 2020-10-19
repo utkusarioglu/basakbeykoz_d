@@ -5,6 +5,7 @@ import { setRef } from './appActions';
 import AppView from '../../views/app/App.view';
 import { RootState } from '../../store/rootReducer';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { ISetRefTypes } from '../../common/@types-actions';
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
@@ -20,7 +21,7 @@ type Props = OwnProps & PropsFromRedux;
 function AppFeature({ refs, setRef }: Props) {
   if (!refs.body) {
     setRef({
-      type: 'body',
+      type: ISetRefTypes.Body,
       ref: createRef<OverlayScrollbarsComponent>(),
     });
   }

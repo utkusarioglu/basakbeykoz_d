@@ -1,4 +1,4 @@
-import { ERROR_CODES } from './constants';
+import { WP_ERROR_CODES } from './constants';
 
 export interface wpMenuItem {
   ID: number;
@@ -45,7 +45,7 @@ export interface wpSingularItemSuccess extends wpSingularItemForView {
 
 export interface wpSingularItemFail {
   state: FETCH_STATES.FAIL;
-  error: ERROR_CODES;
+  error: WP_ERROR_CODES;
   types: WpSingularTypes[];
   slug: string;
 }
@@ -81,7 +81,6 @@ export type SingularDispatch = {
 
 export interface TimestampedSingular {
   loadTime: number;
-  // data: wpSingularItem | wpSingularItemFail;
   data: wpSingularArchiveItem;
 }
 
