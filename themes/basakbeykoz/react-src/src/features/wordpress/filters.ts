@@ -2,7 +2,7 @@ import {
   SluggedTimestampedSingular,
   wpSingularArchiveItem,
   WpSingularTypes,
-} from "./@types-wordpress";
+} from './@types-wordpress';
 
 export function filterByType<T extends string[]>(
   items: wpSingularArchiveItem[],
@@ -14,7 +14,7 @@ export function filterByType<T extends string[]>(
       filteredObjects: SluggedTimestampedSingular,
       singular: wpSingularArchiveItem
     ) => {
-      if (singular.state === "success" && singular.type === type) {
+      if (singular.state === 'success' && singular.type === type) {
         filteredObjects[singular.slug] = {
           loadTime: time,
           data: singular,

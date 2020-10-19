@@ -1,7 +1,7 @@
-import React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../store/rootReducer";
-import SpinnerView from "../../views/spinner/Spinner.view";
+import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import { RootState } from '../../store/rootReducer';
+import SpinnerView from '../../views/spinner/Spinner.view';
 
 const mapState = (state: RootState) => ({
   isFetching: state.app.isFetching,
@@ -15,22 +15,22 @@ type Props = OwnProps & PropsFromRedux;
 function SpinnerFeature(props: Props) {
   const { isFetching } = props;
   const loadingMessages = [
-    "Hemen geliyor",
-    "Tazeden gelsin",
-    "Ailecek yukluyoruz",
-    "Sayfa bizden, okumak sizden",
-    "Aaa negezel yukluyo",
+    'Hemen geliyor',
+    'Tazeden gelsin',
+    'Ailecek yukluyoruz',
+    'Sayfa bizden, okumak sizden',
+    'Aaa negezel yukluyo',
   ];
 
   // selects a random message from loading messages array
   const loadingMessage =
     loadingMessages[Math.floor(Math.random() * (loadingMessages.length - 1))] +
-    "...";
+    '...';
 
   return (
     <SpinnerView
       {...{
-        display: isFetching ? "grid" : "none",
+        display: isFetching ? 'grid' : 'none',
         loadingMessage,
       }}
     />

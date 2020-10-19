@@ -1,11 +1,11 @@
-import React from "react";
-import { shallow } from "enzyme";
-import AppView from "./App.view";
+import React from 'react';
+import { shallow } from 'enzyme';
+import AppView from './App.view';
 // import { RootState } from "../../store/rootReducer";
 
-describe("Components", () => {
-  describe("App", () => {
-    it("runs without crashing", () => {
+describe('Components', () => {
+  describe('App', () => {
+    it('runs without crashing', () => {
       shallow(<AppView refs={{ body: undefined }} />);
     });
 

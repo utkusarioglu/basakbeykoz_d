@@ -1,7 +1,7 @@
-import React from "react";
-import { TimestampedSingular } from "../../features/wordpress/@types-wordpress";
-import PostsItemView from "./PostsItem.view";
-import "./_posts.view.scss";
+import React from 'react';
+import { TimestampedSingular } from '../../features/wordpress/@types-wordpress';
+import PostsItemView from './PostsItem.view';
+import './_posts.view.scss';
 
 interface OwnProps {
   PostsItems: TimestampedSingular[];
@@ -14,7 +14,7 @@ function PostsView(props: Props) {
   const { PostsItems, locale } = props;
 
   const posts = PostsItems.map((single) => {
-    if (single.data.state === "success") {
+    if (single.data.state === 'success') {
       return (
         <li {...{ key: single.data.slug }}>
           <PostsItemView {...{ ...single.data, locale }} />
@@ -26,7 +26,7 @@ function PostsView(props: Props) {
   });
 
   return (
-    <div {...{ className: "Posts" }}>
+    <div {...{ className: 'Posts' }}>
       <ol>{posts}</ol>
     </div>
   );

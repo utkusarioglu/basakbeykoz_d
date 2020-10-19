@@ -1,5 +1,5 @@
-@import "../../common/styles/_vars";
-@import "../../common/styles/_mixins";
+@import '../../common/styles/_vars';
+@import '../../common/styles/_mixins';
 .Header {
   position: fixed;
   z-index: 100;
@@ -13,7 +13,7 @@
     display: grid;
     align-items: center;
     grid-auto-flow: column;
-    grid-template-areas: "logo social nav";
+    grid-template-areas: 'logo social nav';
     grid-template-columns: 1fr min-content min-content;
     background-color: #{map-get($colorMap, ui-white)};
     bottom: 0;
@@ -24,7 +24,7 @@
     pointer-events: initial;
 
     @include narrowScreen() {
-      grid-template-areas: "nav social";
+      grid-template-areas: 'nav social';
       grid-template-columns: 1fr min-content;
       .Logo {
         display: none;

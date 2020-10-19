@@ -1,13 +1,13 @@
-@import "../../common/styles/_vars";
-@import "../../common/styles/_mixins";
-@import "./_wpPosts";
+@import '../../common/styles/_vars';
+@import '../../common/styles/_mixins';
+@import './_wpPosts';
 $navSocialSpaceX: map-get($wide, navSocialSpaceX);
 $minBlockHeight: map-get($short, minBlockHeight);
 $minMobileBlockGroupHeight: #{unquote(
-    "max(calc(100vh - #{$gap*2} - #{$mobileNavigationHeight}), #{$minBlockHeight})"
+    'max(calc(100vh - #{$gap*2} - #{$mobileNavigationHeight}), #{$minBlockHeight})'
   )};
 $minNarrowBlockGroupHeight: #{unquote(
-    "max(calc(100vh - #{$gap*2}), #{$minBlockHeight})"
+    'max(calc(100vh - #{$gap*2}), #{$minBlockHeight})'
   )};
 $standardGroupInnerblockPadding: 100px;
 .Canvas {
@@ -60,10 +60,10 @@ $standardGroupInnerblockPadding: 100px;
             .wp-block-group__inner-container {
               $figureDent: $logoNSocialY + 4 * $gap;
               grid-template-areas:
-                "logo"
-                "cover"
-                "Heading-h1"
-                "paragraph";
+                'logo'
+                'cover'
+                'Heading-h1'
+                'paragraph';
               grid-template-rows: #{$logoNSocialY} 1fr min-content min-content;
               grid-row-gap: #{$gap/2};
               @include mediumTallScreen() {
@@ -71,10 +71,10 @@ $standardGroupInnerblockPadding: 100px;
               }
               @include narrowScreen() {
                 grid-template-areas:
-                  ". logo         ."
-                  ". Heading-h1   ."
-                  ". paragraph    ."
-                  ". buttons      .";
+                  '. logo         .'
+                  '. Heading-h1   .'
+                  '. paragraph    .'
+                  '. buttons      .';
                 grid-template-columns: #{$homeWelcomeImageX} 1fr;
                 grid-template-rows: #{$logoNSocialY} 1fr 1fr #{$logoNSocialY};
                 grid-row-gap: #{$gap};
@@ -201,7 +201,7 @@ $standardGroupInnerblockPadding: 100px;
               position: relative;
               border-radius: #{$gap/2};
               @mixin frame-common {
-                content: "";
+                content: '';
                 position: absolute;
               }
               $narrow-frame: calc(100% - #{$gap});
@@ -229,9 +229,9 @@ $standardGroupInnerblockPadding: 100px;
           &:nth-child(2) {
             .wp-block-group__inner-container {
               grid-template-areas:
-                "Heading-h2"
-                "image"
-                "paragraph";
+                'Heading-h2'
+                'image'
+                'paragraph';
               grid-template-rows: max-content auto min-content;
               grid-row-gap: #{$gap};
               padding-top: 20px;
@@ -240,8 +240,8 @@ $standardGroupInnerblockPadding: 100px;
               }
               @include narrowScreen() {
                 grid-template-areas:
-                  "Heading-h2 image"
-                  "paragraph image";
+                  'Heading-h2 image'
+                  'paragraph image';
                 padding-top: #{$standardGroupInnerblockPadding};
                 padding-bottom: #{$standardGroupInnerblockPadding};
                 grid-template-columns: 2fr 1fr;
@@ -261,7 +261,7 @@ $standardGroupInnerblockPadding: 100px;
                 &:before {
                   $h2fontSize: map-get(map-get($fonts, h2), line-height);
                   $parrotSize: 60px;
-                  @include svgArt("parrot.svg", $parrotSize, $parrotSize);
+                  @include svgArt('parrot.svg', $parrotSize, $parrotSize);
                   bottom: auto;
                   left: -20px;
                   top: calc(-1 * #{$h2fontSize});
@@ -274,10 +274,10 @@ $standardGroupInnerblockPadding: 100px;
           &:nth-child(3) {
             & > .wp-block-group__inner-container {
               grid-template-areas:
-                "Heading-h2"
-                "image"
-                "paragraph"
-                "restart";
+                'Heading-h2'
+                'image'
+                'paragraph'
+                'restart';
               grid-template-rows: max-content auto min-content min-content;
               grid-row-gap: #{$gap};
               @include mediumTallScreen() {
@@ -285,9 +285,9 @@ $standardGroupInnerblockPadding: 100px;
               }
               @include narrowScreen() {
                 grid-template-areas:
-                  "image Heading-h2"
-                  "image paragraph"
-                  "image restart";
+                  'image Heading-h2'
+                  'image paragraph'
+                  'image restart';
                 padding-top: #{$standardGroupInnerblockPadding};
                 padding-bottom: #{$standardGroupInnerblockPadding};
                 grid-template-columns: 1fr 2fr;
@@ -324,8 +324,8 @@ $standardGroupInnerblockPadding: 100px;
                     margin: 0;
                   }
                   grid-template-areas:
-                    "Heading-h3"
-                    "paragraph";
+                    'Heading-h3'
+                    'paragraph';
                   grid-template-rows: min-content min-content;
                 }
               }
@@ -334,7 +334,7 @@ $standardGroupInnerblockPadding: 100px;
               $width: 100vw;
               $height: calc(100vw / 4);
               @include svgArt(
-                "city.svg",
+                'city.svg',
                 $width,
                 $height,
                 $mobileNavigationHeight,
@@ -346,9 +346,9 @@ $standardGroupInnerblockPadding: 100px;
             .wp-block-group__inner-container {
               @include wpPosts(posts, row);
               grid-template-areas:
-                "Heading-h2"
-                "posts"
-                "paragraph";
+                'Heading-h2'
+                'posts'
+                'paragraph';
               grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} auto max-content;
               grid-row-gap: #{$gap/2};
               @include mediumTallScreen() {
@@ -357,10 +357,10 @@ $standardGroupInnerblockPadding: 100px;
               @include narrowScreen() {
                 $narrowScreenSpacing: 100px;
                 grid-template-areas:
-                  "Heading-h2 .    "
-                  "Heading-h2 posts"
-                  "paragraph  posts"
-                  "paragraph  .    ";
+                  'Heading-h2 .    '
+                  'Heading-h2 posts'
+                  'paragraph  posts'
+                  'paragraph  .    ';
                 grid-template-rows: #{$narrowScreenSpacing} 1fr 1fr #{$narrowScreenSpacing};
                 grid-template-columns: 1fr 1fr;
                 justify-content: center;
@@ -390,7 +390,7 @@ $standardGroupInnerblockPadding: 100px;
               $width: 100vw;
               $height: calc(100vw / 5);
               @include svgArt(
-                "conversation.svg",
+                'conversation.svg',
                 $width,
                 $height,
                 $mobileNavigationHeight,
@@ -402,8 +402,8 @@ $standardGroupInnerblockPadding: 100px;
             .wp-block-group__inner-container {
               @include wpPosts(success, column, map-get($colorMap, bg-blue));
               grid-template-areas:
-                "Heading-h2"
-                "posts";
+                'Heading-h2'
+                'posts';
               grid-row-gap: #{$gap/2};
               grid-template-rows: #{map-get(map-get($fonts, h2), line-height)} 1fr;
               align-content: stretch;
@@ -433,7 +433,7 @@ $standardGroupInnerblockPadding: 100px;
               $cityWidth: 100vw;
               $height: calc(100vw / 4);
               @include svgArt(
-                "success.svg",
+                'success.svg',
                 $cityWidth,
                 $height,
                 $mobileNavigationHeight,
@@ -445,9 +445,9 @@ $standardGroupInnerblockPadding: 100px;
             & > .wp-block-group__inner-container {
               grid-template-rows: min-content min-content min-content;
               grid-template-areas:
-                "Heading-h2"
-                "feature"
-                "paragraph";
+                'Heading-h2'
+                'feature'
+                'paragraph';
               grid-row-gap: #{$gap};
 
               @include mediumTallScreen() {
@@ -469,9 +469,9 @@ $standardGroupInnerblockPadding: 100px;
               grid-area: feature;
               display: grid;
               grid-template-areas:
-                "."
-                "wpcf7-form"
-                "screen-reader-response";
+                '.'
+                'wpcf7-form'
+                'screen-reader-response';
               grid-template-rows: 1fr min-content 1fr;
               & .screen-reader-response {
                 grid-area: screen-reader-response;
@@ -482,13 +482,13 @@ $standardGroupInnerblockPadding: 100px;
                   &-userInput {
                     display: grid;
                     grid-template-areas:
-                      "contactform_left"
-                      "contactform_right"
-                      "contactform_submit";
+                      'contactform_left'
+                      'contactform_right'
+                      'contactform_submit';
                     @include narrowScreen() {
                       grid-template-areas:
-                        "contactform_left contactform_right"
-                        "contactform_submit contactform_submit";
+                        'contactform_left contactform_right'
+                        'contactform_submit contactform_submit';
                       grid-template-columns: 1fr 1fr;
                       grid-column-gap: #{2 * $gap};
                       grid-row-gap: #{$gap};

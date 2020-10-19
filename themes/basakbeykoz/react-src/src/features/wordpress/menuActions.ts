@@ -1,15 +1,15 @@
-import { DispatchMethod } from "../../common/@types-actions";
-import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
-import { ERROR_CODES } from "./constants";
-import { wpMenuItem } from "./@types-wordpress";
-import rest from "../../services/rest";
-export const boundFetchMenu = (slug: string) => (
+import { DispatchMethod } from '../../common/@types-actions';
+import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
+import { ERROR_CODES } from './constants';
+import { wpMenuItem } from './@types-wordpress';
+import rest from '../../services/rest';
+export const fetchMenu = (slug: string) => (
   dispatch: DispatchMethod<wpMenuItem>
 ) => {
   rest
     .request({
-      method: "get",
-      url: "/menus/v1/menus/" + slug,
+      method: 'get',
+      url: '/menus/v1/menus/' + slug,
     })
     .then(({ data }) => {
       if (data) {

@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./_postsItem.view.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './_postsItem.view.scss';
 
 interface Props {
   title: string;
@@ -16,27 +16,27 @@ function PostsItemView(props: Props) {
   const { title, content, excerpt, date, slug, thumbnail, locale } = props;
 
   const fixedExcerpt = !!excerpt ? excerpt : createExcerpt(content);
-  const dateObj = new Date(date.replace(/-/g, "/"));
+  const dateObj = new Date(date.replace(/-/g, '/'));
   const fixedDate = dateObj.toLocaleDateString(locale);
 
   return (
     <Link
       {...{
-        className: "Posts-card",
-        to: "/" + slug,
+        className: 'Posts-card',
+        to: '/' + slug,
       }}
     >
       <div
         {...{
-          className: "Posts-card-thumbnail",
+          className: 'Posts-card-thumbnail',
           dangerouslySetInnerHTML: { __html: thumbnail },
         }}
       />
-      <h4 {...{ className: "Posts-card-title" }}>{title}</h4>
-      <span {...{ className: "Posts-card-date" }}>{fixedDate}</span>
+      <h4 {...{ className: 'Posts-card-title' }}>{title}</h4>
+      <span {...{ className: 'Posts-card-date' }}>{fixedDate}</span>
       <div
         {...{
-          className: "Posts-card-excerpt",
+          className: 'Posts-card-excerpt',
           dangerouslySetInnerHTML: { __html: fixedExcerpt },
         }}
       ></div>
@@ -44,8 +44,8 @@ function PostsItemView(props: Props) {
   );
 }
 
-function createExcerpt(content: Props["content"]): Props["excerpt"] {
-  return content.split("</p>")[0] + "</p>";
+function createExcerpt(content: Props['content']): Props['excerpt'] {
+  return content.split('</p>')[0] + '</p>';
 }
 
 export default PostsItemView;

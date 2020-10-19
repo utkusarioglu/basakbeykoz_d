@@ -1,9 +1,9 @@
-import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
-import { FSA } from "../../common/@types-actions";
-import stateMap from "../../store/@types-state";
-import { PartialSingularDispatch } from "./@types-wordpress";
+import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
+import { FSA } from '../../common/@types-actions';
+import stateMap from '../../store/@types-state';
+import { PartialSingularDispatch } from './@types-wordpress';
 
-const initialState: stateMap["singular"] = {
+const initialState: stateMap['singular'] = {
   post: {
     fetchTime: 0,
     items: {},
@@ -16,7 +16,7 @@ const initialState: stateMap["singular"] = {
 export default function (
   state = initialState,
   action: FSA<PartialSingularDispatch>
-): stateMap["singular"] {
+): stateMap['singular'] {
   switch (action.type) {
     case ACTION_TYPES.FETCH_SINGULAR:
       if (action.state === ACTION_STATES.SUCCESS) {

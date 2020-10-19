@@ -1,8 +1,8 @@
-import React from "react";
-import { RootState } from "../../store/rootReducer";
-import { connect, ConnectedProps } from "react-redux";
-import Logo from "./Logo.view";
-import Cta from "./Cta.view";
+import React from 'react';
+import { RootState } from '../../store/rootReducer';
+import { connect, ConnectedProps } from 'react-redux';
+import Logo from './Logo.view';
+import Cta from './Cta.view';
 
 const mapState = (state: RootState) => ({
   isDisplayingSlug: state.app.isDisplaying.slug,

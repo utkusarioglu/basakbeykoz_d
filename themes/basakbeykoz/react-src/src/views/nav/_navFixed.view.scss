@@ -1,5 +1,5 @@
-@import "../../common/styles/_vars";
-@import "../../common/styles/_mixins";
+@import '../../common/styles/_vars';
+@import '../../common/styles/_mixins';
 
 .NavFixedView {
   display: none;
@@ -112,7 +112,7 @@
 
       &:after {
         position: absolute;
-        content: "";
+        content: '';
         top: 0;
         bottom: 0;
         right: 0;

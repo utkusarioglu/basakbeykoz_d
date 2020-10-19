@@ -1,5 +1,5 @@
-@import "../../common/styles/_vars";
-@import "../../common/styles/_mixins";
+@import '../../common/styles/_vars';
+@import '../../common/styles/_mixins';
 
 .NavHeaderView {
   display: none;
@@ -34,7 +34,7 @@
 
       &:after {
         position: absolute;
-        content: "";
+        content: '';
         bottom: 0;
         height: #{$gap / 4};
         left: #{$gap / 4};

@@ -1,5 +1,5 @@
-import axios from "axios";
-import { Env } from "../common/@types-common";
+import axios from 'axios';
+import { Env } from '../common/@types-common';
 
 const { REACT_APP_REST_ENDPOINT } = process.env as Env;
 

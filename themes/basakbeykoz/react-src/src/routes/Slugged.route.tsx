@@ -1,5 +1,5 @@
-import React from "react";
-import SluggedFeature from "../features/slugged/Slugged.feature";
+import React from 'react';
+import SluggedFeature from '../features/slugged/Slugged.feature';
 
 function SluggedRoute() {
   return <SluggedFeature />;

@@ -1,5 +1,5 @@
-@import "../../common/styles/_vars";
-@import "../../common/styles/_mixins";
+@import '../../common/styles/_vars';
+@import '../../common/styles/_mixins';
 
 .Footer {
   $creditsSize: 20vw;
@@ -15,7 +15,7 @@
     min-height: #{$footerSquareSize};
     height: #{$creditsSize};
     max-height: #{$creditsMaxSize};
-    background: url("#{$uploadsPath}/footer-art-bg.svg") no-repeat bottom right;
+    background: url('#{$uploadsPath}/footer-art-bg.svg') no-repeat bottom right;
   }
   &-elements {
     display: grid;

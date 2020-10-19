@@ -1,10 +1,10 @@
 import {
   wpMenuItem,
   SluggedTimestampedSingular,
-} from "../features/wordpress/@types-wordpress";
-import { ISocialItem } from "../features/social/@types-social";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import { IsDisplaying } from "../features/app/@types-app";
+} from '../features/wordpress/@types-wordpress';
+import { ISocialItem } from '../features/social/@types-social';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { IsDisplaying } from '../features/app/@types-app';
 
 export default interface stateMap {
   app: {

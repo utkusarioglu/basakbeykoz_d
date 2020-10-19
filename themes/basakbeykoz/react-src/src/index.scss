@@ -1,6 +1,6 @@
-@import "./common/styles/_vars";
-@import "./common/styles/_mixins";
-@import "./common/styles/_fonts";
+@import './common/styles/_vars';
+@import './common/styles/_mixins';
+@import './common/styles/_fonts';
 
 :root {
   /* measurements */
@@ -12,9 +12,9 @@
   --home-horizontal-padding: 400px;
   --fixed-feature-image-width: 470px;
   --head-section-height: 110px;
-  --text-font: "Work Sans", sans-serif;
+  --text-font: 'Work Sans', sans-serif;
   --text-font-weight: 400;
-  --title-font: "Montserrat", sans-serif;
+  --title-font: 'Montserrat', sans-serif;
   --title-font-weight: 600;
 }
 
@@ -31,7 +31,7 @@ body {
 
 // creates headings
 @for $i from 1 through 6 {
-  $name: "h" + $i;
+  $name: 'h' + $i;
   #{$name} {
     @include _heading($name);
   }
@@ -97,14 +97,14 @@ p {
   color: #{map-get($colorMap, text-dark)};
 }
 
-$colors: ("green", "yellow", "white", "blue", "black");
+$colors: ('green', 'yellow', 'white', 'blue', 'black');
 @each $color in $colors {
   .bg-#{$color} {
-    $bg-color: "bg-" + $color;
+    $bg-color: 'bg-' + $color;
     background-color: #{map-get($colorMap, $bg-color)};
   }
   .#{$color} {
-    $bg-color: "bg-" + $color;
+    $bg-color: 'bg-' + $color;
     $var-color: #{map-get($colorMap, $bg-color)};
     &-horizontal-border:before {
       background: frame($var-color, horizontal);

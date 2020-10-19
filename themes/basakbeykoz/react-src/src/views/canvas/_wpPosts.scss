@@ -45,20 +45,20 @@
       cursor: pointer;
       @if $type == posts {
         grid-template-areas:
-          "image"
-          "title"
-          "time"
-          "excerpt";
+          'image'
+          'title'
+          'time'
+          'excerpt';
         grid-template-rows: max-content max-content max-content max-content;
       } @else if $type == success {
         grid-template-areas:
-          "image"
-          "title"
-          "excerpt";
+          'image'
+          'title'
+          'excerpt';
         grid-template-rows: max-content max-content 1fr;
       }
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         z-index: 10;
         bottom: 0;
@@ -70,9 +70,9 @@
         @if $gridFlow == row {
           @if $type == posts {
             grid-template-areas:
-              "image title"
-              "image time"
-              "image excerpt";
+              'image title'
+              'image time'
+              'image excerpt';
             grid-template-rows: min-content min-content auto;
             grid-template-columns: #{$homePostsNarrowY} auto;
             grid-column-gap: #{$gap/2};
@@ -91,7 +91,7 @@
         }
       }
       &:last-child::after {
-        content: "";
+        content: '';
         position: absolute;
         right: #{-1.25 * $liDistance};
         width: 1px;

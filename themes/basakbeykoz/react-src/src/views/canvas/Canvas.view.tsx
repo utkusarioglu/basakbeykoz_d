@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import PostsFeature from "../../features/blog/Posts.feature";
-import { GeneralSingularItemforView } from "../../features/wordpress/@types-wordpress";
-import { Helmet } from "react-helmet";
-import ReactGA from "react-ga";
-import { Env } from "../../common/@types-common";
-import "./_canvas.view.scss";
+import React, { useEffect } from 'react';
+import PostsFeature from '../../features/blog/Posts.feature';
+import { GeneralSingularItemforView } from '../../features/wordpress/@types-wordpress';
+import { Helmet } from 'react-helmet';
+import ReactGA from 'react-ga';
+import { Env } from '../../common/@types-common';
+import './_canvas.view.scss';
 
 type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;
@@ -32,8 +32,8 @@ function Canvas(props: Props) {
   } = props;
 
   const navSuffix =
-    slug === REACT_APP_HOME_SLUG || slug === ""
-      ? ""
+    slug === REACT_APP_HOME_SLUG || slug === ''
+      ? ''
       : REACT_APP_SEPARATOR + title;
   const siteTitle = REACT_APP_NAME + navSuffix;
 
@@ -42,45 +42,45 @@ function Canvas(props: Props) {
 
   let featureImage;
   if (thumbnailComponent) {
-    bodyExtraClasses.push("has-FeatureImage");
+    bodyExtraClasses.push('has-FeatureImage');
     featureImage = (
-      <div {...{ className: "FeatureImage-on" }}>{thumbnailComponent}</div>
+      <div {...{ className: 'FeatureImage-on' }}>{thumbnailComponent}</div>
     );
   } else {
-    if (thumbnail !== "") {
-      bodyExtraClasses.push("has-FeatureImage");
+    if (thumbnail !== '') {
+      bodyExtraClasses.push('has-FeatureImage');
       featureImage = (
         <div
           {...{
-            className: "FeatureImage-on",
+            className: 'FeatureImage-on',
             dangerouslySetInnerHTML: { __html: thumbnail },
           }}
         />
       );
     } else {
-      featureImage = <div {...{ className: "FeatureImage-off" }} />;
+      featureImage = <div {...{ className: 'FeatureImage-off' }} />;
     }
   }
 
   let featureTitle;
   let articleTitle;
-  if (title !== "") {
-    bodyExtraClasses.push("has-CanvasTitle");
+  if (title !== '') {
+    bodyExtraClasses.push('has-CanvasTitle');
     featureTitle = (
-      <h2 {...{ className: "Canvas-featureTitle text-blue" }}>{title}</h2>
+      <h2 {...{ className: 'Canvas-featureTitle text-blue' }}>{title}</h2>
     );
     articleTitle = (
-      <h2 {...{ className: "Canvas-articleTitle text-blue" }}>{title}</h2>
+      <h2 {...{ className: 'Canvas-articleTitle text-blue' }}>{title}</h2>
     );
   }
 
   let posts;
   let excludeSlugs = [];
-  if (type === "post") {
+  if (type === 'post') {
     excludeSlugs.push(slug);
-    bodyExtraClasses.push("has-PostExcerptList");
+    bodyExtraClasses.push('has-PostExcerptList');
     posts = (
-      <div {...{ className: "Posts-wrapper" }}>
+      <div {...{ className: 'Posts-wrapper' }}>
         <h4>Similar Reads</h4>
         <PostsFeature {...{ excludeSlugs }} />
       </div>
@@ -104,8 +104,8 @@ function Canvas(props: Props) {
       <Helmet>
         <title>{siteTitle}</title>
       </Helmet>
-      <div {...{ className: "Canvas " + bodyExtraClasses.join(" ") }}>
-        <div {...{ className: "Canvas-decor" }}>
+      <div {...{ className: 'Canvas ' + bodyExtraClasses.join(' ') }}>
+        <div {...{ className: 'Canvas-decor' }}>
           {featureImage}
           {featureTitle}
         </div>

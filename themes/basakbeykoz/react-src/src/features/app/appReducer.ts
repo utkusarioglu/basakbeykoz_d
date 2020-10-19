@@ -1,15 +1,15 @@
-import { ACTION_TYPES, ACTION_STATES } from "../../common/actionConstants";
-import { FSA } from "../../common/@types-actions";
-import stateMap from "../../store/@types-state";
-import { ISetRef } from "../../common/@types-actions";
-import { Env } from "../../common/@types-common";
+import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
+import { FSA } from '../../common/@types-actions';
+import stateMap from '../../store/@types-state';
+import { ISetRef } from '../../common/@types-actions';
+import { Env } from '../../common/@types-common';
 
 const { REACT_APP_HOME_SLUG } = process.env as Env;
-type isDisplaying = stateMap["app"]["isDisplaying"];
-type isFetching = stateMap["app"]["isFetching"];
-type isMenuOpen = stateMap["app"]["isMenuOpen"];
+type isDisplaying = stateMap['app']['isDisplaying'];
+type isFetching = stateMap['app']['isFetching'];
+type isMenuOpen = stateMap['app']['isMenuOpen'];
 
-const initialState: stateMap["app"] = {
+const initialState: stateMap['app'] = {
   isFetching: true,
   isMenuOpen: false,
   isDisplaying: {
@@ -17,11 +17,11 @@ const initialState: stateMap["app"] = {
     slug: REACT_APP_HOME_SLUG,
     loadTime: 0,
     active: {
-      slug: "",
-      type: "page",
-      title: "",
-      content: "",
-      thumbnail: " ",
+      slug: '',
+      type: 'page',
+      title: '',
+      content: '',
+      thumbnail: ' ',
     },
   },
   refs: {
@@ -34,7 +34,7 @@ const initialState: stateMap["app"] = {
 export default function (
   state = initialState,
   action: FSA<isDisplaying | isFetching | ISetRef>
-): stateMap["app"] {
+): stateMap['app'] {
   switch (action.type) {
     case ACTION_TYPES.IS_DISPLAYING:
       if (action.state === ACTION_STATES.FAIL) return state;
@@ -55,7 +55,7 @@ export default function (
 
     case ACTION_TYPES.IS_MENU_OPEN:
       if (action.state === ACTION_STATES.FAIL) return state;
-      console.log("ismenuopen", action);
+      console.log('ismenuopen', action);
       return {
         ...state,
         isMenuOpen: action.payload as isMenuOpen,

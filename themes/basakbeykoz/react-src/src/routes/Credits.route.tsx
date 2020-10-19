@@ -1,32 +1,32 @@
-import React from "react";
-import { Env } from "../common/@types-common";
-import Canvas from "../views/canvas/Canvas.view";
-import Credits from "../views/credits/Credits.view";
+import React from 'react';
+import { Env } from '../common/@types-common';
+import Canvas from '../views/canvas/Canvas.view';
+import Credits from '../views/credits/Credits.view';
 
 function CreditsRoute() {
   const { REACT_APP_UPLOADS_DIR } = process.env as Env;
-  const featureImageName = "yazilar-feature-image";
+  const featureImageName = 'yazilar-feature-image';
   const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [
-    "scaled.jpg 2560w",
-    "300x196.jpg 300w",
-    "1024x669.jpg 1024w",
-    "768x501.jpg 768w",
-    "1536x1003.jpg 1536w",
-    "2048x1337.jpg 2048w",
+    'scaled.jpg 2560w',
+    '300x196.jpg 300w',
+    '1024x669.jpg 1024w',
+    '768x501.jpg 768w',
+    '1536x1003.jpg 1536w',
+    '2048x1337.jpg 2048w',
   ]
     .map((variation) => featureImagePath + variation)
-    .join(",");
+    .join(',');
 
   const thumbnailComponent = (
     <img
       {...{
-        width: "2560",
-        height: "1671",
+        width: '2560',
+        height: '1671',
         src: `${featureImageName}scaled.jpg`,
-        alt: "Feature",
+        alt: 'Feature',
         srcSet,
-        sizes: "(max-width: 2560px) 100vw, 2560px",
+        sizes: '(max-width: 2560px) 100vw, 2560px',
       }}
     />
   );
@@ -34,12 +34,12 @@ function CreditsRoute() {
   return (
     <Canvas
       {...{
-        type: "native",
-        slug: "404",
-        title: "Credits",
-        thumbnail: "",
+        type: 'native',
+        slug: '404',
+        title: 'Credits',
+        thumbnail: '',
         thumbnailComponent,
-        content: "",
+        content: '',
         articleComponent: <Credits />,
         onLoad: () => {},
       }}

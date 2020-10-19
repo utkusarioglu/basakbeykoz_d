@@ -1,5 +1,5 @@
 export interface ISocialItem {
-    title: string,
-    link: string,
-    icon: string,
+  title: string;
+  link: string;
+  icon: string;
 }
