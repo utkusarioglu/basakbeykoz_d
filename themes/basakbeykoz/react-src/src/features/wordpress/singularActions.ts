@@ -6,7 +6,7 @@ import {
   wpSingularArchiveItem,
 } from './@types-wordpress';
 import { filterByType } from './filters';
-import rest from '../../services/rest';
+import restApi from '../../services/restApi';
 import { ERROR_CODES } from '../../store/@types-store';
 
 export const fetchSingular = (slug: string) => (
@@ -15,7 +15,7 @@ export const fetchSingular = (slug: string) => (
   if (slug === '') {
     console.warn('empty slug');
   }
-  rest
+  restApi
     .request<wpSingularArchiveItem>({
       method: 'get',
       url: '/customrest/v1/singular_slug/' + slug,
@@ -59,7 +59,7 @@ export const fetchSingular = (slug: string) => (
 export const fetchCategoryPosts = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
 ) => {
-  rest
+  restApi
     .request<wpSingularArchiveItem[]>({
       method: 'get',
       url: '/customrest/v1/category_posts_slug/' + slug,
