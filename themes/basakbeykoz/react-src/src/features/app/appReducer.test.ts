@@ -1,9 +1,9 @@
 import { Chance } from 'chance';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { FSA } from '../../common/@types-actions';
+import { FSA } from '../../store/@types-actions';
 import { ACTION_STATES, ACTION_TYPES } from '../../common/actionConstants';
-import { ERROR_CODES } from '../../store/@types-state';
+import { ERROR_CODES } from '../../store/@types-store';
 import {
   IApp,
   IsDisplaying,

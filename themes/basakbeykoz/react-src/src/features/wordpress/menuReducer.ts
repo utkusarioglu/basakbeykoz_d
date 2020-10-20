@@ -1,4 +1,4 @@
-import { FSA } from '../../common/@types-actions';
+import { FSA } from '../../store/@types-actions';
 import { wpMenuItem } from './@types-wordpress';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import { IMenu } from '../nav/@types-nav';

@@ -1,5 +1,5 @@
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
-import { FSA } from '../../common/@types-actions';
+import { FSA } from '../../store/@types-actions';
 import { Env } from '../../common/@types-common';
 import {
   IsFetching,

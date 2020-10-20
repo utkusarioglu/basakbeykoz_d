@@ -1,4 +1,4 @@
-import { DispatchMethod } from '../../common/@types-actions';
+import { DispatchMethod } from '../../store/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import {
   FETCH_STATES,
@@ -7,7 +7,7 @@ import {
 } from './@types-wordpress';
 import { filterByType } from './filters';
 import rest from '../../services/rest';
-import { ERROR_CODES } from '../../store/@types-state';
+import { ERROR_CODES } from '../../store/@types-store';
 
 export const fetchSingular = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>

@@ -1,7 +1,6 @@
-import { DispatchMethod } from '../../common/@types-actions';
+import { DispatchMethod } from '../../store/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
-import { ISetRef } from '../../common/@types-actions';
-import { IsFetching, IsMenuOpen, IsDisplaying } from './@types-app';
+import { IsFetching, IsMenuOpen, IsDisplaying, ISetRef } from './@types-app';
 
 export const setFetching = (isFetching: boolean) => (
   dispatch: DispatchMethod<IsFetching>
