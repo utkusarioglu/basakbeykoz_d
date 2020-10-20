@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../store/rootReducer';
 import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions';
 import { connect, ConnectedProps } from 'react-redux';
-import { Env } from '../../common/@types-common';
 import './_logo.view.scss';
 
 const mapState = (state: RootState) => ({
@@ -21,7 +20,7 @@ interface OwnProps {
 type Props = OwnProps & PropsFromRedux;
 
 function Logo({ setDisplaying, setIsMenuOpen, refs, withTitle }: Props) {
-  const { REACT_APP_HOME_SLUG, REACT_APP_UPLOADS_DIR } = process.env as Env;
+  const { REACT_APP_HOME_SLUG, REACT_APP_UPLOADS_DIR } = process.env;
 
   const linkClick = () => {
     setIsMenuOpen(false);

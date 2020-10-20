@@ -1,5 +1,4 @@
 import React from 'react';
-import { Env } from '../../common/@types-common';
 import './_spinner.view.scss';
 
 interface OwnProps {
@@ -10,7 +9,7 @@ interface OwnProps {
 type Props = OwnProps;
 
 function SpinnerView({ display, loadingMessage }: Props) {
-  const { REACT_APP_UPLOADS_DIR } = process.env as Env;
+  const { REACT_APP_UPLOADS_DIR } = process.env;
   return (
     <div {...{ className: 'Spinner', style: { display } }}>
       <img

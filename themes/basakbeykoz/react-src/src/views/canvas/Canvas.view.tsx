@@ -3,7 +3,6 @@ import PostsFeature from '../../features/blog/Posts.feature';
 import { GeneralSingularItemforView } from '../../features/wordpress/@types-wordpress';
 import { Helmet } from 'react-helmet';
 import ReactGA from 'react-ga';
-import { Env } from '../../common/@types-common';
 import './_canvas.view.scss';
 
 type Props = GeneralSingularItemforView & {
@@ -28,7 +27,7 @@ function Canvas({
     REACT_APP_NAME,
     REACT_APP_SEPARATOR,
     REACT_APP_HOME_SLUG,
-  } = process.env as Env;
+  } = process.env;
 
   const navSuffix =
     slug === REACT_APP_HOME_SLUG || slug === ''

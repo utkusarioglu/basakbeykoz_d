@@ -1,7 +1,6 @@
-import { Env } from '../../common/@types-common';
 import { ISocial } from './@types-social';
 
-const { REACT_APP_UPLOADS_DIR } = process.env as Env;
+const { REACT_APP_UPLOADS_DIR } = process.env;
 
 const initialState: ISocial = {
   items: [

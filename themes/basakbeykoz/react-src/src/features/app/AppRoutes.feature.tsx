@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Env } from '../../common/@types-common';
 
 import BlogRoute from '../../routes/Blog.route';
 import CreditsRoute from '../../routes/Credits.route';
@@ -8,7 +7,7 @@ import SluggedRoute from '../../routes/Slugged.route';
 import FourOFourRoute from '../../routes/404.route';
 
 const AppRoutes = () => {
-  const { REACT_APP_BLOG_SLUG } = process.env as Env;
+  const { REACT_APP_BLOG_SLUG } = process.env;
   return (
     <Switch>
       <Route {...{ exact: true, path: '/credits' }}>

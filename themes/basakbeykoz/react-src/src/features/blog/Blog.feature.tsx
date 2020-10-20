@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostsFeature from './Posts.feature';
 import Canvas from '../../views/canvas/Canvas.view';
-import { Env } from '../../common/@types-common';
 import { setFetching } from '../app/appActions';
 import './_blog.scss';
 import { RootState } from '../../store/rootReducer';
@@ -18,7 +17,7 @@ interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
 function BlogFeature({ setFetching }: Props) {
-  const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env as Env;
+  const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env;
   const featureImageName = 'yazilar-feature-image';
   const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [

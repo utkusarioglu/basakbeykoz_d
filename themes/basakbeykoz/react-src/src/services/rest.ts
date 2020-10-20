@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { Env } from '../common/@types-common';
 
-const { REACT_APP_REST_ENDPOINT } = process.env as Env;
+const { REACT_APP_REST_ENDPOINT } = process.env;
 
 const rest = axios.create({
   baseURL: REACT_APP_REST_ENDPOINT,

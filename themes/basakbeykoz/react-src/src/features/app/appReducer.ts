@@ -1,6 +1,5 @@
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import { FSA } from '../../store/@types-actions';
-import { Env } from '../../common/@types-common';
 import {
   IsFetching,
   IsMenuOpen,
@@ -10,7 +9,7 @@ import {
   ISetRef,
 } from './@types-app';
 
-const { REACT_APP_HOME_SLUG } = process.env as Env;
+const { REACT_APP_HOME_SLUG } = process.env;
 
 const initialState: IApp = {
   isFetching: true,

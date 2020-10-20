@@ -10,7 +10,6 @@ import {
 } from '../wordpress/@types-wordpress';
 import OverlayScrollbars from 'overlayscrollbars';
 import Canvas from '../../views/canvas/Canvas.view';
-import { Env } from '../../common/@types-common';
 //@ts-ignore
 import pauseable from 'pauseable';
 
@@ -45,7 +44,7 @@ function SluggedFeature({
   isDisplayingStatus,
   singular,
 }: Props) {
-  const { REACT_APP_HOME_SLUG } = process.env as Env;
+  const { REACT_APP_HOME_SLUG } = process.env;
   const paramSlug = useParams<Params>().slug || REACT_APP_HOME_SLUG;
 
   if (paramSlug !== isDisplayingSlug) {

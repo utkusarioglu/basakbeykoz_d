@@ -9,9 +9,9 @@ import '@csstools/normalize.css';
 import './index.scss';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import './common/styles/_scrollbar.scss';
-import { Env } from './common/@types-common';
+import './common/@types-global';
 
-const { REACT_APP_GA_TRACKING_ID } = process.env as Env;
+const { REACT_APP_GA_TRACKING_ID } = process.env;
 ReactGA.initialize(REACT_APP_GA_TRACKING_ID, { debug: false });
 
 ReactDOM.render(

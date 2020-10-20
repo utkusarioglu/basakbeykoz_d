@@ -4,7 +4,6 @@ import { RootState } from '../../store/rootReducer';
 import { fetchCategoryPosts } from '../wordpress/singularActions';
 import { setFetching } from '../app/appActions';
 import PostsView from '../../views/posts/Posts.view';
-import { Env } from '../../common/@types-common';
 
 const mapState = (state: RootState) => ({
   posts: state.singular.post,
@@ -28,7 +27,7 @@ function PostsFeature({
   excludeSlugs,
   posts,
 }: Props) {
-  const { REACT_APP_BLOG_SLUG } = process.env as Env;
+  const { REACT_APP_BLOG_SLUG } = process.env;
 
   // !HACK this is faulty logic
   setTimeout(() => {

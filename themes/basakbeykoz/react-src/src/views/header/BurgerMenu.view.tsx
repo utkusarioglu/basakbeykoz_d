@@ -3,7 +3,6 @@ import { connect, ConnectedProps } from 'react-redux';
 import { fetchMenu } from '../../features/wordpress/menuActions';
 import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions';
 import { RootState } from '../../store/rootReducer';
-import { Env } from '../../common/@types-common';
 import './_burgerMenu.view.scss';
 
 const mapState = (state: RootState) => ({
@@ -22,7 +21,7 @@ interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
 function BurgerMenu({ isMenuOpen, setIsMenuOpen }: Props) {
-  const { REACT_APP_UPLOADS_DIR } = process.env as Env;
+  const { REACT_APP_UPLOADS_DIR } = process.env;
 
   return (
     <div {...{ className: 'BurgerMenu' }}>
