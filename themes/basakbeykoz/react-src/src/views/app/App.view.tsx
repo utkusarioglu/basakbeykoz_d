@@ -31,7 +31,7 @@ function AppView({ refs }: Props) {
       </div>
       <OverlayScrollbarsComponent
         {...{
-          ref: refs.body,
+          ref: refs.body?.ref,
           className: 'App-scrollWindow',
           options: {
             paddingAbsolute: true,

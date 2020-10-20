@@ -14,7 +14,7 @@ type Props = OwnProps & PropsFromRedux;
 
 function Cta({ refs }: Props) {
   const ctaAction = () =>
-    refs.body?.current
+    refs.body?.ref.current
       ?.osInstance()
       ?.scroll(
         document.getElementsByClassName('wp-block-group')[1] as HTMLElement,

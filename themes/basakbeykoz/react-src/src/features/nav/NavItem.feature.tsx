@@ -28,7 +28,7 @@ function NavItemFeature({ item, refs, setDisplaying }: Props) {
     setDisplaying({
       slug,
     });
-    refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
+    refs.body?.ref.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
   };
 
   return (

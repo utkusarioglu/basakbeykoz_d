@@ -27,7 +27,7 @@ function Logo({ setDisplaying, setIsMenuOpen, refs, withTitle }: Props) {
     setDisplaying({
       slug: REACT_APP_HOME_SLUG,
     });
-    refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
+    refs.body?.ref.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
   };
 
   const logoName = withTitle

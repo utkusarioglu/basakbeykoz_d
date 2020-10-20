@@ -18,7 +18,7 @@ type Props = OwnProps & PropsFromRedux;
 function FooterFeature({ setIsMenuOpen, refs }: Props) {
   const navClickActions = () => {
     setIsMenuOpen(false);
-    refs.body?.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
+    refs.body?.ref.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
   };
 
   return <FooterView {...{ navClickActions }} />;

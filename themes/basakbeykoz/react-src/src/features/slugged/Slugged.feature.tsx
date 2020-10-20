@@ -150,7 +150,7 @@ function getSlugOnload(
           document.body
             .getElementsByClassName('wp-block-button')[0]
             ?.addEventListener('mousedown', () => {
-              refs.body?.current
+              refs.body?.ref.current
                 ?.osInstance()
                 ?.scroll(
                   document.getElementsByClassName(
