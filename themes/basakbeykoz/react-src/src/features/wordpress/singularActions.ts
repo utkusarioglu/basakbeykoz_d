@@ -7,7 +7,7 @@ import {
 } from './@types-wordpress';
 import { filterByType } from './filters';
 import rest from '../../services/rest';
-import { WP_ERROR_CODES } from './constants';
+import { ERROR_CODES } from '../../store/@types-state';
 
 export const fetchSingular = (slug: string) => (
   dispatch: DispatchMethod<PartialSingularDispatch>
@@ -51,7 +51,7 @@ export const fetchSingular = (slug: string) => (
       dispatch({
         type: ACTION_TYPES.FETCH_SINGULAR,
         state: ACTION_STATES.FAIL,
-        errorCode: WP_ERROR_CODES.SINGULAR_FETCH_FAIL,
+        errorCode: ERROR_CODES.WP.SINGULAR_FETCH_FAIL,
       });
     });
 };
@@ -80,7 +80,7 @@ export const fetchCategoryPosts = (slug: string) => (
         dispatch({
           type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
           state: ACTION_STATES.FAIL,
-          errorCode: WP_ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
+          errorCode: ERROR_CODES.WP.CATEGORY_POSTS_FETCH_FAIL,
         });
       }
     })
@@ -88,7 +88,7 @@ export const fetchCategoryPosts = (slug: string) => (
       dispatch({
         type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
         state: ACTION_STATES.FAIL,
-        errorCode: WP_ERROR_CODES.CATEGORY_POSTS_FETCH_FAIL,
+        errorCode: ERROR_CODES.WP.CATEGORY_POSTS_FETCH_FAIL,
       });
     });
 };

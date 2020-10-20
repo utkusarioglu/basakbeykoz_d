@@ -1,6 +1,6 @@
 import { DispatchMethod } from '../../common/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
-import { WP_ERROR_CODES } from './constants';
+import { ERROR_CODES } from '../../store/@types-state';
 import { wpMenuItem } from './@types-wordpress';
 import rest from '../../services/rest';
 export const fetchMenu = (slug: string) => (
@@ -23,7 +23,7 @@ export const fetchMenu = (slug: string) => (
         dispatch({
           type: ACTION_TYPES.FETCH_MENU,
           state: ACTION_STATES.FAIL,
-          errorCode: WP_ERROR_CODES.MENU_FETCH_FAIL,
+          errorCode: ERROR_CODES.WP.MENU_FETCH_FAIL,
         });
       }
     });

@@ -1,5 +1,5 @@
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { WP_ERROR_CODES } from '../features/wordpress/constants';
+import { ERROR_CODES } from '../store/@types-state';
 import { ACTION_TYPES, ACTION_STATES } from './actionConstants';
 export type FSA<T> = FSASuccess<T> | FSAFailure;
 
@@ -12,7 +12,7 @@ interface FSASuccess<T> {
 interface FSAFailure {
   type: ACTION_TYPES;
   state: ACTION_STATES.FAIL;
-  errorCode: WP_ERROR_CODES;
+  errorCode: ERROR_CODES;
   meta?: any;
 }
 
