@@ -43,7 +43,7 @@ export interface wpSingularItemSuccess extends wpSingularItemForView {
 
 export interface wpSingularItemFail {
   state: FETCH_STATES.FAIL;
-  error: WP_ERROR_CODES;
+  error: WORDPRESS_ERROR_CODES;
   types: WpSingularTypes[];
   slug: string;
 }
@@ -60,7 +60,7 @@ export interface wpSingularItemForView extends SingularItemForView {
 }
 
 export interface NativeSingularItemForView extends SingularItemForView {
-  type: 'native';
+  type: NativeTypes;
 }
 
 export type GeneralSingularItemforView =
@@ -85,7 +85,8 @@ export interface TimestampedSingular {
 export interface SluggedTimestampedSingular {
   [slug: string]: TimestampedSingular;
 }
-
+export type DisplayTypes = WpSingularTypes | NativeTypes;
+export type NativeTypes = 'native';
 export type WpSingularTypes = 'post' | 'page';
 
 type singularStatus =
@@ -101,10 +102,10 @@ type singularStatus =
 type commentStatus = 'trash' | 'approved' | 'unapproved' | 'spam';
 
 // !HACK babel does not support const enums, hence this here uses "let"
-export enum WP_ERROR_CODES {
-  NO_MATCH_SINGULAR = 'NO_MATCH_SINGULAR',
-  MULTIPLE_MATCHES_SINGULAR = 'MULTIPLE_MATCHES_SINGULAR',
-  MENU_FETCH_FAIL = 'MENU_FETCH_FAIL',
-  SINGULAR_FETCH_FAIL = 'SINGULAR_FETCH_FAIL',
-  CATEGORY_POSTS_FETCH_FAIL = 'CATEGORY_POSTS_FETCH_FAIL',
+export enum WORDPRESS_ERROR_CODES {
+  NO_MATCH_SINGULAR = 'WORDPRESS/NO_MATCH_SINGULAR',
+  MULTIPLE_MATCHES_SINGULAR = 'WORDPRESS/MULTIPLE_MATCHES_SINGULAR',
+  MENU_FETCH_FAIL = 'WORDPRESS/MENU_FETCH_FAIL',
+  SINGULAR_FETCH_FAIL = 'WORDPRESS/SINGULAR_FETCH_FAIL',
+  CATEGORY_POSTS_FETCH_FAIL = 'WORDPRESS/CATEGORY_POSTS_FETCH_FAIL',
 }

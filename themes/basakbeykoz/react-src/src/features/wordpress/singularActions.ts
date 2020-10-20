@@ -51,7 +51,7 @@ export const fetchSingular = (slug: string) => (
       dispatch({
         type: ACTION_TYPES.FETCH_SINGULAR,
         state: ACTION_STATES.FAIL,
-        errorCode: ERROR_CODES.WP.SINGULAR_FETCH_FAIL,
+        errorCode: ERROR_CODES.WORDPRESS.SINGULAR_FETCH_FAIL,
       });
     });
 };
@@ -80,7 +80,7 @@ export const fetchCategoryPosts = (slug: string) => (
         dispatch({
           type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
           state: ACTION_STATES.FAIL,
-          errorCode: ERROR_CODES.WP.CATEGORY_POSTS_FETCH_FAIL,
+          errorCode: ERROR_CODES.WORDPRESS.CATEGORY_POSTS_FETCH_FAIL,
         });
       }
     })
@@ -88,7 +88,7 @@ export const fetchCategoryPosts = (slug: string) => (
       dispatch({
         type: ACTION_TYPES.FETCH_CATEGORY_POSTS,
         state: ACTION_STATES.FAIL,
-        errorCode: ERROR_CODES.WP.CATEGORY_POSTS_FETCH_FAIL,
+        errorCode: ERROR_CODES.WORDPRESS.CATEGORY_POSTS_FETCH_FAIL,
       });
     });
 };

@@ -23,7 +23,7 @@ export const fetchMenu = (slug: string) => (
         dispatch({
           type: ACTION_TYPES.FETCH_MENU,
           state: ACTION_STATES.FAIL,
-          errorCode: ERROR_CODES.WP.MENU_FETCH_FAIL,
+          errorCode: ERROR_CODES.WORDPRESS.MENU_FETCH_FAIL,
         });
       }
     });
