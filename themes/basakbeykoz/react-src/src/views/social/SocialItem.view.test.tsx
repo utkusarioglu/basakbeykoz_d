@@ -94,7 +94,7 @@ describe('Components', () => {
 
       mounted.find('a').simulate('click');
       isMenuOpen = (store.getState() as RootState).app.isMenuOpen;
-      expect(isMenuOpen).toEqual(false);
+      expect(isMenuOpen).toBe(false);
     });
   });
 });

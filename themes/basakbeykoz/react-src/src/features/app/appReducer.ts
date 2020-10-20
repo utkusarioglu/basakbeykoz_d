@@ -1,8 +1,14 @@
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import { FSA } from '../../common/@types-actions';
-import { ISetRef } from '../../common/@types-actions';
 import { Env } from '../../common/@types-common';
-import { IsFetching, IsMenuOpen, IsDisplaying, IApp } from './@types-app';
+import {
+  IsFetching,
+  IsMenuOpen,
+  IsDisplaying,
+  IApp,
+  IAppReducer,
+  ISetRef,
+} from './@types-app';
 
 const { REACT_APP_HOME_SLUG } = process.env as Env;
 
@@ -28,11 +34,15 @@ const initialState: IApp = {
   },
 };
 
-export default function (
-  state = initialState,
-  action: FSA<IsDisplaying | IsFetching | ISetRef>
-): IApp {
+export default function (state = initialState, action: FSA<IAppReducer>): IApp {
   switch (action.type) {
+    case ACTION_TYPES.IS_FETCHING:
+      if (action.state === ACTION_STATES.FAIL) return state;
+      return {
+        ...state,
+        isFetching: action.payload as IsFetching,
+      };
+
     case ACTION_TYPES.IS_DISPLAYING:
       if (action.state === ACTION_STATES.FAIL) return state;
       return {
@@ -43,16 +53,8 @@ export default function (
         },
       };
 
-    case ACTION_TYPES.IS_FETCHING:
-      if (action.state === ACTION_STATES.FAIL) return state;
-      return {
-        ...state,
-        isFetching: action.payload as IsFetching,
-      };
-
     case ACTION_TYPES.IS_MENU_OPEN:
       if (action.state === ACTION_STATES.FAIL) return state;
-      console.log('ismenuopen', action);
       return {
         ...state,
         isMenuOpen: action.payload as IsMenuOpen,
@@ -65,7 +67,7 @@ export default function (
         ...state,
         refs: {
           ...state.refs,
-          [payload.type]: payload.ref,
+          [payload.type]: payload as ISetRef,
         },
       };
 

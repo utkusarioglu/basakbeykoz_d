@@ -1,30 +1,18 @@
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { ERROR_CODES } from '../store/@types-state';
 import { ACTION_TYPES, ACTION_STATES } from './actionConstants';
 export type FSA<T> = FSASuccess<T> | FSAFailure;
 
 interface FSASuccess<T> {
-  type: ACTION_TYPES;
   state: ACTION_STATES.SUCCESS;
+  type: ACTION_TYPES;
   payload: T;
 }
 
 interface FSAFailure {
-  type: ACTION_TYPES;
   state: ACTION_STATES.FAIL;
+  type: ACTION_TYPES;
   errorCode: ERROR_CODES;
   meta?: any;
 }
 
 export type DispatchMethod<T> = (vars: FSA<T>) => void;
-
-export interface ISetRef {
-  type: ISetRefTypes;
-  ref: React.RefObject<OverlayScrollbarsComponent>;
-}
-
-export enum ISetRefTypes {
-  Body = 'body',
-  latestPosts = 'latestPosts',
-  testimonials = 'testimonials',
-}
