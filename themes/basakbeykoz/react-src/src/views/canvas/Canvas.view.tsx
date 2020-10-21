@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import PostsFeature from '../../features/blog/Posts.feature';
 import { GeneralSingularItemforView } from '../../features/wordpress/@types-wordpress';
+import config from '../../config';
 import { Helmet } from 'react-helmet';
 import ReactGA from 'react-ga';
 import './_canvas.view.scss';
+
+const { APP_NAME, APP_SEPARATOR, HOME_SLUG, APP_TAGLINE } = config;
 
 type Props = GeneralSingularItemforView & {
   onLoad: () => void | undefined;
@@ -23,17 +26,10 @@ function Canvas({
   thumbnailComponent,
   extraClasses,
 }: Props) {
-  const {
-    REACT_APP_NAME,
-    REACT_APP_SEPARATOR,
-    REACT_APP_HOME_SLUG,
-  } = process.env;
-
-  const navSuffix =
-    slug === REACT_APP_HOME_SLUG || slug === ''
-      ? ''
-      : REACT_APP_SEPARATOR + title;
-  const siteTitle = REACT_APP_NAME + navSuffix;
+  const pageTitle = APP_SEPARATOR + title;
+  const tagline = APP_SEPARATOR + APP_TAGLINE;
+  const navSuffix = slug === HOME_SLUG || slug === '' ? tagline : pageTitle;
+  const siteTitle = APP_NAME + navSuffix;
 
   const bodyExtraClasses: string[] = [type, slug];
   if (extraClasses) bodyExtraClasses.push(...extraClasses);

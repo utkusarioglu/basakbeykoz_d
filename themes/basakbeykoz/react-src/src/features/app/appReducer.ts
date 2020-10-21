@@ -1,5 +1,6 @@
 import { ACTION_TYPES, ACTION_STATES } from '../../common/actionConstants';
 import { FSA } from '../../store/@types-actions';
+import config from '../../config';
 import {
   IsFetching,
   IsMenuOpen,
@@ -9,14 +10,14 @@ import {
   ISetRef,
 } from './@types-app';
 
-const { REACT_APP_HOME_SLUG } = process.env;
+const { HOME_SLUG } = config;
 
 const initialState: IApp = {
   isFetching: true,
   isMenuOpen: false,
   isDisplaying: {
     status: 200,
-    slug: REACT_APP_HOME_SLUG,
+    slug: HOME_SLUG,
     loadTime: 0,
     active: {
       slug: '',

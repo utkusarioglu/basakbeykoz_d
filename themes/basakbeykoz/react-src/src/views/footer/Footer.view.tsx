@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import config from '../../config';
 import './_footer.view.scss';
+
+const { UPLOADS_DIR } = config;
 
 interface Props {
   navClickActions: () => void;
 }
 
 function FooterView({ navClickActions }: Props) {
-  const { REACT_APP_UPLOADS_DIR } = process.env;
   return (
     <div {...{ className: 'Footer' }}>
       <div {...{ className: 'Footer-backdrop' }} />
@@ -17,7 +19,7 @@ function FooterView({ navClickActions }: Props) {
             {...{
               className: 'Footer-elements-art-fg',
               alt: 'Footer decoration',
-              src: REACT_APP_UPLOADS_DIR + '/footer-art-fg.svg',
+              src: UPLOADS_DIR + '/footer-art-fg.svg',
             }}
           />
         </div>

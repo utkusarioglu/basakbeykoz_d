@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../store/rootReducer';
 import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions';
 import { connect, ConnectedProps } from 'react-redux';
+import config from '../../config';
 import './_logo.view.scss';
+
+const { HOME_SLUG, UPLOADS_DIR } = config;
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
@@ -20,12 +23,10 @@ interface OwnProps {
 type Props = OwnProps & PropsFromRedux;
 
 function Logo({ setDisplaying, setIsMenuOpen, refs, withTitle }: Props) {
-  const { REACT_APP_HOME_SLUG, REACT_APP_UPLOADS_DIR } = process.env;
-
   const linkClick = () => {
     setIsMenuOpen(false);
     setDisplaying({
-      slug: REACT_APP_HOME_SLUG,
+      slug: HOME_SLUG,
     });
     refs.body?.ref.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
   };
@@ -39,9 +40,7 @@ function Logo({ setDisplaying, setIsMenuOpen, refs, withTitle }: Props) {
       <div {...{ className: 'Logo-decor' }} />
       <Link {...{ onClick: linkClick, to: '/' }}>
         <div {...{ className: 'Logo-logo' }}>
-          <img
-            {...{ src: REACT_APP_UPLOADS_DIR + '/' + logoName, alt: 'logo' }}
-          />
+          <img {...{ src: UPLOADS_DIR + '/' + logoName, alt: 'logo' }} />
         </div>
       </Link>
     </div>

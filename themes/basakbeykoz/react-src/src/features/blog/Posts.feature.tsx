@@ -3,8 +3,10 @@ import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../store/rootReducer';
 import { fetchCategoryPosts } from '../wordpress/singularActions';
 import { setFetching } from '../app/appActions';
+import config from '../../config';
 import PostsView from '../../views/posts/Posts.view';
 
+const { BLOG_SLUG } = config;
 const mapState = (state: RootState) => ({
   posts: state.singular.post,
 });
@@ -27,12 +29,10 @@ function PostsFeature({
   excludeSlugs,
   posts,
 }: Props) {
-  const { REACT_APP_BLOG_SLUG } = process.env;
-
   // !HACK this is faulty logic
   setTimeout(() => {
     if (posts.fetchTime < Date.now() - 5000) {
-      fetchCategoryPosts(REACT_APP_BLOG_SLUG);
+      fetchCategoryPosts(BLOG_SLUG);
       setFetching(false);
     } else {
       setFetching(false);

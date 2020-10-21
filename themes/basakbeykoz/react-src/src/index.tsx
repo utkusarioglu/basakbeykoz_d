@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import ReactGA from 'react-ga';
 import * as serviceWorker from './serviceWorker';
+import config from './config';
 import AppFeature from './features/app/App.feature';
 import '@csstools/normalize.css';
 import './index.scss';
@@ -11,8 +12,7 @@ import 'overlayscrollbars/css/OverlayScrollbars.css';
 import './common/styles/_scrollbar.scss';
 import './common/@types-global';
 
-const { REACT_APP_GA_TRACKING_ID } = process.env;
-ReactGA.initialize(REACT_APP_GA_TRACKING_ID, { debug: false });
+ReactGA.initialize(config.GOOGLE_ANALYTICS_TRACKING_ID, { debug: false });
 
 ReactDOM.render(
   <React.StrictMode>

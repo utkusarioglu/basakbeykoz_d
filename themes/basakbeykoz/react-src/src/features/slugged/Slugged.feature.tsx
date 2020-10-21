@@ -4,6 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../store/rootReducer';
 import { fetchSingular } from '../wordpress/singularActions';
 import { setFetching, setDisplaying } from '../app/appActions';
+import config from '../../config';
 import {
   WpSingularTypes,
   TimestampedSingular,
@@ -13,6 +14,7 @@ import Canvas from '../../views/canvas/Canvas.view';
 //@ts-ignore
 import pauseable from 'pauseable';
 
+const { HOME_SLUG } = config;
 const mapState = (state: RootState) => ({
   singular: state.singular,
   isDisplayingStatus: state.app.isDisplaying.status,
@@ -44,8 +46,7 @@ function SluggedFeature({
   isDisplayingStatus,
   singular,
 }: Props) {
-  const { REACT_APP_HOME_SLUG } = process.env;
-  const paramSlug = useParams<Params>().slug || REACT_APP_HOME_SLUG;
+  const paramSlug = useParams<Params>().slug || HOME_SLUG;
 
   if (paramSlug !== isDisplayingSlug) {
     setDisplaying({
@@ -62,7 +63,7 @@ function SluggedFeature({
         timestampedSingular.loadTime < anHourAgo)
     ) {
       setFetching(true);
-      if (process.env.NODE_ENV === 'development') {
+      if (config.NODE_ENV === 'development') {
         setTimeout(() => {
           fetchSingular(isDisplayingSlug);
         }, 1000);
@@ -137,7 +138,7 @@ function getSlugOnload(
   refs: RootState['app']['refs']
 ): () => void {
   switch (slug) {
-    case process.env.REACT_APP_HOME_SLUG as string:
+    case config.HOME_SLUG as string:
       return () => {
         setTimeout(() => {
           const fields = document.querySelectorAll('.wp-block-latest-posts');

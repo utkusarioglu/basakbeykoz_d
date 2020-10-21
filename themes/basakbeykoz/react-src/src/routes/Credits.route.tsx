@@ -1,22 +1,23 @@
 import React from 'react';
 import Canvas from '../views/canvas/Canvas.view';
 import Credits from '../views/credits/Credits.view';
+import config from '../config';
+
+const { UPLOADS_DIR } = config;
+const featureImageName = 'yazilar-feature-image';
+const featureImagePath = `${UPLOADS_DIR}/${featureImageName}-`;
+const srcSet = [
+  'scaled.jpg 2560w',
+  '300x196.jpg 300w',
+  '1024x669.jpg 1024w',
+  '768x501.jpg 768w',
+  '1536x1003.jpg 1536w',
+  '2048x1337.jpg 2048w',
+]
+  .map((variation) => featureImagePath + variation)
+  .join(',');
 
 function CreditsRoute() {
-  const { REACT_APP_UPLOADS_DIR } = process.env;
-  const featureImageName = 'yazilar-feature-image';
-  const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
-  const srcSet = [
-    'scaled.jpg 2560w',
-    '300x196.jpg 300w',
-    '1024x669.jpg 1024w',
-    '768x501.jpg 768w',
-    '1536x1003.jpg 1536w',
-    '2048x1337.jpg 2048w',
-  ]
-    .map((variation) => featureImagePath + variation)
-    .join(',');
-
   const thumbnailComponent = (
     <img
       {...{

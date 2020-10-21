@@ -6,7 +6,9 @@ import { setFetching } from '../app/appActions';
 import './_blog.scss';
 import { RootState } from '../../store/rootReducer';
 import { ConnectedProps } from 'react-redux';
+import config from '../../config';
 
+const { UPLOADS_DIR, BLOG_SLUG } = config;
 const mapState = (state: RootState) => ({});
 const mapDispatch = {
   setFetching,
@@ -17,9 +19,8 @@ interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
 function BlogFeature({ setFetching }: Props) {
-  const { REACT_APP_UPLOADS_DIR, REACT_APP_BLOG_SLUG } = process.env;
   const featureImageName = 'yazilar-feature-image';
-  const featureImagePath = `${REACT_APP_UPLOADS_DIR}/${featureImageName}-`;
+  const featureImagePath = `${UPLOADS_DIR}/${featureImageName}-`;
   const srcSet = [
     'scaled.jpg 2560w',
     '300x196.jpg 300w',
@@ -50,7 +51,7 @@ function BlogFeature({ setFetching }: Props) {
     <Canvas
       {...{
         type: 'native',
-        slug: REACT_APP_BLOG_SLUG,
+        slug: BLOG_SLUG,
         title: 'Paylaşımlar',
         extraClasses: ['blog'],
         thumbnail: '',

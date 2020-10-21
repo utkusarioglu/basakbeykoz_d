@@ -15,8 +15,8 @@ interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
 function HeaderLogo({ isDisplayingSlug, refs }: Props) {
-  // const { REACT_APP_HOME_SLUG } = process.env;
-  // const isAtHome = isDisplayingSlug === REACT_APP_HOME_SLUG;
+  // const { HOME_SLUG } = config;
+  // const isAtHome = isDisplayingSlug === HOME_SLUG;
   // const [useCta, setUseCta] = useState(false);
   // const [engagementHappened, setEngagementHappened] = useState(false);
 
