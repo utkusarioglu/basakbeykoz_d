@@ -1,11 +1,11 @@
-@import "./_mixins.scss";
-$uploadsPath: "/wp-content/uploads";
+@import './_mixins.scss';
+$uploadsPath: '/wp-content/uploads';
 $defaultFontSize: 20px;
 $textFont: var(--text-font);
 $textFontWeight: var(--text-font-weight);
 $titleFont: var(--title-font);
 $titleFontWeight: var(--title-font-weight);
-$fancyFont: "KendiniYenidenKesfet", sans-serif;
+$fancyFont: 'KendiniYenidenKesfet', sans-serif;
 
 $screenSizes: (
   huge: 1920,
@@ -19,7 +19,7 @@ $fontSizes: (
 );
 $mobile: (
   navigationY: 55px,
-  figureHeight: unquote("max(400px, 60vh)"),
+  figureHeight: unquote('max(400px, 60vh)'),
 );
 $narrow: (
   featureImageX: 25vw,
@@ -51,26 +51,26 @@ $socialIconWideScreenActiveSize_px: adjustSize(
 );
 $fonts: (
   h1: (
-    font-size: adjustSize(50, 110),
-    line-height: adjustSize(70, 140),
-    font-family: $fancyFont,
-    font-weight: 100,
-  ),
-  h2: (
     font-size: adjustSize(26, 40),
     line-height: adjustSize(30, 45),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),
-  h3: (
+  h2: (
     font-size: adjustSize(23, 35),
     line-height: adjustSize(28, 40),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),
-  h4: (
+  h3: (
     font-size: adjustSize(20, 25),
     line-height: adjustSize(25, 30),
+    font-family: $titleFont,
+    font-weight: $titleFontWeight,
+  ),
+  h4: (
+    font-size: adjustSize(18, 24),
+    line-height: adjustSize(21, 27),
     font-family: $titleFont,
     font-weight: $titleFontWeight,
   ),

@@ -38,7 +38,7 @@ function PostsItemView({
           dangerouslySetInnerHTML: { __html: thumbnail },
         }}
       />
-      <h4 {...{ className: 'Posts-card-title' }}>{title}</h4>
+      <h3 {...{ className: 'Posts-card-title' }}>{title}</h3>
       <span {...{ className: 'Posts-card-date' }}>{fixedDate}</span>
       <div
         {...{

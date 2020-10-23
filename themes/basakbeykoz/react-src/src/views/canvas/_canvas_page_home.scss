@@ -46,6 +46,9 @@ $standardGroupInnerblockPadding: 100px;
             & > p {
               margin-bottom: 0;
             }
+            & > h2 + .wp-block-group {
+              grid-area: paragraph;
+            }
           }
           &:first-child {
             $logoNSocialY: map-get($narrow, logoNSocialY);
@@ -57,7 +60,7 @@ $standardGroupInnerblockPadding: 100px;
             @include smallScreen() {
               padding-top: #{$gap};
             }
-            .wp-block-group__inner-container {
+            & > .wp-block-group__inner-container {
               $figureDent: $logoNSocialY + 4 * $gap;
               grid-template-areas:
                 'logo'
@@ -130,6 +133,7 @@ $standardGroupInnerblockPadding: 100px;
               }
             }
             h1 {
+              @include heroFont();
               margin-left: #{-$gap/2};
               margin-right: #{-$gap/2};
               align-self: end;
@@ -227,7 +231,7 @@ $standardGroupInnerblockPadding: 100px;
             }
           }
           &:nth-child(2) {
-            .wp-block-group__inner-container {
+            & > .wp-block-group__inner-container {
               grid-template-areas:
                 'Heading-h2'
                 'image'
@@ -258,16 +262,16 @@ $standardGroupInnerblockPadding: 100px;
                   justify-self: start;
                   text-align: left;
                 }
-                &:before {
-                  $h2fontSize: map-get(map-get($fonts, h2), line-height);
-                  $parrotSize: 60px;
-                  @include svgArt('parrot.svg', $parrotSize, $parrotSize);
-                  bottom: auto;
-                  left: -20px;
-                  top: calc(-1 * #{$h2fontSize});
-                  transform: none;
-                  width: #{$parrotSize};
-                }
+                // &:before {
+                //   $h2fontSize: map-get(map-get($fonts, h2), line-height);
+                //   $parrotSize: 60px;
+                //   @include svgArt('parrot.svg', $parrotSize, $parrotSize);
+                //   bottom: auto;
+                //   left: -20px;
+                //   top: calc(-1 * #{$h2fontSize});
+                //   transform: none;
+                //   width: #{$parrotSize};
+                // }
               }
             }
           }
@@ -299,36 +303,36 @@ $standardGroupInnerblockPadding: 100px;
                   text-align: left;
                 }
               }
-              & > .wp-block-group {
-                grid-area: restart;
-                padding: #{$gap/ 2};
-                background-color: #{map-get($colorMap, bg-white)};
-                & > .wp-block-group__inner-container {
-                  figure {
-                    margin: 0;
-                    & > img {
-                      display: block;
-                      margin: 0 auto;
-                      height: 50px;
-                      width: auto;
-                      @include mediumTallScreen() {
-                        height: 70px;
-                      }
-                    }
-                    figcaption {
-                      display: none;
-                    }
-                  }
-                  p {
-                    color: #{map-get($colorMap, text-dark)};
-                    margin: 0;
-                  }
-                  grid-template-areas:
-                    'Heading-h3'
-                    'paragraph';
-                  grid-template-rows: min-content min-content;
-                }
-              }
+              // & > .wp-block-group {
+              //   grid-area: restart;
+              //   padding: #{$gap/ 2};
+              //   background-color: #{map-get($colorMap, bg-white)};
+              //   & > .wp-block-group__inner-container {
+              //     figure {
+              //       margin: 0;
+              //       & > img {
+              //         display: block;
+              //         margin: 0 auto;
+              //         height: 50px;
+              //         width: auto;
+              //         @include mediumTallScreen() {
+              //           height: 70px;
+              //         }
+              //       }
+              //       figcaption {
+              //         display: none;
+              //       }
+              //     }
+              //     p {
+              //       color: #{map-get($colorMap, text-dark)};
+              //       margin: 0;
+              //     }
+              //     grid-template-areas:
+              //       'Heading-h2'
+              //       'paragraph';
+              //     grid-template-rows: min-content min-content;
+              //   }
+              // }
             }
             &:after {
               $width: 100vw;
@@ -343,7 +347,7 @@ $standardGroupInnerblockPadding: 100px;
             }
           }
           &:nth-child(4) {
-            .wp-block-group__inner-container {
+            > .wp-block-group__inner-container {
               @include wpPosts(posts, row);
               grid-template-areas:
                 'Heading-h2'
@@ -399,7 +403,7 @@ $standardGroupInnerblockPadding: 100px;
             }
           }
           &:nth-child(5) {
-            .wp-block-group__inner-container {
+            & > .wp-block-group__inner-container {
               @include wpPosts(success, column, map-get($colorMap, bg-blue));
               grid-template-areas:
                 'Heading-h2'

@@ -155,14 +155,14 @@
   $max-height: $height
 ) {
   $cityWidth: 100vw;
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   height: #{$height};
   max-height: $max-height;
   min-height: $min-height;
   background-size: contain;
-  background-image: url("#{$uploadsPath}/#{$filename}");
+  background-image: url('#{$uploadsPath}/#{$filename}');
   background-repeat: no-repeat;
   background-position: bottom center;
   z-index: 1;
@@ -183,4 +183,14 @@
   font-family: #{$titleFont};
   font-weight: #{$titleFontWeight};
   margin: 0;
+}
+
+/**
+  Properties of the hero title font
+*/
+@mixin heroFont() {
+  font-size: adjustSize(50, 110);
+  line-height: adjustSize(70, 140);
+  font-family: $fancyFont;
+  font-weight: 100;
 }
