@@ -15,5 +15,15 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "typedocOptions": {
+    "mode": "modules",
+    "out": "docs",
+    "toc": [
+      "services/restApi",
+    ],
+    "listInvalidSymbolLinks": true,
+    "hideGenerator": true,
+    "inclueDeclarations": true
+  }
 }
