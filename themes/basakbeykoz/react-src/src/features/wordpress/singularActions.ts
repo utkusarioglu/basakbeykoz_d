@@ -47,11 +47,14 @@ export const fetchSingular = (slug: string) => (
         });
       }
     })
-    .catch(() => {
+    .catch((response) => {
       dispatch({
         type: ACTION_TYPES.FETCH_SINGULAR,
         state: ACTION_STATES.FAIL,
         errorCode: ERROR_CODES.WORDPRESS.SINGULAR_FETCH_FAIL,
+        meta: {
+          response,
+        },
       });
     });
 };
