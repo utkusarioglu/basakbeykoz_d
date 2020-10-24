@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactText, useState } from 'react';
 import { setFetching } from '../../features/app/appActions';
 import { RootState } from '../../store/rootReducer';
 import { connect, ConnectedProps } from 'react-redux';
@@ -39,72 +39,32 @@ function Credits({ setFetching }: Props) {
       name: '"Work Sans", sans-serif',
     },
   });
-
-  const fontList: [string, number][] = [
-    ["'Work Sans'", 600],
-    ["'Istok Web', sans-serif", 400],
-    ["'Assistant', sans-serif", 300],
-    ["'Baloo Tammudu 2', cursive", 400],
-    ["'Kumbh Sans', sans-serif", 300],
-    ["'Quicksand', sans-serif", 400],
-    ["'Ubuntu', sans-serif", 300],
-    ["'Nunito', sans-serif", 300],
-    ["'Manrope', sans-serif", 400],
-
-    ["'DreamerySansDemo'", 400],
-    ["'BabyGirl'", 400],
-    ["'LeahleeSans'", 400],
-    ["'OrionSans'", 400],
-    ["'AlwaysForeverBold'", 400],
-    ["'AlwaysForever'", 400],
-    ["'CaviarDreams_Bold'", 400],
-    ["'CaviarDreams_BoldItalic'", 400],
-    ["'CaviarDreams_Italic'", 400],
-    ["'CaviarDreams'", 400],
-    ["'MoonbrightDemo'", 400],
-    ["'MoonbrightInlineDemo'", 400],
-    ["'whateverittakesbold'", 400],
-    ["'whateverittakes'", 400],
-  ];
-
-  const titleFont = fontList.map((c) => {
-    return {
-      '--title-font': c[0],
-      '--title-font-weight': c[1],
-    };
-  });
-
-  const textFont = fontList.map((c) => {
-    return {
-      '--text-font': c[0],
-      '--text-font-weight': c[1],
-    };
-  });
-
-  const sets: IChoiceSets = {
-    titleFont,
-    textFont,
-  };
+  const sets = populateChoiceSets();
 
   const changeSet = (type: string) => {
     setChoiceSet((choices) => {
-      const newChoiceNo = (choices[type].index + 1) % sets[type].length;
-      const name = Object.values(sets[type][newChoiceNo]).join(', ');
-      Object.entries(sets[type][newChoiceNo]).forEach(([n, v]: any) => {
-        document.documentElement.style.setProperty(n, v);
-      });
+      const newChoiceIndex = (choices[type].index + 1) % sets[type].length;
+      const choiceName = Object.values(sets[type][newChoiceIndex]).join(', ');
+      Object.entries(sets[type][newChoiceIndex]).forEach(
+        ([propName, propValue]: [string, ReactText]) => {
+          document.documentElement.style.setProperty(
+            propName,
+            propValue.toString()
+          );
+        }
+      );
       return {
         ...choices,
         [type]: {
-          index: newChoiceNo,
-          name,
+          index: newChoiceIndex,
+          name: choiceName,
         },
       };
     });
   };
 
   return (
-    <article>
+    <>
       <div>
         <button
           {...{ className: 'font', onClick: () => changeSet('titleFont') }}
@@ -163,8 +123,56 @@ function Credits({ setFetching }: Props) {
         perspektiften Akdeniz ülkeleriyle karşılaştırmalı ele aldığı tezini,
         Prof. Dr. Şevket Pamuk danışmanlığında tamamladı.
       </p>
-    </article>
+    </>
   );
+}
+
+function populateChoiceSets(): IChoiceSets {
+  const fontList: [string, number][] = [
+    ["'Work Sans'", 600],
+    ["'Istok Web', sans-serif", 400],
+    ["'Assistant', sans-serif", 300],
+    ["'Baloo Tammudu 2', cursive", 400],
+    ["'Kumbh Sans', sans-serif", 300],
+    ["'Quicksand', sans-serif", 400],
+    ["'Ubuntu', sans-serif", 300],
+    ["'Nunito', sans-serif", 300],
+    ["'Manrope', sans-serif", 400],
+
+    ["'DreamerySansDemo'", 400],
+    ["'BabyGirl'", 400],
+    ["'LeahleeSans'", 400],
+    ["'OrionSans'", 400],
+    ["'AlwaysForeverBold'", 400],
+    ["'AlwaysForever'", 400],
+    ["'CaviarDreams_Bold'", 400],
+    ["'CaviarDreams_BoldItalic'", 400],
+    ["'CaviarDreams_Italic'", 400],
+    ["'CaviarDreams'", 400],
+    ["'MoonbrightDemo'", 400],
+    ["'MoonbrightInlineDemo'", 400],
+    ["'whateverittakesbold'", 400],
+    ["'whateverittakes'", 400],
+  ];
+
+  const titleFont = fontList.map((c) => {
+    return {
+      '--title-font': c[0],
+      '--title-font-weight': c[1],
+    };
+  });
+
+  const textFont = fontList.map((c) => {
+    return {
+      '--text-font': c[0],
+      '--text-font-weight': c[1],
+    };
+  });
+  const sets: IChoiceSets = {
+    titleFont,
+    textFont,
+  };
+  return sets;
 }
 
 export default connector(Credits);
