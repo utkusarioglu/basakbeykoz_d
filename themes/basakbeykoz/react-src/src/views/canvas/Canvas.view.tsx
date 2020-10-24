@@ -61,10 +61,10 @@ function Canvas({
   if (title !== '') {
     bodyExtraClasses.push('has-CanvasTitle');
     featureTitle = (
-      <h2 {...{ className: 'Canvas-featureTitle text-blue' }}>{title}</h2>
+      <h1 {...{ className: 'Canvas-featureTitle text-blue' }}>{title}</h1>
     );
     articleTitle = (
-      <h2 {...{ className: 'Canvas-articleTitle text-blue' }}>{title}</h2>
+      <h1 {...{ className: 'Canvas-articleTitle text-blue' }}>{title}</h1>
     );
   }
 
