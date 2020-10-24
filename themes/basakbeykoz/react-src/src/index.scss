@@ -56,13 +56,21 @@ p {
   @include p();
 }
 
+li {
+  @include basicP();
+}
+
+cite {
+  @include basicP();
+}
+
 /*
     COLORS
 */
 
 :root {
   --brush-white: #fbfbfb;
-  --brush-lightGray: #f8f8f8f3;
+  --brush-lightGray: #e7e7e7f3;
   --brush-gray: #859fa4;
   --brush-darkGray: #34414b;
   --brush-black: #34414b;
@@ -111,6 +119,33 @@ $colors: ('green', 'yellow', 'white', 'blue', 'black');
     }
     &-vertical-border:after {
       background: frame($var-color, vertical);
+    }
+  }
+}
+
+.wp {
+  &-block {
+    &-pullquote {
+      $FRINGE: $gap/2;
+      margin: 0 #{-$FRINGE} #{$FRINGE} #{-$FRINGE};
+      background-color: pink;
+      border-radius: #{$FRINGE};
+      overflow: hidden;
+      background-color: map-get($colorMap, 'bg-gray');
+      & > blockquote {
+        display: grid;
+        grid-template-areas: 'paragraph' 'cite';
+        margin: #{$FRINGE};
+        & > p {
+          margin-bottom: #{$FRINGE};
+        }
+        & > cite {
+          grid-area: cite;
+          align-self: end;
+          width: 100%;
+          text-align: right;
+        }
+      }
     }
   }
 }

@@ -138,13 +138,17 @@
 }
 
 @mixin p {
+  @include basicP();
   grid-area: paragraph;
+  margin: 0 0 #{$gap} 0;
+}
+
+@mixin basicP {
   color: #{map-get($colorMap, text-mediumDark)};
   font-family: $textFont;
   font-weight: $textFontWeight;
   font-size: $pFontSize;
   line-height: $pLineHeight;
-  margin: 0 0 #{$gap} 0;
 }
 
 @mixin svgArt(
