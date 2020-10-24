@@ -32,8 +32,8 @@ function Logo({ setDisplaying, setIsMenuOpen, refs, withTitle }: Props) {
   };
 
   const logoName = withTitle
-    ? 'logo-inline-color-w-title.svg'
-    : 'logo-inline-color.svg';
+    ? 'inline-logo-w-color-title@100px.png'
+    : 'inline-logo-w-color@100px.png';
 
   return (
     <div {...{ className: 'Logo' }}>

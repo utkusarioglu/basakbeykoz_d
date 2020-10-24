@@ -119,17 +119,18 @@ $standardGroupInnerblockPadding: 100px;
               width: 100%;
               height: 100%;
               justify-items: center;
+              align-items: center;
               display: grid;
               @include narrowScreen() {
                 justify-self: start;
                 justify-content: start;
               }
               & > img {
-                width: 100%;
+                width: auto;
+                max-width: 100%;
                 height: 100%;
-                @include narrowScreen() {
-                  width: auto;
-                }
+                max-height: 50px;
+                object-fit: scale-down;
               }
             }
             h1 {

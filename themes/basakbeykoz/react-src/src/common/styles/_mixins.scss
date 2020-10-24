@@ -193,8 +193,8 @@
   Properties of the hero title font
 */
 @mixin heroFont() {
-  font-size: adjustSize(50, 110);
-  line-height: adjustSize(70, 140);
+  font-size: adjustSize(35, 100, 250);
+  line-height: adjustSize(60, 120, 250);
   font-family: $fancyFont;
   font-weight: 100;
 }
