@@ -405,7 +405,7 @@ $standardGroupInnerblockPadding: 100px;
           }
           &:nth-child(5) {
             & > .wp-block-group__inner-container {
-              @include wpPosts(success, column, map-get($colorMap, bg-blue));
+              @include wpPosts(success, column, map-get($colorMap, bg-gray));
               grid-template-areas:
                 'Heading-h2'
                 'posts';

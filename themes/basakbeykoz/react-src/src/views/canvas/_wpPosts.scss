@@ -4,7 +4,11 @@
   line-height: adjustSize($pLineHeightMin_px, 20) !important;
   margin: 0;
 }
-@mixin wpPosts($type, $gridFlow: row, $cardColor: map-get($colorMap, bg-gray)) {
+@mixin wpPosts(
+  $type,
+  $gridFlow: row,
+  $cardColor: map-get($colorMap, bg-white)
+) {
   .wp-block-latest-posts {
     grid-area: posts;
     overflow: hidden;
