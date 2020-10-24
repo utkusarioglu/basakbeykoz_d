@@ -376,9 +376,6 @@ $standardGroupInnerblockPadding: 100px;
                   text-align: left;
                 }
               }
-              p {
-                margin: 0;
-              }
               & > .wp-block-latest-posts {
                 margin-left: #{-$gap} !important;
                 width: 100vw;
