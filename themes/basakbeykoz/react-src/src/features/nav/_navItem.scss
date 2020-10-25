@@ -3,8 +3,8 @@
 
 .Nav-item {
   display: block;
-  font-family: $textFont;
-  font-weight: #{$textFontWeight};
+  font-family: #{font(text, font-family)};
+  font-weight: #{#{font(text, font-weight)}};
   text-decoration: none;
   white-space: nowrap;
 }

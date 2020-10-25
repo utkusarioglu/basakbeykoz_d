@@ -7,7 +7,7 @@
   --wp-frame-width: 1200px;
   --wp-frame-padding-x: 7em;
   --wp-text-with: 800px;
-  --accent-thickness: #{$gap};
+  --accent-thickness: #{$GAP};
   --home-vertical-padding: 200px;
   --home-horizontal-padding: 400px;
   --fixed-feature-image-width: 470px;
@@ -22,11 +22,11 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #{map-get($colorMap, bg-white)};
-  color: #{map-get($colorMap, text-mediumDark)};
+  background: #{getColor(bg-white)};
+  color: #{getColor(text-mediumDark)};
   overflow-y: hidden;
   overflow-x: hidden;
-  font-size: $defaultFontSize;
+  font-size: #{map-get($FONT_SIZES, default__)}px;
 }
 
 // creates headings
@@ -40,15 +40,15 @@ body {
 .body.page.home > article > div .wp-block-latest-posts > li,
 span,
 nav {
-  color: #{map-get($colorMap, bg-blue)};
-  font-family: $textFont;
-  font-weight: $textFontWeight;
+  color: #{getColor(bg-blue)};
+  font-family: #{font(text, font-family)};
+  font-weight: #{font(text, font-weight)};
 }
 
 .wp-block-button__link,
 figcaption {
-  font-family: $titleFont;
-  font-weight: $titleFontWeight;
+  font-family: #{font(heading, font-family)};
+  font-weight: #{font(heading, font-weight)};
   margin: 0;
 }
 
@@ -89,36 +89,35 @@ cite {
   --filter-logo-white: brightness(0) #{$filter-white};
 }
 
-.text-light {
-  color: #{map-get($colorMap, text-light)};
+.text {
+  &-light {
+    color: #{getColor(text-light)};
+  }
+  &-mediumLight {
+    color: #{getColor(text-mediumDark)};
+  }
+  &-mediumDark {
+    color: #{getColor(text-mediumDark)};
+  }
+  &-dark {
+    color: #{getColor(text-dark)};
+  }
 }
 
-.text-mediumLight {
-  color: #{map-get($colorMap, text-mediumDark)};
-}
-
-.text-mediumDark {
-  color: #{map-get($colorMap, text-mediumDark)};
-}
-
-.text-dark {
-  color: #{map-get($colorMap, text-dark)};
-}
-
-$colors: ('green', 'yellow', 'white', 'blue', 'black');
-@each $color in $colors {
+$colorCategories: ('green', 'yellow', 'white', 'blue', 'black');
+@each $color in $colorCategories {
   .bg-#{$color} {
     $bg-color: 'bg-' + $color;
-    background-color: #{map-get($colorMap, $bg-color)};
+    background-color: #{getColor($bg-color)};
   }
   .#{$color} {
-    $bg-color: 'bg-' + $color;
-    $var-color: #{map-get($colorMap, $bg-color)};
+    $bgColor: 'bg-' + $color;
+    $varColor: #{getColor($bgColor)};
     &-horizontal-border:before {
-      background: frame($var-color, horizontal);
+      background: frame($varColor, horizontal);
     }
     &-vertical-border:after {
-      background: frame($var-color, vertical);
+      background: frame($varColor, vertical);
     }
   }
 }
@@ -126,12 +125,11 @@ $colors: ('green', 'yellow', 'white', 'blue', 'black');
 .wp {
   &-block {
     &-pullquote {
-      $FRINGE: $gap/2;
+      $FRINGE: $GAP/2;
       margin: 0 #{-$FRINGE} #{$FRINGE} #{-$FRINGE};
-      background-color: pink;
       border-radius: #{$FRINGE};
       overflow: hidden;
-      background-color: map-get($colorMap, 'bg-gray');
+      background-color: getColor(bg-gray);
       & > blockquote {
         display: grid;
         grid-template-areas: 'paragraph' 'cite';

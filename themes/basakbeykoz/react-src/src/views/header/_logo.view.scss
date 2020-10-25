@@ -2,16 +2,16 @@
 @import '../../common/styles/_mixins';
 
 .Logo {
-  $logoNSocialY: map-get($narrow, logoNSocialY);
+  $logoNSocialY: getComponentProperty(logoNSocial, y_px);
   grid-area: logo;
 
   &-decor {
     width: var(--accent-thickness);
     height: $logoNSocialY;
-    background: #{map-get($colorMap, ui-blue)};
+    background: #{getColor(ui-blue)};
     left: 0;
-    border-top-right-radius: #{$gap};
-    border-bottom-right-radius: #{$gap};
+    border-top-right-radius: #{$GAP};
+    border-bottom-right-radius: #{$GAP};
   }
 
   &-logo > img {
@@ -22,7 +22,7 @@
   header & {
     .Logo {
       &-logo > img {
-        margin-left: #{$gap / 2};
+        margin-left: #{$GAP / 2};
         margin-top: 8px;
       }
 
@@ -37,17 +37,17 @@
 
     z-index: 90;
     position: fixed;
-    top: #{$gap};
+    top: #{$GAP};
     left: 0;
     flex-direction: row;
     align-items: center;
 
-    @include narrowScreen() {
+    @include viewport(w, SVGA) {
       display: flex;
       img {
-        $featureImageX: #{map-get($narrow, featureImageX)};
-        $paddingLeft: #{$gap / 2};
-        $statics: #{$paddingLeft} - #{2 * $gap};
+        $featureImageX: #{getComponentProperty(featureImage, narrow_x_vw)};
+        $paddingLeft: #{$GAP / 2};
+        $statics: #{$paddingLeft} - #{2 * $GAP};
         $width: calc(#{$featureImageX} - #{$statics});
         $marginTop: calc(#{$width} / 25);
 

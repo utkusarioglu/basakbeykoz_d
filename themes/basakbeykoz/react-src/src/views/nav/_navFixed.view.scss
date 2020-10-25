@@ -10,11 +10,11 @@
   right: 0;
   bottom: 0;
 
-  @include narrowScreen() {
+  @include viewport(w, SVGA) {
     display: none;
   }
 
-  @include wideScreen() {
+  @include viewport(w, XGAplus) {
     display: block;
     right: 0;
     width: auto;
@@ -28,11 +28,11 @@
   &.open {
     display: block;
 
-    @include narrowScreen() {
+    @include viewport(w, SVGA) {
       display: none;
     }
 
-    @include wideScreen() {
+    @include viewport(w, XGAplus) {
       display: block;
     }
   }
@@ -42,11 +42,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #{map-get($colorMap, bg-white)};
+    background-color: #{getColor(bg-white)};
 
-    @include wideScreen() {
+    @include viewport(w, XGAplus) {
       position: relative;
-      margin-right: #{$gap};
+      margin-right: #{$GAP};
       background-color: transparent;
     }
   }
@@ -54,16 +54,16 @@
   &-decor {
     display: none;
 
-    @include wideScreen() {
+    @include viewport(w, XGAplus) {
       display: block;
       position: absolute;
       right: 0;
       top: 0;
       bottom: 0;
-      width: #{$gap};
-      background-color: #{map-get($colorMap, ui-yellow)};
-      border-top-left-radius: #{$gap};
-      border-bottom-left-radius: #{$gap};
+      width: #{$GAP};
+      background-color: #{getColor(ui-yellow)};
+      border-top-left-radius: #{$GAP};
+      border-bottom-left-radius: #{$GAP};
     }
   }
 
@@ -71,14 +71,14 @@
     position: fixed;
     background: linear-gradient(
       rgba(255, 255, 255, 0.6),
-      transparent calc(100vh - #{$mobileNavigationHeight})
+      transparent calc(100vh - #{getComponentProperty(nav, mobileHeight_px)})
     );
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 
-    @include narrowScreen() {
+    @include viewport(w, SVGA) {
       display: none;
     }
   }
@@ -86,29 +86,29 @@
   & nav {
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: #{$mobileNavigationHeight};
-    @include wideScreen() {
+    margin-bottom: #{getComponentProperty(nav, mobileHeight_px)};
+    @include viewport(w, XGAplus) {
       justify-content: center;
-      padding: #{$gap} 0;
+      padding: #{$GAP} 0;
       margin-bottom: 0;
     }
   }
 
   & .Nav-item {
     display: block;
-    padding: #{$gap / 2} #{$gap};
+    padding: #{$GAP / 2} #{$GAP};
     position: relative;
-    color: #{map-get($colorMap, text-dark)};
+    color: #{getColor(text-dark)};
     text-align: right;
 
-    @include wideScreen() {
-      color: #{map-get($colorMap, ui-blue)};
-      padding: #{$gap / 4} #{$gap / 2};
-      font-size: adjustSize(20, 26);
+    @include viewport(w, XGAplus) {
+      color: #{getColor(ui-blue)};
+      padding: #{$GAP / 4} #{$GAP / 2};
+      font-size: responsive(20, 26);
     }
 
     &-active {
-      color: #{map-get($colorMap, ui-decoration)};
+      color: #{getColor(ui-decoration)};
 
       &:after {
         position: absolute;
@@ -116,27 +116,27 @@
         top: 0;
         bottom: 0;
         right: 0;
-        width: #{$gap / 2};
-        background-color: #{map-get($colorMap, ui-decoration)};
-        border-top-left-radius: #{$gap/2};
-        border-bottom-left-radius: #{$gap/2};
+        width: #{$GAP / 2};
+        background-color: #{getColor(ui-decoration)};
+        border-top-left-radius: #{$GAP/2};
+        border-bottom-left-radius: #{$GAP/2};
 
-        @include narrowScreen() {
+        @include viewport(w, SVGA) {
           width: auto;
-          height: #{$gap / 4};
+          height: #{$GAP / 4};
           top: auto;
-          right: #{$gap / 2};
-          left: #{$gap / 2};
+          right: #{$GAP / 2};
+          left: #{$GAP / 2};
         }
 
-        @include wideScreen() {
+        @include viewport(w, XGAplus) {
           left: auto;
           bottom: 0;
           top: 0;
           right: 0;
-          width: #{$gap / 4};
-          border-top-left-radius: #{$gap/4};
-          border-bottom-left-radius: #{$gap/4};
+          width: #{$GAP / 4};
+          border-top-left-radius: #{$GAP/4};
+          border-bottom-left-radius: #{$GAP/4};
           height: auto;
         }
       }

@@ -2,7 +2,7 @@
 @import '../../common/styles/_mixins';
 
 .Spinner {
-  $bg-white: map-get($colorMap, bg-yellow);
+  $bg-white: getColor(bg-yellow);
 
   position: fixed;
   padding: 3rem;
@@ -33,12 +33,12 @@
 
   &-loadMessage {
     grid-area: LoadMessage;
-    font-family: $textFont;
-    font-weight: #{$textFontWeight};
+    font-family: #{font(text, font-family)};
+    font-weight: #{#{font(text, font-weight)}};
     align-self: top;
-    color: #{map-get($colorMap, ui-blue)};
+    color: #{getColor(ui-blue)};
 
-    @include narrowScreen() {
+    @include viewport(w, SVGA) {
       font-size: 25px;
     }
   }

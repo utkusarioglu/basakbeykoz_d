@@ -1,14 +1,10 @@
 @mixin wpPostsP() {
   @include p();
-  font-size: adjustSize($pFontSizeMin_px, 16) !important;
-  line-height: adjustSize($pLineHeightMin_px, 20) !important;
+  font-size: responsive(typography(p, FontSize_Min__), 16) !important;
+  line-height: responsive(typography(p, LineHeight_Min__), 20) !important;
   margin: 0;
 }
-@mixin wpPosts(
-  $type,
-  $gridFlow: row,
-  $cardColor: map-get($colorMap, bg-white)
-) {
+@mixin wpPosts($type, $gridFlow: row, $cardColor: getColor(bg-white)) {
   .wp-block-latest-posts {
     grid-area: posts;
     overflow: hidden;
@@ -16,18 +12,18 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    $homePostsNarrowY: map-get($narrow, homePostsNarrowY);
-    $liDistance: $gap;
+    $homePostsNarrowY: getComponentProperty(home, posts_y_px);
+    $liDistance: $GAP;
     $liMinWidth: 260px;
     $liMaxWidth: 350px;
-    @include narrowScreen() {
-      border-radius: #{$gap/2};
+    @include viewport(w, SVGA) {
+      border-radius: #{$GAP/2};
     }
     &,
     .os-content {
       display: grid;
       grid-auto-flow: column;
-      @include narrowScreen() {
+      @include viewport(w, SVGA) {
         @if $gridFlow == row {
           grid-auto-flow: row;
         } @else if $gridFlow == column {
@@ -38,14 +34,14 @@
       background-color: $cardColor;
       margin-left: #{$liDistance};
       display: grid;
-      grid-row-gap: #{$gap / 2};
+      grid-row-gap: #{$GAP / 2};
       position: relative;
       width: 50vw;
       max-width: #{$liMaxWidth};
-      border-radius: #{$gap/2};
-      padding: #{$gap/2};
+      border-radius: #{$GAP/2};
+      padding: #{$GAP/2};
       overflow: hidden;
-      height: calc(100% - #{$gap});
+      height: calc(100% - #{$GAP});
       cursor: pointer;
       @if $type == posts {
         grid-template-areas:
@@ -67,10 +63,10 @@
         z-index: 10;
         bottom: 0;
         width: 100%;
-        height: #{$gap / 2 * 3};
-        background: linear-gradient(transparent 0, #{$cardColor} #{$gap});
+        height: #{$GAP / 2 * 3};
+        background: linear-gradient(transparent 0, #{$cardColor} #{$GAP});
       }
-      @include narrowScreen() {
+      @include viewport(w, SVGA) {
         @if $gridFlow == row {
           @if $type == posts {
             grid-template-areas:
@@ -79,13 +75,13 @@
               'image excerpt';
             grid-template-rows: min-content min-content auto;
             grid-template-columns: #{$homePostsNarrowY} auto;
-            grid-column-gap: #{$gap/2};
+            grid-column-gap: #{$GAP/2};
             grid-row-gap: 5px;
             width: 100%;
-            max-width: calc(100% - #{$gap});
-            height: calc(#{$homePostsNarrowY} + #{$gap});
+            max-width: calc(100% - #{$GAP});
+            height: calc(#{$homePostsNarrowY} + #{$GAP});
             margin-left: 0;
-            margin-bottom: #{$gap};
+            margin-bottom: #{$GAP};
           }
         } @else if $gridFlow == column {
           max-width: 250px;
@@ -107,10 +103,10 @@
         overflow: hidden;
         display: flex;
         justify-content: center;
-        border-radius: #{$gap/3};
-        @include narrowScreen() {
+        border-radius: #{$GAP/3};
+        @include viewport(w, SVGA) {
           @if $gridFlow == row {
-            height: calc(#{$homePostsNarrowY} + #{$gap});
+            height: calc(#{$homePostsNarrowY} + #{$GAP});
           }
         }
         & > img {
@@ -118,7 +114,7 @@
           min-width: 100%;
           object-fit: cover;
           z-index: 10;
-          @include narrowScreen() {
+          @include viewport(w, SVGA) {
             @if $gridFlow == row {
               object-fit: cover;
             }
@@ -130,8 +126,8 @@
         margin: 0;
         grid-area: time !important;
         font-size: 0.8em;
-        color: #{map-get($colorMap, text-mediumLight)};
-        @include narrowScreen() {
+        color: #{getColor(text-mediumLight)};
+        @include viewport(w, SVGA) {
           @if $type == posts {
             display: block;
           }
@@ -144,9 +140,9 @@
         & > p {
           @include wpPostsP();
         }
-        font-size: $excerptFontSize;
+        font-size: #{map-get($FONT_SIZES, excerpt)};
         grid-area: excerpt !important;
-        color: #{map-get($colorMap, text-mediumDark)};
+        color: #{getColor(text-mediumDark)};
         position: relative;
         margin: 0;
       }

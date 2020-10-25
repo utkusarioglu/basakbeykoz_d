@@ -7,11 +7,13 @@
     filter: var(--filter-darkGray);
   }
   a {
-    height: #{$gap + $socialIconDefaultSize_px};
-    @include wideScreen() {
-      min-height: #{$gap + $socialIconWideScreenMinSize_px};
-      height: calc(#{$gap} + #{$socialIconWideScreenActiveSize_px});
-      max-height: #{$gap + $socialIconWideScreenMaxSize_px};
+    height: #{$GAP + getComponentProperty(socialItem, defaultSize__)};
+    @include viewport(w, XGAplus) {
+      min-height: #{$GAP +
+        getComponentProperty(socialItem, wideScreen_MinSize__)};
+      height: calc(#{$GAP} + #{$socialIcon_WideScreen_Responsive_px});
+      max-height: #{$GAP +
+        getComponentProperty(socialItem, wideScreen_MaxSize__)};
     }
   }
 }

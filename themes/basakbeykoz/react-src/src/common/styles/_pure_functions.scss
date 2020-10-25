@@ -1,0 +1,31 @@
+@function scut-strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function scut-rem($pixels, $scut-rem-base) {
+  // $scut-rem-base: map-get($FONT_SIZES, ScutRemBase);
+  @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
+}
+
+/* 
+    IMAGE BORDERS 
+*/
+@function to-degree($direction) {
+  @if $direction == horizontal {
+    @return 90deg;
+  } @else if $direction == vertical {
+    @return 0deg;
+  }
+}
+
+@function frame($color, $direction) {
+  $degree: to-degree($direction);
+  $at: #{$GAP};
+  @return linear-gradient(
+    $degree,
+    $color calc(#{$at}/ 2),
+    transparent calc(#{$at}/ 2),
+    transparent calc(100% - #{$at}/ 2),
+    $color calc(100% - #{$at}/ 2)
+  );
+}

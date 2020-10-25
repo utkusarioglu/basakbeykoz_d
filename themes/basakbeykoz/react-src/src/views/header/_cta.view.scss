@@ -10,10 +10,10 @@
   &-button {
     display: flex;
     align-items: center;
-    margin-left: #{$gap / 4};
-    border-radius: #{$gap / 4};
-    padding: #{$gap / 4} #{$gap / 2};
-    background-color: #{map-get($colorMap, ui-yellow)};
+    margin-left: #{$GAP / 4};
+    border-radius: #{$GAP / 4};
+    padding: #{$GAP / 4} #{$GAP / 2};
+    background-color: #{getColor(ui-yellow)};
 
     max-width: 200px;
   }

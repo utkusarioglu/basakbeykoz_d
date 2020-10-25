@@ -6,7 +6,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: #{$mobileNavigationHeight};
+  height: #{getComponentProperty(nav, mobileHeight_px)};
   pointer-events: none;
   &-bottomWrap {
     position: absolute;
@@ -15,15 +15,15 @@
     grid-auto-flow: column;
     grid-template-areas: 'logo social nav';
     grid-template-columns: 1fr min-content min-content;
-    background-color: #{map-get($colorMap, ui-white)};
+    background-color: #{getColor(ui-white)};
     bottom: 0;
     overflow-x: visible;
     overflow-y: hidden;
     width: 100vw;
-    height: $mobileNavigationHeight;
+    height: #{getComponentProperty(nav, mobileHeight_px)};
     pointer-events: initial;
 
-    @include narrowScreen() {
+    @include viewport(w, SVGA) {
       grid-template-areas: 'nav social';
       grid-template-columns: 1fr min-content;
       .Logo {
@@ -31,7 +31,7 @@
       }
     }
 
-    @include wideScreen() {
+    @include viewport(w, XGAplus) {
       background-color: transparent;
       width: 350px;
       &-mobileControls {
@@ -42,7 +42,7 @@
       display: none;
     }
   }
-  @include wideScreen() {
+  @include viewport(w, XGAplus) {
     display: none;
   }
 }

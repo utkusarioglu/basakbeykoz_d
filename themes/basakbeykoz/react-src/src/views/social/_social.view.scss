@@ -2,17 +2,17 @@
 @import '../../common/styles/_mixins';
 
 .Social {
-  $logoNSocialY: map-get($narrow, logoNSocialY);
+  $logoNSocialY: getComponentProperty(logoNSocial, y_px);
   align-items: center;
   grid-column-gap: calc(var(--accent-thickness) / 2);
 
   &-decor {
-    width: #{$gap};
+    width: #{$GAP};
     height: $logoNSocialY;
-    background: #{map-get($colorMap, ui-blue)};
+    background: #{getColor(ui-blue)};
     right: 0;
-    border-top-left-radius: #{$gap};
-    border-bottom-left-radius: #{$gap};
+    border-top-left-radius: #{$GAP};
+    border-bottom-left-radius: #{$GAP};
   }
   &-list {
     display: flex;
@@ -35,9 +35,9 @@
     display: none;
     position: fixed;
     right: 0;
-    top: #{$gap};
+    top: #{$GAP};
     z-index: 100;
-    @include wideScreen() {
+    @include viewport(w, XGAplus) {
       display: flex;
     }
   }

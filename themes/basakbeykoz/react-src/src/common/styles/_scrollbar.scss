@@ -1,8 +1,8 @@
 @import '_vars';
 @import '_mixins';
 
-$PASSIVE_GAP: $gap/4;
-$ACTIVE_GAP: $gap/1.5;
+$PASSIVE_GAP: $GAP/4;
+$ACTIVE_GAP: $GAP/1.5;
 
 .os-scrollbar {
   z-index: 150;
@@ -13,7 +13,7 @@ $ACTIVE_GAP: $gap/1.5;
     &:hover {
       width: #{$ACTIVE_GAP} !important;
       & .os-scrollbar-handle {
-        @include narrowScreen() {
+        @include viewport(w, SVGA) {
           width: #{$ACTIVE_GAP};
           border-top-left-radius: #{$ACTIVE_GAP} !important;
           border-bottom-left-radius: #{$ACTIVE_GAP} !important;
@@ -24,7 +24,7 @@ $ACTIVE_GAP: $gap/1.5;
     & .os-scrollbar-handle {
       width: #{$PASSIVE_GAP};
       right: 0;
-      background-color: #{map-get($colorMap, ui-gray)} !important;
+      background-color: #{getColor(ui-gray)} !important;
       border-radius: 0 !important;
       border-top-left-radius: #{$PASSIVE_GAP} !important;
       border-bottom-left-radius: #{$PASSIVE_GAP} !important;
@@ -36,7 +36,7 @@ $ACTIVE_GAP: $gap/1.5;
     &:hover {
       height: #{$ACTIVE_GAP} !important;
       & .os-scrollbar-handle {
-        @include narrowScreen() {
+        @include viewport(w, SVGA) {
           height: #{$ACTIVE_GAP};
           border-top-left-radius: #{$ACTIVE_GAP} !important;
           border-top-right-radius: #{$ACTIVE_GAP} !important;
@@ -47,7 +47,7 @@ $ACTIVE_GAP: $gap/1.5;
     & .os-scrollbar-handle {
       height: #{$PASSIVE_GAP};
       bottom: 0;
-      background-color: #{map-get($colorMap, ui-gray)} !important;
+      background-color: #{getColor(ui-gray)} !important;
       border-radius: 0 !important;
       border-top-left-radius: #{$PASSIVE_GAP} !important;
       border-top-right-radius: #{$PASSIVE_GAP} !important;

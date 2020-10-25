@@ -1,98 +1,143 @@
-@import './_mixins.scss';
-$uploadsPath: '/wp-content/uploads';
-$defaultFontSize: 20px;
-$textFont: var(--text-font);
-$textFontWeight: var(--text-font-weight);
-$titleFont: var(--title-font);
-$titleFontWeight: var(--title-font-weight);
-$fancyFont: 'KendiniYenidenKesfet', sans-serif;
+@import './pure_functions';
 
-$screenSizes: (
-  huge: 1920,
-  wide: 1200,
-  narrow: 800,
-  small: 600,
-  mediumTall: 700,
-);
-$fontSizes: (
+$REACT_APP_UPLOADS_DIR: '/wp-content/uploads';
+
+/**
+  Font
+*/
+$FONT_SIZES: (
+  default__: 20,
   mobileNavigation: 18px,
+  excerpt: 15px,
+  ScutRemBase__: 16,
 );
-$mobile: (
-  navigationY: 55px,
-  figureHeight: unquote('max(400px, 60vh)'),
+
+$FONTS: (
+  text: (
+    font-family: var(--text-font),
+    font-weight: var(--text-font-weight),
+  ),
+  heading: (
+    font-family: var(--title-font),
+    font-weight: var(--title-font-weight),
+  ),
+  hero: (
+    font-family: "'KendiniYenidenKesfet', sans-serif",
+    font-weight: 100,
+  ),
 );
-$narrow: (
-  featureImageX: 25vw,
-  logoNSocialY: 80px,
-  homeWelcomeImageX: 45vw,
-  homePostsNarrowY: 150px,
-);
-$wide: (
-  navSocialSpaceX: 180px,
-);
-$short: (
-  minBlockHeight: 600px,
-  buttonDisappearBefore: 600px,
-);
-$mobileNavigationHeight: 54px;
-$mobileFeatureImageHeight: 200px;
-$mobile_FeatureImageHeight_home: 300px;
-$gap: 30px;
-$excerptFontSize: 15px;
-$footerSquareSize: 105px;
-$socialIconDefaultSize_px: 20;
-$socialIconWideScreenMinSize_px: 25;
-$socialIconWideScreenMaxSize_px: 35;
-$socialIconWideScreenActiveSize_px: adjustSize(
-  $socialIconDefaultSize_px,
-  $socialIconWideScreenMaxSize_px,
-  map-get($screenSizes, wide),
-  1920
-);
-$fonts: (
+
+$TEXT_PROPERTIES: (
+  p: (
+    FontSize_Min__: 20,
+    FontSize_Max__: 26,
+    LineHeight_Min__: 26,
+    LineHeight_Max__: 38,
+  ),
   h1: (
-    font-size: adjustSize(26, 40),
-    line-height: adjustSize(30, 45),
-    font-family: $titleFont,
-    font-weight: $titleFontWeight,
+    FontSize_Min__: 26,
+    FontSize_max__: 40,
+    LineHeight_Min__: 30,
+    LineHeight_Max__: 45,
+    fontFamily: font(heading, font-family),
+    fontWeight: font(heading, font-weight),
   ),
   h2: (
-    font-size: adjustSize(23, 35),
-    line-height: adjustSize(28, 40),
-    font-family: $titleFont,
-    font-weight: $titleFontWeight,
+    FontSize_Min__: 23,
+    FontSize_max__: 35,
+    LineHeight_Min__: 28,
+    LineHeight_Max__: 40,
+    fontFamily: font(heading, font-family),
+    fontWeight: font(heading, font-weight),
   ),
   h3: (
-    font-size: adjustSize(20, 25),
-    line-height: adjustSize(25, 30),
-    font-family: $titleFont,
-    font-weight: $titleFontWeight,
+    FontSize_Min__: 20,
+    FontSize_Max__: 25,
+    LineHeight_Min__: 25,
+    LineHeight_Max__: 30,
+    fontFamily: font(heading, font-family),
+    fontWeight: font(heading, font-weight),
   ),
   h4: (
-    font-size: adjustSize(18, 24),
-    line-height: adjustSize(21, 27),
-    font-family: $titleFont,
-    font-weight: $titleFontWeight,
+    FontSize_Min__: 18,
+    FontSize_max__: 24,
+    LineHeight_Min__: 21,
+    LineHeight_Max__: 27,
+    fontFamily: font(heading, font-family),
+    fontWeight: font(heading, font-weight),
   ),
   h5: (
-    font-size: adjustSize(16, 26),
-    line-height: adjustSize(20, 34),
-    font-family: $titleFont,
-    font-weight: $titleFontWeight,
+    FontSize_Min__: 16,
+    FontSize_max__: 26,
+    LineHeight_Min__: 20,
+    LineHeight_Max__: 30,
+    fontFamily: font(heading, font-family),
+    fontWeight: font(heading, font-weight),
   ),
   h6: (
-    font-size: adjustSize(14, 20),
-    line-height: adjustSize(18, 24),
-    font-family: $titleFont,
-    font-weight: $titleFontWeight,
+    FontSize_Min__: 14,
+    FontSize_max__: 20,
+    LineHeight_Min__: 18,
+    LineHeight_Max__: 24,
+    fontFamily: font(heading, font-family),
+    fontWeight: font(heading, font-weight),
   ),
 );
-$pFontSizeMin_px: 20;
-$pFontSize: adjustSize($pFontSizeMin_px, 26);
-$pLineHeightMin_px: 26;
-$pLineHeight: adjustSize($pLineHeightMin_px, 38);
-$scut-rem-base: 16 !default;
-$colorMap: (
+
+/** 
+  Screen width
+*/
+$VIEWPORT: (
+  width: (
+    HQVGA: 240,
+    QVGA: 320,
+    WQVGA: 480,
+    SVGA: 800,
+    XGAplus: 1152,
+    FHD: 1920,
+  ),
+  height: (
+    HD: 720,
+    SVGA: 600,
+  ),
+);
+
+$COMPONENT_PROPERTIES: (
+  footer: (
+    squareSize_px: 105px,
+  ),
+  logoNSocial: (
+    y_px: 80px,
+  ),
+  socialItem: (
+    defaultSize__: 20,
+    wideScreen_MinSize__: 25,
+    wideScreen_MaxSize__: 35,
+  ),
+  nav: (
+    mobileHeight_px: 54px,
+    socialSpace_x_px: 180px,
+  ),
+  featureImage: (
+    height_px: 200px,
+    narrow_x_vw: 25vw,
+  ),
+  home: (
+    welcomeImage_x_vw: 45vw,
+    posts_y_px: 150px,
+    sectionHeight_min_px: 600px,
+  ),
+);
+
+/** 
+  Sizing
+*/
+$GAP: 30px;
+
+/** 
+  Color
+*/
+$COLORS: (
   text-light: var(--brush-white),
   text-mediumLight: var(--brush-gray),
   text-mediumDark: var(--brush-darkBlue),
@@ -112,3 +157,76 @@ $colorMap: (
   ui-black: var(--brush-black),
   ui-blue: var(--brush-darkGray),
 );
+
+/**
+  Computed
+*/
+$socialIcon_WideScreen_Responsive_px: responsive(
+  getComponentProperty(socialItem, defaultSize__),
+  getComponentProperty(socialItem, wideScreen_MaxSize__),
+  map-get(map-get($VIEWPORT, width), XGAplus),
+  map-get(map-get($VIEWPORT, width), FHD)
+);
+
+$p_FontSize_Responsive: responsive(
+  typography(p, FontSize_Min__),
+  typography(p, FontSize_Max__)
+);
+$p_LineHeight_Responsive: responsive(
+  typography(p, LineHeight_Min__),
+  typography(p, LineHeight_Max__)
+);
+
+/** 
+  Var-coupled mixins and functions
+*/
+@function font($type, $property) {
+  @return map-get(map-get($FONTS, $type), $property);
+}
+
+@function responsive(
+  $minValue,
+  $maxValue,
+  $minScreen: viewport(w, QVGA),
+  $maxScreen: viewport(w, FHD)
+) {
+  @return calc(
+    #{$minValue}px + (#{$maxValue} - #{$minValue}) *
+      ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen}))
+  );
+}
+
+@function viewport($aspect, $size) {
+  @if $aspect == width or $aspect == w {
+    $aspect: width;
+  } @else if $aspect == height or $aspect == h {
+    $aspect: height;
+  } @else {
+    @error 'Unrecognized aspect. You can only use height, h, width and w';
+  }
+  @return map-get(map-get($VIEWPORT, $aspect), $size);
+}
+
+@mixin viewport($aspect, $size) {
+  @if $aspect == height or $aspect == h {
+    $screenPx: viewport(height, $size);
+    @include _min-height($screenPx) {
+      @content;
+    }
+  } @else if $aspect == width or $aspect == w {
+    $screenPx: viewport(width, $size);
+    @include _min-width($screenPx) {
+      @content;
+    }
+  } @else {
+    @error 'Unrecognized aspect. You can only use height, h, width and w';
+  }
+}
+
+@function getComponentProperty($component, $property) {
+  @return map-get(map-get($COMPONENT_PROPERTIES, $component), $property);
+}
+
+@function typography($tag, $property) {
+  @return map-get(map-get($TEXT_PROPERTIES, $tag), $property);
+}

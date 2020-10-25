@@ -6,11 +6,11 @@
   grid-area: nav;
   height: 100%;
 
-  @include narrowScreen() {
+  @include viewport(w, SVGA) {
     display: block;
   }
 
-  @include wideScreen() {
+  @include viewport(w, XGAplus) {
     display: none;
   }
 
@@ -20,28 +20,28 @@
 
   & .Nav-item {
     padding: {
-      left: #{$gap / 3};
-      right: #{$gap / 3};
+      left: #{$GAP / 3};
+      right: #{$GAP / 3};
     }
     height: 100%;
-    line-height: #{$mobileNavigationHeight};
+    line-height: #{getComponentProperty(nav, mobileHeight_px)};
     position: relative;
-    color: #{map-get($colorMap, text-dark)};
+    color: #{getColor(text-dark)};
     text-align: right;
 
     &-active {
-      color: #{map-get($colorMap, ui-decoration)};
+      color: #{getColor(ui-decoration)};
 
       &:after {
         position: absolute;
         content: '';
         bottom: 0;
-        height: #{$gap / 4};
-        left: #{$gap / 4};
-        right: #{$gap / 4};
-        background-color: #{map-get($colorMap, ui-decoration)};
-        border-top-left-radius: #{$gap / 4};
-        border-top-right-radius: #{$gap / 4};
+        height: #{$GAP / 4};
+        left: #{$GAP / 4};
+        right: #{$GAP / 4};
+        background-color: #{getColor(ui-decoration)};
+        border-top-left-radius: #{$GAP / 4};
+        border-top-right-radius: #{$GAP / 4};
       }
     }
   }

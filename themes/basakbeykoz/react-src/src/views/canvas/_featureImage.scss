@@ -14,7 +14,7 @@
 
   &-off {
     @include common();
-    background-color: #{map-get($colorMap, bg-green)};
+    background-color: #{getColor(bg-green)};
   }
 
   &-on {

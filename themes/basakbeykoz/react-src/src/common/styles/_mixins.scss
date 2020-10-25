@@ -1,120 +1,61 @@
-@use "sass:map";
-// @import "_vars";
-
-@function scut-strip-unit($num) {
-  @return $num / ($num * 0 + 1);
-}
-
-@function scut-rem($pixels) {
-  @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
-}
-
-@function adjustSize($minValue, $maxValue, $minScreen: 320, $maxScreen: 1920) {
-  @return calc(
-    #{$minValue}px + (#{$maxValue} - #{$minValue}) *
-      ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen}))
-  );
-}
+@import './vars';
+@import './pure_functions';
 
 @mixin _min-width($threshold) {
-  @media screen and (min-width: scut-rem($threshold)) {
+  @media screen and (min-width: scut-rem($threshold, map-get($FONT_SIZES, ScutRemBase__))) {
     @content;
   }
 }
 
 @mixin _min-height($threshold) {
-  @media screen and (min-height: scut-rem($threshold)) {
-    @content;
-  }
-}
-
-@mixin narrowScreen {
-  $screenPx: map-get($screenSizes, narrow);
-  @include _min-width($screenPx) {
-    @content;
-  }
-}
-
-@mixin wideScreen {
-  $screenPx: map-get($screenSizes, wide);
-  @include _min-width($screenPx) {
-    @content;
-  }
-}
-
-@mixin hugeScreen {
-  $screenPx: map-get($screenSizes, huge);
-  @include _min-width($screenPx) {
-    @content;
-  }
-}
-
-@mixin smallScreen {
-  $screenPx: map-get($screenSizes, small);
-  @include _min-height($screenPx) {
-    @content;
-  }
-}
-
-@mixin mediumTallScreen {
-  $screenPx: map-get($screenSizes, mediumTall);
-  @include _min-height($screenPx) {
+  @media screen and (min-height: scut-rem($threshold, map-get($FONT_SIZES, ScutRemBase__))) {
     @content;
   }
 }
 
 @mixin headerIcon($filter: var(--filter-white)) {
-  height: #{$socialIconDefaultSize_px}px;
-  width: #{$socialIconDefaultSize_px}px;
-  padding: #{$gap / 2};
+  height: #{getComponentProperty(socialItem, defaultSize__)}px;
+  width: #{getComponentProperty(socialItem, defaultSize__)}px;
+  padding: #{$GAP / 2};
   // filter: $filter;
-  @include wideScreen() {
-    min-height: #{$socialIconWideScreenMinSize_px}px;
-    min-width: #{$socialIconWideScreenMinSize_px}px;
-    height: #{$socialIconWideScreenActiveSize_px};
-    width: #{$socialIconWideScreenActiveSize_px};
-    max-height: #{$socialIconWideScreenMaxSize_px}px;
-    max-width: #{$socialIconWideScreenMaxSize_px}px;
+  @include viewport(w, XGAplus) {
+    min-height: #{getComponentProperty(socialItem, wideScreen_MinSize__)}px;
+    min-width: #{getComponentProperty(socialItem, wideScreen_MinSize__)}px;
+    height: #{$socialIcon_WideScreen_Responsive_px};
+    width: #{$socialIcon_WideScreen_Responsive_px};
+    max-height: #{getComponentProperty(socialItem, wideScreen_MaxSize__)}px;
+    max-width: #{getComponentProperty(socialItem, wideScreen_MaxSize__)}px;
   }
 }
 
-/* 
-    IMAGE BORDERS 
-*/
-@function to-degree($direction) {
-  @if $direction == horizontal {
-    @return 90deg;
-  } @else if $direction == vertical {
-    @return 0deg;
-  }
-}
-
-@function frame($color, $direction) {
-  $degree: to-degree($direction);
-  $at: #{$gap};
-  @return linear-gradient(
-    $degree,
-    $color calc(#{$at}/ 2),
-    transparent calc(#{$at}/ 2),
-    transparent calc(100% - #{$at}/ 2),
-    $color calc(100% - #{$at}/ 2)
-  );
-}
-
-@mixin _heading($name, $fonts: $fonts) {
-  $font-vals: map-get($fonts, $name);
-
-  grid-area: Heading-#{$name};
-  color: #{map-get($colorMap, text-mediumDark)};
+@mixin _heading($tag) {
+  grid-area: #{$tag};
+  color: #{getColor(text-mediumDark)};
   margin: 0;
 
-  @each $key, $value in $font-vals {
-    #{$key}: #{$value};
-  }
+  font-size: #{responsive(
+      typography($tag, FontSize_Min__),
+      typography($tag, FontSize_max__)
+    )};
+  line-height: #{responsive(
+      typography($tag, LineHeight_Min__),
+      typography($tag, LineHeight_Max__)
+    )};
+  font-family: #{typography($tag, fontFamily)};
+  font-weight: #{typography($tag, font-weight)};
 }
 
 @mixin h1 {
-  @include _heading(h1);
+  font-size: #{responsive(
+      typography(h1, FontSize_Min__),
+      typography(h1, FontSize_Max__)
+    )};
+  line-height: #{responsive(
+      typography(h1, LineHeight_Min__),
+      typography(h1, LineHeight_Max__)
+    )};
+  font-family: #{typography(h1, fontFamily)};
+  font-weight: #{typography(h1, font-weight)};
 }
 
 @mixin h2 {
@@ -140,15 +81,15 @@
 @mixin p {
   @include basicP();
   grid-area: paragraph;
-  margin: 0 0 #{$gap} 0;
+  margin: 0 0 #{$GAP} 0;
 }
 
 @mixin basicP {
-  color: #{map-get($colorMap, text-mediumDark)};
-  font-family: $textFont;
-  font-weight: $textFontWeight;
-  font-size: $pFontSize;
-  line-height: $pLineHeight;
+  color: #{getColor(text-mediumDark)};
+  font-family: #{font(text, font-family)};
+  font-weight: #{font(text, font-weight)};
+  font-size: #{$p_FontSize_Responsive};
+  line-height: #{$p_LineHeight_Responsive};
 }
 
 @mixin svgArt(
@@ -158,7 +99,6 @@
   $min-height: $height,
   $max-height: $height
 ) {
-  $cityWidth: 100vw;
   content: '';
   position: absolute;
   display: block;
@@ -166,7 +106,7 @@
   max-height: $max-height;
   min-height: $min-height;
   background-size: contain;
-  background-image: url('#{$uploadsPath}/#{$filename}');
+  background-image: url('#{$REACT_APP_UPLOADS_DIR}/#{$filename}');
   background-repeat: no-repeat;
   background-position: bottom center;
   z-index: 1;
@@ -177,15 +117,14 @@
 }
 
 @mixin limitParagraphLines($lineCount: 3) {
-  // $pLineHeight: $pLineHeight;
-  height: calc(#{$pLineHeight} * #{$lineCount});
+  height: calc(#{typography(p, LineHeight)} * #{$lineCount});
   overflow: hidden;
 }
 
 @mixin buttonText() {
   @include p();
-  font-family: #{$titleFont};
-  font-weight: #{$titleFontWeight};
+  font-family: #{#{font(heading, font-family)}};
+  font-weight: #{#{font(heading, font-weight)}};
   margin: 0;
 }
 
@@ -193,8 +132,12 @@
   Properties of the hero title font
 */
 @mixin heroFont() {
-  font-size: adjustSize(35, 100, 250);
-  line-height: adjustSize(60, 120, 250);
-  font-family: $fancyFont;
-  font-weight: 100;
+  font-size: responsive(35, 100, 250);
+  line-height: responsive(60, 120, 250);
+  font-family: #{font(hero, font-family)};
+  font-weight: #{font(hero, font-weight)};
+}
+
+@function getColor($colorName) {
+  @return map-get($COLORS, $colorName);
 }
