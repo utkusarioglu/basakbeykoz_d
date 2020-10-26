@@ -4,7 +4,7 @@ import { ISocialItem } from '../../features/social/@types-social';
 import { setIsMenuOpen } from '../../features/app/appActions';
 import ReactGA from 'react-ga';
 import { RootState } from '../../store/rootReducer';
-import './_socialItem.view.scss';
+import '../../styles/components/social/_socialItem.view.scss';
 
 const mapState = (state: RootState) => ({});
 const mapDispatch = {

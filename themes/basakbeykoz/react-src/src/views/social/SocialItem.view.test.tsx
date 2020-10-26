@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import SocialItem, { SocialItemOwnProps } from './SocialItem.component';
+import SocialItem, { SocialItemOwnProps } from './SocialItem.view';
 import Chance from 'chance';
 import { RootState } from '../../store/rootReducer';
 import { appInitialState } from '../../features/app/appReducer';
