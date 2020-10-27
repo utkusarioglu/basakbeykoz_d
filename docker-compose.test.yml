@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  wp:
+    image: wordpress
+    container_name: basakbeykoz_wp_p
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_NAME: exampledb
+      WORDPRESS_DB_PASSWORD: examplepass
+    depends_on:
+      - db
+    volumes:
+      - ./dist:/var/www/html/wp-content/themes/basakbeykoz
+      - ./plugins:/var/www/html/wp-content/plugins
+      # This next line is the only thing that changes between test case and production case
+      - ./backups/uploads:/var/www/html/wp-content/uploads
+
+  db:
+    image: mysql:5.7
+    container_name: basakbeykoz_db_p
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db:/var/lib/mysql
+      - ./backups/sql:/backups/sql
+      - ./scripts/basakbeykoz_db_p:/scripts
+
+volumes:
+  db:

@@ -2,7 +2,7 @@
 
 bash ./scripts/dev/sync_with_production.sh
 wait
-docker-compose up -d
+docker-compose -f ./docker-compose.dev.yml up -d 
 #sleep can later be replaced by a better command later
 sleep 20
 sudo rm -rf ./themes/twenty* ./themes/index* 

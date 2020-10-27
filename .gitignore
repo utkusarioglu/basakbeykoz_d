@@ -29,6 +29,7 @@ yarn-error.log*
 !/themes/basakbeykoz
 themes/basakbeykoz/*
 !themes/basakbeykoz/react-src
+/dist
 
 # !/themes/basakbeykoz/react-src
 
