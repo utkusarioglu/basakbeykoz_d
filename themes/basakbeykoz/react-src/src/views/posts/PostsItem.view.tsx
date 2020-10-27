@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './_postsItem.view.scss';
+import '../../styles/components/posts/_postsItem.view.scss';
 
 interface Props {
   title: string;

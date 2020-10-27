@@ -11,7 +11,7 @@ import Logo from '../header/Logo.view';
 import Social from '../social/Social.view';
 import NavFixedView from '../nav/NavFixed.view';
 
-import './_app.view.scss';
+import '../../styles/components/app/_app.view.scss';
 
 interface OwnProps {
   refs: RootState['app']['refs'];

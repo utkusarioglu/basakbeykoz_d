@@ -4,7 +4,7 @@ import { RootState } from '../../store/rootReducer';
 import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions';
 import { connect, ConnectedProps } from 'react-redux';
 import config from '../../config';
-import './_logo.view.scss';
+import '../../styles/components/header/_logo.view.scss';
 
 const { HOME_SLUG, UPLOADS_DIR } = config;
 

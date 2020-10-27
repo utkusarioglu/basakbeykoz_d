@@ -1,0 +1,80 @@
+@import '../abstracts/_mixins';
+
+/// Sets the size (width for vertical, height for horizontal) scrollbar in its
+/// passive state. That is, when there is no focus or hover going on.
+/// @access private
+$passive-size: $GAP_PX/4;
+
+/// Sets the size (width for vertical, height for horizontal) scrollbar in its
+// active state. That is, when there is no focus or hover going on.
+/// @access private
+$active-size: $GAP_PX/1.5;
+
+/// This class belongs to OverlayScrollbars library
+/// Many of the properties set here is set to important to prevent clashes with
+/// original styling of the scrollbars. Hence, this sections attention when
+/// there is time.
+/// @todo get rid of the !important statements
+.os-scrollbar {
+  /// @todo magic z-index
+  z-index: 150;
+  padding: 0 !important;
+
+  /// Vertical scrollbar styling. It may appear that the horizontal and vertical
+  /// have a lot of properties in common but they actually don't. Hence the
+  /// properties are declared separately.
+  &-vertical {
+    width: #{$active-size} !important;
+
+    &:active,
+    &:hover {
+      width: #{$active-size} !important;
+
+      & .os-scrollbar-handle {
+        @include breakpoint('w', 'SVGA__') {
+          border-top-left-radius: #{$active-size} !important;
+          border-bottom-left-radius: #{$active-size} !important;
+          width: #{$active-size};
+        }
+      }
+    }
+
+    & .os-scrollbar-handle {
+      right: 0; // this one is to make sure that the handle sticks to the right side of the track
+      border-radius: 0 !important;
+      border-top-left-radius: #{$passive-size} !important;
+      border-bottom-left-radius: #{$passive-size} !important;
+      background-color: #{getColor('ui-gray')} !important;
+      width: #{$passive-size};
+    }
+  }
+
+  /// Horizontal scrollbar styling. It may appear that the horizontal and vertical
+  /// have a lot of properties in common but they actually don't. Hence the
+  /// properties are declared separately.
+  &-horizontal {
+    height: #{$active-size} !important;
+
+    &:active,
+    &:hover {
+      height: #{$active-size} !important;
+
+      & .os-scrollbar-handle {
+        @include breakpoint('w', 'SVGA__') {
+          border-top-left-radius: #{$active-size} !important;
+          border-top-right-radius: #{$active-size} !important;
+          height: #{$active-size};
+        }
+      }
+    }
+
+    & .os-scrollbar-handle {
+      bottom: 0; // This one is to make sure tha the handle sticks to the bottom side of the track
+      border-radius: 0 !important;
+      border-top-left-radius: #{$passive-size} !important;
+      border-top-right-radius: #{$passive-size} !important;
+      background-color: #{getColor('ui-gray')} !important;
+      height: #{$passive-size};
+    }
+  }
+}

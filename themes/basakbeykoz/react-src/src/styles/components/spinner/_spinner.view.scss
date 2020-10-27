@@ -1,9 +1,6 @@
-@import '../../common/styles/_vars';
-@import '../../common/styles/_mixins';
+@import '../../abstracts/_mixins';
 
 .Spinner {
-  $bg-white: getColor(bg-yellow);
-
   position: fixed;
   padding: 3rem;
   top: 0;
@@ -33,12 +30,12 @@
 
   &-loadMessage {
     grid-area: LoadMessage;
-    font-family: #{font(text, font-family)};
-    font-weight: #{#{font(text, font-weight)}};
+    font-family: #{get-font-property('text', 'font-family')};
+    font-weight: #{get-font-property('text', 'font-weight')};
     align-self: top;
-    color: #{getColor(ui-blue)};
+    color: #{getColor('ui-blue')};
 
-    @include viewport(w, SVGA) {
+    @include breakpoint('w', 'SVGA__') {
       font-size: 25px;
     }
   }

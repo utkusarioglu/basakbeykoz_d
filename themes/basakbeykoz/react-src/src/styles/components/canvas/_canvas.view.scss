@@ -1,0 +1,85 @@
+@import '../../../styles/abstracts/_mixins';
+@import '_featureImage';
+@import './canvas-page-home';
+
+.Canvas {
+  $feature-image_x: get-component-property('feature-image', 'narrow_x_vw');
+  $footer-square-size_px: get-component-property('footer', 'square-size_px');
+
+  min-height: calc(
+    100vh - #{get-component-property('nav', 'mobile-height_px')} + #{$footer-square-size_px}
+  );
+
+  @include breakpoint('w', 'SVGA__') {
+    display: grid;
+    grid-template-areas: '. h1' '. Article' '. Posts-wrapper';
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: $feature-image_x 2fr;
+    grid-column-gap: responsive-width(30, 100, get-breakpoint('w', 'SVGA__'));
+  }
+
+  @include breakpoint('w', 'XGAplus__') {
+    $navSocialSpaceX: get-component-property('nav', 'social-space_x_px');
+    grid-template-areas: '. h1 .' '. Article .' '. Posts-wrapper .';
+    grid-template-columns: #{$feature-image_x} 2fr #{$navSocialSpaceX};
+  }
+
+  &-decor {
+    grid-area: Canvas-decor;
+    grid-template-areas: 'h1';
+    display: grid;
+    position: relative;
+    min-height: #{get-component-property('feature-image', 'height_px')};
+    width: 100%;
+
+    @include breakpoint('w', 'SVGA__') {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      width: $feature-image_x;
+    }
+
+    & > .Canvas-featureTitle {
+      align-self: end;
+      display: block;
+      bottom: 0;
+      box-sizing: border-box;
+      width: 100%;
+      padding: var(--gap);
+      text-align: center;
+      overflow: hidden;
+      @include breakpoint('w', 'SVGA__') {
+        display: none;
+      }
+    }
+  }
+
+  &-articleTitle {
+    display: none;
+    align-self: center;
+
+    @include breakpoint('w', 'SVGA__') {
+      display: block;
+    }
+  }
+
+  article {
+    grid-area: Article;
+    padding-top: var(--gap);
+    padding-right: var(--gap);
+    padding-bottom: 300px;
+    padding-left: var(--gap);
+
+    @include breakpoint('w', 'SVGA__') {
+      padding-top: 0;
+      padding-left: 0;
+    }
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}

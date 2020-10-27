@@ -3,7 +3,7 @@ import NavFeature from '../../features/nav/Nav.feature';
 import { connect, ConnectedProps } from 'react-redux';
 import { setIsMenuOpen } from '../../features/app/appActions';
 import { RootState } from '../../store/rootReducer';
-import './_navFixed.view.scss';
+import '../../styles/components/nav/_navFixed.view.scss';
 
 const mapState = (state: RootState) => ({
   isMenuOpen: state.app.isMenuOpen,

@@ -1,17 +1,11 @@
-@import './common/styles/_vars';
-@import './common/styles/_mixins';
-@import './common/styles/_fonts';
+@charset 'utf-8';
+
+@import './styles/abstracts/_mixins';
+@import './styles/base/_fonts';
+@import './styles/vendors/_scrollbar';
 
 :root {
-  /* measurements */
-  --wp-frame-width: 1200px;
-  --wp-frame-padding-x: 7em;
-  --wp-text-with: 800px;
-  --accent-thickness: #{$GAP};
-  --home-vertical-padding: 200px;
-  --home-horizontal-padding: 400px;
-  --fixed-feature-image-width: 470px;
-  --head-section-height: 110px;
+  --gap: #{$GAP_PX};
   --text-font: 'Work Sans', sans-serif;
   --text-font-weight: 400;
   --title-font: 'Montserrat', sans-serif;
@@ -20,35 +14,34 @@
 
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #{getColor(bg-white)};
-  color: #{getColor(text-mediumDark)};
-  overflow-y: hidden;
+  background: #{getColor('bg-white')};
   overflow-x: hidden;
-  font-size: #{map-get($FONT_SIZES, default__)}px;
+  overflow-y: hidden;
+  color: #{getColor('text-mediumDark')};
+  font-size: #{get-font-size(default__) * 1px};
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 // creates headings
 @for $i from 1 through 6 {
-  $name: 'h' + $i;
-  #{$name} {
-    @include _heading($name);
+  $tag: 'h' + $i;
+  #{$tag} {
+    @include _heading($tag);
   }
 }
 
 .body.page.home > article > div .wp-block-latest-posts > li,
 span,
 nav {
-  color: #{getColor(bg-blue)};
-  font-family: #{font(text, font-family)};
-  font-weight: #{font(text, font-weight)};
+  color: #{getColor('bg-blue')};
+  font-family: #{get-font-property('text', 'font-family')};
+  font-weight: #{get-font-property('text', 'font-weight')};
 }
 
 .wp-block-button__link,
 figcaption {
-  font-family: #{font(heading, font-family)};
-  font-weight: #{font(heading, font-weight)};
+  @include p-basic();
   margin: 0;
 }
 
@@ -56,12 +49,9 @@ p {
   @include p();
 }
 
+cite,
 li {
-  @include basicP();
-}
-
-cite {
-  @include basicP();
+  @include p-basic();
 }
 
 /*
@@ -81,43 +71,43 @@ cite {
   --brush-lightGreen: #c6dfd7;
 
   // https://codepen.io/sosuke/pen/Pjoqqp helped with these
-  $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%)
+  $filterWhite: contrast(1) invert(96%) sepia(4%) saturate(282%)
     hue-rotate(202deg) brightness(102%) contrast(95%);
-  --filter-white: #{$filter-white};
+  --filter-white: #{$filterWhite};
   --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%)
     hue-rotate(164deg) brightness(98%) contrast(84%);
-  --filter-logo-white: brightness(0) #{$filter-white};
+  --filter-logo-white: brightness(0) #{$filterWhite};
 }
 
 .text {
   &-light {
-    color: #{getColor(text-light)};
+    color: #{getColor('text-light')};
   }
   &-mediumLight {
-    color: #{getColor(text-mediumDark)};
+    color: #{getColor('text-mediumDark')};
   }
   &-mediumDark {
-    color: #{getColor(text-mediumDark)};
+    color: #{getColor('text-mediumDark')};
   }
   &-dark {
-    color: #{getColor(text-dark)};
+    color: #{getColor('text-dark')};
   }
 }
 
 $colorCategories: ('green', 'yellow', 'white', 'blue', 'black');
 @each $color in $colorCategories {
   .bg-#{$color} {
-    $bg-color: 'bg-' + $color;
-    background-color: #{getColor($bg-color)};
+    $bgColor: 'bg-' + $color;
+    background-color: #{getColor($bgColor)};
   }
   .#{$color} {
     $bgColor: 'bg-' + $color;
     $varColor: #{getColor($bgColor)};
     &-horizontal-border:before {
-      background: frame($varColor, horizontal);
+      background: linear-gradient-frame($varColor, horizontal);
     }
     &-vertical-border:after {
-      background: frame($varColor, vertical);
+      background: linear-gradient-frame($varColor, vertical);
     }
   }
 }
@@ -125,17 +115,17 @@ $colorCategories: ('green', 'yellow', 'white', 'blue', 'black');
 .wp {
   &-block {
     &-pullquote {
-      $FRINGE: $GAP/2;
-      margin: 0 #{-$FRINGE} #{$FRINGE} #{-$FRINGE};
-      border-radius: #{$FRINGE};
+      $fringe_px: $GAP_PX/2;
+      margin: 0 #{-$fringe_px} #{$fringe_px} #{-$fringe_px};
+      border-radius: #{$fringe_px};
       overflow: hidden;
-      background-color: getColor(bg-gray);
+      background-color: getColor('bg-gray');
       & > blockquote {
         display: grid;
         grid-template-areas: 'paragraph' 'cite';
-        margin: #{$FRINGE};
+        margin: #{$fringe_px};
         & > p {
-          margin-bottom: #{$FRINGE};
+          margin-bottom: #{$fringe_px};
         }
         & > cite {
           grid-area: cite;

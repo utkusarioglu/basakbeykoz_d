@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import config from '../../config';
-import './_footer.view.scss';
+import '../../styles/components/footer/_footer.view.scss';
 
 const { UPLOADS_DIR } = config;
 

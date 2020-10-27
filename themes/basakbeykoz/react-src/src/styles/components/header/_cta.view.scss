@@ -1,0 +1,24 @@
+@import '../../abstracts/_mixins';
+
+.Cta {
+  grid-area: logo;
+  height: 45px;
+  display: flex;
+  align-items: center;
+
+  &-button {
+    display: flex;
+    align-items: center;
+    margin-left: #{$GAP_PX / 4};
+    border-radius: #{$GAP_PX / 4};
+    padding: #{$GAP_PX / 4} #{$GAP_PX / 2};
+    background-color: #{getColor('ui-yellow')};
+
+    max-width: 200px;
+  }
+  &-text {
+    @include typography-button();
+    font-size: smaller;
+    white-space: nowrap;
+  }
+}

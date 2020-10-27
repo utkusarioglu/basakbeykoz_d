@@ -1,18 +1,17 @@
-@import '../../common/styles/_vars';
-@import '../../common/styles/_mixins';
+@import '../../abstracts/_mixins';
 
 .Social {
-  $logoNSocialY: getComponentProperty(logoNSocial, y_px);
+  $logo-n-social_y: get-component-property('logo-n-social', y_px);
   align-items: center;
-  grid-column-gap: calc(var(--accent-thickness) / 2);
+  grid-column-gap: calc(var(--gap) / 2);
 
   &-decor {
-    width: #{$GAP};
-    height: $logoNSocialY;
-    background: #{getColor(ui-blue)};
+    width: #{$GAP_PX};
+    height: #{$logo-n-social_y};
+    background: #{getColor('ui-blue')};
     right: 0;
-    border-top-left-radius: #{$GAP};
-    border-bottom-left-radius: #{$GAP};
+    border-top-left-radius: #{$GAP_PX};
+    border-bottom-left-radius: #{$GAP_PX};
   }
   &-list {
     display: flex;
@@ -35,9 +34,9 @@
     display: none;
     position: fixed;
     right: 0;
-    top: #{$GAP};
+    top: #{$GAP_PX};
     z-index: 100;
-    @include viewport(w, XGAplus) {
+    @include breakpoint('w', 'XGAplus__') {
       display: flex;
     }
   }

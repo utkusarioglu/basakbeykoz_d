@@ -4,7 +4,7 @@ import { fetchMenu } from '../../features/wordpress/menuActions';
 import { setDisplaying, setIsMenuOpen } from '../../features/app/appActions';
 import { RootState } from '../../store/rootReducer';
 import config from '../../config';
-import './_burgerMenu.view.scss';
+import '../../styles/components/header/_burgerMenu.view.scss';
 
 const { UPLOADS_DIR } = config;
 

@@ -1,20 +1,22 @@
-@import '../../common/styles/_vars';
-@import '../../common/styles/_mixins';
+@import '../../../styles/abstracts/_mixins';
 @import './_wpPosts';
-$navSocialSpaceX: getComponentProperty(nav, socialSpace_x_px);
-$minBlockHeight: getComponentProperty(home, sectionHeight_min_px);
+
+$nav_social-space_x_px: get-component-property('nav', 'social-space_x_px');
+$minBlockHeight: get-component-property('home', 'section-height_min_px');
+$mobile-height_px: get-component-property('nav', 'mobile-height_px');
 $minMobileBlockGroupHeight: #{unquote(
-    'max(calc(100vh - #{$GAP*2} - #{getComponentProperty(nav, mobileHeight_px)}), #{$minBlockHeight})'
+    'max(calc(100vh - #{$GAP_PX*2} - #{$mobile-height_px}), #{$minBlockHeight})'
   )};
 $minNarrowBlockGroupHeight: #{unquote(
-    'max(calc(100vh - #{$GAP*2}), #{$minBlockHeight})'
+    'max(calc(100vh - #{$GAP_PX*2}), #{$minBlockHeight})'
   )};
 $standardGroupInnerblockPadding: 100px;
+
 .Canvas {
   &.page {
     &.home {
       padding-bottom: 0;
-      @include viewport(w, SVGA) {
+      @include breakpoint('w', 'SVGA__') {
         display: block;
         .Canvas-articleTitle {
           display: none;
@@ -27,11 +29,11 @@ $standardGroupInnerblockPadding: 100px;
         padding: 0;
         & > .wp-block-group {
           box-sizing: border-box;
-          padding: #{$GAP};
+          padding: #{$GAP_PX};
           min-height: #{$minMobileBlockGroupHeight};
           overflow: hidden;
           position: relative;
-          @include viewport(w, XGAplus) {
+          @include breakpoint('w', 'XGAplus__') {
             height: 100vh;
           }
           & > .wp-block-group__inner-container {
@@ -39,8 +41,8 @@ $standardGroupInnerblockPadding: 100px;
             height: 100%;
             display: grid;
             box-sizing: border-box;
-            padding-bottom: #{getComponentProperty(nav, mobileHeight_px)};
-            @include viewport(w, XGAplus) {
+            padding-bottom: #{get-component-property('nav', 'mobile-height_px')};
+            @include breakpoint('w', 'XGAplus__') {
               padding-bottom: 0;
             }
             & > p {
@@ -51,64 +53,67 @@ $standardGroupInnerblockPadding: 100px;
             }
           }
           &:first-child {
-            $logoNSocial_y_px: getComponentProperty(logoNSocial, y_px);
-            $home_welcomeImage_x_vw: getComponentProperty(
+            $logo-n-social_y_px: get-component-property('logo-n-social', y_px);
+            $home_welcomeImage_x_vw: get-component-property(
               home,
-              welcomeImage_x_vw
+              'welcome-image_x_vw'
             );
 
             background-color: transparent;
-            padding-top: #{$GAP/2};
-            @include viewport(h, SVGA) {
-              padding-top: #{$GAP};
+            padding-top: #{$GAP_PX/2};
+            @include breakpoint('h', 'SVGA__') {
+              padding-top: #{$GAP_PX};
             }
             & > .wp-block-group__inner-container {
-              $figureDent: $logoNSocial_y_px + 4 * $GAP;
+              $figureDent: $logo-n-social_y_px + 4 * $GAP_PX;
               grid-template-areas:
                 'logo'
                 'cover'
                 'h1'
                 'paragraph';
-              grid-template-rows: #{$logoNSocial_y_px} 1fr min-content min-content;
-              grid-row-gap: #{$GAP/2};
-              @include viewport(h, HD) {
-                grid-row-gap: #{$GAP};
+              grid-template-rows: #{$logo-n-social_y_px} 1fr min-content min-content;
+              grid-row-gap: #{$GAP_PX/2};
+              @include breakpoint('h', 'HD__') {
+                grid-row-gap: #{$GAP_PX};
               }
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 grid-template-areas:
                   '. logo         .'
                   '. h1   .'
                   '. paragraph    .'
                   '. buttons      .';
                 grid-template-columns: #{$home_welcomeImage_x_vw} 1fr;
-                grid-template-rows: #{$logoNSocial_y_px} 1fr 1fr #{$logoNSocial_y_px};
-                grid-row-gap: #{$GAP};
+                grid-template-rows: #{$logo-n-social_y_px} 1fr 1fr #{$logo-n-social_y_px};
+                grid-row-gap: #{$GAP_PX};
                 height: 100%;
               }
-              @include viewport(w, XGAplus) {
-                $navSocialSpaceX: getComponentProperty(nav, socialSpace_x_px);
+              @include breakpoint('w', 'XGAplus__') {
+                $navSocialSpaceX: get-component-property(
+                  nav,
+                  'social-space_x_px'
+                );
                 grid-template-columns: #{$home_welcomeImage_x_vw} 1fr #{$navSocialSpaceX};
-                grid-column-gap: #{responsive(
+                grid-column-gap: #{responsive-width(
                     0,
                     70,
-                    map-get(map-get($VIEWPORT, width), XGAplus),
+                    get-breakpoint('w', 'XGAplus__'),
                     1920
                   )};
               }
               .wp-block-cover {
-                margin-left: #{-$GAP};
-                margin-right: #{-$GAP};
+                margin-left: #{-$GAP_PX};
+                margin-right: #{-$GAP_PX};
                 background-size: cover;
-                @include viewport(w, SVGA) {
+                @include breakpoint('w', 'SVGA__') {
                   position: absolute;
                   margin-left: 0;
                   margin-right: 0;
-                  top: #{-$GAP};
-                  left: #{-$GAP};
-                  right: #{-$GAP};
+                  top: #{-$GAP_PX};
+                  left: #{-$GAP_PX};
+                  right: #{-$GAP_PX};
                   z-index: -1;
                   right: auto;
-                  bottom: #{-$GAP};
+                  bottom: #{-$GAP_PX};
                   width: $home_welcomeImage_x_vw;
                   height: auto;
                   z-index: 91;
@@ -123,7 +128,7 @@ $standardGroupInnerblockPadding: 100px;
               justify-items: center;
               align-items: center;
               display: grid;
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 justify-self: start;
                 justify-content: start;
               }
@@ -137,13 +142,13 @@ $standardGroupInnerblockPadding: 100px;
               }
             }
             h1 {
-              @include heroFont();
-              margin-left: #{-$GAP/2};
-              margin-right: #{-$GAP/2};
+              @include typography-hero();
+              margin-left: #{-$GAP_PX/2};
+              margin-right: #{-$GAP_PX/2};
               align-self: end;
               justify-self: center;
-              color: #{getColor(text-mediumDark)};
-              @include viewport(w, SVGA) {
+              color: #{getColor('text-mediumDark')};
+              @include breakpoint('w', 'SVGA__') {
                 justify-self: start;
                 margin-left: 0;
                 margin-right: 0;
@@ -153,39 +158,39 @@ $standardGroupInnerblockPadding: 100px;
               display: none;
               grid-area: buttons;
               width: 100%;
-              margin-right: #{$GAP/2};
-              margin-left: #{-$GAP/2};
+              margin-right: #{$GAP_PX/2};
+              margin-left: #{-$GAP_PX/2};
               .wp-block-button {
-                @include buttonText();
-                background-color: #{getColor(ui-yellow)};
-                color: #{getColor(text-dark)};
-                padding: #{$GAP/2};
-                border-radius: #{$GAP/2};
+                @include typography-button();
+                background-color: #{getColor('ui-yellow')};
+                color: #{getColor('text-dark')};
+                padding: #{$GAP_PX/2};
+                border-radius: #{$GAP_PX/2};
                 width: 100%;
                 &:hover {
-                  background-color: #{getColor(ui-darkBlue)};
-                  color: #{getColor(text-light)};
+                  background-color: #{getColor('ui-darkBlue')};
+                  color: #{getColor('text-light')};
                   cursor: pointer;
                 }
               }
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 display: block;
               }
             }
           }
           &:not(:first-child) {
             & > .wp-block-group__inner-container {
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 align-content: center;
-                grid-row-gap: #{$GAP};
-                grid-column-gap: #{2 * $GAP};
+                grid-row-gap: #{$GAP_PX};
+                grid-column-gap: #{2 * $GAP_PX};
               }
-              @include viewport(w, XGAplus) {
-                $wideScreenSize: map-get(map-get($VIEWPORT, width), XGAplus);
+              @include breakpoint('w', 'XGAplus__') {
+                $wideScreenSize: get-breakpoint('w', 'XGAplus__');
                 $maxPadding: 350;
-                $padding: responsive(144, $maxPadding, $wideScreenSize);
-                grid-column-gap: #{responsive(
-                    2 * ($GAP)/1px,
+                $padding: responsive-width(144, $maxPadding, $wideScreenSize);
+                grid-column-gap: #{responsive-width(
+                    2 * ($GAP_PX)/1px,
                     100,
                     $wideScreenSize,
                     1920
@@ -207,22 +212,22 @@ $standardGroupInnerblockPadding: 100px;
               background-repeat: no-repeat;
               background-size: cover;
               position: relative;
-              border-radius: #{$GAP/2};
+              border-radius: #{$GAP_PX/2};
               @mixin frame-common {
                 content: '';
                 position: absolute;
               }
-              $narrow-frame: calc(100% - #{$GAP});
-              $wide-frame: calc(100% + #{$GAP});
-              $extrude: calc(#{$GAP} / 2 * -1);
-              $bevel: calc(#{$GAP} / 2);
+              $narrow-frame: calc(100% - #{$GAP_PX});
+              $wide-frame: calc(100% + #{$GAP_PX});
+              $extrude: calc(#{$GAP_PX} / 2 * -1);
+              $bevel: calc(#{$GAP_PX} / 2);
               &:before {
                 @include frame-common;
                 width: $wide-frame;
                 height: $narrow-frame;
                 top: $bevel;
                 left: $extrude;
-                border-radius: #{$GAP/2};
+                border-radius: #{$GAP_PX/2};
               }
               &:after {
                 @include frame-common;
@@ -230,7 +235,7 @@ $standardGroupInnerblockPadding: 100px;
                 height: $wide-frame;
                 top: $extrude;
                 left: $bevel;
-                border-radius: #{$GAP/2};
+                border-radius: #{$GAP_PX/2};
               }
             }
           }
@@ -241,12 +246,12 @@ $standardGroupInnerblockPadding: 100px;
                 'image'
                 'paragraph';
               grid-template-rows: max-content auto min-content;
-              grid-row-gap: #{$GAP};
+              grid-row-gap: #{$GAP_PX};
               padding-top: 20px;
-              @include viewport(h, HD) {
-                grid-row-gap: #{2 * $GAP};
+              @include breakpoint('h', 'HD__') {
+                grid-row-gap: #{2 * $GAP_PX};
               }
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 grid-template-areas:
                   'h2 image'
                   'paragraph image';
@@ -255,27 +260,17 @@ $standardGroupInnerblockPadding: 100px;
                 grid-template-columns: 2fr 1fr;
                 grid-template-rows: max-content 200px;
               }
-              @include viewport(w, XGAplus) {
+              @include breakpoint('w', 'XGAplus__') {
                 grid-row-gap: 5vw;
               }
               h2 {
                 position: relative;
                 width: max-content;
                 justify-self: center;
-                @include viewport(w, SVGA) {
+                @include breakpoint('w', 'SVGA__') {
                   justify-self: start;
                   text-align: left;
                 }
-                // &:before {
-                //   $h2fontSize: map-get(map-get($HEADINGS, h2), line-height);
-                //   $parrotSize: 60px;
-                //   @include svgArt('parrot.svg', $parrotSize, $parrotSize);
-                //   bottom: auto;
-                //   left: -20px;
-                //   top: calc(-1 * #{$h2fontSize});
-                //   transform: none;
-                //   width: #{$parrotSize};
-                // }
               }
             }
           }
@@ -287,11 +282,11 @@ $standardGroupInnerblockPadding: 100px;
                 'paragraph'
                 'restart';
               grid-template-rows: max-content auto min-content min-content;
-              grid-row-gap: #{$GAP};
-              @include viewport(h, HD) {
-                grid-row-gap: #{1.5 * $GAP};
+              grid-row-gap: #{$GAP_PX};
+              @include breakpoint('h', 'HD__') {
+                grid-row-gap: #{1.5 * $GAP_PX};
               }
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 grid-template-areas:
                   'image h2'
                   'image paragraph'
@@ -302,50 +297,20 @@ $standardGroupInnerblockPadding: 100px;
                 grid-template-rows: max-content 200px;
               }
               & > h2 {
-                @include viewport(w, SVGA) {
+                @include breakpoint('w', 'SVGA__') {
                   align-self: end;
                   text-align: left;
                 }
               }
-              // & > .wp-block-group {
-              //   grid-area: restart;
-              //   padding: #{$GAP/ 2};
-              //   background-color: #{getColor(bg-white)};
-              //   & > .wp-block-group__inner-container {
-              //     figure {
-              //       margin: 0;
-              //       & > img {
-              //         display: block;
-              //         margin: 0 auto;
-              //         height: 50px;
-              //         width: auto;
-              //         @include viewport(h, HD) {
-              //           height: 70px;
-              //         }
-              //       }
-              //       figcaption {
-              //         display: none;
-              //       }
-              //     }
-              //     p {
-              //       color: #{getColor(text-dark)};
-              //       margin: 0;
-              //     }
-              //     grid-template-areas:
-              //       'h2'
-              //       'paragraph';
-              //     grid-template-rows: min-content min-content;
-              //   }
-              // }
             }
             &:after {
               $width: 100vw;
               $height: calc(100vw / 4);
-              @include svgArt(
+              @include svg-art(
                 'city.svg',
                 $width,
                 $height,
-                getComponentProperty(nav, mobileHeight_px),
+                get-component-property('nav', 'mobile-height_px'),
                 #{$standardGroupInnerblockPadding}
               );
             }
@@ -357,12 +322,12 @@ $standardGroupInnerblockPadding: 100px;
                 'h2'
                 'posts'
                 'paragraph';
-              grid-template-rows: #{typography(h2, lineHeight)} auto max-content;
-              grid-row-gap: #{$GAP/2};
-              @include viewport(h, HD) {
-                grid-row-gap: #{$GAP};
+              grid-template-rows: #{get-typography(h2, lineHeight)} auto max-content;
+              grid-row-gap: #{$GAP_PX/2};
+              @include breakpoint('h', 'HD__') {
+                grid-row-gap: #{$GAP_PX};
               }
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 $narrowScreenSpacing: 100px;
                 grid-template-areas:
                   'h2 .    '
@@ -374,15 +339,15 @@ $standardGroupInnerblockPadding: 100px;
                 justify-content: center;
               }
               h2 {
-                @include viewport(w, SVGA) {
+                @include breakpoint('w', 'SVGA__') {
                   align-self: end;
                   text-align: left;
                 }
               }
               & > .wp-block-latest-posts {
-                margin-left: #{-$GAP} !important;
+                margin-left: #{-$GAP_PX} !important;
                 width: 100vw;
-                @include viewport(w, SVGA) {
+                @include breakpoint('w', 'SVGA__') {
                   width: 100%;
                   max-width: 100%;
                   min-width: 100%;
@@ -394,38 +359,38 @@ $standardGroupInnerblockPadding: 100px;
             &:after {
               $width: 100vw;
               $height: calc(100vw / 5);
-              @include svgArt(
+              @include svg-art(
                 'conversation.svg',
                 $width,
                 $height,
-                getComponentProperty(nav, mobileHeight_px),
+                get-component-property('nav', 'mobile-height_px'),
                 130px
               );
             }
           }
           &:nth-child(5) {
             & > .wp-block-group__inner-container {
-              @include wpPosts(success, column, getColor(bg-gray));
+              @include wpPosts(success, column, getColor('bg-gray'));
               grid-template-areas:
                 'h2'
                 'posts';
-              grid-row-gap: #{$GAP/2};
-              grid-template-rows: #{typography(h2, lineHeight)} 1fr;
+              grid-row-gap: #{$GAP_PX/2};
+              grid-template-rows: #{get-typography(h2, lineHeight)} 1fr;
               align-content: stretch;
-              @include viewport(h, HD) {
-                grid-row-gap: #{$GAP};
+              @include breakpoint('h', 'HD__') {
+                grid-row-gap: #{$GAP_PX};
               }
-              @include viewport(w, SVGA) {
-                $logoNSocialY: getComponentProperty(logoNSocial, y_px);
-                grid-template-rows: #{$logoNSocialY} 1fr #{$standardGroupInnerblockPadding};
+              @include breakpoint('w', 'SVGA__') {
+                $logo-n-social_y: get-component-property('logo-n-social', y_px);
+                grid-template-rows: #{$logo-n-social_y} 1fr #{$standardGroupInnerblockPadding};
               }
               h2 {
                 align-self: center;
               }
               & > .wp-block-latest-posts {
-                margin-left: #{-$GAP} !important;
+                margin-left: #{-$GAP_PX} !important;
                 width: 100vw;
-                @include viewport(w, SVGA) {
+                @include breakpoint('w', 'SVGA__') {
                   width: 100%;
                   max-width: 100%;
                   min-width: 100%;
@@ -437,11 +402,11 @@ $standardGroupInnerblockPadding: 100px;
             &:after {
               $cityWidth: 100vw;
               $height: calc(100vw / 4);
-              @include svgArt(
+              @include svg-art(
                 'success.svg',
                 $cityWidth,
                 $height,
-                getComponentProperty(nav, mobileHeight_px),
+                get-component-property('nav', 'mobile-height_px'),
                 130px
               );
             }
@@ -453,14 +418,14 @@ $standardGroupInnerblockPadding: 100px;
                 'h2'
                 'feature'
                 'paragraph';
-              grid-row-gap: #{$GAP};
+              grid-row-gap: #{$GAP_PX};
 
-              @include viewport(h, HD) {
-                grid-row-gap: #{$GAP};
+              @include breakpoint('h', 'HD__') {
+                grid-row-gap: #{$GAP_PX};
               }
-              @include viewport(w, SVGA) {
-                $logoNSocialY: getComponentProperty(logoNSocial, y_px);
-                grid-template-rows: #{$logoNSocialY} 1fr;
+              @include breakpoint('w', 'SVGA__') {
+                $logo-n-social_y: get-component-property('logo-n-social', y_px);
+                grid-template-rows: #{$logo-n-social_y} 1fr;
               }
               & > h2 {
                 align-self: center;
@@ -490,13 +455,13 @@ $standardGroupInnerblockPadding: 100px;
                       'contactform_left'
                       'contactform_right'
                       'contactform_submit';
-                    @include viewport(w, SVGA) {
+                    @include breakpoint('w', 'SVGA__') {
                       grid-template-areas:
                         'contactform_left contactform_right'
                         'contactform_submit contactform_submit';
                       grid-template-columns: 1fr 1fr;
-                      grid-column-gap: #{2 * $GAP};
-                      grid-row-gap: #{$GAP};
+                      grid-column-gap: #{2 * $GAP_PX};
+                      grid-row-gap: #{$GAP_PX};
                     }
                     & br {
                       display: none;
@@ -504,16 +469,16 @@ $standardGroupInnerblockPadding: 100px;
                     &-submit {
                       grid-area: contactform_submit;
                       & .wpcf7-submit {
-                        @include buttonText();
+                        @include typography-button();
                         width: 100%;
-                        padding: #{$GAP / 2};
+                        padding: #{$GAP_PX / 2};
                         border: none;
-                        background-color: #{getColor(ui-yellow)};
-                        color: #{getColor(text-dark)};
-                        border-radius: #{$GAP/2};
+                        background-color: #{getColor('ui-yellow')};
+                        color: #{getColor('text-dark')};
+                        border-radius: #{$GAP_PX/2};
                         &:hover {
-                          background-color: #{getColor(ui-darkBlue)};
-                          color: #{getColor(text-light)};
+                          background-color: #{getColor('ui-darkBlue')};
+                          color: #{getColor('text-light')};
                           cursor: pointer;
                         }
                       }
@@ -538,27 +503,27 @@ $standardGroupInnerblockPadding: 100px;
                     &-right {
                       & label {
                         @include p();
-                        color: #{getColor(text-dark)};
+                        color: #{getColor('text-dark')};
                         display: block;
-                        margin-bottom: #{$GAP / 2};
+                        margin-bottom: #{$GAP_PX / 2};
                         input,
                         textarea {
-                          margin-top: #{$GAP / 4};
+                          margin-top: #{$GAP_PX / 4};
                         }
                       }
                       & .wpcf7-text,
                       & .wpcf7-textarea {
                         box-sizing: border-box;
                         border: none;
-                        background-color: #{getColor(bg-white)};
+                        background-color: #{getColor('bg-white')};
                         width: 100%;
-                        padding: #{$GAP / 2};
-                        font-family: #{#{font(text, font-family)}};
-                        font-weight: #{#{font(text, font-weight)}};
-                        border-radius: #{$GAP/2};
+                        padding: #{$GAP_PX / 2};
+                        font-family: #{get-font-property('text', 'font-family')};
+                        font-weight: #{get-font-property('text', 'font-weight')};
+                        border-radius: #{$GAP_PX/2};
                         &:focus {
                           outline: none;
-                          background-color: #{getColor(bg-yellow)};
+                          background-color: #{getColor('bg-yellow')};
                         }
                       }
                       & .wpcf7-textarea {
@@ -574,7 +539,7 @@ $standardGroupInnerblockPadding: 100px;
           &:last-child {
             & > .wp-block-group__inner-container {
               padding-bottom: calc(#{$standardGroupInnerblockPadding} + 15vh);
-              @include viewport(w, SVGA) {
+              @include breakpoint('w', 'SVGA__') {
                 padding-bottom: #{$standardGroupInnerblockPadding};
               }
             }

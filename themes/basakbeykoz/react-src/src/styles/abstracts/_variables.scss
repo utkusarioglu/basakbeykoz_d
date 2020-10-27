@@ -1,0 +1,166 @@
+///
+/// Variables
+///
+/// Properties that may require adjustment or could be used by multiple
+/// components are defined here.
+/// @access private These variables shall all have an associated getter function
+/// and or mixin to access them.
+///
+
+/// This is the map of environment variables that is defined for sass
+/// separately, when the time permits, it would be a good idea to make sure
+/// that this is retieved from .env
+$ENV: (
+  'REACT_APP_UPLOADS_DIR': '/wp-content/uploads',
+);
+
+/// Provides the font sizes to be used all over the app
+$FONT_SIZES: (
+  'default__': 20,
+  'excerpt_px': 15px,
+  'ScutRemBase__': 16,
+);
+
+/// Different font types available to the app.
+/// The bulk of the render is done with 'text' as this is going to be the font
+/// that will be used for p.
+$FONT_TYPES: (
+  'text': (
+    'font-family': var(--text-font),
+    'font-weight': var(--text-font-weight),
+  ),
+  'heading': (
+    'font-family': var(--title-font),
+    'font-weight': var(--title-font-weight),
+  ),
+  'hero': (
+    'font-family': "'KendiniYenidenKesfet', sans-serif",
+    'font-weight': 100,
+  ),
+);
+
+/// These are used in tandem with $FONT_TYPES to create the related styles for
+/// the specified tags
+$TYPOGRAPHY_PROPERTIES: (
+  'p': (
+    'font-size_min__': 20,
+    'font-size_max__': 26,
+    'line-height_min__': 26,
+    'line-height_max__': 38,
+    'font-type': 'text',
+  ),
+  'h1': (
+    'font-size_min__': 26,
+    'font-size_max__': 40,
+    'line-height_min__': 30,
+    'line-height_max__': 45,
+    'font-type': 'heading',
+  ),
+  'h2': (
+    'font-size_min__': 23,
+    'font-size_max__': 35,
+    'line-height_min__': 28,
+    'line-height_max__': 40,
+    'font-type': 'heading',
+  ),
+  'h3': (
+    'font-size_min__': 20,
+    'font-size_max__': 25,
+    'line-height_min__': 25,
+    'line-height_max__': 30,
+    'font-type': 'heading',
+  ),
+  'h4': (
+    'font-size_min__': 18,
+    'font-size_max__': 24,
+    'line-height_min__': 21,
+    'line-height_max__': 27,
+    'font-type': 'heading',
+  ),
+  'h5': (
+    'font-size_min__': 16,
+    'font-size_max__': 26,
+    'line-height_min__': 20,
+    'line-height_max__': 30,
+    'font-type': 'heading',
+  ),
+  'h6': (
+    'font-size_min__': 14,
+    'font-size_max__': 20,
+    'line-height_min__': 18,
+    'line-height_max__': 24,
+    'font-type': 'heading',
+  ),
+);
+
+/// All the breakpoints for the app, the names are lifted from the screen
+/// resolutions page on wikipedia:
+/// https://en.wikipedia.org/wiki/Computer_display_standard
+$BREAKPOINTS: (
+  'width': (
+    'HQVGA__': 240,
+    'QVGA__': 320,
+    'WQVGA__': 480,
+    'SVGA__': 800,
+    'XGAplus__': 1152,
+    'FHD__': 1920,
+  ),
+  'height': (
+    'HD__': 720,
+    'SVGA__': 600,
+  ),
+);
+
+/// Properties of components that may be subject to change
+$COMPONENT_PROPERTIES: (
+  'footer': (
+    'square-size_px': 105px,
+  ),
+  'logo-n-social': (
+    'y_px': 80px,
+  ),
+  'social-item': (
+    'default-size__': 20,
+    'w-XGAplus_min__': 25,
+    'w-XGAplus_max__': 35,
+  ),
+  'nav': (
+    'mobile-height_px': 54px,
+    'social-space_x_px': 180px,
+  ),
+  'feature-image': (
+    'height_px': 200px,
+    'narrow_x_vw': 25vw,
+  ),
+  'home': (
+    'welcome-image_x_vw': 45vw,
+    'posts_y_px': 150px,
+    'section-height_min_px': 600px,
+  ),
+);
+
+/// This variable sets the default gap used in the app. It's possible that
+/// some components will be using fractions of this number but the most common
+/// gap is this size.
+$GAP_PX: 30px;
+
+/// Color palette
+$COLORS: (
+  'text-light': var(--brush-white),
+  'text-mediumLight': var(--brush-gray),
+  'text-mediumDark': var(--brush-darkBlue),
+  'text-dark': var(--brush-black),
+  'bg-white': var(--brush-white),
+  'bg-gray': var(--brush-lightGray),
+  'bg-yellow': var(--brush-lightYellow),
+  'bg-blue': var(--brush-lightBlue),
+  'bg-green': var(--brush-lightGreen),
+  'bg-black': var(--brush-black),
+  'ui-white': var(--brush-white),
+  'ui-gray': var(--brush-gray),
+  'ui-yellow': var(--brush-darkYellow),
+  'ui-decoration': var(--brush-darkYellow),
+  'ui-darkBlue': var(--brush-darkBlue),
+  'ui-black': var(--brush-black),
+  'ui-blue': var(--brush-darkGray),
+);

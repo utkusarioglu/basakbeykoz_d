@@ -4,7 +4,7 @@ import { GeneralSingularItemforView } from '../../features/wordpress/@types-word
 import config from '../../config';
 import { Helmet } from 'react-helmet';
 import ReactGA from 'react-ga';
-import './_canvas.view.scss';
+import '../../styles/components/canvas/_canvas.view.scss';
 
 const { APP_NAME, APP_SEPARATOR, HOME_SLUG, APP_TAGLINE } = config;
 

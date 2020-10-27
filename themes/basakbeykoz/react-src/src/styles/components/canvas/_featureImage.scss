@@ -1,0 +1,34 @@
+@import '../../../styles/abstracts/_mixins';
+
+.FeatureImage {
+  /// Properties common for both on and off states
+  /// @access private
+  /// @group helpers
+  @mixin feature-image-common {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+
+  /// If there is no feature image for the article on display, this class will
+  /// be active
+  &-off {
+    @include feature-image-common();
+    background-color: #{getColor('bg-green')};
+  }
+
+  /// If the article on display has a feature image, this class will be active
+  &-on {
+    @include feature-image-common();
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+  }
+}

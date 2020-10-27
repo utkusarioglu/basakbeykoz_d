@@ -1,6 +1,6 @@
 import React from 'react';
 import config from '../../config';
-import './_spinner.view.scss';
+import '../../styles/components/spinner/_spinner.view.scss';
 
 const { UPLOADS_DIR } = config;
 

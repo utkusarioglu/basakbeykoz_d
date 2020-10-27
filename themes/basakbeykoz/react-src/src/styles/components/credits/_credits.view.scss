@@ -1,0 +1,30 @@
+.Canvas {
+  &.Credits {
+    button {
+      background-color: #dddddd;
+      height: 70px;
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      overflow: hidden;
+
+      .button-title {
+        font-size: 20px;
+        line-height: 0px;
+        color: black;
+        margin-bottom: 10px;
+      }
+
+      .button-value {
+        color: black;
+        font-size: 10px;
+        line-height: 35px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

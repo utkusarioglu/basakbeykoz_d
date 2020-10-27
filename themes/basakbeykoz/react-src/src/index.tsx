@@ -7,9 +7,8 @@ import * as serviceWorker from './serviceWorker';
 import config from './config';
 import AppFeature from './features/app/App.feature';
 import '@csstools/normalize.css';
-import './index.scss';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
-import './common/styles/_scrollbar.scss';
+import './index.scss';
 import './common/@types-global';
 
 ReactGA.initialize(config.GOOGLE_ANALYTICS_TRACKING_ID, { debug: false });

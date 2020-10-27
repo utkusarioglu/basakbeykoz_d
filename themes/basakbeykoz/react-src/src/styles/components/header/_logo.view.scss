@@ -1,17 +1,16 @@
-@import '../../common/styles/_vars';
-@import '../../common/styles/_mixins';
+@import '../../abstracts/_mixins';
 
 .Logo {
-  $logoNSocialY: getComponentProperty(logoNSocial, y_px);
+  $logo-n-social_y: get-component-property('logo-n-social', y_px);
   grid-area: logo;
 
   &-decor {
-    width: var(--accent-thickness);
-    height: $logoNSocialY;
-    background: #{getColor(ui-blue)};
+    width: var(--gap);
+    height: $logo-n-social_y;
+    background: #{getColor('ui-blue')};
     left: 0;
-    border-top-right-radius: #{$GAP};
-    border-bottom-right-radius: #{$GAP};
+    border-top-right-radius: #{$GAP_PX};
+    border-bottom-right-radius: #{$GAP_PX};
   }
 
   &-logo > img {
@@ -22,7 +21,7 @@
   header & {
     .Logo {
       &-logo > img {
-        margin-left: #{$GAP / 2};
+        margin-left: #{$GAP_PX / 2};
         margin-top: 8px;
       }
 
@@ -37,17 +36,17 @@
 
     z-index: 90;
     position: fixed;
-    top: #{$GAP};
+    top: #{$GAP_PX};
     left: 0;
     flex-direction: row;
     align-items: center;
 
-    @include viewport(w, SVGA) {
+    @include breakpoint('w', 'SVGA__') {
       display: flex;
       img {
-        $featureImageX: #{getComponentProperty(featureImage, narrow_x_vw)};
-        $paddingLeft: #{$GAP / 2};
-        $statics: #{$paddingLeft} - #{2 * $GAP};
+        $featureImageX: #{get-component-property('feature-image', 'narrow_x_vw')};
+        $paddingLeft: #{$GAP_PX / 2};
+        $statics: #{$paddingLeft} - #{2 * $GAP_PX};
         $width: calc(#{$featureImageX} - #{$statics});
         $marginTop: calc(#{$width} / 25);
 

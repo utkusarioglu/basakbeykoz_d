@@ -1,5 +1,5 @@
 import React from 'react';
-import './_header.view.scss';
+import '../../styles/components/header/_header.view.scss';
 
 import HeaderLogo from './HeaderLogo.view';
 import BurgerMenu from './BurgerMenu.view';

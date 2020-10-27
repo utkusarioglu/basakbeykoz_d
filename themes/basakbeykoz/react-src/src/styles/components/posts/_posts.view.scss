@@ -1,5 +1,4 @@
-@import '../../common/styles/_vars';
-@import '../../common/styles/_mixins';
+@import '../../abstracts/_mixins';
 
 .Posts {
   grid-area: Posts;
@@ -7,28 +6,28 @@
     grid-area: Posts-wrapper;
     & > h4 {
       text-align: center;
-      @include viewport(w, SVGA) {
+      @include breakpoint('w', 'SVGA__') {
         text-align: left;
       }
     }
   }
   li {
     list-style: none;
-    margin-bottom: #{2 * $GAP};
-    padding: #{$GAP};
-    border-radius: #{$GAP};
+    margin-bottom: #{2 * $GAP_PX};
+    padding: #{$GAP_PX};
+    border-radius: #{$GAP_PX};
     position: relative;
     &:hover {
-      background-color: #{getColor(bg-gray)};
+      background-color: #{getColor('bg-gray')};
       & .Posts {
         &-card {
           &-excerpt {
-            @include viewport(w, SVGA) {
+            @include breakpoint('w', 'SVGA__') {
               &::after {
                 background: linear-gradient(
                   180deg,
                   transparent 0,
-                  #{getColor(bg-gray)} #{$GAP}
+                  #{getColor('bg-gray')} #{$GAP_PX}
                 );
               }
             }
@@ -41,7 +40,7 @@
     margin: 0;
     padding: 0;
   }
-  @include viewport(w, SVGA) {
-    margin-left: #{-$GAP};
+  @include breakpoint('w', 'SVGA__') {
+    margin-left: #{-$GAP_PX};
   }
 }

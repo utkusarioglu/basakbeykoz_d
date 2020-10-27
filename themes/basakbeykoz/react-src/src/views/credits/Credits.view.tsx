@@ -2,7 +2,7 @@ import React, { ReactText, useState } from 'react';
 import { setFetching } from '../../features/app/appActions';
 import { RootState } from '../../store/rootReducer';
 import { connect, ConnectedProps } from 'react-redux';
-import './_credits.view.scss';
+import '../../styles/components/credits/_credits.view.scss';
 
 const mapState = (state: RootState) => ({});
 const mapDispatch = {

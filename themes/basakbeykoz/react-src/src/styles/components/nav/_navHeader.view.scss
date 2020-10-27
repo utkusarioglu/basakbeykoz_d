@@ -1,0 +1,47 @@
+@import '../../abstracts/_mixins';
+
+.NavHeaderView {
+  display: none;
+  grid-area: nav;
+  height: 100%;
+
+  @include breakpoint('w', 'SVGA__') {
+    display: block;
+  }
+
+  @include breakpoint('w', 'XGAplus__') {
+    display: none;
+  }
+
+  & nav {
+    height: 100%;
+  }
+
+  & .Nav-item {
+    padding: {
+      left: #{$GAP_PX / 3};
+      right: #{$GAP_PX / 3};
+    }
+    height: 100%;
+    line-height: #{get-component-property('nav', 'mobile-height_px')};
+    position: relative;
+    color: #{getColor('text-dark')};
+    text-align: right;
+
+    &-active {
+      color: #{getColor('ui-decoration')};
+
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        height: #{$GAP_PX / 4};
+        left: #{$GAP_PX / 4};
+        right: #{$GAP_PX / 4};
+        background-color: #{getColor('ui-decoration')};
+        border-top-left-radius: #{$GAP_PX / 4};
+        border-top-right-radius: #{$GAP_PX / 4};
+      }
+    }
+  }
+}
