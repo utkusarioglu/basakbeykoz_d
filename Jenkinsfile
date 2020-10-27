@@ -1,12 +1,21 @@
 pipeline {
-  agent {
-    docker { image 'latest'}
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'node --version'
-      }
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-  }
 }
