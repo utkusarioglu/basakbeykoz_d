@@ -29,15 +29,21 @@ function PostsFeature({
   excludeSlugs,
   posts,
 }: Props) {
-  // !HACK this is faulty logic
-  setTimeout(() => {
+  const fetchIfNeeded = () => {
     if (posts.fetchTime < Date.now() - 5000) {
       fetchCategoryPosts(BLOG_SLUG);
       setFetching(false);
     } else {
       setFetching(false);
     }
-  }, 1000);
+  };
+
+  // !HACK this is faulty logic
+  if (process.env.NODE_ENV === 'development') {
+    setTimeout(fetchIfNeeded, 1000);
+  } else {
+    fetchIfNeeded();
+  }
 
   const filteredPosts = Object.values(posts.items).filter(
     (single) => single.data.slug !== excludeSlugs[0] || false
