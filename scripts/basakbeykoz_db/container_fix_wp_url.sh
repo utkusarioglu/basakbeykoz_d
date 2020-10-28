@@ -1,17 +1,15 @@
 #!/bin/bash
 
-# !TODO
-# Vars. These shall be moved to a separate file later on
-DB_USER=exampleuser
-DB_PASS=examplepass
-DB_NAME=exampledb
+DB_USER=$1
+DB_PASS=$2
+DB_NAME=$3
 
 # Checks whether a param for the replacement url has been provided
-if [ -z "$1" ]; then
-    echo 'Script needs the swap url as first parameter'
+if [ -z "$4" ]; then
+    echo 'Script needs the swap url as fourth parameter'
     exit 1
 else
-    PROD_URL=$1
+    PROD_URL=$4
 fi
 
 # Retrieves the url that is currently in the db

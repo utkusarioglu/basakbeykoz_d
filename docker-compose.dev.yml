@@ -20,7 +20,6 @@ services:
       # These shall be copied by the dockerfile
       - ./etc/apache/apache.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./etc/uploads/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-      - ./scripts/basakbeykoz_wp_d/:/scripts
       - ./plugins:/var/www/html/wp-content/plugins
       # The theme requires building and then copying by the dockerfile
       - ./themes:/var/www/html/wp-content/themes
@@ -39,7 +38,7 @@ services:
     volumes:
       - db:/var/lib/mysql
       - ./backups/sql:/backups/sql
-      - ./scripts/basakbeykoz_db_d:/scripts
+      - ./scripts/basakbeykoz_db:/scripts
 
 volumes:
   db:

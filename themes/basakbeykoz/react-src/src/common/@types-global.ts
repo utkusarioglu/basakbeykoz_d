@@ -10,6 +10,7 @@ declare global {
       REACT_APP_REST_ENDPOINT: string;
       REACT_APP_REST_TIMEOUT: string;
       REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID: string;
+      GENERATE_SOURCEMAP: boolean;
     }
   }
 

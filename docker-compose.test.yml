@@ -15,8 +15,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ./dist:/var/www/html/wp-content/themes/basakbeykoz
       - ./plugins:/var/www/html/wp-content/plugins
+      - ./dist:/var/www/html/wp-content/themes/basakbeykoz
       # This next line is the only thing that changes between test case and production case
       - ./backups/uploads:/var/www/html/wp-content/uploads
 
@@ -32,7 +32,7 @@ services:
     volumes:
       - db:/var/lib/mysql
       - ./backups/sql:/backups/sql
-      - ./scripts/basakbeykoz_db_p:/scripts
+      - ./scripts/basakbeykoz_db:/scripts
 
 volumes:
   db:
