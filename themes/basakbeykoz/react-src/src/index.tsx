@@ -5,11 +5,11 @@ import store from './store/store';
 import ReactGA from 'react-ga';
 import * as serviceWorker from './serviceWorker';
 import config from './config';
-import AppFeature from './features/app/App.feature';
+import AppFeature from './components/features/app/App.feature';
 import '@csstools/normalize.css';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
-import './index.scss';
-import './common/@types-global';
+import './styles/main.scss';
+import './store/@types-global';
 
 ReactGA.initialize(config.GOOGLE_ANALYTICS_TRACKING_ID, { debug: false });
 

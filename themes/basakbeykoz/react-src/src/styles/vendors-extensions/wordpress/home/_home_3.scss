@@ -1,0 +1,57 @@
+@import '../../../abstracts/_mixins';
+@import '../_wpPosts';
+
+/*
+  COMPONENT PROPERTIES
+*/
+$home__section_inner_padding_px: get-component-property(
+  'home',
+  'section_inner_padding_px'
+);
+
+/// Styles for the wp rendered home page content
+.Canvas.page.home > article > .wp-block-group:nth-child(3) {
+  & > .wp-block-group__inner-container {
+    grid-template-areas:
+      'h2'
+      'image'
+      'paragraph'
+      'restart';
+    grid-template-rows: max-content auto min-content min-content;
+    grid-row-gap: #{get-gap()};
+
+    @include breakpoint('h', 'HD__') {
+      grid-row-gap: #{get-gap(1.5)};
+    }
+
+    @include breakpoint('w', 'SVGA__') {
+      grid-template-areas:
+        'image h2'
+        'image paragraph'
+        'image restart';
+      padding-top: #{$home__section_inner_padding_px};
+      padding-bottom: #{$home__section_inner_padding_px};
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: max-content 200px;
+    }
+
+    & > h2 {
+      @include breakpoint('w', 'SVGA__') {
+        align-self: end;
+        text-align: left;
+      }
+    }
+  }
+  &:after {
+    $width: 100vw;
+    $height: 25vw;
+
+    @include svg-art(
+      'city.svg',
+      $width,
+      $height,
+      get-component-property('nav', 'mobile-height_px'),
+      #{$home__section_inner_padding_px}
+    );
+  }
+}

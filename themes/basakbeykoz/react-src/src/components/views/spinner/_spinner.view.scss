@@ -1,0 +1,42 @@
+@import '../../../styles/abstracts/_mixins';
+
+.Spinner {
+  position: fixed;
+  padding: 3rem;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+  justify-items: center;
+  grid-row-gap: 1rem;
+  grid-template-rows: 45% 65%;
+  z-index: 110;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6)
+  );
+  grid-template-areas:
+    'logo'
+    'LoadMessage';
+
+  &-logo {
+    grid-area: logo;
+    align-self: end;
+    filter: var(--filter-darkGray);
+    max-height: 60px;
+  }
+
+  &-loadMessage {
+    grid-area: LoadMessage;
+    font-family: #{get-font-property('text', 'font-family')};
+    font-weight: #{get-font-property('text', 'font-weight')};
+    align-self: top;
+    color: #{getColor('ui-blue')};
+
+    @include breakpoint('w', 'SVGA__') {
+      font-size: 25px;
+    }
+  }
+}

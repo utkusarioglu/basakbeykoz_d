@@ -1,5 +1,5 @@
 import { ERROR_CODES } from './@types-store';
-import { ACTION_TYPES, ACTION_STATES } from '../common/actionConstants';
+import { ACTION_TYPES, ACTION_STATES } from './actionConstants';
 export type FSA<T> = FSASuccess<T> | FSAFailure;
 
 interface FSASuccess<T> {

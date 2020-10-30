@@ -1,0 +1,172 @@
+@mixin wpPostsP() {
+  @include p();
+  font-size: responsive-width(
+    get-typography(p, font-size_min__),
+    16
+  ) !important;
+  line-height: responsive-width(
+    get-typography(p, line-height_min__),
+    20
+  ) !important;
+  margin: 0;
+}
+
+@mixin wpPosts($type, $gridFlow: row, $cardColor: getColor('bg-white')) {
+  .wp-block-latest-posts {
+    grid-area: posts;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    $homePostsNarrowY: get-component-property(home, 'posts_y_px');
+    $liDistance: get-gap();
+    $liMaxWidth: 350px;
+    $liMinWidth: 260px;
+    @include breakpoint('w', 'SVGA__') {
+      border-radius: #{get-gap(1/2)};
+    }
+    &,
+    .os-content {
+      display: grid;
+      grid-auto-flow: column;
+      @include breakpoint('w', 'SVGA__') {
+        @if $gridFlow == row {
+          grid-auto-flow: row;
+        } @else if $gridFlow == column {
+        }
+      }
+    }
+    & li {
+      background-color: $cardColor;
+      margin-left: #{$liDistance};
+      display: grid;
+      grid-row-gap: #{get-gap(1/2)};
+      position: relative;
+      width: 50vw;
+      max-width: #{$liMaxWidth};
+      border-radius: #{get-gap(1/2)};
+      padding: #{get-gap(1/2)};
+      overflow: hidden;
+      height: calc(100% - #{get-gap()});
+      cursor: pointer;
+      @if $type == posts {
+        grid-template-areas:
+          'image'
+          'title'
+          'time'
+          'excerpt';
+        grid-template-rows: max-content max-content max-content max-content;
+      } @else if $type == success {
+        grid-template-areas:
+          'image'
+          'title'
+          'excerpt';
+        grid-template-rows: max-content max-content 1fr;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        width: 100%;
+        height: #{get-gap(3/2)};
+        background: linear-gradient(transparent 0, #{$cardColor} #{get-gap()});
+      }
+      @include breakpoint('w', 'SVGA__') {
+        @if $gridFlow == row {
+          @if $type == posts {
+            grid-template-areas:
+              'image title'
+              'image time'
+              'image excerpt';
+            grid-template-rows: min-content min-content auto;
+            grid-template-columns: #{$homePostsNarrowY} auto;
+            grid-column-gap: #{get-gap(1/2)};
+            grid-row-gap: 5px;
+            width: 100%;
+            max-width: calc(100% - #{get-gap()});
+            height: calc(#{$homePostsNarrowY} + #{get-gap()});
+            margin-left: 0;
+            margin-bottom: #{get-gap()};
+          }
+        } @else if $gridFlow == column {
+          max-width: 250px;
+        }
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+      &:last-child::after {
+        content: '';
+        position: absolute;
+        right: #{-1.25 * $liDistance};
+        width: 1px;
+        height: 1px;
+      }
+      .wp-block-latest-posts__featured-image {
+        grid-area: image;
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        border-radius: #{get-gap(1/3)};
+        @include breakpoint('w', 'SVGA__') {
+          @if $gridFlow == row {
+            height: calc(#{$homePostsNarrowY} + #{get-gap()});
+          }
+        }
+        & > img {
+          min-height: 100%;
+          min-width: 100%;
+          object-fit: cover;
+          z-index: 10;
+          @include breakpoint('w', 'SVGA__') {
+            @if $gridFlow == row {
+              object-fit: cover;
+            }
+          }
+        }
+      }
+      time {
+        @include wpPostsP();
+        margin: 0;
+        grid-area: time !important;
+        font-size: 0.8em;
+        color: #{getColor('text-mediumLight')};
+        @include breakpoint('w', 'SVGA__') {
+          @if $type == posts {
+            display: block;
+          }
+        }
+      }
+      .wp-block-latest-posts__post-full-content,
+      .wp-block-latest-posts__post-excerpt {
+        @include p();
+        &,
+        & > p {
+          @include wpPostsP();
+        }
+        font-size: #{get-font-size(excerpt_px)};
+        grid-area: excerpt !important;
+        color: #{getColor('text-mediumDark')};
+        position: relative;
+        margin: 0;
+      }
+      a {
+        @include h4;
+        grid-area: title;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.wp {
+  &-block {
+    .body.page.home > article > div &-latest-posts > li {
+      color: #{getColor('bg-blue')};
+      font-family: #{get-font-property('text', 'font-family')};
+      font-weight: #{get-font-property('text', 'font-weight')};
+    }
+  }
+}

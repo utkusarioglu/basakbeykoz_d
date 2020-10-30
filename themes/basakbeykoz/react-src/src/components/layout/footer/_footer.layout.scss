@@ -1,0 +1,52 @@
+@import '../../../styles/abstracts/_mixins';
+
+.Footer {
+  $creditsSize: 20vw;
+  $creditsMaxSize: 150px;
+  $footer_square-size_px: get-component-property(footer, square-size_px);
+
+  a {
+    text-decoration: none;
+  }
+
+  &-backdrop {
+    $react-app-uploads-dir: get-environment-variable('REACT_APP_UPLOADS_DIR');
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-height: #{$footer_square-size_px};
+    height: #{$creditsSize};
+    max-height: #{$creditsMaxSize};
+    background: url('#{$react-app-uploads-dir}/footer-art-bg.svg') no-repeat
+      bottom right;
+  }
+
+  &-elements {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: #{$footer_square-size_px};
+    height: #{$creditsSize};
+    max-height: #{$creditsMaxSize};
+
+    &-art {
+      display: block;
+      width: 100%;
+
+      &-fg {
+        max-height: 200px;
+        min-height: 50px;
+        height: calc(100vw / 4);
+        position: absolute;
+        width: 80vw;
+        max-width: calc(100vw - #{$footer_square-size_px});
+        min-width: calc(100vw - #{$creditsMaxSize});
+        bottom: 20px;
+      }
+    }
+  }
+}

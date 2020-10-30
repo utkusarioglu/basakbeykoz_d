@@ -1,0 +1,40 @@
+:root {
+  --brush-white: #fbfbfb;
+  --brush-lightGray: #e7e7e7f3;
+  --brush-gray: #859fa4;
+  --brush-darkGray: #34414b;
+  --brush-black: #34414b;
+  --brush-lightBlue: #adcbdd;
+  --brush-darkBlue: #324358;
+  --brush-lightYellow: #ffeec6;
+  --brush-darkYellow: #ffc05b;
+  --brush-lightGreen: #c6dfd7;
+
+  // https://codepen.io/sosuke/pen/Pjoqqp helped with these
+  $filterWhite: contrast(1) invert(96%) sepia(4%) saturate(282%)
+    hue-rotate(202deg) brightness(102%) contrast(95%);
+  --filter-white: #{$filterWhite};
+  --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%)
+    hue-rotate(164deg) brightness(98%) contrast(84%);
+  --filter-logo-white: brightness(0) #{$filterWhite};
+}
+
+$colorCategories: ('green', 'yellow', 'white', 'blue', 'black');
+@each $color in $colorCategories {
+  $bg-color: 'bg-' + $color;
+  $var-color: #{getColor($bg-color)};
+
+  .bg-#{$color} {
+    background-color: #{$var-color};
+  }
+
+  .#{$color} {
+    &-horizontal-border:before {
+      background: linear-gradient-frame($var-color, horizontal);
+    }
+
+    &-vertical-border:after {
+      background: linear-gradient-frame($var-color, vertical);
+    }
+  }
+}

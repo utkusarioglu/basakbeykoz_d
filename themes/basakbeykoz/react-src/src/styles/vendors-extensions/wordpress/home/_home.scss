@@ -1,0 +1,51 @@
+@import '../../../abstracts/_mixins';
+@import '../_wpPosts';
+
+/*
+  COMPONENT PROPERTIES
+*/
+$home__section_height_min_px: get-component-property(
+  'home',
+  'section-height_min_px'
+);
+$nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
+
+.Canvas.page.home > article {
+  $section_height_min_responsive: #{unquote(
+      'max(calc(100vh - #{get-gap(2)} - #{$nav__mobile_height_px}), #{$home__section_height_min_px})'
+    )};
+
+  padding: 0;
+
+  & > .wp-block-group {
+    box-sizing: border-box;
+    padding: #{get-gap()};
+    min-height: #{$section_height_min_responsive};
+    overflow: hidden;
+    position: relative;
+
+    @include breakpoint('w', 'XGAplus__') {
+      height: 100vh;
+    }
+
+    & > .wp-block-group__inner-container {
+      min-height: #{$section_height_min_responsive};
+      height: 100%;
+      display: grid;
+      box-sizing: border-box;
+      padding-bottom: #{get-component-property('nav', 'mobile-height_px')};
+
+      @include breakpoint('w', 'XGAplus__') {
+        padding-bottom: 0;
+      }
+
+      & > p {
+        margin-bottom: 0;
+      }
+
+      & > h2 + .wp-block-group {
+        grid-area: paragraph;
+      }
+    }
+  }
+}

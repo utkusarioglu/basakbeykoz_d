@@ -1,0 +1,124 @@
+@import '../../abstracts/_mixins';
+
+/// Styles for the contact form on the home page
+.Canvas.page.home
+  > article
+  > .wp-block-group:nth-child(6)
+  > .wp-block-group__inner-container
+  > .wpcf7 {
+  grid-area: feature;
+  display: grid;
+  grid-template-areas:
+    '.'
+    'wpcf7-form'
+    'screen-reader-response';
+  grid-template-rows: 1fr min-content 1fr;
+
+  & .screen-reader-response {
+    grid-area: screen-reader-response;
+  }
+
+  & .wpcf7-form {
+    grid-area: wpcf7-form;
+
+    & .ContactForm {
+      &-userInput {
+        display: grid;
+        grid-template-areas:
+          'contactform_left'
+          'contactform_right'
+          'contactform_submit';
+
+        @include breakpoint('w', 'SVGA__') {
+          grid-template-areas:
+            'contactform_left contactform_right'
+            'contactform_submit contactform_submit';
+          grid-template-columns: 1fr 1fr;
+          grid-column-gap: #{get-gap(2)};
+          grid-row-gap: #{get-gap()};
+        }
+
+        & br {
+          display: none;
+        }
+
+        &-submit {
+          grid-area: contactform_submit;
+
+          & .wpcf7-submit {
+            @include typography-button();
+
+            width: 100%;
+            padding: #{get-gap(1/2)};
+            border: none;
+            background-color: #{getColor('ui-yellow')};
+            color: #{getColor('text-dark')};
+            border-radius: #{get-gap(1/2)};
+
+            &:hover {
+              background-color: #{getColor('ui-darkBlue')};
+              color: #{getColor('text-light')};
+              cursor: pointer;
+            }
+          }
+        }
+
+        &-left {
+          grid-area: contactform_left;
+        }
+
+        &-right {
+          grid-area: contactform_right;
+          & > p:nth-child(2) {
+            margin-bottom: 0;
+          }
+          & > p:nth-child(3) {
+            height: 100%;
+            margin-bottom: 0;
+            label {
+              height: 100%;
+            }
+          }
+        }
+
+        &-left,
+        &-right {
+          & label {
+            @include p();
+
+            color: #{getColor('text-dark')};
+            display: block;
+            margin-bottom: #{get-gap(1/2)};
+
+            input,
+            textarea {
+              margin-top: #{get-gap(1/4)};
+            }
+          }
+
+          & .wpcf7-text,
+          & .wpcf7-textarea {
+            box-sizing: border-box;
+            border: none;
+            background-color: #{getColor('bg-white')};
+            width: 100%;
+            padding: #{get-gap(1/2)};
+            font-family: #{get-font-property('text', 'font-family')};
+            font-weight: #{get-font-property('text', 'font-weight')};
+            border-radius: #{get-gap(1/2)};
+
+            &:focus {
+              outline: none;
+              background-color: #{getColor('bg-yellow')};
+            }
+          }
+
+          & .wpcf7-textarea {
+            resize: none;
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}

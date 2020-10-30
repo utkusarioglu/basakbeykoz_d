@@ -1,9 +1,0 @@
-@import '../../styles/abstracts/_mixins';
-
-.Nav-item {
-  display: block;
-  font-family: #{get-font-property('text', 'font-family')};
-  font-weight: #{get-font-property('text', 'font-weight')};
-  text-decoration: none;
-  white-space: nowrap;
-}

@@ -1,0 +1,46 @@
+@import '../../../styles/abstracts/_mixins';
+
+.Posts {
+  grid-area: Posts;
+  &-wrapper {
+    grid-area: Posts-wrapper;
+    & > h4 {
+      text-align: center;
+      @include breakpoint('w', 'SVGA__') {
+        text-align: left;
+      }
+    }
+  }
+  li {
+    list-style: none;
+    margin-bottom: #{get-gap(2)};
+    padding: #{get-gap()};
+    border-radius: #{get-gap()};
+    position: relative;
+    &:hover {
+      background-color: #{getColor('bg-gray')};
+      & .Posts {
+        &-card {
+          &-excerpt {
+            @include breakpoint('w', 'SVGA__') {
+              &::after {
+                background: linear-gradient(
+                  180deg,
+                  transparent 0,
+                  #{getColor('bg-gray')} #{get-gap()}
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+  @include breakpoint('w', 'SVGA__') {
+    margin-left: #{get-gap(-1)};
+  }
+}

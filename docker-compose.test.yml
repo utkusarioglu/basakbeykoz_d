@@ -31,8 +31,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db:/var/lib/mysql
-      - ./backups/sql:/backups/sql
       - ./scripts/basakbeykoz_db:/scripts
+      - ./backups/sql:/backups/sql
 
 volumes:
   db:

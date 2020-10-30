@@ -1,0 +1,21 @@
+@import '../../../abstracts/_mixins';
+@import '../_wpPosts';
+
+/*
+  COMPONENT PROPERTIES
+*/
+$home__section_inner_padding_px: get-component-property(
+  'home',
+  'section_inner_padding_px'
+);
+
+/// Styles for the wp rendered home page content
+.Canvas.page.home > article > .wp-block-group:last-child {
+  & > .wp-block-group__inner-container {
+    padding-bottom: calc(#{$home__section_inner_padding_px} + 15vh);
+
+    @include breakpoint('w', 'SVGA__') {
+      padding-bottom: #{$home__section_inner_padding_px};
+    }
+  }
+}

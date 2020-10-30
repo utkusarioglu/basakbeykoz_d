@@ -1,0 +1,157 @@
+@import '../../../styles/abstracts/_mixins';
+
+nav {
+  display: flex;
+}
+
+.Nav-item {
+  display: block;
+  font-family: #{get-font-property('text', 'font-family')};
+  font-weight: #{get-font-property('text', 'font-weight')};
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.NavFixedView {
+  display: none;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  @include breakpoint('w', 'SVGA__') {
+    display: none;
+  }
+
+  @include breakpoint('w', 'XGAplus__') {
+    display: block;
+    right: 0;
+    width: auto;
+    left: auto;
+    top: 50vh;
+    height: min-content;
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+
+  &.open {
+    display: block;
+
+    @include breakpoint('w', 'SVGA__') {
+      display: none;
+    }
+
+    @include breakpoint('w', 'XGAplus__') {
+      display: block;
+    }
+  }
+
+  &-list {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #{getColor('bg-white')};
+
+    @include breakpoint('w', 'XGAplus__') {
+      position: relative;
+      margin-right: #{get-gap()};
+      background-color: transparent;
+    }
+  }
+
+  &-decor {
+    display: none;
+
+    @include breakpoint('w', 'XGAplus__') {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: #{get-gap()};
+      background-color: #{getColor('ui-yellow')};
+      border-top-left-radius: #{get-gap()};
+      border-bottom-left-radius: #{get-gap()};
+    }
+  }
+
+  &-mask {
+    position: fixed;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      transparent
+        calc(100vh - #{get-component-property('nav', 'mobile-height_px')})
+    );
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @include breakpoint('w', 'SVGA__') {
+      display: none;
+    }
+  }
+
+  & nav {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: #{get-component-property('nav', 'mobile-height_px')};
+    @include breakpoint('w', 'XGAplus__') {
+      justify-content: center;
+      padding: #{get-gap()} 0;
+      margin-bottom: 0;
+    }
+  }
+
+  & .Nav-item {
+    display: block;
+    padding: #{get-gap(1/2)} #{get-gap()};
+    position: relative;
+    color: #{getColor('text-dark')};
+    text-align: right;
+
+    @include breakpoint('w', 'XGAplus__') {
+      color: #{getColor('ui-blue')};
+      padding: #{get-gap(1/4)} #{get-gap(1/2)};
+      font-size: responsive-width(20, 26);
+    }
+
+    &-active {
+      color: #{getColor('ui-decoration')};
+
+      &:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: #{get-gap(1/2)};
+        background-color: #{getColor('ui-decoration')};
+        border-top-left-radius: #{get-gap(1/2)};
+        border-bottom-left-radius: #{get-gap(1/2)};
+
+        @include breakpoint('w', 'SVGA__') {
+          width: auto;
+          height: #{get-gap(1/4)};
+          top: auto;
+          right: #{get-gap(1/2)};
+          left: #{get-gap(1/2)};
+        }
+
+        @include breakpoint('w', 'XGAplus__') {
+          left: auto;
+          bottom: 0;
+          top: 0;
+          right: 0;
+          width: #{get-gap(1/4)};
+          border-top-left-radius: #{get-gap(1/4)};
+          border-bottom-left-radius: #{get-gap(1/4)};
+          height: auto;
+        }
+      }
+    }
+  }
+}

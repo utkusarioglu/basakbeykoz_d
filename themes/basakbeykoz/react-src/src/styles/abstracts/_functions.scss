@@ -1,0 +1,163 @@
+@import './_variables';
+
+/// Retrieves color value
+/// @param {string} $color-name - The name of the color
+/// @return {color} The color value
+/// @access public
+/// @group getters
+@function getColor($color-name) {
+  @return map-get($COLORS, $color-name);
+}
+
+/// Getter for font properties
+/// @param {string} $font-type - The type of font, values include text, header, hero
+/// @param {string} $property-name - The name of the property
+/// @return {any} The property value of the font
+/// @group getters
+/// @access public
+@function get-font-property($font-type, $property-name) {
+  @return map-get(map-get($FONT_TYPES, $font-type), $property-name);
+}
+
+/// Function to create a linear calc value that maps the min screen size with
+/// the min-value and the max screen size to the max value given.
+/// Note that this does not mean that the return of the function stays at min
+/// value before the min-screen is reached, nor does it mean that once the
+/// max size is reached the increase in size will cease. For these to happen,
+/// you will need to set a min-width, max-width property to the object that
+/// this function is used to set the widt.
+/// @access public
+/// @group helpers
+/// @access public
+@function responsive-width(
+  $min-value,
+  $max-value,
+  $min-screen: get-breakpoint('w', 'QVGA__'),
+  $max-screen: get-breakpoint('w', 'FHD__')
+) {
+  @return calc(
+    #{$min-value}px + (#{$max-value} - #{$min-value}) *
+      ((100vw - #{$min-screen * 1px}) / (#{$max-screen} - #{$min-screen}))
+  );
+}
+
+/// Returns the value for a breakpoint
+/// @param {string} $aspect - height or width. legal values: 'height', 'h', 'width', 'w'
+/// @param {string} $size - The predefined size key
+/// @return {number} Aspect breakpoint
+/// @group getters
+/// @access public
+@function get-breakpoint($aspect, $size) {
+  @if $aspect == width or $aspect == w {
+    $aspect: width;
+  } @else if $aspect == height or $aspect == h {
+    $aspect: height;
+  } @else {
+    @error 'Unrecognized aspect. You can only use height, h, width and w';
+  }
+  @return map-get(map-get($BREAKPOINTS, $aspect), $size);
+}
+
+/// Returns the propery of a component
+/// @param {string} $component-name - name of the component
+/// @param {string} $property-name - name of the property
+/// @return {any} the value of the property
+/// @group getters
+/// @access public
+@function get-component-property($component-name, $property-name) {
+  @return map-get(
+    map-get($COMPONENT_PROPERTIES, $component-name),
+    $property-name
+  );
+}
+
+/// Getter for typography information for a specific tag and property
+/// @param {string} $tag - Html tag
+/// @param {string} $property-name - The name of the property
+/// @return {any} The value for the tag and property
+@function get-typography($tag, $property-name) {
+  @return map-get(map-get($TYPOGRAPHY_PROPERTIES, $tag), $property-name);
+}
+
+/// Strips the unit attached to the value given
+/// @param {number} $number - The value with the unit
+/// @return {number} The value without the unit
+/// @access public
+/// @group helpers
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/// Converts pixel information to rem units
+/// @param {px} $value_px - Value in pixels
+/// @param {number} $scut-rem-base - base value to use for rem
+/// @return {rem} Px value converted to rem
+/// @access public
+/// @group helpers
+@function scut-rem($value_px, $scut-rem-base) {
+  @return strip-unit($value_px) / $scut-rem-base * 1rem;
+}
+
+/// Converts direction string to degree that makes sense to linear-gradient
+/// @param {string} $direction - Direction, valid values are horizontal, h, vertical, v
+/// @return {deg} Degree information
+/// @access public
+/// @group helpers
+@function to-degree($direction) {
+  @if $direction == horizontal or $direction == h {
+    @return 90deg;
+  } @else if $direction == vertical or $direction == v {
+    @return 0deg;
+  }
+}
+
+/// Creates one direction of the picture frames used in the app.
+/// You need two of these to create the cross-like image frames
+/// The reason for using linear gradient for these is that the images that these
+/// stylize are rendered by wordpress, which means that unless we change the
+/// render logic in wp, there is no way to define these with more conventional
+/// methods
+/// @param {color} $color - Color data for the frame
+/// @param {string} $direction - Horizontal, h, vertical or v. This value is converted to a degree by the to-degree method
+/// @return Linear gradient that is one of the dimensions of the frame
+/// @access public
+/// @group helpers
+@function linear-gradient-frame($color, $direction) {
+  $degree: to-degree($direction);
+  @return linear-gradient(
+    $degree,
+    $color #{get-gap(1/2)},
+    transparent #{get-gap(1/2)},
+    transparent calc(100% - #{get-gap(1/2)}),
+    $color calc(100% - #{get-gap(1/2)})
+  );
+}
+
+/// Returns the font size for the given font name
+/// @param {string} $font-name - name of the font
+/// @return {number | px | rem} Size of the font
+/// @access public
+/// @group getters
+@function get-font-size($font-name) {
+  @return map-get($FONT_SIZES, $font-name);
+}
+
+/// Getter for environment variables
+/// Note that for now the environment variables are not really coming from .env
+/// @param {string} $variable-key - Environment variable to get
+/// @return {any} Environment variable
+/// @access public
+/// @group getter
+@function get-environment-variable($variable-key) {
+  @return map-get($ENV, $variable-key);
+}
+
+/// Getter for the gap
+/// @param {number} $multiplier - multiplies the gap with a number before
+/// returning. It's useful for using fractions or multiples of the gap
+/// @return {px} gap
+/// @access public
+/// @group getter
+@function get-gap($multiplier: 1) {
+  @return $GAP_PX * $multiplier;
+}

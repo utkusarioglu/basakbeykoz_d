@@ -1,0 +1,31 @@
+@import '../../../styles/abstracts/_mixins';
+
+.BurgerMenu {
+  grid-area: nav;
+  display: flex;
+
+  &-burgerButton {
+    background-color: #{getColor('ui-white')};
+    color: #{getColor('text-dark')};
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: #{get-gap() +
+      get-component-property('social-item', 'default-size__')};
+    cursor: pointer;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    & > img {
+      @include icon-img();
+      filter: var(--filter-darkGray);
+    }
+  }
+
+  @include breakpoint('w', 'SVGA__') {
+    display: none;
+  }
+}

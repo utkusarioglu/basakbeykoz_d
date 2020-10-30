@@ -1,0 +1,25 @@
+.wp {
+  &-block {
+    &-pullquote {
+      $fringe_px: get-gap(1/2);
+      margin: 0 #{-$fringe_px} #{$fringe_px} #{-$fringe_px};
+      border-radius: #{$fringe_px};
+      overflow: hidden;
+      background-color: getColor('bg-gray');
+      & > blockquote {
+        display: grid;
+        grid-template-areas: 'paragraph' 'cite';
+        margin: #{$fringe_px};
+        & > p {
+          margin-bottom: #{$fringe_px};
+        }
+        & > cite {
+          grid-area: cite;
+          align-self: end;
+          width: 100%;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
