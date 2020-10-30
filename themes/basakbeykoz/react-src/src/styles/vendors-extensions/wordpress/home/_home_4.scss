@@ -28,7 +28,7 @@ $home__w_SVGA_spacing_px: get-component-property('home', 'w_SVGA_spacing_px');
         'h2 posts'
         'paragraph  posts'
         'paragraph  .    ';
-      grid-template-rows: #{$home__w_SVGA_spacing_px} 1fr 1fr #{$home__w_SVGA_spacing_px};
+      grid-template-rows: #{$home__w_SVGA_spacing_px} max-content auto #{$home__w_SVGA_spacing_px};
       grid-template-columns: 1fr 1fr;
       justify-content: center;
     }

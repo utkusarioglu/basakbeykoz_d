@@ -45,3 +45,7 @@ cite,
 li {
   @include p-basic();
 }
+
+ul {
+  padding-inline-start: #{get-gap(1/2)};
+}

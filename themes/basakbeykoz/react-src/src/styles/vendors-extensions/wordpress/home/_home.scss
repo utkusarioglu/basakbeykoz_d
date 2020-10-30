@@ -23,11 +23,6 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
     min-height: #{$section_height_min_responsive};
     overflow: hidden;
     position: relative;
-
-    @include breakpoint('w', 'XGAplus__') {
-      height: 100vh;
-    }
-
     & > .wp-block-group__inner-container {
       min-height: #{$section_height_min_responsive};
       height: 100%;

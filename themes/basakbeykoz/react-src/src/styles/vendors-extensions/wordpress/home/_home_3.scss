@@ -32,7 +32,7 @@ $home__section_inner_padding_px: get-component-property(
       padding-top: #{$home__section_inner_padding_px};
       padding-bottom: #{$home__section_inner_padding_px};
       grid-template-columns: 1fr 2fr;
-      grid-template-rows: max-content 200px;
+      grid-template-rows: max-content auto;
     }
 
     & > h2 {
@@ -55,3 +55,15 @@ $home__section_inner_padding_px: get-component-property(
     );
   }
 }
+
+// //! remove this
+// .Canvas.page.home > article > .wp-block-group {
+//   &:not(:nth-child(3)) {
+//     display: none;
+//   }
+//   &:nth-child(3) {
+//     & > .wp-block-group__inner-container {
+//       display: grid;
+//     }
+//   }
+// }

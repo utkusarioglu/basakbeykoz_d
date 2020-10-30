@@ -47,12 +47,17 @@ $home__not_first_child_max_padding_responsive_px: responsive-width(
       display: block;
       grid-area: image;
       height: 100%;
+      min-height: 60vw;
       width: 100%;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
       border-radius: #{get-gap(1/2)};
+
+      @include breakpoint('w', 'SVGA__') {
+        min-height: auto;
+      }
 
       @mixin frame-common {
         content: '';

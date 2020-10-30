@@ -31,7 +31,7 @@ $home__section_inner_padding_px: get-component-property(
       padding-top: #{$home__section_inner_padding_px};
       padding-bottom: #{$home__section_inner_padding_px};
       grid-template-columns: 2fr 1fr;
-      grid-template-rows: max-content 200px;
+      grid-template-rows: max-content auto;
     }
 
     @include breakpoint('w', 'XGAplus__') {
