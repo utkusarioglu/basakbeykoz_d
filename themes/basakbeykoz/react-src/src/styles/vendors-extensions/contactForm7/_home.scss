@@ -9,10 +9,10 @@
   grid-area: feature;
   display: grid;
   grid-template-areas:
-    '.'
     'wpcf7-form'
     'screen-reader-response';
-  grid-template-rows: 1fr min-content 1fr;
+  grid-template-rows: 1fr min-content;
+  align-self: center;
 
   & .screen-reader-response {
     grid-area: screen-reader-response;

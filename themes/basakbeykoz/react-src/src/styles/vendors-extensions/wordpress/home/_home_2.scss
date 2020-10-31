@@ -1,14 +1,6 @@
 @import '../../../abstracts/_mixins';
 @import '../_wpPosts';
 
-/*
-  COMPONENT PROPERTIES
-*/
-$home__section_inner_padding_px: get-component-property(
-  'home',
-  'section_inner_padding_px'
-);
-
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(2) {
   & > .wp-block-group__inner-container {
@@ -17,25 +9,13 @@ $home__section_inner_padding_px: get-component-property(
       'image'
       'paragraph';
     grid-template-rows: max-content auto min-content;
-    grid-row-gap: #{get-gap()};
-    padding-top: 20px;
-
-    @include breakpoint('h', 'HD__') {
-      grid-row-gap: #{get-gap(2)};
-    }
 
     @include breakpoint('w', 'SVGA__') {
       grid-template-areas:
         'h2 image'
         'paragraph image';
-      padding-top: #{$home__section_inner_padding_px};
-      padding-bottom: #{$home__section_inner_padding_px};
       grid-template-columns: 2fr 1fr;
       grid-template-rows: max-content auto;
-    }
-
-    @include breakpoint('w', 'XGAplus__') {
-      grid-row-gap: 5vw;
     }
 
     h2 {

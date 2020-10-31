@@ -4,7 +4,10 @@
 /*
   COMPONENT PROPERTIES
 */
-$home__w_SVGA_spacing_px: get-component-property('home', 'w_SVGA_spacing_px');
+$home__section_top_bottom_padding_px: get-component-property(
+  'home',
+  'section_top_bottom_padding_px'
+);
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(4) {
@@ -16,7 +19,6 @@ $home__w_SVGA_spacing_px: get-component-property('home', 'w_SVGA_spacing_px');
       'posts'
       'paragraph';
     grid-template-rows: #{get-typography(h2, lineHeight)} auto max-content;
-    grid-row-gap: #{get-gap(1/2)};
 
     @include breakpoint('h', 'HD__') {
       grid-row-gap: #{get-gap()};
@@ -24,11 +26,10 @@ $home__w_SVGA_spacing_px: get-component-property('home', 'w_SVGA_spacing_px');
 
     @include breakpoint('w', 'SVGA__') {
       grid-template-areas:
-        'h2 .    '
-        'h2 posts'
+        'h2         posts'
         'paragraph  posts'
-        'paragraph  .    ';
-      grid-template-rows: #{$home__w_SVGA_spacing_px} max-content auto #{$home__w_SVGA_spacing_px};
+        'paragraph  posts';
+      grid-template-rows: max-content auto #{$home__section_top_bottom_padding_px};
       grid-template-columns: 1fr 1fr;
       justify-content: center;
     }
@@ -43,8 +44,10 @@ $home__w_SVGA_spacing_px: get-component-property('home', 'w_SVGA_spacing_px');
     & > .wp-block-latest-posts {
       margin-left: #{get-gap(-1)} !important;
       width: 100vw;
+      height: 330px;
 
       @include breakpoint('w', 'SVGA__') {
+        height: 100%;
         width: 100%;
         max-width: 100%;
         min-width: 100%;

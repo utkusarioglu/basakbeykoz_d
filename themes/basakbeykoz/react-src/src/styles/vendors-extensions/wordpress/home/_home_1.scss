@@ -72,73 +72,74 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
           z-index: 91;
         }
       }
-    }
 
-    figure {
-      margin: 0;
-      grid-area: logo;
-      width: 100%;
-      height: 100%;
-      justify-items: center;
-      align-items: center;
-      display: grid;
-
-      @include breakpoint('w', 'SVGA__') {
-        justify-self: start;
-        justify-content: start;
-      }
-
-      & > img {
-        width: auto;
-        min-width: 100px;
-        max-width: 100%;
-        height: 100%;
-        max-height: 50px;
-        object-fit: scale-down;
-      }
-    }
-
-    h1 {
-      @include typography-hero();
-
-      margin-left: #{get-gap(-1/2)};
-      margin-right: #{get-gap(-1/2)};
-      align-self: end;
-      justify-self: center;
-      color: #{getColor('text-mediumDark')};
-
-      @include breakpoint('w', 'SVGA__') {
-        justify-self: start;
-        margin-left: 0;
-        margin-right: 0;
-      }
-    }
-
-    .wp-block-buttons {
-      display: none;
-      grid-area: buttons;
-      width: 100%;
-      margin-right: #{get-gap(1/2)};
-      margin-left: #{get-gap(-1/2)};
-
-      .wp-block-button {
-        @include typography-button();
-
-        background-color: #{getColor('ui-yellow')};
-        color: #{getColor('text-dark')};
-        padding: #{get-gap(1/2)};
-        border-radius: #{get-gap(1/2)};
+      figure {
+        margin: 0;
+        grid-area: logo;
         width: 100%;
+        height: 100%;
+        justify-items: center;
+        align-items: center;
+        display: grid;
 
-        &:hover {
-          background-color: #{getColor('ui-darkBlue')};
-          color: #{getColor('text-light')};
-          cursor: pointer;
+        @include breakpoint('w', 'SVGA__') {
+          justify-self: start;
+          justify-content: start;
+        }
+
+        & > img {
+          width: auto;
+          min-width: 100px;
+          max-width: 100%;
+          height: 50px;
+          object-fit: scale-down;
         }
       }
 
-      @include breakpoint('w', 'SVGA__') {
-        display: block;
+      h1 {
+        @include typography-hero();
+
+        margin-left: #{get-gap(-1/2)};
+        margin-right: #{get-gap(-1/2)};
+        align-self: end;
+        justify-self: center;
+        color: #{getColor('text-mediumDark')};
+
+        @include breakpoint('w', 'SVGA__') {
+          justify-self: start;
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+
+      .wp-block-buttons {
+        display: none;
+        grid-area: buttons;
+        width: 100%;
+
+        .wp-block-button {
+          @include typography-button();
+
+          background-color: #{getColor('ui-yellow')};
+          color: #{getColor('text-dark')};
+          padding: #{get-gap(1/2)};
+          border-radius: #{get-gap(1/2)};
+          width: 100%;
+          max-width: 250px;
+
+          &:hover {
+            background-color: #{getColor('ui-darkBlue')};
+            cursor: pointer;
+
+            & .wp-block-button__link {
+              color: #{getColor('text-light')};
+            }
+          }
+        }
+
+        @include breakpoint('w', 'SVGA__') {
+          display: block;
+        }
       }
     }
   }

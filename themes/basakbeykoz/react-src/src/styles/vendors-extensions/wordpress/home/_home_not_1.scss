@@ -14,16 +14,23 @@ $home__not_first_child_max_padding_responsive_px: responsive-width(
   $home__not_first_child_max_padding__,
   $w__XGAplus__
 );
+$home__section_top_bottom_padding_px: get-component-property(
+  'home',
+  'section_top_bottom_padding_px'
+);
 
 .Canvas.page.home > article > .wp-block-group:not(:first-child) {
   & > .wp-block-group__inner-container {
+    grid-row-gap: #{get-gap()};
     @include breakpoint('w', 'SVGA__') {
       align-content: center;
-      grid-row-gap: #{get-gap()};
-      grid-column-gap: #{get-gap(2)};
+      grid-column-gap: 5vw;
+      padding-top: #{$home__section_top_bottom_padding_px};
+      padding-bottom: #{$home__section_top_bottom_padding_px};
     }
 
     @include breakpoint('w', 'XGAplus__') {
+      grid-row-gap: 5vh;
       grid-column-gap: #{responsive-width(
           get-gap(2/1px),
           100,

@@ -4,9 +4,9 @@
 /*
   COMPONENT PROPERTIES
 */
-$home__section_inner_padding_px: get-component-property(
+$home__section_top_bottom_padding_px: get-component-property(
   'home',
-  'section_inner_padding_px'
+  'section_top_bottom_padding_px'
 );
 
 /// Styles for the wp rendered home page content
@@ -18,19 +18,12 @@ $home__section_inner_padding_px: get-component-property(
       'paragraph'
       'restart';
     grid-template-rows: max-content auto min-content min-content;
-    grid-row-gap: #{get-gap()};
-
-    @include breakpoint('h', 'HD__') {
-      grid-row-gap: #{get-gap(1.5)};
-    }
 
     @include breakpoint('w', 'SVGA__') {
       grid-template-areas:
         'image h2'
         'image paragraph'
         'image restart';
-      padding-top: #{$home__section_inner_padding_px};
-      padding-bottom: #{$home__section_inner_padding_px};
       grid-template-columns: 1fr 2fr;
       grid-template-rows: max-content auto;
     }
@@ -51,19 +44,7 @@ $home__section_inner_padding_px: get-component-property(
       $width,
       $height,
       get-component-property('nav', 'mobile-height_px'),
-      #{$home__section_inner_padding_px}
+      #{$home__section_top_bottom_padding_px}
     );
   }
 }
-
-// //! remove this
-// .Canvas.page.home > article > .wp-block-group {
-//   &:not(:nth-child(3)) {
-//     display: none;
-//   }
-//   &:nth-child(3) {
-//     & > .wp-block-group__inner-container {
-//       display: grid;
-//     }
-//   }
-// }

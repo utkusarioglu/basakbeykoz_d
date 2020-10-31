@@ -67,7 +67,6 @@
     grid-area: Article;
     padding-top: var(--gap);
     padding-right: var(--gap);
-    padding-bottom: 300px;
     padding-left: var(--gap);
 
     @include breakpoint('w', 'SVGA__') {
@@ -86,7 +85,7 @@
   &.page {
     /// This section overrides some of the defaults of canvas for wordpress homepage
     &.home {
-      padding-bottom: 0;
+      // padding-bottom: 0;
       @include breakpoint('w', 'SVGA__') {
         display: block;
         .Canvas-articleTitle {

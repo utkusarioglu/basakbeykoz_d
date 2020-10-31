@@ -115,6 +115,9 @@ $BREAKPOINTS: (
 $COMPONENT_PROPERTIES: (
   'footer': (
     'square-size_px': 105px,
+    'fg-height_max_px': 150px,
+    'fg-height_min_px': 50px,
+    'fg-bottom_px': 20px,
   ),
   'logo-n-social': (
     'y_px': 80px,
@@ -136,9 +139,8 @@ $COMPONENT_PROPERTIES: (
     'welcome-image_x_vw': 45vw,
     'posts_y_px': 150px,
     'section-height_min_px': 600px,
-    'section_inner_padding_px': 100px,
+    'section_top_bottom_padding_px': 150px,
     'not_first_child_max_padding__': 350,
-    'w_SVGA_spacing_px': 100px,
   ),
 );
 

@@ -4,9 +4,9 @@
 /*
   COMPONENT PROPERTIES
 */
-$home__section_inner_padding_px: get-component-property(
+$home__section_top_bottom_padding_px: get-component-property(
   'home',
-  'section_inner_padding_px'
+  'section_top_bottom_padding_px'
 );
 $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
 
@@ -18,7 +18,6 @@ $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
     grid-template-areas:
       'h2'
       'posts';
-    grid-row-gap: #{get-gap(1/2)};
     grid-template-rows: max-content 1fr;
     align-content: stretch;
 
@@ -28,11 +27,15 @@ $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
 
     @include breakpoint('w', 'SVGA__') {
       $logo-n-social_y: get-component-property('logo-n-social', 'y_px');
-      grid-template-rows: #{logo_n_social__y_px} 1fr #{$home__section_inner_padding_px};
+
+      grid-template-rows: #{$logo_n_social__y_px} 1fr;
+      padding-bottom: #{$home__section_top_bottom_padding_px};
+      padding-top: 0;
     }
 
     h2 {
       align-self: center;
+      width: inherit;
     }
 
     & > .wp-block-latest-posts {

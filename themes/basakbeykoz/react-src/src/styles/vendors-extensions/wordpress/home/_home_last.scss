@@ -4,18 +4,34 @@
 /*
   COMPONENT PROPERTIES
 */
-$home__section_inner_padding_px: get-component-property(
+$home__section_top_bottom_padding_px: get-component-property(
   'home',
-  'section_inner_padding_px'
+  'section_top_bottom_padding_px'
 );
+$home__section_height_min_px: get-component-property(
+  'home',
+  'section-height_min_px'
+);
+$nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
+$footer__fg-height_max_px: get-component-property('footer', 'fg-height_max_px');
+$footer__fg-bottom_px: get-component-property('footer', 'fg-bottom_px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:last-child {
+  $footer_clearance_px: $footer__fg-height_max_px + $footer__fg-bottom_px;
+  $min-height-with-footer_px: $home__section_height_min_px +
+    $footer_clearance_px;
+  $footer-clearance-with-header: $footer_clearance_px - $nav__mobile_height_px;
+  $section_height_min_responsive: #{unquote(
+      'max(calc(100vh + #{$footer-clearance-with-header}), #{$min-height-with-footer_px})'
+    )};
+  min-height: #{$section_height_min_responsive};
+
   & > .wp-block-group__inner-container {
-    padding-bottom: calc(#{$home__section_inner_padding_px} + 15vh);
+    padding-bottom: #{$footer-clearance-with-header};
 
     @include breakpoint('w', 'SVGA__') {
-      padding-bottom: #{$home__section_inner_padding_px};
+      padding-bottom: #{$home__section_top_bottom_padding_px};
     }
   }
 }

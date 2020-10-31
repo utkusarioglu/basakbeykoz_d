@@ -4,16 +4,12 @@
 /*
   COMPONENT PROPERTIES
 */
-// $home__section_height_min_px: get-component-property(
-//   'home',
-//   'section-height_min_px'
-// );
-// $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
+$logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(6) {
   & > .wp-block-group__inner-container {
-    grid-template-rows: min-content min-content min-content;
+    grid-template-rows: #{$logo_n_social__y_px} 1fr;
     grid-template-areas:
       'h2'
       'feature'
@@ -27,6 +23,7 @@
     @include breakpoint('w', 'SVGA__') {
       $logo-n-social_y: get-component-property('logo-n-social', y_px);
       grid-template-rows: #{$logo-n-social_y} 1fr;
+      padding-top: 0;
     }
 
     & > h2 {
