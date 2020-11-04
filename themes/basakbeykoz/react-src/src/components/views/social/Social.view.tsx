@@ -11,9 +11,10 @@ interface Props {
 function SocialView({ socialItems, setIsMenuOpen }: Props) {
   return (
     <div {...{ className: 'Social-list' }}>
-      {socialItems.map((item) => (
-        <SocialItemView {...{ key: item.title, ...item, setIsMenuOpen }} />
-      ))}
+      {socialItems &&
+        socialItems.map((item) => (
+          <SocialItemView {...{ key: item.title, ...item, setIsMenuOpen }} />
+        ))}
     </div>
   );
 }

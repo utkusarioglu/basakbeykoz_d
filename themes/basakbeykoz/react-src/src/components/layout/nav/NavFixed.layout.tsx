@@ -4,6 +4,8 @@ import { connect, ConnectedProps } from 'react-redux';
 import { setIsMenuOpen } from '../../features/app/appActions';
 import { RootState } from '../../../store/rootReducer';
 import './_navFixed.layout.scss';
+import SocialFeature from '../../features/social/Social.feature';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const mapState = (state: RootState) => ({
   isMenuOpen: state.app.isMenuOpen,
@@ -31,7 +33,20 @@ function NavFixedLayout({ setIsMenuOpen, isMenuOpen }: Props) {
       <div {...{ className: 'NavFixedView-mask' }} />
       <div {...{ className: 'NavFixedView-decor' }} />
       <div {...{ className: 'NavFixedView-list' }}>
-        <NavFeature />
+        <OverlayScrollbarsComponent
+          {...{
+            className: 'NavFixedView-list-scrollable',
+            options: {
+              paddingAbsolute: true,
+              // scrollbars: {
+              //   autoHide: 'leave',
+              // },
+            },
+          }}
+        >
+          <NavFeature />
+        </OverlayScrollbarsComponent>
+        <SocialFeature />
       </div>
     </div>
   );

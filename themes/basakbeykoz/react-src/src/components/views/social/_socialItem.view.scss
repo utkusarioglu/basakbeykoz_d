@@ -1,19 +1,22 @@
 @import '../../../styles/abstracts/_mixins';
 
-.Social {
-  &-item {
-    @include icon-img();
-    filter: var(--filter-darkGray);
-  }
-  a {
+.Social-list {
+  & > a {
+    display: block;
     height: #{get-gap() +
       get-component-property('social-item', 'default-size__')};
+
     @include breakpoint('w', 'XGAplus__') {
       min-height: #{get-gap() +
         get-component-property('social-item', 'w-XGAplus_min__')};
       height: calc(#{get-gap()} + #{$social-icon_XGAplus_responsive_px});
       max-height: #{get-gap() +
         get-component-property('social-item', 'w-XGAplus_max__')};
+    }
+
+    & > .Social-item {
+      @include icon-img();
+      filter: var(--filter-darkGray);
     }
   }
 }

@@ -1,7 +1,6 @@
 @import '../../../styles/abstracts/_mixins';
 
-.Social {
-  // $logo-n-social_y: get-component-property('logo-n-social', y_px);
-  // align-items: center;
-  // grid-column-gap: calc(var(--gap) / 2);
+.Social-list {
+  display: flex;
+  flex-direction: row;
 }
