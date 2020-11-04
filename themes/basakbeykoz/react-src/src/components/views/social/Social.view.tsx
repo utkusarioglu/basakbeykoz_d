@@ -9,15 +9,11 @@ interface Props {
 }
 
 function SocialView({ socialItems, setIsMenuOpen }: Props) {
-  console.log(socialItems);
   return (
-    <div {...{ className: 'Social' }}>
-      <div {...{ className: 'Social-list' }}>
-        {socialItems.map((item) => (
-          <SocialItemView {...{ key: item.title, ...item, setIsMenuOpen }} />
-        ))}
-      </div>
-      <div {...{ className: 'Social-decor' }} />
+    <div {...{ className: 'Social-list' }}>
+      {socialItems.map((item) => (
+        <SocialItemView {...{ key: item.title, ...item, setIsMenuOpen }} />
+      ))}
     </div>
   );
 }

@@ -7,10 +7,10 @@ import AppRoutesFeature from '../../features/app/AppRoutes.feature';
 import FooterLayout from '../../layout/footer/Footer.layout';
 import HeaderLayout from '../header/Header.layout';
 import LogoFeature from '../../features/logo/Logo.feature';
-import SocialFeature from '../../features/social/Social.feature';
 import NavFixedLayout from '../nav/NavFixed.layout';
 
 import './_app.layout.scss';
+import SocialLayout from '../social/Social.layout';
 
 interface OwnProps {
   refs: RootState['app']['refs'];
@@ -26,7 +26,7 @@ function AppLayout({ refs }: Props) {
       <HeaderLayout />
       <div {...{ className: 'App-wideScreenControls' }}>
         <LogoFeature {...{ withTitle: false }} />
-        <SocialFeature />
+        <SocialLayout />
       </div>
       <OverlayScrollbarsComponent
         {...{

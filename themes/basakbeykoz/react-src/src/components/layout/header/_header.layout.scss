@@ -8,6 +8,7 @@
   left: 0;
   height: #{get-component-property('nav', 'mobile-height_px')};
   pointer-events: none;
+
   &-bottomWrap {
     position: absolute;
     display: grid;
@@ -22,6 +23,21 @@
     width: 100vw;
     height: #{get-component-property('nav', 'mobile-height_px')};
     pointer-events: initial;
+
+    & .Social-list {
+      display: none;
+      flex-direction: row;
+      grid-area: social;
+      justify-items: right;
+      padding-left: 0;
+      height: #{get-gap() +
+        get-component-property('social-item', 'default-size__')};
+      overflow: hidden;
+
+      @include breakpoint('w', 'QVGA__') {
+        display: flex;
+      }
+    }
 
     @include breakpoint('w', 'SVGA__') {
       grid-template-areas: 'nav social';
