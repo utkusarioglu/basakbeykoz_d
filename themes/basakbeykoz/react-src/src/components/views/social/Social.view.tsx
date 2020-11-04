@@ -13,7 +13,13 @@ function SocialView({ socialItems, setIsMenuOpen }: Props) {
     <div {...{ className: 'Social-list' }}>
       {socialItems &&
         socialItems.map((item) => (
-          <SocialItemView {...{ key: item.title, ...item, setIsMenuOpen }} />
+          <SocialItemView
+            {...{
+              key: item.title,
+              setIsMenuOpen,
+              ...item,
+            }}
+          />
         ))}
     </div>
   );
