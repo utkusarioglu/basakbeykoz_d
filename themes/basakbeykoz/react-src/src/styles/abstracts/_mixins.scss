@@ -53,6 +53,28 @@
   }
 }
 
+/// Helper function for building the responsive font-size
+/// @param {string} - tag (ex: h1)
+/// @access public
+/// @group helpers
+@function get-typography-responsive-font-size($tag) {
+  @return responsive-width(
+    get-typography($tag, 'font-size_min__'),
+    get-typography($tag, 'font-size_max__')
+  );
+}
+
+/// Helper function for building the responsive line-height
+/// @param {string} - tag (ex: h1)
+/// @access public
+/// @group helpers
+@function get-typography-responsive-line-height($tag) {
+  @return responsive-width(
+    get-typography($tag, 'line-height_min__'),
+    get-typography($tag, 'line-height_max__')
+  );
+}
+
 /// Helper function for creating mixins from heading tags such as h1, h2
 /// @param {string} $tag - the html tag
 /// @access private
@@ -63,14 +85,8 @@
   grid-area: #{$tag};
   color: #{getColor('text-mediumDark')};
   margin: 0;
-  font-size: #{responsive-width(
-      get-typography($tag, font-size_min__),
-      get-typography($tag, font-size_max__)
-    )};
-  line-height: #{responsive-width(
-      get-typography($tag, line-height_min__),
-      get-typography($tag, line-height_max__)
-    )};
+  font-size: #{get-typography-responsive-font-size($tag)};
+  line-height: #{get-typography-responsive-line-height($tag)};
   font-family: #{get-font-property($font-type, 'font-family')};
   font-weight: #{get-font-property($font-type, 'font-weight')};
 }
