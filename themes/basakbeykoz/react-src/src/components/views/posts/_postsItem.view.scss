@@ -35,6 +35,7 @@ $CARD_HEIGHT: 250px;
       grid-area: excerpt;
       overflow: hidden;
       position: relative;
+
       @include breakpoint('w', 'SVGA__') {
         &::after {
           content: '';
@@ -56,21 +57,25 @@ $CARD_HEIGHT: 250px;
     }
 
     &-thumbnail {
+      $img-SVGA-width-vw: 10vw;
+
       grid-area: image;
       border-radius: #{get-gap(1)};
       display: grid;
       justify-content: center;
       overflow: hidden;
+
       @include breakpoint('w', 'SVGA__') {
         height: #{$CARD_HEIGHT};
-        width: 10vw;
+        width: #{$img-SVGA-width-vw};
       }
+
       & > img {
         width: calc(100vw - #{get-gap(4)});
         height: auto;
 
         @include breakpoint('w', 'SVGA__') {
-          width: auto;
+          width: #{$img-SVGA-width-vw};
           height: 100%;
           object-fit: cover;
         }
