@@ -39,6 +39,16 @@ class RestApi {
   request<T>(requestParams: AxiosRequestConfig) {
     return this.axiosInstance.request<T>(requestParams);
   }
+
+  /**
+   * Wraps the post method of axios
+   * @param url - url that is going to be concatenated to the rest endpoint url
+   * @param formData - The data that is intended to be sent
+   * @param options - Axios request options
+   */
+  post<T>(url: string, formData: any, options: AxiosRequestConfig) {
+    return this.axiosInstance.post<T>(url, formData, options);
+  }
 }
 
 export default new RestApi();
