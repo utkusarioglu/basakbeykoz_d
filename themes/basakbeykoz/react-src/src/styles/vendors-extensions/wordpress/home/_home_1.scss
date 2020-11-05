@@ -125,7 +125,7 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
           padding: #{get-gap()};
           border-radius: #{get-gap()};
           width: 100%;
-          max-width: 250px;
+          max-width: 265px;
 
           &:hover {
             background-color: #{getColor('ui-darkBlue')};
