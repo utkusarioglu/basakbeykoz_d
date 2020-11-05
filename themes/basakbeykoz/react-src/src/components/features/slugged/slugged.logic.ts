@@ -5,6 +5,7 @@ import {
 } from '../wordpress/@types-wordpress';
 import { homeInjection } from './injections/home.injection';
 import config from '../../../config';
+import { contactPageInjection } from './injections/contact.injection';
 
 const { HOME_SLUG } = config;
 
@@ -28,6 +29,9 @@ export function getSlugOnload(
   switch (slug) {
     case HOME_SLUG:
       return () => process.nextTick(() => homeInjection(refs));
+
+    case 'iletisim':
+      return () => process.nextTick(contactPageInjection);
 
     default:
       return () => null;
