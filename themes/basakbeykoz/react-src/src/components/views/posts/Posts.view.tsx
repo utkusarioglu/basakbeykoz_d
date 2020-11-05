@@ -6,16 +6,23 @@ import './_posts.view.scss';
 interface OwnProps {
   PostsItems: TimestampedSingular[];
   locale: string;
+  itemOnClick: () => void;
 }
 
 type Props = OwnProps;
 
-function PostsView({ PostsItems, locale }: Props) {
+function PostsView({ PostsItems, locale, itemOnClick }: Props) {
   const posts = PostsItems.map((single) => {
     if (single.data.state === 'success') {
       return (
         <li {...{ key: single.data.slug }}>
-          <PostsItemView {...{ ...single.data, locale }} />
+          <PostsItemView
+            {...{
+              ...single.data,
+              locale,
+              onClick: itemOnClick,
+            }}
+          />
         </li>
       );
     } else {
