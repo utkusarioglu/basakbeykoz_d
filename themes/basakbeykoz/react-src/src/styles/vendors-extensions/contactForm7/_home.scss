@@ -54,6 +54,7 @@
             background-color: #{getColor('ui-yellow')};
             color: #{getColor('text-dark')};
             border-radius: #{get-gap(1)};
+            outline: none;
 
             &:hover {
               background-color: #{getColor('ui-darkBlue')};
