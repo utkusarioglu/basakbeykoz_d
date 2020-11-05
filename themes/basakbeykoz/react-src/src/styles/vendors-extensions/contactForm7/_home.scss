@@ -34,8 +34,8 @@
             'contactform_left contactform_right'
             'contactform_submit contactform_submit';
           grid-template-columns: 1fr 1fr;
-          grid-column-gap: #{get-gap(2)};
-          grid-row-gap: #{get-gap()};
+          grid-column-gap: #{get-gap(4)};
+          grid-row-gap: #{get-gap(2)};
         }
 
         & br {
@@ -49,11 +49,11 @@
             @include typography-button();
 
             width: 100%;
-            padding: #{get-gap(1/2)};
+            padding: #{get-gap(1)};
             border: none;
             background-color: #{getColor('ui-yellow')};
             color: #{getColor('text-dark')};
-            border-radius: #{get-gap(1/2)};
+            border-radius: #{get-gap(1)};
 
             &:hover {
               background-color: #{getColor('ui-darkBlue')};
@@ -88,11 +88,11 @@
 
             color: #{getColor('text-dark')};
             display: block;
-            margin-bottom: #{get-gap(1/2)};
+            margin-bottom: #{get-gap()};
 
             input,
             textarea {
-              margin-top: #{get-gap(1/4)};
+              margin-top: #{get-gap(1/2)};
             }
           }
 
@@ -102,10 +102,10 @@
             border: none;
             background-color: #{getColor('bg-white')};
             width: 100%;
-            padding: #{get-gap(1/2)};
+            padding: #{get-gap()};
             font-family: #{get-font-property('text', 'font-family')};
             font-weight: #{get-font-property('text', 'font-weight')};
-            border-radius: #{get-gap(1/2)};
+            border-radius: #{get-gap()};
 
             &:focus {
               outline: none;

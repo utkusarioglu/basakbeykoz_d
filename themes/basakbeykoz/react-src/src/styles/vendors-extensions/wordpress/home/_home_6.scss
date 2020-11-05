@@ -14,10 +14,10 @@ $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
       'h2'
       'feature'
       'paragraph';
-    grid-row-gap: #{get-gap()};
+    grid-row-gap: #{get-gap(2)};
 
     @include breakpoint('h', 'HD__') {
-      grid-row-gap: #{get-gap()};
+      grid-row-gap: #{get-gap(2)};
     }
 
     @include breakpoint('w', 'SVGA__') {

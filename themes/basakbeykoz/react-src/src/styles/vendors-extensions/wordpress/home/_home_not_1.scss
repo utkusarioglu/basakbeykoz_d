@@ -21,7 +21,7 @@ $home__section_top_bottom_padding_px: get-component-property(
 
 .Canvas.page.home > article > .wp-block-group:not(:first-child) {
   & > .wp-block-group__inner-container {
-    grid-row-gap: #{get-gap()};
+    grid-row-gap: #{get-gap(2)};
     @include breakpoint('w', 'SVGA__') {
       align-content: center;
       grid-column-gap: 5vw;
@@ -32,7 +32,7 @@ $home__section_top_bottom_padding_px: get-component-property(
     @include breakpoint('w', 'XGAplus__') {
       grid-row-gap: 5vh;
       grid-column-gap: #{responsive-width(
-          get-gap(2/1px),
+          get-gap(4/1px),
           100,
           $w__XGAplus__,
           1920
@@ -46,10 +46,10 @@ $home__section_top_bottom_padding_px: get-component-property(
     }
 
     .wp-block-cover {
-      $narrow_frame: calc(100% - #{get-gap()});
-      $wide_frame: calc(100% + #{get-gap()});
-      $extrude: #{get-gap(-1/2)};
-      $bevel: #{get-gap(1/2)};
+      $narrow_frame: calc(100% - #{get-gap(2)});
+      $wide_frame: calc(100% + #{get-gap(2)});
+      $extrude: #{get-gap(-1)};
+      $bevel: #{get-gap()};
 
       display: block;
       grid-area: image;
@@ -60,7 +60,7 @@ $home__section_top_bottom_padding_px: get-component-property(
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
-      border-radius: #{get-gap(1/2)};
+      border-radius: #{get-gap()};
 
       @include breakpoint('w', 'SVGA__') {
         min-height: auto;
@@ -77,7 +77,7 @@ $home__section_top_bottom_padding_px: get-component-property(
         height: $narrow_frame;
         top: $bevel;
         left: $extrude;
-        border-radius: #{get-gap(1/2)};
+        border-radius: #{get-gap()};
       }
 
       &:after {
@@ -86,7 +86,7 @@ $home__section_top_bottom_padding_px: get-component-property(
         height: $wide_frame;
         top: $extrude;
         left: $bevel;
-        border-radius: #{get-gap(1/2)};
+        border-radius: #{get-gap()};
       }
     }
   }

@@ -20,11 +20,11 @@
     height: 100%;
     overflow: hidden;
     $homePostsNarrowY: get-component-property(home, 'posts_y_px');
-    $liDistance: get-gap();
+    $liDistance: get-gap(2);
     $liMaxWidth: 350px;
     $liMinWidth: 260px;
     @include breakpoint('w', 'SVGA__') {
-      border-radius: #{get-gap(1/2)};
+      border-radius: #{get-gap()};
     }
     &,
     .os-content {
@@ -41,14 +41,14 @@
       background-color: $cardColor;
       margin-left: #{$liDistance};
       display: grid;
-      grid-row-gap: #{get-gap(1/2)};
+      grid-row-gap: #{get-gap()};
       position: relative;
       width: 50vw;
       max-width: #{$liMaxWidth};
-      border-radius: #{get-gap(1/2)};
-      padding: #{get-gap(1/2)};
+      border-radius: #{get-gap()};
+      padding: #{get-gap()};
       overflow: hidden;
-      height: calc(100% - #{get-gap()});
+      height: calc(100% - #{get-gap(2)});
       cursor: pointer;
       @if $type == posts {
         grid-template-areas:
@@ -70,8 +70,8 @@
         z-index: 10;
         bottom: 0;
         width: 100%;
-        height: #{get-gap(3/2)};
-        background: linear-gradient(transparent 0, #{$cardColor} #{get-gap()});
+        height: #{get-gap(3)};
+        background: linear-gradient(transparent 0, #{$cardColor} #{get-gap(2)});
       }
       @include breakpoint('w', 'SVGA__') {
         @if $gridFlow == row {
@@ -82,13 +82,13 @@
               'image excerpt';
             grid-template-rows: min-content min-content auto;
             grid-template-columns: #{$homePostsNarrowY} auto;
-            grid-column-gap: #{get-gap(1/2)};
+            grid-column-gap: #{get-gap()};
             grid-row-gap: 5px;
             width: 100%;
-            max-width: calc(100% - #{get-gap()});
-            height: calc(#{$homePostsNarrowY} + #{get-gap()});
+            max-width: calc(100% - #{get-gap(2)});
+            height: calc(#{$homePostsNarrowY} + #{get-gap(2)});
             margin-left: 0;
-            margin-bottom: #{get-gap()};
+            margin-bottom: #{get-gap(2)};
           }
         } @else if $gridFlow == column {
           max-width: 250px;
@@ -110,10 +110,10 @@
         overflow: hidden;
         display: flex;
         justify-content: center;
-        border-radius: #{get-gap(1/3)};
+        border-radius: #{get-gap(2/3)};
         @include breakpoint('w', 'SVGA__') {
           @if $gridFlow == row {
-            height: calc(#{$homePostsNarrowY} + #{get-gap()});
+            height: calc(#{$homePostsNarrowY} + #{get-gap(2)});
           }
         }
         & > img {

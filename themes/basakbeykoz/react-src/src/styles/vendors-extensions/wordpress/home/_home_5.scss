@@ -22,7 +22,7 @@ $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
     align-content: stretch;
 
     @include breakpoint('h', 'HD__') {
-      grid-row-gap: #{get-gap()};
+      grid-row-gap: #{get-gap(2)};
     }
 
     @include breakpoint('w', 'SVGA__') {
@@ -39,7 +39,7 @@ $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
     }
 
     & > .wp-block-latest-posts {
-      margin-left: #{get-gap(-1)} !important;
+      margin-left: #{get-gap(-2)} !important;
       width: 100vw;
 
       @include breakpoint('w', 'SVGA__') {

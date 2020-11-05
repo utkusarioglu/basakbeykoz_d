@@ -1,5 +1,5 @@
 :root {
-  --gap: #{get-gap()};
+  --gap: #{get-gap(2)};
   --text-font: 'Work Sans', sans-serif;
   --text-font-weight: 400;
   --title-font: 'Montserrat', sans-serif;
@@ -47,5 +47,5 @@ li {
 }
 
 ul {
-  padding-inline-start: #{get-gap(1/2)};
+  padding-inline-start: #{get-gap()};
 }

@@ -9,9 +9,9 @@
   &-button {
     display: flex;
     align-items: center;
-    margin-left: #{get-gap(1/4)};
-    border-radius: #{get-gap(1/4)};
-    padding: #{get-gap(1/4)} #{get-gap(1/2)};
+    margin-left: #{get-gap(1/2)};
+    border-radius: #{get-gap(1/2)};
+    padding: #{get-gap(1/2)} #{get-gap()};
     background-color: #{getColor('ui-yellow')};
 
     max-width: 200px;

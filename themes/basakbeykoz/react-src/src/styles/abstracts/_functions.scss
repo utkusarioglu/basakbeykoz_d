@@ -126,10 +126,10 @@
   $degree: to-degree($direction);
   @return linear-gradient(
     $degree,
-    $color #{get-gap(1/2)},
-    transparent #{get-gap(1/2)},
-    transparent calc(100% - #{get-gap(1/2)}),
-    $color calc(100% - #{get-gap(1/2)})
+    $color #{get-gap()},
+    transparent #{get-gap()},
+    transparent calc(100% - #{get-gap()}),
+    $color calc(100% - #{get-gap()})
   );
 }
 

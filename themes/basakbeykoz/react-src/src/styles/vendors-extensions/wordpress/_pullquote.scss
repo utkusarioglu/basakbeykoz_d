@@ -1,7 +1,7 @@
 .wp {
   &-block {
     &-pullquote {
-      $fringe_px: get-gap(1/2);
+      $fringe_px: get-gap();
       margin: 0 #{-$fringe_px} #{$fringe_px} #{-$fringe_px};
       border-radius: #{$fringe_px};
       overflow: hidden;

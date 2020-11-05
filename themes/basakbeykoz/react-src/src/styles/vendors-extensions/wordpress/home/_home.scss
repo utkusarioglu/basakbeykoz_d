@@ -19,7 +19,7 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
 
   & > .wp-block-group {
     box-sizing: border-box;
-    padding: #{get-gap()};
+    padding: #{get-gap(2)};
     min-height: #{$section_height_min_responsive};
     overflow: hidden;
     position: relative;
@@ -39,7 +39,7 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
       /// does not expand the other components in the same grid
       /// the value defaults to auto on SVGA and larger screens
       & > .wp-block-group {
-        width: calc(100vw - #{get-gap(2)});
+        width: calc(100vw - #{get-gap(4)});
         @include breakpoint('w', 'SVGA__') {
           width: auto;
         }

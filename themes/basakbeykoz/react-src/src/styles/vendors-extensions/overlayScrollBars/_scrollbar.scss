@@ -3,12 +3,12 @@
 /// Sets the size (width for vertical, height for horizontal) scrollbar in its
 /// passive state. That is, when there is no focus or hover going on.
 /// @access private
-$passive-size: get-gap(1/4);
+$passive-size: get-gap(1/2);
 
 /// Sets the size (width for vertical, height for horizontal) scrollbar in its
 // active state. That is, when there is no focus or hover going on.
 /// @access private
-$active-size: get-gap(2/3);
+$active-size: get-gap(4/3);
 
 /// This class belongs to OverlayScrollbars library
 /// Many of the properties set here is set to important to prevent clashes with

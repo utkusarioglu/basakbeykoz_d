@@ -13,9 +13,9 @@
   }
   li {
     list-style: none;
-    margin-bottom: #{get-gap(2)};
-    padding: #{get-gap()};
-    border-radius: #{get-gap()};
+    margin-bottom: #{get-gap(4)};
+    padding: #{get-gap(2)};
+    border-radius: #{get-gap(2)};
     position: relative;
     &:hover {
       background-color: #{getColor('bg-gray')};
@@ -27,7 +27,7 @@
                 background: linear-gradient(
                   180deg,
                   transparent 0,
-                  #{getColor('bg-gray')} #{get-gap()}
+                  #{getColor('bg-gray')} #{get-gap(2)}
                 );
               }
             }
@@ -41,6 +41,6 @@
     padding: 0;
   }
   @include breakpoint('w', 'SVGA__') {
-    margin-left: #{get-gap(-1)};
+    margin-left: #{get-gap(-2)};
   }
 }

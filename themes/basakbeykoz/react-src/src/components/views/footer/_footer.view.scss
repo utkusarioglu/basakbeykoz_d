@@ -13,9 +13,9 @@
       bottom: 0;
       align-items: end;
       justify-items: end;
-      border-top-left-radius: #{get-gap()};
+      border-top-left-radius: #{get-gap(2)};
       background: #{getColor('bg-black')};
-      padding: #{get-gap(1/2)};
+      padding: #{get-gap()};
       width: #{$creditsSize};
       min-width: #{$footer_square-size_px};
       max-width: #{$creditsMaxSize};

@@ -41,7 +41,7 @@
 @mixin icon-img($filter: var(--filter-white)) {
   height: #{get-component-property('social-item', 'default-size__') * 1px};
   width: #{get-component-property('social-item', 'default-size__') * 1px};
-  padding: #{get-gap(1/2)};
+  padding: #{get-gap()};
 
   @include breakpoint('w', 'XGAplus__') {
     min-height: #{get-component-property('social-item', 'w-XGAplus_min__') * 1px};
@@ -139,7 +139,7 @@
 @mixin p {
   @include p-basic();
   grid-area: paragraph;
-  margin: 0 0 #{get-gap()} 0;
+  margin: 0 0 #{get-gap(2)} 0;
 }
 
 /// Basic properties for p, these could be used by tags and classes that aren't p

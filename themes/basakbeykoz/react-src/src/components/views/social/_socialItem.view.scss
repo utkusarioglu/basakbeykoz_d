@@ -3,14 +3,14 @@
 .Social-list {
   & > a {
     display: block;
-    height: #{get-gap() +
+    height: #{get-gap(2) +
       get-component-property('social-item', 'default-size__')};
 
     @include breakpoint('w', 'XGAplus__') {
-      min-height: #{get-gap() +
+      min-height: #{get-gap(2) +
         get-component-property('social-item', 'w-XGAplus_min__')};
-      height: calc(#{get-gap()} + #{$social-icon_XGAplus_responsive_px});
-      max-height: #{get-gap() +
+      height: calc(#{get-gap(2)} + #{$social-icon_XGAplus_responsive_px});
+      max-height: #{get-gap(2) +
         get-component-property('social-item', 'w-XGAplus_max__')};
     }
 

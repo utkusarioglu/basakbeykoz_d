@@ -9,8 +9,8 @@
     height: $logo-n-social_y;
     background: #{getColor('ui-blue')};
     left: 0;
-    border-top-right-radius: #{get-gap()};
-    border-bottom-right-radius: #{get-gap()};
+    border-top-right-radius: #{get-gap(2)};
+    border-bottom-right-radius: #{get-gap(2)};
   }
 
   &-logo > img {
@@ -21,7 +21,7 @@
   header & {
     .Logo {
       &-logo > img {
-        margin-left: #{get-gap(1/2)};
+        margin-left: #{get-gap()};
         margin-top: 8px;
       }
 
@@ -36,7 +36,7 @@
 
     z-index: 90;
     position: fixed;
-    top: #{get-gap()};
+    top: #{get-gap(2)};
     left: 0;
     flex-direction: row;
     align-items: center;
@@ -45,8 +45,8 @@
       display: flex;
       img {
         $featureImageX: #{get-component-property('feature-image', 'narrow_x_vw')};
-        $paddingLeft: #{get-gap(1/2)};
-        $statics: #{$paddingLeft} - #{get-gap(2)};
+        $paddingLeft: #{get-gap()};
+        $statics: #{$paddingLeft} - #{get-gap(4)};
         $width: calc(#{$featureImageX} - #{$statics});
         $marginTop: calc(#{$width} / 25);
 

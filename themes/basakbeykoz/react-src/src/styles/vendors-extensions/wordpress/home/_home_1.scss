@@ -11,10 +11,10 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
 .Canvas.page.home > article > .wp-block-group {
   &:first-child {
     background-color: transparent;
-    padding-top: #{get-gap(1/2)};
+    padding-top: #{get-gap()};
 
     @include breakpoint('h', 'SVGA__') {
-      padding-top: #{get-gap()};
+      padding-top: #{get-gap(2)};
     }
 
     & > .wp-block-group__inner-container {
@@ -24,10 +24,10 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
         'h1'
         'paragraph';
       grid-template-rows: #{$logo_n_social__y_px} 1fr min-content min-content;
-      grid-row-gap: #{get-gap(1/2)};
+      grid-row-gap: #{get-gap()};
 
       @include breakpoint('h', 'HD__') {
-        grid-row-gap: #{get-gap()};
+        grid-row-gap: #{get-gap(2)};
       }
 
       @include breakpoint('w', 'SVGA__') {
@@ -38,7 +38,7 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
           '. buttons      .';
         grid-template-columns: #{$home__welcome_image_x_vw} 1fr;
         grid-template-rows: #{$logo_n_social__y_px} 1fr 1fr #{$logo_n_social__y_px};
-        grid-row-gap: #{get-gap()};
+        grid-row-gap: #{get-gap(2)};
         height: 100%;
       }
 
@@ -53,20 +53,20 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
       }
 
       .wp-block-cover {
-        margin-left: #{get-gap(-1)};
-        margin-right: #{get-gap(-1)};
+        margin-left: #{get-gap(-2)};
+        margin-right: #{get-gap(-2)};
         background-size: cover;
 
         @include breakpoint('w', 'SVGA__') {
           position: absolute;
           margin-left: 0;
           margin-right: 0;
-          top: #{get-gap(-1)};
-          left: #{get-gap(-1)};
-          right: #{get-gap(-1)};
+          top: #{get-gap(-2)};
+          left: #{get-gap(-2)};
+          right: #{get-gap(-2)};
           z-index: -1;
           right: auto;
-          bottom: #{get-gap(-1)};
+          bottom: #{get-gap(-2)};
           width: $home__welcome_image_x_vw;
           height: auto;
           z-index: 91;
@@ -99,8 +99,8 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
       h1 {
         @include typography-hero();
 
-        margin-left: #{get-gap(-1/2)};
-        margin-right: #{get-gap(-1/2)};
+        margin-left: #{get-gap(-1)};
+        margin-right: #{get-gap(-1)};
         align-self: end;
         justify-self: center;
         color: #{getColor('text-mediumDark')};
@@ -122,8 +122,8 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
 
           background-color: #{getColor('ui-yellow')};
           color: #{getColor('text-dark')};
-          padding: #{get-gap(1/2)};
-          border-radius: #{get-gap(1/2)};
+          padding: #{get-gap()};
+          border-radius: #{get-gap()};
           width: 100%;
           max-width: 250px;
 

@@ -10,7 +10,7 @@
     border: none;
     padding: 0;
     margin: 0;
-    height: #{get-gap() +
+    height: #{get-gap(2) +
       get-component-property('social-item', 'default-size__')};
     cursor: pointer;
 

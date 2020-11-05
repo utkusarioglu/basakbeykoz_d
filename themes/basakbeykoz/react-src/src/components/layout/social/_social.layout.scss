@@ -6,19 +6,19 @@
   grid-column-gap: calc(var(--gap) / 2);
 
   &-decor {
-    width: #{get-gap()};
+    width: #{get-gap(2)};
     height: #{$logo-n-social_y};
     background: #{getColor('ui-blue')};
     right: 0;
-    border-top-left-radius: #{get-gap()};
-    border-bottom-left-radius: #{get-gap()};
+    border-top-left-radius: #{get-gap(2)};
+    border-bottom-left-radius: #{get-gap(2)};
   }
 
   .App-wideScreenControls & {
     display: none;
     position: fixed;
     right: 0;
-    top: #{get-gap()};
+    top: #{get-gap(2)};
     z-index: 100;
 
     @include breakpoint('w', 'XGAplus__') {

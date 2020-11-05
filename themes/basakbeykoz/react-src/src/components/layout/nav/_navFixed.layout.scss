@@ -68,7 +68,7 @@ nav {
 
     @include breakpoint('w', 'XGAplus__') {
       position: relative;
-      margin-right: #{get-gap()};
+      margin-right: #{get-gap(2)};
       background-color: transparent;
     }
 
@@ -86,20 +86,20 @@ nav {
 
         @include breakpoint('w', 'XGAplus__') {
           justify-content: center;
-          padding: #{get-gap()} 0;
+          padding: #{get-gap(2)} 0;
           margin-bottom: 0;
         }
 
         & .Nav-item {
           display: block;
-          padding: #{get-gap(1/2)} #{get-gap()};
+          padding: #{get-gap(2)} #{get-gap(4)};
           position: relative;
           color: #{getColor('text-dark')};
           text-align: right;
 
           @include breakpoint('w', 'XGAplus__') {
             color: #{getColor('ui-blue')};
-            padding: #{get-gap(1/4)} #{get-gap(1/2)};
+            padding: #{get-gap(1/2)} #{get-gap()};
             font-size: responsive-width(20, 26);
           }
 
@@ -112,17 +112,17 @@ nav {
               top: 0;
               bottom: 0;
               right: 0;
-              width: #{get-gap(1/2)};
+              width: #{get-gap()};
               background-color: #{getColor('ui-decoration')};
-              border-top-left-radius: #{get-gap(1/2)};
-              border-bottom-left-radius: #{get-gap(1/2)};
+              border-top-left-radius: #{get-gap()};
+              border-bottom-left-radius: #{get-gap()};
 
               @include breakpoint('w', 'SVGA__') {
                 width: auto;
-                height: #{get-gap(1/4)};
+                height: #{get-gap(1/2)};
                 top: auto;
-                right: #{get-gap(1/2)};
-                left: #{get-gap(1/2)};
+                right: #{get-gap()};
+                left: #{get-gap()};
               }
 
               @include breakpoint('w', 'XGAplus__') {
@@ -130,9 +130,9 @@ nav {
                 bottom: 0;
                 top: 0;
                 right: 0;
-                width: #{get-gap(1/4)};
-                border-top-left-radius: #{get-gap(1/4)};
-                border-bottom-left-radius: #{get-gap(1/4)};
+                width: #{get-gap(1/2)};
+                border-top-left-radius: #{get-gap(1/2)};
+                border-bottom-left-radius: #{get-gap(1/2)};
                 height: auto;
               }
             }
@@ -151,10 +151,10 @@ nav {
       right: 0;
       top: 0;
       bottom: 0;
-      width: #{get-gap()};
+      width: #{get-gap(2)};
       background-color: #{getColor('ui-yellow')};
-      border-top-left-radius: #{get-gap()};
-      border-bottom-left-radius: #{get-gap()};
+      border-top-left-radius: #{get-gap(2)};
+      border-bottom-left-radius: #{get-gap(2)};
     }
   }
 
