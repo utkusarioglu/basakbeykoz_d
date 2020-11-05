@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import config from '../config';
+import config from '../../config';
 
 const { REST_ENDPOINT, REST_TIMEOUT } = config;
 

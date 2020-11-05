@@ -1,5 +1,5 @@
 import restApi from './restApi';
-import axios from '../__mocks__/axios';
+import axios from '../../__mocks__/axios';
 import { AxiosResponse } from 'axios';
 
 describe('restApi', () => {
