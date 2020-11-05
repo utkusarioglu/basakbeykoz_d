@@ -92,7 +92,7 @@ nav {
 
         & .Nav-item {
           display: block;
-          padding: #{get-gap(2)} #{get-gap(4)};
+          padding: #{get-gap()} #{get-gap(2)};
           position: relative;
           color: #{getColor('text-dark')};
           text-align: right;

@@ -22,6 +22,7 @@ $home__section_top_bottom_padding_px: get-component-property(
 .Canvas.page.home > article > .wp-block-group:not(:first-child) {
   & > .wp-block-group__inner-container {
     grid-row-gap: #{get-gap(2)};
+
     @include breakpoint('w', 'SVGA__') {
       align-content: center;
       grid-column-gap: 5vw;
@@ -52,15 +53,15 @@ $home__section_top_bottom_padding_px: get-component-property(
       $bevel: #{get-gap()};
 
       display: block;
+      position: relative;
       grid-area: image;
-      height: 100%;
-      min-height: 60vw;
-      width: 100%;
+      border-radius: #{get-gap()};
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      position: relative;
-      border-radius: #{get-gap()};
+      width: 100%;
+      height: 100%;
+      min-height: 60vw;
 
       @include breakpoint('w', 'SVGA__') {
         min-height: auto;
