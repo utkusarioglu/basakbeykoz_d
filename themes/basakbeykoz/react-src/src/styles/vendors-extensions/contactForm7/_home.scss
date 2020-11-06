@@ -6,11 +6,6 @@
 
 @import './_home.color';
 
-//! Remove this
-.Canvas.page.home > article > .wp-block-group:not(:nth-child(6)) {
-  display: none;
-}
-
 /// Styles for the contact form on the home page
 .Canvas.page.home
   > article
