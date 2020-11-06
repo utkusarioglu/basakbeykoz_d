@@ -2,7 +2,7 @@
 
 .Spinner {
   position: fixed;
-  padding: 3rem;
+  padding: #{get-gap(2)};
   top: 0;
   right: 0;
   left: 0;
@@ -26,6 +26,7 @@
     align-self: end;
     filter: var(--filter-darkGray);
     max-height: 50px;
+    max-width: 100%;
   }
 
   &-loadMessage {
