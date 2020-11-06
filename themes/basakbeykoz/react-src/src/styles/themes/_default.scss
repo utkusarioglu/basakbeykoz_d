@@ -30,11 +30,19 @@ $colorCategories: ('green', 'yellow', 'white', 'blue', 'black');
 
   .#{$color} {
     &-horizontal-border:before {
-      background: linear-gradient-frame($var-color, horizontal);
+      background: linear-gradient-frame($var-color, horizontal, get-gap(1/2));
+
+      @include breakpoint('w', 'WQVGA__') {
+        background: linear-gradient-frame($var-color, horizontal, get-gap());
+      }
     }
 
     &-vertical-border:after {
-      background: linear-gradient-frame($var-color, vertical);
+      background: linear-gradient-frame($var-color, vertical, get-gap(1/2));
+
+      @include breakpoint('w', 'WQVGA__') {
+        background: linear-gradient-frame($var-color, vertical, get-gap());
+      }
     }
   }
 }

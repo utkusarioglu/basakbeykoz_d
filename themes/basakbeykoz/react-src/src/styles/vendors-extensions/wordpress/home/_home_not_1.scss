@@ -19,6 +19,10 @@ $home__section_top_bottom_padding_px: get-component-property(
   'section_top_bottom_padding_px'
 );
 
+.Canvas.page.home > article > .wp-block-group:first-child {
+  display: none;
+}
+
 .Canvas.page.home > article > .wp-block-group:not(:first-child) {
   & > .wp-block-group__inner-container {
     grid-row-gap: #{get-gap(2)};
@@ -52,16 +56,25 @@ $home__section_top_bottom_padding_px: get-component-property(
       $extrude: #{get-gap(-1)};
       $bevel: #{get-gap()};
 
+      $small_narrow_frame: calc(100% - #{get-gap()});
+      $small_wide_frame: calc(100% + #{get-gap()});
+      $small_extrude: #{get-gap(-1/2)};
+      $small_bevel: #{get-gap(1/2)};
+
       display: block;
       position: relative;
       grid-area: image;
-      border-radius: #{get-gap()};
+      border-radius: #{get-gap(1/2)};
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       width: 100%;
       height: 100%;
       min-height: 60vw;
+
+      @include breakpoint('w', 'WQVGA__') {
+        border-radius: #{get-gap()};
+      }
 
       @include breakpoint('w', 'SVGA__') {
         min-height: auto;
@@ -74,20 +87,38 @@ $home__section_top_bottom_padding_px: get-component-property(
 
       &:before {
         @include frame-common;
-        width: $wide_frame;
-        height: $narrow_frame;
-        top: $bevel;
-        left: $extrude;
-        border-radius: #{get-gap()};
+
+        width: $small_wide_frame;
+        height: $small_narrow_frame;
+        top: $small_bevel;
+        left: $small_extrude;
+        border-radius: #{get-gap(1/2)};
+
+        @include breakpoint('w', 'WQVGA__') {
+          width: $wide_frame;
+          height: $narrow_frame;
+          top: $bevel;
+          left: $extrude;
+          border-radius: #{get-gap()};
+        }
       }
 
       &:after {
         @include frame-common;
-        width: $narrow_frame;
-        height: $wide_frame;
-        top: $extrude;
-        left: $bevel;
-        border-radius: #{get-gap()};
+
+        width: $small_narrow_frame;
+        height: $small_wide_frame;
+        top: $small_extrude;
+        left: $small_bevel;
+        border-radius: #{get-gap(1/2)};
+
+        @include breakpoint('w', 'WQVGA__') {
+          width: $narrow_frame;
+          height: $wide_frame;
+          top: $extrude;
+          left: $bevel;
+          border-radius: #{get-gap()};
+        }
       }
     }
   }

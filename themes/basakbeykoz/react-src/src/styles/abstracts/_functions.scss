@@ -119,17 +119,18 @@
 /// methods
 /// @param {color} $color - Color data for the frame
 /// @param {string} $direction - Horizontal, h, vertical or v. This value is converted to a degree by the to-degree method
+/// @param {px} $width - The width of the frame
 /// @return Linear gradient that is one of the dimensions of the frame
 /// @access public
 /// @group helpers
-@function linear-gradient-frame($color, $direction) {
+@function linear-gradient-frame($color, $direction, $width) {
   $degree: to-degree($direction);
   @return linear-gradient(
     $degree,
-    $color #{get-gap()},
-    transparent #{get-gap()},
-    transparent calc(100% - #{get-gap()}),
-    $color calc(100% - #{get-gap()})
+    $color #{$width},
+    transparent #{$width},
+    transparent calc(100% - #{$width}),
+    $color calc(100% - #{$width})
   );
 }
 
