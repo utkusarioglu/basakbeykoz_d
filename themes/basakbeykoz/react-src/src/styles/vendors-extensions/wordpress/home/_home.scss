@@ -19,7 +19,7 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
 
   & > .wp-block-group {
     box-sizing: border-box;
-    padding: #{get-gap() get-gap(2)};
+    padding: #{get-gap(2) get-gap(1)};
     min-height: #{$section_height_min_responsive};
     overflow: hidden;
     position: relative;
