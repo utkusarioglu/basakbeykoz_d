@@ -8,9 +8,10 @@
     'footer',
     'fg-height_max_px'
   );
+  $nav__mobile-height_px: get-component-property('nav', 'mobile-height_px');
 
   min-height: calc(
-    100vh - #{get-component-property('nav', 'mobile-height_px')} + #{$footer-square-size_px}
+    100vh - #{$nav__mobile-height_px} + #{$footer-square-size_px}
   );
   /// This controls the distance that the footer figures have from the page content. However, to be precise, it could be better to use a value that is responsive in proportion to the responsiveness of the footer -fg element
   padding-bottom: #{$footer__fg-height_max_px + 100px};
@@ -25,6 +26,7 @@
 
   @include breakpoint('w', 'XGAplus__') {
     $navSocialSpaceX: get-component-property('nav', 'social-space_x_px');
+
     grid-template-areas: '. h1 .' '. Article .' '. Posts-wrapper .';
     grid-template-columns: #{$feature-image_x} 2fr #{$navSocialSpaceX};
   }
@@ -42,7 +44,7 @@
       left: 0;
       bottom: 0;
       top: 0;
-      width: $feature-image_x;
+      width: #{$feature-image_x};
     }
 
     & > .Canvas-featureTitle {
@@ -54,8 +56,27 @@
       padding: var(--gap);
       text-align: center;
       overflow: hidden;
+
       @include breakpoint('w', 'SVGA__') {
         display: none;
+      }
+    }
+
+    & > .Share {
+      display: none;
+      position: absolute;
+
+      @include breakpoint('w', 'SVGA__') {
+        bottom: #{get-gap() + $nav__mobile-height_px};
+        /// !Magic number 5px
+        left: #{get-gap(1/2) + 5px};
+        display: block;
+      }
+
+      @include breakpoint('w', 'XGAplus__') {
+        /// !Magic number 5px
+        left: #{get-gap() + 5px};
+        bottom: #{get-gap()};
       }
     }
   }
@@ -97,10 +118,12 @@
 
       @include breakpoint('w', 'SVGA__') {
         display: block;
+
         .Canvas-articleTitle {
           display: none;
         }
       }
+
       & .Canvas-decor {
         display: none;
       }

@@ -35,7 +35,9 @@ function CreditsRoute() {
     <CanvasLayout
       {...{
         type: 'native',
-        slug: '404',
+        slug: 'Credits',
+        // !TODO this needs to be received from php
+        excerpt: 'Credits',
         title: 'Credits',
         thumbnail: '',
         thumbnailComponent,

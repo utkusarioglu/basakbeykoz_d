@@ -14,6 +14,7 @@ export function mockIsDisplaying(): IsDisplaying {
       title: chance.sentence(),
       thumbnail: chance.url({ extensions: ['gif', 'jpg', 'png'] }),
       content: chance.paragraph(),
+      excerpt: chance.paragraph(),
     },
   };
 }

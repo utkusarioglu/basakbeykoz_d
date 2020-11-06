@@ -1,0 +1,12 @@
+@import '../../../styles/abstracts/_mixins';
+
+.Share {
+  * {
+    padding: #{get-gap(1/4)};
+    outline: none;
+
+    @include breakpoint('w', 'XGAplus__') {
+      padding: #{get-gap(1/2)};
+    }
+  }
+}

@@ -74,6 +74,7 @@ function SluggedFeature({
           type,
           content,
           thumbnail,
+          excerpt,
         } = timestampedSingular.data;
         setDisplaying({
           status: 200,
@@ -83,6 +84,7 @@ function SluggedFeature({
             type,
             content,
             thumbnail,
+            excerpt,
           },
         });
       } else {

@@ -4,6 +4,7 @@ import { GeneralSingularItemforView } from '../../features/wordpress/@types-word
 import config from '../../../config';
 import { Helmet } from 'react-helmet';
 import ReactGA from 'react-ga';
+import ShareView from '../../views/share/Share.view';
 import './_canvas.layout.scss';
 
 const { APP_NAME, APP_SEPARATOR, HOME_SLUG, APP_TAGLINE } = config;
@@ -22,6 +23,7 @@ function CanvasLayout({
   title,
   thumbnail,
   content,
+  excerpt,
   articleComponent,
   thumbnailComponent,
   extraClasses,
@@ -102,6 +104,7 @@ function CanvasLayout({
         <div {...{ className: 'Canvas-decor' }}>
           {featureImage}
           {featureTitle}
+          <ShareView {...{ title, excerpt }} />
         </div>
         {articleTitle}
         {article}

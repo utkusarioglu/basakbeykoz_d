@@ -52,6 +52,8 @@ function BlogFeature({ setFetching }: Props) {
         type: 'native',
         slug: BLOG_SLUG,
         title: 'Paylaşımlar',
+        // !TODO this needs to be received from php
+        excerpt: 'Paylaşımlar',
         extraClasses: ['blog'],
         thumbnail: '',
         thumbnailComponent,

@@ -25,6 +25,7 @@ const initialState: IApp = {
       title: '',
       content: '',
       thumbnail: ' ',
+      excerpt: '',
     },
   },
   refs: {
