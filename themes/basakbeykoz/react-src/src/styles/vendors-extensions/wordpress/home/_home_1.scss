@@ -99,8 +99,6 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
       h1 {
         @include typography-hero();
 
-        margin-left: #{get-gap(-1)};
-        margin-right: #{get-gap(-1)};
         align-self: end;
         justify-self: center;
         color: #{getColor('text-mediumDark')};
