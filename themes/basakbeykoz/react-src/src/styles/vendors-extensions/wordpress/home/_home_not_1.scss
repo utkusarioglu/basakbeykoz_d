@@ -19,10 +19,6 @@ $home__section_top_bottom_padding_px: get-component-property(
   'section_top_bottom_padding_px'
 );
 
-.Canvas.page.home > article > .wp-block-group:first-child {
-  display: none;
-}
-
 .Canvas.page.home > article > .wp-block-group:not(:first-child) {
   & > .wp-block-group__inner-container {
     grid-row-gap: #{get-gap(2)};
