@@ -1,0 +1,16 @@
+@import '../../abstracts/_mixins';
+
+.wpcf7 {
+  & .wpcf7-submit {
+    @include typography-button();
+    width: 100%;
+    padding: #{get-gap(1)};
+    border: none;
+    border-radius: #{get-gap(1)};
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

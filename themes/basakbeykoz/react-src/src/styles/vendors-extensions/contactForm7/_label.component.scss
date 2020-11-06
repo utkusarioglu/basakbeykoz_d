@@ -1,0 +1,17 @@
+@import '../../abstracts/_mixins';
+
+.wpcf7 {
+  & label {
+    @include p();
+
+    color: #{getColor('text-dark')};
+    display: block;
+    margin-bottom: #{get-gap()};
+    height: max-content;
+
+    input,
+    textarea {
+      margin-top: #{get-gap(1/2)};
+    }
+  }
+}

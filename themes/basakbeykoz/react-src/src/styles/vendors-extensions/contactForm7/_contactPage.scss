@@ -1,0 +1,28 @@
+@import '../../abstracts/_mixins';
+@import './_reset';
+@import './_textarea.component';
+@import './_submit.component';
+@import './_label.component';
+@import './_contactPage.color';
+
+/// Styles for the contact form on the home page
+.Canvas.page.iletisim > article > .wpcf7 {
+  & .wpcf7-form {
+    & .ContactForm {
+      &-userInput {
+        &-right {
+          & > p:nth-child(2) {
+            display: none;
+          }
+        }
+
+        &-left,
+        &-right {
+          & .wpcf7-textarea {
+            height: 200px; //! Magic number;
+          }
+        }
+      }
+    }
+  }
+}

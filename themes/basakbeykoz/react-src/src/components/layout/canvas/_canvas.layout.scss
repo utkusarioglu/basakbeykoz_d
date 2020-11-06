@@ -71,9 +71,11 @@
 
   article {
     grid-area: Article;
-    padding-top: var(--gap);
-    padding-right: var(--gap);
-    padding-left: var(--gap);
+    padding: #{get-gap(2) get-gap(1)};
+
+    @include breakpoint('w', 'WQVGA__') {
+      padding: #{get-gap(2)};
+    }
 
     @include breakpoint('w', 'SVGA__') {
       padding-top: 0;

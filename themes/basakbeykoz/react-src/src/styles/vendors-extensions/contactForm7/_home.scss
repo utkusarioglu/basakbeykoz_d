@@ -1,4 +1,15 @@
 @import '../../abstracts/_mixins';
+@import './_reset';
+@import './_textarea.component';
+@import './_submit.component';
+@import './_label.component';
+
+@import './_home.color';
+
+//! Remove this
+.Canvas.page.home > article > .wp-block-group:not(:nth-child(6)) {
+  display: none;
+}
 
 /// Styles for the contact form on the home page
 .Canvas.page.home
@@ -38,30 +49,8 @@
           grid-row-gap: #{get-gap(2)};
         }
 
-        & br {
-          display: none;
-        }
-
         &-submit {
           grid-area: contactform_submit;
-
-          & .wpcf7-submit {
-            @include typography-button();
-
-            width: 100%;
-            padding: #{get-gap(1)};
-            border: none;
-            background-color: #{getColor('ui-yellow')};
-            color: #{getColor('text-dark')};
-            border-radius: #{get-gap(1)};
-            outline: none;
-
-            &:hover {
-              background-color: #{getColor('ui-darkBlue')};
-              color: #{getColor('text-light')};
-              cursor: pointer;
-            }
-          }
         }
 
         &-left {
@@ -70,53 +59,22 @@
 
         &-right {
           grid-area: contactform_right;
+          /// Mysterious div
           & > p:nth-child(2) {
-            margin-bottom: 0;
-          }
-          & > p:nth-child(3) {
-            height: 100%;
-            margin-bottom: 0;
-            label {
-              height: 100%;
-            }
+            display: none;
           }
         }
 
         &-left,
         &-right {
-          & label {
-            @include p();
-
-            color: #{getColor('text-dark')};
-            display: block;
-            margin-bottom: #{get-gap()};
-
-            input,
-            textarea {
-              margin-top: #{get-gap(1/2)};
-            }
+          & .wpcf7-textarea {
+            height: 141px; //! Magic number;
           }
 
-          & .wpcf7-text,
-          & .wpcf7-textarea {
-            box-sizing: border-box;
-            border: none;
-            background-color: #{getColor('bg-white')};
-            width: 100%;
-            padding: #{get-gap()};
-            font-family: #{get-font-property('text', 'font-family')};
-            font-weight: #{get-font-property('text', 'font-weight')};
-            border-radius: #{get-gap()};
-
-            &:focus {
-              outline: none;
-              background-color: #{getColor('bg-yellow')};
+          @include breakpoint('w', 'SVGA__') {
+            & *:last-child {
+              margin-bottom: 0;
             }
-          }
-
-          & .wpcf7-textarea {
-            resize: none;
-            height: 150px;
           }
         }
       }
