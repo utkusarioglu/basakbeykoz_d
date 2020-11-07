@@ -21,7 +21,9 @@ $home__section_top_bottom_padding_px: get-component-property(
 
 .Canvas.page.home > article > .wp-block-group:not(:first-child) {
   & > .wp-block-group__inner-container {
-    grid-row-gap: #{get-gap(2)};
+    $row-gap: get-gap(2);
+
+    grid-row-gap: #{$row-gap};
 
     @include breakpoint('w', 'SVGA__') {
       align-content: center;
@@ -47,20 +49,26 @@ $home__section_top_bottom_padding_px: get-component-property(
     }
 
     .wp-block-cover {
-      $narrow_frame: calc(100% - #{get-gap(2)});
-      $wide_frame: calc(100% + #{get-gap(2)});
-      $extrude: #{get-gap(-1)};
-      $bevel: #{get-gap()};
+      $minimal-padding-px: get-component-property(
+        'figure',
+        'minimal-padding-px'
+      );
+      $normal-padding-px: get-component-property('figure', 'normal-padding-px');
 
-      $small_narrow_frame: calc(100% - #{get-gap()});
-      $small_wide_frame: calc(100% + #{get-gap()});
-      $small_extrude: #{get-gap(-1/2)};
-      $small_bevel: #{get-gap(1/2)};
+      $narrow_frame: calc(100% - #{$normal-padding-px});
+      $wide_frame: calc(100% + #{$normal-padding-px});
+      $extrude: #{$normal-padding-px / -2};
+      $bevel: #{$normal-padding-px / 2};
+
+      $small_narrow_frame: calc(100% - #{$minimal-padding-px});
+      $small_wide_frame: calc(100% + #{$minimal-padding-px});
+      $small_extrude: #{$minimal-padding-px / -2};
+      $small_bevel: #{$minimal-padding-px / 2};
 
       display: block;
       position: relative;
       grid-area: image;
-      border-radius: #{get-gap(1/2)};
+      border-radius: #{$minimal-padding-px/2};
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -69,7 +77,7 @@ $home__section_top_bottom_padding_px: get-component-property(
       min-height: 60vw;
 
       @include breakpoint('w', 'WQVGA__') {
-        border-radius: #{get-gap()};
+        border-radius: #{$normal-padding-px/2};
       }
 
       @include breakpoint('w', 'SVGA__') {
@@ -88,14 +96,14 @@ $home__section_top_bottom_padding_px: get-component-property(
         height: $small_narrow_frame;
         top: $small_bevel;
         left: $small_extrude;
-        border-radius: #{get-gap(1/2)};
+        border-radius: #{$minimal-padding-px/2};
 
         @include breakpoint('w', 'WQVGA__') {
           width: $wide_frame;
           height: $narrow_frame;
           top: $bevel;
           left: $extrude;
-          border-radius: #{get-gap()};
+          border-radius: #{$normal-padding-px/2};
         }
       }
 
@@ -106,14 +114,14 @@ $home__section_top_bottom_padding_px: get-component-property(
         height: $small_wide_frame;
         top: $small_extrude;
         left: $small_bevel;
-        border-radius: #{get-gap(1/2)};
+        border-radius: #{$minimal-padding-px/2};
 
         @include breakpoint('w', 'WQVGA__') {
           width: $narrow_frame;
           height: $wide_frame;
           top: $extrude;
           left: $bevel;
-          border-radius: #{get-gap()};
+          border-radius: #{$normal-padding-px/2};
         }
       }
     }

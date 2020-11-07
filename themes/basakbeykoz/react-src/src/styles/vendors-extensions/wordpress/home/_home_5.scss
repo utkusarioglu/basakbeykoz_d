@@ -9,6 +9,14 @@ $home__section_top_bottom_padding_px: get-component-property(
   'section_top_bottom_padding_px'
 );
 $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
+$minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(5) {
@@ -39,8 +47,12 @@ $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
     }
 
     & > .wp-block-latest-posts {
-      margin-left: #{get-gap(-2)} !important;
+      margin-left: #{-$minimal-screen-padding-px} !important;
       width: 100vw;
+
+      @include breakpoint('w', 'QVGA__') {
+        margin-left: #{-$normal-screen-padding-px} !important;
+      }
 
       @include breakpoint('w', 'SVGA__') {
         width: 100%;

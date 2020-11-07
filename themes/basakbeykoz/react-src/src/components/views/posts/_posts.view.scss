@@ -1,24 +1,43 @@
 @import '../../../styles/abstracts/_mixins';
 
+$minimal-screen-padding: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
+
 .Posts {
   grid-area: Posts;
+
   &-wrapper {
     grid-area: Posts-wrapper;
+
     & > h4 {
       text-align: center;
+
       @include breakpoint('w', 'SVGA__') {
         text-align: left;
       }
     }
   }
+
   li {
     list-style: none;
     margin-bottom: #{get-gap(4)};
-    padding: #{get-gap(2)};
+    padding: #{$minimal-screen-padding};
     border-radius: #{get-gap(2)};
     position: relative;
+
+    @include breakpoint('w', 'WQVGA__') {
+      padding: #{$normal-screen-padding};
+    }
+
     &:hover {
       background-color: #{getColor('bg-gray')};
+
       & .Posts {
         &-card {
           &-excerpt {
@@ -36,10 +55,12 @@
       }
     }
   }
+
   ol {
     margin: 0;
     padding: 0;
   }
+
   @include breakpoint('w', 'SVGA__') {
     margin-left: #{get-gap(-2)};
   }

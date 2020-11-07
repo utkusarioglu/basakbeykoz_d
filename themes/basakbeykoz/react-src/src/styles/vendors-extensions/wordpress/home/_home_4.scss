@@ -8,6 +8,14 @@ $home__section_top_bottom_padding_px: get-component-property(
   'home',
   'section_top_bottom_padding_px'
 );
+$minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(4) {
@@ -18,6 +26,7 @@ $home__section_top_bottom_padding_px: get-component-property(
       'h2'
       'posts'
       'paragraph';
+    // !TODO this is broken
     grid-template-rows: #{get-typography(h2, lineHeight)} auto max-content;
 
     @include breakpoint('h', 'HD__') {
@@ -42,9 +51,13 @@ $home__section_top_bottom_padding_px: get-component-property(
     }
 
     & > .wp-block-latest-posts {
-      margin-left: #{get-gap(-2)} !important;
+      margin-left: #{-$minimal-screen-padding-px} !important;
       width: 100vw;
       height: 330px;
+
+      @include breakpoint('w', 'QVGA__') {
+        margin-left: #{-$normal-screen-padding} !important;
+      }
 
       @include breakpoint('w', 'SVGA__') {
         height: 100%;
@@ -60,6 +73,7 @@ $home__section_top_bottom_padding_px: get-component-property(
   &:after {
     $width: 100vw;
     $height: 20vw;
+
     @include svg-art(
       'conversation.svg',
       $width,

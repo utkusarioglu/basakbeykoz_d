@@ -7,6 +7,14 @@
 $nav__social_space_x_px: get-component-property('nav', 'social-space_x_px');
 $logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
 $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
+$minimal-screen-padding: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
 
 .Canvas.page.home > article > .wp-block-group {
   &:first-child {
@@ -53,9 +61,14 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
       }
 
       .wp-block-cover {
-        margin-left: #{get-gap(-2)};
-        margin-right: #{get-gap(-2)};
+        margin-left: #{-$minimal-screen-padding};
+        margin-right: #{-$minimal-screen-padding};
         background-size: cover;
+
+        @include breakpoint('w', 'QVGA__') {
+          margin-left: #{-$normal-screen-padding};
+          margin-right: #{-$normal-screen-padding};
+        }
 
         @include breakpoint('w', 'SVGA__') {
           position: absolute;

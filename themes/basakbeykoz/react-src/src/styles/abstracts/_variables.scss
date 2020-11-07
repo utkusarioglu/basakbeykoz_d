@@ -111,6 +111,11 @@ $BREAKPOINTS: (
   ),
 );
 
+/// This variable sets the default gap used in the app. It's possible that
+/// some components will be using fractions of this number but the most common
+/// gap is this size.
+$GAP_PX: 15px;
+
 /// Properties of components that may be subject to change
 $COMPONENT_PROPERTIES: (
   'footer': (
@@ -142,12 +147,27 @@ $COMPONENT_PROPERTIES: (
     'section_top_bottom_padding_px': 150px,
     'not_first_child_max_padding__': 350,
   ),
+  'page-blog-native': (
+    'minimal-screen-padding': $GAP_PX,
+    'normal-screen-padding': 2 * $GAP_PX,
+  ),
+  /// Despite its name, these values do not only affect figure tag. These are
+  ///also used in pullquote and other framed components inside pages. Their
+  /// main responsibility is to set the size of padding, margins and
+  ///border-radiuses of related elements.
+  ///
+  /// The reason why there are 2 of them is because a smaller value became
+  /// necessary for very small screens.
+  ///
+  /// It should also be noted that these values are normally expected to be
+  /// equal or very similar to the values of page-blog-native min and normal
+  /// values as they render components that relate with each other.
+  'figure':
+    (
+      'minimal-padding-px': $GAP_PX,
+      'normal-padding-px': 2 * $GAP_PX,
+    ),
 );
-
-/// This variable sets the default gap used in the app. It's possible that
-/// some components will be using fractions of this number but the most common
-/// gap is this size.
-$GAP_PX: 15px;
 
 /// Color palette
 $COLORS: (

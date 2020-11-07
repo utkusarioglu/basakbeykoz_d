@@ -5,7 +5,7 @@
   grid-area: logo;
 
   &-decor {
-    width: var(--gap);
+    width: #{get-gap()};
     height: $logo-n-social_y;
     background: #{getColor('ui-blue')};
     left: 0;

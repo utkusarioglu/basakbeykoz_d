@@ -1,5 +1,13 @@
 @import '../../../styles/abstracts/_mixins';
 @import './_canvas-featureImage';
+$minimal-screen-padding: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
 
 .Canvas {
   $feature-image_x: get-component-property('feature-image', 'narrow_x_vw');
@@ -50,10 +58,11 @@
     & > .Canvas-featureTitle {
       align-self: end;
       display: block;
+      margin: 0;
       bottom: 0;
       box-sizing: border-box;
       width: 100%;
-      padding: var(--gap);
+      padding: #{get-gap()};
       text-align: center;
       overflow: hidden;
 
@@ -84,6 +93,7 @@
   &-articleTitle {
     display: none;
     align-self: center;
+    margin: 0;
 
     @include breakpoint('w', 'SVGA__') {
       display: block;
@@ -92,10 +102,10 @@
 
   article {
     grid-area: Article;
-    padding: #{get-gap(2) get-gap(1)};
+    padding: #{$normal-screen-padding $minimal-screen-padding};
 
     @include breakpoint('w', 'WQVGA__') {
-      padding: #{get-gap(2)};
+      padding: #{$normal-screen-padding};
     }
 
     @include breakpoint('w', 'SVGA__') {

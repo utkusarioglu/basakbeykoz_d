@@ -29,19 +29,46 @@ $colorCategories: ('green', 'yellow', 'white', 'blue', 'black');
   }
 
   .#{$color} {
+    $minimal-padding-px: #{get-component-property(
+        'figure',
+        'minimal-padding-px'
+      ) /
+      2};
+    $normal-padding-px: #{get-component-property(
+        'figure',
+        'normal-padding-px'
+      ) /
+      2};
+
     &-horizontal-border:before {
-      background: linear-gradient-frame($var-color, horizontal, get-gap(1/2));
+      background: linear-gradient-frame(
+        $var-color,
+        horizontal,
+        $minimal-padding-px
+      );
 
       @include breakpoint('w', 'WQVGA__') {
-        background: linear-gradient-frame($var-color, horizontal, get-gap());
+        background: linear-gradient-frame(
+          $var-color,
+          horizontal,
+          $normal-padding-px
+        );
       }
     }
 
     &-vertical-border:after {
-      background: linear-gradient-frame($var-color, vertical, get-gap(1/2));
+      background: linear-gradient-frame(
+        $var-color,
+        vertical,
+        $minimal-padding-px
+      );
 
       @include breakpoint('w', 'WQVGA__') {
-        background: linear-gradient-frame($var-color, vertical, get-gap());
+        background: linear-gradient-frame(
+          $var-color,
+          vertical,
+          $normal-padding-px
+        );
       }
     }
   }

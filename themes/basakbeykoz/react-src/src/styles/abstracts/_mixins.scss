@@ -81,11 +81,12 @@
 /// @group helpers
 @mixin _heading($tag) {
   $font-type: get-typography($tag, font-type);
+  $font-size: get-typography-responsive-font-size($tag);
 
   grid-area: #{$tag};
   color: #{getColor('text-mediumDark')};
-  margin: 0;
-  font-size: #{get-typography-responsive-font-size($tag)};
+  margin: calc(#{$font-size} * 2.5) 0 calc(#{$font-size} / 1.5) 0;
+  font-size: #{$font-size};
   line-height: #{get-typography-responsive-line-height($tag)};
   font-family: #{get-font-property($font-type, 'font-family')};
   font-weight: #{get-font-property($font-type, 'font-weight')};

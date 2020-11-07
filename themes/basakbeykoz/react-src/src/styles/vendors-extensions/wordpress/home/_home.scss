@@ -9,6 +9,14 @@ $home__section_height_min_px: get-component-property(
   'section-height_min_px'
 );
 $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
+$minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
 
 .Canvas.page.home > article {
   $section_height_min_responsive: #{unquote(
@@ -17,15 +25,24 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
 
   padding: 0;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
   & > .wp-block-group {
     box-sizing: border-box;
-    padding: #{get-gap(2) get-gap(1)};
+    padding: #{$normal-screen-padding-px $minimal-screen-padding-px};
     min-height: #{$section_height_min_responsive};
     overflow: hidden;
     position: relative;
 
     @include breakpoint('w', 'WQVGA__') {
-      padding: #{get-gap(2)};
+      padding: #{$normal-screen-padding-px};
     }
 
     & > .wp-block-group__inner-container {
@@ -43,7 +60,12 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
       /// does not expand the other components in the same grid
       /// the value defaults to auto on SVGA and larger screens
       & > .wp-block-group {
-        width: calc(100vw - #{get-gap(4)});
+        width: calc(100vw - #{2 * $minimal-screen-padding-px});
+
+        @include breakpoint('w', 'QVGA__') {
+          width: calc(100vw - #{2 * $normal-screen-padding-px});
+        }
+
         @include breakpoint('w', 'SVGA__') {
           width: auto;
         }

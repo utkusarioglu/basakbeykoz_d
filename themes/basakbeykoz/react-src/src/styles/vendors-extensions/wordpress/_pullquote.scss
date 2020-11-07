@@ -1,24 +1,33 @@
 .wp {
   &-block {
     &-pullquote {
-      $fringe_px: get-gap();
+      $minimal-padding-px: get-component-property(
+        'figure',
+        'minimal-padding-px'
+      );
+      $normal-padding-px: get-component-property('figure', 'normal-padding-px');
 
-      margin: 0 #{-$fringe_px/2} #{$fringe_px} #{-$fringe_px/2};
-      border-radius: #{$fringe_px};
+      margin: 0 #{-$minimal-padding-px/2} #{$minimal-padding-px} #{-$minimal-padding-px/2};
+      border-radius: #{$minimal-padding-px};
       overflow: hidden;
       background-color: getColor('bg-gray');
 
       @include breakpoint('w', 'WQVGA__') {
-        margin: 0 #{-$fringe_px} #{$fringe_px} #{-$fringe_px};
+        border-radius: #{$normal-padding-px};
+        margin: 0 #{-$normal-padding-px/2} #{$normal-padding-px/2} #{-$normal-padding-px/2};
       }
 
       & > blockquote {
         display: grid;
         grid-template-areas: 'paragraph' 'cite';
-        margin: #{$fringe_px};
+        margin: #{$minimal-padding-px};
+
+        @include breakpoint('w', 'WQVGA__') {
+          margin: #{$normal-padding-px};
+        }
 
         & > p {
-          margin-bottom: #{$fringe_px};
+          margin-bottom: #{$normal-padding-px};
         }
 
         & > cite {

@@ -3,7 +3,7 @@
 .Social {
   $logo-n-social_y: get-component-property('logo-n-social', y_px);
   align-items: center;
-  grid-column-gap: calc(var(--gap) / 2);
+  grid-column-gap: #{get-gap(1/2)};
 
   &-decor {
     width: #{get-gap(2)};

@@ -1,5 +1,6 @@
 @mixin wpPostsP() {
   @include p();
+
   font-size: responsive-width(
     get-typography(p, font-size_min__),
     16
@@ -13,23 +14,27 @@
 
 @mixin wpPosts($type, $gridFlow: row, $cardColor: getColor('bg-white')) {
   .wp-block-latest-posts {
+    $homePostsNarrowY: get-component-property(home, 'posts_y_px');
+    $liDistance: get-gap(2);
+    $liMaxWidth: 350px;
+    $liMinWidth: 260px;
+
     grid-area: posts;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    $homePostsNarrowY: get-component-property(home, 'posts_y_px');
-    $liDistance: get-gap(2);
-    $liMaxWidth: 350px;
-    $liMinWidth: 260px;
+
     @include breakpoint('w', 'SVGA__') {
       border-radius: #{get-gap()};
     }
+
     &,
     .os-content {
       display: grid;
       grid-auto-flow: column;
+
       @include breakpoint('w', 'SVGA__') {
         @if $gridFlow == row {
           grid-auto-flow: row;
@@ -37,6 +42,7 @@
         }
       }
     }
+
     & li {
       background-color: $cardColor;
       margin-left: #{$liDistance};
@@ -50,6 +56,7 @@
       overflow: hidden;
       height: calc(100% - #{get-gap(2)});
       cursor: pointer;
+
       @if $type == posts {
         grid-template-areas:
           'image'
@@ -64,6 +71,7 @@
           'excerpt';
         grid-template-rows: max-content max-content 1fr;
       }
+
       &::before {
         content: '';
         position: absolute;
@@ -73,6 +81,7 @@
         height: #{get-gap(3)};
         background: linear-gradient(transparent 0, #{$cardColor} #{get-gap(2)});
       }
+
       @include breakpoint('w', 'SVGA__') {
         @if $gridFlow == row {
           @if $type == posts {
@@ -93,10 +102,12 @@
         } @else if $gridFlow == column {
           max-width: 250px;
         }
+
         &:first-child {
           margin-left: 0;
         }
       }
+
       &:last-child::after {
         content: '';
         position: absolute;
@@ -104,6 +115,7 @@
         width: 1px;
         height: 1px;
       }
+
       .wp-block-latest-posts__featured-image {
         grid-area: image;
         height: 150px;
@@ -111,11 +123,13 @@
         display: flex;
         justify-content: center;
         border-radius: #{get-gap(2/3)};
+
         @include breakpoint('w', 'SVGA__') {
           @if $gridFlow == row {
             height: calc(#{$homePostsNarrowY} + #{get-gap(2)});
           }
         }
+
         & > img {
           min-height: 100%;
           min-width: 100%;
@@ -128,6 +142,7 @@
           }
         }
       }
+
       time {
         @include wpPostsP();
         margin: 0;
@@ -140,27 +155,34 @@
           }
         }
       }
+
       .wp-block-latest-posts__post-full-content,
       .wp-block-latest-posts__post-excerpt {
         @include p();
+
         &,
         & > p {
           @include wpPostsP();
         }
+
         font-size: #{get-font-size(excerpt_px)};
         grid-area: excerpt !important;
         color: #{getColor('text-mediumDark')};
         position: relative;
         margin: 0;
       }
+
       a {
         @include h4;
+
         grid-area: title;
         text-decoration: none;
+        margin: 0;
       }
     }
   }
 }
+
 .wp {
   &-block {
     .body.page.home > article > div &-latest-posts > li {

@@ -1,6 +1,14 @@
 @import '../../../styles/abstracts/_mixins';
 
 $CARD_HEIGHT: 250px;
+$minimal-screen-padding: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding'
+);
+$normal-screen-padding: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding'
+);
 
 .Posts {
   &-card {
@@ -24,6 +32,10 @@ $CARD_HEIGHT: 250px;
       grid-column-gap: #{get-gap(2)};
       height: #{$CARD_HEIGHT};
       overflow: hidden;
+    }
+
+    &-title {
+      margin: 0;
     }
 
     &-date {
@@ -71,8 +83,12 @@ $CARD_HEIGHT: 250px;
       }
 
       & > img {
-        width: calc(100vw - #{get-gap(4)});
+        width: calc(100vw - #{2 * $minimal-screen-padding});
         height: auto;
+
+        @include breakpoint('w', 'WQVGA__') {
+          width: calc(100vw - #{2 * $normal-screen-padding});
+        }
 
         @include breakpoint('w', 'SVGA__') {
           width: #{$img-SVGA-width-vw};
