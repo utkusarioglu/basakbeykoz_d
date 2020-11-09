@@ -162,3 +162,16 @@
 @function get-gap($multiplier: 1) {
   @return $GAP_PX * $multiplier;
 }
+
+/// Returns the responsive size for the social icons for min XGAplus screen
+/// @return {px} Responsive value for the social icons
+/// @access public
+/// @group getter
+@function get-social-icon-XGAplus-responsive-px() {
+  @return responsive-width(
+    get-component-property('social-item', 'default-size__'),
+    get-component-property('social-item', 'w-XGAplus_max__'),
+    get-breakpoint('w', 'XGAplus__'),
+    get-breakpoint('w', 'FHD__')
+  );
+}

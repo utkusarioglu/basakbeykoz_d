@@ -9,7 +9,7 @@
     @include breakpoint('w', 'XGAplus__') {
       min-height: #{get-gap(2) +
         get-component-property('social-item', 'w-XGAplus_min__')};
-      height: calc(#{get-gap(2)} + #{$social-icon_XGAplus_responsive_px});
+      height: calc(#{get-gap(2)} + #{get-social-icon-XGAplus-responsive-px()});
       max-height: #{get-gap(2) +
         get-component-property('social-item', 'w-XGAplus_max__')};
     }

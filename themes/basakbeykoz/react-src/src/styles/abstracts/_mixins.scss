@@ -46,8 +46,8 @@
   @include breakpoint('w', 'XGAplus__') {
     min-height: #{get-component-property('social-item', 'w-XGAplus_min__') * 1px};
     min-width: #{get-component-property('social-item', 'w-XGAplus_min__') * 1px};
-    height: #{$social-icon_XGAplus_responsive_px};
-    width: #{$social-icon_XGAplus_responsive_px};
+    height: #{get-social-icon-XGAplus-responsive-px()};
+    width: #{get-social-icon-XGAplus-responsive-px()};
     max-height: #{get-component-property('social-item', 'w-XGAplus_max__') * 1px};
     max-width: #{get-component-property('social-item', 'w-XGAplus_max__') * 1px};
   }
@@ -147,11 +147,20 @@
 /// @access public
 /// @group helpers
 @mixin p-basic {
+  // $p_font-size_responsive_px: responsive-width(
+  //   get-typography('p', 'font-size_min__'),
+  //   get-typography('p', 'font-size_max__')
+  // );
+  // $p_line-height_responsive_px: responsive-width(
+  //   get-typography('p', 'line-height_min__'),
+  //   get-typography('p', 'line-height_max__')
+  // );
+
   color: #{getColor('text-mediumDark')};
   font-family: #{get-font-property('text', 'font-family')};
   font-weight: #{get-font-property('text', 'font-weight')};
-  font-size: #{$p_font-size_responsive_px};
-  line-height: #{$p_line-height_responsive_px};
+  font-size: #{get-typography-responsive-font-size('p')};
+  line-height: #{get-typography-responsive-line-height('p')};
 }
 
 /// Properties for svg art that is used at the bottom of homepage sections
@@ -237,22 +246,3 @@
     @error 'Unrecognized aspect. You can only use height, h, width and w';
   }
 }
-
-/**
-  Computed
-*/
-$social-icon_XGAplus_responsive_px: responsive-width(
-  get-component-property('social-item', 'default-size__'),
-  get-component-property('social-item', 'w-XGAplus_max__'),
-  get-breakpoint('w', 'XGAplus__'),
-  get-breakpoint('w', 'FHD__')
-);
-
-$p_font-size_responsive_px: responsive-width(
-  get-typography('p', 'font-size_min__'),
-  get-typography('p', 'font-size_max__')
-);
-$p_line-height_responsive_px: responsive-width(
-  get-typography('p', 'line-height_min__'),
-  get-typography('p', 'line-height_max__')
-);
