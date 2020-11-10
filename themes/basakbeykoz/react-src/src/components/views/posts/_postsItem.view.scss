@@ -40,7 +40,7 @@ $normal-screen-padding: get-component-property(
 
     &-date {
       grid-area: date;
-      color: #{getColor('text-mediumLight')};
+      color: #{get-color('text-mediumLight')};
     }
 
     &-excerpt {
@@ -55,7 +55,7 @@ $normal-screen-padding: get-component-property(
           background: linear-gradient(
             180deg,
             transparent 0,
-            #{getColor('bg-white')} #{get-gap(2)}
+            #{get-color('bg-white')} #{get-gap(2)}
           );
           right: 0;
           bottom: 0;

@@ -170,6 +170,7 @@ $COMPONENT_PROPERTIES: (
 );
 
 /// Color palette
+/// !TODO The number of colors listed here and the fact that they are css variables are is quite an overkill and shall be replaced with static values with an appropriate sized set as soon as the client decides on the colors.
 $COLORS: (
   'text-light': var(--brush-white),
   'text-mediumLight': var(--brush-gray),
@@ -189,3 +190,12 @@ $COLORS: (
   'ui-black': var(--brush-black),
   'ui-blue': var(--brush-darkGray),
 );
+
+/// Color categories are used for looping through colors to create helper
+/// classes for the given colors.
+/// As an example, for each color in the list, a horizontal and a vertical
+/// figure frame is created.
+///
+/// Note that all of these color categories need to have a color value :defined
+/// as a value in $COLORS
+$COLOR_CATEGORIES: ('green', 'yellow', 'white', 'blue', 'black');

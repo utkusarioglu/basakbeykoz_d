@@ -14,7 +14,7 @@
       align-items: end;
       justify-items: end;
       border-top-left-radius: #{get-gap(2)};
-      background: #{getColor('bg-black')};
+      background: #{get-color('bg-black')};
       padding: #{get-gap()};
       width: #{$creditsSize};
       min-width: #{$footer_square-size_px};
@@ -25,7 +25,7 @@
       font-size: 1rem;
 
       &-yearAndName {
-        color: #{getColor('text-light')};
+        color: #{get-color('text-light')};
         text-align: right;
       }
     }

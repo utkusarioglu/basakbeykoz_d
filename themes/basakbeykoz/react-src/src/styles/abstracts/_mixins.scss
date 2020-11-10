@@ -84,7 +84,7 @@
   $font-size: get-typography-responsive-font-size($tag);
 
   grid-area: #{$tag};
-  color: #{getColor('text-mediumDark')};
+  color: #{get-color('text-mediumDark')};
   margin: calc(#{$font-size} * 2.5) 0 calc(#{$font-size} / 1.5) 0;
   font-size: #{$font-size};
   line-height: #{get-typography-responsive-line-height($tag)};
@@ -156,7 +156,7 @@
   //   get-typography('p', 'line-height_max__')
   // );
 
-  color: #{getColor('text-mediumDark')};
+  color: #{get-color('text-mediumDark')};
   font-family: #{get-font-property('text', 'font-family')};
   font-weight: #{get-font-property('text', 'font-weight')};
   font-size: #{get-typography-responsive-font-size('p')};
@@ -244,5 +244,97 @@
     }
   } @else {
     @error 'Unrecognized aspect. You can only use height, h, width and w';
+  }
+}
+
+/// Sets the util classes that are used as custom css classes for framing
+/// figures and other objects with colorful frames. With the current
+/// implementation of the site, these kinds of frames used extensively in the
+/// home page.
+/// @param {string} - Color category for which the color value will be retireved
+/// and applied as a frame
+/// @access public
+/// @group utils
+@mixin set-frame-color($color) {
+  /// These padding values determine the thickness of the frame in small and
+  /// normal screen settings.
+  $minimal-padding-half-px: #{get-component-property(
+      'figure',
+      'minimal-padding-px'
+    ) / 2};
+  $normal-padding-half-px: #{get-component-property(
+      'figure',
+      'normal-padding-px'
+    ) / 2};
+  $color-value: #{get-color('bg-' + $color)};
+  /// A small nested list to define which alignment and location association
+  $alignment-associations: ((horizontal, before), (vertical, after));
+
+  /// Note that these frames use linear gradients to set frames above and
+  /// below. The reason for using linear gradients is because the divs where
+  /// these frames are attached are rendered by wordpress, so using before and
+  /// after pseudo classes was the simplest way to create these 4 sides. To
+  /// create 4 sides with 2 pseudo classes made it necessary to use linear
+  /// gradients as a tool for transparent mid-section.
+  @each $set in $alignment-associations {
+    $alignment: nth($set, 1);
+    $location: nth($set, 2);
+
+    .#{$color}-#{$alignment}-border:#{$location} {
+      background: linear-gradient-frame(
+        $color-value,
+        $alignment,
+        $minimal-padding-half-px
+      );
+
+      @include breakpoint('w', 'WQVGA__') {
+        background: linear-gradient-frame(
+          $color-value,
+          $alignment,
+          $normal-padding-half-px
+        );
+      }
+    }
+  }
+}
+
+/// Retrieves the color value for the given color cateory and applies it as a bacground color.
+/// @param {string} - color for which the value shall be received and applied
+/// @group setter
+/// @access public
+@mixin set-bg-color($color) {
+  $bg-color: 'bg-' + $color;
+  $color-value: #{get-color($bg-color)};
+
+  @at-root .bg-#{$color} {
+    background-color: #{$color-value};
+  }
+}
+
+/// The loop that runs all the color category related mixins
+/// Color categories defines among the variables get classes created for them
+/// Through this function
+///
+@mixin set-color-category-styles() {
+  $color-categories: get-color-categories();
+
+  @each $color in $color-categories {
+    @include set-bg-color($color);
+    @include set-frame-color($color);
+  }
+}
+
+/// The standard button design
+/// @access public
+/// @group helpers
+@mixin button-standard() {
+  width: 100%;
+  padding: #{get-gap()};
+  border: none;
+  border-radius: #{get-gap()};
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
   }
 }

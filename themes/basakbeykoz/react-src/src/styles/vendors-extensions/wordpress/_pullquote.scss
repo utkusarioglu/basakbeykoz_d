@@ -10,7 +10,7 @@
       margin: 0 #{-$minimal-padding-px/2} #{$minimal-padding-px} #{-$minimal-padding-px/2};
       border-radius: #{$minimal-padding-px};
       overflow: hidden;
-      background-color: getColor('bg-gray');
+      background-color: get-color('bg-gray');
 
       @include breakpoint('w', 'WQVGA__') {
         border-radius: #{$normal-padding-px};

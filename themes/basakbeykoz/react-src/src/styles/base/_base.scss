@@ -1,5 +1,7 @@
+@import '../abstracts/_mixins';
+
+/// These variables are here until the client decides on the font to be used
 :root {
-  --gap: #{get-gap(2)};
   --text-font: 'Work Sans', sans-serif;
   --text-font-weight: 400;
   --title-font: 'Montserrat', sans-serif;
@@ -8,26 +10,35 @@
 
 body {
   margin: 0;
-  background: #{getColor('bg-white')};
+  background: #{get-color('bg-white')};
   overflow-x: hidden;
   overflow-y: hidden;
-  color: #{getColor('text-mediumDark')};
+  color: #{get-color('text-mediumDark')};
   font-size: #{get-font-size(default__) * 1px};
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
 // creates headings
-@for $i from 1 through 6 {
-  $tag: 'h' + $i;
-  #{$tag} {
-    @include _heading($tag);
+
+/// Creates the headings by looping through 1 - 6
+/// @access public
+/// @group setters
+@mixin set-headings() {
+  @for $i from 1 through 6 {
+    $tag: 'h' + $i;
+    @at-root #{$tag} {
+      @include _heading($tag);
+    }
   }
 }
 
+@include set-headings();
+@include set-color-category-styles();
+
 span,
 nav {
-  color: #{getColor('bg-blue')};
+  color: #{get-color('bg-blue')};
   font-family: #{get-font-property('text', 'font-family')};
   font-weight: #{get-font-property('text', 'font-weight')};
 }

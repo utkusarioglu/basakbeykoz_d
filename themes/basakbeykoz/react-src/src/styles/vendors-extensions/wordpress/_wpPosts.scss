@@ -12,7 +12,7 @@
   margin: 0;
 }
 
-@mixin wpPosts($type, $gridFlow: row, $cardColor: getColor('bg-white')) {
+@mixin wpPosts($type, $gridFlow: row, $cardColor: get-color('bg-white')) {
   .wp-block-latest-posts {
     $homePostsNarrowY: get-component-property(home, 'posts_y_px');
     $liDistance: get-gap(2);
@@ -148,7 +148,7 @@
         margin: 0;
         grid-area: time !important;
         font-size: 0.8em;
-        color: #{getColor('text-mediumLight')};
+        color: #{get-color('text-mediumLight')};
         @include breakpoint('w', 'SVGA__') {
           @if $type == posts {
             display: block;
@@ -167,7 +167,7 @@
 
         font-size: #{get-font-size(excerpt_px)};
         grid-area: excerpt !important;
-        color: #{getColor('text-mediumDark')};
+        color: #{get-color('text-mediumDark')};
         position: relative;
         margin: 0;
       }
@@ -186,7 +186,7 @@
 .wp {
   &-block {
     .body.page.home > article > div &-latest-posts > li {
-      color: #{getColor('bg-blue')};
+      color: #{get-color('bg-blue')};
       font-family: #{get-font-property('text', 'font-family')};
       font-weight: #{get-font-property('text', 'font-weight')};
     }

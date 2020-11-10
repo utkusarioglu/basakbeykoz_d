@@ -16,7 +16,7 @@
     grid-auto-flow: column;
     grid-template-areas: 'logo social nav';
     grid-template-columns: 1fr min-content min-content;
-    background-color: #{getColor('ui-white')};
+    background-color: #{get-color('ui-white')};
     bottom: 0;
     overflow-x: visible;
     overflow-y: hidden;

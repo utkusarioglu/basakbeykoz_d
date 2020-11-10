@@ -44,7 +44,7 @@ $active-size: get-gap(4/3);
       border-radius: 0 !important;
       border-top-left-radius: #{$passive-size} !important;
       border-bottom-left-radius: #{$passive-size} !important;
-      background-color: #{getColor('ui-gray')} !important;
+      background-color: #{get-color('ui-gray')} !important;
       width: #{$passive-size};
     }
   }
@@ -73,7 +73,7 @@ $active-size: get-gap(4/3);
       border-radius: 0 !important;
       border-top-left-radius: #{$passive-size} !important;
       border-top-right-radius: #{$passive-size} !important;
-      background-color: #{getColor('ui-gray')} !important;
+      background-color: #{get-color('ui-gray')} !important;
       height: #{$passive-size};
     }
   }

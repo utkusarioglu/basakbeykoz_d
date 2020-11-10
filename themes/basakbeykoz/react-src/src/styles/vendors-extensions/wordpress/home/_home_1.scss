@@ -114,7 +114,7 @@ $normal-screen-padding: get-component-property(
 
         align-self: end;
         justify-self: center;
-        color: #{getColor('text-mediumDark')};
+        color: #{get-color('text-mediumDark')};
 
         @include breakpoint('w', 'SVGA__') {
           justify-self: start;
@@ -131,19 +131,19 @@ $normal-screen-padding: get-component-property(
         .wp-block-button {
           @include typography-button();
 
-          background-color: #{getColor('ui-yellow')};
-          color: #{getColor('text-dark')};
+          background-color: #{get-color('ui-yellow')};
+          color: #{get-color('text-dark')};
           padding: #{get-gap()};
           border-radius: #{get-gap()};
           width: 100%;
           max-width: 265px;
 
           &:hover {
-            background-color: #{getColor('ui-darkBlue')};
+            background-color: #{get-color('ui-darkBlue')};
             cursor: pointer;
 
             & .wp-block-button__link {
-              color: #{getColor('text-light')};
+              color: #{get-color('text-light')};
             }
           }
         }

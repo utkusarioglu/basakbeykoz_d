@@ -1,16 +1,22 @@
 @import 'abstracts/_mixins';
 
+/// Classes for use with the wp custom class field
+/// @access public
+/// @group utils
 .text {
   &-light {
-    color: #{getColor('text-light')};
+    color: #{get-color('text-light')};
   }
+
   &-mediumLight {
-    color: #{getColor('text-mediumDark')};
+    color: #{get-color('text-mediumDark')};
   }
+
   &-mediumDark {
-    color: #{getColor('text-mediumDark')};
+    color: #{get-color('text-mediumDark')};
   }
+
   &-dark {
-    color: #{getColor('text-dark')};
+    color: #{get-color('text-dark')};
   }
 }

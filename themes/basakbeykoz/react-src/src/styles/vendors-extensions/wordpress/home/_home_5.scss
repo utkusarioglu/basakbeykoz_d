@@ -21,7 +21,7 @@ $normal-screen-padding-px: get-component-property(
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(5) {
   & > .wp-block-group__inner-container {
-    @include wpPosts(success, column, getColor('bg-gray'));
+    @include wpPosts(success, column, get-color('bg-gray'));
 
     grid-template-areas:
       'h2'

@@ -5,8 +5,8 @@
   display: flex;
 
   &-burgerButton {
-    background-color: #{getColor('ui-white')};
-    color: #{getColor('text-dark')};
+    background-color: #{get-color('ui-white')};
+    color: #{get-color('text-dark')};
     border: none;
     padding: 0;
     margin: 0;

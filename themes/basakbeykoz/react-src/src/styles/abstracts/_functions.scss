@@ -5,7 +5,7 @@
 /// @return {color} The color value
 /// @access public
 /// @group getters
-@function getColor($color-name) {
+@function get-color($color-name) {
   @return map-get($COLORS, $color-name);
 }
 
@@ -174,4 +174,8 @@
     get-breakpoint('w', 'XGAplus__'),
     get-breakpoint('w', 'FHD__')
   );
+}
+
+@function get-color-categories() {
+  @return $COLOR_CATEGORIES;
 }

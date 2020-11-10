@@ -7,7 +7,7 @@
   &-decor {
     width: #{get-gap()};
     height: $logo-n-social_y;
-    background: #{getColor('ui-blue')};
+    background: #{get-color('ui-blue')};
     left: 0;
     border-top-right-radius: #{get-gap(2)};
     border-bottom-right-radius: #{get-gap(2)};

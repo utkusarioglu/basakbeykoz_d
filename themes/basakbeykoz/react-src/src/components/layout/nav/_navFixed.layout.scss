@@ -64,7 +64,7 @@ nav {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #{getColor('bg-white')};
+    background-color: #{get-color('bg-white')};
 
     @include breakpoint('w', 'XGAplus__') {
       position: relative;
@@ -94,17 +94,17 @@ nav {
           display: block;
           padding: #{get-gap()} #{get-gap(2)};
           position: relative;
-          color: #{getColor('text-dark')};
+          color: #{get-color('text-dark')};
           text-align: right;
 
           @include breakpoint('w', 'XGAplus__') {
-            color: #{getColor('ui-blue')};
+            color: #{get-color('ui-blue')};
             padding: #{get-gap(1/2)} #{get-gap()};
             font-size: responsive-width(20, 26);
           }
 
           &-active {
-            color: #{getColor('ui-decoration')};
+            color: #{get-color('ui-decoration')};
 
             &:after {
               position: absolute;
@@ -113,7 +113,7 @@ nav {
               bottom: 0;
               right: 0;
               width: #{get-gap()};
-              background-color: #{getColor('ui-decoration')};
+              background-color: #{get-color('ui-decoration')};
               border-top-left-radius: #{get-gap()};
               border-bottom-left-radius: #{get-gap()};
 
@@ -152,7 +152,7 @@ nav {
       top: 0;
       bottom: 0;
       width: #{get-gap(2)};
-      background-color: #{getColor('ui-yellow')};
+      background-color: #{get-color('ui-yellow')};
       border-top-left-radius: #{get-gap(2)};
       border-bottom-left-radius: #{get-gap(2)};
     }

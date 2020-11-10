@@ -36,7 +36,7 @@ $normal-screen-padding: get-component-property(
     }
 
     &:hover {
-      background-color: #{getColor('bg-gray')};
+      background-color: #{get-color('bg-gray')};
 
       & .Posts {
         &-card {
@@ -46,7 +46,7 @@ $normal-screen-padding: get-component-property(
                 background: linear-gradient(
                   180deg,
                   transparent 0,
-                  #{getColor('bg-gray')} #{get-gap(2)}
+                  #{get-color('bg-gray')} #{get-gap(2)}
                 );
               }
             }

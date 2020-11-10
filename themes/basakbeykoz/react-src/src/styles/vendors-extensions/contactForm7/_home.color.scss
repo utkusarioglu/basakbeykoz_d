@@ -3,25 +3,25 @@
 .Canvas.page.home {
   .wpcf7 {
     & label {
-      color: #{getColor('text-dark')};
+      color: #{get-color('text-dark')};
     }
 
     & .wpcf7-text,
     & .wpcf7-textarea {
-      background-color: #{getColor('bg-white')};
+      background-color: #{get-color('bg-white')};
 
       &:focus {
-        background-color: #{getColor('bg-yellow')};
+        background-color: #{get-color('bg-yellow')};
       }
     }
 
     & .wpcf7-submit {
-      background-color: #{getColor('ui-yellow')};
-      color: #{getColor('text-dark')};
+      background-color: #{get-color('ui-yellow')};
+      color: #{get-color('text-dark')};
 
       &:hover {
-        background-color: #{getColor('ui-darkBlue')};
-        color: #{getColor('text-light')};
+        background-color: #{get-color('ui-darkBlue')};
+        color: #{get-color('text-light')};
       }
     }
   }

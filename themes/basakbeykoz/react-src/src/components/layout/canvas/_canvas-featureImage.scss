@@ -17,7 +17,7 @@
   /// be active
   &-off {
     @include feature-image-common();
-    background-color: #{getColor('bg-green')};
+    background-color: #{get-color('bg-green')};
   }
 
   /// If the article on display has a feature image, this class will be active

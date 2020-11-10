@@ -37,11 +37,11 @@ nav {
     height: 100%;
     line-height: #{get-component-property('nav', 'mobile-height_px')};
     position: relative;
-    color: #{getColor('text-dark')};
+    color: #{get-color('text-dark')};
     text-align: right;
 
     &-active {
-      color: #{getColor('ui-decoration')};
+      color: #{get-color('ui-decoration')};
 
       &:after {
         position: absolute;
@@ -50,7 +50,7 @@ nav {
         height: #{get-gap(1/2)};
         left: #{get-gap(1/2)};
         right: #{get-gap(1/2)};
-        background-color: #{getColor('ui-decoration')};
+        background-color: #{get-color('ui-decoration')};
         border-top-left-radius: #{get-gap(1/2)};
         border-top-right-radius: #{get-gap(1/2)};
       }
