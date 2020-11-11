@@ -27,6 +27,7 @@ function CanvasLayout({
   articleComponent,
   thumbnailComponent,
   extraClasses,
+  shareDisabled,
 }: Props) {
   const pageTitle = APP_SEPARATOR + title;
   const tagline = APP_SEPARATOR + APP_TAGLINE;
@@ -104,7 +105,7 @@ function CanvasLayout({
         <div {...{ className: 'Canvas-decor' }}>
           {featureImage}
           {featureTitle}
-          <ShareView {...{ title, excerpt }} />
+          {!shareDisabled && <ShareView {...{ title, excerpt }} />}
         </div>
         {articleTitle}
         {article}
