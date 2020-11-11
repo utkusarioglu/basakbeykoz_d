@@ -37,6 +37,39 @@ figcaption {
 
 p {
   @include p();
+
+  & > a {
+    @include p-basic();
+
+    text-decoration: underline;
+    text-decoration-color: #{get-color('ui-decoration')};
+    position: relative;
+
+    &:hover {
+      color: #{get-color('text-mediumDark')};
+      text-decoration-color: #{get-color('text-mediumDark')};
+      /// The transform value helps to elevate the element above the plane.
+      /// This isn't important for the element itself, but its actual effect
+      /// is to elevate the ::before selector above the background-color in the
+      /// home page. This way, the ::before element is still visible while
+      /// having a z-index of -1
+      transform: translateZ(1px);
+
+      &::before {
+        $padding: 2/3;
+
+        position: absolute;
+        top: #{get-gap(-$padding)};
+        right: #{get-gap(-$padding)};
+        bottom: #{get-gap(-$padding)};
+        left: #{get-gap(-$padding)};
+        z-index: -1;
+        background-color: #{get-color('ui-decoration')};
+        border-radius: #{get-gap()};
+        content: '';
+      }
+    }
+  }
 }
 
 cite,
