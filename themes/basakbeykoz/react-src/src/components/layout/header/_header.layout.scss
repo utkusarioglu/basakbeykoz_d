@@ -1,27 +1,33 @@
 @import '../../../styles/abstracts/_mixins';
 
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+$social-item--default-size--: get-component-property(
+  'social-item',
+  'default-size--'
+);
+
 .Header {
   position: fixed;
-  z-index: 100;
   right: 0;
   bottom: 0;
   left: 0;
-  height: #{get-component-property('nav', 'mobile-height_px')};
+  z-index: 100;
+  height: #{$nav--mobile-height-px};
   pointer-events: none;
 
   &-bottomWrap {
-    position: absolute;
     display: grid;
-    align-items: center;
-    grid-auto-flow: column;
+    position: absolute;
+    bottom: 0;
     grid-template-areas: 'logo social nav';
     grid-template-columns: 1fr min-content min-content;
+    grid-auto-flow: column;
+    align-items: center;
     background-color: #{get-color('ui-white')};
-    bottom: 0;
+    width: 100vw;
+    height: #{$nav--mobile-height-px};
     overflow-x: visible;
     overflow-y: hidden;
-    width: 100vw;
-    height: #{get-component-property('nav', 'mobile-height_px')};
     pointer-events: initial;
 
     & .Social-list {
@@ -30,35 +36,38 @@
       grid-area: social;
       justify-items: right;
       padding-left: 0;
-      height: #{get-gap(2) +
-        get-component-property('social-item', 'default-size__')};
+      height: #{get-gap(2) + $social-item--default-size--};
       overflow: hidden;
 
-      @include breakpoint('w', 'QVGA__') {
+      @include breakpoint('w', 'QVGA--') {
         display: flex;
       }
     }
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas: 'nav social';
       grid-template-columns: 1fr min-content;
+
       .Logo {
         display: none;
       }
     }
 
-    @include breakpoint('w', 'XGAplus__') {
+    @include breakpoint('w', 'XGAplus--') {
       background-color: transparent;
       width: 350px;
+
       &-mobileControls {
         display: none;
       }
     }
+
     &::-webkit-scrollbar {
       display: none;
     }
   }
-  @include breakpoint('w', 'XGAplus__') {
+
+  @include breakpoint('w', 'XGAplus--') {
     display: none;
   }
 }

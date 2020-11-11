@@ -1,13 +1,14 @@
 @import '../../../styles/abstracts/_mixins';
 
+$logo-n-social--y-px: get-component-property('logo-n-social', 'y-px');
+
 .Social {
-  $logo-n-social_y: get-component-property('logo-n-social', y_px);
   align-items: center;
   grid-column-gap: #{get-gap(1/2)};
 
   &-decor {
     width: #{get-gap(2)};
-    height: #{$logo-n-social_y};
+    height: #{$logo-n-social--y-px};
     background: #{get-color('ui-blue')};
     right: 0;
     border-top-left-radius: #{get-gap(2)};
@@ -21,7 +22,7 @@
     top: #{get-gap(2)};
     z-index: 100;
 
-    @include breakpoint('w', 'XGAplus__') {
+    @include breakpoint('w', 'XGAplus--') {
       display: flex;
     }
   }

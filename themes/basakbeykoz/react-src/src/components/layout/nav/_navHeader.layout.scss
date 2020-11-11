@@ -1,15 +1,17 @@
 @import '../../../styles/abstracts/_mixins';
 
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+
 nav {
   display: flex;
 }
 
 .Nav-item {
   display: block;
-  font-family: #{get-font-property('text', 'font-family')};
-  font-weight: #{get-font-property('text', 'font-weight')};
   text-decoration: none;
   white-space: nowrap;
+  font-family: #{get-font-property('text', 'font-family')};
+  font-weight: #{get-font-property('text', 'font-weight')};
 }
 
 .NavHeaderView {
@@ -17,11 +19,11 @@ nav {
   grid-area: nav;
   height: 100%;
 
-  @include breakpoint('w', 'SVGA__') {
+  @include breakpoint('w', 'SVGA--') {
     display: block;
   }
 
-  @include breakpoint('w', 'XGAplus__') {
+  @include breakpoint('w', 'XGAplus--') {
     display: none;
   }
 
@@ -34,25 +36,25 @@ nav {
       left: #{get-gap(2/3)};
       right: #{get-gap(2/3)};
     }
-    height: 100%;
-    line-height: #{get-component-property('nav', 'mobile-height_px')};
     position: relative;
-    color: #{get-color('text-dark')};
+    height: 100%;
     text-align: right;
+    line-height: #{$nav--mobile-height-px};
+    color: #{get-color('text-dark')};
 
     &-active {
       color: #{get-color('ui-decoration')};
 
       &:after {
         position: absolute;
-        content: '';
-        bottom: 0;
-        height: #{get-gap(1/2)};
-        left: #{get-gap(1/2)};
         right: #{get-gap(1/2)};
-        background-color: #{get-color('ui-decoration')};
+        bottom: 0;
+        left: #{get-gap(1/2)};
         border-top-left-radius: #{get-gap(1/2)};
         border-top-right-radius: #{get-gap(1/2)};
+        background-color: #{get-color('ui-decoration')};
+        height: #{get-gap(1/2)};
+        content: '';
       }
     }
   }

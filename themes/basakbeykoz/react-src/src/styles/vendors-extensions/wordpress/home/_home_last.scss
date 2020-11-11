@@ -1,37 +1,38 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../_wp_posts';
 
 /*
   COMPONENT PROPERTIES
 */
-$home__section_top_bottom_padding_px: get-component-property(
+$home--section-top-bottom-padding-px: get-component-property(
   'home',
-  'section_top_bottom_padding_px'
+  'section-top-bottom-padding-px'
 );
-$home__section_height_min_px: get-component-property(
+$home--section-height-min-px: get-component-property(
   'home',
-  'section-height_min_px'
+  'section-height-min-px'
 );
-$nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
-$footer__fg-height_max_px: get-component-property('footer', 'fg-height_max_px');
-$footer__fg-bottom_px: get-component-property('footer', 'fg-bottom_px');
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+$footer--fg-height-max-px: get-component-property('footer', 'fg-height-max-px');
+$footer--fg-bottom-px: get-component-property('footer', 'fg-bottom-px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:last-child {
-  $footer_clearance_px: $footer__fg-height_max_px + $footer__fg-bottom_px;
-  $min-height-with-footer_px: $home__section_height_min_px +
-    $footer_clearance_px;
-  $footer-clearance-with-header: $footer_clearance_px - $nav__mobile_height_px;
-  $section_height_min_responsive: #{unquote(
-      'max(calc(100vh + #{$footer-clearance-with-header}), #{$min-height-with-footer_px})'
+  $footer-clearance-px: $footer--fg-height-max-px + $footer--fg-bottom-px;
+  $min-height-with-footer-px: $home--section-height-min-px +
+    $footer-clearance-px;
+  $footer-clearance-with-header: $footer-clearance-px - $nav--mobile-height-px;
+  $section-height-min-responsive: #{unquote(
+      'max(calc(100vh + #{$footer-clearance-with-header}), #{$min-height-with-footer-px})'
     )};
-  min-height: #{$section_height_min_responsive};
+
+  min-height: #{$section-height-min-responsive};
 
   & > .wp-block-group__inner-container {
     padding-bottom: #{$footer-clearance-with-header};
 
-    @include breakpoint('w', 'SVGA__') {
-      padding-bottom: #{$home__section_top_bottom_padding_px};
+    @include breakpoint('w', 'SVGA--') {
+      padding-bottom: #{$home--section-top-bottom-padding-px};
     }
   }
 }

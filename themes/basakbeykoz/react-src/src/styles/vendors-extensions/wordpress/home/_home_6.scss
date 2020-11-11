@@ -1,28 +1,24 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../_wp_posts';
 
-/*
-  COMPONENT PROPERTIES
-*/
-$logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
+$logo-n-social--y-px: get-component-property('logo-n-social', 'y-px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(6) {
   & > .wp-block-group__inner-container {
-    grid-template-rows: #{$logo_n_social__y_px} 1fr;
+    grid-template-rows: #{$logo-n-social--y-px} 1fr;
     grid-template-areas:
       'h2'
       'feature'
       'paragraph';
     grid-row-gap: #{get-gap(2)};
 
-    @include breakpoint('h', 'HD__') {
+    @include breakpoint('h', 'HD--') {
       grid-row-gap: #{get-gap(2)};
     }
 
-    @include breakpoint('w', 'SVGA__') {
-      $logo-n-social_y: get-component-property('logo-n-social', y_px);
-      grid-template-rows: #{$logo-n-social_y} 1fr;
+    @include breakpoint('w', 'SVGA--') {
+      grid-template-rows: #{$logo-n-social--y-px} 1fr;
       padding-top: 0;
     }
 

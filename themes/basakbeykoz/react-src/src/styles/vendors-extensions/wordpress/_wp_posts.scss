@@ -1,23 +1,26 @@
-@mixin wpPostsP() {
+@import '../../abstracts/_mixins';
+
+$home--posts-y-px: get-component-property('home', 'posts-y-px');
+
+@mixin wp-posts-p() {
   @include p();
 
   font-size: responsive-width(
-    get-typography(p, font-size_min__),
+    get-typography(p, 'font-size-min--'),
     16
   ) !important;
   line-height: responsive-width(
-    get-typography(p, line-height_min__),
+    get-typography(p, 'line-height-min--'),
     20
   ) !important;
   margin: 0;
 }
 
-@mixin wpPosts($type, $gridFlow: row, $cardColor: get-color('bg-white')) {
+@mixin wp-posts($type, $grid-flow: 'row', $card-color: get-color('bg-white')) {
   .wp-block-latest-posts {
-    $homePostsNarrowY: get-component-property(home, 'posts_y_px');
-    $liDistance: get-gap(2);
-    $liMaxWidth: 350px;
-    $liMinWidth: 260px;
+    $li-distance-px: get-gap(2);
+    $li-max-width-px: 350px;
+    $li-min-width-px: 260px;
 
     grid-area: posts;
     margin: 0;
@@ -26,45 +29,48 @@
     height: 100%;
     overflow: hidden;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       border-radius: #{get-gap()};
     }
 
+    /// .os-content is a class that is introduced by overlayscrollbars. Its the
+    /// div that is created by the library that actually contains the scrolling
+    /// content
     &,
     .os-content {
       display: grid;
       grid-auto-flow: column;
 
-      @include breakpoint('w', 'SVGA__') {
-        @if $gridFlow == row {
+      @include breakpoint('w', 'SVGA--') {
+        @if $grid-flow == 'row' {
           grid-auto-flow: row;
-        } @else if $gridFlow == column {
+        } @else if $grid-flow == column {
         }
       }
     }
 
     & li {
-      background-color: $cardColor;
-      margin-left: #{$liDistance};
       display: grid;
-      grid-row-gap: #{get-gap()};
       position: relative;
-      width: 50vw;
-      max-width: #{$liMaxWidth};
+      grid-row-gap: #{get-gap()};
+      margin-left: #{$li-distance-px};
       border-radius: #{get-gap()};
-      padding: #{get-gap()};
-      overflow: hidden;
-      height: calc(100% - #{get-gap(2)});
+      background-color: $card-color;
       cursor: pointer;
+      padding: #{get-gap()};
+      width: 50vw;
+      max-width: #{$li-max-width-px};
+      height: calc(100% - #{get-gap(2)});
+      overflow: hidden;
 
-      @if $type == posts {
+      @if $type == 'posts' {
         grid-template-areas:
           'image'
           'title'
           'time'
           'excerpt';
         grid-template-rows: max-content max-content max-content max-content;
-      } @else if $type == success {
+      } @else if $type == 'success' {
         grid-template-areas:
           'image'
           'title'
@@ -73,33 +79,36 @@
       }
 
       &::before {
-        content: '';
         position: absolute;
-        z-index: 10;
         bottom: 0;
+        z-index: 10;
         width: 100%;
         height: #{get-gap(3)};
-        background: linear-gradient(transparent 0, #{$cardColor} #{get-gap(2)});
+        content: '';
+        background: linear-gradient(
+          transparent 0,
+          #{$card-color} #{get-gap(2)}
+        );
       }
 
-      @include breakpoint('w', 'SVGA__') {
-        @if $gridFlow == row {
-          @if $type == posts {
+      @include breakpoint('w', 'SVGA--') {
+        @if $grid-flow == 'row' {
+          @if $type == 'posts' {
             grid-template-areas:
               'image title'
               'image time'
               'image excerpt';
             grid-template-rows: min-content min-content auto;
-            grid-template-columns: #{$homePostsNarrowY} auto;
+            grid-template-columns: #{$home--posts-y-px} auto;
             grid-column-gap: #{get-gap()};
             grid-row-gap: 5px;
             width: 100%;
             max-width: calc(100% - #{get-gap(2)});
-            height: calc(#{$homePostsNarrowY} + #{get-gap(2)});
+            height: calc(#{$home--posts-y-px} + #{get-gap(2)});
             margin-left: 0;
             margin-bottom: #{get-gap(2)};
           }
-        } @else if $gridFlow == column {
+        } @else if $grid-flow == 'column' {
           max-width: 250px;
         }
 
@@ -109,34 +118,35 @@
       }
 
       &:last-child::after {
-        content: '';
         position: absolute;
-        right: #{-1.25 * $liDistance};
+        right: #{-1.25 * $li-distance-px};
         width: 1px;
         height: 1px;
+        content: '';
       }
 
       .wp-block-latest-posts__featured-image {
-        grid-area: image;
-        height: 150px;
-        overflow: hidden;
         display: flex;
+        grid-area: image;
         justify-content: center;
         border-radius: #{get-gap(2/3)};
+        height: 150px;
+        overflow: hidden;
 
-        @include breakpoint('w', 'SVGA__') {
-          @if $gridFlow == row {
-            height: calc(#{$homePostsNarrowY} + #{get-gap(2)});
+        @include breakpoint('w', 'SVGA--') {
+          @if $grid-flow == 'row' {
+            height: calc(#{$home--posts-y-px} + #{get-gap(2)});
           }
         }
 
         & > img {
-          min-height: 100%;
-          min-width: 100%;
-          object-fit: cover;
           z-index: 10;
-          @include breakpoint('w', 'SVGA__') {
-            @if $gridFlow == row {
+          min-width: 100%;
+          min-height: 100%;
+          object-fit: cover;
+
+          @include breakpoint('w', 'SVGA--') {
+            @if $grid-flow == row {
               object-fit: cover;
             }
           }
@@ -144,13 +154,15 @@
       }
 
       time {
-        @include wpPostsP();
-        margin: 0;
+        @include wp-posts-p();
+
         grid-area: time !important;
-        font-size: 0.8em;
+        margin: 0;
         color: #{get-color('text-mediumLight')};
-        @include breakpoint('w', 'SVGA__') {
-          @if $type == posts {
+        font-size: 0.8em;
+
+        @include breakpoint('w', 'SVGA--') {
+          @if $type == 'posts' {
             display: block;
           }
         }
@@ -162,22 +174,22 @@
 
         &,
         & > p {
-          @include wpPostsP();
+          @include wp-posts-p();
         }
 
-        font-size: #{get-font-size(excerpt_px)};
-        grid-area: excerpt !important;
-        color: #{get-color('text-mediumDark')};
         position: relative;
+        grid-area: excerpt !important;
         margin: 0;
+        color: #{get-color('text-mediumDark')};
+        font-size: #{get-font-size('excerpt-px')};
       }
 
       a {
         @include h4;
 
         grid-area: title;
-        text-decoration: none;
         margin: 0;
+        text-decoration: none;
       }
     }
   }

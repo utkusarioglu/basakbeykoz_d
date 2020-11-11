@@ -1,12 +1,12 @@
 @import '../../../styles/abstracts/_mixins';
 
-$minimal-screen-padding: get-component-property(
+$page-blog-native--minimal-screen-padding-px: get-component-property(
   'page-blog-native',
-  'minimal-screen-padding'
+  'minimal-screen-padding-px'
 );
-$normal-screen-padding: get-component-property(
+$page-blog-native--normal-screen-padding-px: get-component-property(
   'page-blog-native',
-  'normal-screen-padding'
+  'normal-screen-padding-px'
 );
 
 .Posts {
@@ -18,21 +18,21 @@ $normal-screen-padding: get-component-property(
     & > h4 {
       text-align: center;
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         text-align: left;
       }
     }
   }
 
   li {
-    list-style: none;
-    margin-bottom: #{get-gap(4)};
-    padding: #{$minimal-screen-padding};
-    border-radius: #{get-gap(2)};
     position: relative;
+    margin-bottom: #{get-gap(4)};
+    border-radius: #{get-gap(2)};
+    padding: #{$page-blog-native--minimal-screen-padding-px};
+    list-style: none;
 
-    @include breakpoint('w', 'WQVGA__') {
-      padding: #{$normal-screen-padding};
+    @include breakpoint('w', 'WQVGA--') {
+      padding: #{$page-blog-native--normal-screen-padding-px};
     }
 
     &:hover {
@@ -41,7 +41,7 @@ $normal-screen-padding: get-component-property(
       & .Posts {
         &-card {
           &-excerpt {
-            @include breakpoint('w', 'SVGA__') {
+            @include breakpoint('w', 'SVGA--') {
               &::after {
                 background: linear-gradient(
                   180deg,
@@ -61,7 +61,7 @@ $normal-screen-padding: get-component-property(
     padding: 0;
   }
 
-  @include breakpoint('w', 'SVGA__') {
+  @include breakpoint('w', 'SVGA--') {
     margin-left: #{get-gap(-2)};
   }
 }

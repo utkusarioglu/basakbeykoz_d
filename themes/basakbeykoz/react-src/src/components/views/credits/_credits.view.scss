@@ -1,25 +1,27 @@
+@import '../../../styles/abstracts/_mixins';
+
 .Canvas {
   &.Credits {
     button {
-      background-color: #dddddd;
-      height: 70px;
-      width: 100%;
+      margin-bottom: 15px;
       border: none;
       border-radius: 15px;
-      margin-bottom: 15px;
+      background-color: #dddddd;
+      width: 100%;
+      height: 70px;
       overflow: hidden;
 
       .button-title {
-        font-size: 20px;
-        line-height: 0px;
-        color: black;
         margin-bottom: 10px;
+        line-height: 0px;
+        color: #{get-color('text-dark')};
+        font-size: 20px;
       }
 
       .button-value {
-        color: black;
-        font-size: 10px;
         line-height: 35px;
+        color: #{get-color('text-dark')};
+        font-size: 10px;
       }
 
       &:focus {

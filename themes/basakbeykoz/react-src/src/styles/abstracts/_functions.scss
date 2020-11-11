@@ -32,8 +32,8 @@
 @function responsive-width(
   $min-value,
   $max-value,
-  $min-screen: get-breakpoint('w', 'QVGA__'),
-  $max-screen: get-breakpoint('w', 'FHD__')
+  $min-screen: get-breakpoint('w', 'QVGA--'),
+  $max-screen: get-breakpoint('w', 'FHD--')
 ) {
   @return calc(
     #{$min-value}px + (#{$max-value} - #{$min-value}) *
@@ -89,13 +89,13 @@
 }
 
 /// Converts pixel information to rem units
-/// @param {px} $value_px - Value in pixels
+/// @param {px} $value-px - Value in pixels
 /// @param {number} $scut-rem-base - base value to use for rem
 /// @return {rem} Px value converted to rem
 /// @access public
 /// @group helpers
-@function scut-rem($value_px, $scut-rem-base) {
-  @return strip-unit($value_px) / $scut-rem-base * 1rem;
+@function scut-rem($value-px, $scut-rem-base) {
+  @return strip-unit($value-px) / $scut-rem-base * 1rem;
 }
 
 /// Converts direction string to degree that makes sense to linear-gradient
@@ -104,9 +104,9 @@
 /// @access public
 /// @group helpers
 @function to-degree($direction) {
-  @if $direction == horizontal or $direction == h {
+  @if $direction == 'horizontal' or $direction == 'h' {
     @return 90deg;
-  } @else if $direction == vertical or $direction == v {
+  } @else if $direction == 'vertical' or $direction == 'v' {
     @return 0deg;
   }
 }
@@ -169,13 +169,18 @@
 /// @group getter
 @function get-social-icon-XGAplus-responsive-px() {
   @return responsive-width(
-    get-component-property('social-item', 'default-size__'),
-    get-component-property('social-item', 'w-XGAplus_max__'),
-    get-breakpoint('w', 'XGAplus__'),
-    get-breakpoint('w', 'FHD__')
+    get-component-property('social-item', 'default-size--'),
+    get-component-property('social-item', 'w-XGAplus-max--'),
+    get-breakpoint('w', 'XGAplus--'),
+    get-breakpoint('w', 'FHD--')
   );
 }
 
+/// Returns the color categories, this is used for looping through categories to
+/// create util classes
+/// @return {list} - color categories
+/// @access public
+/// @group getters
 @function get-color-categories() {
   @return $COLOR_CATEGORIES;
 }

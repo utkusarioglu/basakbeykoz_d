@@ -3,7 +3,6 @@
 @import './_textarea.component';
 @import './_submit.component';
 @import './_label.component';
-
 @import './_home.color';
 
 /// Styles for the contact form on the home page
@@ -12,8 +11,8 @@
   > .wp-block-group:nth-child(6)
   > .wp-block-group__inner-container
   > .wpcf7 {
-  grid-area: feature;
   display: grid;
+  grid-area: feature;
   grid-template-areas:
     'wpcf7-form'
     'screen-reader-response';
@@ -31,29 +30,30 @@
       &-userInput {
         display: grid;
         grid-template-areas:
-          'contactform_left'
-          'contactform_right'
-          'contactform_submit';
+          'contactform-left'
+          'contactform-right'
+          'contactform-submit';
 
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           grid-template-areas:
-            'contactform_left contactform_right'
-            'contactform_submit contactform_submit';
+            'contactform-left contactform-right'
+            'contactform-submit contactform-submit';
           grid-template-columns: 1fr 1fr;
           grid-column-gap: #{get-gap(4)};
           grid-row-gap: #{get-gap(2)};
         }
 
         &-submit {
-          grid-area: contactform_submit;
+          grid-area: contactform-submit;
         }
 
         &-left {
-          grid-area: contactform_left;
+          grid-area: contactform-left;
         }
 
         &-right {
-          grid-area: contactform_right;
+          grid-area: contactform-right;
+
           /// Mysterious div
           & > p:nth-child(2) {
             display: none;
@@ -66,7 +66,7 @@
             height: 141px; //! Magic number;
           }
 
-          @include breakpoint('w', 'SVGA__') {
+          @include breakpoint('w', 'SVGA--') {
             & *:last-child {
               margin-bottom: 0;
             }

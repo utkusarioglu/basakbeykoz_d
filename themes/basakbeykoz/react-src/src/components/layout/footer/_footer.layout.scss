@@ -3,42 +3,42 @@
 /* 
   COMPONENT PROPERTIES
 */
-$footer__fg-height_max_px: get-component-property('footer', 'fg-height_max_px');
-$footer__fg-height_min_px: get-component-property('footer', 'fg-height_min_px');
-$footer__fg-bottom_px: get-component-property('footer', 'fg-bottom_px');
+$footer--fg-height-max-px: get-component-property('footer', 'fg-height-max-px');
+$footer--fg-height-min-px: get-component-property('footer', 'fg-height-min-px');
+$footer--fg-bottom-px: get-component-property('footer', 'fg-bottom-px');
+$footer--square-size-px: get-component-property('footer', 'square-size-px');
+$env--react-app-uploads-dir: get-environment-variable('REACT_APP_UPLOADS_DIR');
 
 .Footer {
-  $creditsSize: 20vw;
-  $creditsMaxSize: 150px;
-  $footer_square-size_px: get-component-property(footer, square-size_px);
+  $credits-size-vw: 20vw;
+  $credits-max-size-px: 150px;
 
   a {
     text-decoration: none;
   }
 
   &-backdrop {
-    $react-app-uploads-dir: get-environment-variable('REACT_APP_UPLOADS_DIR');
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    min-height: #{$footer_square-size_px};
-    height: #{$creditsSize};
-    max-height: #{$creditsMaxSize};
-    background: url('#{$react-app-uploads-dir}/footer-art-bg.svg') no-repeat
-      bottom right;
+    background: url('#{$env--react-app-uploads-dir}/footer-art-bg.svg')
+      no-repeat bottom right;
+    height: #{$credits-size-vw};
+    min-height: #{$footer--square-size-px};
+    max-height: #{$credits-max-size-px};
   }
 
   &-elements {
     display: grid;
-    grid-template-columns: 1fr auto;
     position: absolute;
-    left: 0;
     right: 0;
     bottom: 0;
-    min-height: #{$footer_square-size_px};
-    height: #{$creditsSize};
-    max-height: #{$creditsMaxSize};
+    left: 0;
+    grid-template-columns: 1fr auto;
+    height: #{$credits-size-vw};
+    min-height: #{$footer--square-size-px};
+    max-height: #{$credits-max-size-px};
 
     &-art {
       display: block;
@@ -46,13 +46,13 @@ $footer__fg-bottom_px: get-component-property('footer', 'fg-bottom_px');
       margin-left: #{get-gap(1)};
 
       &-fg {
-        max-height: #{$footer__fg-height_max_px};
-        min-height: #{$footer__fg-height_min_px};
         position: absolute;
+        bottom: #{$footer--fg-bottom-px};
         width: 80vw;
-        max-width: calc(100vw - #{$footer_square-size_px} - #{get-gap(2)});
-        min-width: calc(100vw - #{$creditsMaxSize});
-        bottom: #{$footer__fg-bottom_px};
+        min-width: calc(100vw - #{$credits-max-size-px});
+        max-width: calc(100vw - #{$footer--square-size-px} - #{get-gap(2)});
+        min-height: #{$footer--fg-height-min-px};
+        max-height: #{$footer--fg-height-max-px};
       }
     }
   }

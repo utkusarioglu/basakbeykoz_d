@@ -1,6 +1,6 @@
 @import '../../../styles/abstracts/_mixins';
 
-$nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
 nav {
   display: flex;
@@ -23,11 +23,11 @@ nav {
   right: 0;
   bottom: 0;
 
-  @include breakpoint('w', 'SVGA__') {
+  @include breakpoint('w', 'SVGA--') {
     display: none;
   }
 
-  @include breakpoint('w', 'XGAplus__') {
+  @include breakpoint('w', 'XGAplus--') {
     display: block;
     right: 0;
     width: auto;
@@ -41,21 +41,21 @@ nav {
   &.open {
     display: block;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       display: none;
     }
 
-    @include breakpoint('w', 'XGAplus__') {
+    @include breakpoint('w', 'XGAplus--') {
       display: block;
     }
   }
   & .Social-list {
     position: absolute;
     left: 0;
-    bottom: #{$nav__mobile_height_px};
+    bottom: #{$nav--mobile-height-px};
     flex-direction: column;
 
-    @include breakpoint('w', 'QVGA__') {
+    @include breakpoint('w', 'QVGA--') {
       display: none;
     }
   }
@@ -66,17 +66,17 @@ nav {
     right: 0;
     background-color: #{get-color('bg-white')};
 
-    @include breakpoint('w', 'XGAplus__') {
+    @include breakpoint('w', 'XGAplus--') {
       position: relative;
       margin-right: #{get-gap(2)};
       background-color: transparent;
     }
 
     &-scrollable {
-      max-height: calc(100vh - #{$nav__mobile_height_px});
-      margin-bottom: #{$nav__mobile_height_px};
+      max-height: calc(100vh - #{$nav--mobile-height-px});
+      margin-bottom: #{$nav--mobile-height-px};
 
-      @include breakpoint('w', 'XGAplus__') {
+      @include breakpoint('w', 'XGAplus--') {
         margin-bottom: 0;
       }
 
@@ -84,7 +84,7 @@ nav {
         flex-direction: column;
         align-items: flex-end;
 
-        @include breakpoint('w', 'XGAplus__') {
+        @include breakpoint('w', 'XGAplus--') {
           justify-content: center;
           padding: #{get-gap(2)} 0;
           margin-bottom: 0;
@@ -97,7 +97,7 @@ nav {
           color: #{get-color('text-dark')};
           text-align: right;
 
-          @include breakpoint('w', 'XGAplus__') {
+          @include breakpoint('w', 'XGAplus--') {
             color: #{get-color('ui-blue')};
             padding: #{get-gap(1/2)} #{get-gap()};
             font-size: responsive-width(20, 26);
@@ -108,31 +108,31 @@ nav {
 
             &:after {
               position: absolute;
-              content: '';
               top: 0;
-              bottom: 0;
               right: 0;
-              width: #{get-gap()};
-              background-color: #{get-color('ui-decoration')};
+              bottom: 0;
               border-top-left-radius: #{get-gap()};
               border-bottom-left-radius: #{get-gap()};
+              background-color: #{get-color('ui-decoration')};
+              width: #{get-gap()};
+              content: '';
 
-              @include breakpoint('w', 'SVGA__') {
-                width: auto;
-                height: #{get-gap(1/2)};
+              @include breakpoint('w', 'SVGA--') {
                 top: auto;
                 right: #{get-gap()};
                 left: #{get-gap()};
+                width: auto;
+                height: #{get-gap(1/2)};
               }
 
-              @include breakpoint('w', 'XGAplus__') {
-                left: auto;
-                bottom: 0;
+              @include breakpoint('w', 'XGAplus--') {
                 top: 0;
                 right: 0;
-                width: #{get-gap(1/2)};
+                bottom: 0;
+                left: auto;
                 border-top-left-radius: #{get-gap(1/2)};
                 border-bottom-left-radius: #{get-gap(1/2)};
+                width: #{get-gap(1/2)};
                 height: auto;
               }
             }
@@ -145,16 +145,16 @@ nav {
   &-decor {
     display: none;
 
-    @include breakpoint('w', 'XGAplus__') {
+    @include breakpoint('w', 'XGAplus--') {
       display: block;
       position: absolute;
-      right: 0;
       top: 0;
+      right: 0;
       bottom: 0;
-      width: #{get-gap(2)};
-      background-color: #{get-color('ui-yellow')};
       border-top-left-radius: #{get-gap(2)};
       border-bottom-left-radius: #{get-gap(2)};
+      background-color: #{get-color('ui-yellow')};
+      width: #{get-gap(2)};
     }
   }
 
@@ -163,14 +163,14 @@ nav {
     background: linear-gradient(
       rgba(255, 255, 255, 0.6),
       transparent
-        calc(100vh - #{get-component-property('nav', 'mobile-height_px')})
+        calc(100vh - #{get-component-property('nav', 'mobile-height-px')})
     );
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       display: none;
     }
   }

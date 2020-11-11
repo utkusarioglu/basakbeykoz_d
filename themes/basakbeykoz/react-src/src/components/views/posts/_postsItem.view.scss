@@ -1,16 +1,17 @@
 @import '../../../styles/abstracts/_mixins';
 
-$CARD_HEIGHT: 250px;
-$minimal-screen-padding: get-component-property(
+$page-blog-native--minimal-screen-padding-px: get-component-property(
   'page-blog-native',
-  'minimal-screen-padding'
+  'minimal-screen-padding-px'
 );
-$normal-screen-padding: get-component-property(
+$page-blog-native--normal-screen-padding-px: get-component-property(
   'page-blog-native',
-  'normal-screen-padding'
+  'normal-screen-padding-px'
 );
 
 .Posts {
+  $card-height: 250px;
+
   &-card {
     display: grid;
     grid-template-areas:
@@ -21,7 +22,7 @@ $normal-screen-padding: get-component-property(
     grid-row-gap: #{get-gap()};
     text-decoration: none;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas:
         'image h3'
         'image date'
@@ -30,7 +31,7 @@ $normal-screen-padding: get-component-property(
       grid-template-columns: 10vw auto;
       grid-row-gap: #{get-gap()};
       grid-column-gap: #{get-gap(2)};
-      height: #{$CARD_HEIGHT};
+      height: #{$card-height};
       overflow: hidden;
     }
 
@@ -48,7 +49,7 @@ $normal-screen-padding: get-component-property(
       overflow: hidden;
       position: relative;
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         &::after {
           content: '';
           position: absolute;
@@ -77,20 +78,24 @@ $normal-screen-padding: get-component-property(
       justify-content: center;
       overflow: hidden;
 
-      @include breakpoint('w', 'SVGA__') {
-        height: #{$CARD_HEIGHT};
+      @include breakpoint('w', 'SVGA--') {
+        height: #{$card-height};
         width: #{$img-SVGA-width-vw};
       }
 
       & > img {
-        width: calc(100vw - #{2 * $minimal-screen-padding});
+        width: calc(
+          100vw - #{2 * $page-blog-native--minimal-screen-padding-px}
+        );
         height: auto;
 
-        @include breakpoint('w', 'WQVGA__') {
-          width: calc(100vw - #{2 * $normal-screen-padding});
+        @include breakpoint('w', 'WQVGA--') {
+          width: calc(
+            100vw - #{2 * $page-blog-native--normal-screen-padding-px}
+          );
         }
 
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           width: #{$img-SVGA-width-vw};
           height: 100%;
           object-fit: cover;

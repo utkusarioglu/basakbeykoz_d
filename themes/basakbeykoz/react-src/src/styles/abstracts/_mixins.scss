@@ -9,26 +9,26 @@
 ///
 
 /// Sets the min-width screen media query. This is a helper for breakpoint mixin
-/// @param {px} $threshold_px - Min width threshold
+/// @param {px} $threshold-px - Min width threshold
 /// @param {string} $media - type of media for the query
 /// @content Content that shall be active when the media is greated than the min-width
 /// @access private
 /// @group helpers
-@mixin _min-width($threshold_px, $media: screen) {
-  @media #{$media} and (min-width: scut-rem($threshold_px, get-font-size(ScutRemBase__))) {
+@mixin _min-width($threshold-px, $media: screen) {
+  @media #{$media} and (min-width: scut-rem($threshold-px, get-font-size('scut-rem-base--'))) {
     @content;
   }
 }
 
 /// Sets the min-height screen media query. This is a helper for breakpoint
 /// mixin
-/// @param {px} $threshold_px - Min height threshold
+/// @param {px} $threshold-px - Min height threshold
 /// @param {string} $media - type of media for the query
 /// @content Content that shall be active when the media is greated than the min-height
 /// @access private
 /// @group helpers
 @mixin _min-height($threshold, $media: screen) {
-  @media #{$media} and (min-height: scut-rem($threshold, get-font-size(ScutRemBase__))) {
+  @media #{$media} and (min-height: scut-rem($threshold, get-font-size('scut-rem-base--'))) {
     @content;
   }
 }
@@ -39,17 +39,17 @@
 /// @access public
 /// @group helpers
 @mixin icon-img($filter: var(--filter-white)) {
-  height: #{get-component-property('social-item', 'default-size__') * 1px};
-  width: #{get-component-property('social-item', 'default-size__') * 1px};
   padding: #{get-gap()};
+  width: #{get-component-property('social-item', 'default-size--') * 1px};
+  height: #{get-component-property('social-item', 'default-size--') * 1px};
 
-  @include breakpoint('w', 'XGAplus__') {
-    min-height: #{get-component-property('social-item', 'w-XGAplus_min__') * 1px};
-    min-width: #{get-component-property('social-item', 'w-XGAplus_min__') * 1px};
-    height: #{get-social-icon-XGAplus-responsive-px()};
+  @include breakpoint('w', 'XGAplus--') {
     width: #{get-social-icon-XGAplus-responsive-px()};
-    max-height: #{get-component-property('social-item', 'w-XGAplus_max__') * 1px};
-    max-width: #{get-component-property('social-item', 'w-XGAplus_max__') * 1px};
+    min-width: #{get-component-property('social-item', 'w-XGAplus-min--') * 1px};
+    max-width: #{get-component-property('social-item', 'w-XGAplus-max--') * 1px};
+    height: #{get-social-icon-XGAplus-responsive-px()};
+    min-height: #{get-component-property('social-item', 'w-XGAplus-min--') * 1px};
+    max-height: #{get-component-property('social-item', 'w-XGAplus-max--') * 1px};
   }
 }
 
@@ -59,8 +59,8 @@
 /// @group helpers
 @function get-typography-responsive-font-size($tag) {
   @return responsive-width(
-    get-typography($tag, 'font-size_min__'),
-    get-typography($tag, 'font-size_max__')
+    get-typography($tag, 'font-size-min--'),
+    get-typography($tag, 'font-size-max--')
   );
 }
 
@@ -70,8 +70,8 @@
 /// @group helpers
 @function get-typography-responsive-line-height($tag) {
   @return responsive-width(
-    get-typography($tag, 'line-height_min__'),
-    get-typography($tag, 'line-height_max__')
+    get-typography($tag, 'line-height-min--'),
+    get-typography($tag, 'line-height-max--')
   );
 }
 
@@ -84,11 +84,11 @@
   $font-size: get-typography-responsive-font-size($tag);
 
   grid-area: #{$tag};
-  color: #{get-color('text-mediumDark')};
   margin: calc(#{$font-size} * 2.5) 0 calc(#{$font-size} / 1.5) 0;
-  font-size: #{$font-size};
   line-height: #{get-typography-responsive-line-height($tag)};
+  color: #{get-color('text-mediumDark')};
   font-family: #{get-font-property($font-type, 'font-family')};
+  font-size: #{$font-size};
   font-weight: #{get-font-property($font-type, 'font-weight')};
 }
 
@@ -147,52 +147,46 @@
 /// @access public
 /// @group helpers
 @mixin p-basic {
-  // $p_font-size_responsive_px: responsive-width(
-  //   get-typography('p', 'font-size_min__'),
-  //   get-typography('p', 'font-size_max__')
-  // );
-  // $p_line-height_responsive_px: responsive-width(
-  //   get-typography('p', 'line-height_min__'),
-  //   get-typography('p', 'line-height_max__')
-  // );
-
+  line-height: #{get-typography-responsive-line-height('p')};
   color: #{get-color('text-mediumDark')};
   font-family: #{get-font-property('text', 'font-family')};
-  font-weight: #{get-font-property('text', 'font-weight')};
   font-size: #{get-typography-responsive-font-size('p')};
-  line-height: #{get-typography-responsive-line-height('p')};
+  font-weight: #{get-font-property('text', 'font-weight')};
 }
 
 /// Properties for svg art that is used at the bottom of homepage sections
 /// @param {string} $filename - The path for the svg file
-/// @param {px} $width_px - Width of the svg
-/// @param {px} $height_px - Height of the svg
-/// @param {px} $min-height_px - Min height that the svg is allowed to shrink. Defaults to min-width if undefined
-/// @param {px} $max-height_px - Max height that the svg is allowed to grow. Defaults to max-width if undefined
+/// @param {px} $width-px - Width of the svg
+/// @param {px} $height-px - Height of the svg
+/// @param {px} $min-height-px - Min height that the svg is allowed to shrink. Defaults to min-width if undefined
+/// @param {px} $max-height-px - Max height that the svg is allowed to grow. Defaults to max-width if undefined
 /// @access public
 /// @group helpers
 @mixin svg-art(
   $filename,
-  $width_px,
-  $height_px,
-  $min-height_px: $height_px,
-  $max-height_px: $height_px
+  $width-px,
+  $height-px,
+  $min-height-px: $height-px,
+  $max-height-px: $height-px
 ) {
-  $react-app-uploads-dir: get-environment-variable('REACT_APP_UPLOADS_DIR');
-  content: '';
-  position: absolute;
+  $env--react-app-uploads-dir: get-environment-variable(
+    'REACT_APP_UPLOADS_DIR'
+  );
+
   display: block;
-  height: #{$height_px};
-  max-height: #{$max-height_px};
-  min-height: #{$min-height_px};
-  background-size: contain;
-  background-image: url('#{$react-app-uploads-dir}/#{$filename}');
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  z-index: 1;
+  position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  z-index: 1;
+  background-image: url('#{$env--react-app-uploads-dir}/#{$filename}');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: #{$height-px};
+  min-height: #{$min-height-px};
+  max-height: #{$max-height-px};
+  content: '';
   pointer-events: none;
 }
 
@@ -210,18 +204,19 @@
 /// @group helpers
 @mixin typography-button() {
   @include p();
+
+  margin: 0;
   font-family: #{get-font-property('heading', 'font-family')};
   font-weight: #{get-font-property('heading', 'font-weight')};
-  margin: 0;
 }
 
 /// Hero typography properties
 /// @access public
 /// @group helpers
 @mixin typography-hero() {
-  font-size: responsive-width(35, 100, 250);
   line-height: responsive-width(60, 120, 250);
   font-family: #{get-font-property('hero', 'font-family')};
+  font-size: responsive-width(35, 100, 250);
   font-weight: #{get-font-property('hero', 'font-weight')};
 }
 
@@ -231,15 +226,17 @@
 /// @param {string} $media - the type of media for which the query is written. Default value is screen
 /// @group helpers
 /// @access public
-@mixin breakpoint($aspect, $size_px, $media: screen) {
+@mixin breakpoint($aspect, $size-px, $media: screen) {
   @if $aspect == height or $aspect == h {
-    $screenPx: get-breakpoint(height, $size_px);
-    @include _min-height($screenPx, $media) {
+    $screen-px: get-breakpoint(height, $size-px);
+
+    @include _min-height($screen-px, $media) {
       @content;
     }
   } @else if $aspect == width or $aspect == w {
-    $screenPx: get-breakpoint(width, $size_px);
-    @include _min-width($screenPx, $media) {
+    $screen-px: get-breakpoint(width, $size-px);
+
+    @include _min-width($screen-px, $media) {
       @content;
     }
   } @else {
@@ -287,7 +284,7 @@
         $minimal-padding-half-px
       );
 
-      @include breakpoint('w', 'WQVGA__') {
+      @include breakpoint('w', 'WQVGA--') {
         background: linear-gradient-frame(
           $color-value,
           $alignment,
@@ -328,13 +325,26 @@
 /// @access public
 /// @group helpers
 @mixin button-standard() {
-  width: 100%;
-  padding: #{get-gap()};
+  outline: none;
   border: none;
   border-radius: #{get-gap()};
-  outline: none;
+  padding: #{get-gap()};
+  width: 100%;
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+/// Creates the headings by looping through 1 - 6
+/// @access public
+/// @group setters
+@mixin set-headings() {
+  @for $i from 1 through 6 {
+    $tag: 'h' + $i;
+
+    @at-root #{$tag} {
+      @include _heading($tag);
+    }
   }
 }

@@ -26,11 +26,11 @@
 /// @group theme
 :root {
   // https://codepen.io/sosuke/pen/Pjoqqp helped with these
-  $filterWhite: contrast(1) invert(96%) sepia(4%) saturate(282%)
+  $filter-white: contrast(1) invert(96%) sepia(4%) saturate(282%)
     hue-rotate(202deg) brightness(102%) contrast(95%);
 
-  --filter-white: #{$filterWhite};
+  --filter-white: #{$filter-white};
   --filter-darkGray: brightness(0) invert(20%) sepia(6%) saturate(2240%)
     hue-rotate(164deg) brightness(98%) contrast(84%);
-  --filter-logo-white: brightness(0) #{$filterWhite};
+  --filter-logo-white: brightness(0) #{$filter-white};
 }

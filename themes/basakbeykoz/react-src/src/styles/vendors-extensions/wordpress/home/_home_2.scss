@@ -1,5 +1,5 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../../wordpress/_wp_posts';
 
 .Canvas.page.home > article > .wp-block-group:nth-child(2) {
   & > .wp-block-group__inner-container {
@@ -9,7 +9,7 @@
       'paragraph';
     grid-template-rows: max-content auto min-content;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas:
         'h2 image'
         'paragraph image';
@@ -19,11 +19,11 @@
 
     h2 {
       position: relative;
-      width: max-content;
       justify-self: center;
       z-index: 1;
+      width: max-content;
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         justify-self: start;
         text-align: left;
       }
@@ -37,15 +37,15 @@
           -1 / 2 * #{get-typography-responsive-line-height('h2')}
         );
 
-        content: '';
-        z-index: -1;
-        background-image: url('/wp-content/uploads/star.png');
-        background-size: #{$content-size};
         position: absolute;
         top: #{$content-top};
         left: #{$content-left};
-        height: #{$content-size};
+        z-index: -1;
+        background-image: url('/wp-content/uploads/star.png');
+        background-size: #{$content-size};
         width: #{$content-size};
+        height: #{$content-size};
+        content: '';
       }
     }
   }

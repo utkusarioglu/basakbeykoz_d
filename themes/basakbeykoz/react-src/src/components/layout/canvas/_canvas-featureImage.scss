@@ -1,5 +1,7 @@
 @import '../../../styles/abstracts/_mixins';
 
+/// Feature image is drawn on the top (mobile), left(others) side and shows the
+/// feature image that is sent by wp
 .FeatureImage {
   /// Properties common for both on and off states
   /// @access private

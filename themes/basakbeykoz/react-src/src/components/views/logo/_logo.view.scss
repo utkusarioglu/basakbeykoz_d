@@ -1,28 +1,33 @@
 @import '../../../styles/abstracts/_mixins';
 
+$logo-n-social--y-px: get-component-property('logo-n-social', 'y-px');
+$feature-image--narrow-x-vw: #{get-component-property(
+    'feature-image',
+    'narrow-x-vw'
+  )};
+
 .Logo {
-  $logo-n-social_y: get-component-property('logo-n-social', y_px);
   grid-area: logo;
 
   &-decor {
-    width: #{get-gap()};
-    height: $logo-n-social_y;
-    background: #{get-color('ui-blue')};
     left: 0;
     border-top-right-radius: #{get-gap(2)};
     border-bottom-right-radius: #{get-gap(2)};
+    background: #{get-color('ui-blue')};
+    width: #{get-gap()};
+    height: #{$logo-n-social--y-px};
   }
 
   &-logo > img {
-    max-width: 140px;
     min-width: 70px;
+    max-width: 140px;
   }
 
   header & {
     .Logo {
       &-logo > img {
-        margin-left: #{get-gap()};
         margin-top: 8px;
+        margin-left: #{get-gap()};
       }
 
       &-decor {
@@ -33,29 +38,28 @@
 
   .App-wideScreenControls & {
     display: none;
-
-    z-index: 90;
     position: fixed;
     top: #{get-gap(2)};
     left: 0;
     flex-direction: row;
     align-items: center;
+    z-index: 90;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       display: flex;
-      img {
-        $featureImageX: #{get-component-property('feature-image', 'narrow_x_vw')};
-        $paddingLeft: #{get-gap()};
-        $statics: #{$paddingLeft} - #{get-gap(4)};
-        $width: calc(#{$featureImageX} - #{$statics});
-        $marginTop: calc(#{$width} / 25);
 
-        max-width: 350px;
-        min-width: 170px;
-        max-height: 50px;
+      img {
+        $padding-left: #{get-gap()};
+        $statics: #{$padding-left} - #{get-gap(4)};
+        $width: calc(#{$feature-image--narrow-x-vw} - #{$statics});
+        $margin-top: calc(#{$width} / 25);
+
+        margin-top: #{$margin-top};
+        padding-left: #{$padding-left};
         width: $width;
-        margin-top: $marginTop;
-        padding-left: $paddingLeft;
+        min-width: 170px;
+        max-width: 350px;
+        max-height: 50px;
         object-fit: scale-down;
       }
     }

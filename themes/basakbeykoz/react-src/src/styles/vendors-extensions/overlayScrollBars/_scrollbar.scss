@@ -31,7 +31,7 @@ $active-size: get-gap(4/3);
       width: #{$active-size} !important;
 
       & .os-scrollbar-handle {
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           border-top-left-radius: #{$active-size} !important;
           border-bottom-left-radius: #{$active-size} !important;
           width: #{$active-size};
@@ -60,7 +60,7 @@ $active-size: get-gap(4/3);
       height: #{$active-size} !important;
 
       & .os-scrollbar-handle {
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           border-top-left-radius: #{$active-size} !important;
           border-top-right-radius: #{$active-size} !important;
           height: #{$active-size};

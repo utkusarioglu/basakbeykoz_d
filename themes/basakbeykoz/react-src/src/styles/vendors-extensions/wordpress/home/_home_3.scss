@@ -1,13 +1,14 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../_wp_posts';
 
 /*
   COMPONENT PROPERTIES
 */
-$home__section_top_bottom_padding_px: get-component-property(
+$home--section-top-bottom-padding-px: get-component-property(
   'home',
-  'section_top_bottom_padding_px'
+  'section-top-bottom-padding-px'
 );
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(3) {
@@ -19,7 +20,7 @@ $home__section_top_bottom_padding_px: get-component-property(
       'restart';
     grid-template-rows: max-content auto min-content min-content;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas:
         'image h2'
         'image paragraph'
@@ -29,22 +30,22 @@ $home__section_top_bottom_padding_px: get-component-property(
     }
 
     & > h2 {
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         align-self: end;
         text-align: left;
       }
     }
   }
   &:after {
-    $width: 100vw;
-    $height: 25vw;
+    $width-vw: 100vw;
+    $height-vw: 25vw;
 
     @include svg-art(
       'city.svg',
-      $width,
-      $height,
-      get-component-property('nav', 'mobile-height_px'),
-      #{$home__section_top_bottom_padding_px}
+      $width-vw,
+      $height-vw,
+      $nav--mobile-height-px,
+      #{$home--section-top-bottom-padding-px}
     );
   }
 }

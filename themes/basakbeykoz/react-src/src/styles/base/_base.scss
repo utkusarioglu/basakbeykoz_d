@@ -14,23 +14,9 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   color: #{get-color('text-mediumDark')};
-  font-size: #{get-font-size(default__) * 1px};
+  font-size: #{get-font-size('default--') * 1px};
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-}
-
-// creates headings
-
-/// Creates the headings by looping through 1 - 6
-/// @access public
-/// @group setters
-@mixin set-headings() {
-  @for $i from 1 through 6 {
-    $tag: 'h' + $i;
-    @at-root #{$tag} {
-      @include _heading($tag);
-    }
-  }
 }
 
 @include set-headings();
@@ -45,6 +31,7 @@ nav {
 
 figcaption {
   @include p-basic();
+
   margin: 0;
 }
 

@@ -1,27 +1,28 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../_wp_posts';
 
 /*
   COMPONENT PROPERTIES
 */
-$home__section_top_bottom_padding_px: get-component-property(
+$home--section-top-bottom-padding-px: get-component-property(
   'home',
-  'section_top_bottom_padding_px'
+  'section-top-bottom-padding-px'
 );
-$logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
-$minimal-screen-padding-px: get-component-property(
+$logo-n_social--y-px: get-component-property('logo-n-social', 'y-px');
+$page-blog-native--minimal-screen-padding-px: get-component-property(
   'page-blog-native',
-  'minimal-screen-padding'
+  'minimal-screen-padding-px'
 );
-$normal-screen-padding-px: get-component-property(
+$page-blog-native--normal-screen-padding-px: get-component-property(
   'page-blog-native',
-  'normal-screen-padding'
+  'normal-screen-padding-px'
 );
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(5) {
   & > .wp-block-group__inner-container {
-    @include wpPosts(success, column, get-color('bg-gray'));
+    @include wp-posts('success', 'column', get-color('bg-gray'));
 
     grid-template-areas:
       'h2'
@@ -29,16 +30,16 @@ $normal-screen-padding-px: get-component-property(
     grid-template-rows: max-content 1fr;
     align-content: stretch;
 
-    @include breakpoint('h', 'HD__') {
+    @include breakpoint('h', 'HD--') {
       grid-row-gap: #{get-gap(2)};
     }
 
-    @include breakpoint('w', 'SVGA__') {
-      $logo-n-social_y: get-component-property('logo-n-social', 'y_px');
+    @include breakpoint('w', 'SVGA--') {
+      $logo-n-social-y: get-component-property('logo-n-social', 'y-px');
 
-      grid-template-rows: #{$logo_n_social__y_px} 1fr;
-      padding-bottom: #{$home__section_top_bottom_padding_px};
+      grid-template-rows: #{$logo-n_social--y-px} 1fr;
       padding-top: 0;
+      padding-bottom: #{$home--section-top-bottom-padding-px};
     }
 
     h2 {
@@ -47,32 +48,32 @@ $normal-screen-padding-px: get-component-property(
     }
 
     & > .wp-block-latest-posts {
-      margin-left: #{-$minimal-screen-padding-px} !important;
+      margin-left: #{-$page-blog-native--minimal-screen-padding-px} !important;
       width: 100vw;
 
-      @include breakpoint('w', 'QVGA__') {
-        margin-left: #{-$normal-screen-padding-px} !important;
+      @include breakpoint('w', 'QVGA--') {
+        margin-left: #{-$page-blog-native--normal-screen-padding-px} !important;
       }
 
-      @include breakpoint('w', 'SVGA__') {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        overflow: hidden;
+      @include breakpoint('w', 'SVGA--') {
         margin: 0 !important;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        overflow: hidden;
       }
     }
   }
 
   &:after {
-    $cityWidth: 100vw;
-    $height: 25vw;
+    $width-vw: 100vw;
+    $height-vw: 25vw;
 
     @include svg-art(
       'success.svg',
-      $cityWidth,
-      $height,
-      get-component-property('nav', 'mobile-height_px'),
+      $width-vw,
+      $height-vw,
+      $nav--mobile-height-px,
       130px
     );
   }
