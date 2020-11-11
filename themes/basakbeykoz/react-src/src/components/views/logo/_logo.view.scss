@@ -14,7 +14,7 @@ $feature-image--narrow-x-vw: #{get-component-property(
     border-top-right-radius: #{get-gap(2)};
     border-bottom-right-radius: #{get-gap(2)};
     background: #{get-color('ui-blue')};
-    width: #{get-gap()};
+    width: #{get-gap(2)};
     height: #{$logo-n-social--y-px};
   }
 

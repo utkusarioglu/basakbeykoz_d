@@ -77,7 +77,6 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
           top: #{get-gap(-2)};
           left: #{get-gap(-2)};
           right: #{get-gap(-2)};
-          z-index: -1;
           right: auto;
           bottom: #{get-gap(-2)};
           width: $home--welcome-image-x-vw;
