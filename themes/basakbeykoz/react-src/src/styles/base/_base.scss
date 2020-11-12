@@ -46,6 +46,11 @@ p {
     position: relative;
 
     &:hover {
+      /// A slight touch is needed to visually balance the vertical positioning
+      /// of the padding for the links. This variable is applied to the top
+      /// bottom padding to shift it up and down
+      $vertical-padding-shift: 1px;
+
       color: #{get-color('text-mediumDark')};
       text-decoration-color: #{get-color('text-mediumDark')};
       /// The transform value helps to elevate the element above the plane.
@@ -59,9 +64,9 @@ p {
         $padding: 2/3;
 
         position: absolute;
-        top: #{get-gap(-$padding)};
+        top: #{get-gap(-$padding) + $vertical-padding-shift};
         right: #{get-gap(-$padding)};
-        bottom: #{get-gap(-$padding)};
+        bottom: #{get-gap(-$padding) - $vertical-padding-shift};
         left: #{get-gap(-$padding)};
         z-index: -1;
         background-color: #{get-color('ui-decoration')};
