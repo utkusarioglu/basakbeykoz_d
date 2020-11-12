@@ -63,11 +63,16 @@ function CanvasLayout({
   let articleTitle;
   if (title !== '') {
     bodyExtraClasses.push('has-CanvasTitle');
+    const cleanedTitle = cleanTitle(title);
     featureTitle = (
-      <h1 {...{ className: 'Canvas-featureTitle text-blue' }}>{title}</h1>
+      <h1 {...{ className: 'Canvas-featureTitle text-blue' }}>
+        {cleanedTitle}
+      </h1>
     );
     articleTitle = (
-      <h1 {...{ className: 'Canvas-articleTitle text-blue' }}>{title}</h1>
+      <h1 {...{ className: 'Canvas-articleTitle text-blue' }}>
+        {cleanedTitle}
+      </h1>
     );
   }
 
@@ -113,6 +118,38 @@ function CanvasLayout({
       </div>
     </>
   );
+}
+
+/**
+ * The client uses certain punctuation marks to distinguish the name, job title
+ * and company of the testimonials, which are stored as the title property
+ * of their respective posts.
+ *
+ * These titles were way too lengthy to be pleasantly displayed in the title
+ * section, so it made sense to only render the names of the testimonials.
+ * This function substrings the title from start to the very first punctuation
+ * being scanned. This is done with the assumption that the client puts the
+ * name before everything else.
+ *
+ * A similar manipulation is made for the cards that display the testimonials
+ * on the homepage. See home.injection.ts -> substituteTestimonialChars()
+ *
+ * @param title - title of the post/page
+ * @returns cleaned title that only contains the name
+ */
+function cleanTitle(title: string) {
+  // common punctuation used
+  const finds = ['-', '–', '/'];
+  const findsIndexes: number[] = finds
+    .map((find) => title.indexOf(find))
+    // excluding the finds that aren't in the title
+    .filter((find) => find !== -1);
+  // Note that if none of the finds exist in the title, math.min return will
+  // be infinity. But this is okay as line with the substring simply
+  // ends up getting the entire line when infinity is the second input.
+  //! Be careful that Math.min(...[]) is infinity while Math.min([]) is 0.
+  const cleanedTitle = title.substring(0, Math.min(...findsIndexes)).trim();
+  return cleanedTitle;
 }
 
 export default CanvasLayout;
