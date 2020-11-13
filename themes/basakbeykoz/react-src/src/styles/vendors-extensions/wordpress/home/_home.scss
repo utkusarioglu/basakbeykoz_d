@@ -1,9 +1,6 @@
 @import '../../../abstracts/_mixins';
-@import '../_wp_posts';
+@import '../wp-block-latest-posts/_main';
 
-/*
-  COMPONENT PROPERTIES
-*/
 $home--section-height-min-px: get-component-property(
   'home',
   'section-height-min-px'

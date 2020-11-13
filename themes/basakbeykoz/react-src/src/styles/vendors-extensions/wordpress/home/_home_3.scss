@@ -1,9 +1,5 @@
 @import '../../../abstracts/_mixins';
-@import '../_wp_posts';
 
-/*
-  COMPONENT PROPERTIES
-*/
 $home--section-top-bottom-padding-px: get-component-property(
   'home',
   'section-top-bottom-padding-px'

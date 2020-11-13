@@ -1,9 +1,5 @@
 @import '../../../abstracts/_mixins';
-@import '../../wordpress/_wp_posts';
 
-/*
-  COMPONENT PROPERTIES
-*/
 $nav--social-space-x-px: get-component-property('nav', 'social-space-x-px');
 $logo-n-social--y-px: get-component-property('logo-n-social', 'y-px');
 $home--welcome-image-x-vw: get-component-property('home', 'welcome-image-x_vw');

@@ -1,9 +1,6 @@
 @import '../../../abstracts/_mixins';
-@import '../_wp_posts';
+@import '../wp-block-latest-posts/_main';
 
-/*
-  COMPONENT PROPERTIES
-*/
 $home--section-top-bottom-padding-px: get-component-property(
   'home',
   'section-top-bottom-padding-px'
@@ -17,11 +14,38 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
   'normal-screen-padding-px'
 );
 $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+$home--posts-y-px: get-component-property('home', 'posts-y-px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(4) {
   > .wp-block-group__inner-container {
-    @include wp-posts('posts', 'row');
+    $p-small--line-height: get-typography-responsive-line-height('p-small');
+    $title--line-height: get-typography-responsive-line-height('h4');
+    $column-img-height-px: $home--posts-y-px;
+    $column-excerpt-paragraph-lines: 5;
+    $column-excerpt-title-lines: 2;
+    $grid-row-gap: get-gap();
+    $paragraph-height: calc(
+      #{$column-excerpt-paragraph-lines} * #{$p-small--line-height}
+    );
+    $title-height: calc(
+      #{$column-excerpt-title-lines} * #{$title--line-height}
+    );
+
+    $SVGA-height: calc(
+      #{$column-img-height-px} + 6 * #{$grid-row-gap} + #{$paragraph-height} + #{$title-height}
+    );
+
+    @include wp-posts(
+      'posts',
+      get-color('bg-white'),
+      $column-img-height-px,
+      $column-excerpt-paragraph-lines,
+      $column-excerpt-title-lines,
+      $grid-row-gap,
+      $SVGA-height,
+      get-color('bg-green')
+    );
 
     grid-template-areas:
       'h2'
@@ -54,7 +78,7 @@ $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
     & > .wp-block-latest-posts {
       margin-left: #{-$page-blog-native--minimal-screen-padding-px} !important;
       width: 100vw;
-      height: 330px;
+      height: #{$SVGA-height};
 
       @include breakpoint('w', 'QVGA--') {
         margin-left: #{-$page-blog-native--normal-screen-padding-px} !important;

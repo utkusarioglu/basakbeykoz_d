@@ -1,0 +1,88 @@
+@import '../../../abstracts/_mixins';
+
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
+
+@mixin card($type, $grid-row-gap, $card-color, $max-width-px, $min-width-px) {
+  display: grid;
+  position: relative;
+  grid-row-gap: #{$grid-row-gap};
+  margin-left: #{$page-blog-native--minimal-screen-padding-px};
+  border-radius: #{$grid-row-gap};
+  background-color: $card-color;
+  cursor: pointer;
+  padding: #{$grid-row-gap};
+  min-width: #{$min-width-px};
+  width: 60vw;
+  max-width: #{$max-width-px};
+
+  @if $type == 'posts' {
+    grid-template-areas:
+      'image'
+      'title'
+      'time'
+      'excerpt';
+    grid-template-rows: max-content max-content max-content max-content;
+  } @else if $type == 'success' {
+    grid-template-areas:
+      'image'
+      'excerpt'
+      'title';
+    grid-template-rows: max-content max-content min-content;
+  }
+
+  @include breakpoint('w', 'QVGA--') {
+    margin-left: #{$page-blog-native--normal-screen-padding-px};
+  }
+
+  @include breakpoint('w', 'SVGA--') {
+    @if $type == 'posts' {
+      grid-template-areas:
+        'image title'
+        'image time'
+        'image excerpt';
+      grid-template-rows: max-content min-content auto;
+      grid-template-columns: #{$home--posts-y-px} auto;
+      grid-column-gap: #{get-gap()};
+      grid-row-gap: 5px;
+      width: 100%;
+      max-width: calc(100% - #{get-gap(2)});
+      height: calc(#{$home--posts-y-px} + #{get-gap(2)});
+      margin-left: 0;
+      margin-bottom: #{get-gap(2)};
+      overflow: hidden;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    } @else if $type == 'success' {
+      max-width: #{$max-width-px};
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &:last-child::after {
+    position: absolute;
+    right: #{-$page-blog-native--minimal-screen-padding-px};
+    width: 1px;
+    height: 1px;
+    content: '';
+
+    @include breakpoint('w', 'WQVGA--') {
+      right: #{-$page-blog-native--normal-screen-padding-px};
+    }
+
+    @include breakpoint('w', 'SVGA--') {
+      right: 0;
+    }
+  }
+}

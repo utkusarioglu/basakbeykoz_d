@@ -83,7 +83,7 @@ function CanvasLayout({
     bodyExtraClasses.push('has-PostExcerptList');
     posts = (
       <div {...{ className: 'Posts-wrapper' }}>
-        <h4>Similar Reads</h4>
+        <h3>Benzer paylaşımlar</h3>
         <PostsFeature {...{ excludeSlugs }} />
       </div>
     );

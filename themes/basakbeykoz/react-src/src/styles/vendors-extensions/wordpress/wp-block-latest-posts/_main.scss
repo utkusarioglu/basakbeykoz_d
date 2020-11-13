@@ -1,0 +1,93 @@
+@import '../../../abstracts/_mixins';
+@import './_featured-image';
+@import './_wp-posts-p';
+@import './_time';
+@import './_post-excerpt';
+@import './_title';
+@import './_scrollbar';
+@import './_card';
+
+@mixin wp-posts(
+  $type,
+  $card-color,
+  $column-img-height-px,
+  $column-excerpt-paragraph-lines,
+  $column-excerpt-title-lines,
+  $grid-row-gap,
+  $SVGA-height,
+  $card-hover-color
+) {
+  .wp-block-latest-posts {
+    $card-max-width-px: 260px;
+    $card-min-width-px: get-gap(2) + 150px;
+    $excerpt-gradient-height: get-gap(2);
+
+    grid-area: posts;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: #{$SVGA-height};
+    overflow: hidden;
+
+    @include breakpoint('w', 'SVGA--') {
+      border-radius: #{get-gap()};
+    }
+
+    /// .os-content is a class that is introduced by overlayscrollbars. Its the
+    /// div that is created by the library that actually contains the scrolling
+    /// content
+    // &,
+    .os-content {
+      @if $type == 'success' {
+        @include scrollbar('column');
+      } @else if $type == 'posts' {
+        @include scrollbar('row');
+      } @else {
+        @error 'Unrecognized type';
+      }
+    }
+
+    & li {
+      @include card(
+        $type,
+        $grid-row-gap,
+        $card-color,
+        $card-max-width-px,
+        $card-min-width-px
+      );
+
+      &:hover {
+        background-color: #{$card-hover-color};
+
+        .wp-block-latest-posts__post-excerpt::before {
+          background: linear-gradient(
+            transparent 0,
+            #{$card-hover-color} #{$excerpt-gradient-height}
+          );
+        }
+      }
+
+      .wp-block-latest-posts__featured-image {
+        @include featured-image($type, $column-img-height-px);
+      }
+
+      time {
+        @include time($type);
+      }
+
+      .wp-block-latest-posts__post-excerpt {
+        @include post-excerpt(
+          $column-excerpt-paragraph-lines,
+          $card-color,
+          $excerpt-gradient-height
+        );
+      }
+
+      /// The title section of the card, it is displayed as the name of the
+      /// author when the mixin is in success mode
+      a {
+        @include title($type, $column-excerpt-title-lines);
+      }
+    }
+  }
+}

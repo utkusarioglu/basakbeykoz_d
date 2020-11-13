@@ -1,0 +1,12 @@
+@import '../../../abstracts/_mixins';
+
+$font-size: get-typography-responsive-font-size('p-small');
+$line-height: get-typography-responsive-line-height('p-small');
+
+@mixin wp-posts-p() {
+  @include p();
+
+  font-size: #{$font-size} !important;
+  line-height: #{$line-height} !important;
+  margin-bottom: #{$line-height} !important;
+}

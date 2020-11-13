@@ -1,4 +1,4 @@
-import OverlayScrollbars from 'overlayscrollbars';
+import OverlayScrollbars, { Options } from 'overlayscrollbars';
 import { attachContactFormListener } from './contactFormHandler';
 import { RootState } from '../../../../store/rootReducer';
 const pauseable = require('pauseable');
@@ -6,20 +6,42 @@ const pauseable = require('pauseable');
 type Refs = RootState['app']['refs'];
 
 export function homeInjection(refs: Refs) {
-  injectWpPostEnhancements(refs);
+  injectWordPressPostEnhancements(refs);
   attachContactFormListener();
 }
 
-function injectWpPostEnhancements(refs: Refs) {
+function injectWordPressPostEnhancements(refs: Refs) {
   const fields = document.querySelectorAll('.wp-block-latest-posts');
-  // Scrollbar for latest posts
-  attachOverlayScrollbars(fields[0] as HTMLElement);
-  // Scrollbar for testimonials
-  attachOverlayScrollbars(fields[1] as HTMLElement);
-  // Attach listener to the CTA
+  const [testimonials, success] = (fields as unknown) as [
+    HTMLElement,
+    HTMLElement
+  ];
+  attachOverlayScrollbars(testimonials, {
+    scrollbars: {
+      autoHide: 'leave',
+    },
+  });
+  attachOverlayScrollbars(success, {
+    scrollbars: {
+      autoHide: 'leave',
+    },
+    overflowBehavior: {
+      y: 'visible-scroll',
+      x: 'scroll',
+    },
+  });
+  attachClickAction(testimonials);
+  attachClickAction(success);
+  replaceTestimonialSpecialChars(success);
+  attachCtaAction(refs);
+}
 
-  substituteTestimonialChars(fields[1] as HTMLElement);
-
+/**
+ * Attaches a click listener to the home page call to action button.
+ * The button scrolls down to the next section.
+ * @param refs refs object from state.app
+ */
+function attachCtaAction(refs: Refs) {
   // !HACK this listener is attached every time the page is opened
   document.body
     .getElementsByClassName('wp-block-button')[0]
@@ -42,7 +64,7 @@ function injectWpPostEnhancements(refs: Refs) {
  * A similar action with these delimiters is taken with the page title
  * @param testimonials Html element that houses the testimonial <li>s
  */
-function substituteTestimonialChars(testimonials: HTMLElement) {
+function replaceTestimonialSpecialChars(testimonials: HTMLElement) {
   const finds = ['-', '–', '/'];
   const substitution = '<br>';
   const testimonialTitles = testimonials.querySelectorAll('a'); // finds the title
@@ -55,16 +77,33 @@ function substituteTestimonialChars(testimonials: HTMLElement) {
   }
 }
 
-function attachOverlayScrollbars(elem: HTMLElement): void {
+/**
+ * Wordpress posts block render only allows the title of the items to be
+ * clickable. This fuction injection makes sure that anywhere on the card
+ * triggers a click on the <a> element inside the card
+ * @param field testimonials or posts element
+ */
+function attachClickAction(field: HTMLElement) {
+  field.addEventListener('click', (e: MouseEvent) => {
+    console.log((e.target as HTMLElement).closest('li'));
+    (e.target as HTMLElement).closest('li')?.querySelector('a')?.click();
+  });
+}
+
+/**
+ * Attaches Overlay scrollbars to the testimonials or posts divs.
+ * It also starts a basic scroll animation for the items
+ * The animation stops if the user hovers over the content.
+ * !but "stop" doesn't register before the current animation ends
+ * @param elem - Html element to attach the scrollbars to (testimonials, posts etc)
+ * @param options - OverlayScrollbars options
+ */
+function attachOverlayScrollbars(elem: HTMLElement, options: Options): void {
   const SCROLL_DURATION = 1500;
   const LINGER_DURATION = 3000;
-  const ANIMATION_ENABLED = false; //! make this true
+  const ANIMATION_ENABLED = true;
 
-  const scrollbarRef = OverlayScrollbars(elem, {
-    scrollbars: {
-      autoHide: 'leave',
-    },
-  });
+  const scrollbarRef = OverlayScrollbars(elem, options);
   const osContent = elem.querySelectorAll('.os-content')[0];
   const children = osContent.children;
   const childrenCount = children.length;

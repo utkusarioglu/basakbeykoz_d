@@ -49,6 +49,15 @@ $TYPOGRAPHY_PROPERTIES: (
     'line-height-max--': 38,
     'font-type': 'text',
   ),
+  /// p-small is used by testimonial and latest post cards on the homepage
+  'p-small':
+    (
+      'font-size-min--': 16,
+      'font-size-max--': 20,
+      'line-height-min--': 20,
+      'line-height-max--': 24,
+      'font-type': 'text',
+    ),
   'h1': (
     'font-size-min--': 26,
     'font-size-max--': 40,
@@ -142,7 +151,7 @@ $COMPONENT_PROPERTIES: (
   ),
   'home': (
     'welcome-image-x_vw': 45vw,
-    'posts-y-px': 150px,
+    'posts-y-px': 156px,
     'section-height-min-px': 600px,
     'section-top-bottom-padding-px': 150px,
     'not-first-child-max-padding--': 350,

@@ -138,9 +138,11 @@
 /// @access public
 /// @group helpers
 @mixin p {
+  $margin-bottom: get-typography-responsive-line-height('p');
+
   @include p-basic();
   grid-area: paragraph;
-  margin: 0 0 #{get-gap(2)} 0;
+  margin: 0 0 #{$margin-bottom} 0;
 }
 
 /// Basic properties for p, these could be used by tags and classes that aren't p
@@ -190,12 +192,17 @@
   pointer-events: none;
 }
 
-/// Used for limiting the number of p tag lines appearing in a container
+/// Used for limiting the number of lines appearing in a container
+/// The line height used can be set by using the second parameter
 /// @param {number} $line-count - Number of lines that shall be visible
+/// @param {string} $p-type - the $TYPOGRAPHY_PROPERTIES key that will be
+/// used for determining the line height.
 /// @access public
 /// @group helpers
-@mixin limit-paragraph-lines($line-count: 3) {
-  height: calc(#{get-typography(p, line-height)} * #{$line-count});
+@mixin limit-paragraph-lines($line-count: 3, $p-type: 'p') {
+  height: calc(
+    #{get-typography-responsive-line-height($p-type)} * #{$line-count} - 2px
+  );
   overflow: hidden;
 }
 

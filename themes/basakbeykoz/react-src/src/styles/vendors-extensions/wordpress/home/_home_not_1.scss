@@ -1,9 +1,5 @@
 @import '../../../abstracts/_mixins';
-@import '../_wp_posts';
 
-/*
-  COMPONENT PROPERTIES
-*/
 $w--XGAplus--: get-breakpoint('w', 'XGAplus--');
 $home--not-first-child-max-padding--: get-component-property(
   'home',

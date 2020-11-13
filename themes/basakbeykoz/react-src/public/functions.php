@@ -7,13 +7,31 @@ function basakbeykoz_post_thumbnails()
 }
 add_action('after_setup_theme', 'basakbeykoz_post_thumbnails');
 
-// Filter except length to 20 words.
-// tn custom excerpt length
-function tn_custom_excerpt_length($length)
+/**
+ * Custom excerpt trim function
+ * This function removes the script tags if there are any, and retains
+ * the paragraph structure of the post/page
+ * It is meant as a replacement of the stock wp_trim_excerpt function
+ */
+function wp_trim_excerpt_custom($text = '', $post = null)
 {
-    return 20;
+    $raw_excerpt = $text;
+    if ('' == $text) {
+        $post = get_post($post);
+        $text = get_the_content('', false, $post);
+        $text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
+        $excerpt_length = 50;
+        $words = explode(' ', $text, $excerpt_length + 1);
+        if (count($words) > $excerpt_length) {
+            array_pop($words);
+            $text = implode(' ', $words);
+            $text .= "...";
+        }
+    }
+    return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 }
-add_filter('excerpt_length', 'tn_custom_excerpt_length', 999);
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'wp_trim_excerpt_custom');
 
 /**
  * Grab latest post title by an author!

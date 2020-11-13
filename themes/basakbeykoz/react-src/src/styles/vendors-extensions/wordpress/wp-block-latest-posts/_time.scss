@@ -1,0 +1,17 @@
+@import '../../../abstracts/_mixins';
+@import './_wp-posts-p';
+
+@mixin time($type) {
+  @include wp-posts-p();
+
+  grid-area: time !important;
+  margin: 0 !important;
+  color: #{get-color('text-mediumLight')};
+  font-size: 0.8em;
+
+  @include breakpoint('w', 'SVGA--') {
+    @if $type == 'posts' {
+      display: block;
+    }
+  }
+}
