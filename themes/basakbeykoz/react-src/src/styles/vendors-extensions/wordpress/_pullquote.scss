@@ -33,8 +33,10 @@ $figure--normal-padding-px: get-component-property(
           margin: #{$figure--normal-padding-px};
         }
 
+        /// Creates spacing between the cite (name of the quote sayer)
+        /// and the quote
         & > p {
-          margin-bottom: #{$figure--normal-padding-px};
+          margin-bottom: #{get-typography-p-margin-bottom()};
         }
 
         & > cite {
