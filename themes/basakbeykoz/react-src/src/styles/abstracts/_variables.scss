@@ -43,10 +43,10 @@ $FONT_TYPES: (
 /// the specified tags
 $TYPOGRAPHY_PROPERTIES: (
   'p': (
-    'font-size-min--': 20,
-    'font-size-max--': 26,
-    'line-height-min--': 26,
-    'line-height-max--': 38,
+    'font-size-min--': 16,
+    'font-size-max--': 20,
+    'line-height-min--': 22,
+    'line-height-max--': 26,
     'font-type': 'text',
   ),
   /// p-small is used by testimonial and latest post cards on the homepage
@@ -54,7 +54,7 @@ $TYPOGRAPHY_PROPERTIES: (
     (
       'font-size-min--': 16,
       'font-size-max--': 20,
-      'line-height-min--': 20,
+      'line-height-min--': 21,
       'line-height-max--': 24,
       'font-type': 'text',
     ),
