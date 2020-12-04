@@ -143,6 +143,28 @@
   @return map-get($FONT_SIZES, $font-name);
 }
 
+/// Helper function for building the responsive font-size
+/// @param {string} - tag (ex: h1)
+/// @access public
+/// @group helpers
+@function get-typography-responsive-font-size($tag) {
+  @return responsive-width(
+    get-typography($tag, 'font-size-min--'),
+    get-typography($tag, 'font-size-max--')
+  );
+}
+
+/// Helper function for building the responsive line-height
+/// @param {string} - tag (ex: h1)
+/// @access public
+/// @group helpers
+@function get-typography-responsive-line-height($tag) {
+  @return responsive-width(
+    get-typography($tag, 'line-height-min--'),
+    get-typography($tag, 'line-height-max--')
+  );
+}
+
 /// Getter for environment variables
 /// Note that for now the environment variables are not really coming from .env
 /// @param {string} $variable-key - Environment variable to get

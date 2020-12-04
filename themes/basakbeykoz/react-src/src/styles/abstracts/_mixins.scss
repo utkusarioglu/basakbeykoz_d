@@ -53,28 +53,6 @@
   }
 }
 
-/// Helper function for building the responsive font-size
-/// @param {string} - tag (ex: h1)
-/// @access public
-/// @group helpers
-@function get-typography-responsive-font-size($tag) {
-  @return responsive-width(
-    get-typography($tag, 'font-size-min--'),
-    get-typography($tag, 'font-size-max--')
-  );
-}
-
-/// Helper function for building the responsive line-height
-/// @param {string} - tag (ex: h1)
-/// @access public
-/// @group helpers
-@function get-typography-responsive-line-height($tag) {
-  @return responsive-width(
-    get-typography($tag, 'line-height-min--'),
-    get-typography($tag, 'line-height-max--')
-  );
-}
-
 /// Helper function for creating mixins from heading tags such as h1, h2
 /// @param {string} $tag - the html tag
 /// @access private
