@@ -30,14 +30,10 @@
   }
 
   &-loadMessage {
+    @include p();
+
     grid-area: LoadMessage;
     align-self: top;
     color: #{get-color('ui-blue')};
-    font-family: #{get-font-property('text', 'font-family')};
-    font-weight: #{get-font-property('text', 'font-weight')};
-
-    @include breakpoint('w', 'SVGA--') {
-      font-size: 25px;
-    }
   }
 }

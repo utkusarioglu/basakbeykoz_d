@@ -101,7 +101,7 @@ nav {
           @include breakpoint('w', 'XGAplus--') {
             color: #{get-color('ui-blue')};
             padding: #{get-gap(1/2)} #{get-gap()};
-            font-size: responsive-width(20, 26);
+            font-size: #{get-typography-responsive-font-size('p')};
           }
 
           &-active {
