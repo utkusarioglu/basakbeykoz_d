@@ -116,9 +116,9 @@
 /// @access public
 /// @group helpers
 @mixin p {
-  $margin-bottom: get-typography-responsive-line-height('p');
-
   @include p-basic();
+
+  $margin-bottom: #{get-typography-p-margin-bottom()};
   grid-area: paragraph;
   margin: 0 0 #{$margin-bottom} 0;
 }

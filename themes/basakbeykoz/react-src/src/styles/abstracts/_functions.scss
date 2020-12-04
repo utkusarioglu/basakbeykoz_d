@@ -165,6 +165,15 @@
   );
 }
 
+/// Returns the margin bottom setting for the paragraphs
+/// This is a separate function because there are some paragraph related
+/// but still non-paragraph items that use this property
+/// @access public
+/// @group helpers
+@function get-typography-p-margin-bottom() {
+  @return calc(#{get-typography-responsive-line-height('p')} / 1.5);
+}
+
 /// Getter for environment variables
 /// Note that for now the environment variables are not really coming from .env
 /// @param {string} $variable-key - Environment variable to get
