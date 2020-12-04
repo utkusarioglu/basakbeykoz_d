@@ -1,0 +1,13 @@
+@import '../../../abstracts/_mixins';
+
+@mixin scrollbar($grid-flow) {
+  display: grid;
+  grid-auto-flow: column;
+
+  @include breakpoint('w', 'SVGA--') {
+    @if $grid-flow == 'row' {
+      grid-auto-flow: row;
+    } @else if $grid-flow == column {
+    }
+  }
+}

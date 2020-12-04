@@ -1,0 +1,18 @@
+@import '../../../abstracts/_mixins';
+
+@mixin title($type, $column-excerpt-title-lines) {
+  @if $type == 'posts' {
+    @include h4;
+    @include limit-paragraph-lines($column-excerpt-title-lines, 'h4');
+  } @else if $type == 'success' {
+    @include wp-posts-p();
+    @include limit-paragraph-lines($column-excerpt-title-lines, 'p-small');
+    text-align: right;
+  } @else {
+    @error ('Unrecognized title position');
+  }
+
+  text-decoration: none;
+  grid-area: title;
+  margin: 0 !important;
+}

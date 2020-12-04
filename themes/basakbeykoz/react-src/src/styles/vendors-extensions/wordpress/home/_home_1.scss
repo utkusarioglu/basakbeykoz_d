@@ -1,20 +1,24 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
 
-/*
-  COMPONENT PROPERTIES
-*/
-$nav__social_space_x_px: get-component-property('nav', 'social-space_x_px');
-$logo_n_social__y_px: get-component-property('logo-n-social', 'y_px');
-$home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
+$nav--social-space-x-px: get-component-property('nav', 'social-space-x-px');
+$logo-n-social--y-px: get-component-property('logo-n-social', 'y-px');
+$home--welcome-image-x-vw: get-component-property('home', 'welcome-image-x_vw');
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
 
 .Canvas.page.home > article > .wp-block-group {
   &:first-child {
     background-color: transparent;
-    padding-top: #{get-gap(1/2)};
+    padding-top: #{get-gap()};
 
-    @include breakpoint('h', 'SVGA__') {
-      padding-top: #{get-gap()};
+    @include breakpoint('h', 'SVGA--') {
+      padding-top: #{get-gap(2)};
     }
 
     & > .wp-block-group__inner-container {
@@ -23,66 +27,70 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
         'cover'
         'h1'
         'paragraph';
-      grid-template-rows: #{$logo_n_social__y_px} 1fr min-content min-content;
-      grid-row-gap: #{get-gap(1/2)};
+      grid-template-rows: #{$logo-n-social--y-px} 1fr min-content min-content;
+      grid-row-gap: #{get-gap()};
 
-      @include breakpoint('h', 'HD__') {
-        grid-row-gap: #{get-gap()};
+      @include breakpoint('h', 'HD--') {
+        grid-row-gap: #{get-gap(2)};
       }
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         grid-template-areas:
           '. logo         .'
           '. h1   .'
           '. paragraph    .'
           '. buttons      .';
-        grid-template-columns: #{$home__welcome_image_x_vw} 1fr;
-        grid-template-rows: #{$logo_n_social__y_px} 1fr 1fr #{$logo_n_social__y_px};
-        grid-row-gap: #{get-gap()};
+        grid-template-columns: #{$home--welcome-image-x-vw} 1fr;
+        grid-template-rows: #{$logo-n-social--y-px} 1fr 1fr #{$logo-n-social--y-px};
+        grid-row-gap: #{get-gap(2)};
         height: 100%;
       }
 
-      @include breakpoint('w', 'XGAplus__') {
-        grid-template-columns: #{$home__welcome_image_x_vw} 1fr #{$nav__social_space_x_px};
+      @include breakpoint('w', 'XGAplus--') {
+        grid-template-columns: #{$home--welcome-image-x-vw} 1fr #{$nav--social-space-x-px};
         grid-column-gap: #{responsive-width(
             0,
             70,
-            get-breakpoint('w', 'XGAplus__'),
+            get-breakpoint('w', 'XGAplus--'),
             1920
           )};
       }
 
       .wp-block-cover {
-        margin-left: #{get-gap(-1)};
-        margin-right: #{get-gap(-1)};
+        margin-left: #{-$page-blog-native--minimal-screen-padding-px};
+        margin-right: #{-$page-blog-native--minimal-screen-padding-px};
         background-size: cover;
 
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'QVGA--') {
+          margin-left: #{-$page-blog-native--normal-screen-padding-px};
+          margin-right: #{-$page-blog-native--normal-screen-padding-px};
+        }
+
+        @include breakpoint('w', 'SVGA--') {
           position: absolute;
           margin-left: 0;
           margin-right: 0;
-          top: #{get-gap(-1)};
-          left: #{get-gap(-1)};
-          right: #{get-gap(-1)};
-          z-index: -1;
+          top: #{get-gap(-2)};
+          left: #{get-gap(-2)};
+          right: #{get-gap(-2)};
           right: auto;
-          bottom: #{get-gap(-1)};
-          width: $home__welcome_image_x_vw;
+          bottom: #{get-gap(-2)};
+          width: $home--welcome-image-x-vw;
           height: auto;
           z-index: 91;
         }
       }
 
       figure {
-        margin: 0;
+        display: grid;
         grid-area: logo;
+        align-items: center;
+        justify-items: center;
+        margin: 0;
         width: 100%;
         height: 100%;
-        justify-items: center;
-        align-items: center;
-        display: grid;
 
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           justify-self: start;
           justify-content: start;
         }
@@ -99,13 +107,11 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
       h1 {
         @include typography-hero();
 
-        margin-left: #{get-gap(-1/2)};
-        margin-right: #{get-gap(-1/2)};
         align-self: end;
         justify-self: center;
-        color: #{getColor('text-mediumDark')};
+        color: #{get-color('text-mediumDark')};
 
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           justify-self: start;
           margin-left: 0;
           margin-right: 0;
@@ -120,24 +126,24 @@ $home__welcome_image_x_vw: get-component-property('home', 'welcome-image_x_vw');
         .wp-block-button {
           @include typography-button();
 
-          background-color: #{getColor('ui-yellow')};
-          color: #{getColor('text-dark')};
-          padding: #{get-gap(1/2)};
-          border-radius: #{get-gap(1/2)};
+          border-radius: #{get-gap()};
+          background-color: #{get-color('ui-yellow')};
+          padding: #{get-gap()};
           width: 100%;
-          max-width: 250px;
+          max-width: 265px;
+          color: #{get-color('text-dark')};
 
           &:hover {
-            background-color: #{getColor('ui-darkBlue')};
+            background-color: #{get-color('ui-darkBlue')};
             cursor: pointer;
 
             & .wp-block-button__link {
-              color: #{getColor('text-light')};
+              color: #{get-color('text-light')};
             }
           }
         }
 
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           display: block;
         }
       }

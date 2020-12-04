@@ -6,7 +6,7 @@ import {
   wpSingularArchiveItem,
 } from './@types-wordpress';
 import { filterByType } from './filters';
-import restApi from '../../../services/restApi';
+import restApi from '../../../services/restApi/restApi';
 import { ERROR_CODES } from '../../../store/@types-store';
 
 export const fetchSingular = (slug: string) => (

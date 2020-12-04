@@ -1,70 +1,109 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../wp-block-latest-posts/_main';
 
-/*
-  COMPONENT PROPERTIES
-*/
-$home__section_top_bottom_padding_px: get-component-property(
+$home--section-top-bottom-padding-px: get-component-property(
   'home',
-  'section_top_bottom_padding_px'
+  'section-top-bottom-padding-px'
 );
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+$home--posts-y-px: get-component-property('home', 'posts-y-px');
 
 /// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(4) {
   > .wp-block-group__inner-container {
-    @include wpPosts(posts, row);
+    $p-small--line-height: get-typography-responsive-line-height('p-small');
+    $title--line-height: get-typography-responsive-line-height('h4');
+    $column-img-height-px: $home--posts-y-px;
+    $column-excerpt-paragraph-lines: 5;
+    $column-excerpt-title-lines: 2;
+    $grid-row-gap: get-gap();
+    $paragraph-height: calc(
+      #{$column-excerpt-paragraph-lines} * #{$p-small--line-height}
+    );
+    $title-height: calc(
+      #{$column-excerpt-title-lines} * #{$title--line-height}
+    );
+
+    $SVGA-height: calc(
+      #{$column-img-height-px} + 6 * #{$grid-row-gap} + #{$paragraph-height} + #{$title-height}
+    );
+
+    @include wp-posts(
+      'posts',
+      get-color('bg-white'),
+      $column-img-height-px,
+      $column-excerpt-paragraph-lines,
+      $column-excerpt-title-lines,
+      $grid-row-gap,
+      $SVGA-height,
+      get-color('bg-green')
+    );
 
     grid-template-areas:
       'h2'
       'posts'
       'paragraph';
-    grid-template-rows: #{get-typography(h2, lineHeight)} auto max-content;
+    // !TODO this is broken
+    grid-template-rows: #{get-typography('h2', 'line-height')} auto max-content;
 
-    @include breakpoint('h', 'HD__') {
-      grid-row-gap: #{get-gap()};
+    @include breakpoint('h', 'HD--') {
+      grid-row-gap: #{get-gap(2)};
     }
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas:
         'h2         posts'
         'paragraph  posts'
         'paragraph  posts';
-      grid-template-rows: max-content auto #{$home__section_top_bottom_padding_px};
+      grid-template-rows: max-content auto #{$home--section-top-bottom-padding-px};
       grid-template-columns: 1fr 1fr;
       justify-content: center;
     }
 
     h2 {
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         align-self: end;
         text-align: left;
       }
     }
 
     & > .wp-block-latest-posts {
-      margin-left: #{get-gap(-1)} !important;
+      margin-left: #{-$page-blog-native--minimal-screen-padding-px} !important;
       width: 100vw;
-      height: 330px;
+      height: #{$SVGA-height};
 
-      @include breakpoint('w', 'SVGA__') {
-        height: 100%;
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        overflow: hidden;
+      @include breakpoint('w', 'QVGA--') {
+        margin-left: #{-$page-blog-native--normal-screen-padding-px} !important;
+      }
+
+      @include breakpoint('w', 'SVGA--') {
         margin: 0 !important;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 100%;
+        overflow: hidden;
       }
     }
   }
 
   &:after {
-    $width: 100vw;
-    $height: 20vw;
+    $width-vw: 100vw;
+    $height-vw: 20vw;
+
     @include svg-art(
       'conversation.svg',
-      $width,
-      $height,
-      get-component-property('nav', 'mobile-height_px'),
+      $width-vw,
+      $height-vw,
+      $nav--mobile-height-px,
       130px
     );
   }

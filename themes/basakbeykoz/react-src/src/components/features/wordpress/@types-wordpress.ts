@@ -53,6 +53,8 @@ interface SingularItemForView {
   title: string;
   thumbnail: string;
   content: string;
+  excerpt: string;
+  shareDisabled?: boolean;
 }
 
 export interface wpSingularItemForView extends SingularItemForView {
@@ -111,5 +113,5 @@ export enum WORDPRESS_ERROR_CODES {
 }
 
 export interface WpMenu {
-  items: wpMenuItem[]
+  items: wpMenuItem[];
 }

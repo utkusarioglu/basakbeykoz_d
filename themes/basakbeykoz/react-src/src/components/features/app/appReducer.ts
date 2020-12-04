@@ -24,7 +24,17 @@ const initialState: IApp = {
       type: 'page',
       title: '',
       content: '',
+      // Single space here is intentional. Allows makes the canvas element
+      // treat this value as a thumbnail but doesn't draw anything. This way,
+      // the page appears in its default color until the very first content is
+      // loaded.
+      // If a feature expansion happens on this site, this rather fragile
+      // logic can be replaced by one which knows that the app is loading
+      // for the first time and avoids displaying the feature image section
+      // until some real data has been received.
       thumbnail: ' ',
+      shareDisabled: true,
+      excerpt: '',
     },
   },
   refs: {

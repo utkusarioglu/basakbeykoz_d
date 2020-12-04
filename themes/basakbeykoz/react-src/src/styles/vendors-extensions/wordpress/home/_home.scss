@@ -1,37 +1,56 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
+@import '../wp-block-latest-posts/_main';
 
-/*
-  COMPONENT PROPERTIES
-*/
-$home__section_height_min_px: get-component-property(
+$home--section-height-min-px: get-component-property(
   'home',
-  'section-height_min_px'
+  'section-height-min-px'
 );
-$nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
 
 .Canvas.page.home > article {
-  $section_height_min_responsive: #{unquote(
-      'max(calc(100vh - #{$nav__mobile_height_px}), #{$home__section_height_min_px})'
+  $section-height-min-responsive: #{unquote(
+      'max(calc(100vh - #{$nav--mobile-height-px}), #{$home--section-height-min-px})'
     )};
 
   padding: 0;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
   & > .wp-block-group {
     box-sizing: border-box;
-    padding: #{get-gap()};
-    min-height: #{$section_height_min_responsive};
+    padding: #{$page-blog-native--normal-screen-padding-px
+      $page-blog-native--minimal-screen-padding-px};
+    min-height: #{$section-height-min-responsive};
     overflow: hidden;
     position: relative;
 
+    @include breakpoint('w', 'WQVGA--') {
+      padding: #{$page-blog-native--normal-screen-padding-px};
+    }
+
     & > .wp-block-group__inner-container {
-      min-height: #{$section_height_min_responsive};
+      min-height: #{$section-height-min-responsive};
       height: 100%;
       display: grid;
       box-sizing: border-box;
-      padding-bottom: #{get-component-property('nav', 'mobile-height_px')};
+      padding-bottom: #{get-component-property('nav', 'mobile-height-px')};
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         padding-bottom: 0;
       }
 
@@ -39,8 +58,17 @@ $nav__mobile_height_px: get-component-property('nav', 'mobile-height_px');
       /// does not expand the other components in the same grid
       /// the value defaults to auto on SVGA and larger screens
       & > .wp-block-group {
-        width: calc(100vw - #{get-gap(2)});
-        @include breakpoint('w', 'SVGA__') {
+        width: calc(
+          100vw - #{2 * $page-blog-native--minimal-screen-padding-px}
+        );
+
+        @include breakpoint('w', 'QVGA--') {
+          width: calc(
+            100vw - #{2 * $page-blog-native--normal-screen-padding-px}
+          );
+        }
+
+        @include breakpoint('w', 'SVGA--') {
           width: auto;
         }
       }

@@ -1,8 +1,17 @@
 @import '../../../styles/abstracts/_mixins';
 
-$CARD_HEIGHT: 250px;
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
 
 .Posts {
+  $card-height: 250px;
+
   &-card {
     display: grid;
     grid-template-areas:
@@ -10,44 +19,49 @@ $CARD_HEIGHT: 250px;
       'h3'
       'date'
       'excerpt';
-    grid-row-gap: #{get-gap(1/2)};
+    grid-row-gap: #{get-gap()};
     text-decoration: none;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas:
         'image h3'
         'image date'
         'image excerpt';
       grid-template-rows: min-content min-content auto;
       grid-template-columns: 10vw auto;
-      grid-row-gap: #{get-gap(1/2)};
-      grid-column-gap: #{get-gap()};
-      height: #{$CARD_HEIGHT};
+      grid-row-gap: #{get-gap()};
+      grid-column-gap: #{get-gap(2)};
+      height: #{$card-height};
       overflow: hidden;
+    }
+
+    &-title {
+      margin: 0;
     }
 
     &-date {
       grid-area: date;
-      color: #{getColor('text-mediumLight')};
+      color: #{get-color('text-mediumLight')};
     }
 
     &-excerpt {
       grid-area: excerpt;
       overflow: hidden;
       position: relative;
-      @include breakpoint('w', 'SVGA__') {
+
+      @include breakpoint('w', 'SVGA--') {
         &::after {
           content: '';
           position: absolute;
           background: linear-gradient(
             180deg,
             transparent 0,
-            #{getColor('bg-white')} #{get-gap()}
+            #{get-color('bg-white')} #{get-gap(2)}
           );
           right: 0;
           bottom: 0;
           left: 0;
-          height: #{get-gap()};
+          height: #{get-gap(2)};
         }
       }
       & > p {
@@ -56,21 +70,33 @@ $CARD_HEIGHT: 250px;
     }
 
     &-thumbnail {
+      $img-SVGA-width-vw: 10vw;
+
       grid-area: image;
-      border-radius: #{get-gap(1/2)};
+      border-radius: #{get-gap(1)};
       display: grid;
       justify-content: center;
       overflow: hidden;
-      @include breakpoint('w', 'SVGA__') {
-        height: #{$CARD_HEIGHT};
-        width: 10vw;
+
+      @include breakpoint('w', 'SVGA--') {
+        height: #{$card-height};
+        width: #{$img-SVGA-width-vw};
       }
+
       & > img {
-        width: calc(100vw - #{get-gap(2)});
+        width: calc(
+          100vw - #{2 * $page-blog-native--minimal-screen-padding-px}
+        );
         height: auto;
 
-        @include breakpoint('w', 'SVGA__') {
-          width: auto;
+        @include breakpoint('w', 'WQVGA--') {
+          width: calc(
+            100vw - #{2 * $page-blog-native--normal-screen-padding-px}
+          );
+        }
+
+        @include breakpoint('w', 'SVGA--') {
+          width: #{$img-SVGA-width-vw};
           height: 100%;
           object-fit: cover;
         }

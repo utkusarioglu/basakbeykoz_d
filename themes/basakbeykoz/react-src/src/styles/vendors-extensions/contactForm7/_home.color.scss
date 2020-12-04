@@ -1,0 +1,28 @@
+@import '../../abstracts/_mixins';
+
+.Canvas.page.home {
+  .wpcf7 {
+    & label {
+      color: #{get-color('text-dark')};
+    }
+
+    & .wpcf7-text,
+    & .wpcf7-textarea {
+      background-color: #{get-color('bg-white')};
+
+      &:focus {
+        background-color: #{get-color('bg-yellow')};
+      }
+    }
+
+    & .wpcf7-submit {
+      background-color: #{get-color('ui-yellow')};
+      color: #{get-color('text-dark')};
+
+      &:hover {
+        background-color: #{get-color('ui-darkBlue')};
+        color: #{get-color('text-light')};
+      }
+    }
+  }
+}

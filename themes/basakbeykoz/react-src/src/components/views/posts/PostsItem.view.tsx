@@ -10,6 +10,7 @@ interface Props {
   slug: string;
   thumbnail: string;
   locale: string;
+  onClick: () => void;
 }
 
 function PostsItemView({
@@ -20,6 +21,7 @@ function PostsItemView({
   slug,
   thumbnail,
   locale,
+  onClick,
 }: Props) {
   const fixedExcerpt = !!excerpt ? excerpt : createExcerpt(content);
   const dateObj = new Date(date.replace(/-/g, '/'));
@@ -30,6 +32,7 @@ function PostsItemView({
       {...{
         className: 'Posts-card',
         to: `/${slug}`,
+        onClick,
       }}
     >
       <div

@@ -1,5 +1,7 @@
 @import '../../../styles/abstracts/_mixins';
 
+/// Feature image is drawn on the top (mobile), left(others) side and shows the
+/// feature image that is sent by wp
 .FeatureImage {
   /// Properties common for both on and off states
   /// @access private
@@ -17,7 +19,7 @@
   /// be active
   &-off {
     @include feature-image-common();
-    background-color: #{getColor('bg-green')};
+    background-color: #{get-color('bg-green')};
   }
 
   /// If the article on display has a feature image, this class will be active
@@ -28,7 +30,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.5;
+      filter: sepia(50%) opacity(0.5);
     }
   }
 }

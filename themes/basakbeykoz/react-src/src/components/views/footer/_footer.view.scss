@@ -1,10 +1,10 @@
 @import '../../../styles/abstracts/_mixins';
 
-.Footer {
-  $creditsSize: 20vw;
-  $creditsMaxSize: 150px;
-  $footer_square-size_px: get-component-property(footer, square-size_px);
+$credits-size-vw: 20vw;
+$credits-max-size-px: 150px;
+$footer--square-size-px: get-component-property('footer', 'square-size-px');
 
+.Footer {
   &-elements {
     &-credits {
       box-sizing: border-box;
@@ -13,20 +13,20 @@
       bottom: 0;
       align-items: end;
       justify-items: end;
-      border-top-left-radius: #{get-gap()};
-      background: #{getColor('bg-black')};
-      padding: #{get-gap(1/2)};
-      width: #{$creditsSize};
-      min-width: #{$footer_square-size_px};
-      max-width: #{$creditsMaxSize};
+      border-top-left-radius: #{get-gap(2)};
+      background: #{get-color('bg-black')};
+      padding: #{get-gap()};
+      width: #{$credits-size-vw};
+      min-width: #{$footer--square-size-px};
+      max-width: #{$credits-max-size-px};
       height: 100%;
       font-family: #{get-font-property('text', 'font-family')};
-      font-weight: #{get-font-property('text', 'font-weight')};
       font-size: 1rem;
+      font-weight: #{get-font-property('text', 'font-weight')};
 
       &-yearAndName {
-        color: #{getColor('text-light')};
         text-align: right;
+        color: #{get-color('text-light')};
       }
     }
   }

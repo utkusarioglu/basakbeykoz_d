@@ -16,7 +16,7 @@ function SpinnerView({ display, loadingMessage }: Props) {
     <div {...{ className: 'Spinner', style: { display } }}>
       <img
         {...{
-          src: UPLOADS_DIR + '/logo-inline-black.svg',
+          src: UPLOADS_DIR + '/inline-logo-w-color@100px.png',
           alt: 'Basak Beykoz',
           className: 'Spinner-logo',
         }}

@@ -1,33 +1,52 @@
 @import '../../../styles/abstracts/_mixins';
 
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
+
 .Posts {
   grid-area: Posts;
+
   &-wrapper {
     grid-area: Posts-wrapper;
+
     & > h4 {
       text-align: center;
-      @include breakpoint('w', 'SVGA__') {
+
+      @include breakpoint('w', 'SVGA--') {
         text-align: left;
       }
     }
   }
+
   li {
-    list-style: none;
-    margin-bottom: #{get-gap(2)};
-    padding: #{get-gap()};
-    border-radius: #{get-gap()};
     position: relative;
+    margin-bottom: #{get-gap(4)};
+    border-radius: #{get-gap(2)};
+    padding: #{$page-blog-native--minimal-screen-padding-px};
+    list-style: none;
+
+    @include breakpoint('w', 'WQVGA--') {
+      padding: #{$page-blog-native--normal-screen-padding-px};
+    }
+
     &:hover {
-      background-color: #{getColor('bg-gray')};
+      background-color: #{get-color('bg-gray')};
+
       & .Posts {
         &-card {
           &-excerpt {
-            @include breakpoint('w', 'SVGA__') {
+            @include breakpoint('w', 'SVGA--') {
               &::after {
                 background: linear-gradient(
                   180deg,
                   transparent 0,
-                  #{getColor('bg-gray')} #{get-gap()}
+                  #{get-color('bg-gray')} #{get-gap(2)}
                 );
               }
             }
@@ -36,11 +55,13 @@
       }
     }
   }
+
   ol {
     margin: 0;
     padding: 0;
   }
-  @include breakpoint('w', 'SVGA__') {
-    margin-left: #{get-gap(-1)};
+
+  @include breakpoint('w', 'SVGA--') {
+    margin-left: #{get-gap(-2)};
   }
 }

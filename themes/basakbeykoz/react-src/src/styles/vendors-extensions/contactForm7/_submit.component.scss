@@ -1,0 +1,8 @@
+@import '../../abstracts/_mixins';
+
+.wpcf7 {
+  & .wpcf7-submit {
+    @include typography-button();
+    @include button-standard();
+  }
+}

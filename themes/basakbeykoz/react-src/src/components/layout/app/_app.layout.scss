@@ -1,15 +1,15 @@
 @import '../../../styles/abstracts/_mixins';
 
 .App {
-  $nav_mobile-height_px: get-component-property('nav', 'mobile-height_px');
+  $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
   &-scrollWindow {
-    margin-bottom: #{$nav_mobile-height_px};
-    height: calc(100vh - #{$nav_mobile-height_px});
+    margin-bottom: #{$nav--mobile-height-px};
+    height: calc(100vh - #{$nav--mobile-height-px});
     overflow-x: hidden;
     overflow-y: auto;
 
-    @include breakpoint('w', 'XGAplus__') {
+    @include breakpoint('w', 'XGAplus--') {
       margin-bottom: 0;
       height: 100vh;
     }

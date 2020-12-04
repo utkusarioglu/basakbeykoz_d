@@ -16,9 +16,9 @@ $ENV: (
 
 /// Provides the font sizes to be used all over the app
 $FONT_SIZES: (
-  'default__': 20,
-  'excerpt_px': 15px,
-  'ScutRemBase__': 16,
+  'default--': 20,
+  'excerpt-px': 15px,
+  'scut-rem-base--': 16,
 );
 
 /// Different font types available to the app.
@@ -43,113 +43,143 @@ $FONT_TYPES: (
 /// the specified tags
 $TYPOGRAPHY_PROPERTIES: (
   'p': (
-    'font-size_min__': 20,
-    'font-size_max__': 26,
-    'line-height_min__': 26,
-    'line-height_max__': 38,
+    'font-size-min--': 16,
+    'font-size-max--': 20,
+    'line-height-min--': 22,
+    'line-height-max--': 26,
     'font-type': 'text',
   ),
+  /// p-small is used by testimonial and latest post cards on the homepage
+  'p-small':
+    (
+      'font-size-min--': 16,
+      'font-size-max--': 20,
+      'line-height-min--': 21,
+      'line-height-max--': 24,
+      'font-type': 'text',
+    ),
   'h1': (
-    'font-size_min__': 26,
-    'font-size_max__': 40,
-    'line-height_min__': 30,
-    'line-height_max__': 45,
+    'font-size-min--': 26,
+    'font-size-max--': 40,
+    'line-height-min--': 30,
+    'line-height-max--': 45,
     'font-type': 'heading',
   ),
   'h2': (
-    'font-size_min__': 23,
-    'font-size_max__': 35,
-    'line-height_min__': 28,
-    'line-height_max__': 40,
+    'font-size-min--': 23,
+    'font-size-max--': 35,
+    'line-height-min--': 28,
+    'line-height-max--': 40,
     'font-type': 'heading',
   ),
   'h3': (
-    'font-size_min__': 20,
-    'font-size_max__': 25,
-    'line-height_min__': 25,
-    'line-height_max__': 30,
+    'font-size-min--': 20,
+    'font-size-max--': 25,
+    'line-height-min--': 25,
+    'line-height-max--': 30,
     'font-type': 'heading',
   ),
   'h4': (
-    'font-size_min__': 18,
-    'font-size_max__': 24,
-    'line-height_min__': 21,
-    'line-height_max__': 27,
+    'font-size-min--': 18,
+    'font-size-max--': 24,
+    'line-height-min--': 21,
+    'line-height-max--': 27,
     'font-type': 'heading',
   ),
   'h5': (
-    'font-size_min__': 16,
-    'font-size_max__': 26,
-    'line-height_min__': 20,
-    'line-height_max__': 30,
+    'font-size-min--': 16,
+    'font-size-max--': 26,
+    'line-height-min--': 20,
+    'line-height-max--': 30,
     'font-type': 'heading',
   ),
   'h6': (
-    'font-size_min__': 14,
-    'font-size_max__': 20,
-    'line-height_min__': 18,
-    'line-height_max__': 24,
+    'font-size-min--': 14,
+    'font-size-max--': 20,
+    'line-height-min--': 18,
+    'line-height-max--': 24,
     'font-type': 'heading',
   ),
 );
 
 /// All the breakpoints for the app, the names are lifted from the screen
 /// resolutions page on wikipedia:
-/// https://en.wikipedia.org/wiki/Computer_display_standard
+/// https://en.wikipedia.org/wiki/Computer-display-standard
 $BREAKPOINTS: (
   'width': (
-    'HQVGA__': 240,
-    'QVGA__': 320,
-    'WQVGA__': 480,
-    'SVGA__': 800,
-    'XGAplus__': 1152,
-    'FHD__': 1920,
+    'HQVGA--': 240,
+    'QVGA--': 320,
+    'WQVGA--': 480,
+    'SVGA--': 800,
+    'XGAplus--': 1152,
+    'FHD--': 1920,
   ),
   'height': (
-    'HD__': 720,
-    'SVGA__': 600,
-  ),
-);
-
-/// Properties of components that may be subject to change
-$COMPONENT_PROPERTIES: (
-  'footer': (
-    'square-size_px': 105px,
-    'fg-height_max_px': 150px,
-    'fg-height_min_px': 50px,
-    'fg-bottom_px': 20px,
-  ),
-  'logo-n-social': (
-    'y_px': 80px,
-  ),
-  'social-item': (
-    'default-size__': 20,
-    'w-XGAplus_min__': 25,
-    'w-XGAplus_max__': 35,
-  ),
-  'nav': (
-    'mobile-height_px': 54px,
-    'social-space_x_px': 180px,
-  ),
-  'feature-image': (
-    'height_px': 200px,
-    'narrow_x_vw': 25vw,
-  ),
-  'home': (
-    'welcome-image_x_vw': 45vw,
-    'posts_y_px': 150px,
-    'section-height_min_px': 600px,
-    'section_top_bottom_padding_px': 150px,
-    'not_first_child_max_padding__': 350,
+    'HD--': 720,
+    'SVGA--': 600,
   ),
 );
 
 /// This variable sets the default gap used in the app. It's possible that
 /// some components will be using fractions of this number but the most common
 /// gap is this size.
-$GAP_PX: 30px;
+$GAP_PX: 15px;
+
+/// Properties of components that may be subject to change
+$COMPONENT_PROPERTIES: (
+  'footer': (
+    'square-size-px': 105px,
+    'fg-height-max-px': 150px,
+    'fg-height-min-px': 50px,
+    'fg-bottom-px': 20px,
+  ),
+  'logo-n-social': (
+    'y-px': 80px,
+  ),
+  'social-item': (
+    'default-size--': 20,
+    'w-XGAplus-min--': 25,
+    'w-XGAplus-max--': 35,
+  ),
+  'nav': (
+    'mobile-height-px': 54px,
+    'social-space-x-px': 180px,
+  ),
+  'feature-image': (
+    'height-px': 200px,
+    'narrow-x-vw': 25vw,
+  ),
+  'home': (
+    'welcome-image-x_vw': 45vw,
+    'posts-y-px': 156px,
+    'section-height-min-px': 600px,
+    'section-top-bottom-padding-px': 150px,
+    'not-first-child-max-padding--': 350,
+  ),
+  'page-blog-native': (
+    'minimal-screen-padding-px': $GAP_PX,
+    'normal-screen-padding-px': 2 * $GAP_PX,
+  ),
+  /// Despite its name, these values do not only affect figure tag. These are
+  ///also used in pullquote and other framed components inside pages. Their
+  /// main responsibility is to set the size of padding, margins and
+  ///border-radiuses of related elements.
+  ///
+  /// The reason why there are 2 of them is because a smaller value became
+  /// necessary for very small screens.
+  ///
+  /// It should also be noted that these values are normally expected to be
+  /// equal or very similar to the values of page-blog-native min and normal
+  /// values as they render components that relate with each other.
+  'figure':
+    (
+      'minimal-padding-px': $GAP_PX,
+      'normal-padding-px': 2 * $GAP_PX,
+    ),
+);
 
 /// Color palette
+/// !TODO The number of colors listed here and the fact that they are css variables are is quite an overkill and shall be replaced with static values with an appropriate sized set as soon as the client decides on the colors.
 $COLORS: (
   'text-light': var(--brush-white),
   'text-mediumLight': var(--brush-gray),
@@ -169,3 +199,12 @@ $COLORS: (
   'ui-black': var(--brush-black),
   'ui-blue': var(--brush-darkGray),
 );
+
+/// Color categories are used for looping through colors to create helper
+/// classes for the given colors.
+/// As an example, for each color in the list, a horizontal and a vertical
+/// figure frame is created.
+///
+/// Note that all of these color categories need to have a color value :defined
+/// as a value in $COLORS
+$COLOR_CATEGORIES: ('green', 'yellow', 'white', 'blue', 'black');

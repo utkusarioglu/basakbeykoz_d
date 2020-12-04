@@ -5,7 +5,7 @@
 /// @return {color} The color value
 /// @access public
 /// @group getters
-@function getColor($color-name) {
+@function get-color($color-name) {
   @return map-get($COLORS, $color-name);
 }
 
@@ -32,8 +32,8 @@
 @function responsive-width(
   $min-value,
   $max-value,
-  $min-screen: get-breakpoint('w', 'QVGA__'),
-  $max-screen: get-breakpoint('w', 'FHD__')
+  $min-screen: get-breakpoint('w', 'QVGA--'),
+  $max-screen: get-breakpoint('w', 'FHD--')
 ) {
   @return calc(
     #{$min-value}px + (#{$max-value} - #{$min-value}) *
@@ -89,13 +89,13 @@
 }
 
 /// Converts pixel information to rem units
-/// @param {px} $value_px - Value in pixels
+/// @param {px} $value-px - Value in pixels
 /// @param {number} $scut-rem-base - base value to use for rem
 /// @return {rem} Px value converted to rem
 /// @access public
 /// @group helpers
-@function scut-rem($value_px, $scut-rem-base) {
-  @return strip-unit($value_px) / $scut-rem-base * 1rem;
+@function scut-rem($value-px, $scut-rem-base) {
+  @return strip-unit($value-px) / $scut-rem-base * 1rem;
 }
 
 /// Converts direction string to degree that makes sense to linear-gradient
@@ -104,9 +104,9 @@
 /// @access public
 /// @group helpers
 @function to-degree($direction) {
-  @if $direction == horizontal or $direction == h {
+  @if $direction == 'horizontal' or $direction == 'h' {
     @return 90deg;
-  } @else if $direction == vertical or $direction == v {
+  } @else if $direction == 'vertical' or $direction == 'v' {
     @return 0deg;
   }
 }
@@ -119,17 +119,18 @@
 /// methods
 /// @param {color} $color - Color data for the frame
 /// @param {string} $direction - Horizontal, h, vertical or v. This value is converted to a degree by the to-degree method
+/// @param {px} $width - The width of the frame
 /// @return Linear gradient that is one of the dimensions of the frame
 /// @access public
 /// @group helpers
-@function linear-gradient-frame($color, $direction) {
+@function linear-gradient-frame($color, $direction, $width) {
   $degree: to-degree($direction);
   @return linear-gradient(
     $degree,
-    $color #{get-gap(1/2)},
-    transparent #{get-gap(1/2)},
-    transparent calc(100% - #{get-gap(1/2)}),
-    $color calc(100% - #{get-gap(1/2)})
+    $color #{$width},
+    transparent #{$width},
+    transparent calc(100% - #{$width}),
+    $color calc(100% - #{$width})
   );
 }
 
@@ -140,6 +141,37 @@
 /// @group getters
 @function get-font-size($font-name) {
   @return map-get($FONT_SIZES, $font-name);
+}
+
+/// Helper function for building the responsive font-size
+/// @param {string} - tag (ex: h1)
+/// @access public
+/// @group helpers
+@function get-typography-responsive-font-size($tag) {
+  @return responsive-width(
+    get-typography($tag, 'font-size-min--'),
+    get-typography($tag, 'font-size-max--')
+  );
+}
+
+/// Helper function for building the responsive line-height
+/// @param {string} - tag (ex: h1)
+/// @access public
+/// @group helpers
+@function get-typography-responsive-line-height($tag) {
+  @return responsive-width(
+    get-typography($tag, 'line-height-min--'),
+    get-typography($tag, 'line-height-max--')
+  );
+}
+
+/// Returns the margin bottom setting for the paragraphs
+/// This is a separate function because there are some paragraph related
+/// but still non-paragraph items that use this property
+/// @access public
+/// @group helpers
+@function get-typography-p-margin-bottom() {
+  @return calc(#{get-typography-responsive-line-height('p')} / 1.5);
 }
 
 /// Getter for environment variables
@@ -160,4 +192,26 @@
 /// @group getter
 @function get-gap($multiplier: 1) {
   @return $GAP_PX * $multiplier;
+}
+
+/// Returns the responsive size for the social icons for min XGAplus screen
+/// @return {px} Responsive value for the social icons
+/// @access public
+/// @group getter
+@function get-social-icon-XGAplus-responsive-px() {
+  @return responsive-width(
+    get-component-property('social-item', 'default-size--'),
+    get-component-property('social-item', 'w-XGAplus-max--'),
+    get-breakpoint('w', 'XGAplus--'),
+    get-breakpoint('w', 'FHD--')
+  );
+}
+
+/// Returns the color categories, this is used for looping through categories to
+/// create util classes
+/// @return {list} - color categories
+/// @access public
+/// @group getters
+@function get-color-categories() {
+  @return $COLOR_CATEGORIES;
 }

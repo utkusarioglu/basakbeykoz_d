@@ -2,7 +2,7 @@ import { DispatchMethod } from '../../../store/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../../store/actionConstants';
 import { ERROR_CODES } from '../../../store/@types-store';
 import { WpMenu, wpMenuItem } from './@types-wordpress';
-import restApi from '../../../services/restApi';
+import restApi from '../../../services/restApi/restApi';
 export const fetchMenu = (slug: string) => (
   dispatch: DispatchMethod<wpMenuItem[]>
 ) => {

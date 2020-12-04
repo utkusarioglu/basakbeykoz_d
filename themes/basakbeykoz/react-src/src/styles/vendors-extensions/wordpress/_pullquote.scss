@@ -1,18 +1,44 @@
+@import '../../abstracts/_mixins';
+
+$figure--minimal-padding-px: get-component-property(
+  'figure',
+  'minimal-padding-px'
+);
+$figure--normal-padding-px: get-component-property(
+  'figure',
+  'normal-padding-px'
+);
+
 .wp {
   &-block {
     &-pullquote {
-      $fringe_px: get-gap(1/2);
-      margin: 0 #{-$fringe_px} #{$fringe_px} #{-$fringe_px};
-      border-radius: #{$fringe_px};
+      margin: 0 #{-$figure--minimal-padding-px/2} #{$figure--minimal-padding-px}
+        #{-$figure--minimal-padding-px/2};
+      border-radius: #{$figure--minimal-padding-px};
       overflow: hidden;
-      background-color: getColor('bg-gray');
+      background-color: get-color('bg-gray');
+
+      @include breakpoint('w', 'WQVGA--') {
+        border-radius: #{$figure--normal-padding-px};
+        margin: 0 #{-$figure--normal-padding-px/2} #{$figure--normal-padding-px/2}
+          #{-$figure--normal-padding-px/2};
+      }
+
       & > blockquote {
         display: grid;
         grid-template-areas: 'paragraph' 'cite';
-        margin: #{$fringe_px};
-        & > p {
-          margin-bottom: #{$fringe_px};
+        margin: #{$figure--minimal-padding-px};
+
+        @include breakpoint('w', 'WQVGA--') {
+          margin: #{$figure--normal-padding-px};
         }
+
+        /// Creates spacing between the cite (name of the quote sayer)
+        /// and the quote
+        & > p {
+          margin-bottom: #{get-typography-p-margin-bottom()};
+        }
+
         & > cite {
           grid-area: cite;
           align-self: end;

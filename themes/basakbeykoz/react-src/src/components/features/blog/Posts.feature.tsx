@@ -9,6 +9,7 @@ import PostsView from '../../views/posts/Posts.view';
 const { BLOG_SLUG } = config;
 const mapState = (state: RootState) => ({
   posts: state.singular.post,
+  refs: state.app.refs,
 });
 const mapDispatch = {
   fetchCategoryPosts,
@@ -28,6 +29,7 @@ function PostsFeature({
   setFetching,
   excludeSlugs,
   posts,
+  refs,
 }: Props) {
   const fetchIfNeeded = () => {
     if (posts.fetchTime < Date.now() - 5000) {
@@ -45,11 +47,19 @@ function PostsFeature({
     fetchIfNeeded();
   }
 
+  const itemOnClick = () => {
+    refs.body?.ref.current?.osInstance()?.scroll(0, 500, 'easeInOutSine');
+  };
+
   const filteredPosts = Object.values(posts.items).filter(
     (single) => single.data.slug !== excludeSlugs[0] || false
   );
 
-  return <PostsView {...{ PostsItems: filteredPosts, locale: 'TR-TR' }} />;
+  return (
+    <PostsView
+      {...{ PostsItems: filteredPosts, locale: 'TR-TR', itemOnClick }}
+    />
+  );
 }
 
 export default connector(PostsFeature);

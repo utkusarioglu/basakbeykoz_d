@@ -1,18 +1,22 @@
 @import '../../../styles/abstracts/_mixins';
 
+$social-item--default-size--: get-component-property(
+  'social-item',
+  'default-size--'
+);
+
 .BurgerMenu {
   grid-area: nav;
   display: flex;
 
   &-burgerButton {
-    background-color: #{getColor('ui-white')};
-    color: #{getColor('text-dark')};
-    border: none;
-    padding: 0;
     margin: 0;
-    height: #{get-gap() +
-      get-component-property('social-item', 'default-size__')};
+    border: none;
+    background-color: #{get-color('ui-white')};
     cursor: pointer;
+    padding: 0;
+    height: #{get-gap(2) + $social-item--default-size--};
+    color: #{get-color('text-dark')};
 
     &:focus {
       border: none;
@@ -21,11 +25,12 @@
 
     & > img {
       @include icon-img();
+
       filter: var(--filter-darkGray);
     }
   }
 
-  @include breakpoint('w', 'SVGA__') {
+  @include breakpoint('w', 'SVGA--') {
     display: none;
   }
 }

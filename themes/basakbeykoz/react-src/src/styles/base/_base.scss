@@ -1,5 +1,7 @@
+@import '../abstracts/_mixins';
+
+/// These variables are here until the client decides on the font to be used
 :root {
-  --gap: #{get-gap()};
   --text-font: 'Work Sans', sans-serif;
   --text-font-weight: 400;
   --title-font: 'Montserrat', sans-serif;
@@ -8,37 +10,72 @@
 
 body {
   margin: 0;
-  background: #{getColor('bg-white')};
+  background: #{get-color('bg-white')};
   overflow-x: hidden;
   overflow-y: hidden;
-  color: #{getColor('text-mediumDark')};
-  font-size: #{get-font-size(default__) * 1px};
+  color: #{get-color('text-mediumDark')};
+  font-size: #{get-font-size('default--') * 1px};
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
-// creates headings
-@for $i from 1 through 6 {
-  $tag: 'h' + $i;
-  #{$tag} {
-    @include _heading($tag);
-  }
-}
+@include set-headings();
+@include set-color-category-styles();
 
 span,
 nav {
-  color: #{getColor('bg-blue')};
+  color: #{get-color('bg-blue')};
   font-family: #{get-font-property('text', 'font-family')};
   font-weight: #{get-font-property('text', 'font-weight')};
 }
 
 figcaption {
   @include p-basic();
+
   margin: 0;
 }
 
 p {
   @include p();
+
+  & > a {
+    @include p-basic();
+
+    text-decoration: underline;
+    text-decoration-color: #{get-color('ui-decoration')};
+    text-decoration-thickness: 2px;
+    position: relative;
+
+    &:hover {
+      /// A slight touch is needed to visually balance the vertical positioning
+      /// of the padding for the links. This variable is applied to the top
+      /// bottom padding to shift it up and down
+      $vertical-padding-shift: 1px;
+
+      color: #{get-color('text-mediumDark')};
+      text-decoration-color: #{get-color('text-mediumDark')};
+      /// The transform value helps to elevate the element above the plane.
+      /// This isn't important for the element itself, but its actual effect
+      /// is to elevate the ::before selector above the background-color in the
+      /// home page. This way, the ::before element is still visible while
+      /// having a z-index of -1
+      transform: translateZ(1px);
+
+      &::before {
+        $padding: 2/3;
+
+        position: absolute;
+        top: #{get-gap(-$padding) + $vertical-padding-shift};
+        right: #{get-gap(-$padding)};
+        bottom: #{get-gap(-$padding) - $vertical-padding-shift};
+        left: #{get-gap(-$padding)};
+        z-index: -1;
+        background-color: #{get-color('ui-decoration')};
+        border-radius: #{get-gap()};
+        content: '';
+      }
+    }
+  }
 }
 
 cite,
@@ -47,5 +84,5 @@ li {
 }
 
 ul {
-  padding-inline-start: #{get-gap(1/2)};
+  padding-inline-start: #{get-gap()};
 }

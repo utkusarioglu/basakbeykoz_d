@@ -1,7 +1,5 @@
 @import '../../../abstracts/_mixins';
-@import '../_wpPosts';
 
-/// Styles for the wp rendered home page content
 .Canvas.page.home > article > .wp-block-group:nth-child(2) {
   & > .wp-block-group__inner-container {
     grid-template-areas:
@@ -10,7 +8,7 @@
       'paragraph';
     grid-template-rows: max-content auto min-content;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       grid-template-areas:
         'h2 image'
         'paragraph image';
@@ -20,12 +18,33 @@
 
     h2 {
       position: relative;
-      width: max-content;
       justify-self: center;
+      z-index: 1;
+      width: max-content;
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         justify-self: start;
         text-align: left;
+      }
+
+      &::before {
+        $content-size: calc(2 * #{get-typography-responsive-line-height('h2')});
+        $content-top: calc(
+          -3 / 4 * #{get-typography-responsive-line-height('h2')}
+        );
+        $content-left: calc(
+          -1 / 2 * #{get-typography-responsive-line-height('h2')}
+        );
+
+        position: absolute;
+        top: #{$content-top};
+        left: #{$content-left};
+        z-index: -1;
+        background-image: url('/wp-content/uploads/star.png');
+        background-size: #{$content-size};
+        width: #{$content-size};
+        height: #{$content-size};
+        content: '';
       }
     }
   }

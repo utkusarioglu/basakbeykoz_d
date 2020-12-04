@@ -1,20 +1,20 @@
 @import '../../../styles/abstracts/_mixins';
 
 .Spinner {
+  display: none;
   position: fixed;
-  padding: 3rem;
   top: 0;
   right: 0;
-  left: 0;
   bottom: 0;
-  display: none;
-  justify-items: center;
-  grid-row-gap: 1rem;
+  left: 0;
   grid-template-rows: 45% 65%;
+  grid-row-gap: 1rem;
+  justify-items: center;
   z-index: 110;
+  padding: #{get-gap(2)};
   background: radial-gradient(
     closest-side,
-    rgba(255, 255, 255, 0.8),
+    rgb(255, 255, 255),
     rgba(255, 255, 255, 0.6)
   );
   grid-template-areas:
@@ -24,19 +24,16 @@
   &-logo {
     grid-area: logo;
     align-self: end;
+    max-width: 100%;
+    max-height: 50px;
     filter: var(--filter-darkGray);
-    max-height: 60px;
   }
 
   &-loadMessage {
-    grid-area: LoadMessage;
-    font-family: #{get-font-property('text', 'font-family')};
-    font-weight: #{get-font-property('text', 'font-weight')};
-    align-self: top;
-    color: #{getColor('ui-blue')};
+    @include p();
 
-    @include breakpoint('w', 'SVGA__') {
-      font-size: 25px;
-    }
+    grid-area: LoadMessage;
+    align-self: top;
+    color: #{get-color('ui-blue')};
   }
 }

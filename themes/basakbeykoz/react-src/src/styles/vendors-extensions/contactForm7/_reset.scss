@@ -1,0 +1,9 @@
+@import '../../abstracts/_mixins';
+
+.wpcf7 {
+  /// There are various line breaks in the code rendered by contact form. These
+  /// serve no purpose for the needs of this app, and hence they are hidden.
+  & br {
+    display: none;
+  }
+}

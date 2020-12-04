@@ -1,0 +1,42 @@
+@import '../../../abstracts/_mixins';
+@import './_wp-posts-p';
+
+@mixin post-excerpt(
+  $column-excerpt-paragraph-lines,
+  $card-color,
+  $excerpt-gradient-height
+) {
+  @include limit-paragraph-lines($column-excerpt-paragraph-lines, 'p-small');
+
+  position: relative;
+  grid-area: excerpt !important;
+  margin: 0 !important;
+  margin: 0;
+  overflow: hidden;
+  color: #{get-color('text-mediumDark')};
+  font-size: #{get-font-size('excerpt-px')};
+
+  & > p {
+    @include wp-posts-p();
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &::before {
+    /// Defines the height of the gradient section
+    // $transition-height: get-gap(2);
+
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: #{$excerpt-gradient-height};
+    content: '';
+    background: linear-gradient(
+      transparent 0,
+      #{$card-color} #{$excerpt-gradient-height}
+    );
+  }
+}

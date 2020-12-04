@@ -1,32 +1,46 @@
 @import '../../../styles/abstracts/_mixins';
 @import './_canvas-featureImage';
 
+$page-blog-native--minimal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'minimal-screen-padding-px'
+);
+$page-blog-native--normal-screen-padding-px: get-component-property(
+  'page-blog-native',
+  'normal-screen-padding-px'
+);
+$nav--social-space-x-px: get-component-property('nav', 'social-space-x-px');
+$feature-image--height-px: get-component-property('feature-image', 'height-px');
+
 .Canvas {
-  $feature-image_x: get-component-property('feature-image', 'narrow_x_vw');
-  $footer-square-size_px: get-component-property('footer', 'square-size_px');
-  $footer__fg-height_max_px: get-component-property(
-    'footer',
-    'fg-height_max_px'
+  $feature--image-narrow-x-vw: get-component-property(
+    'feature-image',
+    'narrow-x-vw'
   );
+  $footer--square-size-px: get-component-property('footer', 'square-size-px');
+  $footer--fg-height-max-px: get-component-property(
+    'footer',
+    'fg-height-max-px'
+  );
+  $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
   min-height: calc(
-    100vh - #{get-component-property('nav', 'mobile-height_px')} + #{$footer-square-size_px}
+    100vh - #{$nav--mobile-height-px} + #{$footer--square-size-px}
   );
   /// This controls the distance that the footer figures have from the page content. However, to be precise, it could be better to use a value that is responsive in proportion to the responsiveness of the footer -fg element
-  padding-bottom: #{$footer__fg-height_max_px + 100px};
+  padding-bottom: #{$footer--fg-height-max-px + 100px};
 
-  @include breakpoint('w', 'SVGA__') {
+  @include breakpoint('w', 'SVGA--') {
     display: grid;
     grid-template-areas: '. h1' '. Article' '. Posts-wrapper';
     grid-template-rows: 150px 1fr;
-    grid-template-columns: $feature-image_x 2fr;
-    grid-column-gap: responsive-width(30, 100, get-breakpoint('w', 'SVGA__'));
+    grid-template-columns: $feature--image-narrow-x-vw 2fr;
+    grid-column-gap: responsive-width(30, 100, get-breakpoint('w', 'SVGA--'));
   }
 
-  @include breakpoint('w', 'XGAplus__') {
-    $navSocialSpaceX: get-component-property('nav', 'social-space_x_px');
+  @include breakpoint('w', 'XGAplus--') {
     grid-template-areas: '. h1 .' '. Article .' '. Posts-wrapper .';
-    grid-template-columns: #{$feature-image_x} 2fr #{$navSocialSpaceX};
+    grid-template-columns: #{$feature--image-narrow-x-vw} 2fr #{$nav--social-space-x-px};
   }
 
   &-decor {
@@ -34,28 +48,48 @@
     grid-template-areas: 'h1';
     display: grid;
     position: relative;
-    min-height: #{get-component-property('feature-image', 'height_px')};
+    min-height: #{$feature-image--height-px};
     width: 100%;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       position: fixed;
       left: 0;
       bottom: 0;
       top: 0;
-      width: $feature-image_x;
+      width: #{$feature--image-narrow-x-vw};
     }
 
     & > .Canvas-featureTitle {
       align-self: end;
       display: block;
+      margin: 0;
       bottom: 0;
       box-sizing: border-box;
       width: 100%;
-      padding: var(--gap);
+      padding: #{get-gap()};
       text-align: center;
       overflow: hidden;
-      @include breakpoint('w', 'SVGA__') {
+
+      @include breakpoint('w', 'SVGA--') {
         display: none;
+      }
+    }
+
+    & > .Share {
+      display: none;
+      position: absolute;
+
+      @include breakpoint('w', 'SVGA--') {
+        bottom: #{get-gap() + $nav--mobile-height-px};
+        /// !Magic number 5px
+        left: #{get-gap(1/2) + 5px};
+        display: block;
+      }
+
+      @include breakpoint('w', 'XGAplus--') {
+        /// !Magic number 5px
+        left: #{get-gap() + 5px};
+        bottom: #{get-gap()};
       }
     }
   }
@@ -63,19 +97,23 @@
   &-articleTitle {
     display: none;
     align-self: center;
+    margin: 0;
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'SVGA--') {
       display: block;
     }
   }
 
   article {
     grid-area: Article;
-    padding-top: var(--gap);
-    padding-right: var(--gap);
-    padding-left: var(--gap);
+    padding: #{$page-blog-native--normal-screen-padding-px
+      $page-blog-native--minimal-screen-padding-px};
 
-    @include breakpoint('w', 'SVGA__') {
+    @include breakpoint('w', 'WQVGA--') {
+      padding: #{$page-blog-native--normal-screen-padding-px};
+    }
+
+    @include breakpoint('w', 'SVGA--') {
       padding-top: 0;
       padding-left: 0;
     }
@@ -93,12 +131,14 @@
     &.home {
       padding-bottom: 0;
 
-      @include breakpoint('w', 'SVGA__') {
+      @include breakpoint('w', 'SVGA--') {
         display: block;
+
         .Canvas-articleTitle {
           display: none;
         }
       }
+
       & .Canvas-decor {
         display: none;
       }

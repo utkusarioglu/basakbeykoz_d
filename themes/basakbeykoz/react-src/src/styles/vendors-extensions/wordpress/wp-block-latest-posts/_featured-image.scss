@@ -1,0 +1,31 @@
+@import '../../../abstracts/_mixins';
+
+$home--posts-y-px: get-component-property('home', 'posts-y-px');
+
+@mixin featured-image($type, $img-height-px) {
+  display: flex;
+  grid-area: image;
+  justify-content: center;
+  border-radius: #{get-gap(2/3)};
+  height: #{$img-height-px};
+  overflow: hidden;
+
+  @include breakpoint('w', 'SVGA--') {
+    @if $type == 'posts' {
+      height: calc(#{$home--posts-y-px} + #{get-gap(2)});
+    }
+  }
+
+  & > img {
+    z-index: 10;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+
+    @include breakpoint('w', 'SVGA--') {
+      @if $type == 'posts' {
+        object-fit: cover;
+      }
+    }
+  }
+}

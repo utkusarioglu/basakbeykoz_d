@@ -3,12 +3,12 @@
 /// Sets the size (width for vertical, height for horizontal) scrollbar in its
 /// passive state. That is, when there is no focus or hover going on.
 /// @access private
-$passive-size: get-gap(1/4);
+$passive-size: get-gap(1/2);
 
 /// Sets the size (width for vertical, height for horizontal) scrollbar in its
 // active state. That is, when there is no focus or hover going on.
 /// @access private
-$active-size: get-gap(2/3);
+$active-size: get-gap(4/3);
 
 /// This class belongs to OverlayScrollbars library
 /// Many of the properties set here is set to important to prevent clashes with
@@ -31,7 +31,7 @@ $active-size: get-gap(2/3);
       width: #{$active-size} !important;
 
       & .os-scrollbar-handle {
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           border-top-left-radius: #{$active-size} !important;
           border-bottom-left-radius: #{$active-size} !important;
           width: #{$active-size};
@@ -44,7 +44,7 @@ $active-size: get-gap(2/3);
       border-radius: 0 !important;
       border-top-left-radius: #{$passive-size} !important;
       border-bottom-left-radius: #{$passive-size} !important;
-      background-color: #{getColor('ui-gray')} !important;
+      background-color: #{get-color('ui-gray')} !important;
       width: #{$passive-size};
     }
   }
@@ -60,7 +60,7 @@ $active-size: get-gap(2/3);
       height: #{$active-size} !important;
 
       & .os-scrollbar-handle {
-        @include breakpoint('w', 'SVGA__') {
+        @include breakpoint('w', 'SVGA--') {
           border-top-left-radius: #{$active-size} !important;
           border-top-right-radius: #{$active-size} !important;
           height: #{$active-size};
@@ -73,7 +73,7 @@ $active-size: get-gap(2/3);
       border-radius: 0 !important;
       border-top-left-radius: #{$passive-size} !important;
       border-top-right-radius: #{$passive-size} !important;
-      background-color: #{getColor('ui-gray')} !important;
+      background-color: #{get-color('ui-gray')} !important;
       height: #{$passive-size};
     }
   }
