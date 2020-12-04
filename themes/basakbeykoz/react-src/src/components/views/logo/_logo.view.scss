@@ -58,7 +58,7 @@ $feature-image--narrow-x-vw: #{get-component-property(
         padding-left: #{$padding-left};
         width: $width;
         min-width: 170px;
-        max-width: 350px;
+        max-width: 295px; // !HACK magic number, related to image size
         max-height: 50px;
         object-fit: scale-down;
       }
