@@ -1,3 +1,6 @@
+import { parseJson } from './configHelper';
+import type { SocialItemList } from '../components/features/social/@types-social';
+
 const {
   REACT_APP_UPLOADS_DIR,
   REACT_APP_HOME_SLUG,
@@ -16,6 +19,7 @@ export default {
   REST_ENDPOINT: REACT_APP_REST_ENDPOINT,
   REST_TIMEOUT: REACT_APP_REST_TIMEOUT,
   GOOGLE_ANALYTICS_TRACKING_ID: REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID,
+  CANVAS_WAIT_TIME_DEV: 500,
 
   /* 
     Next variables are provided by index.php
@@ -28,4 +32,5 @@ export default {
   APP_NAME: window.config?.WP_PAGE_TITLE || 'AppName',
   APP_TAGLINE: window.config?.WP_PAGE_TAGLINE || 'Tagline',
   APP_SEPARATOR: window.config?.WP_TITLE_SEPARATOR || ' - ',
+  SOCIAL_ITEMS: parseJson<SocialItemList>(window.config?.WP_SOCIAL_ITEMS, []),
 };

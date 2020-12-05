@@ -5,9 +5,7 @@ import { setIsMenuOpen } from '../../features/app/appActions';
 
 import SocialView from '../../views/social/Social.view';
 
-const mapState = (state: RootState) => ({
-  socialItems: state.social.items,
-});
+const mapState = (state: RootState) => ({});
 const mapDispatch = {
   setIsMenuOpen,
 };
@@ -16,8 +14,8 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function SocialFeature({ socialItems, setIsMenuOpen }: Props) {
-  return <SocialView {...{ socialItems, setIsMenuOpen }} />;
+function SocialFeature({ setIsMenuOpen }: Props) {
+  return <SocialView {...{ setIsMenuOpen }} />;
 }
 
 export default connector(SocialFeature);

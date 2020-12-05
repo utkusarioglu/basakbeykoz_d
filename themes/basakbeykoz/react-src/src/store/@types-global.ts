@@ -25,6 +25,7 @@ declare global {
       WP_PAGE_TITLE: string;
       WP_PAGE_TAGLINE: string;
       WP_TITLE_SEPARATOR: string;
+      WP_SOCIAL_ITEMS: string;
     };
   }
 }
