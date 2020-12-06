@@ -12,6 +12,10 @@ $figure--normal-padding-px: get-component-property(
 .wp {
   &-block {
     &-pullquote {
+      @include article-framed-content(
+        $figure--minimal-padding-px,
+        $figure--normal-padding-px
+      );
       margin: 0 #{-$figure--minimal-padding-px/2} #{$figure--minimal-padding-px}
         #{-$figure--minimal-padding-px/2};
       border-radius: #{$figure--minimal-padding-px};
@@ -19,8 +23,7 @@ $figure--normal-padding-px: get-component-property(
       background-color: get-color('bg-gray');
 
       @include breakpoint('w', 'WQVGA--') {
-        border-radius: #{$figure--normal-padding-px};
-        margin: 0 #{-$figure--normal-padding-px/2} #{$figure--normal-padding-px/2}
+        margin: 0 #{-$figure--normal-padding-px/2} #{$figure--normal-padding-px}
           #{-$figure--normal-padding-px/2};
       }
 
