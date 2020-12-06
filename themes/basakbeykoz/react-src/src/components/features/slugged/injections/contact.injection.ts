@@ -13,7 +13,7 @@ type Refs = RootState['app']['refs'];
  * The injection code for the contact page
  * @param refs {@link OverlayScrollbars}  refs object from the store
  */
-export function contactPageInjection(refs: Refs) {
+export function contactPageInjection(refs: Refs): UnmountFunction {
   const unmountList = [
     attachContactFormHandler(),
     injectSocialFrameContent(refs),

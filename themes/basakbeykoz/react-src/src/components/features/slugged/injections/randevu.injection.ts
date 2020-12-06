@@ -13,6 +13,5 @@ export function randevuInjection(
   refs: Refs,
   history: ReturnType<typeof useHistory>
 ) {
-  // This returns an unmount function which is not yet used
-  pageContentsHandler(refs, history);
+  return pageContentsHandler(refs, history);
 }

@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../../../store/rootReducer';
 import { pageContentsHandler } from './pageContentsHandler';
+import { UnmountFunction } from '../@types-slugged';
 
 type Refs = RootState['app']['refs'];
 
@@ -12,7 +13,6 @@ type Refs = RootState['app']['refs'];
 export function bireyselInjection(
   refs: Refs,
   history: ReturnType<typeof useHistory>
-) {
-  // Method returns its own unmount function, which is not used yet
-  pageContentsHandler(refs, history);
+): UnmountFunction {
+  return pageContentsHandler(refs, history);
 }

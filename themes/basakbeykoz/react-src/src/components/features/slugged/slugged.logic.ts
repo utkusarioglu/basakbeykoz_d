@@ -9,6 +9,7 @@ import config from '../../../config';
 import { contactPageInjection } from './injections/contact.injection';
 import { bireyselInjection } from './injections/bireysel.injection';
 import { randevuInjection } from './injections/randevu.injection';
+import { UnmountFunction } from './@types-slugged';
 
 const { HOME_SLUG } = config;
 
@@ -29,7 +30,7 @@ export function runSlugOnload(
   slug: string,
   refs: RootState['app']['refs'],
   history: ReturnType<typeof useHistory>
-): () => void {
+): UnmountFunction {
   switch (slug) {
     case HOME_SLUG:
       return () => process.nextTick(() => homeInjection(refs, history));
@@ -44,6 +45,6 @@ export function runSlugOnload(
       return () => process.nextTick(() => randevuInjection(refs, history));
 
     default:
-      return () => null;
+      return () => {};
   }
 }
