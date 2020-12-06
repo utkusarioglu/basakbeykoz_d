@@ -1,13 +1,63 @@
 @import '../../../styles/abstracts/_mixins';
 
-.Share {
-  * {
-    padding: #{get-gap(1/4)};
-    outline: none;
-    border-radius: #{get-gap()};
+$figure--minimal-padding-px: get-component-property(
+  'figure',
+  'minimal-padding-px'
+);
+$figure--normal-padding-px: get-component-property(
+  'figure',
+  'normal-padding-px'
+);
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
-    @include breakpoint('w', 'XGAplus--') {
-      padding: #{get-gap(1/2)};
+.Share {
+  display: none;
+  position: absolute;
+  vertical-align: center;
+
+  @include breakpoint('w', 'SVGA--') {
+    bottom: #{get-gap() + $nav--mobile-height-px};
+    width: 100%;
+    display: grid;
+    justify-content: center;
+  }
+
+  @include breakpoint('w', 'XGAplus--') {
+    bottom: #{0};
+  }
+
+  &-frame {
+    @include article-framed-content(
+      $figure--minimal-padding-px / 2,
+      $figure--normal-padding-px / 2
+    );
+    margin: #{get-gap()} !important;
+    width: max-content;
+
+    padding: #{$figure--minimal-padding-px/2};
+
+    @include breakpoint('w', 'WQVGA--') {
+      padding: #{$figure--normal-padding-px/2};
+    }
+
+    span {
+      @include p-basic();
+    }
+
+    &-buttons {
+      $button-padding: get-gap(1/2);
+      margin-left: #{-$button-padding};
+      margin-bottom: #{-$button-padding};
+
+      * {
+        padding: #{get-gap(1/4)};
+        outline: none;
+        border-radius: #{get-gap()};
+
+        @include breakpoint('w', 'XGAplus--') {
+          padding: #{$button-padding};
+        }
+      }
     }
   }
 }

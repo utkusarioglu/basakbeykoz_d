@@ -22,45 +22,54 @@ function ShareView({ title, excerpt }: Props) {
   const size = 36;
   // const title = 'this is the title';
   return (
-    <div className="Share">
-      <FacebookShareButton
-        {...{
-          url,
-          quote: title,
-          className: `${commonClass}facebook`,
-        }}
-      >
-        <FacebookIcon {...{ size }} />
-      </FacebookShareButton>
+    <div {...{ className: 'Share' }}>
+      <div {...{ className: 'Share-frame' }}>
+        <span>Bu sayfayı paylaşın</span>
+        <div {...{ className: 'Share-frame-buttons' }}>
+          <FacebookShareButton
+            {...{
+              url,
+              quote: title,
+              className: `${commonClass}facebook`,
+            }}
+          >
+            <FacebookIcon {...{ size }} />
+          </FacebookShareButton>
 
-      <TwitterShareButton
-        {...{ url, title, className: `${commonClass}twitter` }}
-      >
-        <TwitterIcon {...{ size }} />
-      </TwitterShareButton>
+          <TwitterShareButton
+            {...{
+              url,
+              title,
+              className: `${commonClass}twitter`,
+            }}
+          >
+            <TwitterIcon {...{ size }} />
+          </TwitterShareButton>
 
-      <WhatsappShareButton
-        {...{
-          url,
-          title,
-          separator: ' - ',
-          className: `${commonClass}whatsapp`,
-        }}
-      >
-        <WhatsappIcon {...{ size }} />
-      </WhatsappShareButton>
+          <WhatsappShareButton
+            {...{
+              url,
+              title,
+              separator: ' - ',
+              className: `${commonClass}whatsapp`,
+            }}
+          >
+            <WhatsappIcon {...{ size }} />
+          </WhatsappShareButton>
 
-      <LinkedinShareButton
-        {...{
-          source: url,
-          url,
-          title,
-          summary: excerpt,
-          className: `${commonClass}linkedin`,
-        }}
-      >
-        <LinkedinIcon {...{ size }} />
-      </LinkedinShareButton>
+          <LinkedinShareButton
+            {...{
+              source: url,
+              url,
+              title,
+              summary: excerpt,
+              className: `${commonClass}linkedin`,
+            }}
+          >
+            <LinkedinIcon {...{ size }} />
+          </LinkedinShareButton>
+        </div>
+      </div>
     </div>
   );
 }

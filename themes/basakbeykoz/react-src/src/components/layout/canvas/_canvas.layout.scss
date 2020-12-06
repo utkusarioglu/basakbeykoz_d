@@ -74,24 +74,6 @@ $feature-image--height-px: get-component-property('feature-image', 'height-px');
         display: none;
       }
     }
-
-    & > .Share {
-      display: none;
-      position: absolute;
-
-      @include breakpoint('w', 'SVGA--') {
-        bottom: #{get-gap() + $nav--mobile-height-px};
-        /// !Magic number 5px
-        left: #{get-gap(1/2) + 5px};
-        display: block;
-      }
-
-      @include breakpoint('w', 'XGAplus--') {
-        /// !Magic number 5px
-        left: #{get-gap() + 5px};
-        bottom: #{get-gap()};
-      }
-    }
   }
 
   &-articleTitle {
