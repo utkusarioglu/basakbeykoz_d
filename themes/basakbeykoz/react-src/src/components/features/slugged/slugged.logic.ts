@@ -8,6 +8,7 @@ import { homeInjection } from './injections/home.injection';
 import config from '../../../config';
 import { contactPageInjection } from './injections/contact.injection';
 import { bireyselInjection } from './injections/bireysel.injection';
+import { randevuInjection } from './injections/randevu.injection';
 
 const { HOME_SLUG } = config;
 
@@ -38,6 +39,9 @@ export function runSlugOnload(
 
     case 'ilkeler':
       return () => process.nextTick(() => bireyselInjection(refs, history));
+
+    case 'randevu':
+      return () => process.nextTick(() => randevuInjection(refs, history));
 
     default:
       return () => null;
