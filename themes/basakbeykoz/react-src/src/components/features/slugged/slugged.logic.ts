@@ -38,7 +38,7 @@ export function runSlugOnload(
     case 'iletisim':
       return () => process.nextTick(() => contactPageInjection(refs));
 
-    case 'ilkeler':
+    case 'bireysel-kocluk-yolculugu':
       return () => process.nextTick(() => bireyselInjection(refs, history));
 
     case 'randevu':
