@@ -5,7 +5,7 @@ import { RootState } from '../../../store/rootReducer';
 import { fetchSingular } from '../wordpress/singularActions';
 import { setFetching, setDisplaying } from '../app/appActions';
 import config from '../../../config';
-import { findBySlug, getSlugOnload } from './slugged.logic';
+import { findBySlug, runSlugOnload } from './slugged.logic';
 
 import CanvasLayout from '../../layout/canvas/Canvas.layout';
 
@@ -113,7 +113,7 @@ function SluggedFeature({
     <CanvasLayout
       {...{
         ...isDisplayingActive,
-        onLoad: getSlugOnload(isDisplayingSlug, refs, history),
+        onLoad: runSlugOnload(isDisplayingSlug, refs, history),
       }}
     />
   );

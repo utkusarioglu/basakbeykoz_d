@@ -23,7 +23,7 @@ export function findBySlug(
     })[0];
 }
 
-export function getSlugOnload(
+export function runSlugOnload(
   slug: string,
   refs: RootState['app']['refs'],
   history: ReturnType<typeof useHistory>
