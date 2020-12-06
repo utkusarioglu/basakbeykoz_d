@@ -333,3 +333,16 @@
     }
   }
 }
+
+/// Creates the rounded gray frames that are used by quotes, page-top content lists
+/// @access public
+/// @group helpers
+@mixin article-framed-content($padding, $normal-padding) {
+  border-radius: #{$padding};
+  overflow: hidden;
+  background-color: get-color('bg-gray');
+
+  @include breakpoint('w', 'WQVGA--') {
+    border-radius: #{$normal-padding};
+  }
+}
