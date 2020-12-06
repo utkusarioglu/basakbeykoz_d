@@ -34,7 +34,7 @@ $WP_SOCIAL_ITEMS = array(
       WP_PAGE_TITLE: '<?php echo $WP_PAGE_TITLE ?>',
       WP_PAGE_TAGLINE: '<?php echo $WP_PAGE_TAGLINE ?>',
       WP_TITLE_SEPARATOR: '<?php echo $WP_TITLE_SEPARATOR ?>',
-      WP_SOCIAL_ITEMS: '<?php echo json_encode($WP_SOCIAL_ITEMS) ?>',
+      WP_SOCIAL_ITEMS: '<?php echo str_replace('"', '\"', json_encode($WP_SOCIAL_ITEMS)) ?>',
     }
   </script>
 </head>
