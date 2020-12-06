@@ -7,6 +7,7 @@ import {
 import { homeInjection } from './injections/home.injection';
 import config from '../../../config';
 import { contactPageInjection } from './injections/contact.injection';
+import { bireyselInjection } from './injections/bireysel.injection';
 
 const { HOME_SLUG } = config;
 
@@ -33,7 +34,8 @@ export function runSlugOnload(
       return () => process.nextTick(() => homeInjection(refs));
 
     case 'iletisim':
-      return () => process.nextTick(contactPageInjection);
+    case 'ilkeler':
+      return () => process.nextTick(() => bireyselInjection(refs, history));
 
     default:
       return () => null;
