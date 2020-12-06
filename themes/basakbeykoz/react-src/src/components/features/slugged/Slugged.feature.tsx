@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, useHistory } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../../store/rootReducer';
 import { fetchSingular } from '../wordpress/singularActions';
@@ -50,6 +50,7 @@ function SluggedFeature({
     });
   }
   const timestampedSingular = findBySlug(singular, isDisplayingSlug);
+  const history = useHistory();
 
   useEffect(() => {
     const anHourAgo = Date.now() - 1000 * 60;
@@ -112,7 +113,7 @@ function SluggedFeature({
     <CanvasLayout
       {...{
         ...isDisplayingActive,
-        onLoad: getSlugOnload(isDisplayingSlug, refs),
+        onLoad: getSlugOnload(isDisplayingSlug, refs, history),
       }}
     />
   );

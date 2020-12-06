@@ -1,4 +1,5 @@
 import { RootState } from '../../../store/rootReducer';
+import { useHistory } from 'react-router-dom';
 import {
   WpSingularTypes,
   TimestampedSingular,
@@ -24,7 +25,8 @@ export function findBySlug(
 
 export function getSlugOnload(
   slug: string,
-  refs: RootState['app']['refs']
+  refs: RootState['app']['refs'],
+  history: ReturnType<typeof useHistory>
 ): () => void {
   switch (slug) {
     case HOME_SLUG:
