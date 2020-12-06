@@ -1,0 +1,114 @@
+@import '../../../abstracts/_mixins';
+
+$figure--minimal-padding-px: get-component-property(
+  'figure',
+  'minimal-padding-px'
+);
+$figure--normal-padding-px: get-component-property(
+  'figure',
+  'normal-padding-px'
+);
+
+.Canvas.page.iletisim article {
+  .contact-page--framed {
+    @include article-framed-content(
+      $figure--minimal-padding-px,
+      $figure--normal-padding-px
+    );
+
+    padding: #{get-gap(1)};
+    background-image: url('../../../../static/vectors/document-map.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: soft-light;
+
+    @include breakpoint('w', 'WQVGA--') {
+      padding: #{get-gap(2)};
+    }
+
+    .wp-block-group__inner-container {
+      display: grid;
+      grid-row-gap: #{get-gap(1)};
+
+      h4 {
+        margin: 0 0 #{get-gap(1/2)} 0;
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+
+  .contact-page--social-media {
+    .wp-block-group__inner-container {
+      display: grid;
+      grid-template-areas: 'h4' 'buttons';
+
+      .contact--social-links {
+        @extend .wp-block-buttons;
+
+        grid-area: buttons;
+        display: grid;
+        grid-template-areas:
+          'instagram linkedin'
+          'contact-form contact-form';
+        grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      }
+
+      .contact--social-link {
+        @extend .wp-block-button;
+
+        position: relative;
+        min-height: 100px;
+        padding: #{get-gap(1/2)};
+        background-color: #{get-color('bg-green')};
+
+        &:hover {
+          background-color: #{get-color('bg-yellow')};
+        }
+
+        .contact--social-link--container {
+          position: relative;
+          height: 100%;
+          width: 100%;
+
+          .contact--social-link--image {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto 60%;
+            height: 100%;
+            width: 100%;
+            filter: var(--filter-darkGray);
+          }
+
+          span {
+            @include p-basic;
+
+            display: none;
+            position: absolute;
+            bottom: #{get-gap(1/2)};
+          }
+        }
+      }
+    }
+  }
+
+  .contact-page--address {
+    .wp-block-group__inner-container {
+      grid-template-areas: 'h4' 'contact-earth' 'paragraph';
+      grid-template-rows: auto minmax(200px, 1fr) auto;
+
+      .contact-earth {
+        grid-area: contact-earth;
+        background: url('../../../../static/vectors/contact-earth.svg')
+          no-repeat center;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
