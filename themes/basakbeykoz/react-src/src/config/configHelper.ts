@@ -6,13 +6,15 @@
  * faulty strings that do not parse as json properly. This function is
  * here to make sure that those failures do not break the site.
  *
- * @param string string to parse as json
+ * @param serializedJson string to parse as json
  * @param catchValue value to be returned if the json parse fails
  */
-export function parseJson<T>(string: string, catchValue: T): T {
+export function parseJson<T>(serializedJson: string, catchValue: T): T {
   try {
-    return JSON.parse(string);
+    return JSON.parse(serializedJson);
   } catch (e) {
+    console.log(serializedJson);
+    console.warn(e);
     return catchValue;
   }
 }
