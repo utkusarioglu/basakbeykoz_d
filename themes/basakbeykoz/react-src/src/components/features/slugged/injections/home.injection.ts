@@ -1,39 +1,64 @@
 import OverlayScrollbars, { Options } from 'overlayscrollbars';
+import { useHistory } from 'react-router-dom';
 import { attachContactFormHandler } from './contactFormHandler';
 import { RootState } from '../../../../store/rootReducer';
+import type { UnmountFunction } from '../@types-slugged';
+import { createUnmountableEventListener } from './createUnmountableEventListener';
 const pauseable = require('pauseable');
 
 type Refs = RootState['app']['refs'];
 
-export function homeInjection(refs: Refs) {
-  injectWordPressPostEnhancements(refs);
-  attachContactFormHandler();
+/**
+ * Injects homepage enhancements
+ * @param refs {@link OverlayScrollbars} refs object from the store
+ * @param history {@link react-router-dom} history object
+ */
+export function homeInjection(
+  refs: Refs,
+  history: ReturnType<typeof useHistory>
+): UnmountFunction {
+  const unmountList = [
+    injectWordPressPostEnhancements(refs, history),
+    attachContactFormHandler(),
+    attachCtaAction(refs),
+  ];
+  return () => unmountList.forEach((unmount) => unmount);
 }
 
-function injectWordPressPostEnhancements(refs: Refs) {
-  const fields = document.querySelectorAll('.wp-block-latest-posts');
-  const [testimonials, success] = (fields as unknown) as [
-    HTMLElement,
-    HTMLElement
+/**
+ * Attaches wp-latest-posts related items
+ * @param refs {@link OverlayScrollbars} refs object from the store
+ * @param history {@link react-router-dom} history object
+ */
+function injectWordPressPostEnhancements(
+  refs: Refs,
+  history: ReturnType<typeof useHistory>
+): UnmountFunction {
+  const [testimonials, success] = Array.from(
+    document.querySelectorAll<HTMLElement>('.wp-block-latest-posts')
+  );
+  const unmountList = [
+    attachOverlayScrollbars(testimonials, {
+      scrollbars: {
+        autoHide: 'leave',
+      },
+    }),
+    attachOverlayScrollbars(success, {
+      scrollbars: {
+        autoHide: 'leave',
+      },
+      overflowBehavior: {
+        y: 'visible-scroll',
+        x: 'scroll',
+      },
+    }),
+    attachOnClickCorrection(testimonials, refs, history),
+    attachOnClickCorrection(success, refs, history),
   ];
-  attachOverlayScrollbars(testimonials, {
-    scrollbars: {
-      autoHide: 'leave',
-    },
-  });
-  attachOverlayScrollbars(success, {
-    scrollbars: {
-      autoHide: 'leave',
-    },
-    overflowBehavior: {
-      y: 'visible-scroll',
-      x: 'scroll',
-    },
-  });
-  attachClickAction(testimonials);
-  attachClickAction(success);
+
   replaceTestimonialSpecialChars(success);
-  attachCtaAction(refs);
+
+  return () => unmountList.forEach((unmount) => unmount());
 }
 
 /**
@@ -41,19 +66,25 @@ function injectWordPressPostEnhancements(refs: Refs) {
  * The button scrolls down to the next section.
  * @param refs refs object from state.app
  */
-function attachCtaAction(refs: Refs) {
-  // !HACK this listener is attached every time the page is opened
-  document.body
-    .getElementsByClassName('wp-block-button')[0]
-    ?.addEventListener('mousedown', () => {
-      refs.body?.ref.current
-        ?.osInstance()
-        ?.scroll(
-          document.getElementsByClassName('wp-block-group')[1] as HTMLElement,
-          1000,
-          'easeOutExpo'
-        );
-    });
+function attachCtaAction(refs: Refs): UnmountFunction {
+  const ctaButton = document.querySelector<HTMLElement>('.wp-block-button');
+
+  if (!ctaButton) {
+    return () => {};
+  }
+
+  const ctaOnClick = (e: Event) => {
+    e.preventDefault();
+    refs.body?.ref.current
+      ?.osInstance()
+      ?.scroll(
+        document.getElementsByClassName('wp-block-group')[1] as HTMLElement,
+        1000,
+        'easeOutExpo'
+      );
+  };
+
+  return createUnmountableEventListener(ctaButton, ['click'], ctaOnClick);
 }
 
 /**
@@ -64,7 +95,10 @@ function attachCtaAction(refs: Refs) {
  * A similar action with these delimiters is taken with the page title
  * @param testimonials Html element that houses the testimonial <li>s
  */
-function replaceTestimonialSpecialChars(testimonials: HTMLElement) {
+function replaceTestimonialSpecialChars(testimonials: HTMLElement): void {
+  if (!testimonials) {
+    return;
+  }
   const finds = ['-', '–', '/'];
   const substitution = '<br>';
   const testimonialTitles = testimonials.querySelectorAll('a'); // finds the title
@@ -78,16 +112,42 @@ function replaceTestimonialSpecialChars(testimonials: HTMLElement) {
 }
 
 /**
+ * Corrects the behavior of wordpress post block clicks
+ *
+ * @remarks
  * Wordpress posts block render only allows the title of the items to be
- * clickable. This fuction injection makes sure that anywhere on the card
- * triggers a click on the <a> element inside the card
+ * clickable. In addition, as this project uses react-router-dom, the
+ * click action has to be prevented while the router handles the page routing.
+ *
+ * The function also scrolls the page to the top upon click
+ *
  * @param field testimonials or posts element
  */
-function attachClickAction(field: HTMLElement) {
-  field.addEventListener('click', (e: MouseEvent) => {
-    console.log((e.target as HTMLElement).closest('li'));
-    (e.target as HTMLElement).closest('li')?.querySelector('a')?.click();
-  });
+function attachOnClickCorrection(
+  field: HTMLElement,
+  refs: Refs,
+  history: ReturnType<typeof useHistory>
+): UnmountFunction {
+  const onClick = (e: Event) => {
+    const aElem = (e.target as HTMLElement).closest('li')?.querySelector('a');
+
+    if (!aElem) {
+      return;
+    }
+
+    const cardHref = aElem.href.replace(/.*:\/\/[\w.]*/g, '');
+
+    // If it can't find the for some reason href, it clicks the link
+    // conventionally
+    if (!cardHref) {
+      aElem.click();
+      return;
+    }
+
+    refs.body?.ref.current?.osInstance()?.scroll(0, 0);
+    history.push(cardHref);
+  };
+  return createUnmountableEventListener(field, ['click'], onClick);
 }
 
 /**
@@ -95,61 +155,70 @@ function attachClickAction(field: HTMLElement) {
  * It also starts a basic scroll animation for the items
  * The animation stops if the user hovers over the content.
  * !but "stop" doesn't register before the current animation ends
- * @param elem - Html element to attach the scrollbars to (testimonials, posts etc)
+ * @param elemToBeOverlayed - Html element to attach the scrollbars to (testimonials, posts etc)
  * @param options - OverlayScrollbars options
  */
 function attachOverlayScrollbars(
-  elem: HTMLElement,
+  elemToBeOverlayed: HTMLElement,
   options: Options
-): void | (() => void) {
+): UnmountFunction {
   const SCROLL_DURATION = 1500;
   const LINGER_DURATION = 3000;
   const ANIMATION_ENABLED = true;
 
-  const scrollbarRef = OverlayScrollbars(elem, options);
-  const osContent = elem.querySelectorAll('.os-content')[0];
-  const children = osContent.children;
-  const childrenCount = children.length;
-  let currentChild = 1;
-  if (ANIMATION_ENABLED) {
-    const animation = pauseable.setInterval(() => {
-      scrollbarRef.scroll(
-        {
-          el: children[currentChild] as HTMLElement,
-          margin: true,
-        },
-        SCROLL_DURATION,
-        'easeInOutSine'
-      );
-      // !TODO there is error in this, off by one
-      currentChild = (currentChild % childrenCount) + 1;
-    }, LINGER_DURATION);
+  const scrollbarRef = OverlayScrollbars(elemToBeOverlayed, options);
 
-    const target = elem.querySelectorAll('.os-content')[0];
-
-    const pauseEvents = ['mouseover', 'touchstart', 'touchmove'].map(
-      (event) => {
-        const pauseAnim = () => {
-          scrollbarRef.scrollStop();
-          animation.pause();
-        };
-
-        target.addEventListener(event, pauseAnim);
-
-        return () => target.removeEventListener(event, pauseAnim);
-      }
-    );
-
-    const resumeEvents = ['mouseleave', 'touchend', 'touchcancel'].map(
-      (event) => {
-        const resumeAnim = () => {
-          animation.resume();
-        };
-        target.addEventListener(event, resumeAnim);
-        return () => target.removeEventListener(event, resumeAnim);
-      }
-    );
-
-    return () => [...pauseEvents, ...resumeEvents].forEach((event) => event());
+  if (!scrollbarRef) {
+    return () => {};
   }
+
+  const osContent = elemToBeOverlayed.querySelector<HTMLElement>('.os-content');
+
+  if (!osContent) {
+    return () => {};
+  }
+
+  const children = osContent.children;
+  let currentChild = 1;
+
+  if (!ANIMATION_ENABLED) {
+    return () => {};
+  }
+
+  const animation = pauseable.setInterval(() => {
+    scrollbarRef.scroll(
+      {
+        el: children[currentChild] as HTMLElement,
+        margin: true,
+      },
+      SCROLL_DURATION,
+      'easeInOutSine'
+    );
+    // !TODO there is error in this, off by one
+    currentChild = (currentChild % children.length) + 1;
+  }, LINGER_DURATION);
+
+  const pauseAnimation = () => {
+    scrollbarRef.scrollStop();
+    animation.pause();
+  };
+
+  const resumeAnimation = () => {
+    animation.resume();
+  };
+
+  const unmountList = [
+    createUnmountableEventListener(
+      elemToBeOverlayed,
+      ['mouseover', 'touchstart', 'touchmove'],
+      pauseAnimation
+    ),
+    createUnmountableEventListener(
+      elemToBeOverlayed,
+      ['mouseleave', 'touchend', 'touchcancel'],
+      resumeAnimation
+    ),
+  ];
+
+  return () => unmountList.forEach((unmount) => unmount());
 }

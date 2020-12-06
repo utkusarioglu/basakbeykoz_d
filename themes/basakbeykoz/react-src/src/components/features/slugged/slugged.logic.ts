@@ -31,7 +31,7 @@ export function runSlugOnload(
 ): () => void {
   switch (slug) {
     case HOME_SLUG:
-      return () => process.nextTick(() => homeInjection(refs));
+      return () => process.nextTick(() => homeInjection(refs, history));
 
     case 'iletisim':
       return () => process.nextTick(() => contactPageInjection(refs));
