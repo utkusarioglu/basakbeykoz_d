@@ -1,4 +1,4 @@
-@import '../../../abstracts/_mixins';
+@import '../../../../abstracts/_mixins';
 
 $nav--social-space-x-px: get-component-property('nav', 'social-space-x-px');
 $logo-n-social--y-px: get-component-property('logo-n-social', 'y-px');
@@ -27,7 +27,7 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
         'cover'
         'h1'
         'paragraph';
-      grid-template-rows: #{$logo-n-social--y-px} 1fr min-content min-content;
+      grid-template-rows: max-content 1fr min-content min-content;
       grid-row-gap: #{get-gap()};
 
       @include breakpoint('h', 'HD--') {

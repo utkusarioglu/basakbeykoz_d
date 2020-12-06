@@ -1,11 +1,10 @@
-@import '../../../abstracts/_mixins';
-@import '../wp-block-latest-posts/_main';
+@import '../../../../abstracts/_mixins';
+@import '../../wp-block-latest-posts/_main';
 
 $home--section-top-bottom-padding-px: get-component-property(
   'home',
   'section-top-bottom-padding-px'
 );
-$logo-n_social--y-px: get-component-property('logo-n-social', 'y-px');
 $page-blog-native--minimal-screen-padding-px: get-component-property(
   'page-blog-native',
   'minimal-screen-padding-px'
@@ -15,58 +14,71 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
   'normal-screen-padding-px'
 );
 $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+$home--posts-y-px: get-component-property('home', 'posts-y-px');
 
 /// Styles for the wp rendered home page content
-.Canvas.page.home > article > .wp-block-group:nth-child(5) {
-  & > .wp-block-group__inner-container {
-    $line-height: get-typography-responsive-line-height('p-small');
-    $column-img-height-px: 150px;
-    $column-excerpt-paragraph-lines: 10;
-    $column-excerpt-title-lines: 3;
+.Canvas.page.home > article > .wp-block-group:nth-child(4) {
+  > .wp-block-group__inner-container {
+    $p-small--line-height: get-typography-responsive-line-height('p-small');
+    $title--line-height: get-typography-responsive-line-height('h4');
+    $column-img-height-px: $home--posts-y-px;
+    $column-excerpt-paragraph-lines: 5;
+    $column-excerpt-title-lines: 2;
     $grid-row-gap: get-gap();
     $paragraph-height: calc(
-      #{$column-excerpt-paragraph-lines + $column-excerpt-title-lines} * #{$line-height}
+      #{$column-excerpt-paragraph-lines} * #{$p-small--line-height}
+    );
+    $title-height: calc(
+      #{$column-excerpt-title-lines} * #{$title--line-height}
     );
 
     $SVGA-height: calc(
-      #{$column-img-height-px} + 4 * #{$grid-row-gap} + #{$paragraph-height}
+      #{$column-img-height-px} + 6 * #{$grid-row-gap} + #{$paragraph-height} + #{$title-height}
     );
 
     @include wp-posts(
-      'success',
-      get-color('bg-gray'),
+      'posts',
+      get-color('bg-white'),
       $column-img-height-px,
       $column-excerpt-paragraph-lines,
       $column-excerpt-title-lines,
       $grid-row-gap,
       $SVGA-height,
-      get-color('bg-yellow')
+      get-color('bg-green')
     );
 
     grid-template-areas:
       'h2'
-      'posts';
-    grid-template-rows: max-content 1fr;
-    align-content: stretch;
+      'posts'
+      'paragraph';
+    // !TODO this is broken
+    grid-template-rows: #{get-typography('h2', 'line-height')} auto max-content;
 
     @include breakpoint('h', 'HD--') {
       grid-row-gap: #{get-gap(2)};
     }
 
     @include breakpoint('w', 'SVGA--') {
-      grid-template-rows: #{$logo-n_social--y-px} 1fr;
-      padding-top: 0;
-      padding-bottom: #{$home--section-top-bottom-padding-px};
+      grid-template-areas:
+        'h2         posts'
+        'paragraph  posts'
+        'paragraph  posts';
+      grid-template-rows: max-content auto #{$home--section-top-bottom-padding-px};
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
     }
 
     h2 {
-      align-self: center;
-      width: inherit;
+      @include breakpoint('w', 'SVGA--') {
+        align-self: end;
+        text-align: left;
+      }
     }
 
     & > .wp-block-latest-posts {
       margin-left: #{-$page-blog-native--minimal-screen-padding-px} !important;
       width: 100vw;
+      height: #{$SVGA-height};
 
       @include breakpoint('w', 'QVGA--') {
         margin-left: #{-$page-blog-native--normal-screen-padding-px} !important;
@@ -77,18 +89,18 @@ $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        overflow: auto;
-        height: #{$SVGA-height};
+        height: 100%;
+        overflow: hidden;
       }
     }
   }
 
   &:after {
     $width-vw: 100vw;
-    $height-vw: 25vw;
+    $height-vw: 20vw;
 
     @include svg-art(
-      'success.svg',
+      'conversation.svg',
       $width-vw,
       $height-vw,
       $nav--mobile-height-px,
