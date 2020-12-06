@@ -1,13 +1,13 @@
 import { IApp } from '../components/features/app/@types-app';
 import { IMenu } from '../components/features/nav/@types-nav';
-import { ISlugged } from '../components/features/slugged/@types-slugged';
+import { Slugged } from '../components/features/slugged/@types-slugged';
 import { WORDPRESS_ERROR_CODES } from '../components/features/wordpress/@types-wordpress';
 import { APP_ERROR_CODES } from '../components/features/app/@types-app';
 
 export default interface IRootReducer {
   app: IApp;
   menu: IMenu;
-  singular: ISlugged;
+  singular: Slugged;
 }
 
 /*

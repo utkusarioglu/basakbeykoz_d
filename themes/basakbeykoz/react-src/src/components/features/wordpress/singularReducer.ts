@@ -1,9 +1,9 @@
 import { ACTION_TYPES, ACTION_STATES } from '../../../store/actionConstants';
 import { FSA } from '../../../store/@types-actions';
 import { PartialSingularDispatch } from './@types-wordpress';
-import { ISlugged } from '../slugged/@types-slugged';
+import { Slugged } from '../slugged/@types-slugged';
 
-const initialState: ISlugged = {
+const initialState: Slugged = {
   post: {
     fetchTime: 0,
     items: {},
@@ -16,7 +16,7 @@ const initialState: ISlugged = {
 export default function (
   state = initialState,
   action: FSA<PartialSingularDispatch>
-): ISlugged {
+): Slugged {
   switch (action.type) {
     case ACTION_TYPES.FETCH_SINGULAR:
       if (action.state === ACTION_STATES.SUCCESS) {
