@@ -1,9 +1,9 @@
 import React from 'react';
-import { ISocialItem } from '../../features/social/@types-social';
+import { SocialItem } from '../../features/social/@types-social';
 import ReactGA from 'react-ga';
 import './_socialItem.view.scss';
 
-type Props = ISocialItem & {
+type Props = SocialItem & {
   setIsMenuOpen: (isMenuOpen: boolean) => void;
 };
 
