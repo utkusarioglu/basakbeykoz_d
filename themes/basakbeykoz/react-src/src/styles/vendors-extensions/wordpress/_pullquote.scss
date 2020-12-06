@@ -18,9 +18,11 @@ $figure--normal-padding-px: get-component-property(
       );
       margin: 0 #{-$figure--minimal-padding-px/2} #{$figure--minimal-padding-px}
         #{-$figure--minimal-padding-px/2};
-      border-radius: #{$figure--minimal-padding-px};
-      overflow: hidden;
-      background-color: get-color('bg-gray');
+
+      background-image: url('../../../static/vectors/quote.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-blend-mode: soft-light;
 
       @include breakpoint('w', 'WQVGA--') {
         margin: 0 #{-$figure--normal-padding-px/2} #{$figure--normal-padding-px}
