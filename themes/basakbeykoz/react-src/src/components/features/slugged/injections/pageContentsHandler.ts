@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../../../store/rootReducer';
+import { createUnmountableEventListener } from './createUnmountableEventListener';
 
 type Refs = RootState['app']['refs'];
 
@@ -55,29 +56,6 @@ export function pageContentsHandler(
   );
 
   return () => unmountList.forEach((unmountCommand) => unmountCommand());
-}
-
-/**
- * Attaches the given listeners to the element. Function returns another
- * function that will remove the event listeners if called.
- *
- * @param listeners Listeners to be added
- * @param element the element to attach event listeners
- * @param eventMethod the method that will be called when the listened events
- * occur
- */
-function createUnmountableEventListener(
-  listeners: string[],
-  element: HTMLElement,
-  eventMethod: (e: Event) => void
-): () => void {
-  // Will be populated by listeners and other side-effect creators
-  const unmountList: (() => void)[] = [];
-  listeners.forEach((listener) => {
-    element.addEventListener(listener, eventMethod);
-    unmountList.push(() => element.removeEventListener(listener, eventMethod));
-  });
-  return () => unmountList.forEach((unmount) => unmount());
 }
 
 /**
