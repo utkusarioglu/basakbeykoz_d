@@ -34,6 +34,8 @@ export function runSlugOnload(
       return () => process.nextTick(() => homeInjection(refs));
 
     case 'iletisim':
+      return () => process.nextTick(() => contactPageInjection(refs));
+
     case 'ilkeler':
       return () => process.nextTick(() => bireyselInjection(refs, history));
 
