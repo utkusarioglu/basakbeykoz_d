@@ -1,5 +1,5 @@
 import OverlayScrollbars, { Options } from 'overlayscrollbars';
-import { attachContactFormListener } from './contactFormHandler';
+import { attachContactFormHandler } from './contactFormHandler';
 import { RootState } from '../../../../store/rootReducer';
 const pauseable = require('pauseable');
 
@@ -7,7 +7,7 @@ type Refs = RootState['app']['refs'];
 
 export function homeInjection(refs: Refs) {
   injectWordPressPostEnhancements(refs);
-  attachContactFormListener();
+  attachContactFormHandler();
 }
 
 function injectWordPressPostEnhancements(refs: Refs) {

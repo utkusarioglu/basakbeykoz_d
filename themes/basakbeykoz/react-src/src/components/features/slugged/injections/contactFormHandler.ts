@@ -31,7 +31,7 @@ interface stringMap {
   [key: string]: string;
 }
 
-export function attachContactFormListener() {
+export function attachContactFormHandler() {
   return document
     .querySelector('div.ContactForm-userInput-submit > input')
     ?.addEventListener('click', (event) => {
