@@ -1,12 +1,58 @@
-.wp {
-  &-block {
-    &-button {
-      /// These properties are the same with figcaption
-      &__link {
-        @include p-basic();
+.wp-block-buttons {
+  display: grid;
+  grid-auto-flow: row;
+  width: 100%;
+  grid-row-gap: #{get-gap(1/2)};
+  grid-column-gap: #{get-gap(1/2)};
 
-        margin: 0;
-      }
+  @include breakpoint('w', 'WQVGA--') {
+    grid-auto-flow: column;
+
+    grid-row-gap: #{get-gap()};
+    grid-column-gap: #{get-gap()};
+  }
+}
+
+.wp-block-button {
+  @include typography-button();
+
+  grid-area: auto;
+  border-radius: #{get-gap(1/2)};
+  background-color: #{get-color('ui-yellow')};
+  padding: #{get-gap(1/2)};
+  color: #{get-color('text-dark')};
+  display: flex;
+  align-items: center;
+
+  @include breakpoint('w', 'WQVGA--') {
+    border-radius: #{get-gap()};
+    padding: #{get-gap()};
+  }
+
+  &:hover {
+    background-color: #{get-color('ui-darkBlue')};
+    cursor: pointer;
+
+    & .wp-block-button__link {
+      color: #{get-color('text-light')};
+    }
+  }
+  /// These properties are the same with figcaption
+  &__link {
+    @include p-basic();
+
+    text-decoration: none;
+    margin: 0;
+  }
+}
+
+// Overrides
+article > .wp-block-buttons:nth-of-type(1) {
+  .wp-block-button {
+    background-color: #{get-color('bg-yellow')};
+
+    &:hover {
+      background-color: #{get-color('ui-darkBlue')};
     }
   }
 }

@@ -121,26 +121,10 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
       .wp-block-buttons {
         display: none;
         grid-area: buttons;
-        width: 100%;
 
         .wp-block-button {
-          @include typography-button();
-
-          border-radius: #{get-gap()};
-          background-color: #{get-color('ui-yellow')};
-          padding: #{get-gap()};
           width: 100%;
           max-width: 265px;
-          color: #{get-color('text-dark')};
-
-          &:hover {
-            background-color: #{get-color('ui-darkBlue')};
-            cursor: pointer;
-
-            & .wp-block-button__link {
-              color: #{get-color('text-light')};
-            }
-          }
         }
 
         @include breakpoint('w', 'SVGA--') {
