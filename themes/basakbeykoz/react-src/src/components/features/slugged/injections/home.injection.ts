@@ -98,7 +98,10 @@ function attachClickAction(field: HTMLElement) {
  * @param elem - Html element to attach the scrollbars to (testimonials, posts etc)
  * @param options - OverlayScrollbars options
  */
-function attachOverlayScrollbars(elem: HTMLElement, options: Options): void {
+function attachOverlayScrollbars(
+  elem: HTMLElement,
+  options: Options
+): void | (() => void) {
   const SCROLL_DURATION = 1500;
   const LINGER_DURATION = 3000;
   const ANIMATION_ENABLED = true;
@@ -123,12 +126,30 @@ function attachOverlayScrollbars(elem: HTMLElement, options: Options): void {
     }, LINGER_DURATION);
 
     const target = elem.querySelectorAll('.os-content')[0];
-    target.addEventListener('mouseover', () => {
-      scrollbarRef.scrollStop();
-      animation.pause();
-    });
-    target.addEventListener('mouseleave', () => {
-      animation.resume();
-    });
+
+    const pauseEvents = ['mouseover', 'touchstart', 'touchmove'].map(
+      (event) => {
+        const pauseAnim = () => {
+          scrollbarRef.scrollStop();
+          animation.pause();
+        };
+
+        target.addEventListener(event, pauseAnim);
+
+        return () => target.removeEventListener(event, pauseAnim);
+      }
+    );
+
+    const resumeEvents = ['mouseleave', 'touchend', 'touchcancel'].map(
+      (event) => {
+        const resumeAnim = () => {
+          animation.resume();
+        };
+        target.addEventListener(event, resumeAnim);
+        return () => target.removeEventListener(event, resumeAnim);
+      }
+    );
+
+    return () => [...pauseEvents, ...resumeEvents].forEach((event) => event());
   }
 }
