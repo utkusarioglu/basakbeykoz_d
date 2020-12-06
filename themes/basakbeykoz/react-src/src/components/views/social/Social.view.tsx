@@ -11,8 +11,6 @@ interface Props {
 function SocialView({ setIsMenuOpen }: Props) {
   const socialItems = config.SOCIAL_ITEMS;
 
-  console.log('social items', socialItems);
-
   return (
     <div {...{ className: 'Social-list' }}>
       {socialItems &&
