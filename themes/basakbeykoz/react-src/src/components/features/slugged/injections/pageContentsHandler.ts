@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../../../store/rootReducer';
 import { createUnmountableEventListener } from './createUnmountableEventListener';
+import type { UnmountFunction } from '../@types-slugged';
 
 type Refs = RootState['app']['refs'];
 
@@ -29,31 +30,25 @@ type Refs = RootState['app']['refs'];
 export function pageContentsHandler(
   refs: Refs,
   history: ReturnType<typeof useHistory>
-) {
-  // Will be populated by listeners and other side-effect creators
-  const unmountList: (() => void)[] = [];
+): UnmountFunction {
   // All the listener types that will be attached
-  const listeners = ['click'];
+  const events = ['click'];
 
   // The div where the buttons will be placed
   // It's intended to be the
-  const buttonContainer = document.querySelector(
+  const buttonContainer = document.querySelector<HTMLElement>(
     'article > .wp-block-buttons:nth-of-type(1)'
-  ) as HTMLElement;
-
-  if (!buttonContainer) {
-    return;
-  }
+  );
 
   // If the button container is not the first div in article, return
-  if (buttonContainer.previousElementSibling != null) {
-    return;
+  if (!buttonContainer || buttonContainer.previousElementSibling != null) {
+    return () => {};
   }
 
-  unmountList.push(attachRouterToWpLinks(buttonContainer, listeners, history));
-  unmountList.push(
-    attachPageHeadingsToWpBlockButtons(buttonContainer, listeners, refs)
-  );
+  const unmountList = [
+    attachRouterToWpLinks(buttonContainer, events, history),
+    attachPageHeadingButtonsToContainer(buttonContainer, events, refs),
+  ];
 
   return () => unmountList.forEach((unmountCommand) => unmountCommand());
 }
@@ -74,43 +69,70 @@ export function pageContentsHandler(
  * will be removed.
  *
  * @param buttonContainer the container that holds the buttons
- * @param listeners types of events for which to listen
+ * @param events types of events for which to listen
  * @param history history object from {@link react-router-dom}
  */
 function attachRouterToWpLinks(
   buttonContainer: HTMLElement,
-  listeners: string[],
+  events: string[],
   history: ReturnType<typeof useHistory>
-) {
-  // Will be populated by listeners and other side-effect creators
-  const unmountList: (() => void)[] = [];
-  Array.from(buttonContainer.children).forEach((wpButton) => {
-    // makes sure that the button is created by wordpress rather than js code
-    // buttons created by js code will have the synthetic-button class attached
-    if ((wpButton as HTMLElement).classList.contains('synthetic-button')) {
-      return;
-    }
-    const wpLink = wpButton.querySelector(
-      '.wp-block-button__link'
-    ) as HTMLElement;
-    const wpHref = wpLink.getAttribute('href');
-    // removes button if the button has no href property
-    if (!wpHref) {
-      buttonContainer.removeChild(wpButton);
-      return;
-    }
-    const pushHistory = (e: Event) => {
-      e.preventDefault();
-      history.push(wpHref);
-    };
-    const unmountFunc = createUnmountableEventListener(
-      listeners,
+): UnmountFunction {
+  const unmountList = Array.from(buttonContainer.children).map((wpButton) => {
+    return attachRouterToWpLink(
+      buttonContainer,
       wpButton as HTMLElement,
-      pushHistory
+      events,
+      history
     );
-    unmountList.push(unmountFunc);
   });
+
   return () => unmountList.forEach((unmountCommand) => unmountCommand());
+}
+
+/**
+ * Attaches the routing listeners for a single wp origin button
+ * It also removes all the buttons that have no innerText
+ *
+ * @param buttonContainer The container that holds the wp buttons
+ * @param wpButton wp origin button that already exists inside the buttons block
+ * @param events Event list for which the listeners will be attached
+ * @param history {@link react-router-dom} history object
+ */
+function attachRouterToWpLink(
+  buttonContainer: HTMLElement,
+  wpButton: HTMLElement,
+  events: string[],
+  history: ReturnType<typeof useHistory>
+): UnmountFunction {
+  // makes sure that the button is created by wordpress rather than js code
+  // buttons created by js code will have the synthetic-button class attached
+  if ((wpButton as HTMLElement).classList.contains('synthetic-button')) {
+    return () => {};
+  }
+
+  const wpLink = wpButton.querySelector(
+    '.wp-block-button__link'
+  ) as HTMLElement;
+  const wpHref = wpLink.getAttribute('href');
+
+  // removes button if the button has no href property
+  if (!wpHref) {
+    buttonContainer.removeChild(wpButton);
+    return () => {};
+  }
+
+  const pushHistory = (e: Event) => {
+    e.preventDefault();
+    history.push(wpHref);
+  };
+
+  const unmountFunc = createUnmountableEventListener(
+    wpButton as HTMLElement,
+    events,
+    pushHistory
+  );
+
+  return unmountFunc;
 }
 
 /**
@@ -125,52 +147,78 @@ function attachRouterToWpLinks(
  * came from wordpress
  *
  * @param buttonContainer Container that will hold the buttons
- * @param listeners The events to which the event listener will listen
+ * @param events The events to which the event listener will listen
  * @param refs {@link OverlayScrollbars} refs object from the store
  */
-function attachPageHeadingsToWpBlockButtons(
+function attachPageHeadingButtonsToContainer(
   buttonContainer: HTMLElement,
-  listeners: string[],
+  events: string[],
   refs: Refs
-) {
-  // Will be populated by listeners and other side-effect creators
-  const unmountList: (() => void)[] = [];
+): UnmountFunction {
   const headings = Array.from(document.querySelectorAll('h2')) as HTMLElement[];
-  headings.forEach((heading) => {
-    // Creates a classname for the  button by replacing spaces and
-    // removing illegal chars
-    const className = heading.innerText
-      .replace(/\s/g, '-')
-      .replace(/[.,/#!$%^&*;:{}=_`~()@+?><[\]+]/g, '')
-      .toLowerCase();
-    // cancels if there is another button already in the container that has the
-    // same class name
-    if (buttonContainer.querySelectorAll(`.${className}`).length !== 0) {
-      return;
-    }
 
-    const syntheticButton = createSyntheticButton(className, heading.innerText);
-    const scrollHandler = (e: Event) => {
-      e.preventDefault();
-      refs.body?.ref.current?.osInstance()?.scroll(
-        {
-          el: heading as HTMLElement,
-          scroll: { x: 'never' },
-          margin: 50,
-        },
-        1000,
-        'easeOutExpo'
-      );
-    };
-    const unmountFunc = createUnmountableEventListener(
-      listeners,
-      syntheticButton,
-      scrollHandler
+  if (headings.length === 0) {
+    return () => {};
+  }
+
+  const unmountList = headings.map((heading) => {
+    return attachPageHeadingButtonToContainer(
+      buttonContainer,
+      events,
+      refs,
+      heading
     );
-    unmountList.push(unmountFunc);
-    buttonContainer.appendChild(syntheticButton);
   });
+
   return () => unmountList.forEach((unmountCommand) => unmountCommand());
+}
+
+/**
+ * Attaches a single contents button to the given container
+ * @param buttonContainer The container to which the button will be attached
+ * @param events the events for which the listeners should be attached
+ * @param refs {@link OverlayScrollbars} refs object from the store
+ * @param heading the heading tag for which the button is being attached
+ */
+function attachPageHeadingButtonToContainer(
+  buttonContainer: HTMLElement,
+  events: string[],
+  refs: Refs,
+  heading: HTMLElement
+): UnmountFunction {
+  // Creates a class name for the  button by replacing spaces and
+  // removing illegal chars
+  const className = heading.innerText
+    .replace(/\s/g, '-')
+    .replace(/[.,/#!$%^&*;:{}=_`~()@+?><[\]+]/g, '')
+    .toLowerCase();
+
+  // cancels if there is another button already in the container that has the
+  // same class name
+  if (buttonContainer.querySelectorAll(`.${className}`).length !== 0) {
+    return () => {};
+  }
+
+  const syntheticButton = createSyntheticButton(className, heading.innerText);
+  const syntheticButtonOnClick = (e: Event) => {
+    e.preventDefault();
+    refs.body?.ref.current?.osInstance()?.scroll(
+      {
+        el: heading as HTMLElement,
+        scroll: { x: 'never' },
+        margin: 50,
+      },
+      1000,
+      'easeOutExpo'
+    );
+  };
+  const unmountFunc = createUnmountableEventListener(
+    syntheticButton,
+    events,
+    syntheticButtonOnClick
+  );
+  buttonContainer.appendChild(syntheticButton);
+  return unmountFunc;
 }
 
 /**
@@ -190,6 +238,5 @@ function createSyntheticButton(
     innerText,
     `</a></div>`,
   ].join('');
-  const syntheticButton = parent.children[0] as HTMLElement;
-  return syntheticButton;
+  return parent.children[0] as HTMLElement;
 }
