@@ -63,7 +63,7 @@ function SluggedFeature({
       if (config.NODE_ENV === 'development') {
         setTimeout(() => {
           fetchSingular(isDisplayingSlug);
-        }, 1000);
+        }, config.CANVAS_WAIT_TIME_DEV);
       } else {
         fetchSingular(isDisplayingSlug);
       }
