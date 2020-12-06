@@ -16,7 +16,7 @@ export function createUnmountableEventListener(
   eventMethod: (e: Event) => void
 ): UnmountFunction {
   if (!element) {
-    if (config.NODE_ENV === 'production') {
+    if (config.NODE_ENV === 'development') {
       console.log(eventMethod);
       console.warn(
         `Listener attach failed above you can see the intended callback`

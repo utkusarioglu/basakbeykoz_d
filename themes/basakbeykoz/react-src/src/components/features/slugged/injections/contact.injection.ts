@@ -81,7 +81,10 @@ function injectSocialItemButton(
       {
         label: className,
       },
-      () => console.log(`hi from ga ${className}`)
+      () => {
+        config.NODE_ENV === 'development' &&
+          console.log(`hi from ga ${className}`);
+      }
     );
   };
   const unmountFunc = createUnmountableEventListener(
