@@ -65,10 +65,14 @@ $figure--normal-padding-px: get-component-property(
         position: relative;
         min-height: 100px;
         padding: #{get-gap(1/2)};
-        background-color: #{get-color('bg-green')};
+        background-color: #{get-color('bg-blue')};
 
         &:hover {
-          background-color: #{get-color('bg-yellow')};
+          background-color: #{get-color('ui-yellow')};
+
+          .contact--social-link--image {
+            // filter: var(--filter-white) !important;
+          }
         }
 
         .contact--social-link--container {
