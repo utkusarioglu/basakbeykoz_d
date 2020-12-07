@@ -10,7 +10,7 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
 );
 
 .Posts {
-  $card-height: 250px;
+  $card-height: 200px;
 
   &-card {
     display: grid;
@@ -27,7 +27,7 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
         'image h3'
         'image date'
         'image excerpt';
-      grid-template-rows: min-content min-content auto;
+      grid-template-rows: min-content min-content 1fr;
       grid-template-columns: 10vw auto;
       grid-row-gap: #{get-gap()};
       grid-column-gap: #{get-gap(2)};

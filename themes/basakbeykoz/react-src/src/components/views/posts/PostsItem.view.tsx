@@ -54,7 +54,8 @@ function PostsItemView({
 }
 
 function createExcerpt(content: Props['content']): Props['excerpt'] {
-  return content.split('</p>')[0] + '</p>';
+  // return content.split('</p>')[0] + '</p>';
+  return content;
 }
 
 export default PostsItemView;

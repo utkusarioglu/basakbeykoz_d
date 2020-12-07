@@ -26,7 +26,7 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
 
   li {
     position: relative;
-    margin-bottom: #{get-gap(4)};
+    margin-bottom: #{get-gap(3)};
     border-radius: #{get-gap(2)};
     padding: #{$page-blog-native--minimal-screen-padding-px};
     list-style: none;
