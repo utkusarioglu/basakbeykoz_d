@@ -2,10 +2,12 @@
 
 $home--posts-y-px: get-component-property('home', 'posts-y-px');
 
+/// Styles the feature image in each li element of wp-block-latest-posts
 @mixin featured-image($type, $img-height-px) {
   display: flex;
   grid-area: image;
-  justify-content: center;
+  justify-items: center;
+  align-items: center;
   border-radius: #{get-gap(2/3)};
   height: #{$img-height-px};
   overflow: hidden;
