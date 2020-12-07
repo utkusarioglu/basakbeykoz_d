@@ -12,8 +12,8 @@ $footer--square-size-px: get-component-property('footer', 'square-size-px');
       right: 0;
       bottom: 0;
       align-items: end;
-      justify-items: end;
-      border-top-left-radius: #{get-gap(2)};
+      justify-items: start;
+      border-top-right-radius: #{get-gap(2)};
       background: #{get-color('bg-black')};
       padding: #{get-gap()};
       width: #{$credits-size-vw};
@@ -25,7 +25,7 @@ $footer--square-size-px: get-component-property('footer', 'square-size-px');
       font-weight: #{get-font-property('text', 'font-weight')};
 
       &-yearAndName {
-        text-align: right;
+        // text-align: right;
         color: #{get-color('text-light')};
       }
     }

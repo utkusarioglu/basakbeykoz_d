@@ -35,7 +35,7 @@ $env--react-app-uploads-dir: get-environment-variable('REACT_APP_UPLOADS_DIR');
     right: 0;
     bottom: 0;
     left: 0;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
     height: #{$credits-size-vw};
     min-height: #{$footer--square-size-px};
     max-height: #{$credits-max-size-px};
@@ -43,14 +43,16 @@ $env--react-app-uploads-dir: get-environment-variable('REACT_APP_UPLOADS_DIR');
     &-art {
       display: block;
       width: 100%;
-      margin-left: #{get-gap(1)};
 
       &-fg {
         position: absolute;
         bottom: #{$footer--fg-bottom-px};
-        width: 80vw;
-        min-width: calc(100vw - #{$credits-max-size-px});
-        max-width: calc(100vw - #{$footer--square-size-px} - #{get-gap(2)});
+        margin-left: #{get-gap(1)};
+        // This one is not respected
+        // margin-right: #{get-gap(1)};
+        width: calc(80vw - #{$footer--square-size-px});
+        min-width: calc(100vw - #{$credits-max-size-px + get-gap()});
+        max-width: calc(100vw - #{$footer--square-size-px + get-gap()});
         min-height: #{$footer--fg-height-min-px};
         max-height: #{$footer--fg-height-max-px};
       }

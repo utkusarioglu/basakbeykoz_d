@@ -10,6 +10,7 @@ function FooterLayout() {
     <div {...{ className: 'Footer' }}>
       <div {...{ className: 'Footer-backdrop' }} />
       <div {...{ className: 'Footer-elements' }}>
+        <FooterFeature />
         <div {...{ className: 'Footer-elements-art' }}>
           <img
             {...{
@@ -19,7 +20,6 @@ function FooterLayout() {
             }}
           />
         </div>
-        <FooterFeature />
       </div>
     </div>
   );
