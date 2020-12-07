@@ -1,0 +1,64 @@
+@import '../../../styles/abstracts/_mixins';
+
+$figure--minimal-padding-px: get-component-property(
+  'figure',
+  'minimal-padding-px'
+);
+$figure--normal-padding-px: get-component-property(
+  'figure',
+  'normal-padding-px'
+);
+$nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
+
+.App-wideScreenControls .ShareFixedLayout {
+  display: none;
+  position: fixed;
+  right: 0;
+  bottom: #{get-gap()};
+  z-index: 100;
+  grid-column-gap: #{get-gap(1/2)};
+  align-items: center;
+
+  @include breakpoint('w', 'XGAplus--') {
+    display: flex;
+  }
+
+  &-decor {
+    width: #{get-gap(2)};
+    height: 100px;
+    background: #{get-color('ui-blue')};
+    right: 0;
+    border-top-left-radius: #{get-gap(2)};
+    border-bottom-left-radius: #{get-gap(2)};
+  }
+
+  /// Contains the title and the container that houses the share icons
+  /// the container is handled by the component ShareView
+  /// ShareView component has its own scss file
+  &-titled {
+    // @include article-framed-content(
+    //   $figure--minimal-padding-px / 2,
+    //   $figure--normal-padding-px / 2
+    // );
+    // margin: #{get-gap()} !important;
+    width: max-content;
+
+    // padding: #{$figure--minimal-padding-px/2};
+
+    // @include breakpoint('w', 'WQVGA--') {
+    //   padding: #{$figure--normal-padding-px/2};
+    // }
+
+    span {
+      @include p-basic();
+
+      float: right;
+      /// This has to be the same as the button padding variable
+      /// button-padding--XGAplus in the share.view.scss
+      /// This is to make sure that both the title and the
+      /// right end of the last icon has the same spacing from the
+      /// neighboring right-side element
+      margin-right: #{get-gap(1/2)};
+    }
+  }
+}

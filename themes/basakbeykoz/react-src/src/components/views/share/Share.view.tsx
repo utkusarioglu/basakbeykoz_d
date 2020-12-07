@@ -9,6 +9,7 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from 'react-share';
+import config from '../../../config';
 import './_share.view.scss';
 
 interface Props {
@@ -18,58 +19,52 @@ interface Props {
 
 function ShareView({ title, excerpt }: Props) {
   const url = window.location.href;
-  const commonClass = 'Share-';
+  const commonClass = 'ShareView-list-button-';
   const size = 36;
-  // const title = 'this is the title';
   return (
-    <div {...{ className: 'Share' }}>
-      <div {...{ className: 'Share-frame' }}>
-        <span>Bu sayfayı paylaşın</span>
-        <div {...{ className: 'Share-frame-buttons' }}>
-          <FacebookShareButton
-            {...{
-              url,
-              quote: title,
-              className: `${commonClass}facebook`,
-            }}
-          >
-            <FacebookIcon {...{ size }} />
-          </FacebookShareButton>
+    <div {...{ className: 'ShareView' }}>
+      <FacebookShareButton
+        {...{
+          url,
+          quote: title,
+          className: `${commonClass}facebook`,
+        }}
+      >
+        <FacebookIcon {...{ size }} />
+      </FacebookShareButton>
 
-          <TwitterShareButton
-            {...{
-              url,
-              title,
-              className: `${commonClass}twitter`,
-            }}
-          >
-            <TwitterIcon {...{ size }} />
-          </TwitterShareButton>
+      <TwitterShareButton
+        {...{
+          url,
+          title,
+          className: `${commonClass}twitter`,
+        }}
+      >
+        <TwitterIcon {...{ size }} />
+      </TwitterShareButton>
 
-          <WhatsappShareButton
-            {...{
-              url,
-              title,
-              separator: ' - ',
-              className: `${commonClass}whatsapp`,
-            }}
-          >
-            <WhatsappIcon {...{ size }} />
-          </WhatsappShareButton>
+      <WhatsappShareButton
+        {...{
+          url,
+          title,
+          separator: config.APP_SEPARATOR,
+          className: `${commonClass}whatsapp`,
+        }}
+      >
+        <WhatsappIcon {...{ size }} />
+      </WhatsappShareButton>
 
-          <LinkedinShareButton
-            {...{
-              source: url,
-              url,
-              title,
-              summary: excerpt,
-              className: `${commonClass}linkedin`,
-            }}
-          >
-            <LinkedinIcon {...{ size }} />
-          </LinkedinShareButton>
-        </div>
-      </div>
+      <LinkedinShareButton
+        {...{
+          source: url,
+          url,
+          title,
+          summary: excerpt,
+          className: `${commonClass}linkedin`,
+        }}
+      >
+        <LinkedinIcon {...{ size }} />
+      </LinkedinShareButton>
     </div>
   );
 }
