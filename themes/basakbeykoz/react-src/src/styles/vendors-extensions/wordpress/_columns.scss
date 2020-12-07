@@ -1,3 +1,8 @@
+/// The styling for wordpress' content column block
+///
+/// Note that this styling does not take into account most of the capabilities
+/// of what wp column block allows. This styling only covers the basic needs
+/// of the current project
 .wp-block-columns {
   display: grid;
   grid-auto-flow: row;

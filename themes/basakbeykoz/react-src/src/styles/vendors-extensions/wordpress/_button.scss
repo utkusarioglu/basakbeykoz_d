@@ -1,3 +1,4 @@
+/// Button container general styling
 .wp-block-buttons {
   display: grid;
   grid-auto-flow: row;
@@ -13,6 +14,8 @@
   }
 }
 
+/// Button general styling
+/// Please see below for some of the overrides
 .wp-block-button {
   @include typography-button();
 
@@ -37,6 +40,7 @@
       color: #{get-color('text-light')};
     }
   }
+
   /// These properties are the same with figcaption
   &__link {
     @include p-basic();

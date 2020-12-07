@@ -9,48 +9,43 @@ $figure--normal-padding-px: get-component-property(
   'normal-padding-px'
 );
 
-.wp {
-  &-block {
-    &-pullquote {
-      @include article-framed-content(
-        $figure--minimal-padding-px,
-        $figure--normal-padding-px
-      );
-      margin: 0 #{-$figure--minimal-padding-px/2} #{$figure--minimal-padding-px}
-        #{-$figure--minimal-padding-px/2};
+/// The styling for the quote block in wordpress
+.wp-block-pullquote {
+  @include article-framed-content(
+    $figure--minimal-padding-px,
+    $figure--normal-padding-px
+  );
 
-      background-image: url('../../../static/vectors/quote.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-blend-mode: soft-light;
+  margin: 0 #{-$figure--minimal-padding-px/2} #{$figure--minimal-padding-px} #{-$figure--minimal-padding-px/2};
+  background-image: url('../../../static/vectors/quote.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-blend-mode: soft-light;
 
-      @include breakpoint('w', 'WQVGA--') {
-        margin: 0 #{-$figure--normal-padding-px/2} #{$figure--normal-padding-px}
-          #{-$figure--normal-padding-px/2};
-      }
+  @include breakpoint('w', 'WQVGA--') {
+    margin: 0 #{-$figure--normal-padding-px/2} #{$figure--normal-padding-px} #{-$figure--normal-padding-px/2};
+  }
 
-      & > blockquote {
-        display: grid;
-        grid-template-areas: 'paragraph' 'cite';
-        margin: #{$figure--minimal-padding-px};
+  & > blockquote {
+    display: grid;
+    grid-template-areas: 'paragraph' 'cite';
+    margin: #{$figure--minimal-padding-px};
 
-        @include breakpoint('w', 'WQVGA--') {
-          margin: #{$figure--normal-padding-px};
-        }
+    @include breakpoint('w', 'WQVGA--') {
+      margin: #{$figure--normal-padding-px};
+    }
 
-        /// Creates spacing between the cite (name of the quote sayer)
-        /// and the quote
-        & > p {
-          margin-bottom: #{get-typography-p-margin-bottom()};
-        }
+    /// Creates spacing between the cite (name of the quote sayer)
+    /// and the quote
+    & > p {
+      margin-bottom: #{get-typography-p-margin-bottom()};
+    }
 
-        & > cite {
-          grid-area: cite;
-          align-self: end;
-          width: 100%;
-          text-align: right;
-        }
-      }
+    & > cite {
+      grid-area: cite;
+      align-self: end;
+      width: 100%;
+      text-align: right;
     }
   }
 }

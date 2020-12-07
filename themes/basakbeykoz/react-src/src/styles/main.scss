@@ -1,6 +1,8 @@
 @charset 'utf-8';
 
-// @import 'abstracts/_functions';
+/// Note that the variables are not imported here. This is because the variables
+/// are only accessible to mixins or functions.
+
 @import 'abstracts/_mixins';
 @import 'abstracts/_functions';
 
