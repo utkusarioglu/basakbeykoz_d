@@ -11,6 +11,7 @@ import NavFixedLayout from '../nav/NavFixed.layout';
 
 import './_app.layout.scss';
 import SocialLayout from '../social/Social.layout';
+import ShareFeature from '../../features/share/Share.feature';
 
 interface OwnProps {
   refs: RootState['app']['refs'];
@@ -24,6 +25,7 @@ function AppLayout({ refs }: Props) {
       <SpinnerFeature />
       <NavFixedLayout />
       <HeaderLayout />
+      <ShareFeature />
       <div {...{ className: 'App-wideScreenControls' }}>
         <LogoFeature {...{ withTitle: false }} />
         <SocialLayout />
