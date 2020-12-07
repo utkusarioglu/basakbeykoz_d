@@ -54,7 +54,6 @@ interface SingularItemForView {
   thumbnail: string;
   content: string;
   excerpt: string;
-  shareDisabled?: boolean;
 }
 
 export interface wpSingularItemForView extends SingularItemForView {

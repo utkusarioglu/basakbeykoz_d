@@ -33,7 +33,6 @@ const initialState: IApp = {
       // for the first time and avoids displaying the feature image section
       // until some real data has been received.
       thumbnail: ' ',
-      shareDisabled: true,
       excerpt: '',
     },
   },
