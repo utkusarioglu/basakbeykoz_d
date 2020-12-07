@@ -9,6 +9,7 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
   'normal-screen-padding-px'
 );
 
+/// Styles a single item from wp-block-latest-posts
 @mixin card($type, $grid-row-gap, $card-color, $max-width-px, $min-width-px) {
   display: grid;
   position: relative;

@@ -3,6 +3,7 @@
 $font-size: get-typography-responsive-font-size('p-small');
 $line-height: get-typography-responsive-line-height('p-small');
 
+/// Styles the paragraph elements used in wp-block-latest-posts
 @mixin wp-posts-p() {
   @include p();
 
