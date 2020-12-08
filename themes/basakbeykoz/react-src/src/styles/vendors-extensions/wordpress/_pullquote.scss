@@ -27,25 +27,6 @@ $figure--normal-padding-px: get-component-property(
   }
 
   & > blockquote {
-    display: grid;
-    grid-template-areas: 'paragraph' 'cite';
-    margin: #{$figure--minimal-padding-px};
-
-    @include breakpoint('w', 'WQVGA--') {
-      margin: #{$figure--normal-padding-px};
-    }
-
-    /// Creates spacing between the cite (name of the quote sayer)
-    /// and the quote
-    & > p {
-      margin-bottom: #{get-typography-p-margin-bottom()};
-    }
-
-    & > cite {
-      grid-area: cite;
-      align-self: end;
-      width: 100%;
-      text-align: right;
-    }
+    @extend .wp-block-quote;
   }
 }
