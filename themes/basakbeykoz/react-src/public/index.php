@@ -29,6 +29,15 @@ $WP_SOCIAL_ITEMS = array(
   <link rel="apple-touch-icon" href="<?php echo $TEMPLATE_PATH; ?>/logo192.png" />
   <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
   <title><?php echo $WP_PAGE_TITLE . $WP_TITLE_SEPARATOR . $WP_PAGE_TAGLINE ?></title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
   <script>
     window.config = {
       WP_PAGE_TITLE: '<?php echo $WP_PAGE_TITLE ?>',
