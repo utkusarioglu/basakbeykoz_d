@@ -50,13 +50,59 @@
   }
 }
 
-// Overrides
+/// Overrides for page contents section on select pages
+/// Code below assigns alternating colors to the buttons
+/// You can see the colors in the variables $group-one-color and
+/// $group-two-color
+///
+/// The code also assigns an after element in the shape of a right
+/// pointing triangle. It as a z-index to make it appear on top of
+/// the button to the right
+///
+/// Code is set to work with screens that are bigger than WQVGA
 article > .wp-block-buttons:nth-of-type(1) {
+  $group-one-color: #{get-color('bg-yellow')};
+  $group-two-color: #{get-color('bg-green')};
+  $hover-bg-color: #{get-color('ui-darkBlue')};
+
   .wp-block-button {
-    background-color: #{get-color('bg-yellow')};
+    @include breakpoint('w', 'WQVGA--') {
+      position: relative;
+
+      &:after {
+        content: '\25B6';
+        position: absolute;
+        right: -25px;
+        font-size: 50px;
+        z-index: 1;
+      }
+    }
 
     &:hover {
-      background-color: #{get-color('ui-darkBlue')};
+      background-color: #{$hover-bg-color} !important;
+      &:after {
+        color: #{$hover-bg-color} !important;
+      }
     }
+  }
+
+  .wp-block-button:nth-of-type(2n + 1) {
+    background-color: #{$group-one-color};
+
+    &:after {
+      color: #{$group-one-color};
+    }
+  }
+
+  .wp-block-button:nth-of-type(2n) {
+    background-color: #{$group-two-color};
+
+    &:after {
+      color: #{$group-two-color};
+    }
+  }
+
+  .wp-block-button:last-of-type:after {
+    content: none;
   }
 }
