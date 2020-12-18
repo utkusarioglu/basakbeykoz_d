@@ -129,30 +129,9 @@ function Credits({ setFetching }: Props) {
 
 function populateChoiceSets(): IChoiceSets {
   const fontList: [string, number][] = [
-    ["'Work Sans'", 600],
-    ["'Istok Web', sans-serif", 400],
-    ["'Assistant', sans-serif", 300],
-    ["'Baloo Tammudu 2', cursive", 400],
-    ["'Kumbh Sans', sans-serif", 300],
     ["'Quicksand', sans-serif", 400],
     ["'Ubuntu', sans-serif", 300],
     ["'Nunito', sans-serif", 300],
-    ["'Manrope', sans-serif", 400],
-
-    ["'DreamerySansDemo'", 400],
-    ["'BabyGirl'", 400],
-    ["'LeahleeSans'", 400],
-    ["'OrionSans'", 400],
-    ["'AlwaysForeverBold'", 400],
-    ["'AlwaysForever'", 400],
-    ["'CaviarDreams_Bold'", 400],
-    ["'CaviarDreams_BoldItalic'", 400],
-    ["'CaviarDreams_Italic'", 400],
-    ["'CaviarDreams'", 400],
-    ["'MoonbrightDemo'", 400],
-    ["'MoonbrightInlineDemo'", 400],
-    ["'whateverittakesbold'", 400],
-    ["'whateverittakes'", 400],
   ];
 
   const titleFont = fontList.map((c) => {
