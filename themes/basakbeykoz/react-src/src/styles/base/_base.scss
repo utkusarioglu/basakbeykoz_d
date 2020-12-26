@@ -46,7 +46,7 @@ p {
     @include p-basic();
 
     text-decoration: underline;
-    text-decoration-color: #{get-color('ui-decoration')};
+    // text-decoration-color: #{get-color('ui-decoration')};
     text-decoration-thickness: 2px;
     white-space: nowrap;
     position: relative;
