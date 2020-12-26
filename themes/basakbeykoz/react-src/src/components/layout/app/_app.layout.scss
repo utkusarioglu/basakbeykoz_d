@@ -3,9 +3,11 @@
 .App {
   $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
 
+  @include set-100-percent-size;
+
   &-scrollWindow {
     margin-bottom: #{$nav--mobile-height-px};
-    height: calc(100vh - #{$nav--mobile-height-px});
+    height: calc(100% - #{$nav--mobile-height-px});
     overflow-x: hidden;
     overflow-y: auto;
 

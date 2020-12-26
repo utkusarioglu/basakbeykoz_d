@@ -358,3 +358,11 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+
+/// Sets 100% width and height
+/// @access public
+/// @group helpers
+@mixin set-100-percent-size() {
+  width: 100%;
+  height: 100%;
+}
