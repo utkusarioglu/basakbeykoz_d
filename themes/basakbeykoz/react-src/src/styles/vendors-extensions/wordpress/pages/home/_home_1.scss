@@ -124,7 +124,7 @@ $page-blog-native--normal-screen-padding-px: get-component-property(
 
         .wp-block-button {
           width: 100%;
-          max-width: 265px;
+          max-width: 125px;
         }
 
         @include breakpoint('w', 'SVGA--') {
