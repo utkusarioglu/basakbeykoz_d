@@ -132,6 +132,8 @@ function populateChoiceSets(): IChoiceSets {
     ["'Quicksand', sans-serif", 400],
     ["'Ubuntu', sans-serif", 300],
     ["'Nunito', sans-serif", 300],
+    ["'Raleway', sans-serif", 400],
+    ["'Raleway', sans-serif", 500],
   ];
 
   const titleFont = fontList.map((c) => {
