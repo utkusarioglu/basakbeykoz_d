@@ -107,7 +107,7 @@ nav {
           }
 
           &-active {
-            color: #{get-color('ui-decoration')};
+            // color: #{get-color('ui-decoration')};
 
             &:after {
               position: absolute;
