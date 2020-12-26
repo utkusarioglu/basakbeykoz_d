@@ -34,7 +34,12 @@ function injectWordPressPostEnhancements(
   refs: Refs,
   history: ReturnType<typeof useHistory>
 ): UnmountFunction {
-  const [testimonials, success] = Array.from(
+  /**
+   * It appears that the order of this array is important for the proper
+   * functioning of overlay scrollbars. Keeping the array in the order of
+   * appearance on the page seems to work better
+   * */
+  const [success, testimonials] = Array.from(
     document.querySelectorAll<HTMLElement>('.wp-block-latest-posts')
   );
   const unmountList = [
