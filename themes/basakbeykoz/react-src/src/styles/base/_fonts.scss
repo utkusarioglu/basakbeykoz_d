@@ -15,5 +15,6 @@
 @font-face {
   font-family: 'KendiniziYenidenKesfedin';
   src: url('../../static/fonts/kendinizi-yeniden-kesfedin.ttf')
-    format('truetype') display('block');
+    format('truetype');
+  font-display: block;
 }
