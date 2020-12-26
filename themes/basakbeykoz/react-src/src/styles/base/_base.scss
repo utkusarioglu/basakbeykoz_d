@@ -8,6 +8,10 @@
   --title-font-weight: 600;
 }
 
+html {
+  @include disable-user-select;
+}
+
 body {
   margin: 0;
   background: #{get-color('bg-white')};
