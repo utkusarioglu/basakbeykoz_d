@@ -163,14 +163,14 @@ function createSocialButton(
       style="grid-area: ${className}"
       target="_blank" 
       class="contact--social-link ${className}"
+      title="${socialItem.title}"
       >
       <div class="contact--social-link--container">
-      <div 
+      <img 
         class="contact--social-link--image" 
-        style="background-image: url(${socialItem.icon})"}
+        src="${socialItem.icon}"
         >
-        </div>
-      <span>${socialItem.title}</span>
+        </img>
       </div>
     </a>
   `;

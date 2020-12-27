@@ -16,17 +16,16 @@ $figure--normal-padding-px: get-component-property(
       $figure--normal-padding-px
     );
 
-    padding: #{get-gap(1)};
     background-image: url('../../../../static/vectors/document-map.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: soft-light;
 
-    @include breakpoint('w', 'WQVGA--') {
-      padding: #{get-gap(2)};
-    }
-
     .wp-block-group__inner-container {
+      padding: #{get-gap(1)};
+      @include breakpoint('w', 'WQVGA--') {
+        padding: #{get-gap(2)};
+      }
       display: grid;
       grid-row-gap: #{get-gap(1)};
 
@@ -43,6 +42,8 @@ $figure--normal-padding-px: get-component-property(
   }
 
   .contact-page--social-media {
+    @include set-100-percent-size;
+
     .wp-block-group__inner-container {
       display: grid;
       grid-template-areas: 'h4' 'buttons';
@@ -70,22 +71,23 @@ $figure--normal-padding-px: get-component-property(
         &:hover {
           background-color: #{get-color('ui-yellow')};
 
-          .contact--social-link--image {
-            // filter: var(--filter-white) !important;
-          }
+          // .contact--social-link--image {
+          //   // filter: var(--filter-white) !important;
+          // }
         }
 
         .contact--social-link--container {
           position: relative;
           height: 100%;
           width: 100%;
+          display: grid;
 
           .contact--social-link--image {
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: auto 60%;
-            height: 100%;
-            width: 100%;
+            max-height: #{get-gap(4)};
+            max-width: #{get-gap(4)};
+            object-fit: contain;
+            align-self: center;
+            justify-self: center;
             filter: var(--filter-darkGray);
           }
 
@@ -102,6 +104,8 @@ $figure--normal-padding-px: get-component-property(
   }
 
   .contact-page--address {
+    @include set-100-percent-size;
+
     .wp-block-group__inner-container {
       grid-template-areas: 'h4' 'contact-earth' 'paragraph';
       grid-template-rows: auto minmax(200px, 1fr) auto;
