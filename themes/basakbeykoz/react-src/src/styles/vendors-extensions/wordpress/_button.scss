@@ -72,7 +72,7 @@ article > .wp-block-buttons:nth-of-type(1) {
       &:after {
         content: '\25B6';
         position: absolute;
-        right: -25px;
+        right: -20px;
         font-size: 50px;
         z-index: 1;
       }
@@ -86,19 +86,46 @@ article > .wp-block-buttons:nth-of-type(1) {
     }
   }
 
-  .wp-block-button:nth-of-type(2n + 1) {
-    background-color: #{$group-one-color};
+  /// This is the default color for the buttons but it's overridden
+  /// by the next styles
+  .wp-block-button {
+    background-color: #{get-color('bg-yellow')};
 
     &:after {
-      color: #{$group-one-color};
+      color: #{get-color('bg-yellow')};
     }
   }
 
-  .wp-block-button:nth-of-type(2n) {
+  .wp-block-button:nth-of-type(1) {
     background-color: #{$group-two-color};
 
     &:after {
       color: #{$group-two-color};
+    }
+  }
+
+  .wp-block-button:nth-of-type(2) {
+    background-color: #{get-color('bg-yellow')};
+
+    &:after {
+      color: #{get-color('bg-yellow')};
+    }
+  }
+
+  .wp-block-button:nth-of-type(3) {
+    background-color: #{get-color('bg-blue')};
+
+    &:after {
+      color: #{get-color('bg-blue')};
+    }
+  }
+
+  .wp-block-button:nth-of-type(4) {
+    border: 4px solid #{get-color('bg-blue')};
+    background-color: #{get-color('bg-white')};
+
+    &:after {
+      color: #{get-color('bg-blue')};
     }
   }
 
