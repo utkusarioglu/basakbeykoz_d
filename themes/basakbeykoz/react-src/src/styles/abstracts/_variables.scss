@@ -158,7 +158,7 @@ $COMPONENT_PROPERTIES: (
   ),
   'page-blog-native': (
     'minimal-screen-padding-px': $GAP_PX,
-    'normal-screen-padding-px': 2 * $GAP_PX,
+    'normal-screen-padding-px': 1.5 * $GAP_PX,
   ),
   /// Despite its name, these values do not only affect figure tag. These are
   ///also used in pullquote and other framed components inside pages. Their
