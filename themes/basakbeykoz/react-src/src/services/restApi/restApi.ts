@@ -29,6 +29,7 @@ class RestApi {
    * format that is understandable by the features
    */
   transformResponse = (data: AxiosResponse['data']) => JSON.parse(data);
+
   /**
    * Wrapper for {@link axios | axios}'s request method
    * @param requestParams {@link axios.AxiosRequestConfig} passed down to the
