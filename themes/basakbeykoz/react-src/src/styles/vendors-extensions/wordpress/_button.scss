@@ -79,6 +79,7 @@ article > .wp-block-buttons:nth-of-type(1) {
     }
 
     &:hover {
+      border-color: #{$hover-bg-color} !important;
       background-color: #{$hover-bg-color} !important;
       &:after {
         color: #{$hover-bg-color} !important;
