@@ -9,7 +9,7 @@
     grid-auto-flow: row;
     grid-row-gap: #{get-gap(2)};
     grid-column-gap: #{get-gap(2)};
-    margin-top: #{get-gap(4)};
+    // margin-top: #{get-gap(4)};
 
     @include breakpoint('w', 'WQVGA--') {
       grid-auto-flow: column;
@@ -19,5 +19,16 @@
 
   &-column {
     height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    & > h2 {
+      margin: #{get-gap()} 0;
+    }
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 }
