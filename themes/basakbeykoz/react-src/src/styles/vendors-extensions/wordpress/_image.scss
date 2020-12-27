@@ -1,0 +1,14 @@
+.wp-block-image {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  & > img {
+    @include set-100-percent-size;
+    object-fit: contain;
+  }
+
+  &.is-style-rounded {
+    border-radius: #{get-gap()};
+  }
+}
