@@ -62,7 +62,7 @@
   $font-size: get-typography-responsive-font-size($tag);
 
   grid-area: #{$tag};
-  margin: calc(#{$font-size} * 2.5) 0 calc(#{$font-size} / 1.5) 0;
+  margin: calc(#{$font-size} * 1.2) 0 calc(#{$font-size} / 1.5) 0;
   line-height: #{get-typography-responsive-line-height($tag)};
   color: #{get-color('text-mediumDark')};
   font-family: #{get-font-property($font-type, 'font-family')};
