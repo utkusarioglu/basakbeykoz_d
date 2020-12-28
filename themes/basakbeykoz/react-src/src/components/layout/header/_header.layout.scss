@@ -19,7 +19,7 @@ $social-item--default-size--: get-component-property(
     display: grid;
     position: absolute;
     bottom: 0;
-    grid-template-areas: 'logo social nav';
+    grid-template-areas: 'logo social share nav';
     grid-template-columns: 1fr min-content min-content;
     grid-auto-flow: column;
     align-items: center;
@@ -30,22 +30,8 @@ $social-item--default-size--: get-component-property(
     overflow-y: hidden;
     pointer-events: initial;
 
-    & .Social-list {
-      display: none;
-      flex-direction: row;
-      grid-area: social;
-      justify-items: right;
-      padding-left: 0;
-      height: #{get-gap(2) + $social-item--default-size--};
-      overflow: hidden;
-
-      @include breakpoint('w', 'QVGA--') {
-        display: flex;
-      }
-    }
-
     @include breakpoint('w', 'SVGA--') {
-      grid-template-areas: 'nav social';
+      grid-template-areas: 'nav share social';
       grid-template-columns: 1fr min-content;
 
       .Logo {
@@ -59,6 +45,20 @@ $social-item--default-size--: get-component-property(
 
       &-mobileControls {
         display: none;
+      }
+    }
+
+    & .Social-list {
+      display: none;
+      flex-direction: row;
+      grid-area: social;
+      justify-items: right;
+      padding-left: 0;
+      height: #{get-gap(2) + $social-item--default-size--};
+      overflow: hidden;
+
+      @include breakpoint('w', 'QVGA--') {
+        display: flex;
       }
     }
 

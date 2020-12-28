@@ -7,11 +7,12 @@ import AppRoutesFeature from '../../features/app/AppRoutes.feature';
 import FooterLayout from '../../layout/footer/Footer.layout';
 import HeaderLayout from '../header/Header.layout';
 import LogoFeature from '../../features/logo/Logo.feature';
-import NavFixedLayout from '../nav/NavFixed.layout';
+import NavMenuLayout from '../nav/NavMenu.layout';
 
 import './_app.layout.scss';
 import SocialLayout from '../social/Social.layout';
 import ShareFixedLayout from '../share/ShareFixed.layout';
+import ShareMenuLayout from '../share/ShareMenu.layout';
 
 interface OwnProps {
   refs: RootState['app']['refs'];
@@ -23,7 +24,8 @@ function AppLayout({ refs }: Props) {
   return (
     <div {...{ className: 'App' }}>
       <SpinnerFeature />
-      <NavFixedLayout />
+      <NavMenuLayout />
+      <ShareMenuLayout />
       <HeaderLayout />
       <div {...{ className: 'App-wideScreenControls' }}>
         <LogoFeature {...{ withTitle: false }} />

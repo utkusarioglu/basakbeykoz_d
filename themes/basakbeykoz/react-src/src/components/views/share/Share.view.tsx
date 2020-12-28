@@ -22,50 +22,62 @@ function ShareView({ title, excerpt }: Props) {
   const commonClass = 'ShareView-list-button-';
   const size = 36;
   return (
-    <div {...{ className: 'ShareView' }}>
-      <FacebookShareButton
-        {...{
-          url,
-          quote: title,
-          className: `${commonClass}facebook`,
-        }}
-      >
-        <FacebookIcon {...{ size }} />
-      </FacebookShareButton>
+    <ol {...{ className: 'ShareView' }}>
+      <li {...{ className: 'ShareView__item' }}>
+        <FacebookShareButton
+          {...{
+            url,
+            quote: title,
+            className: `${commonClass}facebook`,
+          }}
+        >
+          <FacebookIcon {...{ size }} />
+          <p>Facebook</p>
+        </FacebookShareButton>
+      </li>
 
-      <TwitterShareButton
-        {...{
-          url,
-          title,
-          className: `${commonClass}twitter`,
-        }}
-      >
-        <TwitterIcon {...{ size }} />
-      </TwitterShareButton>
+      <li {...{ className: 'ShareView__item' }}>
+        <TwitterShareButton
+          {...{
+            url,
+            title,
+            className: `${commonClass}twitter`,
+          }}
+        >
+          <TwitterIcon {...{ size }} />
+          <p>Twitter</p>
+        </TwitterShareButton>
+      </li>
 
-      <WhatsappShareButton
-        {...{
-          url,
-          title,
-          separator: config.APP_SEPARATOR,
-          className: `${commonClass}whatsapp`,
-        }}
-      >
-        <WhatsappIcon {...{ size }} />
-      </WhatsappShareButton>
+      <li {...{ className: 'ShareView__item' }}>
+        <WhatsappShareButton
+          {...{
+            url,
+            title,
+            separator: config.APP_SEPARATOR,
+            className: `${commonClass}whatsapp`,
+          }}
+        >
+          <WhatsappIcon {...{ size }} />
+          <p>WhatsApp</p>
+        </WhatsappShareButton>
+      </li>
 
-      <LinkedinShareButton
-        {...{
-          source: url,
-          url,
-          title,
-          summary: excerpt,
-          className: `${commonClass}linkedin`,
-        }}
-      >
-        <LinkedinIcon {...{ size }} />
-      </LinkedinShareButton>
-    </div>
+      <li {...{ className: 'ShareView__item' }}>
+        <LinkedinShareButton
+          {...{
+            source: url,
+            url,
+            title,
+            summary: excerpt,
+            className: `${commonClass}linkedin`,
+          }}
+        >
+          <LinkedinIcon {...{ size }} />
+          <p>LinkedIn</p>
+        </LinkedinShareButton>
+      </li>
+    </ol>
   );
 }
 

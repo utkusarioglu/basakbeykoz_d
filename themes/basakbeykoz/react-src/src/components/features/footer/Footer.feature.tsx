@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../../store/rootReducer';
-import { setIsMenuOpen } from '../app/appActions';
+import { closeAnyMenu } from '../app/appActions';
 import FooterView from '../../views/footer/Footer.view';
 
 const mapState = (state: RootState) => ({
   refs: state.app.refs,
 });
 const mapDispatch = {
-  setIsMenuOpen,
+  closeAnyMenu,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function FooterFeature({ setIsMenuOpen, refs }: Props) {
+function FooterFeature({ closeAnyMenu, refs }: Props) {
   const navClickActions = () => {
-    setIsMenuOpen(false);
+    closeAnyMenu();
     refs.body?.ref.current?.osInstance()?.scroll(0, 0);
   };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { RootState } from '../../../store/rootReducer';
-import { setDisplaying, setIsMenuOpen } from '../app/appActions';
+import { setDisplaying, closeAnyMenu } from '../app/appActions';
 import { connect, ConnectedProps } from 'react-redux';
 import config from '../../../config';
 import LogoView from '../../views/logo/Logo.view';
@@ -12,16 +12,16 @@ const mapState = (state: RootState) => ({
 });
 const mapDispatch = {
   setDisplaying,
-  setIsMenuOpen,
+  closeAnyMenu,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function LogoFeature({ setDisplaying, setIsMenuOpen, refs }: Props) {
+function LogoFeature({ setDisplaying, closeAnyMenu, refs }: Props) {
   const linkClick = () => {
-    setIsMenuOpen(false);
+    closeAnyMenu();
     setDisplaying({
       slug: HOME_SLUG,
     });

@@ -2,13 +2,14 @@ import React from 'react';
 // import { ISocialItem } from '../../features/social/@types-social';
 import SocialItemView from './SocialItem.view';
 import config from '../../../config';
+import type { closeAnyMenu } from '../../features/app/appActions';
 import './_social.view.scss';
 
 interface Props {
-  setIsMenuOpen: (isMenuOpen: boolean) => void;
+  closeAnyMenu: typeof closeAnyMenu;
 }
 
-function SocialView({ setIsMenuOpen }: Props) {
+function SocialView({ closeAnyMenu }: Props) {
   const socialItems = config.SOCIAL_ITEMS;
 
   return (
@@ -18,7 +19,7 @@ function SocialView({ setIsMenuOpen }: Props) {
           <SocialItemView
             {...{
               key: item.title,
-              setIsMenuOpen,
+              closeAnyMenu,
               ...item,
             }}
           />

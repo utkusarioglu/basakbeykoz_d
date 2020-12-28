@@ -2,13 +2,8 @@ import { Chance } from 'chance';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { RootState } from '../../../store/rootReducer';
-import { IsDisplaying, IsMenuOpen } from './@types-app';
-import {
-  setDisplaying,
-  setFetching,
-  setIsMenuOpen,
-  setRef,
-} from './appActions';
+import { IsDisplaying, OpenMenu } from './@types-app';
+import { setDisplaying, setFetching, setOpenMenu, setRef } from './appActions';
 import { appInitialState } from './appReducer';
 import { mockExhaustiveSetRef, mockIsDisplaying } from './mock/mockFunctions';
 
@@ -39,11 +34,11 @@ describe('AppActions', () => {
     });
   });
   it('dispatch setIsMenuOpen action', () => {
-    const testPayloads: IsMenuOpen[] = Array.from({ length: 10 }).map(() =>
+    const testPayloads: OpenMenu[] = Array.from({ length: 10 }).map(() =>
       chance.bool()
     );
     testPayloads.forEach((testPayload, index) => {
-      setIsMenuOpen(testPayload)(mockDispatch);
+      setOpenMenu(testPayload)(mockDispatch);
       expect(mockGetActions()[index].payload).toBe(testPayload);
     });
   });

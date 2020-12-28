@@ -4,14 +4,38 @@
 /// Any container for this group is styled by a separate file
 .ShareView {
   $button-padding--XGAplus: get-gap(1/2);
-  margin-left: #{-$button-padding--XGAplus};
-  margin-bottom: #{-$button-padding--XGAplus};
+  margin: 0;
+  padding: #{get-gap()};
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 100px);
+
+  @include breakpoint('w', 'XGAplus--') {
+    display: block;
+    padding: 0;
+  }
 
   /// Styling for the icons
-  * {
-    padding: #{get-gap(1/4)};
+  li {
     outline: none;
-    border-radius: #{get-gap()};
+    list-style: none;
+    text-align: center;
+
+    @include breakpoint('w', 'XGAplus--') {
+      display: inline;
+    }
+
+    & svg {
+      border-radius: #{get-gap(1/2)};
+    }
+
+    & p {
+      margin: 0;
+
+      @include breakpoint('w', 'XGAplus--') {
+        display: none;
+      }
+    }
 
     @include breakpoint('w', 'XGAplus--') {
       padding: #{$button-padding--XGAplus};

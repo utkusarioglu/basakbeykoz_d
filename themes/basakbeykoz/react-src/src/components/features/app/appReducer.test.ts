@@ -8,7 +8,7 @@ import {
   IApp,
   IsDisplaying,
   IsFetching,
-  IsMenuOpen,
+  OpenMenu,
   ISetRef,
 } from './@types-app';
 import { setFetching, setDisplaying, setRef } from './appActions';
@@ -84,16 +84,16 @@ describe('AppReducer', () => {
   });
   describe('isMenuOpen', () => {
     it('success', () => {
-      const testPayloads: IsMenuOpen[] = Array.from({ length: 10 }).map(() =>
+      const testPayloads: OpenMenu[] = Array.from({ length: 10 }).map(() =>
         chance.bool()
       );
       testPayloads.forEach((testPayload) => {
-        const testAction: FSA<IsMenuOpen> = {
+        const testAction: FSA<OpenMenu> = {
           type: ACTION_TYPES.IS_MENU_OPEN,
           state: ACTION_STATES.SUCCESS,
           payload: testPayload,
         };
-        appInitialState.isMenuOpen = testPayload;
+        appInitialState.openMenu = testPayload;
         setFetching(testPayload)(mockDispatch);
         expect(appReducer(mockGetState(), testAction)).toStrictEqual(
           appInitialState
@@ -102,7 +102,7 @@ describe('AppReducer', () => {
       });
     });
     it('fail', () => {
-      const testAction: FSA<IsMenuOpen> = {
+      const testAction: FSA<OpenMenu> = {
         type: ACTION_TYPES.IS_MENU_OPEN,
         state: ACTION_STATES.FAIL,
         errorCode: ERROR_CODES.APP.FAIL_ACTION_IS_FETCHING,

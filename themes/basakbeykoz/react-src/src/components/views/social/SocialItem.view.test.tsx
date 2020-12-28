@@ -17,7 +17,7 @@ const emptyProps: SocialItemOwnProps = {
   title: '',
   icon: '',
   link: '',
-  setIsMenuOpen: () => {},
+  closeAnyMenu: () => () => {},
 };
 let randomProps: SocialItemOwnProps;
 
@@ -27,7 +27,7 @@ beforeEach(() => {
     title: chance.string(),
     icon: chance.url(),
     link: chance.url(),
-    setIsMenuOpen: () => {},
+    closeAnyMenu: () => () => {},
   };
 });
 
@@ -91,11 +91,11 @@ describe('Components', () => {
         state: ACTION_STATES.SUCCESS,
         payload: true,
       });
-      let isMenuOpen = (store.getState() as RootState).app.isMenuOpen;
+      let isMenuOpen = (store.getState() as RootState).app.openMenu;
       // expect(isMenuOpen).toEqual(true);
 
       mounted.find('a').simulate('click');
-      isMenuOpen = (store.getState() as RootState).app.isMenuOpen;
+      isMenuOpen = (store.getState() as RootState).app.openMenu;
       expect(isMenuOpen).toBe(false);
     });
   });

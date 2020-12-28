@@ -1,18 +1,18 @@
 import React from 'react';
 import './_burgerMenuButton.view.scss';
 import { TiThMenu } from 'react-icons/ti';
+import { OpenMenu } from '../../features/app/@types-app';
 
 interface Props {
-  setIsMenuOpen: (isMenuOpen: boolean) => void;
-  isMenuOpen: boolean;
+  setOpenMenuToggle: (openMenu: OpenMenu) => void;
 }
 
-function BurgerMenuButtonView({ isMenuOpen, setIsMenuOpen }: Props) {
+function BurgerMenuButtonView({ setOpenMenuToggle }: Props) {
   return (
     <div {...{ className: 'BurgerMenu' }}>
       <button
         {...{
-          onClick: () => setIsMenuOpen(!isMenuOpen),
+          onClick: () => setOpenMenuToggle('nav'),
           className: 'BurgerMenu-burgerButton',
         }}
       >

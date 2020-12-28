@@ -1,7 +1,8 @@
 import React from 'react';
 
-import BurgerMenuButtonFeature from '../../features/burgerMenuButton/burgerMenuButton.feature';
+import BurgerMenuButtonFeature from '../../features/burger-menu-button/burgerMenuButton.feature';
 import HeaderLogoFeature from '../../features/headerLogo/HeaderLogo.feature';
+import ShareMenuButtonFeature from '../../features/share-menu-button/ShareMenuButton.feature';
 import SocialFeature from '../../features/social/Social.feature';
 import NavHeaderView from '../nav/NavHeader.layout';
 
@@ -14,6 +15,7 @@ function HeaderLayout() {
         <HeaderLogoFeature />
         <NavHeaderView />
         <SocialFeature />
+        <ShareMenuButtonFeature />
         <BurgerMenuButtonFeature />
       </div>
     </header>

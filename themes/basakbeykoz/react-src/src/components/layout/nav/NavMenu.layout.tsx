@@ -1,41 +1,37 @@
 import React from 'react';
 import NavFeature from '../../features/nav/Nav.feature';
 import { connect, ConnectedProps } from 'react-redux';
-import { setIsMenuOpen } from '../../features/app/appActions';
+import { closeAnyMenu } from '../../features/app/appActions';
 import { RootState } from '../../../store/rootReducer';
-import './_navFixed.layout.scss';
+import './_navMenu.layout.scss';
 import SocialFeature from '../../features/social/Social.feature';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const mapState = (state: RootState) => ({
-  isMenuOpen: state.app.isMenuOpen,
+  openMenu: state.app.openMenu,
 });
 const mapDispatch = {
-  setIsMenuOpen,
+  closeAnyMenu,
 };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 interface OwnProps {}
 type Props = OwnProps & PropsFromRedux;
 
-function NavFixedLayout({ setIsMenuOpen, isMenuOpen }: Props) {
-  const menuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+function NavMenuLayout({ closeAnyMenu, openMenu }: Props) {
   return (
     <div
       {...{
-        onClick: menuToggle,
-        className: 'NavFixedView ' + (isMenuOpen ? 'open' : ''),
+        onClick: closeAnyMenu,
+        className: 'NavMenuView ' + (openMenu === 'nav' ? 'open' : ''),
       }}
     >
-      <div {...{ className: 'NavFixedView-mask' }} />
-      <div {...{ className: 'NavFixedView-decor' }} />
-      <div {...{ className: 'NavFixedView-list' }}>
+      <div {...{ className: 'NavMenuView-mask' }} />
+      <div {...{ className: 'NavMenuView-decor' }} />
+      <div {...{ className: 'NavMenuView-list' }}>
         <OverlayScrollbarsComponent
           {...{
-            className: 'NavFixedView-list-scrollable',
+            className: 'NavMenuView-list-scrollable',
             options: {
               paddingAbsolute: true,
               // scrollbars: {
@@ -52,4 +48,4 @@ function NavFixedLayout({ setIsMenuOpen, isMenuOpen }: Props) {
   );
 }
 
-export default connector(NavFixedLayout);
+export default connector(NavMenuLayout);

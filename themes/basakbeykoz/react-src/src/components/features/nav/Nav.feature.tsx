@@ -3,7 +3,6 @@ import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../../store/rootReducer';
 import { fetchMenu } from '../wordpress/menuActions';
 import { setDisplaying } from '../app/appActions';
-import { setIsMenuOpen } from '../app/appActions';
 import NavView from '../../views/nav/Nav.view';
 
 const mapState = (state: RootState) => ({
@@ -12,7 +11,6 @@ const mapState = (state: RootState) => ({
 });
 const mapDispatch = {
   fetchMenu,
-  setIsMenuOpen,
   setDisplaying,
 };
 const connector = connect(mapState, mapDispatch);

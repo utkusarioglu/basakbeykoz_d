@@ -3,7 +3,7 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 export interface IApp {
   isFetching: IsFetching;
-  isMenuOpen: IsMenuOpen;
+  openMenu: OpenMenu;
   isDisplaying: IsDisplaying;
   refs: Ref;
 }
@@ -17,7 +17,7 @@ export interface IsDisplaying {
 
 export type IsFetching = boolean;
 
-export type IsMenuOpen = boolean;
+export type OpenMenu = 'share' | 'nav' | 'none';
 
 export enum APP_ERROR_CODES {
   FAIL_ACTION_IS_FETCHING = 'APP/FAIL_ACTION_IS_FETCHING',
@@ -25,7 +25,7 @@ export enum APP_ERROR_CODES {
   FAIL_ACTION_IS_MENU_OPEN = 'APP/FAIL_ACTION_IS_MENU_OPEN',
 }
 
-export type IAppReducer = IsDisplaying | IsFetching | ISetRef;
+export type IAppReducer = IsDisplaying | IsFetching | ISetRef | OpenMenu;
 
 export enum SET_REF_TYPES {
   Body = 'body',

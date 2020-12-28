@@ -1,0 +1,36 @@
+@import '../../../styles/abstracts/_mixins';
+
+$social-item--default-size--: get-component-property(
+  'social-item',
+  'default-size--'
+);
+
+.ShareMenu {
+  grid-area: share;
+  display: flex;
+
+  &-burgerButton {
+    margin: 0;
+    border: none;
+    background-color: #{get-color('ui-white')};
+    cursor: pointer;
+    padding: 0;
+    height: #{get-gap(2) + $social-item--default-size--};
+    color: #{get-color('text-dark')};
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    & > svg {
+      @include icon-img();
+
+      filter: var(--filter-darkGray);
+    }
+  }
+
+  // @include breakpoint('w', 'SVGA--') {
+  //   display: none;
+  // }
+}

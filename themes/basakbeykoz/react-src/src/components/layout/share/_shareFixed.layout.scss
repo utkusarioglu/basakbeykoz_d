@@ -59,6 +59,7 @@ $nav--mobile-height-px: get-component-property('nav', 'mobile-height-px');
       /// right end of the last icon has the same spacing from the
       /// neighboring right-side element
       margin-right: #{get-gap(1/2)};
+      margin-bottom: #{get-gap(1/2)};
     }
   }
 }

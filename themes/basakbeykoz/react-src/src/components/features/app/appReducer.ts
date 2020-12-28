@@ -3,7 +3,7 @@ import { FSA } from '../../../store/@types-actions';
 import config from '../../../config';
 import {
   IsFetching,
-  IsMenuOpen,
+  OpenMenu,
   IsDisplaying,
   IApp,
   IAppReducer,
@@ -14,7 +14,7 @@ const { HOME_SLUG } = config;
 
 const initialState: IApp = {
   isFetching: true,
-  isMenuOpen: false,
+  openMenu: 'none',
   isDisplaying: {
     status: 200,
     slug: HOME_SLUG,
@@ -66,7 +66,7 @@ export default function (state = initialState, action: FSA<IAppReducer>): IApp {
       if (action.state === ACTION_STATES.FAIL) return state;
       return {
         ...state,
-        isMenuOpen: action.payload as IsMenuOpen,
+        openMenu: action.payload as OpenMenu,
       };
 
     case ACTION_TYPES.SET_REF:

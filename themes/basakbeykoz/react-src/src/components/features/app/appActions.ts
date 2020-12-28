@@ -1,6 +1,6 @@
 import { DispatchMethod } from '../../../store/@types-actions';
 import { ACTION_TYPES, ACTION_STATES } from '../../../store/actionConstants';
-import { IsFetching, IsMenuOpen, IsDisplaying, ISetRef } from './@types-app';
+import { IsFetching, OpenMenu, IsDisplaying, ISetRef } from './@types-app';
 
 export const setFetching = (isFetching: boolean) => (
   dispatch: DispatchMethod<IsFetching>
@@ -22,13 +22,29 @@ export const setDisplaying = (isDisplaying: Partial<IsDisplaying>) => (
   });
 };
 
-export const setIsMenuOpen = (isMenuOpen: IsMenuOpen) => (
-  dispatch: DispatchMethod<IsMenuOpen>
+/**
+ * Sets the open/close state of the burger menu on mobile displays
+ * @param openMenu boolean that sets whether the mobile menu is open
+ */
+export const setOpenMenu = (openMenu: OpenMenu) => (
+  dispatch: DispatchMethod<OpenMenu>
 ) => {
   dispatch({
     type: ACTION_TYPES.IS_MENU_OPEN,
     state: ACTION_STATES.SUCCESS,
-    payload: isMenuOpen,
+    payload: openMenu,
+  });
+};
+
+/**
+ * Closes any open menu regardless of its type
+ * Menu refers to the mobile menus such as nav and share
+ */
+export const closeAnyMenu = () => (dispatch: DispatchMethod<OpenMenu>) => {
+  dispatch({
+    type: ACTION_TYPES.IS_MENU_OPEN,
+    state: ACTION_STATES.SUCCESS,
+    payload: 'none',
   });
 };
 
