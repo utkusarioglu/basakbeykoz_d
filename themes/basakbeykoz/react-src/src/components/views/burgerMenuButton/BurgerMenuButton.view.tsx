@@ -1,8 +1,6 @@
 import React from 'react';
-import config from '../../../config';
 import './_burgerMenuButton.view.scss';
-
-const { UPLOADS_DIR } = config;
+import { TiThMenu } from 'react-icons/ti';
 
 interface Props {
   setIsMenuOpen: (isMenuOpen: boolean) => void;
@@ -18,7 +16,7 @@ function BurgerMenuButtonView({ isMenuOpen, setIsMenuOpen }: Props) {
           className: 'BurgerMenu-burgerButton',
         }}
       >
-        <img {...{ alt: 'Menu', src: UPLOADS_DIR + '/burger-menu.svg' }} />
+        <TiThMenu />
       </button>
     </div>
   );

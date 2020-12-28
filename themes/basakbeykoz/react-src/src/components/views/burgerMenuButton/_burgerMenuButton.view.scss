@@ -23,7 +23,7 @@ $social-item--default-size--: get-component-property(
       outline: none;
     }
 
-    & > img {
+    & > svg {
       @include icon-img();
 
       filter: var(--filter-darkGray);
